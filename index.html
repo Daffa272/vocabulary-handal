@@ -506,11 +506,11 @@
         </div>
         <div class="settings-bar" style="margin-bottom: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
             <div style="display:flex; flex-wrap:wrap; gap: 8px;">
-                <button class="btn-secondary btn-small" onclick="exportAppData()">⬇️ Export JSON</button>
+                <button class="btn-secondary btn-small" onclick="exportAppData()">⬇️ Backup Semua Data</button>
                 <button class="btn-secondary btn-small" onclick="document.getElementById('importFileInput').click()">⬆️ Import JSON</button>
                 <input type="file" id="importFileInput" accept="application/json" style="display:none" onchange="importAppData(event)">
             </div>
-            <div style="font-size: 0.85rem; color: var(--text-light);">Cadangkan atau pulihkan flashcard dan riwayat pencarian Anda dalam format JSON.</div>
+            <div style="font-size: 0.85rem; color: var(--text-light);">Backup atau pulihkan data semua halaman aplikasi ini sekaligus dalam satu file JSON. API key dan kredensial tidak disertakan.</div>
         </div>
         <div id="savedWordsList"></div>
     </div>
@@ -922,26 +922,224 @@
         localStorage.setItem(`english_ai_model_${provider}`, document.getElementById('apiModel').value);
     }
 
-    function exportAppData() {
-        const data = persistAppData();
-        const payload = {
-            version: 1,
-            exportedAt: new Date().toISOString(),
-            apiKey: data.apiKey,
-            words: data.words,
-            recentSearches: data.recentSearches
-        };
+    const allSiteBackupApp = 'english-learning-all-site-data';
+    const sensitiveStorageKeyPattern = /(?:api|gemini|mistral|openrouter).*key|(?:^|[_-])key(?:$|[_-])|token|secret|password|credential/i;
 
-        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `english-flashcards-${new Date().toISOString().slice(0, 10)}.json`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        showToast('Data berhasil diekspor ke file JSON.');
+    function isSensitiveStorageKey(key) {
+        return sensitiveStorageKeyPattern.test(key);
+    }
+
+    function redactSensitiveFields(value) {
+        if (Array.isArray(value)) return value.map(redactSensitiveFields);
+        if (!value || typeof value !== 'object') return value;
+
+        return Object.fromEntries(Object.entries(value)
+            .filter(([key]) => !isSensitiveStorageKey(key))
+            .map(([key, item]) => [key, redactSensitiveFields(item)]));
+    }
+
+    function getAllSiteStorageData() {
+        const storage = Object.create(null);
+        for (let index = 0; index < localStorage.length; index += 1) {
+            const key = localStorage.key(index);
+            if (!key || isSensitiveStorageKey(key)) continue;
+
+            const value = localStorage.getItem(key);
+            if (value === null) continue;
+            try {
+                storage[key] = JSON.stringify(redactSensitiveFields(JSON.parse(value)));
+            } catch {
+                storage[key] = value;
+            }
+        }
+        return storage;
+    }
+
+    function requestResult(request) {
+        return new Promise((resolve, reject) => {
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error || new Error('Gagal membaca IndexedDB.'));
+        });
+    }
+
+    function blobToDataUrl(blob) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = () => reject(reader.error || new Error('Gagal membaca gambar dari IndexedDB.'));
+            reader.readAsDataURL(blob);
+        });
+    }
+
+    function dataUrlToBlob(dataUrl) {
+        const [header, encoded] = String(dataUrl).split(',');
+        if (!header || !encoded || !header.startsWith('data:')) throw new Error('Format gambar backup tidak valid.');
+        const binary = atob(encoded);
+        const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+        return new Blob([bytes], { type: header.match(/data:([^;]+)/)?.[1] || 'image/jpeg' });
+    }
+
+    async function getObjectLibraryBackup() {
+        if (!('indexedDB' in window) || typeof indexedDB.databases !== 'function') {
+            throw new Error('Browser ini tidak mendukung backup IndexedDB untuk koleksi Object English.');
+        }
+        const databases = await indexedDB.databases();
+        if (!databases.some(database => database.name === 'object_english_library')) return null;
+
+        const database = await new Promise((resolve, reject) => {
+            const request = indexedDB.open('object_english_library');
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error || new Error('Gagal membuka database Object English.'));
+        });
+        try {
+            if (!database.objectStoreNames.contains('cards') || !database.objectStoreNames.contains('categories')) {
+                throw new Error('Struktur database Object English tidak dikenali.');
+            }
+            const transaction = database.transaction(['cards', 'categories'], 'readonly');
+            const cardsRequest = transaction.objectStore('cards').getAll();
+            const categoriesRequest = transaction.objectStore('categories').getAll();
+            const [cards, categories] = await Promise.all([requestResult(cardsRequest), requestResult(categoriesRequest)]);
+            return {
+                cards: await Promise.all(cards.map(async card => {
+                    if (!(card.image instanceof Blob)) throw new Error('Ada gambar Object English yang belum tersimpan di perangkat ini.');
+                    return { ...card, image: await blobToDataUrl(card.image) };
+                })),
+                categories
+            };
+        } finally {
+            database.close();
+        }
+    }
+
+    async function exportAppData() {
+        try {
+            const objectLibrary = await getObjectLibraryBackup();
+            const payload = {
+                app: allSiteBackupApp,
+                version: 1,
+                exportedAt: new Date().toISOString(),
+                storage: getAllSiteStorageData(),
+                objectLibrary
+            };
+
+            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `english-all-data-${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            showToast('Backup semua data berhasil diekspor.');
+        } catch (error) {
+            console.error(error);
+            showToast(error.message || 'Backup gagal dibuat.', 'error');
+        }
+    }
+
+    function isAllSiteBackup(data) {
+        return data?.app === allSiteBackupApp
+            && data.version === 1
+            && data.storage
+            && typeof data.storage === 'object'
+            && !Array.isArray(data.storage)
+            && Object.entries(data.storage).every(([key, value]) => key.length > 0 && typeof value === 'string')
+            && (data.objectLibrary === null
+                || (Array.isArray(data.objectLibrary.cards) && Array.isArray(data.objectLibrary.categories)));
+    }
+
+    function isLegacyFlashcardBackup(data) {
+        return data && (
+            Array.isArray(data.words)
+            || Array.isArray(data.savedWords)
+            || Array.isArray(data.repetition_words)
+            || Array.isArray(data.flashcards)
+        );
+    }
+
+    function restoreAllSiteStorage(storage) {
+        const previous = {};
+        for (let index = 0; index < localStorage.length; index += 1) {
+            const key = localStorage.key(index);
+            if (key !== null) previous[key] = localStorage.getItem(key);
+        }
+
+        try {
+            Object.keys(previous).forEach(key => {
+                if (!isSensitiveStorageKey(key) && !Object.prototype.hasOwnProperty.call(storage, key)) {
+                    localStorage.removeItem(key);
+                }
+            });
+            Object.entries(storage).forEach(([key, value]) => {
+                if (!isSensitiveStorageKey(key)) localStorage.setItem(key, value);
+            });
+        } catch (error) {
+            try {
+                while (localStorage.length) {
+                    const key = localStorage.key(0);
+                    if (key === null) break;
+                    localStorage.removeItem(key);
+                }
+                Object.entries(previous).forEach(([key, value]) => {
+                    if (value !== null) localStorage.setItem(key, value);
+                });
+            } catch (rollbackError) {
+                console.error('Gagal memulihkan data setelah import gagal.', rollbackError);
+            }
+            throw error;
+        }
+    }
+
+    async function restoreObjectLibrary(objectLibrary) {
+        const cards = await Promise.all(objectLibrary.cards.map(async card => {
+            const image = typeof card.image === 'string' ? dataUrlToBlob(card.image) : null;
+            if (!image || card.id === undefined || card.id === null) throw new Error('Ada kartu atau gambar Object English yang tidak valid.');
+            return { ...card, image };
+        }));
+        const categories = objectLibrary.categories
+            .map(category => String(typeof category === 'string' ? category : category?.name || '').trim())
+            .filter(Boolean)
+            .map(name => ({ name }));
+
+        const database = await new Promise((resolve, reject) => {
+            const request = indexedDB.open('object_english_library');
+            request.onupgradeneeded = () => {
+                const upgradedDatabase = request.result;
+                if (!upgradedDatabase.objectStoreNames.contains('cards')) upgradedDatabase.createObjectStore('cards', { keyPath: 'id' });
+                if (!upgradedDatabase.objectStoreNames.contains('categories')) upgradedDatabase.createObjectStore('categories', { keyPath: 'name' });
+                if (!upgradedDatabase.objectStoreNames.contains('accountMetadata')) upgradedDatabase.createObjectStore('accountMetadata', { keyPath: 'key' });
+            };
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error || new Error('Gagal membuka database Object English.'));
+        });
+        try {
+            const transaction = database.transaction(['cards', 'categories'], 'readwrite');
+            const cardStore = transaction.objectStore('cards');
+            const categoryStore = transaction.objectStore('categories');
+            cardStore.clear();
+            categoryStore.clear();
+            cards.forEach(card => cardStore.put(card));
+            categories.forEach(category => categoryStore.put(category));
+            await new Promise((resolve, reject) => {
+                transaction.oncomplete = resolve;
+                transaction.onabort = () => reject(transaction.error || new Error('Gagal memulihkan koleksi Object English.'));
+                transaction.onerror = () => reject(transaction.error || new Error('Gagal memulihkan koleksi Object English.'));
+            });
+        } finally {
+            database.close();
+        }
+    }
+
+    async function restoreObjectLibraryBackup(objectLibrary) {
+        if (objectLibrary) {
+            await restoreObjectLibrary(objectLibrary);
+            return;
+        }
+        const databases = await indexedDB.databases();
+        if (databases.some(database => database.name === 'object_english_library')) {
+            await restoreObjectLibrary({ cards: [], categories: [] });
+        }
     }
 
     function importAppData(event) {
@@ -949,20 +1147,29 @@
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onload = () => {
+        reader.onload = async () => {
             try {
                 const parsed = JSON.parse(reader.result);
-                const normalized = normalizeImportedData(parsed);
-                persistAppData(normalized);
-                document.getElementById('apiKey').value = normalized.apiKey;
-                if (normalized.apiKey) localStorage.setItem('gemini_api_key', normalized.apiKey);
-                renderSavedWords();
-                renderRecentSearches();
-                if (currentWordData) checkIfWordIsSaved(currentWordData.word);
-                showToast('Data berhasil diimpor dari file JSON.');
+                if (isAllSiteBackup(parsed)) {
+                    if (!confirm('Import akan mengganti seluruh data aplikasi yang ada di backup ini, termasuk koleksi Object English jika tersedia. API key dan kredensial di perangkat ini tetap dipertahankan. Lanjutkan?')) return;
+                    await restoreObjectLibraryBackup(parsed.objectLibrary);
+                    restoreAllSiteStorage(parsed.storage);
+                    showToast('Semua data berhasil diimpor. Halaman akan dimuat ulang.');
+                    setTimeout(() => location.reload(), 1000);
+                } else if (isLegacyFlashcardBackup(parsed)) {
+                    if (!confirm('File ini hanya berisi data flashcard halaman utama. Import akan mengganti flashcard dan riwayat pencarian. Lanjutkan?')) return;
+                    const normalized = normalizeImportedData(parsed);
+                    persistAppData({ ...normalized, apiKey: getAppData().apiKey });
+                    renderSavedWords();
+                    renderRecentSearches();
+                    if (currentWordData) checkIfWordIsSaved(currentWordData.word);
+                    showToast('Data flashcard berhasil diimpor.');
+                } else {
+                    throw new Error('Format backup tidak dikenali.');
+                }
             } catch (error) {
                 console.error(error);
-                showToast('File JSON tidak valid.', 'error');
+                showToast(error.message || 'File JSON tidak valid atau gagal dipulihkan.', 'error');
             } finally {
                 event.target.value = '';
             }
