@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sesi 3 — Konsep Dasar Risiko Perbankan</title>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+<style>
+  :root{
+    --bg:#0f172a; --card:#1e293b; --card2:#243447; --ink:#e2e8f0; --muted:#94a3b8;
+    --accent:#f59e0b; --accent2:#38bdf8; --green:#4ade80; --red:#f87171; --amber:#fbbf24; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:960px;margin:0 auto;padding:24px 20px 80px}
+  header{background:linear-gradient(135deg,#b45309,#dc2626);padding:48px 20px;text-align:center;border-radius:0 0 24px 24px}
+  header h1{margin:0;font-size:2rem}
+  header p{opacity:.9;margin:.5rem 0 0}
+  .pill{display:inline-block;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:.8rem;margin-top:12px}
+  nav{position:sticky;top:0;background:rgba(15,23,42,.95);backdrop-filter:blur(6px);z-index:10;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;border-bottom:1px solid #334155}
+  nav a{color:var(--accent);text-decoration:none;font-size:.8rem;padding:4px 10px;border-radius:999px;background:#1e293b}
+  nav a:hover{background:#334155}
+  section{background:var(--card);border:1px solid #334155;border-radius:16px;padding:28px;margin:24px 0}
+  h2{margin-top:0;color:var(--accent);font-size:1.35rem;border-bottom:2px solid #334155;padding-bottom:8px}
+  h3{color:var(--purple);margin-bottom:.4rem}
+  .quote{border-left:4px solid var(--accent);background:#0f172a;padding:12px 16px;border-radius:0 10px 10px 0;margin:12px 0;font-style:italic}
+  .formula{background:#0b1220;border:1px dashed #f59e0b;border-radius:10px;padding:14px 18px;margin:12px 0;font-family:'Cascadia Code',Consolas,monospace;font-size:1.05rem;color:var(--amber)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+  th{background:#334155;text-align:left;padding:10px}
+  td{padding:9px 10px;border-bottom:1px solid #334155}
+  tr:nth-child(even) td{background:#1a2537}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .card{background:var(--card2);border-radius:12px;padding:16px 20px;margin:12px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .risk-card{background:var(--card2);border-radius:12px;padding:18px;border-top:4px solid var(--accent)}
+  .risk-card h4{margin:0 0 6px;font-size:1.05rem}
+  .risk-card p{margin:0;font-size:.88rem;color:var(--muted)}
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+  .chain span{background:#0b1220;border:1px solid #f59e0b;border-radius:999px;padding:6px 14px;font-size:.85rem}
+  .chain .arrow{color:var(--amber);border:none;background:none;padding:0}
+  .good{color:var(--green)} .bad{color:var(--red)} .warn{color:var(--amber)}
+  details{background:var(--card2);border-radius:10px;padding:12px 16px;margin:10px 0;border:1px solid #334155}
+  summary{cursor:pointer;font-weight:600;color:var(--accent)}
+  .calc{background:#0b1220;border-radius:10px;padding:14px 18px;margin:10px 0;font-family:Consolas,monospace;font-size:.95rem}
+  .calc b{color:var(--green)}
+  .tag{font-size:.72rem;padding:2px 10px;border-radius:999px;background:#334155;color:var(--muted)}
+  .quiz-q{background:var(--card2);border-radius:12px;padding:16px;margin:12px 0;border:1px solid #334155}
+  .quiz-q p{margin:0 0 10px;font-weight:600}
+  .quiz-q input{width:100%;padding:8px 10px;border-radius:8px;border:1px solid #475569;background:#0f172a;color:var(--ink);margin-bottom:8px}
+  .quiz-q button{background:var(--accent);color:#1c1917;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer}
+  .quiz-q .fb{margin-top:8px;font-size:.9rem}
+  .kpi{background:var(--card2);border-radius:12px;padding:16px;text-align:center;border:1px solid #334155}
+  .kpi .label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .kpi .value{font-size:1.6rem;font-weight:700;color:var(--green)}
+  pre{background:#0b1220;border:1px solid #334155;border-radius:10px;padding:16px;overflow-x:auto;font-size:.85rem;line-height:1.5}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:40px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏦 SESI 3 — KONSEP DASAR RISIKO PERBANKAN</h1>
+  <p>"Apa yang bisa menyebabkan bank mengalami kerugian?" → Risk</p>
+  <div class="pill">Risk = ketidakpastian terhadap hasil yang diharapkan</div>
+</header>
+
+<nav>
+  <a href="#konsep">Konsep Risk</a>
+  <a href="#empat">4 Risiko Fundamental</a>
+  <a href="#credit">Credit Risk</a>
+  <a href="#market">Market Risk</a>
+  <a href="#liquidity">Liquidity Risk</a>
+  <a href="#ops">Operational Risk</a>
+  <a href="#interaksi">Interaksi Risiko</a>
+  <a href="#mngmt">Risk Management</a>
+  <a href="#pricing">Pricing &amp; Trade-off</a>
+  <a href="#case">Mini Case</a>
+  <a href="#quiz">Active Recall</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ================= KONSEP ================= -->
+<section id="konsep">
+  <h2>A–C. Apa itu Risk? Risk vs Uncertainty, Risk &amp; Return</h2>
+  <div class="quote">Risk adalah kemungkinan bahwa hasil aktual berbeda dari hasil yang diharapkan — termasuk kemungkinan kerugian.</div>
+  <p>Contoh: bank memberi kredit Rp1 miliar, berharap pokok kembali + bunga. Tapi ada kemungkinan debitur terlambat/gagal bayar, nilai collateral turun, bank harus recovery → itulah <b>Credit Risk</b>.</p>
+
+  <div class="grid">
+    <div class="risk-card"><h4>Risk</h4><p>Ketidakpastian yang <b style="color:var(--green)">dapat dianalisis</b> probabilitasnya. Contoh: berdasarkan data historis &amp; model, PD diperkirakan 3%.</p></div>
+    <div class="risk-card"><h4>Uncertainty</h4><p>Ketidakpastian yang <b style="color:var(--red)">sulit diperkirakan</b> secara probabilistik: teknologi disruptif, kejadian ekstrem yang belum pernah terjadi, perubahan perilaku pasar tak terduga.</p></div>
+  </div>
+
+  <h3>Risk dan Return</h3>
+  <div class="quote">Higher expected return biasanya disertai higher risk.</div>
+  <p>Kredit A: return 8%, risk rendah. Kredit B: return 15%, risk lebih tinggi. Pertanyaannya bukan "mana return lebih besar?", tapi:</p>
+  <div class="quote">"Apakah tambahan return cukup untuk mengkompensasi risiko yang diambil?"</div>
+</section>
+
+<!-- ================= EMPAT RISIKO ================= -->
+<section id="empat">
+  <h2>D. Empat Risiko Fundamental</h2>
+  <div class="grid">
+    <div class="risk-card"><h4>1️⃣ Credit Risk</h4><p>Risiko debitur gagal memenuhi kewajibannya.</p></div>
+    <div class="risk-card"><h4>2️⃣ Market Risk</h4><p>Risiko kerugian akibat perubahan faktor pasar: interest rate, exchange rate, harga surat berharga.</p></div>
+    <div class="risk-card"><h4>3️⃣ Liquidity Risk</h4><p>Risiko bank tidak mampu memenuhi kewajiban saat jatuh tempo tanpa kerugian yang tak dapat diterima.</p></div>
+    <div class="risk-card"><h4>4️⃣ Operational Risk</h4><p>Risiko akibat kegagalan proses, manusia, sistem, atau kejadian eksternal.</p></div>
+  </div>
+</section>
+
+<!-- ================= CREDIT RISK ================= -->
+<section id="credit">
+  <h2>E–M. Credit Risk: PD, LGD, EAD, ECL, NPL, Profit &amp; Capital</h2>
+
+  <h3>Definisi</h3>
+  <div class="quote">Credit risk = risiko kerugian akibat counterparty/debitur gagal memenuhi kewajiban sesuai perjanjian.</div>
+  <p>Salah satu aset utama bank adalah <b>Loans</b> — semakin besar aktivitas lending, semakin penting credit risk management.</p>
+
+  <h3>Contoh &amp; sumber credit risk</h3>
+  <p>Bank memberi kredit Rp10 M → perusahaan bisnisnya menurun → pembayaran terlambat → kredit bermasalah → gagal bayar → <b class="bad">credit loss</b>.</p>
+  <table>
+    <tr><th>Sumber</th><th>Penjelasan</th></tr>
+    <tr><td>Business Risk</td><td>Bisnis debitur menurun</td></tr>
+    <tr><td>Financial Risk</td><td>Cash flow debitur tidak cukup bayar utang</td></tr>
+    <tr><td>Management Risk</td><td>Pengelolaan perusahaan buruk</td></tr>
+    <tr><td>Industry Risk</td><td>Industri tertekan</td></tr>
+    <tr><td>Macroeconomic Risk</td><td>Economic slowdown, inflation, suku bunga naik, pergerakan kurs</td></tr>
+  </table>
+
+  <h3>📐 Tiga konsep kuantitatif: PD, LGD, EAD</h3>
+  <div class="grid">
+    <div class="risk-card"><h4>PD</h4><p><b>Probability of Default</b> — probabilitas debitur default dalam horizon tertentu. Misal 5%.</p></div>
+    <div class="risk-card"><h4>LGD</h4><p><b>Loss Given Default</b> — persentase exposure yang menjadi kerugian jika default, setelah recovery. Misal 40%.</p></div>
+    <div class="risk-card"><h4>EAD</h4><p><b>Exposure at Default</b> — besarnya exposure ketika default terjadi. Misal Rp1 miliar.</p></div>
+  </div>
+
+  <h3>📐 Expected Credit Loss</h3>
+  <div class="formula">ECL ≈ PD × LGD × EAD</div>
+  <div class="calc">PD 5% × LGD 40% × EAD Rp1 M<br>= 0,05 × 0,40 × 1.000.000.000 = <b>Rp20 juta</b></div>
+  <p class="tag">Ilustrasi konsep — perhitungan ECL dalam praktik menggunakan model dan ketentuan akuntansi yang lebih kompleks.</p>
+
+  <h3>📉 NPL</h3>
+  <div class="formula">NPL Ratio = NPL ÷ Total Loans</div>
+  <div class="calc">NPL Rp200 M / Total loans Rp10 T = 200/10.000 = <b>2%</b></div>
+
+  <h3>⚠️ NPL ≠ Credit Risk secara keseluruhan</h3>
+  <div class="card">Credit risk bisa muncul <b>sebelum kredit menjadi NPL</b>: debitur dengan revenue turun, cash flow melemah, leverage naik, interest coverage turun — belum masuk kategori NPL tapi sudah <b>credit deterioration</b>. Bank tetap perlu memonitor.</div>
+
+  <h3>Credit risk → profit</h3>
+  <div class="chain">
+    <span>Credit Risk</span><span class="arrow">→</span>
+    <span>Credit Deterioration</span><span class="arrow">→</span>
+    <span>Higher Expected Loss</span><span class="arrow">→</span>
+    <span>Provision / Credit Cost ↑</span><span class="arrow">→</span>
+    <span class="bad">Profit ↓</span>
+  </div>
+  <div class="calc">Profit sebelum credit cost Rp500 M, credit cost Rp50 M → profit <b>450 M</b><br>Kredit memburuk, credit cost Rp150 M → profit <b class="warn">350 M</b></div>
+
+  <h3>Credit risk → capital</h3>
+  <div class="calc">Assets Rp10 T, Equity Rp1 T. Kerugian Rp200 M →<br>Equity = 1T − 200M = <b class="warn">Rp800 M</b></div>
+  <div class="quote">Risk → Loss → Capital ↓. Karena itu bank butuh modal memadai untuk menyerap kerugian.</div>
+</section>
+
+<!-- ================= MARKET RISK ================= -->
+<section id="market">
+  <h2>N–Q. Market Risk: Interest Rate Risk &amp; FX Risk</h2>
+  <div class="quote">Market risk = risiko kerugian akibat perubahan faktor pasar (interest rate, FX, equity, commodity). Untuk banking, yang paling penting: <b>Interest Rate Risk</b>.</div>
+
+  <h3>Contoh interest rate risk</h3>
+  <div class="calc">Loan Rp1 T yield 8% — Deposit Rp1 T cost 4% → spread <b>4%</b><br>Suku bunga pasar naik → funding cost jadi 6%, yield belum berubah → spread <b class="warn">2%</b></div>
+  <p>Spread turun → <b>profitability tertekan</b>.</p>
+
+  <h3>Interest rate mismatch</h3>
+  <p>Risiko muncul ketika <b>repricing asset ≠ repricing liability</b>. Contoh: loan fixed rate 5 tahun, deposit berubah lebih cepat. Market rates naik → cost deposit naik, yield loan tetap → margin tertekan.</p>
+
+  <h3>FX Risk</h3>
+  <div class="calc">Aset USD 10 juta, kurs Rp15.000 → <b>Rp150 M</b><br>Kurs menjadi Rp14.000 → <b class="bad">Rp140 M</b> (−Rp10 M)</div>
+  <p>Posisi valas yang tidak terlindungi penuh → perubahan kurs memengaruhi valuation, income, dan capital.</p>
+</section>
+
+<!-- ================= LIQUIDITY ================= -->
+<section id="liquidity">
+  <h2>R–V. Liquidity Risk &amp; Maturity Transformation</h2>
+  <div class="quote">Bank bisa <b>profitable tetapi mengalami liquidity problem</b> — profit dan liquidity bukan hal yang sama.</div>
+
+  <h3>Apa itu liquidity?</h3>
+  <p>Kemampuan bank memenuhi kewajiban ketika jatuh tempo — misal nasabah deposito Rp100 M ingin menarik dana, bank harus mampu memenuhinya.</p>
+
+  <h3>Contoh liquidity stress</h3>
+  <div class="calc">Loans Rp900 M + Cash Rp50 M &nbsp;|&nbsp; Deposits Rp800 M<br>Withdrawal mendadak Rp100 M, cash hanya Rp50 M<br>→ harus: jual aset likuid / borrowing / repo / sumber lain</div>
+  <p class="warn">Jika aset harus dijual cepat dengan harga rendah → bank bisa mengalami loss.</p>
+
+  <h3>Maturity Transformation</h3>
+  <p>Bank menerima <b>shorter-term funding</b> dan menyalurkan <b>longer-term loans</b> (deposito 1 tahun → kredit 5 tahun) → <b>maturity mismatch</b>. Jika funding harus diperbarui saat pasar buruk → liquidity/funding risk.</p>
+
+  <h3>Credit Risk vs Liquidity Risk — jangan tertukar</h3>
+  <table>
+    <tr><th>Credit Risk</th><th>Liquidity Risk</th></tr>
+    <tr><td>Debitur tidak membayar</td><td>Bank tidak punya liquidity cukup untuk kewajiban saat jatuh tempo</td></tr>
+  </table>
+  <p>Bank bisa punya banyak kredit bagus (credit quality baik) tapi asetnya tidak likuid — ketika deposan menarik dana besar, bank tetap bisa kena <b>liquidity stress</b>.</p>
+</section>
+
+<!-- ================= OPERATIONAL ================= -->
+<section id="ops">
+  <h2>W–Y. Operational Risk &amp; Reputational Risk</h2>
+  <div class="quote">Operational risk = kerugian dari kegagalan/ketidakcukupan proses internal, manusia, sistem, atau kejadian eksternal.</div>
+  <div class="grid">
+    <div class="risk-card"><h4>Human Error</h4><p>Pegawai salah memasukkan data.</p></div>
+    <div class="risk-card"><h4>System Failure</h4><p>Core banking mengalami gangguan.</p></div>
+    <div class="risk-card"><h4>Fraud</h4><p>Penyalahgunaan oleh internal/eksternal.</p></div>
+    <div class="risk-card"><h4>Cyber Incident</h4><p>Serangan/gangguan keamanan sistem.</p></div>
+    <div class="risk-card"><h4>Process Failure</h4><p>Prosedur internal tidak berjalan semestinya.</p></div>
+  </div>
+  <h3>Contoh</h3>
+  <p>Sistem pembayaran terganggu 8 jam → transaksi tertunda, nasabah terganggu, remediation, biaya tambahan, reputational impact. Tidak ada debitur gagal bayar, tidak ada perubahan suku bunga — tapi bank tetap rugi. Itulah <b>operational risk</b>.</p>
+  <h3>Reputational Risk</h3>
+  <div class="chain">
+    <span>Operational failure</span><span class="arrow">→</span>
+    <span>Nasabah kecewa</span><span class="arrow">→</span>
+    <span>Negative public reaction</span><span class="arrow">→</span>
+    <span>Trust turun</span><span class="arrow">→</span>
+    <span>Customer outflow</span><span class="arrow">→</span>
+    <span class="bad">Liquidity/funding pressure</span>
+  </div>
+  <p>Satu risiko dapat memicu risiko lainnya.</p>
+</section>
+
+<!-- ================= INTERAKSI ================= -->
+<section id="interaksi">
+  <h2>Z &amp; 36. Risk Interaction — Risiko Saling Terkait</h2>
+  <p>Risiko bank tidak berdiri sendiri. Satu <b>economic shock</b> (mis. economic slowdown) dapat memicu semuanya sekaligus:</p>
+<pre>
+ECONOMIC SLOWDOWN
+      ↓
+Borrower's Revenue ↓
+      ↓
+Credit Quality ↓
+      ↓
+NPL / Expected Loss ↑
+      ↓
+Provision ↑
+      ↓
+Profit ↓
+      ↓
+Capital Pressure
+
+MARKET RATE ↑              LOSS OF CONFIDENCE
+      ↓                            ↓
+Funding Cost ↑             Deposit Outflow
+      ↓                            ↓
+NIM Pressure               Liquidity Pressure
+      ↓                            ↓
+Profitability ↓            Emergency Funding
+
+Economic uncertainty → Market volatility ↑ → MARKET RISK ↑
+Volume transaksi drastis naik → Operational pressure ↑ → OPERATIONAL RISK ↑
+</pre>
+  <div class="quote">Banking risk bersifat <b>interconnected</b>.</div>
+</section>
+
+<!-- ================= RISK MANAGEMENT ================= -->
+<section id="mngmt">
+  <h2>23–30. Risk Management</h2>
+
+  <h3>Siklus Risk Management</h3>
+  <div class="chain">
+    <span>1. Identify<br><small> Risiko apa?</small></span><span class="arrow">→</span>
+    <span>2. Measure<br><small> Seberapa besar?</small></span><span class="arrow">→</span>
+    <span>3. Monitor<br><small> Naik/turun?</small></span><span class="arrow">→</span>
+    <span>4. Control/Mitigate<br><small> Tindakan?</small></span><span class="arrow">→</span>
+    <span>5. Report<br><small> Kepada pihak bertanggung jawab</small></span>
+  </div>
+
+  <h3>5C of Credit (credit assessment)</h3>
+  <table>
+    <tr><th>C</th><th>Pertanyaan</th></tr>
+    <tr><td><b>Character</b></td><td>Apakah borrower punya track record baik?</td></tr>
+    <tr><td><b>Capacity</b></td><td>Apakah borrower mampu membayar?</td></tr>
+    <tr><td><b>Capital</b></td><td>Bagaimana kondisi modalnya?</td></tr>
+    <tr><td><b>Collateral</b></td><td>Apakah ada jaminan?</td></tr>
+    <tr><td><b>Conditions</b></td><td>Bagaimana kondisi industri &amp; ekonomi?</td></tr>
+  </table>
+
+  <h3>Credit Scoring (retail)</h3>
+  <p>Model mempertimbangkan income, employment, payment history, debt burden, age, loan characteristics, credit history → memperkirakan PD dan menentukan keputusan kredit sesuai <b>risk appetite</b> dan kebijakan bank.</p>
+
+  <h3>Collateral — mitigasi, bukan penghilang risiko</h3>
+  <div class="card warn">⚠️ <b>Collateral tidak menghilangkan credit risk.</b> Nilainya bisa turun, sulit dijual, butuh waktu direalisasikan, atau tidak menutup exposure penuh. Bank tetap harus menganalisis kemampuan bayar debitur.</div>
+
+  <h3>Risk Mitigation</h3>
+  <table>
+    <tr><th>Cara</th><th>Keterangan</th></tr>
+    <tr><td><b>Diversification</b></td><td>Jangan terkonsentrasi pada satu debitur / industri / wilayah / jenis aset</td></tr>
+    <tr><td><b>Collateral</b></td><td>Menggunakan jaminan</td></tr>
+    <tr><td><b>Covenants</b></td><td>Persyaratan yang harus dipenuhi borrower</td></tr>
+    <tr><td><b>Insurance</b></td><td>Untuk risiko tertentu</td></tr>
+    <tr><td><b>Hedging</b></td><td>Untuk risiko pasar tertentu</td></tr>
+    <tr><td><b>Liquidity Buffer</b></td><td>Menjaga aset likuid yang cukup</td></tr>
+  </table>
+
+  <h3>Concentration Risk</h3>
+  <div class="calc">Total loan Rp10 T, tapi Rp7 T ke satu sektor industri →<br>Sektor itu krisis → sebagian besar portofolio terdampak = <b class="bad">Concentration Risk</b></div>
+
+  <h3>Risk Appetite</h3>
+  <p>Tingkat dan jenis risiko yang bersedia diterima bank dalam mengejar tujuan bisnis. Bank A konservatif (lebih selektif), Bank B agresif (segmen return tinggi, risiko tinggi) — tapi tetap dalam batas governance, regulasi, dan kemampuan modal.</p>
+
+  <h3>Capital sebagai risk buffer</h3>
+  <div class="calc">Capital Rp1 T, loss Rp100 M → <b class="warn">Rp900 M</b></div>
+  <p>Capital = <b>buffer untuk menyerap unexpected losses</b>. Makin besar risiko, makin penting kecukupan &amp; kualitas modal. (Sesi 4: <b>CAR</b>)</p>
+
+  <h3>Expected vs Unexpected Loss</h3>
+  <table>
+    <tr><th>Expected Loss</th><th>Unexpected Loss</th></tr>
+    <tr><td>Kerugian yang secara statistik diperkirakan → tercermin dalam <b>provision / pricing / risk management</b></td><td>Kerugian melebihi ekspektasi normal → inilah alasan bank butuh <b>capital buffer</b></td></tr>
+  </table>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing">
+  <h2>32–34. Risk-Based Pricing &amp; Risk-Return Trade-off</h2>
+  <p>Bank tidak seharusnya memberi bunga sama untuk semua borrower tanpa mempertimbangkan risiko:</p>
+  <div class="calc">Borrower A (risk rendah) → rate <b>8%</b> &nbsp;|&nbsp; Borrower B (risk lebih tinggi) → rate <b>12%</b></div>
+  <div class="quote">Kompensasi atas tambahan risiko = <b>Risk-Based Pricing</b>.</div>
+
+  <table>
+    <tr><th>Kredit</th><th class="num">Return</th><th>Risk</th></tr>
+    <tr><td>A</td><td class="num">7%</td><td class="good">Rendah</td></tr>
+    <tr><td>B</td><td class="num">10%</td><td class="warn">Medium</td></tr>
+    <tr><td>C</td><td class="num">15%</td><td class="bad">Tinggi</td></tr>
+  </table>
+  <p>C tidak otomatis paling menguntungkan — harus diperhitungkan expected loss, operating cost, capital requirement, liquidity, recovery, dll. Konsep yang tepat: <b>evaluate return relative to risk</b>.</p>
+
+  <h3>Contoh analisis</h3>
+  <div class="calc">
+Loan A: Rp1 M, bunga 10% → interest Rp100 M, EL Rp20 M → expected contribution <b>Rp80 M</b><br>
+Loan B: Rp1 M, bunga 15% → interest Rp150 M, EL Rp100 M → expected contribution <b class="warn">Rp50 M</b>
+  </div>
+  <div class="quote">Higher interest rate tidak otomatis berarti higher economic return.</div>
+
+  <h3>Risk Dashboard Sederhana</h3>
+  <table>
+    <tr><th>Risk</th><th>Yang Dipantau</th></tr>
+    <tr><td>Credit</td><td>NPL, delinquency, PD, concentration</td></tr>
+    <tr><td>Market</td><td>Interest rate, FX, securities price</td></tr>
+    <tr><td>Liquidity</td><td>Liquidity buffer, deposit movement</td></tr>
+    <tr><td>Operational</td><td>System incidents, fraud, losses</td></tr>
+    <tr><td>Capital</td><td>Capital adequacy</td></tr>
+    <tr><td>Profitability</td><td>NIM, ROA, ROE</td></tr>
+  </table>
+  <p class="tag">Sebagian besar indikator ini muncul kembali di Sesi 4.</p>
+</section>
+
+<!-- ================= FRAMEWORK + MISTAKES ================= -->
+<section>
+  <h2>38–40. Common Mistakes, Framework &amp; Concept Map</h2>
+  <h3>❌ Common Mistakes</h3>
+  <table>
+    <tr><th>Miskonsepsi</th><th>Koreksi</th></tr>
+    <tr><td>"Risk tinggi berarti pasti rugi"</td><td>Risk = ketidakpastian terhadap hasil, bukan kepastian rugi</td></tr>
+    <tr><td>"NPL satu-satunya ukuran credit risk"</td><td>Credit risk jauh lebih luas (credit deterioration dll.)</td></tr>
+    <tr><td>"Collateral membuat kredit bebas risiko"</td><td>Collateral hanya salah satu bentuk mitigasi</td></tr>
+    <tr><td>"Profit tinggi pasti sehat"</td><td>Cek asset quality, liquidity, capital, risk, profitability, governance</td></tr>
+    <tr><td>"Liquidity = profitability"</td><td>Bank bisa profitable tapi kena liquidity stress</td></tr>
+    <tr><td>"Return tinggi selalu lebih baik"</td><td>Return harus dibaca bersama risk + capital + liquidity + expected loss</td></tr>
+  </table>
+
+  <h3>Framework Analisis Risiko Bank (7 langkah)</h3>
+  <div class="chain">
+    <span>1. Identify</span><span class="arrow">→</span>
+    <span>2. Exposure</span><span class="arrow">→</span>
+    <span>3. Probability</span><span class="arrow">→</span>
+    <span>4. Impact</span><span class="arrow">→</span>
+    <span>5. Mitigation</span><span class="arrow">→</span>
+    <span>6. Capital</span><span class="arrow">→</span>
+    <span>7. Profitability</span>
+  </div>
+
+  <h3>Concept Map</h3>
+<pre>
+                    BANK RISK
+                        │
+        ┌───────────────┼───────────────┐
+        ↓               ↓               ↓
+     CREDIT          MARKET         LIQUIDITY
+        │               │               │
+   Default         Interest Rate    Deposit Outflow
+   NPL              FX              Funding
+   ECL              Securities      Maturity Gap
+        │               │               │
+        └───────────────┼───────────────┘
+                        ↓
+                  POTENTIAL LOSS
+                        ↓
+                  PROFITABILITY
+                        ↓
+                     CAPITAL
+
+             OPERATIONAL RISK
+                    ↓
+          Process / People / IT
+                    ↓
+                  LOSS
+</pre>
+
+  <h3>Rangkuman Formula</h3>
+  <div class="formula">ECL ≈ PD × LGD × EAD<br><br>NPL Ratio = NPL / Total Loans<br><br>NII = Interest Income − Interest Expense<br><br>Equity(ending) = Equity(beginning) + Profit − Losses − Dividends</div>
+</section>
+
+<!-- ================= MINI CASE ================= -->
+<section id="case">
+  <h2>37. Mini Case Study — Bank XYZ</h2>
+  <p>Data: Total Loans Rp10 T • NPL Rp200 M • PD 4% • LGD 50% • EAD Rp5 T • Interest Income Rp600 M • Interest Expense Rp250 M • Operating Expense Rp180 M</p>
+  <div class="grid">
+    <div class="kpi"><div class="label">NPL Ratio</div><div class="value">2%</div><div class="calc" style="border:none;background:none;padding:4px 0">200M/10T</div></div>
+    <div class="kpi"><div class="label">ECL (simplified)</div><div class="value">Rp100 M</div><div class="calc" style="border:none;background:none;padding:4px 0">4%×50%×5T</div></div>
+    <div class="kpi"><div class="label">NII</div><div class="value">Rp350 M</div><div class="calc" style="border:none;background:none;padding:4px 0">600−250</div></div>
+    <div class="kpi"><div class="label">Sisa (ilustratif)</div><div class="value" style="color:var(--amber)">Rp70 M</div><div class="calc" style="border:none;background:none;padding:4px 0">350−180−100</div></div>
+  </div>
+  <p class="tag">Angka terakhir BUKAN net income final — belum memperhitungkan seluruh pendapatan, beban, pajak, dan perlakuan akuntansi yang relevan.</p>
+
+  <h3>🎯 Target Penguasaan Sesi 3</h3>
+  <div class="quote">Lihat bank bukan hanya dari "Berapa besar profitnya?" — tapi "Profit diperoleh dengan mengambil risiko sebesar apa?"</div>
+  <div class="formula">RISK → EXPECTED/UNEXPECTED LOSS → PROFIT → CAPITAL<br><br>Credit + Market + Liquidity + Operational<br><br>PD + LGD + EAD → Expected Credit Loss</div>
+
+  <h3>🔜 Sesi 4 — Rasio Keuangan Perbankan</h3>
+  <div class="chain">
+    <span>Sesi 1: Cara bank menjalankan bisnis</span><span class="arrow">→</span>
+    <span>Sesi 2: Cara aktivitas dicatat</span><span class="arrow">→</span>
+    <span>Sesi 3: Apa yang bisa bikin rugi</span><span class="arrow">→</span>
+    <span class="good">Sesi 4: Mengukur &amp; menilai bank dengan angka (NIM, NPL, LDR, CASA, ROA, ROE, BOPO/CIR, CAR, LCR, NSFR)</span>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz">
+  <h2>🧠 Active Recall — Kuis Interaktif</h2>
+  <p>Jawab dulu, lalu cek. Soal angka dicek otomatis.</p>
+  <div id="quizBox"></div>
+</section>
+
+<footer>
+  Sesi 3 — Konsep Dasar Risiko Perbankan • Fundamental of Banking
+</footer>
+
+</div>
+
+<script>
+  const quiz = [
+    {q:"Apa yang dimaksud dengan Credit Risk?", a:"Risiko kerugian akibat counterparty/debitur gagal memenuhi kewajiban sesuai perjanjian. Risiko paling fundamental karena aset utama bank adalah loans."},
+    {q:"Apa perbedaan Credit Risk dan Liquidity Risk?", a:"Credit risk: debitur tidak membayar. Liquidity risk: bank tidak punya liquidity cukup untuk memenuhi kewajiban saat jatuh tempo. Bank bisa profitable tapi kena liquidity stress."},
+    {q:"PD 3%, LGD 40%, EAD Rp2 miliar. Simplified ECL?", num:"24", prefix:"Rp", suffix:" juta", a:"ECL = 3% × 40% × 2 M = 0,012 × 2 M = Rp24 juta."},
+    {q:"Total Loans Rp20 T, NPL Rp400 M. NPL ratio?", num:"2", suffix:"%", a:"NPL ratio = 400M / 20T = 2%."},
+    {q:"Apa yang dimaksud dengan Market Risk?", a:"Risiko kerugian akibat perubahan faktor pasar: interest rate, exchange rate, equity/commodity prices, harga surat berharga."},
+    {q:"Kenapa kenaikan interest rate dapat menekan profitability bank?", a:"Cost of funding naik lebih cepat daripada yield aset (interest rate mismatch) → spread/NIM menyempit → profitability tertekan."},
+    {q:"Apa yang dimaksud dengan Maturity Mismatch?", a:"Bank menerima shorter-term funding dan menyalurkan longer-term loans (mis. deposito 1 tahun, kredit 5 tahun). Jika funding harus diperbarui saat pasar buruk → liquidity/funding risk."},
+    {q:"Berikan tiga contoh Operational Risk.", a:"Contoh: human error (salah input data), system failure (core banking gangguan), fraud, cyber incident, process failure — kerugian dari kegagalan proses/manusia/sistem/kejadian eksternal."},
+    {q:"Kenapa collateral tidak menghilangkan Credit Risk?", a:"Nilai collateral bisa turun, sulit dijual, butuh waktu direalisasikan, dan mungkin tidak menutup outstanding exposure penuh. Bank tetap harus menganalisis kemampuan bayar debitur."},
+    {q:"Apa hubungan Credit Risk → Provision → Profit → Capital?", a:"Credit deterioration → expected loss & provision/credit cost naik → profit turun → kerugian menggerus equity/capital. Risk → Loss → Capital."},
+    {q:"Kenapa bank tidak boleh hanya mengejar loan growth?", a:"Growth tinggi bisa didapat dengan standar kredit longgar → NPL, credit cost, dan concentration risk naik. Growth harus dinilai bersama kualitas, expected loss, dan capital."},
+    {q:"Apa yang dimaksud dengan Risk-Based Pricing?", a:"Borrower berisiko lebih tinggi dikenakan bunga lebih tinggi (mis. 8% vs 12%) agar tambahan return mengkompensasi tambahan risiko — return harus dievaluasi relatif terhadap risiko."}
+  ];
+
+  const box = document.getElementById("quizBox");
+  const norm = s => s.toLowerCase().replace(/,/g,".").replace(/[^0-9.%a-z ]/g,"").trim();
+
+  quiz.forEach((item,i)=>{
+    const div = document.createElement("div");
+    div.className = "quiz-q";
+    let inner = `<p>${i+1}. ${item.q}</p>`;
+    if(item.num !== undefined){
+      inner += `<input type="text" placeholder="Ketik angka" />`;
+      inner += `<button>Cek Jawaban</button>`;
+    } else {
+      inner += `<details><summary>Lihat kunci jawaban</summary><p>${item.a}</p></details>`;
+    }
+    div.innerHTML = inner;
+
+    if(item.num !== undefined){
+      const btn = div.querySelector("button");
+      const inp = div.querySelector("input");
+      const check = ()=>{
+        const v = parseFloat(norm(inp.value));
+        const fb = div.querySelector(".fb") || (()=>{const f=document.createElement("div");f.className="fb";div.appendChild(f);return f;})();
+        if(!isNaN(v) && Math.abs(v - item.num) < 0.051){
+          fb.innerHTML = `<span class="good">✅ Benar! ${item.a}</span>`;
+        } else {
+          fb.innerHTML = `<span class="bad">❌ Belum tepat. Coba lagi, atau lihat kunci: <i>${item.a}</i></span>`;
+        }
+      };
+      btn.addEventListener("click", check);
+      inp.addEventListener("keydown", e=>{ if(e.key==="Enter") check(); });
+    }
+    box.appendChild(div);
+  });
+</script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

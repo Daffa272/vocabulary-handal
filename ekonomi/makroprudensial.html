@@ -1,0 +1,2767 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran Lengkap: Kebijakan Makroprudensial Bank Indonesia</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --primary-light: #1565c0;
+            --primary-dark: #08306b;
+            --secondary: #00897b;
+            --secondary-light: #4db6ac;
+            --accent: #ff9800;
+            --accent-light: #ffc947;
+            --success: #4caf50;
+            --warning: #ffc107;
+            --danger: #f44336;
+            --light: #f5f5f5;
+            --light2: #e8f5e8;
+            --dark: #263238;
+            --text: #333;
+            --text-light: #555;
+            --border: #b2dfdb;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-lg: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px var(--shadow-lg);
+        }
+
+        header h1 {
+            font-size: 2.1em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.9;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        nav h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            text-align: center;
+            position: relative;
+        }
+
+        nav h2:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            column-gap: 15px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 10px 12px;
+            background: var(--light2);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--secondary);
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        .toc a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(6px);
+            box-shadow: 0 3px 8px rgba(0, 137, 123, 0.3);
+        }
+
+        .toc a.active {
+            background: var(--primary);
+            color: white;
+            border-left-color: var(--accent);
+        }
+
+        main {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        section::before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            position: absolute;
+            left: -15px;
+            top: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        h2 .icon {
+            font-size: 0.8em;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        h2 .number {
+            font-size: 0.85em;
+            background: var(--accent);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.4em;
+            margin: 22px 0 15px 0;
+        }
+
+        h4 {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin: 18px 0 12px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        blockquote {
+            background: linear-gradient(135deg, var(--light2), #fff);
+            border-left: 5px solid var(--secondary);
+            padding: 18px;
+            margin: 18px 0;
+            font-style: italic;
+            color: var(--dark);
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        blockquote p {
+            margin: 0;
+            text-align: left;
+            font-style: normal;
+        }
+
+        .definition {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 5px solid var(--accent);
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 3px 8px rgba(255, 152, 0, 0.2);
+        }
+
+        .definition p {
+            margin: 0;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .definition p + p {
+            margin-top: 10px;
+        }
+
+        .important {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid var(--danger);
+            box-shadow: 0 2px 6px rgba(244, 67, 54, 0.15);
+        }
+
+        .important p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .important p + p {
+            margin-top: 8px;
+        }
+
+        .diagram, .flow-chart {
+            background: #f8f9fa;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.5;
+            font-size: 0.9em;
+            color: var(--dark);
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .math {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border: 1px dashed var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            background: white;
+            box-shadow: 0 3px 10px var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0, 137, 123, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(0, 137, 123, 0.1);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 22px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.2);
+        }
+
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .summary ul {
+            margin-left: 20px;
+            padding-bottom: 8px;
+        }
+
+        .summary li {
+            margin-bottom: 6px;
+        }
+
+        .summary p {
+            margin-bottom: 10px;
+        }
+
+        .exercise {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            padding: 18px;
+            border-radius: 6px;
+            margin: 18px 0;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 3px 8px rgba(255, 152, 0, 0.15);
+        }
+
+        .exercise h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+
+        .answer {
+            background: white;
+            padding: 14px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .answer strong {
+            color: var(--primary);
+        }
+
+        .keywords {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 18px;
+            border-radius: 6px;
+            margin: 18px 0;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .contoh {
+            background: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .contoh p:first-child {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .formula {
+            background: #f0f8ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            border: 1px dashed var(--secondary);
+        }
+
+        .section-group {
+            background: rgba(255, 248, 225, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+        }
+
+        .mnemonik {
+            background: linear-gradient(135deg, #fff9c4, #fff59d);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .mnemonik p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .wrong, .correct {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .wrong {
+            background: #ffebee;
+            border-left: 4px solid var(--danger);
+        }
+
+        .correct {
+            background: #e8f5e8;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong p:first-child, .correct p:first-child {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .time-info {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .time-info p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .list-custom {
+            margin-left: 20px;
+            padding-bottom: 8px;
+        }
+
+        .list-custom li {
+            margin-bottom: 6px;
+        }
+
+        .channel-box {
+            background: rgba(255, 248, 225, 0.4);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 137, 123, 0.3);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 137, 123, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+
+            .toc {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            nav {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header .subtitle {
+                font-size: 1em;
+            }
+
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h2 .icon, h2 .number {
+                font-size: 0.75em;
+                padding: 4px 8px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .diagram, .flow-chart, .code-block {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.85em;
+            }
+
+            .toc a {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h2 .icon, h2 .number {
+                display: none;
+            }
+
+            .toc a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Print */
+        @media print {
+            nav, .back-to-top, .toc {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .diagram, .flow-chart, .code-block {
+                white-space: pre-wrap;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Animation */
+        @keyframes highlight {
+            0% { background-color: #fffde7; }
+            50% { background-color: #fff9c4; }
+            100% { background-color: #fffde7; }
+        }
+
+        .important {
+            animation: highlight 3s infinite;
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kebijakan Makroprudensial Bank Indonesia</h1>
+            <p class="subtitle">KLM, RPIM, LTV/FTV, CCyB, RIM, PLM, PLJP, PDN, dan RPLN</p>
+            <p>Materi Pembelajaran Lengkap, Sistematis, dan Berorientasi Ujian</p>
+        </header>
+
+        <nav>
+            <h2>📚 Daftar Isi</h2>
+            <div class="toc">
+                <a href="#gambaran-besar">1. Gambaran Besar</a>
+                <a href="#klm">2. KLM</a>
+                <a href="#forward-looking">3. Forward Looking KLM</a>
+                <a href="#channel-klm">4. Channel KLM</a>
+                <a href="#besaran-klm">5. Besaran KLM</a>
+                <a href="#rincian-financing">6. Rincian KLM Financing</a>
+                <a href="#interest-rate-channel">7. Interest Rate Channel</a>
+                <a href="#financing-funding">8. Financing to Funding</a>
+                <a href="#timeline-klm">9. Timeline KLM</a>
+                <a href="#rpim">10. RPIM</a>
+                <a href="#prinsip-rpim">11. Prinsip RPIM</a>
+                <a href="#modalitas-rpim">12. Modalitas RPIM</a>
+                <a href="#target-rpim">13. Target RPIM</a>
+                <a href="#ltv-ftv">14. LTV/FTV</a>
+                <a href="#uang-muka">15. Uang Muka</a>
+                <a href="#tujuan-ltv">16. Tujuan LTV/FTV</a>
+                <a href="#countercyclical-ltv">17. Countercyclical LTV</a>
+                <a href="#ccyb">18. CCyB</a>
+                <a href="#prosiklikalitas">19. Prosiklikalitas</a>
+                <a href="#cara-kerja-ccyb">20. Cara Kerja CCyB</a>
+                <a href="#besaran-ccyb">21. Besaran CCyB</a>
+                <a href="#rim">22. RIM</a>
+                <a href="#komponen-rim">23. Komponen RIM</a>
+                <a href="#membaca-rim">24. Membaca RIM</a>
+                <a href="#formula-giro-rim">25. Formula Giro RIM</a>
+                <a href="#rim-siklus">26. RIM & Siklus Ekonomi</a>
+                <a href="#plm">27. PLM</a>
+                <a href="#fungsi-plm">28. Fungsi PLM</a>
+                <a href="#fleksibilitas-plm">29. Fleksibilitas PLM</a>
+                <a href="#besaran-plm">30. Besaran PLM</a>
+                <a href="#plm-countercyclical">31. PLM Countercyclical</a>
+                <a href="#perbedaan-rim-plm">32. Perbedaan RIM & PLM</a>
+                <a href="#pljp">33. PLJP/PLJPS</a>
+                <a href="#kesulitan-likuiditas">34. Kesulitan Likuiditas</a>
+                <a href="#jangka-pljp">35. Jangka Waktu PLJP</a>
+                <a href="#pljp-vs-pljps">36. PLJP vs PLJPS</a>
+                <a href="#pdn">37. PDN</a>
+                <a href="#currency-mismatch">38. Currency Mismatch</a>
+                <a href="#formula-pdn">39. Formula PDN</a>
+                <a href="#tujuan-pdn">40. Tujuan PDN</a>
+                <a href="#sejarah-pdn">41. Sejarah PDN</a>
+                <a href="#rpln">42. RPLN</a>
+                <a href="#mengapa-rpln">43. Mengapa RPLN</a>
+                <a href="#fitur-rpln">44. Fitur RPLN</a>
+                <a href="#penguatan-rpln">45. Penguatan RPLN 2026</a>
+                <a href="#prinsip-rpln">46. Prinsip Kehati-hatian RPLN</a>
+                <a href="#hubungan-pdn-rpln">47. Hubungan PDN & RPLN</a>
+                <a href="#perbandingan">48. Perbandingan Instrumen</a>
+                <a href="#peta-konsep">49. Peta Konsep</a>
+                <a href="#cara-cepat">50. Cara Cepat Membedakan</a>
+                <a href="#mnemonik">51. Mnemonik</a>
+                <a href="#perbedaan-klm-rpim">52. Perbedaan KLM & RPIM</a>
+                <a href="#perbedaan-klm-rim">53. Perbedaan KLM & RIM</a>
+                <a href="#perbedaan-ccyb-plm">54. Perbedaan CCyB & PLM</a>
+                <a href="#perbedaan-plm-pljp">55. Perbedaan PLM & PLJP</a>
+                <a href="#perbedaan-pdn-rpln">56. Perbedaan PDN & RPLN</a>
+                <a href="#contoh-soal">57. Contoh Soal</a>
+                <a href="#soal-pilihan">58. Soal Pilihan Ganda</a>
+                <a href="#ringkasan">59. Ringkasan Hafalan</a>
+                <a href="#inti">60. Inti Materi</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Section 1 -->
+            <section id="gambaran-besar">
+                <h2><span class="icon">🌐</span><span class="number">1</span> GAMBARAN BESAR KEBIJAKAN MAKROPRUDENSIAL</h2>
+                <p>Secara sederhana, kebijakan makroprudensial digunakan untuk menjaga agar <strong>sistem keuangan tetap stabil</strong>, tetapi pada saat yang sama dapat mendukung pertumbuhan ekonomi.</p>
+
+                <div class="diagram">
+                 BANK INDONESIA
+                       │
+                       ▼
+          KEBIJAKAN MAKROPRUDENSIAL
+                       │
+       ┌───────────────┼────────────────┐
+       ▼               ▼                ▼
+  Dorong kredit    Batasi risiko    Jaga likuiditas
+       │               │                │
+       ▼               ▼                ▼
+     KLM             LTV/FTV          PLM
+     RPIM             CCyB             PLJP
+                       │
+                       ▼
+                STABILITAS SISTEM
+                    KEUANGAN
+                       │
+                       ▼
+             PERTUMBUHAN EKONOMI
+                </div>
+
+                <div class="important">
+                    <p><strong>Kata kunci utama:</strong></p>
+                    <p><strong>Makroprudensial = menjaga kesehatan sistem keuangan secara keseluruhan, bukan hanya satu bank.</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="klm">
+                <h2><span class="icon">💰</span><span class="number">2</span> KEBIJAKAN INSENTIF LIKUIDITAS MAKROPRUDENSIAL (KLM)</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Kebijakan Insentif Likuiditas Makroprudensial (KLM)</strong> adalah instrumen makroprudensial yang bertujuan <strong>mendorong penyaluran kredit/pembiayaan perbankan</strong> dengan tetap memperhatikan prinsip kehati-hatian.</p>
+                </div>
+
+                <p>KLM pertama kali diterapkan pada <strong>Maret 2020</strong>.</p>
+                <p>Mekanismenya memberikan insentif melalui <strong>pengurangan giro bank di Bank Indonesia dalam rangka pemenuhan GWM yang wajib dipenuhi secara rata-rata</strong>.</p>
+
+                <h3>Intinya:</h3>
+                <div class="flow-chart">
+Bank menyalurkan kredit/pembiayaan sesuai sasaran
+                  ↓
+             memperoleh KLM
+                  ↓
+    kebutuhan giro tertentu di BI berkurang
+                  ↓
+       likuiditas bank lebih fleksibel
+                  ↓
+       mendukung intermediasi ekonomi
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="forward-looking">
+                <h2><span class="icon">🔮</span><span class="number">3</span> PERUBAHAN KLM MENJADI FORWARD LOOKING</h2>
+                <p>KLM mengalami beberapa kali penguatan.</p>
+                <p>Mulai <strong>Desember 2025</strong>, KLM diperkuat dengan konsep <strong>forward looking</strong>.</p>
+
+                <h3>Apa arti forward looking?</h3>
+                <p>Artinya, insentif tidak hanya melihat apa yang <strong>sudah dilakukan bank</strong>, tetapi juga berorientasi ke depan berdasarkan <strong>komitmen penyaluran kredit/pembiayaan sektoral bank</strong>.</p>
+
+                <div class="mnemonik">
+                    <p><strong>Forward looking = insentif diarahkan berdasarkan kinerja dan komitmen penyaluran ke depan.</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="channel-klm">
+                <h2><span class="icon">🔄</span><span class="number">4</span> CHANNEL KLM</h2>
+                <p>Dalam perkembangannya, KLM menggunakan beberapa saluran (<em>channel</em>).</p>
+
+                <h3>A. Financing Channel</h3>
+                <div class="channel-box">
+                    <p>KLM diberikan berdasarkan:</p>
+                    <ol class="list-custom">
+                        <li>Penyaluran kredit/pembiayaan kepada sektor tertentu yang ditetapkan BI.</li>
+                        <li>Pembelian surat berharga korporasi untuk mendukung penyaluran kredit/pembiayaan.</li>
+                    </ol>
+                    <p>Jadi:</p>
+                    <div class="flow-chart">
+Bank
+ │
+ ├── Kredit/Pembiayaan sektor prioritas
+ │
+ └── Surat Berharga Korporasi
+             │
+             ▼
+      Financing Channel
+                    </div>
+                </div>
+
+                <h3>B. Interest Rate Channel</h3>
+                <p>KLM diberikan berdasarkan penetapan:</p>
+                <blockquote>
+                    suku bunga kredit/persentase imbalan pembiayaan yang sejalan dengan arah kebijakan BI.
+                </blockquote>
+                <p>Perhitungannya menggunakan <strong>selisih antara suku bunga kredit/pembiayaan baru dan suku bunga kebijakan BI</strong>.</p>
+                <p>Semakin kecil selisih tersebut dalam kategori yang ditentukan, semakin besar insentif yang dapat diberikan.</p>
+
+                <h3>C. Financing to Funding Channel</h3>
+                <p>Channel ini berkaitan dengan pencapaian <strong>sumber pendanaan selain dana pihak ketiga (DPK)</strong> yang tercakup dalam pemenuhan RIM.</p>
+                <div class="flow-chart">
+Pendanaan Bank
+├── DPK
+└── Pendanaan selain DPK
+          ↓
+ Financing to Funding Channel
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="besaran-klm">
+                <h2><span class="icon">📊</span><span class="number">5</span> BESARAN MAKSIMUM KLM</h2>
+                <p>Berdasarkan materi yang diberikan, total KLM maksimum adalah:</p>
+                <div class="formula">
+5,5%
+                </div>
+
+                <p>Dengan rincian:</p>
+                <table>
+                    <tr>
+                        <th>Channel</th>
+                        <th>Maksimum</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Financing Channel</strong></td>
+                        <td style="text-align: center;"><strong>4,5%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interest Rate Channel</strong></td>
+                        <td style="text-align: center;">1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Financing to Funding Channel</strong></td>
+                        <td style="text-align: center;">0,5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total maksimum</strong></td>
+                        <td style="text-align: center;"><strong>5,5%</strong></td>
+                    </tr>
+                </table>
+
+                <p>Namun, <strong>tidak berarti setiap bank otomatis memperoleh 5,5%</strong>.</p>
+                <p>Besarnya bergantung pada pencapaian kriteria masing-masing channel.</p>
+
+                <div class="mnemonik">
+                    <p><strong>Rumus konsep:</strong></p>
+                    <p><strong>KLM Total ≤ 5,5%</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="rincian-financing">
+                <h2><span class="icon">📈</span><span class="number">6</span> RINCIAN KLM FINANCING CHANNEL</h2>
+
+                <h3>6.1 Pertanian, Industri, dan Hilirisasi</h3>
+                <table>
+                    <tr>
+                        <th>Pertumbuhan kredit/pembiayaan</th>
+                        <th>Pangsa ≤10%</th>
+                        <th>Pangsa >10%</th>
+                    </tr>
+                    <tr>
+                        <td>≤ 0%</td>
+                        <td style="text-align: center;">0%</td>
+                        <td style="text-align: center;">1,3%</td>
+                    </tr>
+                    <tr>
+                        <td>>0–3%</td>
+                        <td style="text-align: center;">1,3%</td>
+                        <td style="text-align: center;">1,4%</td>
+                    </tr>
+                    <tr>
+                        <td>>3–7%</td>
+                        <td style="text-align: center;">1,4%</td>
+                        <td style="text-align: center;">1,5%</td>
+                    </tr>
+                    <tr>
+                        <td>>7%</td>
+                        <td style="text-align: center;">1,5%</td>
+                        <td style="text-align: center;">—</td>
+                    </tr>
+                </table>
+
+                <div class="important">
+                    <p><strong>Cara membacanya</strong></p>
+                    <p>Ada <strong>dua variabel penting</strong>:</p>
+                    <ol class="list-custom">
+                        <li>Pertumbuhan kredit/pembiayaan.</li>
+                        <li>Pangsa kredit/pembiayaan.</li>
+                    </ol>
+                    <p>Jadi jangan hanya melihat pertumbuhan.</p>
+                </div>
+
+                <h3>6.2 Sektor Jasa termasuk Ekonomi Kreatif</h3>
+                <table>
+                    <tr>
+                        <th>Pertumbuhan</th>
+                        <th>Pangsa ≤2%</th>
+                        <th>Pangsa >2%</th>
+                    </tr>
+                    <tr>
+                        <td>≤0%</td>
+                        <td style="text-align: center;">0%</td>
+                        <td style="text-align: center;">0,2%</td>
+                    </tr>
+                    <tr>
+                        <td>>0–6%</td>
+                        <td style="text-align: center;">0,2%</td>
+                        <td style="text-align: center;">0,4%</td>
+                    </tr>
+                    <tr>
+                        <td>>6–12%</td>
+                        <td style="text-align: center;">0,4%</td>
+                        <td style="text-align: center;">0,6%</td>
+                    </tr>
+                    <tr>
+                        <td>>12%</td>
+                        <td style="text-align: center;">0,6%</td>
+                        <td style="text-align: center;">—</td>
+                    </tr>
+                </table>
+
+                <h3>6.3 Konstruksi, Real Estate, dan Perumahan</h3>
+                <table>
+                    <tr>
+                        <th>Pertumbuhan</th>
+                        <th>Pangsa ≤2%</th>
+                        <th>Pangsa >2%</th>
+                    </tr>
+                    <tr>
+                        <td>≤0%</td>
+                        <td style="text-align: center;">0%</td>
+                        <td style="text-align: center;">1,0%</td>
+                    </tr>
+                    <tr>
+                        <td>>0–3%</td>
+                        <td style="text-align: center;">1,0%</td>
+                        <td style="text-align: center;">1,2%</td>
+                    </tr>
+                    <tr>
+                        <td>>3–7%</td>
+                        <td style="text-align: center;">1,2%</td>
+                        <td style="text-align: center;">1,4%</td>
+                    </tr>
+                    <tr>
+                        <td>>7%</td>
+                        <td style="text-align: center;">1,4%</td>
+                        <td style="text-align: center;">—</td>
+                    </tr>
+                </table>
+
+                <h3>6.4 UMKM, Koperasi, Inklusi, dan Berkelanjutan</h3>
+                <table>
+                    <tr>
+                        <th>Pertumbuhan</th>
+                        <th>Pangsa ≤1%</th>
+                        <th>Pangsa >1%</th>
+                    </tr>
+                    <tr>
+                        <td>≤0%</td>
+                        <td style="text-align: center;">0%</td>
+                        <td style="text-align: center;">0,7%</td>
+                    </tr>
+                    <tr>
+                        <td>>0–4%</td>
+                        <td style="text-align: center;">0,7%</td>
+                        <td style="text-align: center;">1,0%</td>
+                    </tr>
+                    <tr>
+                        <td>>4%</td>
+                        <td style="text-align: center;">1,0%</td>
+                        <td style="text-align: center;">—</td>
+                    </tr>
+                </table>
+                <p><strong>Catatan penting:</strong> sektor ini juga memperhitungkan aspek pembelian surat berharga korporasi untuk mendukung penyaluran kredit/pembiayaan.</p>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="interest-rate-channel">
+                <h2><span class="icon">💹</span><span class="number">7</span> KLM INTEREST RATE CHANNEL</h2>
+                <p>Besarnya KLM berdasarkan selisih antara suku bunga kredit/pembiayaan baru dengan suku bunga kebijakan BI:</p>
+                <table>
+                    <tr>
+                        <th>Selisih</th>
+                        <th>KLM</th>
+                    </tr>
+                    <tr>
+                        <td>< 3%</td>
+                        <td style="text-align: center;"><strong>1%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>≥3% – <6%</td>
+                        <td style="text-align: center;">0,4%</td>
+                    </tr>
+                    <tr>
+                        <td>≥6% – <10%</td>
+                        <td style="text-align: center;">0,1%</td>
+                    </tr>
+                </table>
+
+                <h3>Contoh</h3>
+                <p>Misalkan:</p>
+                <ul class="list-custom">
+                    <li>suku bunga kebijakan BI = 5%</li>
+                    <li>suku bunga kredit baru = 7%</li>
+                </ul>
+                <p>Maka:</p>
+                <div class="math">
+Selisih = 7% − 5% = 2%
+                </div>
+                <p>Karena <strong>2% < 3%</strong>, berdasarkan tabel materi:</p>
+                <div class="formula">
+KLM = 1%
+                </div>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="financing-funding">
+                <h2><span class="icon">💳</span><span class="number">8</span> KLM FINANCING TO FUNDING CHANNEL</h2>
+                <table>
+                    <tr>
+                        <th>Pendanaan selain DPK / total pendanaan</th>
+                        <th>KLM</th>
+                    </tr>
+                    <tr>
+                        <td>>0% – <2%</td>
+                        <td style="text-align: center;"><strong>0,4%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>≥2%</td>
+                        <td style="text-align: center;"><strong>0,5%</strong></td>
+                    </tr>
+                </table>
+                <p>Jadi, semakin besar pencapaian sumber pendanaan selain DPK sesuai kriteria, semakin besar tambahan KLM yang tersedia sampai maksimum <strong>0,5%</strong>.</p>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="timeline-klm">
+                <h2><span class="icon">📅</span><span class="number">9</span> TIMELINE PENTING KLM</h2>
+                <table>
+                    <tr>
+                        <th>Periode</th>
+                        <th>Perkembangan</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Maret 2020</strong></td>
+                        <td>KLM pertama kali diterapkan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desember 2025</strong></td>
+                        <td>Penguatan konsep <strong>forward looking</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 Agustus 2026</strong></td>
+                        <td>Penguatan KLM dengan financing channel, interest rate channel, dan financing to funding channel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2026</strong></td>
+                        <td>PADG perubahan KLM menjadi dasar penyesuaian ketentuan</td>
+                    </tr>
+                </table>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>KLM = Kredit + Bunga + Funding</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 10 -->
+            <section id="rpim">
+                <h2><span class="icon">👥</span><span class="number">10</span> RASIO PEMBIAYAAN INKLUSIF MAKROPRUDENSIAL (RPIM)</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>RPIM</strong> adalah rasio yang menggambarkan <strong>porsi pembiayaan inklusif bank</strong>.</p>
+                </div>
+
+                <p><strong>Tujuan utamanya:</strong></p>
+                <ul class="list-custom">
+                    <li>mendorong kredit kepada UMKM;</li>
+                    <li>mendorong pembiayaan korporasi UMKM;</li>
+                    <li>mendorong pembiayaan kepada Perorangan Berpenghasilan Rendah (PBR);</li>
+                    <li>memperkuat inklusi keuangan;</li>
+                    <li>mendukung pemulihan dan pertumbuhan ekonomi.</li>
+                </ul>
+            </section>
+
+            <!-- Section 11 -->
+            <section id="prinsip-rpim">
+                <h2><span class="icon">📋</span><span class="number">11</span> PRINSIP RPIM</h2>
+                <p>Bank tidak diwajibkan menggunakan satu model yang sama.</p>
+                <p>Pemenuhan RPIM disesuaikan dengan:</p>
+                <ul class="list-custom">
+                    <li>keahlian bank;</li>
+                    <li>model bisnis bank;</li>
+                    <li>prinsip kehati-hatian;</li>
+                    <li>manajemen risiko;</li>
+                    <li>kontribusi terhadap inklusi keuangan.</li>
+                </ul>
+            </section>
+
+            <!-- Section 12 -->
+            <section id="modalitas-rpim">
+                <h2><span class="icon">🔄</span><span class="number">12</span> EMPAT MODALITAS RPIM</h2>
+                <p>Bank dapat memenuhi RPIM melalui:</p>
+
+                <h3>Modalitas 1</h3>
+                <div class="definition">
+                    <p><strong>Pembiayaan langsung dan rantai pasok.</strong></p>
+                </div>
+
+                <h3>Modalitas 2</h3>
+                <p>Pembiayaan melalui:</p>
+                <ul class="list-custom">
+                    <li>lembaga jasa keuangan;</li>
+                    <li>badan layanan umum;</li>
+                    <li>badan usaha.</li>
+                </ul>
+
+                <h3>Modalitas 3</h3>
+                <div class="definition">
+                    <p><strong>Pembelian Surat Berharga Pembiayaan Inklusif (SBPI).</strong></p>
+                </div>
+
+                <h3>Modalitas 4</h3>
+                <div class="definition">
+                    <p><strong>Pembiayaan inklusif lainnya</strong> yang ditetapkan BI.</p>
+                </div>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>RPIM = Langsung – Lembaga – SBPI – Lainnya</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 13 -->
+            <section id="target-rpim">
+                <h2><span class="icon">🎯</span><span class="number">13</span> TARGET RPIM</h2>
+                <p>Bank menetapkan target RPIM dalam <strong>Rencana Bisnis Bank (RBB)</strong> berdasarkan hasil penilaian mandiri.</p>
+                <p>Target tersebut merupakan kewajiban pemenuhan RPIM.</p>
+                <p>Ketentuannya:</p>
+                <blockquote>
+                    Target RPIM harus meningkat dibandingkan posisi akhir Desember tahun sebelumnya.
+                </blockquote>
+                <p>Khusus jika RPIM akhir Desember tahun sebelumnya sudah <strong>30% atau lebih</strong>, kewajiban paling sedikit sebesar posisi tersebut.</p>
+
+                <h3>Contoh</h3>
+                <p>Jika RPIM akhir tahun sebelumnya:</p>
+                <div class="code-block">
+25%
+                </div>
+                <p>maka target berikutnya harus:</p>
+                <blockquote>
+                    lebih dari 25%
+                </blockquote>
+
+                <p>Jika sebelumnya:</p>
+                <div class="code-block">
+35%
+                </div>
+                <p>maka kewajiban berikutnya paling sedikit:</p>
+                <blockquote>
+                    35%
+                </blockquote>
+            </section>
+
+            <!-- Section 14 -->
+            <section id="ltv-ftv">
+                <h2><span class="icon">🏠</span><span class="number">14</span> LTV/FTV DAN UANG MUKA</h2>
+
+                <h3>A. Pengertian LTV/FTV</h3>
+                <div class="definition">
+                    <p><strong>Loan to Value (LTV)</strong> atau <strong>Financing to Value (FTV)</strong> adalah perbandingan:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;">nilai kredit/pembiayaan terhadap nilai agunan berupa properti.</p>
+                </div>
+
+                <p>Secara sederhana:</p>
+                <div class="math">
+LTV/FTV =
+\frac{\text{Kredit/Pembiayaan}}
+{\text{Nilai Agunan}}
+\times 100\%
+                </div>
+
+                <h3>Contoh</h3>
+                <p>Nilai rumah:</p>
+                <div class="code-block">
+Rp1 miliar
+                </div>
+                <p>Kredit:</p>
+                <div class="code-block">
+Rp800 juta
+                </div>
+                <p>Maka:</p>
+                <div class="math">
+LTV = \frac{800}{1.000}\times100\% = 80\%
+                </div>
+            </section>
+
+            <!-- Section 15 -->
+            <section id="uang-muka">
+                <h2><span class="icon">🚗</span><span class="number">15</span> UANG MUKA KENDARAAN</h2>
+                <p>Uang muka adalah pembayaran di awal yang berasal dari debitur/nasabah sebagai persentase tertentu dari harga kendaraan.</p>
+                <p>Misalnya:</p>
+                <p>Harga kendaraan = Rp200 juta.</p>
+                <p>Jika DP = 10%:</p>
+                <div class="math">
+DP = 10\% \times Rp200 juta
+DP = Rp20 juta
+                </div>
+            </section>
+
+            <!-- Section 16 -->
+            <section id="tujuan-ltv">
+                <h2><span class="icon">🎯</span><span class="number">16</span> TUJUAN LTV/FTV</h2>
+                <p>Instrumen ini mempunyai dua sisi:</p>
+
+                <h3>1. Mendorong kredit</h3>
+                <p>Jika aturan lebih longgar:</p>
+                <div class="flow-chart">
+DP turun
+↓
+akses kredit meningkat
+↓
+permintaan kredit meningkat
+↓
+kredit/pembiayaan meningkat
+                </div>
+
+                <h3>2. Mengendalikan risiko sistemik</h3>
+                <p>Jika properti mengalami kenaikan harga yang tidak sesuai fundamental:</p>
+                <div class="flow-chart">
+Harga properti naik
+↓
+spekulasi meningkat
+↓
+risiko kredit meningkat
+↓
+LTV diperketat
+↓
+risiko sistemik dikurangi
+                </div>
+            </section>
+
+            <!-- Section 17 -->
+            <section id="countercyclical-ltv">
+                <h2><span class="icon">🔄</span><span class="number">17</span> SIFAT COUNTERCYCLICAL LTV/FTV</h2>
+                <p>LTV/FTV bersifat <strong>akomodatif dan countercyclical</strong>.</p>
+                <p>Artinya kebijakan dapat berubah mengikuti siklus ekonomi dan keuangan.</p>
+                <p>Selain properti biasa, ketentuan juga mencakup properti dan kendaraan bermotor <strong>berwawasan lingkungan</strong>.</p>
+
+                <p>Berdasarkan materi:</p>
+                <ul class="list-custom">
+                    <li>LTV properti paling tinggi = <strong>100%</strong></li>
+                    <li>Uang muka kendaraan paling rendah = <strong>0%</strong></li>
+                </ul>
+            </section>
+
+            <!-- Section 18 -->
+            <section id="ccyb">
+                <h2><span class="icon">🛡️</span><span class="number">18</span> COUNTERCYCLICAL CAPITAL BUFFER (CCyB)</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>CCyB</strong> adalah tambahan modal yang berfungsi sebagai <strong>buffer/penyangga</strong> untuk mengantisipasi kerugian ketika terjadi pertumbuhan kredit/pembiayaan yang berlebihan.</p>
+                </div>
+                <p>Risiko yang menjadi perhatian adalah:</p>
+                <blockquote>
+                    prosiklikalitas
+                </blockquote>
+            </section>
+
+            <!-- Section 19 -->
+            <section id="prosiklikalitas">
+                <h2><span class="icon">⚠️</span><span class="number">19</span> APA ITU PROSIKLIKALITAS?</h2>
+                <p><strong>Prosiklikalitas</strong> adalah kecenderungan kredit bergerak searah dengan siklus ekonomi.</p>
+
+                <h3>Saat ekonomi boom:</h3>
+                <div class="flow-chart">
+Ekonomi ↑
+↓
+Kredit ↑
+↓
+Risk-taking ↑
+↓
+Risiko sistemik ↑
+                </div>
+
+                <h3>Saat ekonomi bust:</h3>
+                <div class="flow-chart">
+Ekonomi ↓
+↓
+Kredit ↓
+↓
+Intermediasi melemah
+                </div>
+                <p>Masalahnya, perilaku tersebut dapat memperbesar siklus ekonomi.</p>
+            </section>
+
+            <!-- Section 20 -->
+            <section id="cara-kerja-ccyb">
+                <h2><span class="icon">🔄</span><span class="number">20</span> CARA KERJA CCyB</h2>
+
+                <h3>Saat ekonomi ekspansi berlebihan:</h3>
+                <p>BI dapat:</p>
+                <blockquote>
+                    Menaikkan CCyB
+                </blockquote>
+                <p>Bank membentuk tambahan modal.</p>
+
+                <h3>Saat ekonomi kontraksi:</h3>
+                <p>BI dapat:</p>
+                <blockquote>
+                    Menurunkan CCyB
+                </blockquote>
+                <p>Bank dapat menggunakan buffer tersebut untuk membantu mempertahankan fungsi intermediasi.</p>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>Boom → Buffer naik</strong></p>
+                    <p><strong>Bust → Buffer turun</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 21 -->
+            <section id="besaran-ccyb">
+                <h2><span class="icon">📊</span><span class="number">21</span> BESARAN CCyB</h2>
+                <p>Dalam materi:</p>
+                <blockquote>
+                    CCyB bersifat dinamis pada kisaran <strong>0%–2,5% dari ATMR</strong>.
+                </blockquote>
+                <p>ATMR = <strong>Aset Tertimbang Menurut Risiko</strong>.</p>
+                <p>Posisi yang disebutkan dalam materi:</p>
+                <div class="formula">
+CCyB saat ini = 0%
+                </div>
+            </section>
+
+            <!-- Section 22 -->
+            <section id="rim">
+                <h2><span class="icon">⚖️</span><span class="number">22</span> RIM DAN RIM SYARIAH</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Rasio Intermediasi Makroprudensial (RIM)</strong> dan <strong>RIM Syariah</strong> merupakan instrumen yang bertujuan mengurangi <em>build-up</em> risiko sistemik melalui pengelolaan fungsi intermediasi perbankan.</p>
+                </div>
+                <p><strong>Tujuannya:</strong></p>
+                <blockquote>
+                    Menjaga agar intermediasi bank sesuai dengan kapasitas dan target pertumbuhan ekonomi dengan tetap menerapkan prinsip kehati-hatian.
+                </blockquote>
+            </section>
+
+            <!-- Section 23 -->
+            <section id="komponen-rim">
+                <h2><span class="icon">📦</span><span class="number">23</span> KOMPONEN RIM</h2>
+                <p>RIM membandingkan:</p>
+
+                <h3>Komponen pembiayaan</h3>
+                <ul class="list-custom">
+                    <li>kredit/pembiayaan;</li>
+                    <li>surat berharga korporasi yang dimiliki bank.</li>
+                </ul>
+                <p>dengan:</p>
+
+                <h3>Komponen pendanaan</h3>
+                <ul class="list-custom">
+                    <li>DPK;</li>
+                    <li>surat berharga yang diterbitkan;</li>
+                    <li>pinjaman/pembiayaan yang diterima.</li>
+                </ul>
+
+                <p>Secara konsep:</p>
+                <div class="math">
+RIM =
+\frac{\text{Komponen Pembiayaan}}
+{\text{Komponen Pendanaan}}
+\times 100\%
+                </div>
+            </section>
+
+            <!-- Section 24 -->
+            <section id="membaca-rim">
+                <h2><span class="icon">📖</span><span class="number">24</span> CARA MEMBACA RIM</h2>
+                <p>Berdasarkan materi, target RIM/RIM Syariah:</p>
+                <div class="formula">
+84%–94%
+                </div>
+
+                <h3>Jika RIM berada dalam target</h3>
+                <p>Giro RIM:</p>
+                <blockquote>
+                    0% dari DPK Rupiah
+                </blockquote>
+
+                <h3>Jika RIM di bawah batas bawah</h3>
+                <p>Bank dapat dikenakan:</p>
+                <blockquote>
+                    Giro RIM/Giro RIM Syariah
+                </blockquote>
+                <p>berdasarkan parameter disinsentif bawah.</p>
+
+                <h3>Jika RIM di atas batas atas</h3>
+                <p>Dapat dikenakan:</p>
+                <blockquote>
+                    Giro RIM
+                </blockquote>
+                <p>berdasarkan parameter disinsentif atas.</p>
+            </section>
+
+            <!-- Section 25 -->
+            <section id="formula-giro-rim">
+                <h2><span class="icon">📐</span><span class="number">25</span> FORMULA GIRO RIM</h2>
+
+                <h3>Jika RIM berada di bawah batas bawah:</h3>
+                <div class="math">
+Giro RIM =
+Parameter Disinsentif Bawah
+\times
+(Batas Bawah - RIM)
+\times DPK
+                </div>
+
+                <h3>Jika RIM berada di atas batas atas:</h3>
+                <div class="math">
+Giro RIM =
+Parameter Disinsentif Atas
+\times
+(RIM - Batas Atas)
+\times DPK
+                </div>
+            </section>
+
+            <!-- Section 26 -->
+            <section id="rim-siklus">
+                <h2><span class="icon">📈</span><span class="number">26</span> HUBUNGAN RIM DENGAN SIKLUS EKONOMI</h2>
+
+                <h3>Ekonomi ekspansif dan risk-taking berlebihan</h3>
+                <p>BI dapat melakukan pengetatan, misalnya dengan:</p>
+                <blockquote>
+                    mengurangi batas atas rasio intermediasi atau meningkatkan parameter disinsentif atas.
+                </blockquote>
+
+                <h3>Ekonomi kontraktif</h3>
+                <p>BI dapat melakukan kebijakan akomodatif untuk:</p>
+                <blockquote>
+                    mendorong penyaluran kredit.
+                </blockquote>
+            </section>
+
+            <!-- Section 27 -->
+            <section id="plm">
+                <h2><span class="icon">💧</span><span class="number">27</span> PLM DAN PLM SYARIAH</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Penyangga Likuiditas Makroprudensial (PLM)</strong> adalah cadangan likuiditas minimum dalam Rupiah yang wajib dipelihara bank dalam bentuk <strong>surat berharga Rupiah</strong> yang dapat digunakan dalam Operasi Moneter.</p>
+                </div>
+                <p>PLM Syariah berlaku bagi bank syariah.</p>
+            </section>
+
+            <!-- Section 28 -->
+            <section id="fungsi-plm">
+                <h2><span class="icon">✅</span><span class="number">28</span> FUNGSI PLM</h2>
+                <p>PLM berfungsi sebagai:</p>
+                <blockquote>
+                    liquidity buffer
+                </blockquote>
+                <p>atau penyangga likuiditas.</p>
+
+                <p>Sederhananya:</p>
+                <div class="flow-chart">
+Bank
+ ↓
+Wajib memiliki buffer likuiditas
+ ↓
+Surat berharga Rupiah
+ ↓
+Dapat digunakan dalam Operasi Moneter
+ ↓
+Ketahanan likuiditas meningkat
+                </div>
+            </section>
+
+            <!-- Section 29 -->
+            <section id="fleksibilitas-plm">
+                <h2><span class="icon">🔄</span><span class="number">29</span> FLEKSIBAILITAS PLM</h2>
+                <p>PLM memiliki fitur fleksibilitas.</p>
+                <p>Dalam kondisi tertentu, surat berharga bank dapat digunakan untuk:</p>
+                <blockquote>
+                    repo kepada Bank Indonesia
+                </blockquote>
+                <p>dalam Operasi Moneter.</p>
+                <p>Artinya bank tidak sekadar menyimpan buffer yang pasif, tetapi terdapat mekanisme agar buffer tersebut dapat dimanfaatkan ketika dibutuhkan sesuai ketentuan.</p>
+            </section>
+
+            <!-- Section 30 -->
+            <section id="besaran-plm">
+                <h2><span class="icon">📊</span><span class="number">30</span> BESARAN PLM</h2>
+                <p>Berdasarkan materi terkini:</p>
+                <table>
+                    <tr>
+                        <th>Instrumen</th>
+                        <th>Rasio</th>
+                        <th>Fleksibilitas Repo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>PLM</strong></td>
+                        <td style="text-align: center;"><strong>4%</strong></td>
+                        <td style="text-align: center;">4%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLM Syariah</strong></td>
+                        <td style="text-align: center;"><strong>2,5%</strong></td>
+                        <td style="text-align: center;">2,5%</td>
+                    </tr>
+                </table>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>PLM = 4/4</strong></p>
+                    <p><strong>PLM Syariah = 2,5/2,5</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 31 -->
+            <section id="plm-countercyclical">
+                <h2><span class="icon">🔄</span><span class="number">31</span> PLM BERSIFAT COUNTERCYCLICAL</h2>
+
+                <h3>Likuiditas perbankan tinggi + risk-taking meningkat</h3>
+                <p>→ PLM dapat <strong>ditingkatkan</strong></p>
+                <p>→ buffer likuiditas diperkuat.</p>
+
+                <h3>Likuiditas perbankan rendah</h3>
+                <p>→ PLM dapat <strong>diturunkan</strong></p>
+                <p>→ bank dapat menggunakan buffer.</p>
+
+                <div class="mnemonik">
+                    <p><strong>Jadi:</strong></p>
+                    <p><strong>Likuiditas tinggi → buffer diperbesar</strong></p>
+                    <p><strong>Likuiditas rendah → buffer dapat dilonggarkan</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 32 -->
+            <section id="perbedaan-rim-plm">
+                <h2><span class="icon">⚖️</span><span class="number">32</span> PERBEDAAN RIM DAN PLM</h2>
+                <table>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>RIM</th>
+                        <th>PLM</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Fokus</strong></td>
+                        <td>Intermediasi</td>
+                        <td>Likuiditas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Yang dijaga</strong></td>
+                        <td>Keseimbangan intermediasi</td>
+                        <td>Buffer likuiditas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Komponen utama</strong></td>
+                        <td>Kredit/pembiayaan & pendanaan</td>
+                        <td>Surat berharga Rupiah</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tujuan</strong></td>
+                        <td>Mengurangi risiko sistemik dari intermediasi</td>
+                        <td>Menjaga ketahanan likuiditas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Karakter</strong></td>
+                        <td>Countercyclical</td>
+                        <td>Countercyclical</td>
+                    </tr>
+                </table>
+
+                <div class="mnemonik">
+                    <p><strong>Cara mengingat:</strong></p>
+                    <p><strong>RIM = Rasio Intermediasi</strong></p>
+                    <p><strong>PLM = Penyangga Likuiditas</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 33 -->
+            <section id="pljp">
+                <h2><span class="icon">🏛️</span><span class="number">33</span> PLJP DAN PLJPS</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p>Bank Indonesia memiliki fungsi sebagai <strong>lender of last resort</strong> melalui:</p>
+                    <ul class="list-custom">
+                        <li><strong>PLJP</strong> → Bank Umum Konvensional.</li>
+                        <li><strong>PLJPS</strong> → Bank Umum Syariah.</li>
+                    </ul>
+                </div>
+                <p><strong>Tujuannya</strong> membantu bank yang mengalami <strong>kesulitan likuiditas jangka pendek</strong>.</p>
+            </section>
+
+            <!-- Section 34 -->
+            <section id="kesulitan-likuiditas">
+                <h2><span class="icon">⚠️</span><span class="number">34</span> APA YANG DIMAKSUD KESULITAN LIKUIDITAS?</h2>
+                <p>Kesulitan likuiditas jangka pendek terjadi ketika:</p>
+                <blockquote>
+                    arus dana masuk < arus dana keluar
+                </blockquote>
+                <p>atau terjadi:</p>
+                <blockquote>
+                    mismatch
+                </blockquote>
+                <p>Akibatnya bank dapat mengalami kesulitan memenuhi kewajiban GWM.</p>
+
+                <h3>Ilustrasi:</h3>
+                <div class="code-block">
+Dana masuk       Rp80
+Dana keluar     Rp100
+                -----
+Mismatch        Rp20
+                </div>
+                <p>Bank membutuhkan likuiditas jangka pendek untuk menutup kekurangan tersebut.</p>
+            </section>
+
+            <!-- Section 35 -->
+            <section id="jangka-pljp">
+                <h2><span class="icon">⏳</span><span class="number">35</span> JANGKA WAKTU PLJP/PLJPS</h2>
+                <p>Satu periode pemberian:</p>
+                <div class="formula">
+maksimal 30 hari kalender
+                </div>
+                <p>Dapat diperpanjang:</p>
+                <div class="formula">
+maksimal 2 periode
+                </div>
+                <p>Sehingga total maksimum:</p>
+                <div class="formula">
+90 hari kalender
+                </div>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>30 + 30 + 30 = 90 hari</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 36 -->
+            <section id="pljp-vs-pljps">
+                <h2><span class="icon">⚖️</span><span class="number">36</span> PLJP VS PLJPS</h2>
+                <table>
+                    <tr>
+                        <th>PLJP</th>
+                        <th>PLJPS</th>
+                    </tr>
+                    <tr>
+                        <td>Bank konvensional</td>
+                        <td>Bank syariah</td>
+                    </tr>
+                    <tr>
+                        <td>Pinjaman</td>
+                        <td>Pembiayaan</td>
+                    </tr>
+                    <tr>
+                        <td>Berbasis prinsip konvensional</td>
+                        <td>Berdasarkan prinsip syariah</td>
+                    </tr>
+                </table>
+                <p>Keduanya sama-sama berkaitan dengan:</p>
+                <blockquote>
+                    likuiditas jangka pendek
+                </blockquote>
+            </section>
+
+            <!-- Section 37 -->
+            <section id="pdn">
+                <h2><span class="icon">🌍</span><span class="number">37</span> POSISI DEVISA NETO (PDN)</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>PDN</strong> adalah instrumen yang bertujuan:</p>
+                    <ol class="list-custom">
+                        <li>mengendalikan risiko nilai tukar;</li>
+                        <li>mengurangi <em>currency mismatch</em>;</li>
+                        <li>menjaga ketahanan likuiditas bank;</li>
+                        <li>mendorong kehati-hatian transaksi valas;</li>
+                        <li>menghindari transaksi spekulatif berlebihan.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Section 38 -->
+            <section id="currency-mismatch">
+                <h2><span class="icon">⚠️</span><span class="number">38</span> APA ITU CURRENCY MISMATCH?</h2>
+                <p><strong>Currency mismatch</strong> terjadi ketika terdapat ketidakseimbangan posisi aset dan kewajiban dalam valuta asing.</p>
+                <p><strong>Contoh sederhana:</strong></p>
+                <div class="code-block">
+Aset USD = $100 juta
+Kewajiban USD = $70 juta
+
+Gap = $30 juta
+                </div>
+                <p>Perubahan kurs dapat memengaruhi nilai posisi tersebut.</p>
+                <p>Semakin besar mismatch:</p>
+                <blockquote>
+                    semakin besar potensi risiko nilai tukar.
+                </blockquote>
+            </section>
+
+            <!-- Section 39 -->
+            <section id="formula-pdn">
+                <h2><span class="icon">📐</span><span class="number">39</span> FORMULA PDN</h2>
+                <p>Materi memberikan formula:</p>
+                <div class="math">
+PDN^* =
+\left|
+(\Delta aktiva\ dan\ pasiva\ valas\ dalam\ neraca)
++
+(\Delta tagihan\ dan\ kewajiban\ valas\ dalam\ rekening\ administratif)
+\right|
+                </div>
+                <p>PDN kemudian dibandingkan dengan modal bank.</p>
+                <p><strong>Batas yang disebutkan dalam materi:</strong></p>
+                <div class="formula">
+maksimal 20% dari modal
+                </div>
+            </section>
+
+            <!-- Section 40 -->
+            <section id="tujuan-pdn">
+                <h2><span class="icon">✅</span><span class="number">40</span> TUJUAN BATAS PDN 20%</h2>
+                <p>Logikanya:</p>
+                <div class="flow-chart">
+PDN dibatasi
+      ↓
+Currency mismatch terkendali
+      ↓
+Risiko akibat perubahan kurs menurun
+      ↓
+Modal lebih mampu menyerap kerugian
+      ↓
+Ketahanan bank meningkat
+                </div>
+            </section>
+
+            <!-- Section 41 -->
+            <section id="sejarah-pdn">
+                <h2><span class="icon">📜</span><span class="number">41</span> SEJARAH PDN</h2>
+                <p>Dalam materi:</p>
+                <ul class="list-custom">
+                    <li>pertama kali diatur pada <strong>1989</strong>;</li>
+                    <li>pengaturan utama kemudian melalui <strong>PBI No. 5/13/PBI/2003</strong>;</li>
+                    <li>mengalami beberapa amandemen pada 2004, 2005, 2010, dan 2015.</li>
+                </ul>
+            </section>
+
+            <!-- Section 42 -->
+            <section id="rpln">
+                <h2><span class="icon">💼</span><span class="number">42</span> RASIO PENDANAAN LUAR NEGERI BANK (RPLN)</h2>
+
+                <h3>A. Pengertian</h3>
+                <div class="definition">
+                    <p><strong>RPLN</strong> mengatur batas maksimum kewajiban jangka pendek bank yang berasal dari pendanaan luar negeri terhadap modal.</p>
+                </div>
+                <p><strong>Instrumen ini bertujuan:</strong></p>
+                <blockquote>
+                    mengoptimalkan pendanaan luar negeri bank tanpa meningkatkan risiko pada sistem perbankan Indonesia.
+                </blockquote>
+            </section>
+
+            <!-- Section 43 -->
+            <section id="mengapa-rpln">
+                <h2><span class="icon">❓</span><span class="number">43</span> MENGAPA RPLN DIPERLUKAN?</h2>
+                <p>Bank dapat menggunakan pendanaan luar negeri untuk mendukung kegiatan intermediasi.</p>
+                <p>Namun terlalu bergantung pada pendanaan luar negeri jangka pendek dapat menimbulkan risiko.</p>
+                <p>Misalnya:</p>
+                <div class="flow-chart">
+Pendanaan luar negeri jangka pendek ↑
+              ↓
+Ketergantungan terhadap dana eksternal ↑
+              ↓
+Risiko rollover/liquidity ↑
+              ↓
+Risiko sistem keuangan ↑
+                </div>
+                <p>Karena itu diperlukan batasan.</p>
+            </section>
+
+            <!-- Section 44 -->
+            <section id="fitur-rpln">
+                <h2><span class="icon">✨</span><span class="number">44</span> DUA FITUR UTAMA RPLN</h2>
+
+                <h3>1. Countercyclical</h3>
+                <p>Batas RPLN dapat berubah mengikuti:</p>
+                <ul class="list-custom">
+                    <li>siklus ekonomi;</li>
+                    <li>kondisi keuangan;</li>
+                    <li>siklus utang luar negeri bank.</li>
+                </ul>
+
+                <h3>2. Risk-Based Approach</h3>
+                <p>Parameter memperhitungkan:</p>
+                <ul class="list-custom">
+                    <li>risiko eksternal;</li>
+                    <li>risiko makrofinansial;</li>
+                    <li>kapasitas permodalan;</li>
+                    <li>risiko kredit;</li>
+                    <li>risiko pasar.</li>
+                </ul>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>RPLN = Countercyclical + Risk-Based</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 45 -->
+            <section id="penguatan-rpln">
+                <h2><span class="icon">📅</span><span class="number">45</span> PENGUATAN RPLN 2026</h2>
+                <p>Berdasarkan materi:</p>
+                <p>Mulai <strong>1 Juli 2026</strong>:</p>
+                <blockquote>
+                    parameter kontrasiklikal = +10%
+                </blockquote>
+                <p>sehingga batas RPLN meningkat:</p>
+                <div class="formula">
+dari 35% → 40% dari modal bank
+                </div>
+                <p>Kemudian mulai <strong>13 Juli 2026</strong>, cakupan tertentu diperluas dengan memasukkan <strong>SBN valuta asing Pemerintah</strong> sebagai instrumen valas yang tidak diperhitungkan dalam kewajiban jangka pendek pada kondisi yang ditentukan.</p>
+            </section>
+
+            <!-- Section 46 -->
+            <section id="prinsip-rpln">
+                <h2><span class="icon">✅</span><span class="number">46</span> PRINSIP KEHATI-HATIAN RPLN</h2>
+                <p>Bank yang memperoleh pendanaan luar negeri harus memenuhi indikator:</p>
+
+                <h3>1. Permodalan</h3>
+                <p>Memenuhi rasio kewajiban penyediaan modal minimum sesuai profil risiko.</p>
+
+                <h3>2. Risiko kredit</h3>
+                <p>NPL/NPF bruto:</p>
+                <div class="formula">
+<5%
+                </div>
+
+                <h3>3. Risiko pasar</h3>
+                <p>Memenuhi ketentuan:</p>
+                <blockquote>
+                    PDN
+                </blockquote>
+            </section>
+
+            <!-- Section 47 -->
+            <section id="hubungan-pdn-rpln">
+                <h2><span class="icon">🔗</span><span class="number">47</span> HUBUNGAN PDN DAN RPLN</h2>
+                <p>Keduanya sama-sama berkaitan dengan risiko eksternal/valuta asing, tetapi fokusnya berbeda.</p>
+                <table>
+                    <tr>
+                        <th>PDN</th>
+                        <th>RPLN</th>
+                    </tr>
+                    <tr>
+                        <td>Risiko nilai tukar</td>
+                        <td>Pendanaan luar negeri</td>
+                    </tr>
+                    <tr>
+                        <td>Currency mismatch</td>
+                        <td>Kewajiban jangka pendek luar negeri</td>
+                    </tr>
+                    <tr>
+                        <td>Fokus posisi valas</td>
+                        <td>Fokus sumber pendanaan</td>
+                    </tr>
+                    <tr>
+                        <td>Batas terhadap modal</td>
+                        <td>Batas kewajiban terhadap modal</td>
+                    </tr>
+                </table>
+
+                <div class="mnemonik">
+                    <p><strong>Hafalan:</strong></p>
+                    <p><strong>PDN = Posisi Devisa</strong></p>
+                    <p><strong>RPLN = Pendanaan Luar Negeri</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 48 -->
+            <section id="perbandingan">
+                <h2><span class="icon">⚖️</span><span class="number">48</span> PERBEDAAN SELURUH INSTRUMEN</h2>
+                <table>
+                    <tr>
+                        <th>Instrumen</th>
+                        <th>Fokus Utama</th>
+                        <th>Kata Kunci</th>
+                    </tr>
+                    <tr>
+                        <td><strong>KLM</strong></td>
+                        <td>Mendorong kredit/pembiayaan</td>
+                        <td><strong>Insentif</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RPIM</strong></td>
+                        <td>Pembiayaan inklusif</td>
+                        <td><strong>UMKM/Inklusi</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>LTV/FTV</strong></td>
+                        <td>Kredit properti</td>
+                        <td><strong>Agunan/Loan</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Uang Muka</strong></td>
+                        <td>Kredit kendaraan</td>
+                        <td><strong>DP</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CCyB</strong></td>
+                        <td>Modal penyangga</td>
+                        <td><strong>Buffer Modal</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RIM</strong></td>
+                        <td>Intermediasi bank</td>
+                        <td><strong>Kredit vs Funding</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLM</strong></td>
+                        <td>Likuiditas</td>
+                        <td><strong>Buffer Likuiditas</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLJP</strong></td>
+                        <td>Krisis likuiditas jangka pendek</td>
+                        <td><strong>Last Resort</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PDN</strong></td>
+                        <td>Risiko nilai tukar</td>
+                        <td><strong>Currency Mismatch</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RPLN</strong></td>
+                        <td>Pendanaan luar negeri</td>
+                        <td><strong>External Funding</strong></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 49 -->
+            <section id="peta-konsep">
+                <h2><span class="icon">🗺️</span><span class="number">49</span> PETA KONSEP BESAR</h2>
+                <div class="flow-chart">
+                 KEBIJAKAN MAKROPRUDENSIAL
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+        ▼                  ▼                  ▼
+     DORONG             KENDALIKAN         PERKUAT
+    INTERMEDIASI          RISIKO          KETAHANAN
+        │                  │                  │
+   ┌────┼────┐       ┌─────┼─────┐      ┌────┼────┐
+   ▼    ▼    ▼       ▼     ▼     ▼      ▼    ▼    ▼
+  KLM  RPIM RIM     LTV   CCyB   PDN    PLM  PLJP RPLN
+                </div>
+            </section>
+
+            <!-- Section 50 -->
+            <section id="cara-cepat">
+                <h2><span class="icon">🎯</span><span class="number">50</span> CARA CEPAT MEMEBEDAKAN INSTRUMEN</h2>
+                <p><strong>Jika pertanyaannya tentang...</strong></p>
+
+                <h3>"Mendorong bank memberikan kredit"</h3>
+                <p>→ <strong>KLM</strong></p>
+
+                <h3>"UMKM dan inklusi"</h3>
+                <p>→ <strong>RPIM</strong></p>
+
+                <h3>"Rumah/properti"</h3>
+                <p>→ <strong>LTV/FTV</strong></p>
+
+                <h3>"Kendaraan"</h3>
+                <p>→ <strong>Uang muka</strong></p>
+
+                <h3>"Tambahan modal saat kredit terlalu cepat"</h3>
+                <p>→ <strong>CCyB</strong></p>
+
+                <h3>"Keseimbangan intermediasi dan pendanaan"</h3>
+                <p>→ <strong>RIM</strong></p>
+
+                <h3>"Cadangan likuiditas"</h3>
+                <p>→ <strong>PLM</strong></p>
+
+                <h3>"Bank kekurangan likuiditas jangka pendek"</h3>
+                <p>→ <strong>PLJP/PLJPS</strong></p>
+
+                <h3>"Risiko nilai tukar"</h3>
+                <p>→ <strong>PDN</strong></p>
+
+                <h3>"Utang/pendanaan luar negeri jangka pendek"</h3>
+                <p>→ <strong>RPLN</strong></p>
+            </section>
+
+            <!-- Section 51 -->
+            <section id="mnemonik">
+                <h2><span class="icon">🧠</span><span class="number">51</span> MNEMONIK SUPER CEPAT</h2>
+                <p>Gunakan:</p>
+                <div class="code-block">
+K-R-L-C-R-P-P-P-P-R
+                </div>
+                <p>Tetapi agar lebih mudah, kelompokkan berdasarkan tujuan:</p>
+
+                <h3>🚀 Mendorong pembiayaan</h3>
+                <div class="formula">
+KLM – RPIM – LTV/FTV
+                </div>
+
+                <h3>🛡️ Menahan risiko</h3>
+                <div class="formula">
+CCyB – RIM – PDN – RPLN
+                </div>
+
+                <h3>💧 Likuiditas</h3>
+                <div class="formula">
+PLM – PLJP
+                </div>
+            </section>
+
+            <!-- Section 52 -->
+            <section id="perbedaan-klm-rpim">
+                <h2><span class="icon">⚖️</span><span class="number">52</span> PERBEDAAN KLM DAN RPIM</h2>
+                <p>Ini sering menjadi jebakan soal.</p>
+                <table>
+                    <tr>
+                        <th>KLM</th>
+                        <th>RPIM</th>
+                    </tr>
+                    <tr>
+                        <td>Instrumen <strong>insentif</strong></td>
+                        <td>Instrumen <strong>rasio/kewajiban</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Mendorong kredit/pembiayaan tertentu</td>
+                        <td>Mendorong pembiayaan inklusif</td>
+                    </tr>
+                    <tr>
+                        <td>Bisa memberikan insentif likuiditas</td>
+                        <td>Menetapkan target RPIM</td>
+                    </tr>
+                    <tr>
+                        <td>Fokus pada channel yang ditetapkan BI</td>
+                        <td>Fokus UMKM, korporasi UMKM, PBR</td>
+                    </tr>
+                </table>
+
+                <div class="important">
+                    <p><strong>Ingat:</strong></p>
+                    <p><strong>KLM = bank diberi insentif</strong></p>
+                    <p><strong>RPIM = bank harus memenuhi rasio pembiayaan inklusif</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 53 -->
+            <section id="perbedaan-klm-rim">
+                <h2><span class="icon">⚖️</span><span class="number">53</span> PERBEDAAN KLM DAN RIM</h2>
+                <table>
+                    <tr>
+                        <th>KLM</th>
+                        <th>RIM</th>
+                    </tr>
+                    <tr>
+                        <td>Bersifat <strong>insentif</strong></td>
+                        <td>Bersifat pengaturan intermediasi</td>
+                    </tr>
+                    <tr>
+                        <td>Mendorong penyaluran</td>
+                        <td>Menjaga keseimbangan intermediasi</td>
+                    </tr>
+                    <tr>
+                        <td>Maksimum KLM 5,5%</td>
+                        <td>Kisaran RIM 84–94% dalam materi</td>
+                    </tr>
+                    <tr>
+                        <td>Berkaitan dengan GWM/insentif likuiditas</td>
+                        <td>Berkaitan dengan rasio pembiayaan terhadap pendanaan</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 54 -->
+            <section id="perbedaan-ccyb-plm">
+                <h2><span class="icon">⚖️</span><span class="number">54</span> PERBEDAAN CCyB DAN PLM</h2>
+                <p>Ini juga penting.</p>
+
+                <h3>CCyB</h3>
+                <div class="formula">
+Buffer modal
+                </div>
+
+                <h3>PLM</h3>
+                <div class="formula">
+Buffer likuiditas
+                </div>
+
+                <div class="flow-chart">
+CCyB → MODAL
+PLM  → LIKUIDITAS
+                </div>
+            </section>
+
+            <!-- Section 55 -->
+            <section id="perbedaan-plm-pljp">
+                <h2><span class="icon">⚖️</span><span class="number">55</span> PERBEDAAN PLM DAN PLJP</h2>
+
+                <h3>PLM</h3>
+                <p>Bank <strong>wajib memiliki buffer likuiditas</strong>.</p>
+
+                <h3>PLJP</h3>
+                <p>BI memberikan <strong>dukungan likuiditas</strong> ketika bank mengalami kesulitan likuiditas jangka pendek sesuai persyaratan.</p>
+
+                <div class="flow-chart">
+PLM
+↓
+PENCEGAHAN / BUFFER
+
+PLJP
+↓
+PENANGANAN KESULITAN LIKUIDITAS
+                </div>
+            </section>
+
+            <!-- Section 56 -->
+            <section id="perbedaan-pdn-rpln">
+                <h2><span class="icon">⚖️</span><span class="number">56</span> PERBEDAAN PDN DAN RPLN</h2>
+
+                <h3>PDN</h3>
+                <p>Pertanyaannya:</p>
+                <blockquote>
+                    "Seberapa besar posisi valas bank dibandingkan modal?"
+                </blockquote>
+
+                <h3>RPLN</h3>
+                <p>Pertanyaannya:</p>
+                <blockquote>
+                    "Seberapa besar kewajiban pendanaan luar negeri jangka pendek bank dibandingkan modal?"
+                </blockquote>
+            </section>
+
+            <!-- Section 57 -->
+            <section id="contoh-soal">
+                <h2><span class="icon">📝</span><span class="number">57</span> CONTOH SOAL PERHITUNGAN</h2>
+
+                <h3>Soal 1 — LTV</h3>
+                <p>Harga properti Rp1,5 miliar.</p>
+                <p>Kredit Rp1,2 miliar.</p>
+                <p>LTV?</p>
+                <div class="math">
+LTV = \frac{1,2}{1,5} \times 100\%
+= 80\%
+                </div>
+
+                <h3>Soal 2 — Uang muka</h3>
+                <p>Harga kendaraan Rp300 juta.</p>
+                <p>DP 10%.</p>
+                <div class="math">
+DP = 300.000.000 \times 10\%
+= Rp30 juta
+                </div>
+
+                <h3>Soal 3 — KLM Interest Rate Channel</h3>
+                <p>Suku bunga kebijakan = 5%.</p>
+                <p>Suku bunga kredit baru = 7%.</p>
+                <p><strong>Selisih:</strong></p>
+                <div class="math">
+7\% - 5\% = 2\%
+                </div>
+                <p>Karena <3%:</p>
+                <div class="formula">
+KLM = 1%
+                </div>
+
+                <h3>Soal 4 — Financing to Funding</h3>
+                <p>Pendanaan selain DPK = 3%.</p>
+                <p>Total pendanaan = Rp1 triliun.</p>
+                <p>Karena persentasenya ≥2%, berdasarkan tabel:</p>
+                <div class="formula">
+KLM = 0,5%
+                </div>
+
+                <h3>Soal 5 — CCyB</h3>
+                <p>Jika kondisi ekonomi mengalami ekspansi berlebihan dan pertumbuhan kredit terlalu cepat, apa yang secara umum dilakukan?</p>
+                <div class="answer">
+                    <strong>Jawaban:</strong> CCyB dapat dinaikkan untuk membentuk tambahan buffer modal.
+                </div>
+
+                <h3>Soal 6 — PLJP</h3>
+                <p>Bank memperoleh PLJP selama 30 hari dan dapat diperpanjang dua kali.</p>
+                <p><strong>Berapa maksimum keseluruhan?</strong></p>
+                <div class="math">
+30 + 30 + 30 = 90
+                </div>
+                <div class="answer">
+                    <strong>Jawaban: 90 hari kalender.</strong>
+                </div>
+            </section>
+
+            <!-- Section 58 -->
+            <section id="soal-pilihan">
+                <h2><span class="icon">🎯</span><span class="number">58</span> SOAL PILIHAN GANDA</h2>
+
+                <div class="exercise">
+                    <h3>1. Tujuan utama KLM adalah...</h3>
+                    <ol type="A">
+                        <li>Membatasi valuta asing</li>
+                        <li>Mendorong kredit/pembiayaan</li>
+                        <li>Mengatur harga saham</li>
+                        <li>Menentukan nilai tukar</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. KLM maksimum berdasarkan materi adalah...</h3>
+                    <ol type="A">
+                        <li>2,5%</li>
+                        <li>4%</li>
+                        <li>5%</li>
+                        <li>5,5%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: D</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>3. Financing Channel maksimum adalah...</h3>
+                    <ol type="A">
+                        <li>0,5%</li>
+                        <li>1%</li>
+                        <li>4,5%</li>
+                        <li>5,5%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>4. Interest Rate Channel maksimum adalah...</h3>
+                    <ol type="A">
+                        <li>0,5%</li>
+                        <li>1%</li>
+                        <li>4,5%</li>
+                        <li>5,5%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>5. Financing to Funding Channel maksimum adalah...</h3>
+                    <ol type="A">
+                        <li>0,1%</li>
+                        <li>0,4%</li>
+                        <li>0,5%</li>
+                        <li>1%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>6. RPIM terutama berkaitan dengan...</h3>
+                    <ol type="A">
+                        <li>Nilai tukar</li>
+                        <li>Pembiayaan inklusif</li>
+                        <li>Cadangan devisa</li>
+                        <li>Modal bank</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>7. Salah satu modalitas RPIM adalah...</h3>
+                    <ol type="A">
+                        <li>SBPI</li>
+                        <li>PDN</li>
+                        <li>CCyB</li>
+                        <li>PLJP</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: A</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>8. LTV membandingkan...</h3>
+                    <ol type="A">
+                        <li>Modal dengan DPK</li>
+                        <li>Kredit dengan nilai agunan</li>
+                        <li>DPK dengan kredit</li>
+                        <li>Valas dengan modal</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>9. CCyB merupakan buffer berupa...</h3>
+                    <ol type="A">
+                        <li>Likuiditas</li>
+                        <li>Devisa</li>
+                        <li>Modal</li>
+                        <li>Kredit</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>10. Jika ekonomi mengalami boom dan kredit tumbuh berlebihan, CCyB secara umum...</h3>
+                    <ol type="A">
+                        <li>Diturunkan</li>
+                        <li>Dihapus</li>
+                        <li>Dinaikkan</li>
+                        <li>Tidak berubah</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>11. PLM merupakan buffer...</h3>
+                    <ol type="A">
+                        <li>Modal</li>
+                        <li>Likuiditas</li>
+                        <li>Valuta asing</li>
+                        <li>Kredit</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>12. Berdasarkan materi, PLM saat ini adalah...</h3>
+                    <ol type="A">
+                        <li>2,5%</li>
+                        <li>3%</li>
+                        <li>4%</li>
+                        <li>5%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>13. PLM Syariah adalah...</h3>
+                    <ol type="A">
+                        <li>1%</li>
+                        <li>2,5%</li>
+                        <li>4%</li>
+                        <li>5%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>14. PLJP diberikan kepada bank yang mengalami...</h3>
+                    <ol type="A">
+                        <li>Inflasi tinggi</li>
+                        <li>Kesulitan likuiditas jangka pendek</li>
+                        <li>Kerugian valuta asing saja</li>
+                        <li>Kekurangan modal permanen</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>15. Maksimum keseluruhan PLJP berdasarkan materi adalah...</h3>
+                    <ol type="A">
+                        <li>30 hari</li>
+                        <li>60 hari</li>
+                        <li>90 hari</li>
+                        <li>120 hari</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>16. PDN bertujuan mengendalikan...</h3>
+                    <ol type="A">
+                        <li>Risiko kredit</li>
+                        <li>Risiko nilai tukar</li>
+                        <li>Risiko inflasi</li>
+                        <li>Risiko saham</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>17. Batas PDN yang disebutkan dalam materi adalah...</h3>
+                    <ol type="A">
+                        <li>10% modal</li>
+                        <li>15% modal</li>
+                        <li>20% modal</li>
+                        <li>40% modal</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>18. RPLN berhubungan dengan...</h3>
+                    <ol type="A">
+                        <li>Pendanaan luar negeri</li>
+                        <li>Harga properti</li>
+                        <li>Pembiayaan UMKM</li>
+                        <li>GWM</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: A</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>19. Mulai 1 Juli 2026, batas RPLN berdasarkan materi meningkat menjadi...</h3>
+                    <ol type="A">
+                        <li>20%</li>
+                        <li>30%</li>
+                        <li>35%</li>
+                        <li>40%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: D</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>20. Instrumen yang paling tepat ketika soal menyebut "currency mismatch" adalah...</h3>
+                    <ol type="A">
+                        <li>KLM</li>
+                        <li>RPIM</li>
+                        <li>PDN</li>
+                        <li>PLM</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 59 -->
+            <section id="ringkasan">
+                <h2><span class="icon">📌</span><span class="number">59</span> RINGKASAN HAFALAN UJIAN</h2>
+                <div class="keywords">
+                    <table>
+                        <tr>
+                            <th>Angka penting</th>
+                            <th>Arti</th>
+                        </tr>
+                        <tr>
+                            <td><strong>5,5%</strong></td>
+                            <td>Maksimum KLM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4,5%</strong></td>
+                            <td>Financing Channel KLM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1%</strong></td>
+                            <td>Interest Rate Channel maksimum</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0,5%</strong></td>
+                            <td>Financing to Funding maksimum</td>
+                        </tr>
+                        <tr>
+                            <td><strong>30%</strong></td>
+                            <td>Ambang RPIM yang disebut dalam materi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>100%</strong></td>
+                            <td>LTV properti maksimum dalam materi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0%</strong></td>
+                            <td>Uang muka minimum dalam materi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0–2,5%</strong></td>
+                            <td>Kisaran CCyB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>0%</strong></td>
+                            <td>CCyB saat ini dalam materi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>84–94%</strong></td>
+                            <td>Kisaran target RIM/RIM Syariah</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4%</strong></td>
+                            <td>PLM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2,5%</strong></td>
+                            <td>PLM Syariah</td>
+                        </tr>
+                        <tr>
+                            <td><strong>30 hari</strong></td>
+                            <td>Satu periode PLJP/PLJPS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>90 hari</strong></td>
+                            <td>Maksimum keseluruhan PLJP/PLJPS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>20%</strong></td>
+                            <td>Batas PDN terhadap modal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>40%</strong></td>
+                            <td>Batas RPLN setelah penguatan Juli 2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5%</strong></td>
+                            <td>NPL/NPF bruto harus di bawah angka ini untuk indikator kehati-hatian RPLN</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 60 -->
+            <section id="inti">
+                <h2><span class="icon">🌟</span><span class="number">60</span> INTI MATERI DALAM 10 KALIMAT</h2>
+                <div class="summary">
+                    <ol class="list-custom">
+                        <li><strong>KLM</strong> memberikan insentif likuiditas untuk mendorong kredit/pembiayaan.</li>
+                        <li>KLM diperkuat dengan pendekatan <strong>forward looking</strong>.</li>
+                        <li>KLM saat ini menggunakan <strong>financing, interest rate, dan financing to funding channel</strong>.</li>
+                        <li><strong>RPIM</strong> mendorong pembiayaan inklusif, terutama UMKM dan kelompok berpenghasilan rendah.</li>
+                        <li><strong>LTV/FTV</strong> mengatur hubungan kredit/pembiayaan dengan nilai agunan properti.</li>
+                        <li><strong>CCyB</strong> merupakan buffer modal untuk menghadapi pertumbuhan kredit yang berlebihan.</li>
+                        <li><strong>RIM</strong> menjaga fungsi intermediasi bank agar sesuai dengan kapasitas ekonomi.</li>
+                        <li><strong>PLM</strong> menyediakan buffer likuiditas dalam bentuk surat berharga Rupiah.</li>
+                        <li><strong>PLJP/PLJPS</strong> merupakan fasilitas likuiditas jangka pendek sebagai bagian dari fungsi lender of last resort.</li>
+                        <li><strong>PDN dan RPLN</strong> mengendalikan risiko yang berkaitan dengan valuta asing dan pendanaan luar negeri.</li>
+                    </ol>
+                </div>
+
+                <div class="summary">
+                    <h3>🎯 Kunci Besar untuk Mengingat</h3>
+                    <p>Kalau semua materi ini muncul sekaligus dalam ujian, gunakan pola:</p>
+                    <ul class="list-custom">
+                        <li><strong>KLM → DORONG KREDIT</strong></li>
+                        <li><strong>RPIM → DORONG INKLUSI</strong></li>
+                        <li><strong>LTV/FTV → ATUR PROPERTI</strong></li>
+                        <li><strong>CCyB → BUFFER MODAL</strong></li>
+                        <li><strong>RIM → ATUR INTERMEDIASI</strong></li>
+                        <li><strong>PLM → BUFFER LIKUIDITAS</strong></li>
+                        <li><strong>PLJP → BANTU LIKUIDITAS DARURAT</strong></li>
+                        <li><strong>PDN → KENDALIKAN RISIKO VALAS</strong></li>
+                        <li><strong>RPLN → KENDALIKAN PENDANAAN LUAR NEGERI</strong></li>
+                    </ul>
+                    <p><strong>Kalimat super-singkatnya:</strong></p>
+                    <blockquote>
+                        "Dorong kredit, jaga inklusi, kendalikan properti, siapkan modal dan likuiditas, serta batasi risiko valas dan pendanaan luar negeri."
+                    </blockquote>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>📚 Materi Pembelajaran Lengkap</strong></p>
+            <p>Kebijakan Makroprudensial Bank Indonesia</p>
+            <p>KLM, RPIM, LTV/FTV, CCyB, RIM, PLM, PLJP, PDN, dan RPLN</p>
+            <p>© 2024 - Hak Cipta Dilindungi | Bank Indonesia</p>
+            <a href="#" class="back-to-top">🔝 Kembali ke Atas</a>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    updateActiveSection();
+                }
+            });
+        });
+
+        // Update active section in TOC
+        function updateActiveSection() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.toc a');
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const scrollPosition = window.scrollY + navHeight + 50;
+
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Update on scroll
+        window.addEventListener('scroll', () => {
+            updateActiveSection();
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            updateActiveSection();
+        });
+
+        // Back to top
+        document.querySelector('.back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Table hover effect
+        document.querySelectorAll('table tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(0, 137, 123, 0.15)';
+            });
+
+            row.addEventListener('mouseleave', function() {
+                if (this.rowIndex % 2 === 0) {
+                    this.style.backgroundColor = 'rgba(0, 137, 123, 0.05)';
+                } else {
+                    this.style.backgroundColor = '';
+                }
+            });
+        });
+
+        // Copy to clipboard for code blocks
+        document.querySelectorAll('.code-block, .diagram, .flow-chart, .math, .formula').forEach(block => {
+            block.addEventListener('click', function() {
+                const range = document.createRange();
+                range.selectNode(this);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                try {
+                    document.execCommand('copy');
+                    this.style.backgroundColor = '#e8f5e8';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 1000);
+                } catch (e) {
+                    console.log('Copy failed');
+                }
+                window.getSelection().removeAllRanges();
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

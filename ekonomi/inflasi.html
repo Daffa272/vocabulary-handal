@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran Lengkap: Inflasi</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 10px;
+            background: var(--light);
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .toc a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        main {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2:before {
+            content: "BAB";
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        blockquote {
+            background: var(--light);
+            border-left: 5px solid var(--secondary);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--dark);
+        }
+
+        .definition {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .definition p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: #e3f2fd;
+        }
+
+        .diagram {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.4;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .summary ul {
+            margin-left: 20px;
+        }
+
+        .summary li {
+            margin-bottom: 10px;
+        }
+
+        .exercise {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent);
+        }
+
+        .exercise h3 {
+            color: var(--accent);
+        }
+
+        .answer {
+            background: white;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .keywords {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .keywords table {
+            margin: 0;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .important {
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .important p {
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                position: static;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .back-to-top {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Materi Pembelajaran Lengkap: Inflasi</h1>
+            <p>Definisi, Pengukuran, Penyebab, Dampak, dan Pengendalian</p>
+        </header>
+
+        <nav>
+            <h2>Daftar Isi</h2>
+            <div class="toc">
+                <a href="#pengertian">BAB 1 - Pengertian Inflasi</a>
+                <a href="#contoh">BAB 2 - Contoh Sederhana</a>
+                <a href="#deflasi">BAB 3 - Deflasi</a>
+                <a href="#bps">BAB 4 - Siapa yang Menghitung?</a>
+                <a href="#ihk">BAB 5 - Apa itu IHK?</a>
+                <a href="#kelompok">BAB 6 - 11 Kelompok IHK</a>
+                <a href="#disagregasi">BAB 7 - Disagregasi Inflasi</a>
+                <a href="#inti">BAB 8 - Inflasi Inti</a>
+                <a href="#faktor-inti">BAB 9 - Faktor Inflasi Inti</a>
+                <a href="#non-inti">BAB 10 - Inflasi Non-Inti</a>
+                <a href="#volatile">BAB 11 - Volatile Food</a>
+                <a href="#contoh-volatile">BAB 12 - Contoh Volatile Food</a>
+                <a href="#administered">BAB 13 - Administered Prices</a>
+                <a href="#perbedaan">BAB 15 - Perbedaan Inti & Non-Inti</a>
+                <a href="#penyebab">BAB 16 - Penyebab Inflasi</a>
+                <a href="#cost-push">BAB 17 - Cost Push Inflation</a>
+                <a href="#demand-pull">BAB 22 - Demand Pull Inflation</a>
+                <a href="#ekspektasi">BAB 25 - Ekspektasi Inflasi</a>
+                <a href="#dampak">BAB 29 - Pentingnya Stabilitas Harga</a>
+                <a href="#pengendalian">BAB 35 - Pengendalian Inflasi</a>
+                <a href="#tpi">BAB 39 - TPI</a>
+                <a href="#target">BAB 42 - Target Inflasi</a>
+                <a href="#peta">BAB 44 - Peta Konsep</a>
+                <a href="#ringkasan">BAB 55 - Ringkasan Super Cepat</a>
+                <a href="#istilah">BAB 56 - 10 Istilah Wajib</a>
+                <a href="#latihan">BAB 57 - Latihan Soal</a>
+                <a href="#analisis">BAB 58 - Soal Analisis</a>
+                <a href="#essay">BAB 59 - Soal Essay</a>
+                <a href="#peta-akhir">BAB 60 - Peta Konsep Akhir</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- BAB 1 -->
+            <section id="pengertian">
+                <h2>PENGERTIAN INFLASI</h2>
+                <div class="definition">
+                    <p><strong>Inflasi</strong> adalah:</p>
+                    <p style="font-size: 1.2em; text-align: center; margin: 15px 0;">Kenaikan harga barang dan jasa secara umum dan terus-menerus dalam jangka waktu tertentu.</p>
+                </div>
+
+                <h3>Ada tiga kata kunci yang harus diperhatikan:</h3>
+
+                <h4>1. Kenaikan harga</h4>
+                <p>Harga barang dan jasa mengalami peningkatan.</p>
+
+                <h4>2. Secara umum</h4>
+                <p>Bukan hanya satu atau dua barang yang mengalami kenaikan.</p>
+
+                <h4>3. Terus-menerus</h4>
+                <p>Kenaikan berlangsung dalam suatu periode, bukan hanya terjadi sesaat.</p>
+
+                <div class="important">
+                    <p>⚠️ <strong>Catatan:</strong> Jika harga satu jenis barang naik, hal tersebut <span class="highlight">belum tentu disebut inflasi</span>. Inflasi terjadi apabila kenaikan harga tersebut meluas dan memengaruhi berbagai barang dan jasa dalam perekonomian.</p>
+                </div>
+            </section>
+
+            <!-- BAB 2 -->
+            <section id="contoh">
+                <h2>CONTOH SEDERHANA INFLASI</h2>
+
+                <h3>Contoh Perbandingan Harga:</h3>
+                <table>
+                    <tr>
+                        <th>Barang</th>
+                        <th>Bulan Januari</th>
+                        <th>Beberapa Bulan Kemudian</th>
+                    </tr>
+                    <tr>
+                        <td>Beras</td>
+                        <td>Rp14.000/kg</td>
+                        <td>Rp16.000/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Telur</td>
+                        <td>Rp28.000/kg</td>
+                        <td>Rp32.000/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Minyak</td>
+                        <td>Rp17.000/liter</td>
+                        <td>Rp20.000/liter</td>
+                    </tr>
+                </table>
+
+                <p>Jika kenaikan tersebut terjadi secara <strong>umum</strong> dan <strong>berkelanjutan</strong>, maka dapat menjadi bagian dari fenomena inflasi.</p>
+
+                <div class="important">
+                    <p>⚠️ <strong>Perhatian:</strong> Jika hanya harga cabai yang naik karena gagal panen sementara harga barang lainnya relatif stabil, kenaikan harga cabai tersebut <span class="highlight">tidak dengan sendirinya berarti seluruh perekonomian mengalami inflasi</span>.</p>
+                </div>
+            </section>
+
+            <!-- BAB 3 -->
+            <section id="deflasi">
+                <h2>DEFLASI</h2>
+                <div class="definition">
+                    <p><strong>Deflasi</strong> adalah kondisi ketika tingkat harga secara umum mengalami <span class="highlight">penurunan</span>.</p>
+                </div>
+
+                <h3>Perbandingan:</h3>
+                <table>
+                    <tr>
+                        <th>Kondisi</th>
+                        <th>Inflasi</th>
+                        <th>Deflasi</th>
+                    </tr>
+                    <tr>
+                        <td>Perubahan Harga</td>
+                        <td>Harga umum ↑</td>
+                        <td>Harga umum ↓</td>
+                    </tr>
+                </table>
+
+                <div class="important">
+                    <p>⚠️ <strong>Catatan:</strong> Penurunan harga secara umum juga tidak selalu berarti kondisi ekonomi menjadi lebih baik. Deflasi yang berkepanjangan dapat berkaitan dengan lemahnya permintaan dan aktivitas ekonomi.</p>
+                </div>
+            </section>
+
+            <!-- BAB 4 -->
+            <section id="bps">
+                <h2>SIAPA YANG MENGHITUNG INFLASI?</h2>
+                <div class="definition">
+                    <p>Di Indonesia, perhitungan inflasi dilakukan oleh:</p>
+                    <h2 style="text-align: center; margin: 20px 0;">BADAN PUSAT STATISTIK (BPS)</h2>
+                </div>
+                <p>BPS melakukan survei harga terhadap berbagai barang dan jasa yang dianggap mewakili konsumsi masyarakat.</p>
+                <p>Data tersebut kemudian digunakan untuk menghitung perubahan tingkat harga dengan membandingkan harga pada periode tertentu dengan periode sebelumnya.</p>
+            </section>
+
+            <!-- BAB 5 -->
+            <section id="ihk">
+                <h2>APA ITU IHK?</h2>
+                <div class="definition">
+                    <p><strong>IHK</strong> - <strong>INDEKS HARGA KONSUMEN</strong></p>
+                    <p>Salah satu indikator utama yang digunakan untuk mengukur inflasi.</p>
+                    <p style="font-size: 1.1em; margin-top: 10px; text-align: center;">IHK menggambarkan perkembangan harga barang dan jasa yang dikonsumsi masyarakat.</p>
+                </div>
+
+                <p><strong>Secara sederhana:</strong></p>
+                <blockquote>
+                    IHK digunakan untuk melihat perubahan tingkat harga yang dihadapi konsumen.
+                </blockquote>
+
+                <p>Inflasi kemudian dapat dihitung dari perubahan IHK antarperiode.</p>
+
+                <h3>Contoh Perhitungan:</h3>
+                <div class="diagram">
+Jika IHK tahun lalu = 100
+dan IHK tahun ini = 105,
+
+maka tingkat kenaikannya:
+(105 − 100) / 100 × 100% = 5%
+
+Artinya, indeks harga konsumen meningkat sekitar 5%.
+                </div>
+            </section>
+
+            <!-- BAB 6 -->
+            <section id="kelompok">
+                <h2>11 KELOMPOK PENGELUARAN IHK</h2>
+                <p>Berdasarkan klasifikasi <strong>COICOP 2018</strong>, IHK dikelompokkan menjadi <strong>11 kelompok pengeluaran</strong>.</p>
+
+                <h3>1. Makanan, Minuman, dan Tembakau</h3>
+                <p><strong>Contoh:</strong> beras, daging, sayuran, minuman, produk tembakau.</p>
+
+                <h3>2. Pakaian dan Alas Kaki</h3>
+                <p><strong>Contoh:</strong> pakaian, sepatu, sandal.</p>
+
+                <h3>3. Perumahan, Air, Listrik, dan Bahan Bakar Rumah Tangga</h3>
+                <p><strong>Meliputi:</strong> tempat tinggal, air, listrik, bahan bakar rumah tangga.</p>
+
+                <h3>4. Perlengkapan, Peralatan, dan Pemeliharaan Rutin Rumah Tangga</h3>
+                <p><strong>Contoh:</strong> peralatan rumah, perlengkapan rumah, kebutuhan pemeliharaan rumah.</p>
+
+                <h3>5. Kesehatan</h3>
+                <p><strong>Meliputi:</strong> layanan kesehatan, obat, pelayanan medis.</p>
+
+                <h3>6. Transportasi</h3>
+                <p><strong>Contoh:</strong> kendaraan, bahan bakar, jasa transportasi.</p>
+
+                <h3>7. Informasi, Komunikasi, dan Jasa Keuangan</h3>
+                <p><strong>Meliputi:</strong> komunikasi, layanan informasi, jasa keuangan.</p>
+
+                <h3>8. Rekreasi, Olahraga, dan Budaya</h3>
+                <p><strong>Contoh:</strong> hiburan, olahraga, kegiatan budaya.</p>
+
+                <h3>9. Pendidikan</h3>
+                <p>Meliputi berbagai pengeluaran pendidikan.</p>
+
+                <h3>10. Penyediaan Makanan dan Minuman/Restoran</h3>
+                <p><strong>Contoh:</strong> restoran, rumah makan, makanan dan minuman yang dibeli di luar rumah.</p>
+
+                <h3>11. Perawatan Pribadi dan Jasa Lainnya</h3>
+                <p><strong>Contoh:</strong> kebutuhan perawatan pribadi, berbagai jasa lainnya.</p>
+            </section>
+
+            <!-- BAB 7 -->
+            <section id="disagregasi">
+                <h2>DISAGREGASI INFLASI</h2>
+                <p>Selain berdasarkan kelompok pengeluaran, inflasi juga dapat dibagi berdasarkan karakteristik faktor yang memengaruhinya.</p>
+
+                <div class="definition">
+                    <p><strong>Disagregasi Inflasi</strong> adalah konsep untuk membantu memahami:</p>
+                    <blockquote>
+                        Dari mana tekanan inflasi berasal dan apakah tekanan tersebut bersifat fundamental atau lebih dipengaruhi faktor yang bergejolak/shock.
+                    </blockquote>
+                </div>
+
+                <p><strong>Secara umum terdapat:</strong></p>
+                <ol>
+                    <li><strong>Inflasi inti</strong></li>
+                    <li><strong>Inflasi non-inti</strong>
+                        <ul>
+                            <li>Volatile Food</li>
+                            <li>Administered Prices</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- BAB 8 -->
+            <section id="inti">
+                <h2>INFLASI INTI</h2>
+                <h3>8.1 Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Inflasi inti</strong> merupakan komponen inflasi yang cenderung lebih stabil atau persisten dan dipengaruhi oleh faktor fundamental.</p>
+                    <p style="margin-top: 10px; text-align: center; font-size: 1.1em;">Inflasi inti lebih mencerminkan tekanan inflasi yang bersifat mendasar dalam perekonomian.</p>
+                </div>
+            </section>
+
+            <!-- BAB 9 -->
+            <section id="faktor-inti">
+                <h2>FAKTOR YANG MEMENGARUHI INFLASI INTI</h2>
+                <p>Menurut materi, terdapat beberapa faktor utama:</p>
+
+                <h3>1. Interaksi Permintaan dan Penawaran</h3>
+                <div class="diagram">
+Jika permintaan meningkat sementara penawaran tidak cukup:
+Permintaan ↑ + Penawaran tetap
+→ harga ↑
+                </div>
+                <p>Sebaliknya, jika penawaran meningkat dan permintaan relatif stabil, tekanan harga dapat berkurang.</p>
+
+                <h3>2. Lingkungan Eksternal</h3>
+                <p>Inflasi inti juga dapat dipengaruhi kondisi eksternal seperti:</p>
+                <ul>
+                    <li>nilai tukar;</li>
+                    <li>harga komoditas internasional;</li>
+                    <li>perkembangan ekonomi global.</li>
+                </ul>
+
+                <h3>3. Ekspektasi Inflasi</h3>
+                <div class="diagram">
+Jika masyarakat memperkirakan inflasi akan tinggi:
+Ekspektasi inflasi ↑
+→ perilaku ekonomi berubah
+→ dapat meningkatkan tekanan harga.
+                </div>
+            </section>
+
+            <!-- BAB 10 -->
+            <section id="non-inti">
+                <h2>INFLASI NON-INTI</h2>
+                <p>Inflasi non-inti adalah komponen inflasi yang cenderung lebih volatil karena dipengaruhi oleh faktor selain faktor fundamental.</p>
+                <p><strong>Inflasi non-inti terdiri dari:</strong></p>
+                <ol type="A">
+                    <li><a href="#volatile">Volatile Food</a></li>
+                    <li><a href="#administered">Administered Prices</a></li>
+                </ol>
+            </section>
+
+            <!-- BAB 11 -->
+            <section id="volatile">
+                <h2>VOLATILE FOOD</h2>
+                <h3>11.1 Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Volatile Food</strong> adalah inflasi yang dominan dipengaruhi oleh shocks pada kelompok bahan makanan.</p>
+                </div>
+                <p><strong>Contohnya dapat berkaitan dengan:</strong></p>
+                <ul>
+                    <li>panen;</li>
+                    <li>gangguan alam;</li>
+                    <li>perkembangan harga komoditas pangan domestik;</li>
+                    <li>perkembangan harga komoditas pangan internasional.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 12 -->
+            <section id="contoh-volatile">
+                <h2>CONTOH VOLATILE FOOD</h2>
+                <div class="diagram">
+Misalnya terjadi:
+> Kekeringan
+↓
+Produksi beras menurun
+↓
+Pasokan beras berkurang
+↓
+Harga beras meningkat
+↓
+Inflasi pangan meningkat
+
+Dalam kondisi seperti ini, akar masalahnya adalah <strong>supply shock</strong>, bukan semata-mata permintaan masyarakat.
+                </div>
+            </section>
+
+            <!-- BAB 13 -->
+            <section id="administered">
+                <h2>ADMINISTERED PRICES</h2>
+                <h3>13.1 Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Administered Prices</strong> adalah komponen inflasi yang dominan dipengaruhi oleh kebijakan harga pemerintah.</p>
+                </div>
+                <p><strong>Contoh yang disebut dalam materi:</strong></p>
+                <ul>
+                    <li>BBM bersubsidi;</li>
+                    <li>tarif listrik;</li>
+                    <li>tarif angkutan;</li>
+                    <li>dan sejenisnya.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 14 -->
+            <section>
+                <h2>CONTOH ADMINISTERED PRICES</h2>
+                <div class="diagram">
+Misalnya Pemerintah melakukan penyesuaian harga energi.
+
+Maka:
+> Harga energi ↑
+↓
+biaya transportasi/produksi dapat meningkat
+↓
+biaya usaha meningkat
+↓
+harga sejumlah barang dan jasa dapat meningkat
+↓
+inflasi meningkat.
+                </div>
+            </section>
+
+            <!-- BAB 15 -->
+            <section id="perbedaan">
+                <h2>PERBEDAAN INFLASI INTI DAN NON-INTI</h2>
+                <table>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Inflasi Inti</th>
+                        <th>Inflasi Non-Inti</th>
+                    </tr>
+                    <tr>
+                        <td>Karakter</td>
+                        <td>Cenderung stabil/persisten</td>
+                        <td>Cenderung volatil</td>
+                    </tr>
+                    <tr>
+                        <td>Faktor</td>
+                        <td>Fundamental</td>
+                        <td>Shock/faktor tertentu</td>
+                    </tr>
+                    <tr>
+                        <td>Contoh</td>
+                        <td>Permintaan-penawaran, ekspektasi</td>
+                        <td>Pangan, harga yang diatur pemerintah</td>
+                    </tr>
+                    <tr>
+                        <td>Komponen</td>
+                        <td>Core</td>
+                        <td>Volatile Food + Administered Prices</td>
+                    </tr>
+                </table>
+
+                <div class="important">
+                    <p><strong>Cara mudah mengingat:</strong></p>
+                    <p><strong>INTI = Fundamental</strong></p>
+                    <p><strong>NON-INTI = Shock/bergejolak</strong></p>
+                </div>
+            </section>
+
+            <!-- BAB 16 -->
+            <section id="penyebab">
+                <h2>PENYEBAB INFLASI</h2>
+                <p>Dalam materi terdapat tiga kelompok utama penyebab inflasi:</p>
+                <ol>
+                    <li><a href="#cost-push">Cost Push Inflation</a></li>
+                    <li><a href="#demand-pull">Demand Pull Inflation</a></li>
+                    <li><a href="#ekspektasi">Ekspektasi Inflasi</a></li>
+                </ol>
+                <p>Mari kita bahas satu per satu.</p>
+            </section>
+
+            <!-- BAB 17 -->
+            <section id="cost-push">
+                <h2>COST PUSH INFLATION</h2>
+                <h3>17.1 Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Cost Push Inflation</strong> terjadi ketika inflasi disebabkan oleh tekanan dari sisi penawaran atau peningkatan biaya produksi.</p>
+                    <p style="margin-top: 10px; text-align: center; font-size: 1.1em;">Biaya produksi ↑ → harga jual ↑ → inflasi ↑</p>
+                </div>
+            </section>
+
+            <!-- BAB 18 -->
+            <section>
+                <h2>PENYEBAB COST PUSH INFLATION</h2>
+                <h3>A. Depresiasi Nilai Tukar</h3>
+                <div class="diagram">
+Jika Rupiah melemah:
+Rupiah ↓
+→ barang impor menjadi lebih mahal
+→ biaya bahan baku impor ↑
+→ biaya produksi ↑
+→ harga jual ↑
+→ inflasi ↑
+
+Ini berkaitan dengan <strong>imported inflation</strong>.
+                </div>
+            </section>
+
+            <!-- BAB 19 -->
+            <section>
+                <h2>INFLASI LUAR NEGERI</h2>
+                <div class="diagram">
+Inflasi di negara mitra dagang atau pasar global dapat memengaruhi harga barang impor.
+
+Misalnya:
+> Harga bahan baku dunia ↑
+↓
+Harga impor Indonesia ↑
+↓
+Biaya produksi domestik ↑
+↓
+Harga barang domestik ↑
+↓
+Inflasi ↑
+                </div>
+            </section>
+
+            <!-- BAB 20 -->
+            <section>
+                <h2>KENAIKAN HARGA YANG DIATUR PEMERINTAH</h2>
+                <div class="diagram">
+Jika harga komoditas penting yang diatur pemerintah mengalami kenaikan:
+> Harga energi ↑
+↓
+Biaya produksi dan transportasi ↑
+↓
+Harga barang/jasa lainnya dapat meningkat.
+                </div>
+            </section>
+
+            <!-- BAB 21 -->
+            <section>
+                <h2>NEGATIVE SUPPLY SHOCK</h2>
+                <div class="definition">
+                    <p><strong>Negative supply shock</strong> adalah guncangan negatif terhadap sisi penawaran.</p>
+                </div>
+                <p><strong>Contoh:</strong></p>
+                <ul>
+                    <li>bencana alam;</li>
+                    <li>banjir;</li>
+                    <li>gagal panen;</li>
+                    <li>gangguan distribusi.</li>
+                </ul>
+                <p><strong>Dampaknya:</strong></p>
+                <div class="diagram">
+Penawaran ↓ → kelangkaan ↑ → harga ↑
+                </div>
+                <p>Materi secara eksplisit menyebut bencana alam dan gangguan distribusi sebagai contoh yang dapat mengurangi penawaran dan mendorong kenaikan harga.</p>
+            </section>
+
+            <!-- BAB 22 -->
+            <section id="demand-pull">
+                <h2>DEMAND PULL INFLATION</h2>
+                <h3>22.1 Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Demand Pull Inflation</strong> terjadi ketika tekanan inflasi berasal dari sisi permintaan.</p>
+                    <p style="margin-top: 10px; text-align: center;">Artinya: Permintaan barang dan jasa meningkat relatif lebih cepat dibandingkan kemampuan perekonomian menyediakan barang dan jasa tersebut.</p>
+                </div>
+            </section>
+
+            <!-- BAB 23 -->
+            <section>
+                <h2>MEKANISME DEMAND PULL</h2>
+                <div class="diagram">
+Contohnya:
+> Pendapatan masyarakat ↑
+↓
+Konsumsi ↑
+↓
+Permintaan barang ↑
+↓
+Produksi tidak mampu mengimbangi
+↓
+Harga ↑
+↓
+Inflasi ↑
+                </div>
+                <p>Dalam konteks makroekonomi, kondisi ini dapat digambarkan ketika:</p>
+                <div class="diagram">
+> Output riil > output potensial
+atau:
+> Aggregate Demand > kapasitas perekonomian.
+                </div>
+            </section>
+
+            <!-- BAB 24 -->
+            <section>
+                <h2>OUTPUT POTENSIAL</h2>
+                <div class="definition">
+                    <p><strong>Output potensial</strong> dapat dipahami sebagai tingkat produksi yang dapat dicapai perekonomian secara berkelanjutan berdasarkan kapasitas yang tersedia.</p>
+                </div>
+                <p><strong>Jika:</strong></p>
+                <div class="diagram">
+Output aktual > Output potensial
+Maka tekanan permintaan dapat terlalu kuat.
+Akibatnya:
+> Inflationary pressure ↑
+                </div>
+            </section>
+
+            <!-- BAB 25 -->
+            <section id="ekspektasi">
+                <h2>EKSPEKTASI INFLASI</h2>
+                <h3>25.1 Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Ekspektasi inflasi</strong> adalah persepsi atau harapan masyarakat dan pelaku ekonomi terhadap tingkat inflasi di masa depan.</p>
+                </div>
+                <p>Ekspektasi dapat memengaruhi keputusan:</p>
+                <ul>
+                    <li>konsumen;</li>
+                    <li>investor;</li>
+                    <li>pekerja;</li>
+                    <li>perusahaan;</li>
+                    <li>pelaku ekonomi lainnya.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 26 -->
+            <section>
+                <h2>CONTOH EKSPEKTASI INFLASI</h2>
+                <div class="diagram">
+Bayangkan masyarakat percaya:
+> "Tahun depan harga akan naik 10%."
+
+Maka perusahaan mungkin:
+* menaikkan harga lebih awal;
+* meningkatkan persediaan;
+* mengantisipasi biaya yang lebih tinggi.
+
+Pekerja mungkin:
+* meminta kenaikan upah.
+
+Konsumen mungkin:
+* mempercepat pembelian barang.
+
+Perilaku tersebut dapat memengaruhi perekonomian dan berpotensi memperkuat tekanan inflasi.
+                </div>
+            </section>
+
+            <!-- BAB 27 -->
+            <section>
+                <h2>JENIS EKSPEKTASI INFLASI</h2>
+                <p>Ada dua jenis utama.</p>
+
+                <h3>1. Ekspektasi Adaptif</h3>
+                <p>Ekspektasi yang didasarkan pada:</p>
+                <blockquote>
+                    pengalaman masa lalu atau data historis.
+                </blockquote>
+                <p><strong>Misalnya:</strong></p>
+                <p>Inflasi tahun ini tinggi.</p>
+                <p>Masyarakat kemudian memperkirakan:</p>
+                <blockquote>
+                    "Tahun depan mungkin juga tinggi."
+                </blockquote>
+
+                <h3>2. Ekspektasi Forward-Looking</h3>
+                <p>Ekspektasi yang didasarkan pada:</p>
+                <blockquote>
+                    analisis dan perkiraan kondisi ekonomi dan kebijakan di masa depan.
+                </blockquote>
+                <p><strong>Misalnya masyarakat mempertimbangkan:</strong></p>
+                <ul>
+                    <li>kebijakan bank sentral;</li>
+                    <li>harga komoditas;</li>
+                    <li>nilai tukar;</li>
+                    <li>kondisi ekonomi global;</li>
+                    <li>prospek permintaan.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 28 -->
+            <section>
+                <h2>PERBEDAAN ADAPTIF DAN FORWARD-LOOKING</h2>
+                <table>
+                    <tr>
+                        <th>Jenis</th>
+                        <th>Dasar Ekspektasi</th>
+                    </tr>
+                    <tr>
+                        <td>Adaptif</td>
+                        <td>Masa lalu</td>
+                    </tr>
+                    <tr>
+                        <td>Forward-looking</td>
+                        <td>Perkiraan masa depan</td>
+                    </tr>
+                </table>
+
+                <div class="important">
+                    <p><strong>Cara mengingat:</strong></p>
+                    <p><strong>Adaptive = melihat ke belakang</strong></p>
+                    <p><strong>Forward-looking = melihat ke depan</strong></p>
+                </div>
+            </section>
+
+            <!-- BAB 29 -->
+            <section id="dampak">
+                <h2>MENGAPA STABILITAS HARGA PENTING?</h2>
+                <div class="definition">
+                    <p>Inflasi rendah dan stabil merupakan salah satu prasyarat bagi pertumbuhan ekonomi yang berkesinambungan.</p>
+                </div>
+                <p>Sebaliknya, inflasi yang tinggi dan tidak stabil dapat memberikan dampak negatif terhadap kondisi sosial dan ekonomi.</p>
+            </section>
+
+            <!-- BAB 30 -->
+            <section>
+                <h2>DAMPAK INFLASI TINGGI</h2>
+                <h3>1. Menurunkan Pendapatan Riil</h3>
+                <div class="diagram">
+Jika harga meningkat lebih cepat daripada pendapatan:
+Pendapatan nominal tetap
+* Harga ↑
+  = Daya beli ↓
+
+Akibatnya standar hidup masyarakat dapat menurun.
+                </div>
+                <p>Dampaknya dapat terasa lebih berat bagi masyarakat berpendapatan rendah.</p>
+            </section>
+
+            <!-- BAB 31 -->
+            <section>
+                <h2>INFLASI MENIMBULKAN KETIDAKPASTIAN</h2>
+                <p>Inflasi yang tidak stabil membuat pelaku ekonomi kesulitan membuat keputusan.</p>
+                <p><strong>Contohnya perusahaan sulit memperkirakan:</strong></p>
+                <ul>
+                    <li>biaya produksi;</li>
+                    <li>harga bahan baku;</li>
+                    <li>harga jual;</li>
+                    <li>keuntungan;</li>
+                    <li>investasi.</li>
+                </ul>
+                <p>Masyarakat juga dapat mengalami kesulitan dalam menentukan:</p>
+                <ul>
+                    <li>konsumsi;</li>
+                    <li>tabungan;</li>
+                    <li>investasi.</li>
+                </ul>
+                <p>Akibatnya, pertumbuhan ekonomi dapat terganggu.</p>
+            </section>
+
+            <!-- BAB 32 -->
+            <section>
+                <h2>INFLASI DAN NILAI RUPIAH</h2>
+                <p>Jika inflasi domestik lebih tinggi dibandingkan negara lain, tingkat bunga domestik riil dapat menjadi kurang kompetitif.</p>
+                <p>Kondisi tersebut dapat memberikan tekanan terhadap nilai Rupiah.</p>
+                <div class="diagram">
+Secara sederhana:
+> Inflasi domestik tinggi
+→ daya saing relatif dapat menurun
+→ tekanan terhadap Rupiah dapat meningkat.
+                </div>
+            </section>
+
+            <!-- BAB 33 -->
+            <section>
+                <h2>INFLASI DAN STABILITAS SISTEM KEUANGAN</h2>
+                <div class="definition">
+                    <p><strong>Stabilitas harga</strong> juga memiliki peran penting dalam menjaga: <strong>STABILITAS SISTEM KEUANGAN</strong></p>
+                </div>
+                <p>Inflasi yang tinggi dan tidak stabil dapat meningkatkan ketidakpastian dan risiko dalam kegiatan ekonomi maupun keuangan.</p>
+            </section>
+
+            <!-- BAB 34 -->
+            <section>
+                <h2>TUJUAN BANK INDONESIA DAN INFLASI</h2>
+                <p>Menurut materi, tujuan Bank Indonesia mencakup:</p>
+                <ol>
+                    <li>mencapai stabilitas nilai Rupiah;</li>
+                    <li>memelihara stabilitas sistem pembayaran;</li>
+                    <li>turut menjaga stabilitas sistem keuangan;</li>
+                    <li>mendukung pertumbuhan ekonomi berkelanjutan.</li>
+                </ol>
+                <p><strong>Stabilitas nilai Rupiah memiliki dua aspek:</strong></p>
+                <h3>Aspek 1</h3>
+                <p>Nilai mata uang terhadap barang dan jasa.</p>
+                <p>→ tercermin melalui <strong>inflasi</strong></p>
+                <h3>Aspek 2</h3>
+                <p>Nilai Rupiah terhadap mata uang negara lain.</p>
+                <p>→ tercermin melalui <strong>nilai tukar</strong>.</p>
+            </section>
+
+            <!-- BAB 35 -->
+            <section id="pengendalian">
+                <h2>PENGENDALIAN INFLASI</h2>
+                <div class="definition">
+                    <p>Kebijakan moneter terutama ditujukan untuk mengelola:</p>
+                    <blockquote>
+                        tekanan harga dari sisi permintaan agregat
+                    </blockquote>
+                    <p style="text-align: center; margin-top: 10px;">atau disebut: <strong>Demand Management</strong>.</p>
+                </div>
+                <p>Namun kebijakan moneter tidak selalu ditujukan untuk merespons setiap kenaikan harga yang:</p>
+                <ul>
+                    <li>bersifat shock;</li>
+                    <li>sementara;</li>
+                    <li>akan hilang dengan sendirinya.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 36 -->
+            <section>
+                <h2>MENGAPA BANK INDONESIA TIDAK BISA MENGENDALIKAN SEMUA INFLASI?</h2>
+                <p>Karena terdapat faktor yang berada di luar kendali langsung kebijakan moneter.</p>
+                <p><strong>Contohnya:</strong></p>
+                <ul>
+                    <li>kenaikan harga minyak dunia;</li>
+                    <li>gangguan panen;</li>
+                    <li>banjir;</li>
+                    <li>gangguan distribusi;</li>
+                    <li>kebijakan harga pemerintah.</li>
+                </ul>
+                <p>Materi menyebut bahwa kelompok <strong>Volatile Food</strong> dan <strong>Administered Prices</strong> mewakili bagian yang cukup besar dari bobot IHK dan membuat kemampuan BI menghadapi shock penawaran besar menjadi relatif terbatas.</p>
+            </section>
+
+            <!-- BAB 37 -->
+            <section>
+                <h2>CONTOH SHOCK BESAR</h2>
+                <p>Materi memberikan contoh kenaikan harga BBM pada:</p>
+                <ul>
+                    <li>2005</li>
+                    <li>2008</li>
+                </ul>
+                <p>yang menyebabkan lonjakan inflasi.</p>
+                <p>Ini menunjukkan bahwa inflasi dapat meningkat tajam karena faktor yang tidak hanya berasal dari sisi permintaan.</p>
+            </section>
+
+            <!-- BAB 38 -->
+            <section>
+                <h2>MENGAPA DIPERLUKAN KOORDINASI?</h2>
+                <p>Karena inflasi memiliki banyak sumber.</p>
+                <div class="diagram">
+                 INFLASI
+                    │
+       ┌────────────┼────────────┐
+       ↓            ↓            ↓
+   Permintaan     Pangan       Energi
+       │            │            │
+       ↓            ↓            ↓
+      BI          Pemerintah    Pemerintah
+                    │
+                    ↓
+              Produksi & Distribusi
+                </div>
+                <p>Oleh karena itu dibutuhkan:</p>
+                <div class="definition">
+                    <p><strong>KEBIJAKAN MAKROEKONOMI TERINTEGRASI</strong></p>
+                </div>
+                <p>yang meliputi:</p>
+                <ul>
+                    <li>kebijakan moneter;</li>
+                    <li>kebijakan fiskal;</li>
+                    <li>kebijakan sektoral.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 39 -->
+            <section id="tpi">
+                <h2>TIM PENGENDALIAN INFLASI</h2>
+                <p>Koordinasi antara Pemerintah dan Bank Indonesia diwujudkan melalui:</p>
+                <div class="definition">
+                    <h2 style="text-align: center;">TPI</h2>
+                    <p style="text-align: center; font-size: 1.2em;">Tim Koordinasi Penetapan Sasaran, Pemantauan dan Pengendalian Inflasi</p>
+                </div>
+                <p>TPI tingkat pusat dibentuk sejak <strong>2005</strong>.</p>
+            </section>
+
+            <!-- BAB 40 -->
+            <section>
+                <h2>ANGGOTA TPI</h2>
+                <p>Materi menyebut berbagai kementerian/lembaga yang terlibat, antara lain:</p>
+                <ul>
+                    <li>Bank Indonesia;</li>
+                    <li>Kementerian Keuangan;</li>
+                    <li>Kementerian Dalam Negeri;</li>
+                    <li>Kementerian Perdagangan;</li>
+                    <li>Kementerian Pertanian;</li>
+                    <li>Kementerian Perhubungan;</li>
+                    <li>Kementerian ESDM;</li>
+                    <li>Bappenas;</li>
+                    <li>Kementerian Koordinator Bidang Perekonomian;</li>
+                    <li>Kementerian PUPR;</li>
+                    <li>Kementerian BUMN;</li>
+                    <li>Sekretariat Kabinet;</li>
+                    <li>Kepolisian Negara Republik Indonesia.</li>
+                </ul>
+                <p>Hal ini menunjukkan bahwa pengendalian inflasi merupakan <strong>tanggung jawab lintas sektor</strong>.</p>
+            </section>
+
+            <!-- BAB 41 -->
+            <section>
+                <h2>TPI DI DAERAH</h2>
+                <p>Sejak <strong>2008</strong>, koordinasi TPI diperluas ke tingkat daerah.</p>
+                <p><strong>Mengapa daerah penting?</strong></p>
+                <p>Karena kondisi inflasi dapat berbeda antarwilayah.</p>
+                <p><strong>Contohnya:</strong></p>
+                <ul>
+                    <li>Daerah A mengalami surplus beras.</li>
+                    <li>Daerah B mengalami kekurangan beras.</li>
+                </ul>
+                <p>Maka diperlukan distribusi dari:</p>
+                <blockquote>
+                    Daerah surplus → Daerah defisit
+                </blockquote>
+                <p>Koordinasi daerah menjadi penting untuk mengatasi permasalahan seperti ini.</p>
+            </section>
+
+            <!-- BAB 42 -->
+            <section id="target">
+                <h2>PENETAPAN TARGET INFLASI</h2>
+                <div class="definition">
+                    <p><strong>Target atau sasaran inflasi</strong> adalah:</p>
+                    <blockquote>
+                        tingkat inflasi yang hendak dicapai melalui kebijakan Bank Indonesia dengan berkoordinasi dengan Pemerintah.
+                    </blockquote>
+                </div>
+                <p>Prosesnya melibatkan pembahasan bersama dalam koordinasi pemerintah dan Bank Indonesia.</p>
+                <p>Materi menyebut bahwa sasaran ditetapkan Pemerintah untuk periode tertentu melalui <strong>Peraturan Menteri Keuangan (PMK)</strong>.</p>
+            </section>
+
+            <!-- BAB 43 -->
+            <section>
+                <h2>TARGET INFLASI 2025–2027</h2>
+                <p>Menurut materi yang diberikan, berdasarkan <strong>PMK Republik Indonesia Nomor 31 Tahun 2024 tanggal 16 Mei 2024</strong>, sasaran inflasi untuk:</p>
+                <table>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Sasaran Inflasi</th>
+                        <th>Deviasi</th>
+                    </tr>
+                    <tr>
+                        <td>2025</td>
+                        <td style="text-align: center;">2,5%</td>
+                        <td style="text-align: center;">±1,0%</td>
+                    </tr>
+                    <tr>
+                        <td>2026</td>
+                        <td style="text-align: center;">2,5%</td>
+                        <td style="text-align: center;">±1,0%</td>
+                    </tr>
+                    <tr>
+                        <td>2027</td>
+                        <td style="text-align: center;">2,5%</td>
+                        <td style="text-align: center;">±1,0%</td>
+                    </tr>
+                </table>
+                <p>Dengan demikian, sasaran tersebut dapat dibaca sebagai:</p>
+                <div class="diagram">
+> 2,5% ± 1,0%
+untuk masing-masing tahun dalam periode tersebut.
+                </div>
+            </section>
+
+            <!-- BAB 44 -->
+            <section id="peta">
+                <h2>PETA PENYEBAB INFLASI</h2>
+                <div class="diagram">
+                         INFLASI
+                            │
+             ┌──────────────┼──────────────┐
+             ↓              ↓              ↓
+       COST PUSH       DEMAND PULL     EKSPEKTASI
+             │              │              │
+       Biaya produksi   Permintaan ↑    Persepsi masa
+             │              │            depan
+      ┌──────┼──────┐       │              │
+      ↓      ↓      ↓       ↓              ↓
+ Kurs   Harga global Shock  Output       Keputusan
+       Energi/Impor  alam   > potensial    ekonomi
+                </div>
+            </section>
+
+            <!-- BAB 45 -->
+            <section>
+                <h2>PETA DISAGREGASI INFLASI</h2>
+                <div class="diagram">
+                      INFLASI IHK
+                           │
+               ┌───────────┴───────────┐
+               ↓                       ↓
+          INFLASI INTI             NON-INTI
+               │                       │
+               │              ┌────────┴────────┐
+               │              ↓                 ↓
+         Fundamental      VOLATILE FOOD    ADMINISTERED
+                                             PRICES
+               │              │                 │
+               ↓              ↓                 ↓
+        Permintaan-       Panen/alam       Kebijakan
+        penawaran         pangan           pemerintah
+        Nilai tukar
+        Global
+        Ekspektasi
+                </div>
+            </section>
+
+            <!-- BAB 46 -->
+            <section>
+                <h2>PETA PENGENDALIAN INFLASI</h2>
+                <div class="diagram">
+                       INFLASI
+                          │
+             ┌────────────┴────────────┐
+             ↓                         ↓
+        SISI PERMINTAAN           SISI PENAWARAN
+             │                         │
+             ↓                         ↓
+       BANK INDONESIA             PEMERINTAH
+             │                         │
+       Kebijakan moneter        Fiskal & sektoral
+             │                         │
+             └────────────┬────────────┘
+                          ↓
+                     KOORDINASI
+                          │
+                          ↓
+                         TPI
+                          │
+                          ↓
+               INFLASI RENDAH & STABIL
+                </div>
+            </section>
+
+            <!-- BAB 47 -->
+            <section>
+                <h2>CONTOH KASUS 1: HARGA PANGAN NAIK</h2>
+                <p><strong>Misalnya terjadi banjir besar.</strong></p>
+                <h3>Tahap 1</h3>
+                <p>Banjir merusak lahan pertanian.</p>
+                <h3>Tahap 2</h3>
+                <p>Produksi pangan turun.</p>
+                <h3>Tahap 3</h3>
+                <p>Pasokan berkurang.</p>
+                <h3>Tahap 4</h3>
+                <p>Harga pangan naik.</p>
+                <h3>Tahap 5</h3>
+                <p>Volatile Food meningkat.</p>
+                <h3>Apakah BI cukup menaikkan suku bunga?</h3>
+                <p><strong>Tidak selalu.</strong></p>
+                <p>Karena masalah utama berasal dari:</p>
+                <blockquote>
+                    sisi penawaran
+                </blockquote>
+                <p>Maka diperlukan kebijakan seperti:</p>
+                <ul>
+                    <li>pemulihan produksi;</li>
+                    <li>distribusi;</li>
+                    <li>pasokan antardaerah;</li>
+                    <li>koordinasi pemerintah;</li>
+                    <li>komunikasi.</li>
+                </ul>
+            </section>
+
+            <!-- BAB 48 -->
+            <section>
+                <h2>CONTOH KASUS 2: PERMINTAAN TERLALU TINGGI</h2>
+                <div class="diagram">
+Misalnya konsumsi masyarakat meningkat sangat cepat.
+
+> Konsumsi ↑
+↓
+Permintaan agregat ↑
+↓
+Kapasitas produksi tidak mampu mengikuti
+↓
+Output aktual > output potensial
+↓
+Tekanan harga ↑
+↓
+Demand Pull Inflation
+                </div>
+                <p>Dalam kondisi seperti ini, kebijakan moneter dapat berperan dalam mengelola tekanan permintaan.</p>
+            </section>
+
+            <!-- BAB 49 -->
+            <section>
+                <h2>CONTOH KASUS 3: RUPIAH TERDEPRESIASI</h2>
+                <div class="diagram">
+Misalnya:
+> Rp15.500/US$ → Rp17.000/US$
+
+Rupiah mengalami depresiasi.
+
+Akibatnya:
+> Harga barang impor dalam Rupiah ↑
+
+Jika perusahaan menggunakan bahan baku impor:
+> biaya produksi ↑
+Kemudian:
+> harga produk ↑
+dan dapat memberikan tekanan terhadap inflasi.
+
+Ini merupakan salah satu mekanisme <strong>Cost Push Inflation</strong>.
+                </div>
+            </section>
+
+            <!-- BAB 50 -->
+            <section>
+                <h2>CONTOH KASUS 4: HARGA ENERGI NAIK</h2>
+                <div class="diagram">
+Misalnya harga energi yang diatur pemerintah meningkat.
+
+> Harga energi ↑
+↓
+Biaya transportasi ↑
+↓
+Biaya distribusi ↑
+↓
+Biaya produksi ↑
+↓
+Harga barang/jasa ↑
+↓
+Inflasi ↑
+                </div>
+                <p>Ini berkaitan dengan: <strong>ADMINISTERED PRICES</strong></p>
+            </section>
+
+            <!-- BAB 51 -->
+            <section>
+                <h2>PERBEDAAN TIGA PENYEBAB INFLASI</h2>
+                <table>
+                    <tr>
+                        <th>Jenis</th>
+                        <th>Penyebab Utama</th>
+                        <th>Contoh</th>
+                    </tr>
+                    <tr>
+                        <td>Cost Push</td>
+                        <td>Biaya produksi/supply</td>
+                        <td>Kurs melemah, energi naik</td>
+                    </tr>
+                    <tr>
+                        <td>Demand Pull</td>
+                        <td>Permintaan terlalu kuat</td>
+                        <td>Konsumsi meningkat</td>
+                    </tr>
+                    <tr>
+                        <td>Ekspektasi</td>
+                        <td>Harapan terhadap inflasi</td>
+                        <td>Masyarakat memperkirakan harga naik</td>
+                    </tr>
+                </table>
+
+                <div class="important">
+                    <p><strong>Cara mengingat:</strong></p>
+                    <p><strong>Cost Push = biaya mendorong harga</strong></p>
+                    <p><strong>Demand Pull = permintaan menarik harga</strong></p>
+                    <p><strong>Expectation = ekspektasi memengaruhi perilaku harga</strong></p>
+                </div>
+            </section>
+
+            <!-- BAB 52 -->
+            <section>
+                <h2>HUBUNGAN INFLASI DAN DAYA BELI</h2>
+                <div class="diagram">
+Misalnya pendapatan seseorang:
+> Rp5.000.000/bulan
+
+Jika harga barang naik cukup tinggi sementara pendapatannya tidak berubah:
+> Kemampuan membeli barang ↓
+
+Jadi:
+<strong>Inflasi ↑ → daya beli riil ↓</strong>
+
+Inilah salah satu alasan mengapa inflasi yang tinggi dapat merugikan masyarakat.
+                </div>
+            </section>
+
+            <!-- BAB 53 -->
+            <section>
+                <h2>HUBUNGAN INFLASI DAN INVESTASI</h2>
+                <p>Inflasi yang tidak stabil menciptakan ketidakpastian.</p>
+                <p><strong>Perusahaan mungkin berpikir:</strong></p>
+                <ul>
+                    <li>"Berapa biaya produksi tahun depan?"</li>
+                    <li>"Berapa harga bahan baku?"</li>
+                    <li>"Berapa harga jual yang tepat?"</li>
+                </ul>
+                <p>Ketidakpastian tersebut dapat menyebabkan keputusan investasi menjadi lebih sulit.</p>
+                <p><strong>Karena itu:</strong></p>
+                <blockquote>
+                    Inflasi rendah dan stabil → lingkungan ekonomi lebih kondusif untuk investasi.
+                </blockquote>
+            </section>
+
+            <!-- BAB 54 -->
+            <section>
+                <h2>HUBUNGAN INFLASI DAN PERTUMBUHAN EKONOMI</h2>
+                <p><strong>Hubungan sederhananya:</strong></p>
+                <div class="diagram">
+Inflasi rendah & stabil
+          ↓
+Ketidakpastian rendah
+          ↓
+Keputusan konsumsi/investasi lebih baik
+          ↓
+Aktivitas ekonomi
+          ↓
+Pertumbuhan ekonomi berkelanjutan
+                </div>
+                <p><strong>Sebaliknya:</strong></p>
+                <div class="diagram">
+Inflasi tinggi & tidak stabil
+          ↓
+Ketidakpastian meningkat
+          ↓
+Konsumsi/investasi/produksi terganggu
+          ↓
+Pertumbuhan ekonomi dapat melemah
+                </div>
+                <p>Materi menekankan bahwa inflasi rendah dan stabil merupakan prasyarat bagi pertumbuhan ekonomi berkesinambungan.</p>
+            </section>
+
+            <!-- BAB 55 -->
+            <section id="ringkasan">
+                <h2>RINGKASAN SUPER CEPAT</h2>
+                <div class="summary">
+                    <p><strong>Jika hanya punya waktu 5 menit untuk belajar, hafalkan:</strong></p>
+
+                    <h3>INFLASI</h3>
+                    <p>Kenaikan harga barang dan jasa secara umum dan terus-menerus.</p>
+
+                    <h3>PENGUKURAN</h3>
+                    <p>BPS → IHK → perubahan harga konsumen.</p>
+
+                    <h3>DISAGREGASI</h3>
+                    <p><strong>Inti + Non-Inti</strong></p>
+                    <p>Non-inti: <strong>Volatile Food + Administered Prices</strong></p>
+
+                    <h3>PENYEBAB</h3>
+                    <p><strong>Cost Push + Demand Pull + Ekspektasi</strong></p>
+
+                    <h3>COST PUSH</h3>
+                    <p>Biaya produksi ↑ → harga ↑</p>
+
+                    <h3>DEMAND PULL</h3>
+                    <p>Permintaan > kapasitas → harga ↑</p>
+
+                    <h3>EKSPEKTASI</h3>
+                    <p>Harapan inflasi masa depan → memengaruhi perilaku ekonomi.</p>
+
+                    <h3>DAMPAK INFLASI</h3>
+                    <ul>
+                        <li>Daya beli ↓</li>
+                        <li>Ketidakpastian ↑</li>
+                        <li>Keputusan ekonomi terganggu</li>
+                        <li>Tekanan terhadap Rupiah dapat meningkat</li>
+                        <li>Risiko terhadap stabilitas keuangan</li>
+                    </ul>
+
+                    <h3>PENGENDALIAN</h3>
+                    <p><strong>BI + Pemerintah</strong> melalui: <strong>Moneter + Fiskal + Sektoral</strong></p>
+
+                    <h3>KOORDINASI</h3>
+                    <p><strong>TPI</strong></p>
+                </div>
+            </section>
+
+            <!-- BAB 56 -->
+            <section id="istilah">
+                <h2>10 ISTILAH WAJIB DIHAFAL</h2>
+                <div class="keywords">
+                    <table>
+                        <tr>
+                            <th>Istilah</th>
+                            <th>Arti Singkat</th>
+                        </tr>
+                        <tr>
+                            <td>Inflasi</td>
+                            <td>Kenaikan harga umum dan terus-menerus</td>
+                        </tr>
+                        <tr>
+                            <td>Deflasi</td>
+                            <td>Kebalikan dari inflasi</td>
+                        </tr>
+                        <tr>
+                            <td>IHK</td>
+                            <td>Indeks Harga Konsumen</td>
+                        </tr>
+                        <tr>
+                            <td>Inflasi Inti</td>
+                            <td>Inflasi yang cenderung stabil/persisten dan fundamental</td>
+                        </tr>
+                        <tr>
+                            <td>Volatile Food</td>
+                            <td>Inflasi pangan yang bergejolak</td>
+                        </tr>
+                        <tr>
+                            <td>Administered Prices</td>
+                            <td>Harga yang dipengaruhi/diatur pemerintah</td>
+                        </tr>
+                        <tr>
+                            <td>Cost Push</td>
+                            <td>Inflasi akibat tekanan biaya/supply</td>
+                        </tr>
+                        <tr>
+                            <td>Demand Pull</td>
+                            <td>Inflasi akibat tekanan permintaan</td>
+                        </tr>
+                        <tr>
+                            <td>Ekspektasi Inflasi</td>
+                            <td>Harapan inflasi masa depan</td>
+                        </tr>
+                        <tr>
+                            <td>Output Potensial</td>
+                            <td>Kapasitas produksi berkelanjutan perekonomian</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- BAB 57 -->
+            <section id="latihan">
+                <h2>LATIHAN PILIHAN GANDA</h2>
+
+                <div class="exercise">
+                    <h3>1. Inflasi adalah...</h3>
+                    <ol type="A">
+                        <li>Kenaikan harga satu barang</li>
+                        <li>Penurunan harga umum</li>
+                        <li>Kenaikan harga barang dan jasa secara umum dan terus-menerus</li>
+                        <li>Kenaikan pendapatan masyarakat</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. Lembaga yang melakukan perhitungan inflasi di Indonesia adalah...</h3>
+                    <ol type="A">
+                        <li>Bank Indonesia</li>
+                        <li>BPS</li>
+                        <li>OJK</li>
+                        <li>Kementerian Keuangan</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>3. Indikator yang digunakan untuk mengukur inflasi adalah...</h3>
+                    <ol type="A">
+                        <li>GDP</li>
+                        <li>IHK</li>
+                        <li>IHSG</li>
+                        <li>Neraca perdagangan</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>4. Inflasi inti terutama dipengaruhi oleh...</h3>
+                    <ol type="A">
+                        <li>Faktor fundamental</li>
+                        <li>Cuaca saja</li>
+                        <li>Kebijakan harga BBM saja</li>
+                        <li>Panen</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: A</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>5. Inflasi yang dipengaruhi oleh gangguan panen termasuk...</h3>
+                    <ol type="A">
+                        <li>Inflasi inti</li>
+                        <li>Volatile Food</li>
+                        <li>Administered Prices</li>
+                        <li>Demand Pull</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>6. Kenaikan tarif listrik yang ditetapkan pemerintah berkaitan dengan...</h3>
+                    <ol type="A">
+                        <li>Core inflation</li>
+                        <li>Volatile Food</li>
+                        <li>Administered Prices</li>
+                        <li>Deflasi</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>7. Cost Push Inflation terjadi karena...</h3>
+                    <ol type="A">
+                        <li>Permintaan terlalu tinggi</li>
+                        <li>Peningkatan biaya produksi</li>
+                        <li>Penurunan biaya produksi</li>
+                        <li>Penurunan harga impor</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>8. Demand Pull Inflation terjadi ketika...</h3>
+                    <ol type="A">
+                        <li>Permintaan terlalu lemah</li>
+                        <li>Penawaran terlalu tinggi</li>
+                        <li>Permintaan meningkat relatif terhadap ketersediaan barang/jasa</li>
+                        <li>Harga komoditas dunia turun</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>9. Ekspektasi adaptif didasarkan terutama pada...</h3>
+                    <ol type="A">
+                        <li>Masa depan</li>
+                        <li>Pengalaman masa lalu</li>
+                        <li>Kebijakan yang belum terjadi</li>
+                        <li>Ramalan cuaca</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>10. Ekspektasi forward-looking berdasarkan pada...</h3>
+                    <ol type="A">
+                        <li>Data historis saja</li>
+                        <li>Analisis dan perkiraan masa depan</li>
+                        <li>Harga satu barang</li>
+                        <li>Pendapatan masa lalu</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 58 -->
+            <section id="analisis">
+                <h2>SOAL ANALISIS</h2>
+
+                <div class="exercise">
+                    <h3>Soal 1</h3>
+                    <p><strong>Mengapa kenaikan harga satu barang belum tentu disebut inflasi?</strong></p>
+                    <div class="answer">
+                        <p><strong>Jawaban:</strong></p>
+                        <p>Karena inflasi merupakan kenaikan harga <strong>barang dan jasa secara umum dan terus-menerus</strong>. Kenaikan harga satu atau dua barang saja tidak cukup untuk disebut inflasi kecuali kenaikan tersebut meluas ke barang dan jasa lainnya.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>Soal 2</h3>
+                    <p><strong>Mengapa inflasi tinggi dapat menurunkan kesejahteraan masyarakat?</strong></p>
+                    <div class="answer">
+                        <p><strong>Jawaban:</strong></p>
+                        <p>Karena inflasi yang tinggi dapat menurunkan pendapatan riil dan daya beli masyarakat. Jika harga meningkat sementara pendapatan tidak meningkat dengan kecepatan yang sama, jumlah barang dan jasa yang dapat dibeli masyarakat menjadi lebih sedikit.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>Soal 3</h3>
+                    <p><strong>Apa perbedaan Cost Push dan Demand Pull Inflation?</strong></p>
+                    <div class="answer">
+                        <p><strong>Jawaban:</strong></p>
+                        <p><strong>Cost Push Inflation</strong> berasal dari tekanan sisi penawaran atau kenaikan biaya produksi.</p>
+                        <p><strong>Demand Pull Inflation</strong> berasal dari tekanan sisi permintaan ketika permintaan barang dan jasa meningkat relatif terhadap ketersediaannya.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>Soal 4</h3>
+                    <p><strong>Mengapa Bank Indonesia membutuhkan kerja sama dengan Pemerintah dalam mengendalikan inflasi?</strong></p>
+                    <div class="answer">
+                        <p><strong>Jawaban:</strong></p>
+                        <p>Karena inflasi tidak hanya disebabkan oleh permintaan agregat yang dapat dipengaruhi kebijakan moneter, tetapi juga dapat disebabkan oleh sisi penawaran dan shocks seperti harga minyak dunia, gangguan panen, banjir, serta kebijakan harga pemerintah. Oleh karena itu diperlukan kebijakan moneter, fiskal, dan sektoral yang terintegrasi.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 59 -->
+            <section id="essay">
+                <h2>SOAL ESSAY UNTUK UJIAN</h2>
+                <ol>
+                    <li>Jelaskan pengertian inflasi.</li>
+                    <li>Apa perbedaan inflasi dan deflasi?</li>
+                    <li>Jelaskan fungsi IHK dalam pengukuran inflasi.</li>
+                    <li>Sebutkan 11 kelompok pengeluaran IHK.</li>
+                    <li>Jelaskan pengertian disagregasi inflasi.</li>
+                    <li>Jelaskan perbedaan inflasi inti dan non-inti.</li>
+                    <li>Jelaskan pengertian Volatile Food.</li>
+                    <li>Jelaskan pengertian Administered Prices.</li>
+                    <li>Jelaskan Cost Push Inflation beserta contohnya.</li>
+                    <li>Jelaskan Demand Pull Inflation beserta contohnya.</li>
+                    <li>Apa yang dimaksud dengan ekspektasi inflasi?</li>
+                    <li>Jelaskan perbedaan ekspektasi adaptif dan forward-looking.</li>
+                    <li>Jelaskan dampak inflasi tinggi terhadap daya beli.</li>
+                    <li>Mengapa inflasi tidak stabil dapat mengganggu keputusan investasi?</li>
+                    <li>Jelaskan hubungan inflasi dengan nilai Rupiah.</li>
+                    <li>Mengapa inflasi dapat memengaruhi stabilitas sistem keuangan?</li>
+                    <li>Mengapa Bank Indonesia tidak dapat mengendalikan seluruh sumber inflasi?</li>
+                    <li>Mengapa koordinasi BI dan Pemerintah diperlukan?</li>
+                    <li>Apa fungsi TPI?</li>
+                    <li>Jelaskan mekanisme bagaimana depresiasi Rupiah dapat menyebabkan inflasi.</li>
+                </ol>
+            </section>
+
+            <!-- BAB 60 -->
+            <section id="peta-akhir">
+                <h2>PETA KONSEP AKHIR</h2>
+                <div class="diagram">
+                         INFLASI
+                            │
+             Kenaikan harga umum
+             dan terus-menerus
+                            │
+                            ↓
+                         DIUKUR
+                            │
+                            ↓
+                           IHK
+                            │
+                            ↓
+                      DISAGREGASI
+                            │
+              ┌─────────────┴─────────────┐
+              ↓                           ↓
+        INFLASI INTI                 NON-INTI
+              │                           │
+        Fundamental             ┌─────────┴─────────┐
+                                ↓                   ↓
+                         VOLATILE FOOD      ADMINISTERED
+                                             PRICES
+              │
+              ↓
+         PENYEBAB INFLASI
+              │
+     ┌────────┼─────────┐
+     ↓        ↓         ↓
+ Cost Push Demand Pull Ekspektasi
+     │        │         │
+     ↓        ↓         ↓
+ Biaya ↑   Demand ↑   Harapan
+     │        │       masa depan
+     └────────┼─────────┘
+              ↓
+            INFLASI
+              │
+      ┌───────┼────────┐
+      ↓       ↓        ↓
+ Daya beli  Uncertainty  Rupiah
+    ↓          ↑          ↓
+ Kesejahteraan       Stabilitas
+                      ekonomi
+              │
+              ↓
+       PENGENDALIAN INFLASI
+              │
+      ┌───────┴────────┐
+      ↓                ↓
+ Bank Indonesia      Pemerintah
+      │                │
+ Moneter            Fiskal &
+                    Sektoral
+      └───────┬────────┘
+              ↓
+           KOORDINASI
+              │
+              ↓
+             TPI
+              │
+              ↓
+     INFLASI RENDAH & STABIL
+              │
+              ↓
+    PERTUMBUHAN EKONOMI
+       BERKELANJUTAN
+                </div>
+
+                <div class="summary">
+                    <h3>Inti yang harus benar-benar dipahami</h3>
+                    <p><strong>Inflasi bukan sekadar "harga naik".</strong></p>
+                    <p>Yang disebut inflasi adalah:</p>
+                    <blockquote>
+                        kenaikan harga barang dan jasa secara umum dan terus-menerus.
+                    </blockquote>
+                    <p><strong>Untuk memahaminya, gunakan urutan:</strong></p>
+                    <p><strong>Inflasi → IHK → Disagregasi → Penyebab → Dampak → Pengendalian</strong></p>
+                    <p><strong>Kemudian hafalkan tiga penyebab utama:</strong></p>
+                    <blockquote>
+                        Cost Push + Demand Pull + Ekspektasi
+                    </blockquote>
+                    <p><strong>dan tiga kelompok penting:</strong></p>
+                    <blockquote>
+                        Inflasi Inti + Volatile Food + Administered Prices
+                    </blockquote>
+                    <p><strong>Sedangkan pengendaliannya tidak hanya menjadi tugas Bank Indonesia, karena terdapat faktor penawaran dan shock. Oleh karena itu:</strong></p>
+                    <blockquote>
+                        Bank Indonesia + Pemerintah + kebijakan fiskal + kebijakan sektoral + koordinasi TPI → inflasi rendah dan stabil.
+                    </blockquote>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>Materi Pembelajaran Lengkap: Inflasi</strong></p>
+            <p>Definisi, Pengukuran, Penyebab, Dampak, dan Pengendalian</p>
+            <p>© 2024 - Hak Cipta Dilindungi</p>
+            <a href="#" class="back-to-top">Kembali ke Atas</a>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight current section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.toc a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top button functionality
+        document.querySelector('.back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarif Efektif Rata-Rata (TER) PPh Pasal 21</title>
+    <style>
+        :root {
+            --primary-color: #059669;
+            --secondary-color: #047857;
+            --accent-color: #065f46;
+            --bg-color: #f0fdf4;
+            --card-bg: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #d1d5db;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --info-color: #3b82f6;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        header .source {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            white-space: nowrap;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 600;
+        }
+
+        section h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        section h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin: 1rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        /* TER Tables - Special styling for large tables */
+        .ter-table {
+            font-size: 0.75rem;
+        }
+
+        .ter-table th, .ter-table td {
+            padding: 0.3rem 0.5rem;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Box Styles */
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid var(--info-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h3, .info-box h4 {
+            color: var(--info-color);
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border: 2px solid var(--primary-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .case-study h2, .case-study h3 {
+            color: var(--primary-color);
+        }
+
+        .answer-box {
+            background: #f0fdf4;
+            border: 2px solid var(--success-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .answer-box h4 {
+            color: #065f46;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid var(--warning-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: #78350f;
+        }
+
+        .formula {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px dashed var(--border-color);
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+
+        /* Law Reference */
+        .law-ref {
+            background: #f8fafc;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--primary-color);
+            font-style: italic;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header .subtitle {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1.25rem;
+            }
+
+            nav .nav-container {
+                padding: 0.5rem;
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            .ter-table {
+                font-size: 0.7rem;
+            }
+
+            .ter-table th, .ter-table td {
+                padding: 0.25rem 0.4rem;
+            }
+
+            ul, ol {
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            header {
+                background: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 2rem 0;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav class="no-print">
+        <div class="nav-container">
+            <a href="#latar-belakang">Latar Belakang</a>
+            <a href="#tujuan">Tujuan & Dampak</a>
+            <a href="#ter">Tarif TER</a>
+            <a href="#ter-a">TER Kelompok A</a>
+            <a href="#ter-b">TER Kelompok B</a>
+            <a href="#ter-c">TER Kelompok C</a>
+            <a href="#desember">Tarif Desember</a>
+            <a href="#rumus">Rumus Perhitungan</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#pertanyaan">Pertanyaan</a>
+            <a href="#pembahasan">Pembahasan</a>
+            <a href="#kesimpulan">Kesimpulan</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Tarif Efektif Rata-Rata (TER) PPh Pasal 21</h1>
+        <p class="subtitle">Corporate Tax Series - Accounting, Finance and Tax Path</p>
+        <p class="source">MySkill.id | 21 Juni 2024</p>
+    </header>
+
+    <main class="container">
+        <!-- Latar Belakang, Tujuan, Dampak -->
+        <section id="latar-belakang">
+            <h2>📚 Latar Belakang, Tujuan, dan Dampak</h2>
+            
+            <h3>Latar Belakang</h3>
+            <p>Terbitnya <strong>Peraturan Pemerintah Nomor 58 Tahun 2023</strong> tentang Tarif Pemotongan Pajak Penghasilan Pasal 21 atas Penghasilan Sehubungan dengan Pekerjaan, Jasa, atau Kegiatan Wajib Pajak Orang Pribadi didasari oleh prinsip <strong>kemudahan dan kesederhanaan</strong> di perhitungan PPh Pasal 21 setiap masa nya kecuali masa Desember.</p>
+            
+            <h3>Tujuan</h3>
+            <ol>
+                <li>Guna <strong>meningkatkan kepatuhan Wajib Pajak (Perusahaan)</strong> dalam hal kewajiban perpajakannya.</li>
+                <li>Guna <strong>memberi kemudahan dalam hal administrasi perpajakan</strong> yang dapat divalidasi oleh masing-masing orang yang dikenai PPh pasal 21.</li>
+                <li>Diharapkan bisa membantu proses bisnis menjadi <strong>lebih efektif, efisien, dan akuntabel</strong> dalam hal perpajakan.</li>
+            </ol>
+            
+            <h3>Dampak</h3>
+            <p><strong>Dampak terhadap Cash Flow Perusahaan:</strong></p>
+            <ul>
+                <li>Akan mempengaruhi <strong>pergerakan cash flow perusahaan</strong>, khususnya bagi perusahaan yang menerapkan metode <em>gross up</em> untuk perhitungan PPh Pasal 21 nya.</li>
+                <li>Jika perusahaan menerapkan sistem pemotongan melalui gaji karyawan, maka karyawan yang akan menanggung beban PPh Pasal 21 di masa Desember.</li>
+            </ul>
+            <p>Hal itu dikarenakan pada masa <strong>Januari-November</strong> pembayaran PPh Pasal 21 relatif lebih kecil dari tahun sebelumnya. Namun, di masa <strong>Desember</strong> akan memperhitungkan dengan cara Tarif Pasal 17 ayat (1) huruf a UU PPh.</p>
+            <p><strong>Namun secara keseluruhan:</strong> jumlah PPh Pasal 21 (Januari-Desember) akan <strong>sama</strong> jika dibandingkan dengan perhitungan lama dan perhitungan baru (<em>tidak ada penambahan beban PPh 21 secara akumulasi</em>).</p>
+            <p>Adapun dampak lain yang timbul akibat pemberlakuan PP No 58 tahun 2023, yakni <strong>bertambahnya kurang bayar pada SPT Orang Pribadi</strong> (khususnya untuk tenaga ahli seperti dokter), hal itu timbul karena pada pemberlakuan PP No 58 tahun 2023 sudah tidak diberlakukan perhitungan akumulasi bruto.</p>
+        </section>
+
+        <!-- Tarif Efektif Rata-Rata -->
+        <section id="ter">
+            <h2>📊 Tarif Efektif Rata-Rata (TER)</h2>
+            <p><strong>Tarif Efektif Rata-Rata (TER)</strong> adalah tarif pemotongan PPh Pasal 21 yang disederhanakan untuk masa Januari-November, sedangkan untuk bulan Desember menggunakan tarif progresif Pasal 17.</p>
+            
+            <h3>Kelompok TER</h3>
+            <p>TER dibagi menjadi 3 kelompok berdasarkan status PTKP:</p>
+            <ul>
+                <li><strong>Kelompok A:</strong> TK/0, K/0</li>
+                <li><strong>Kelompok B:</strong> TK/1, TK/2, TK/3, K/1, K/2, K/3</li>
+                <li><strong>Kelompok C:</strong> HB, PH, M</li>
+            </ul>
+            <p><strong>Untuk penghasilan bulanan:</strong></p>
+            <ul>
+                <li>T.K/0: Rp54.000.000</li>
+                <li>K/0: Rp58.500.000</li>
+            </ul>
+            <p><strong>Untuk penghasilan harian:</strong></p>
+            <ul>
+                <li>Kurang dari Rp450.000: 0% × Ph bruto harian</li>
+                <li>Rp450.000 — Rp2.500.000: 0,5% × Ph bruto harian</li>
+            </ul>
+        </section>
+
+        <!-- TER Kelompok A -->
+        <section id="ter-a">
+            <h2>📋 Tarif TER - Kelompok A</h2>
+            <div class="table-container">
+                <table class="ter-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Range Penghasilan Bruto</th>
+                            <th rowspan="2">Tarif TER (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0 s/d 5.400.000</td><td>0.00</td></tr>
+                        <tr><td>5.400.001 s/d 5.650.000</td><td>0.25</td></tr>
+                        <tr><td>5.650.001 s/d 5.950.000</td><td>0.50</td></tr>
+                        <tr><td>5.950.001 s/d 6.300.000</td><td>0.75</td></tr>
+                        <tr><td>6.300.001 s/d 6.750.000</td><td>1.00</td></tr>
+                        <tr><td>6.750.001 s/d 7.500.000</td><td>1.25</td></tr>
+                        <tr><td>7.500.001 s/d 8.550.000</td><td>1.50</td></tr>
+                        <tr><td>8.550.001 s/d 9.650.000</td><td>1.75</td></tr>
+                        <tr><td>9.650.001 s/d 10.050.000</td><td>2.00</td></tr>
+                        <tr><td>10.050.001 s/d 10.350.000</td><td>2.25</td></tr>
+                        <tr><td>10.350.001 s/d 10.700.000</td><td>2.50</td></tr>
+                        <tr><td>10.700.001 s/d 11.050.000</td><td>3.00</td></tr>
+                        <tr><td>11.050.001 s/d 11.600.000</td><td>3.50</td></tr>
+                        <tr><td>11.600.001 s/d 12.500.000</td><td>4.00</td></tr>
+                        <tr><td>12.500.001 s/d 13.750.000</td><td>5.00</td></tr>
+                        <tr><td>13.750.001 s/d 15.100.000</td><td>6.00</td></tr>
+                        <tr><td>15.100.001 s/d 16.950.000</td><td>7.00</td></tr>
+                        <tr><td>16.950.001 s/d 19.750.000</td><td>8.00</td></tr>
+                        <tr><td>19.750.001 s/d 24.150.000</td><td>9.00</td></tr>
+                        <tr><td>24.150.001 s/d 26.450.000</td><td>10.00</td></tr>
+                        <tr><td>26.450.001 s/d 28.000.000</td><td>11.00</td></tr>
+                        <tr><td>28.000.001 s/d 30.050.000</td><td>12.00</td></tr>
+                        <tr><td>30.050.001 s/d 32.400.000</td><td>13.00</td></tr>
+                        <tr><td>32.400.001 s/d 35.400.000</td><td>14.00</td></tr>
+                        <tr><td>35.400.001 s/d 39.100.000</td><td>15.00</td></tr>
+                        <tr><td>39.100.001 s/d 43.850.000</td><td>16.00</td></tr>
+                        <tr><td>43.850.001 s/d 47.800.000</td><td>17.00</td></tr>
+                        <tr><td>47.800.001 s/d 51.400.000</td><td>18.00</td></tr>
+                        <tr><td>51.400.001 s/d 56.300.000</td><td>19.00</td></tr>
+                        <tr><td>56.300.001 s/d 62.200.000</td><td>20.00</td></tr>
+                        <tr><td>62.200.001 s/d 68.600.000</td><td>21.00</td></tr>
+                        <tr><td>68.600.001 s/d 77.500.000</td><td>22.00</td></tr>
+                        <tr><td>77.500.001 s/d 89.000.000</td><td>23.00</td></tr>
+                        <tr><td>89.000.001 s/d 103.000.000</td><td>24.00</td></tr>
+                        <tr><td>103.000.001 s/d 125.000.000</td><td>25.00</td></tr>
+                        <tr><td>125.000.001 s/d 157.000.000</td><td>26.00</td></tr>
+                        <tr><td>157.000.001 s/d 206.000.000</td><td>27.00</td></tr>
+                        <tr><td>206.000.001 s/d 337.000.000</td><td>28.00</td></tr>
+                        <tr><td>337.000.001 s/d 454.000.000</td><td>29.00</td></tr>
+                        <tr><td>454.000.001 s/d 550.000.000</td><td>30.00</td></tr>
+                        <tr><td>550.000.001 s/d 695.000.000</td><td>31.00</td></tr>
+                        <tr><td>695.000.001 s/d 910.000.000</td><td>32.00</td></tr>
+                        <tr><td>910.000.001 s/d 1.400.000.000</td><td>33.00</td></tr>
+                        <tr><td>lebih dari 1.400.000.000</td><td>34.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TER Kelompok B -->
+        <section id="ter-b">
+            <h2>📋 Tarif TER - Kelompok B</h2>
+            <div class="table-container">
+                <table class="ter-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Range Penghasilan Bruto</th>
+                            <th rowspan="2">Tarif TER (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0 s/d 6.200.000</td><td>0.00</td></tr>
+                        <tr><td>6.200.001 s/d 6.500.000</td><td>0.25</td></tr>
+                        <tr><td>6.500.001 s/d 6.850.000</td><td>0.50</td></tr>
+                        <tr><td>6.850.001 s/d 7.300.000</td><td>0.75</td></tr>
+                        <tr><td>7.300.001 s/d 9.200.000</td><td>1.00</td></tr>
+                        <tr><td>9.200.001 s/d 10.750.000</td><td>1.50</td></tr>
+                        <tr><td>10.750.001 s/d 11.250.000</td><td>2.00</td></tr>
+                        <tr><td>11.250.001 s/d 11.600.000</td><td>2.50</td></tr>
+                        <tr><td>11.600.001 s/d 12.600.000</td><td>3.00</td></tr>
+                        <tr><td>12.600.001 s/d 13.600.000</td><td>4.00</td></tr>
+                        <tr><td>13.600.001 s/d 14.950.000</td><td>5.00</td></tr>
+                        <tr><td>14.950.001 s/d 16.400.000</td><td>6.00</td></tr>
+                        <tr><td>16.400.001 s/d 18.450.000</td><td>7.00</td></tr>
+                        <tr><td>18.450.001 s/d 21.850.000</td><td>8.00</td></tr>
+                        <tr><td>21.850.001 s/d 26.000.000</td><td>9.00</td></tr>
+                        <tr><td>26.000.001 s/d 27.700.000</td><td>10.00</td></tr>
+                        <tr><td>27.700.001 s/d 29.350.000</td><td>11.00</td></tr>
+                        <tr><td>29.350.001 s/d 31.450.000</td><td>12.00</td></tr>
+                        <tr><td>31.450.001 s/d 33.950.000</td><td>13.00</td></tr>
+                        <tr><td>33.950.001 s/d 37.100.000</td><td>14.00</td></tr>
+                        <tr><td>37.100.001 s/d 41.100.000</td><td>15.00</td></tr>
+                        <tr><td>41.100.001 s/d 48.500.000</td><td>16.00</td></tr>
+                        <tr><td>48.500.001 s/d 49.500.000</td><td>17.00</td></tr>
+                        <tr><td>48.500.001 s/d 53.800.000</td><td>18.00</td></tr>
+                        <tr><td>53.800.001 s/d 58.500.000</td><td>19.00</td></tr>
+                        <tr><td>58.500.001 s/d 64.000.000</td><td>20.00</td></tr>
+                        <tr><td>58.500.001 s/d 71.000.000</td><td>21.00</td></tr>
+                        <tr><td>71.000.001 s/d 80.000.000</td><td>22.00</td></tr>
+                        <tr><td>80.000.001 s/d 93.000.000</td><td>23.00</td></tr>
+                        <tr><td>93.000.001 s/d 109.000.000</td><td>24.00</td></tr>
+                        <tr><td>109.000.001 s/d 129.000.000</td><td>25.00</td></tr>
+                        <tr><td>129.000.001 s/d 163.000.000</td><td>26.00</td></tr>
+                        <tr><td>163.000.001 s/d 211.000.000</td><td>27.00</td></tr>
+                        <tr><td>211.000.001 s/d 347.000.000</td><td>28.00</td></tr>
+                        <tr><td>347.000.001 s/d 459.000.000</td><td>29.00</td></tr>
+                        <tr><td>459.000.001 s/d 555.000.000</td><td>30.00</td></tr>
+                        <tr><td>555.000.001 s/d 704.000.000</td><td>31.00</td></tr>
+                        <tr><td>704.000.001 s/d 957.000.000</td><td>32.00</td></tr>
+                        <tr><td>957.000.001 s/d 1.405.000.000</td><td>33.00</td></tr>
+                        <tr><td>lebih dari 1.405.000.000</td><td>34.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TER Kelompok C -->
+        <section id="ter-c">
+            <h2>📋 Tarif TER - Kelompok C</h2>
+            <div class="table-container">
+                <table class="ter-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Range Penghasilan Bruto</th>
+                            <th rowspan="2">Tarif TER (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0 s/d 6.600.000</td><td>0.00</td></tr>
+                        <tr><td>6.600.001 s/d 6.950.000</td><td>0.25</td></tr>
+                        <tr><td>6.950.001 s/d 7.350.000</td><td>0.50</td></tr>
+                        <tr><td>7.350.001 s/d 7.800.000</td><td>0.75</td></tr>
+                        <tr><td>7.800.001 s/d 8.850.000</td><td>1.00</td></tr>
+                        <tr><td>8.850.001 s/d 9.800.000</td><td>1.25</td></tr>
+                        <tr><td>9.800.001 s/d 10.950.000</td><td>1.50</td></tr>
+                        <tr><td>10.950.001 s/d 11.200.000</td><td>1.75</td></tr>
+                        <tr><td>11.200.001 s/d 12.050.000</td><td>2.00</td></tr>
+                        <tr><td>12.050.001 s/d 12.950.000</td><td>3.00</td></tr>
+                        <tr><td>12.950.001 s/d 14.150.000</td><td>4.00</td></tr>
+                        <tr><td>14.150.001 s/d 15.550.000</td><td>5.00</td></tr>
+                        <tr><td>15.550.001 s/d 17.050.000</td><td>6.00</td></tr>
+                        <tr><td>17.050.001 s/d 19.500.000</td><td>7.00</td></tr>
+                        <tr><td>19.500.001 s/d 22.700.000</td><td>8.00</td></tr>
+                        <tr><td>22.700.001 s/d 26.600.000</td><td>9.00</td></tr>
+                        <tr><td>26.600.001 s/d 28.100.000</td><td>10.00</td></tr>
+                        <tr><td>28.100.001 s/d 30.100.000</td><td>11.00</td></tr>
+                        <tr><td>30.100.001 s/d 32.600.000</td><td>12.00</td></tr>
+                        <tr><td>32.600.001 s/d 35.400.000</td><td>13.00</td></tr>
+                        <tr><td>35.400.001 s/d 38.900.000</td><td>14.00</td></tr>
+                        <tr><td>38.900.001 s/d 43.000.000</td><td>15.00</td></tr>
+                        <tr><td>43.000.001 s/d 47.400.000</td><td>16.00</td></tr>
+                        <tr><td>47.400.001 s/d 51.200.000</td><td>17.00</td></tr>
+                        <tr><td>51.200.001 s/d 55.800.000</td><td>18.00</td></tr>
+                        <tr><td>55.800.001 s/d 60.400.000</td><td>19.00</td></tr>
+                        <tr><td>55.800.001 s/d 66.700.000</td><td>20.00</td></tr>
+                        <tr><td>66.700.001 s/d 74.500.000</td><td>21.00</td></tr>
+                        <tr><td>74.500.001 s/d 83.200.000</td><td>22.00</td></tr>
+                        <tr><td>83.200.001 s/d 95.600.000</td><td>23.00</td></tr>
+                        <tr><td>95.600.001 s/d 110.000.000</td><td>24.00</td></tr>
+                        <tr><td>110.000.001 s/d 134.000.000</td><td>25.00</td></tr>
+                        <tr><td>134.000.001 s/d 169.000.000</td><td>26.00</td></tr>
+                        <tr><td>169.000.001 s/d 221.000.000</td><td>27.00</td></tr>
+                        <tr><td>221.000.001 s/d 390.000.000</td><td>28.00</td></tr>
+                        <tr><td>390.000.001 s/d 463.000.000</td><td>29.00</td></tr>
+                        <tr><td>463.000.001 s/d 561.000.000</td><td>30.00</td></tr>
+                        <tr><td>561.000.001 s/d 709.000.000</td><td>31.00</td></tr>
+                        <tr><td>709.000.001 s/d 965.000.000</td><td>32.00</td></tr>
+                        <tr><td>965.000.001 s/d 1.419.000.000</td><td>33.00</td></tr>
+                        <tr><td>lebih dari 1.419.000.000</td><td>34.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tarif Desember -->
+        <section id="desember">
+            <h2>📅 Tarif Desember (Lapisan PKP)</h2>
+            <p>Untuk bulan Desember, penghitungan PPh Pasal 21 menggunakan tarif progresif Pasal 17 ayat (1) UU PPh:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lapisan Penghasilan Kena Pajak (PKP)</th>
+                            <th>Tarif (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0 s/d 60.000.000</td><td>5%</td></tr>
+                        <tr><td>60.000.000 s/d 250.000.000</td><td>15%</td></tr>
+                        <tr><td>250.000.000 s/d 500.000.000</td><td>25%</td></tr>
+                        <tr><td>500.000.000 s/d 5.000.000.000</td><td>30%</td></tr>
+                        <tr><td>lebih dari 5.000.000.000</td><td>35%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Rumus Perhitungan -->
+        <section id="rumus">
+            <h2>📐 Rumus Perubahan Skema</h2>
+            
+            <h3>Pegawai Tetap</h3>
+            <p><strong>Sebelum TER:</strong></p>
+            <ul>
+                <li>Tarif Pegawai Tetap: 0–2,5% (berdasarkan Undang-Undang PPh)</li>
+                <li>Tarif efektif bulanan: 0,25%-34% (berdasarkan Peraturan Pemerintah Nomor 58 Tahun 2023 dan Peraturan Menteri Keuangan Nomor 168 Tahun 2023)</li>
+            </ul>
+            
+            <p><strong>Masa Januari-November:</strong></p>
+            <div class="formula">
+                Penghitungan PPh Pasal 21 bulanan = Penghasilan bruto sebulan × tarif efektif bulanan (TER bulanan)
+            </div>
+            
+            <p><strong>Masa Pajak Desember:</strong></p>
+            <ol>
+                <li>Penghitungan PPh Pasal 21 setahun: Penghasilan bruto setahun dikurangi biaya jabatan/pensiun, iuran pensiun, zakat/sumbangan keagamaan wajib yang dibayar melalui pemberi kerja, dan PTKP, lalu dikalikan dengan Tarif Pasal 17</li>
+                <li>Penghitungan PPh Pasal 21 Desember: PPh Pasal 21 setahun dikurangi PPh yang telah dipotong selain masa pajak terakhir</li>
+            </ol>
+            
+            <h3>Pegawai Tidak Tetap</h3>
+            <p><strong>Sebelum TER:</strong></p>
+            <ul>
+                <li>Kurang dari Rp450.000/hari: Tidak dipotong</li>
+                <li>Rp450.000/hari — Rp4.500.000/bulan: 5% × (Ph.Bruto — 450.000)</li>
+                <li>Lebih dari Rp4.500.000/bulan — Rp10.200.000/bulan: 5% × (Ph.Bruto — PTKP sehari)</li>
+                <li>Lebih dari Rp10.200.000/bulan: Tarif Pasal 17 × (Ph.Bruto disetahunkan — PTKP)</li>
+            </ul>
+            
+            <p><strong>Sesudah TER:</strong></p>
+            <ul>
+                <li>Kurang dari sama dengan Rp450.000/hari: 0% × Ph.Bruto harian</li>
+                <li>Rp450.000/hari — Rp2.500.000/hari: 0,5% × Ph.Bruto harian</li>
+                <li>Lebih dari Rp2.500.000/hari: Tarif Pasal 17 × 50% × Ph.Bruto</li>
+            </ul>
+            
+            <h3>Bukan Pegawai</h3>
+            <p><strong>Sebelum TER:</strong></p>
+            <ul>
+                <li><strong>Tidak berkesinambungan:</strong> Tarif Pasal 17 × (Penghasilan Bruto × 50%)</li>
+                <li><strong>Berkesinambungan, memiliki NPWP, hanya memperoleh penghasilan dari satu pemberi kerja:</strong> Tarif Pasal 17 × ((Penghasilan Bruto × 50%) — PTKP) *akumulatif</li>
+                <li><strong>Berkesinambungan, tidak memiliki/memiliki NPWP, memperoleh penghasilan lebih dari satu pemberi kerja:</strong> Tarif Pasal 17 × (Penghasilan Bruto × 50%) *akumulatif</li>
+            </ul>
+            
+            <p><strong>Sesudah TER:</strong></p>
+            <ul>
+                <li><strong>Tidak berkesinambungan:</strong> Tarif Pasal 17 × (Penghasilan Bruto × 50%) *tidak akumulatif</li>
+            </ul>
+            
+            <p><strong>Subjek Lainnya:</strong></p>
+            <p><strong>Sebelum TER:</strong></p>
+            <ul>
+                <li><strong>Peserta Kegiatan:</strong> Tarif Pasal 17 × Penghasilan Bruto</li>
+                <li><strong>Pegawai Menarik Uang Dana Pensiun:</strong> Tarif Pasal 17 × Penghasilan Bruto (akumulatif)</li>
+                <li><strong>Mantan Pegawai Menerima Bonus:</strong> Dewas/Dekom tidak merangkap sebagai pegawai tetap</li>
+            </ul>
+            
+            <p><strong>Sesudah TER:</strong></p>
+            <ul>
+                <li><strong>Peserta Kegiatan:</strong> Tarif Pasal 17 × Penghasilan Bruto</li>
+                <li><strong>Pegawai Menarik Uang Dana Pensiun:</strong> Tarif Pasal 17 × Penghasilan Bruto</li>
+                <li><strong>Mantan Pegawai Menerima Bonus:</strong> Dewas/Dekom menerima penghasilan tidak tetap teratur</li>
+            </ul>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section id="studi-kasus">
+            <div class="case-study">
+                <h2>📊 STUDI KASUS TARIF EFEKTIF RATA-RATA (TER) PPh PASAL 21</h2>
+                
+                <h3>A. Identitas Kasus</h3>
+                <table>
+                    <tr><th>Nama perusahaan</th><td>PT Digital Nusantara Indonesia</td></tr>
+                    <tr><th>Tahun pajak</th><td>2026</td></tr>
+                    <tr><th>Status</th><td>Perusahaan sebagai pemberi kerja dan pemotong PPh Pasal 21</td></tr>
+                </table>
+                <p>PT Digital Nusantara Indonesia memiliki beberapa karyawan tetap dengan status perpajakan yang berbeda. Perusahaan menerapkan sistem pemotongan PPh Pasal 21 dari penghasilan karyawan.</p>
+                <p>Salah satu karyawan tetap perusahaan adalah <strong>Bapak Andi</strong>, dengan data sebagai berikut:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Status PTKP</td><td>K/1</td></tr>
+                        <tr><td>Gaji tetap per bulan</td><td>Rp20.000.000</td></tr>
+                        <tr><td>Tunjangan transportasi</td><td>Rp2.000.000</td></tr>
+                        <tr><td>Tunjangan makan</td><td>Rp1.000.000</td></tr>
+                        <tr><td>Iuran pensiun dibayar karyawan</td><td>Rp500.000/bulan</td></tr>
+                        <tr><td>Bonus tahunan</td><td>Rp12.000.000</td></tr>
+                        <tr><td>Biaya jabatan</td><td>Sesuai ketentuan</td></tr>
+                        <tr><td>Penghasilan Januari–November</td><td>Tetap setiap bulan</td></tr>
+                    </tbody>
+                </table>
+                <p>Bapak Andi menerima penghasilan tetap sebesar:</p>
+                <div class="formula">
+                    Rp20.000.000 + Rp2.000.000 + Rp1.000.000 = <strong>Rp23.000.000 per bulan</strong>
+                </div>
+                <p>Bonus sebesar Rp12.000.000 diberikan pada bulan Desember.</p>
+            </div>
+
+            <h3>B. Permasalahan</h3>
+            <p>Perusahaan harus menghitung PPh Pasal 21 Bapak Andi dengan skema TER.</p>
+            <p>Pada masa <strong>Januari–November</strong>, PPh Pasal 21 dihitung dengan:</p>
+            <div class="formula">
+                PPh 21 = Penghasilan Bruto Bulanan × Tarif TER
+            </div>
+            <p>Sedangkan pada masa <strong>Desember</strong>, perusahaan melakukan penghitungan kembali PPh Pasal 21 setahun menggunakan tarif progresif Pasal 17.</p>
+            <p>Dengan demikian, perusahaan perlu memastikan bahwa jumlah PPh Pasal 21 yang telah dipotong selama Januari–November diperhitungkan dalam menentukan PPh Pasal 21 bulan Desember.</p>
+
+            <h3>C. Pertanyaan Studi Kasus</h3>
+            <ol>
+                <li>Berapa penghasilan bruto bulanan Bapak Andi?</li>
+                <li>Bapak Andi termasuk kelompok TER A, B, atau C?</li>
+                <li>Berapa tarif TER yang digunakan?</li>
+                <li>Berapa PPh Pasal 21 yang dipotong setiap bulan Januari–November?</li>
+                <li>Bagaimana cara menghitung PPh Pasal 21 setahun?</li>
+                <li>Bagaimana menentukan PPh Pasal 21 bulan Desember?</li>
+                <li>Mengapa jumlah PPh Pasal 21 Desember dapat lebih besar daripada bulan-bulan sebelumnya?</li>
+                <li>Apakah penerapan TER menyebabkan pajak setahun menjadi lebih besar?</li>
+                <li>Bagaimana pengaruh sistem TER terhadap cash flow perusahaan?</li>
+                <li>Apa perbedaan utama antara perhitungan PPh Pasal 21 sebelum dan sesudah penerapan TER?</li>
+            </ol>
+        </section>
+
+        <!-- Pembahasan -->
+        <section id="pembahasan">
+            <h2>💡 Pembahasan dan Jawaban</h2>
+            
+            <h3>1. Menentukan Penghasilan Bruto Bulanan</h3>
+            <p><strong>Gaji:</strong> Rp20.000.000</p>
+            <p><strong>Tunjangan transportasi:</strong> Rp2.000.000</p>
+            <p><strong>Tunjangan makan:</strong> Rp1.000.000</p>
+            <div class="formula">
+                Penghasilan bruto = Rp20.000.000 + Rp2.000.000 + Rp1.000.000 = <strong>Rp23.000.000 per bulan</strong>
+            </div>
+
+            <h3>2. Menentukan Kelompok TER</h3>
+            <p>Bapak Andi memiliki status: <strong>K/1</strong></p>
+            <p>Status K/1 termasuk dalam <strong>Kelompok TER B</strong>.</p>
+            <p>Berdasarkan tabel TER-B, penghasilan bruto Rp23.000.000 berada pada lapisan:</p>
+            <div class="formula">
+                <strong>Rp21.850.001 – Rp26.000.000</strong> dengan tarif: <strong>9%</strong>
+            </div>
+
+            <h3>3. Menghitung PPh Pasal 21 Januari–November</h3>
+            <p><strong>Rumus:</strong> PPh Pasal 21 = Penghasilan Bruto × TER</p>
+            <div class="formula">
+                = Rp23.000.000 × 9% = <strong>Rp2.070.000 per bulan</strong>
+            </div>
+            <p>Karena penghasilan Bapak Andi diasumsikan tetap dari Januari sampai November:</p>
+            <div class="formula">
+                Rp2.070.000 × 11 = <strong>Rp22.770.000</strong>
+            </div>
+            <p><strong>Jadi, PPh Pasal 21 yang telah dipotong selama Januari–November adalah: Rp22.770.000</strong></p>
+
+            <h3>4. Menghitung Penghasilan Bruto Setahun</h3>
+            <p><strong>Penghasilan rutin selama 12 bulan:</strong></p>
+            <div class="formula">
+                Rp23.000.000 × 12 = Rp276.000.000
+            </div>
+            <p><strong>Bonus Desember:</strong> Rp12.000.000</p>
+            <div class="formula">
+                Total penghasilan bruto setahun = Rp276.000.000 + Rp12.000.000 = <strong>Rp288.000.000</strong>
+            </div>
+
+            <h3>5. Menghitung Pengurang</h3>
+            <p>Dalam penghitungan tahunan, penghasilan bruto dikurangi dengan komponen pengurang yang diperbolehkan.</p>
+            
+            <h4>Biaya jabatan</h4>
+            <p>Biaya jabatan dihitung sebesar 5% dari penghasilan bruto, dengan batas maksimum sesuai ketentuan yang berlaku.</p>
+            <div class="formula">
+                5% × Rp288.000.000 = Rp14.400.000
+            </div>
+            
+            <h4>Iuran pensiun</h4>
+            <div class="formula">
+                Rp500.000 × 12 = Rp6.000.000
+            </div>
+            
+            <h4>Total pengurang</h4>
+            <div class="formula">
+                Rp14.400.000 + Rp6.000.000 = <strong>Rp20.400.000</strong>
+            </div>
+
+            <h3>6. Menentukan Penghasilan Neto Setahun</h3>
+            <p><strong>Penghasilan bruto:</strong> Rp288.000.000</p>
+            <p><strong>Dikurangi pengurang:</strong> Rp20.400.000</p>
+            <div class="formula">
+                Penghasilan neto = <strong>Rp267.600.000</strong>
+            </div>
+
+            <h3>7. Menghitung Penghasilan Kena Pajak (PKP)</h3>
+            <p>Status Bapak Andi adalah <strong>K/1</strong>.</p>
+            <p>Dalam simulasi ini digunakan PTKP: <strong>Rp63.000.000</strong></p>
+            <div class="formula">
+                Rp267.600.000 − Rp63.000.000 = <strong>Rp204.600.000</strong>
+            </div>
+            <p>PKP dibulatkan ke bawah sesuai ketentuan pembulatan PKP: <strong>Rp204.600.000</strong></p>
+
+            <h3>8. Menghitung PPh Pasal 21 Setahun dengan Tarif Pasal 17</h3>
+            <p><strong>PKP Bapak Andi: Rp204.600.000</strong></p>
+            
+            <p><strong>Lapisan pertama:</strong></p>
+            <div class="formula">
+                Rp60.000.000 × 5% = Rp3.000.000
+            </div>
+            
+            <p><strong>Sisa PKP:</strong></p>
+            <div class="formula">
+                Rp204.600.000 − Rp60.000.000 = Rp144.600.000
+            </div>
+            
+            <p><strong>Lapisan kedua:</strong></p>
+            <div class="formula">
+                Rp144.600.000 × 15% = Rp21.690.000
+            </div>
+            
+            <p><strong>PPh Pasal 21 setahun:</strong></p>
+            <div class="formula">
+                Rp3.000.000 + Rp21.690.000 = <strong>Rp24.690.000</strong>
+            </div>
+
+            <h3>9. Menghitung PPh Pasal 21 Bulan Desember</h3>
+            <p><strong>PPh Pasal 21 setahun:</strong> Rp24.690.000</p>
+            <p><strong>PPh Pasal 21 yang telah dipotong Januari–November:</strong> Rp22.770.000</p>
+            <div class="formula">
+                PPh Pasal 21 Desember = Rp24.690.000 − Rp22.770.000 = <strong>Rp1.920.000</strong>
+            </div>
+            <p><strong>Jadi, PPh Pasal 21 bulan Desember adalah: Rp1.920.000</strong></p>
+
+            <h3>10. Rekapitulasi PPh Pasal 21</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Periode</th>
+                            <th>Dasar Penghitungan</th>
+                            <th>PPh 21</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Januari</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Februari</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Maret</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>April</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Mei</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Juni</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Juli</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Agustus</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>September</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Oktober</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>November</td><td>Rp23.000.000 × 9%</td><td>Rp2.070.000</td></tr>
+                        <tr><td>Desember</td><td>Penghitungan tahunan − potongan Jan–Nov</td><td>Rp1.920.000</td></tr>
+                        <tr><td><strong>Total</strong></td><td>-</td><td><strong>Rp24.690.000</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Analisis Dampak TER</h3>
+            
+            <h4>1. Mengapa PPh Januari–November dapat terlihat lebih besar?</h4>
+            <p>TER menggunakan penghasilan bruto bulanan sebagai dasar pengenaan pajak.</p>
+            <p>Akibatnya, pada bulan Januari–November perusahaan tidak perlu menghitung secara kompleks:</p>
+            <ul>
+                <li>penghasilan neto setahun,</li>
+                <li>PTKP,</li>
+                <li>PKP,</li>
+                <li>lapis tarif Pasal 17.</li>
+            </ul>
+            <p>Perusahaan cukup menentukan penghasilan bruto dan tarif TER sesuai status PTKP.</p>
+
+            <h4>2. Mengapa Desember menggunakan metode berbeda?</h4>
+            <p>Desember berfungsi sebagai <strong>penyesuaian tahunan</strong>.</p>
+            <p>Perusahaan menghitung kembali:</p>
+            <ul>
+                <li>Penghasilan bruto setahun</li>
+                <li>pengurang</li>
+                <li>penghasilan neto</li>
+                <li>PTKP</li>
+                <li>PKP</li>
+                <li>tarif Pasal 17</li>
+            </ul>
+            <p>Kemudian hasil PPh setahun dikurangi dengan PPh yang telah dipotong pada Januari–November.</p>
+            <div class="formula">
+                PPh 21 Desember = PPh 21 setahun − PPh 21 yang telah dipotong sebelumnya
+            </div>
+
+            <h3>Contoh Pegawai Tidak Tetap</h3>
+            <p>PT Digital Nusantara juga menggunakan tenaga harian bernama <strong>Sdr. Rudi</strong>.</p>
+            <p><strong>Rudi memperoleh upah: Rp600.000 per hari</strong></p>
+            <p>Berdasarkan skema TER, untuk pegawai tidak tetap dengan penghasilan harian dalam rentang Rp450.000 sampai Rp2.500.000:</p>
+            <div class="formula">
+                PPh 21 = 0,5% × Penghasilan Bruto Harian = Rp600.000 × 0,5% = <strong>Rp3.000 per hari</strong>
+            </div>
+            <p>Jika Rudi bekerja selama 20 hari:</p>
+            <div class="formula">
+                Rp3.000 × 20 = <strong>Rp60.000</strong>
+            </div>
+            <p><strong>Jadi, PPh Pasal 21 yang dipotong dari penghasilan Rudi adalah: Rp60.000</strong></p>
+
+            <h3>Contoh Bukan Pegawai</h3>
+            <p>PT Digital Nusantara menggunakan jasa seorang konsultan independen dengan honor: <strong>Rp20.000.000</strong></p>
+            <p>Konsultan tersebut merupakan bukan pegawai.</p>
+            <p><strong>Dasar penghitungan penghasilan bruto untuk ilustrasi:</strong></p>
+            <div class="formula">
+                50% × Rp20.000.000 = <strong>Rp10.000.000</strong>
+            </div>
+            <p>Kemudian pengenaan PPh mengikuti ketentuan tarif yang berlaku untuk bukan pegawai.</p>
+            <div class="warning-box">
+                <h4>⚠️ Catatan:</h4>
+                <p>Hal penting yang perlu diperhatikan adalah status penerima penghasilan dan sifat hubungannya dengan pemberi kerja, karena mekanisme pemotongan bukan pegawai berbeda dengan pegawai tetap.</p>
+            </div>
+        </section>
+
+        <!-- Perbandingan -->
+        <section id="perbandingan">
+            <h2>⚖️ Perbandingan Sebelum dan Sesudah TER</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>Sebelum TER</th>
+                            <th>Sesudah TER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Jan–Nov</td><td>Penghitungan lebih kompleks</td><td>Bruto × TER</td></tr>
+                        <tr><td>Desember</td><td>Rekonsiliasi tahunan</td><td>Rekonsiliasi tahunan</td></tr>
+                        <tr><td>Dasar Jan–Nov</td><td>Penghasilan neto/PKP sesuai mekanisme lama</td><td>Penghasilan bruto</td></tr>
+                        <tr><td>Administrasi</td><td>Relatif lebih kompleks</td><td>Lebih sederhana</td></tr>
+                        <tr><td>Transparansi</td><td>Perlu perhitungan lebih panjang</td><td>Lebih mudah divalidasi</td></tr>
+                        <tr><td>Tujuan</td><td>Perhitungan PPh 21</td><td>Kesederhanaan dan kemudahan administrasi</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Kesimpulan -->
+        <section id="kesimpulan">
+            <h2>🎯 Kesimpulan</h2>
+            <p>Penerapan <strong>Tarif Efektif Rata-Rata (TER)</strong> mengubah mekanisme pemotongan PPh Pasal 21 terutama untuk masa Januari–November.</p>
+            <p>Pada periode tersebut, pemberi kerja dapat menghitung PPh Pasal 21 dengan cara:</p>
+            <div class="formula">
+                <strong>Penghasilan Bruto × Tarif TER</strong>
+            </div>
+            <p>Sedangkan pada bulan Desember dilakukan penghitungan kembali berdasarkan penghasilan selama satu tahun dengan menggunakan tarif progresif Pasal 17.</p>
+            <p>Dengan demikian, TER pada dasarnya merupakan <strong>penyederhanaan mekanisme pemotongan bulanan</strong>, bukan perubahan tarif pajak tahunan secara keseluruhan.</p>
+            
+            <h3>Hal-hal yang perlu diperhatikan perusahaan:</h3>
+            <ol>
+                <li>Status PTKP pegawai.</li>
+                <li>Kelompok TER A, B, atau C.</li>
+                <li>Penghasilan bruto setiap masa pajak.</li>
+                <li>Penghasilan tidak teratur seperti bonus dan THR.</li>
+                <li>Pengurang yang diperbolehkan.</li>
+                <li>PTKP.</li>
+                <li>Tarif Pasal 17 untuk penghitungan tahunan.</li>
+                <li>Selisih antara PPh setahun dan pemotongan Januari–November.</li>
+            </ol>
+            
+            <div class="warning-box">
+                <h4>⚠️ Catatan:</h4>
+                <p>angka dan tarif dalam studi kasus ini mengikuti materi yang diberikan dan digunakan sebagai <strong>simulasi pembelajaran</strong>. Untuk perhitungan pajak aktual tahun 2026, ketentuan PP 58/2023, PMK 168/2023, dan aturan terbaru DJP perlu dijadikan acuan.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Tarif Efektif Rata-Rata (TER) PPh Pasal 21</strong></p>
+        <p>Corporate Tax Series - MySkill.id | Accounting, Finance and Tax Path</p>
+        <p>© 2024 MySkill.id</p>
+    </footer>
+
+    <div class="scroll-top no-print" id="scrollTop">↑</div>
+
+    <script>
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active nav link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Highlight nav link when section is in view
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

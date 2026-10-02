@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Koordinasi Bank Indonesia dengan Lembaga/Otoritas Lain, Forum Internasional, dan FSAP</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1565c0;
+            --accent: #ff9800;
+            --accent2: #e65100;
+            --dark: #0a2463;
+            --light: #e3f2fd;
+            --success: #2e7d32;
+            --warning: #ff8f00;
+            --danger: #d32f2f;
+            --border: #90caf9;
+            --text: #333;
+            --bg: #f5f7fa;
+            --nav-bg: #1976d2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        nav.sticky {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            padding: 6px 10px;
+            border: 1.5px solid var(--border);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-size: 0.8em;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .section-title {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            margin: 30px 0 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-size: 1.7em;
+            font-weight: 600;
+        }
+
+        section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        section h4 {
+            color: var(--accent);
+            margin: 20px 0 12px 0;
+            font-size: 1.15em;
+            font-weight: 600;
+        }
+
+        .intro, .objectives, .important, .mnemonic, .summary {
+            margin: 18px 0;
+            padding: 18px;
+            border-radius: 8px;
+        }
+
+        .objectives {
+            background: #fff9f0;
+            border-left: 5px solid var(--warning);
+        }
+
+        .objectives h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .objectives ol, .objectives ul {
+            padding-left: 20px;
+        }
+
+        .objectives li {
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e8 100%);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .important {
+            background: #fff0f0;
+            border-left: 5px solid var(--danger);
+            font-weight: 500;
+        }
+
+        .important p {
+            margin: 5px 0;
+        }
+
+        .mnemonic {
+            background: #f0fff0;
+            border-left: 5px solid var(--success);
+            font-style: italic;
+        }
+
+        .diagram {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 18px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #f0f4f8;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #fff8e1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid var(--border);
+        }
+
+        .quiz-section h2 {
+            color: var(--dark);
+            border-bottom: 2px solid var(--success);
+            padding-bottom: 10px;
+        }
+
+        .question {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .question h4 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .options {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .options li {
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid var(--border);
+        }
+
+        .answer {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            font-weight: 500;
+        }
+
+        .answer p {
+            margin: 5px 0;
+        }
+
+        .cheat-sheet {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .cheat-sheet h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .cheat-sheet p {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.85em;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #fff8e1 0%, #e8f5e8 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid var(--warning);
+        }
+
+        .summary h2, .summary h3 {
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .summary p, .summary li {
+            margin: 12px 0;
+            padding: 8px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 5px;
+        }
+
+        .summary ol, .summary ul {
+            padding-left: 20px;
+        }
+
+        .part-title {
+            background: var(--secondary);
+            color: white;
+            padding: 12px;
+            margin: 25px 0 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border);
+        }
+
+        .emoji-icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .box-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .box-success {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--success);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.7em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 0.75em;
+                padding: 5px 8px;
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+
+            section h3 {
+                font-size: 1.1em;
+            }
+
+            .diagram {
+                font-size: 0.75em;
+                padding: 12px;
+            }
+
+            .cheat-sheet {
+                font-size: 0.85em;
+                padding: 18px;
+            }
+
+            .table-container table {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav.sticky {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section, .intro, .quiz-section, .summary, .objectives, .important, .mnemonic, .box-info, .box-success {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+
+            .diagram, .code-block {
+                background: #f8f9fa !important;
+            }
+
+            header {
+                background: var(--primary) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cheat-sheet {
+                background: var(--primary) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Smooth scroll offset for fixed header */
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📘 MODUL PEMBELAJARAN</h1>
+        <p><strong>Koordinasi Bank Indonesia dengan Lembaga/Otoritas Lain,<br>Forum Internasional, dan FSAP</strong></p>
+    </header>
+
+    <div class="container">
+        <nav class="sticky">
+            <ul>
+                <li><a href="#tujuan" class="active">Tujuan</a></li>
+                <li><a href="#gambaran">Gambaran</a></li>
+                <li><a href="#koordinasi">Koordinasi</a></li>
+                <li><a href="#bentuk">Bentuk</a></li>
+                <li><a href="#adg">ADG Ex-Officio</a></li>
+                <li><a href="#focal">Focal Point</a></li>
+                <li><a href="#kssk">KSSK</a></li>
+                <li><a href="#g20">G20 & FSB</a></li>
+                <li><a href="#bcbs">BCBS</a></li>
+                <li><a href="#forum">Forum Lain</a></li>
+                <li><a href="#fsap">FSAP</a></li>
+                <li><a href="#indonesia-fsap">Indonesia & FSAP</a></li>
+                <li><a href="#manfaat">Manfaat</a></li>
+                <li><a href="#latihan">Latihan</a></li>
+                <li><a href="#cheat">Cheat Sheet</a></li>
+                <li><a href="#ringkasan">Ringkasan</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Tujuan Pembelajaran -->
+        <section id="tujuan">
+            <h2>1. Tujuan Pembelajaran</h2>
+            <div class="objectives">
+                <p>Setelah mempelajari materi ini, Anda diharapkan mampu:</p>
+                <ol>
+                    <li>Menjelaskan alasan koordinasi BI dengan lembaga/otoritas lain.</li>
+                    <li>Membedakan koordinasi <span class="highlight">bilateral, trilateral, dan multilateral</span>.</li>
+                    <li>Menjelaskan peran <span class="highlight">ADG Ex-Officio</span> BI di OJK dan LPS.</li>
+                    <li>Menjelaskan fungsi <span class="highlight">Focal Point</span>.</li>
+                    <li>Menjelaskan koordinasi BI dengan OJK melalui <span class="highlight">FKMM</span>.</li>
+                    <li>Menjelaskan posisi BI dalam <span class="highlight">KSSK</span>.</li>
+                    <li>Menjelaskan peran BI dalam forum internasional seperti <span class="highlight">FSB, BCBS, dan EMEAP-WGBS</span>.</li>
+                    <li>Menjelaskan pengertian, tujuan, dan cakupan <span class="highlight">FSAP</span>.</li>
+                    <li>Menjelaskan perkembangan status partisipasi Indonesia dalam FSAP.</li>
+                    <li>Menjelaskan manfaat FSAP bagi stabilitas dan perkembangan sistem keuangan Indonesia.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 2. Gambaran Besar Materi -->
+        <section id="gambaran">
+            <h2>2. Gambaran Besar Materi</h2>
+            <p>Koordinasi BI dapat dilihat dalam <span class="highlight">dua lingkup besar</span>:</p>
+
+            <div class="diagram">
+                  KOORDINASI BANK INDONESIA
+                           │
+             ┌─────────────┴─────────────┐
+             ↓                           ↓
+      DOMESTIK/NASIONAL              INTERNASIONAL
+             │                           │
+     ┌───────┼────────┐          ┌───────┼────────┐
+     ↓       ↓        ↓          ↓       ↓        ↓
+    OJK     LPS    Kemenkeu     FSB    BCBS    EMEAP
+     │       │        │
+     └───────┼────────┘
+             ↓
+            KSSK
+             │
+             ↓
+    Stabilitas Sistem Keuangan
+            </div>
+
+            <p>Selain itu, terdapat <span class="highlight">FSAP</span> sebagai asesmen komprehensif terhadap sektor keuangan suatu negara.</p>
+        </section>
+
+        <!-- BAGIAN I -->
+        <div class="section-title">BAGIAN I: KOORDINASI BI DENGAN LEMBAGA/OTORITAS LAIN</div>
+
+        <!-- 3. Mengapa BI Perlu Berkoordinasi? -->
+        <section id="koordinasi">
+            <h2>3. Mengapa BI Perlu Berkoordinasi?</h2>
+            <p>Sistem keuangan terdiri dari berbagai lembaga dan pasar yang saling terhubung.</p>
+            <p>Karena itu, kebijakan satu otoritas dapat memengaruhi otoritas lainnya.</p>
+
+            <p>Koordinasi diperlukan untuk:</p>
+            <ul>
+                <li>harmonisasi kebijakan;</li>
+                <li>pertukaran data;</li>
+                <li>pertukaran informasi;</li>
+                <li>koordinasi kebijakan;</li>
+                <li>penanganan permasalahan bersama;</li>
+                <li>menjaga stabilitas sistem keuangan.</li>
+            </ul>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br>
+                <strong>Koordinasi = Harmonisasi + Data/Informasi + Respons Bersama</strong></p>
+            </div>
+        </section>
+
+        <!-- 4. Bentuk Koordinasi -->
+        <section id="bentuk">
+            <h2>4. Bentuk Koordinasi</h2>
+            <p>Koordinasi antarotoritas dapat dilakukan secara:</p>
+
+            <h3>A. Bilateral</h3>
+            <p>Melibatkan <span class="highlight">dua lembaga/otoritas</span>.</p>
+            <p><strong>Contoh:</strong></p>
+            <div class="code-block">
+BI ↔ OJK
+
+atau
+
+BI ↔ LPS
+            </div>
+
+            <h3>B. Trilateral</h3>
+            <p>Melibatkan <span class="highlight">tiga lembaga/otoritas</span>.</p>
+            <p><strong>Contoh:</strong></p>
+            <div class="code-block">
+BI ↔ OJK ↔ LPS
+            </div>
+
+            <h3>C. Multilateral</h3>
+            <p>Melibatkan lebih banyak lembaga/otoritas dalam suatu forum.</p>
+            <p><strong>Contohnya</strong> dapat dilihat dalam <span class="highlight">KSSK</span>.</p>
+        </section>
+
+        <!-- 5. ADG Ex-Officio di OJK dan LPS -->
+        <section id="adg">
+            <h2>5. ADG Ex-Officio di OJK dan LPS</h2>
+            <p>Salah satu mekanisme yang digunakan untuk mendukung koordinasi adalah penempatan:</p>
+            <div class="important">
+                <p><strong>masing-masing satu orang Anggota Dewan Gubernur (ADG) BI sebagai Anggota Dewan Komisioner (ADK) Ex-Officio di OJK dan LPS.</strong></p>
+            </div>
+
+            <p>Tujuannya adalah mendukung:</p>
+            <ul>
+                <li>koordinasi;</li>
+                <li>kerja sama;</li>
+                <li>harmonisasi kebijakan</li>
+            </ul>
+            <p>antara BI dengan lembaga penugasan tersebut.</p>
+
+            <p><strong>Konsep sederhananya:</strong></p>
+            <div class="diagram">
+             BANK INDONESIA
+                   │
+          ┌────────┴────────┐
+          ↓                 ↓
+   ADG Ex-Officio      ADG Ex-Officio
+          ↓                 ↓
+         OJK               LPS
+            </div>
+        </section>
+
+        <!-- 6. Apa Arti Ex-Officio? -->
+        <section>
+            <h2>6. Apa Arti Ex-Officio?</h2>
+            <p><span class="highlight">Ex-officio</span> dalam konteks ini berarti seseorang menduduki posisi tertentu <span class="highlight">berdasarkan jabatan/kapasitasnya pada lembaga asalnya</span>, bukan sebagai pengangkatan yang terpisah dari hubungan kelembagaan tersebut.</p>
+
+            <p>Dalam materi ini, keberadaan ADG BI sebagai ADK Ex-Officio membantu menciptakan hubungan koordinasi yang lebih kuat antara BI dengan OJK dan LPS.</p>
+        </section>
+
+        <!-- 7. Koordinasi Tidak Hanya di Level Pimpinan -->
+        <section>
+            <h2>7. Koordinasi Tidak Hanya di Level Pimpinan</h2>
+            <p>Kerja sama BI dengan lembaga lain tidak hanya dilakukan oleh pimpinan.</p>
+
+            <p>Koordinasi dilakukan mulai dari:</p>
+            <div class="important">
+                <p><strong>level pimpinan → level teknis</strong></p>
+            </div>
+
+            <p>Artinya, koordinasi dapat berlangsung baik pada tingkat strategis maupun operasional.</p>
+            <div class="diagram">
+Level Pimpinan
+      ↓
+Keputusan/Kebijakan
+      ↓
+Level Teknis
+      ↓
+Pelaksanaan & Pertukaran Data
+            </div>
+        </section>
+
+        <!-- 8. Koordinasi BI – OJK -->
+        <section>
+            <h2>8. Koordinasi BI – OJK</h2>
+            <p>Koordinasi BI dengan OJK dijalankan dalam kerangka:</p>
+            <div class="important">
+                <p><strong>Forum Koordinasi Makroprudensial–Mikroprudensial (FKMM).</strong></p>
+            </div>
+
+            <p>Hal ini penting karena:</p>
+            <ul>
+                <li>BI berperan dalam kebijakan makroprudensial;</li>
+                <li>OJK berperan dalam pengawasan mikroprudensial sektor keuangan.</li>
+            </ul>
+
+            <p>Keduanya harus terkoordinasi karena kondisi sistem keuangan dipengaruhi oleh <span class="highlight">risiko sistemik dan kondisi masing-masing lembaga keuangan</span>.</p>
+
+            <p><strong>Hubungan:</strong></p>
+            <div class="diagram">
+       BI
+Makroprudensial
+       ↕
+      FKMM
+       ↕
+       OJK
+Mikroprudensial
+            </div>
+        </section>
+
+        <!-- 9. Koordinasi BI – LPS -->
+        <section>
+            <h2>9. Koordinasi BI – LPS</h2>
+            <p>Kerja sama BI dan LPS dilakukan dalam kerangka:</p>
+            <div class="important">
+                <p><strong>penjaminan dan resolusi bank.</strong></p>
+            </div>
+
+            <p>Jadi, jika BI–OJK banyak berhubungan dengan koordinasi <span class="highlight">makroprudensial–mikroprudensial</span>, maka BI–LPS juga memiliki hubungan penting dalam aspek:</p>
+            <ul>
+                <li>penjaminan;</li>
+                <li>penanganan bank;</li>
+                <li>resolusi bank.</li>
+            </ul>
+        </section>
+
+        <!-- 10. Payung Hukum Koordinasi -->
+        <section>
+            <h2>10. Payung Hukum Koordinasi</h2>
+            <p>Koordinasi antarotoritas dipayungi oleh:</p>
+            <ul>
+                <li><span class="highlight">Keputusan Bersama</span>;</li>
+                <li><span class="highlight">Nota Kesepahaman</span>;</li>
+                <li>petunjuk-petunjuk pelaksanaan.</li>
+            </ul>
+
+            <p>Dengan demikian, kerja sama bukan sekadar hubungan informal, tetapi memiliki dasar kelembagaan dan mekanisme pelaksanaan.</p>
+        </section>
+
+        <!-- 11. Focal Point -->
+        <section id="focal">
+            <h2>11. Focal Point</h2>
+            <p>Untuk menjembatani kegiatan kerja sama dan koordinasi, termasuk pertukaran data bilateral maupun trilateral, dibentuk:</p>
+            <div class="important">
+                <p><strong>Focal Point.</strong></p>
+            </div>
+
+            <p><strong>Fungsi sederhana Focal Point:</strong></p>
+            <div class="box-info">
+                <p><strong>Focal Point = penghubung koordinasi</strong></p>
+            </div>
+
+            <p>Terutama dalam:</p>
+            <ul>
+                <li>komunikasi;</li>
+                <li>koordinasi;</li>
+                <li>pertukaran data;</li>
+                <li>pertukaran informasi;</li>
+                <li>kegiatan bilateral;</li>
+                <li>kegiatan trilateral.</li>
+            </ul>
+
+            <p><strong>Skema:</strong></p>
+            <div class="diagram">
+             BI
+              │
+              │
+        ┌─────┴─────┐
+        ↓           ↓
+       OJK         LPS
+        ↑           ↑
+        └─────┬─────┘
+              │
+         Focal Point
+              │
+      Pertukaran Data/
+         Informasi
+            </div>
+        </section>
+
+        <!-- 12. Koordinasi melalui KSSK -->
+        <section id="kssk">
+            <h2>12. Koordinasi melalui KSSK</h2>
+            <p>Dalam ruang lingkup yang lebih luas, BI juga berkoordinasi dengan:</p>
+            <ul>
+                <li>Kementerian Keuangan;</li>
+                <li>OJK;</li>
+                <li>LPS;</li>
+            </ul>
+            <p>dalam:</p>
+            <div class="important">
+                <p><strong>Komite Stabilitas Sistem Keuangan (KSSK).</strong></p>
+            </div>
+
+            <p>KSSK merupakan forum koordinasi yang sangat penting dalam menjaga stabilitas sistem keuangan dan menangani krisis.</p>
+        </section>
+
+        <!-- BAGIAN II -->
+        <div class="section-title">BAGIAN II: KEANGGOTAAN BI PADA FORUM INTERNASIONAL</div>
+
+        <!-- 13. Mengapa BI Aktif di Forum Internasional? -->
+        <section id="g20">
+            <h2>13. Mengapa BI Aktif di Forum Internasional?</h2>
+            <p>Krisis keuangan global <span class="highlight">2008</span> menunjukkan bahwa gangguan sistem keuangan dapat menyebar antarnegara.</p>
+
+            <p>Fenomena tersebut menunjukkan pentingnya:</p>
+            <div class="important">
+                <p><strong>koordinasi internasional.</strong></p>
+            </div>
+
+            <p>Karena sistem keuangan antarnegara saling terhubung, stabilitas domestik juga dipengaruhi oleh perkembangan global.</p>
+        </section>
+
+        <!-- 14. G20 dan Reformasi Keuangan Global -->
+        <section>
+            <h2>14. G20 dan Reformasi Keuangan Global</h2>
+            <p>Setelah krisis keuangan global 2008, <span class="highlight">G20</span> mendeklarasikan komitmen untuk melakukan reformasi sektor keuangan global.</p>
+
+            <p><strong>Tujuan utamanya:</strong></p>
+            <ol>
+                <li>memperkuat stabilitas sistem keuangan;</li>
+                <li>mengurangi peluang terjadinya krisis;</li>
+                <li>mengurangi dampak krisis apabila terjadi.</li>
+            </ol>
+
+            <p>Salah satu tonggak pentingnya adalah pembentukan:</p>
+            <div class="important">
+                <p><strong>Financial Stability Board (FSB).</strong></p>
+            </div>
+        </section>
+
+        <!-- 15-16. Financial Stability Board (FSB) -->
+        <section>
+            <h2>15. Financial Stability Board (FSB)</h2>
+
+            <h3>A. Pengertian Sederhana</h3>
+            <p>FSB merupakan forum internasional yang berperan dalam mengawal dan mendorong implementasi reformasi sektor keuangan global.</p>
+
+            <p>BI menjadi anggota FSB sejak:</p>
+            <div class="important">
+                <p><strong>2009</strong></p>
+            </div>
+
+            <p>Pada tahun:</p>
+            <div class="important">
+                <p><strong>2014</strong></p>
+            </div>
+            <p>partisipasi otoritas sektor keuangan Indonesia diperluas dengan melibatkan:</p>
+            <ul>
+                <li>Kementerian Keuangan;</li>
+                <li>OJK.</li>
+            </ul>
+
+            <h3>16. Peran Indonesia di FSB</h3>
+            <p>Partisipasi Indonesia dilakukan dalam berbagai struktur FSB, baik:</p>
+            <h4>Tingkat tinggi</h4>
+            <p>maupun</p>
+            <h4>Tingkat teknis.</h4>
+
+            <p>Penempatan dan partisipasi disesuaikan dengan:</p>
+            <div class="important">
+                <p><strong>relevansi kewenangan otoritas terhadap topik yang dibahas.</strong></p>
+            </div>
+
+            <p>Dengan demikian, tidak semua isu harus ditangani oleh satu otoritas saja.</p>
+        </section>
+
+        <!-- 17. Empat Agenda Utama Reformasi FSB -->
+        <section>
+            <h2>17. Empat Agenda Utama Reformasi FSB</h2>
+            <p>Materi menyebutkan <span class="highlight">4 agenda utama</span>:</p>
+
+            <h3>1. Memperkuat ketahanan lembaga keuangan</h3>
+            <p>Tujuannya agar lembaga keuangan lebih mampu menghadapi tekanan.</p>
+
+            <h3>2. Mengurangi masalah "Too Big to Fail"</h3>
+            <p>Mengatasi kondisi ketika suatu lembaga sangat besar sehingga kegagalannya dapat menimbulkan dampak sistemik.</p>
+
+            <h3>3. Memperluas pengawasan dan pengaturan</h3>
+            <p>Tidak hanya lembaga keuangan tradisional, tetapi juga:</p>
+            <div class="important">
+                <p><strong>market-based finance</strong></p>
+            </div>
+
+            <h3>4. Reformasi pasar OTC Derivatif</h3>
+            <p>OTC = <span class="highlight">Over The Counter</span>.</p>
+            <p>Fokusnya adalah memperkuat ketahanan dan transparansi pasar derivatif OTC.</p>
+        </section>
+
+        <!-- 18. Topik Lain yang Dibahas FSB -->
+        <section>
+            <h2>18. Topik Lain yang Dibahas FSB</h2>
+            <p>Selain empat agenda utama, materi juga menyebut:</p>
+            <ul>
+                <li>kebijakan makroprudensial;</li>
+                <li>manajemen risiko;</li>
+                <li>penjaminan deposito;</li>
+                <li>standar akuntansi;</li>
+                <li>correspondent banking;</li>
+                <li>misconduct risk;</li>
+                <li>fintech;</li>
+                <li>cyber risk;</li>
+                <li>cryptoasset;</li>
+                <li>sustainable finance.</li>
+            </ul>
+
+            <div class="box-info">
+                <p><strong>Cara memahami:</strong><br>
+                FSB tidak hanya melihat <strong>krisis yang sudah terjadi</strong>, tetapi juga:<br>
+                <strong>risiko baru yang berpotensi menjadi sumber tekanan sistem keuangan.</strong></p>
+            </div>
+        </section>
+
+        <!-- 19. FSB dan Risiko Baru -->
+        <section>
+            <h2>19. FSB dan Risiko Baru</h2>
+            <p>Perkembangan teknologi dan model bisnis baru menciptakan risiko baru.</p>
+
+            <p><strong>Contohnya:</strong></p>
+            <div class="diagram">
+Fintech
+   ↓
+Cyber Risk
+   ↓
+Cryptoasset
+   ↓
+Misconduct Risk
+   ↓
+Sustainable Finance
+   ↓
+Potensi dampak terhadap SSK
+            </div>
+
+            <p>Karena itu, pemantauan risiko harus terus berkembang.</p>
+        </section>
+
+        <!-- BAGIAN III -->
+        <div class="section-title">BAGIAN III: BASEL COMMITTEE ON BANKING SUPERVISION</div>
+
+        <!-- 20. BCBS -->
+        <section id="bcbs">
+            <h2>20. BCBS</h2>
+            <p><span class="highlight">Basel Committee on Banking Supervision (BCBS)</span> merupakan:</p>
+            <div class="important">
+                <p><strong>standard-setting body</strong> untuk regulasi prudensial perbankan.</p>
+            </div>
+
+            <p>Tujuannya adalah memperkuat:</p>
+            <ul>
+                <li>pengaturan;</li>
+                <li>pengawasan;</li>
+                <li>praktik perbankan global;</li>
+            </ul>
+            <p>dalam rangka menjaga stabilitas keuangan.</p>
+        </section>
+
+        <!-- 21. Siapa yang Mewakili Indonesia di BCBS? -->
+        <section>
+            <h2>21. Siapa yang Mewakili Indonesia di BCBS?</h2>
+            <p>Menurut materi:</p>
+            <div class="important">
+                <p><strong>BI dan OJK</strong></p>
+            </div>
+
+            <p>BI mewakili perspektif:</p>
+            <div class="important">
+                <p><strong>otoritas makroprudensial</strong></p>
+            </div>
+
+            <p>sedangkan OJK mewakili:</p>
+            <div class="important">
+                <p><strong>otoritas mikroprudensial sektor keuangan.</strong></p>
+            </div>
+
+            <p><strong>Skema:</strong></p>
+            <div class="diagram">
+           INDONESIA
+               │
+        ┌──────┴──────┐
+        ↓             ↓
+       BI             OJK
+        ↓             ↓
+Makroprudensial   Mikroprudensial
+        └──────┬──────┘
+               ↓
+              BCBS
+            </div>
+        </section>
+
+        <!-- 22. Basel III -->
+        <section>
+            <h2>22. Basel III</h2>
+            <p>Salah satu hasil penting reformasi prudensial perbankan adalah:</p>
+            <div class="important">
+                <p><strong>Basel III</strong></p>
+            </div>
+
+            <p>Dalam materi, elemen utama yang disebut adalah:</p>
+
+            <h3>A. Kerangka permodalan</h3>
+            <p>Bank harus memiliki kapasitas modal yang memadai terhadap risiko.</p>
+
+            <h3>B. Liquidity Coverage Ratio (LCR)</h3>
+            <p>LCR merupakan standar likuiditas untuk memastikan bank memiliki kemampuan menghadapi kebutuhan likuiditas dalam kondisi tekanan sesuai kerangka Basel.</p>
+
+            <p>Materi menyebut bahwa kerangka Basel III, termasuk permodalan dan LCR, telah diterapkan di sebagian besar yurisdiksi anggota, termasuk Indonesia.</p>
+        </section>
+
+        <!-- BAGIAN IV -->
+        <div class="section-title">BAGIAN IV: FORUM INTERNASIONAL LAIN</div>
+
+        <!-- 23. FSB Standing Committee on Assessment of Vulnerabilities (SCAV) -->
+        <section id="forum">
+            <h2>23. FSB Standing Committee on Assessment of Vulnerabilities (SCAV)</h2>
+            <p>SCAV merupakan forum yang beranggotakan bank sentral dari negara anggota FSB.</p>
+
+            <p>Fokus utamanya:</p>
+            <div class="important">
+                <p><strong>kerentanan perekonomian global dan transmisinya ke sektor keuangan.</strong></p>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br><strong>SCAV = Vulnerabilities</strong></p>
+            </div>
+        </section>
+
+        <!-- 24. FSB Standing Committee on Supervisory and Regulatory Cooperation (SRC) -->
+        <section>
+            <h2>24. FSB Standing Committee on Supervisory and Regulatory Cooperation (SRC)</h2>
+            <p>SRC beranggotakan:</p>
+            <ul>
+                <li>bank sentral;</li>
+                <li>otoritas pengawas;</li>
+                <li>otoritas pasar;</li>
+            </ul>
+            <p>dari negara G20 dan negara maju anggota FSB.</p>
+
+            <p><strong>Fokus:</strong></p>
+            <div class="important">
+                <p><strong>pengaturan dan pengawasan makroprudensial serta mikroprudensial.</strong></p>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br><strong>SRC = Supervisory & Regulatory Cooperation</strong></p>
+            </div>
+        </section>
+
+        <!-- 25. FSB Regional Consultative Groups Asia (RCG Asia) -->
+        <section>
+            <h2>25. FSB Regional Consultative Groups Asia (RCG Asia)</h2>
+            <p>RCG Asia melibatkan:</p>
+            <ul>
+                <li>bank sentral;</li>
+                <li>otoritas pengawas;</li>
+                <li>kementerian keuangan;</li>
+            </ul>
+            <p>baik dari anggota FSB maupun non-anggota FSB.</p>
+
+            <p><strong>Fungsi utamanya adalah</strong> <span class="highlight">outreach</span>.</p>
+
+            <p>Artinya, forum ini membantu:</p>
+            <ul>
+                <li>mengomunikasikan program kerja FSB;</li>
+                <li>melibatkan negara non-FSB;</li>
+                <li>membangun pemahaman bersama;</li>
+                <li>membahas isu strategis yang relevan bagi kawasan.</li>
+            </ul>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br><strong>RCG Asia = Outreach</strong></p>
+            </div>
+        </section>
+
+        <!-- 26. EMEAP-WGBS -->
+        <section>
+            <h2>26. EMEAP-WGBS</h2>
+            <p><span class="highlight">Executives' Meeting of East Asia Pacific Working Group on Banking Supervision (EMEAP-WGBS)</span> merupakan forum regional yang melibatkan bank sentral dan otoritas pengawas dari kawasan Asia Timur dan Pasifik.</p>
+
+            <p><strong>Negara yang disebut dalam materi:</strong></p>
+            <ul>
+                <li>Australia</li>
+                <li>Tiongkok</li>
+                <li>Hong Kong</li>
+                <li>Indonesia</li>
+                <li>Jepang</li>
+                <li>Korea</li>
+                <li>Malaysia</li>
+                <li>New Zealand</li>
+                <li>Filipina</li>
+                <li>Singapura</li>
+                <li>Thailand</li>
+            </ul>
+
+            <p>Fokusnya adalah memperkuat kerja sama antarotoritas sektor keuangan regional dan mendiskusikan isu stabilitas keuangan yang menjadi:</p>
+            <div class="important">
+                <p><strong>common interest</strong></p>
+            </div>
+        </section>
+
+        <!-- 27. Cara Membedakan Forum Internasional -->
+        <section>
+            <h2>27. Cara Membedakan Forum Internasional</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Forum</th>
+                            <th>Fokus Utama</th>
+                            <th>Kata Kunci</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>FSB</strong></td>
+                            <td>Reformasi dan stabilitas keuangan global</td>
+                            <td>Financial Stability</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BCBS</strong></td>
+                            <td>Regulasi prudensial perbankan</td>
+                            <td>Banking Standards</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SCAV</strong></td>
+                            <td>Kerentanan sistem</td>
+                            <td>Vulnerabilities</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SRC</strong></td>
+                            <td>Pengawasan & regulasi</td>
+                            <td>Supervisory/Regulatory</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RCG Asia</strong></td>
+                            <td>Outreach ke kawasan</td>
+                            <td>Outreach</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EMEAP-WGBS</strong></td>
+                            <td>Kerja sama perbankan regional</td>
+                            <td>Regional Banking</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FSAP</strong></td>
+                            <td>Asesmen sektor keuangan negara</td>
+                            <td>Assessment</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- BAGIAN V -->
+        <div class="section-title">BAGIAN V: FINANCIAL SECTOR ASSESSMENT PROGRAM (FSAP)</div>
+
+        <!-- 28. Apa Itu FSAP? -->
+        <section id="fsap">
+            <h2>28. Apa Itu FSAP?</h2>
+            <p><span class="highlight">Financial Sector Assessment Program (FSAP)</span> adalah mekanisme untuk menilai:</p>
+            <ul>
+                <li>stabilitas sektor keuangan;</li>
+                <li>kesehatan sektor keuangan;</li>
+                <li>risiko sistemik;</li>
+                <li>interkoneksitas antar sektor;</li>
+                <li>kemampuan otoritas;</li>
+                <li>pengembangan sektor keuangan.</li>
+            </ul>
+
+            <p>FSAP digagas oleh:</p>
+            <div class="important">
+                <p><strong>IMF dan World Bank</strong></p>
+            </div>
+            <p>pada tahun:</p>
+            <div class="important">
+                <p><strong>1999</strong></p>
+            </div>
+        </section>
+
+        <!-- 29. Mengapa FSAP Dibentuk? -->
+        <section>
+            <h2>29. Mengapa FSAP Dibentuk?</h2>
+            <p>Salah satu pembelajaran penting dari krisis keuangan adalah adanya:</p>
+            <div class="important">
+                <p><strong>contagion effect</strong></p>
+            </div>
+            <p>yaitu kondisi ketika tekanan sektor keuangan suatu negara dapat menyebar atau memberikan dampak ke negara lain.</p>
+
+            <p>Karena itu:</p>
+            <div class="diagram">
+Masalah Negara A
+       ↓
+Keterkaitan Keuangan
+       ↓
+Spillover
+       ↓
+Negara B/C/D
+       ↓
+Risiko Global
+            </div>
+
+            <p>FSAP membantu negara mengidentifikasi risiko tersebut secara lebih sistematis.</p>
+        </section>
+
+        <!-- 30. Tujuan FSAP -->
+        <section>
+            <h2>30. Tujuan FSAP</h2>
+            <p><strong>Tujuan utama FSAP adalah:</strong></p>
+            <div class="important">
+                <p><strong>mengidentifikasi kerentanan sektor keuangan sedini mungkin dan memberikan rekomendasi untuk memperkuat stabilitas serta pengembangan sektor keuangan.</strong></p>
+            </div>
+
+            <p>Fokusnya bukan hanya:</p>
+            <ul>
+                <li>❌ "Apakah negara sedang mengalami krisis?"</li>
+            </ul>
+            <p>tetapi juga:</p>
+            <ul>
+                <li>✅ "Apa sumber kerentanannya?"</li>
+                <li>✅ "Seberapa besar risikonya?"</li>
+                <li>✅ "Bagaimana risiko dapat menyebar?"</li>
+                <li>✅ "Apakah otoritas siap menghadapinya?"</li>
+                <li>✅ "Apa yang perlu diperbaiki?"</li>
+            </ul>
+        </section>
+
+        <!-- 31. Tiga Area Utama FSAP -->
+        <section>
+            <h2>31. Tiga Area Utama FSAP</h2>
+            <p>Ini merupakan bagian <span class="highlight">sangat penting untuk dihafalkan</span>.</p>
+
+            <div class="mnemonic">
+                <h3><strong>R-K-K</strong></h3>
+                <p><strong>R</strong> = Risiko jangka pendek<br>
+                <strong>K</strong> = Kerangka kebijakan stabilitas keuangan<br>
+                <strong>K</strong> = Kapabilitas otoritas mengelola krisis</p>
+            </div>
+        </section>
+
+        <!-- 32-34. Detail Area FSAP -->
+        <section>
+            <h2>32. Area 1 — Risiko Jangka Pendek</h2>
+            <p>FSAP mengidentifikasi:</p>
+            <ul>
+                <li>sumber risiko;</li>
+                <li>probabilitas risiko;</li>
+                <li>potensi dampak risiko.</li>
+            </ul>
+
+            <p>Fokusnya adalah risiko terhadap:</p>
+            <div class="important">
+                <p><strong>stabilitas sistem keuangan dalam jangka pendek.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>33. Area 2 — Kerangka Kebijakan Stabilitas Keuangan</h2>
+            <p>FSAP mengevaluasi ketahanan:</p>
+            <ul>
+                <li>sektor perbankan;</li>
+                <li>sektor keuangan non-bank.</li>
+            </ul>
+
+            <p>Penilaiannya mencakup antara lain:</p>
+
+            <h3>Stress Test</h3>
+            <p>Mengukur bagaimana sektor keuangan dapat bertahan apabila menghadapi skenario tekanan.</p>
+
+            <h3>Interconnectedness</h3>
+            <p>Menganalisis keterkaitan antar lembaga keuangan.</p>
+
+            <h3>Cross-Border Spillover</h3>
+            <p>Menganalisis potensi penularan risiko lintas negara.</p>
+
+            <p>Selain itu, dievaluasi:</p>
+            <ul>
+                <li>kebijakan mikroprudensial;</li>
+                <li>kebijakan makroprudensial;</li>
+                <li>kualitas pengawasan;</li>
+                <li>infrastruktur pasar keuangan;</li>
+                <li>kesesuaian dengan standar internasional.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>34. Area 3 — Kapabilitas Otoritas Mengelola Krisis</h2>
+            <p>FSAP juga menilai kemampuan:</p>
+            <ul>
+                <li>regulator;</li>
+                <li>pengawas;</li>
+                <li>pembuat kebijakan;</li>
+            </ul>
+            <p>dalam menangani krisis apabila risiko benar-benar terjadi.</p>
+
+            <p>Salah satu komponen penting adalah:</p>
+            <div class="important">
+                <p><strong>financial safety net</strong></p>
+            </div>
+            <p>atau jaring pengaman keuangan.</p>
+        </section>
+
+        <!-- 35. FSAP Tidak Hanya Menilai Stabilitas -->
+        <section>
+            <h2>35. FSAP Tidak Hanya Menilai Stabilitas</h2>
+            <p>FSAP juga melakukan asesmen terhadap:</p>
+            <div class="important">
+                <p><strong>pengembangan sektor keuangan.</strong></p>
+            </div>
+
+            <p><strong>Aspek yang dilihat antara lain:</strong></p>
+            <ul>
+                <li>institusi keuangan;</li>
+                <li>pasar keuangan;</li>
+                <li>infrastruktur;</li>
+                <li>inklusi keuangan;</li>
+                <li>sistem pembayaran;</li>
+                <li>aspek hukum;</li>
+                <li>daya saing;</li>
+                <li>efisiensi sektor keuangan;</li>
+                <li>kontribusi sektor keuangan terhadap pertumbuhan ekonomi.</li>
+            </ul>
+
+            <p>Jadi FSAP memiliki dua dimensi besar:</p>
+            <div class="diagram">
+                FSAP
+                 │
+       ┌─────────┴─────────┐
+       ↓                   ↓
+   STABILITAS          PENGEMBANGAN
+       │                   │
+ Risiko sistemik      Institusi
+ Stress test          Pasar
+ Interkoneksi         Infrastruktur
+ Safety net           Inklusi
+            </div>
+        </section>
+
+        <!-- 36. Partisipasi dalam FSAP -->
+        <section>
+            <h2>36. Partisipasi dalam FSAP</h2>
+            <p>Menurut materi:</p>
+            <p>Setiap negara dapat mengajukan permintaan untuk dilakukan FSAP.</p>
+            <p>Namun, terdapat juga negara-negara yang diwajibkan mengikuti FSAP secara berkala berdasarkan penilaian mengenai pentingnya sektor keuangannya terhadap stabilitas global.</p>
+
+            <p><strong>Perkembangan yang disebut dalam materi:</strong></p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tahun</th>
+                            <th>Perkembangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1999</td>
+                            <td>FSAP digagas IMF dan World Bank</td>
+                        </tr>
+                        <tr>
+                            <td>2010</td>
+                            <td>IMF menetapkan 25 negara dengan sektor keuangan yang dianggap systemically important untuk FSAP rutin</td>
+                        </tr>
+                        <tr>
+                            <td>2013</td>
+                            <td>Jumlah bertambah menjadi 29</td>
+                        </tr>
+                        <tr>
+                            <td>2021</td>
+                            <td>Hasil review memperluas cakupan menjadi 47 negara</td>
+                        </tr>
+                        <tr>
+                            <td>Setelah 2021</td>
+                            <td>Pelaksanaan negara yang termasuk cakupan wajib menggunakan pendekatan berbasis risiko</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 37. Indonesia dan FSAP -->
+        <section id="indonesia-fsap">
+            <h2>37. Indonesia dan FSAP</h2>
+            <p>Dalam materi terdapat perkembangan penting:</p>
+
+            <h3>Awalnya</h3>
+            <p>Berdasarkan asesmen tahun <span class="highlight">2010 dan 2013</span>, Indonesia disebut melaksanakan FSAP secara:</p>
+            <div class="important">
+                <p><strong>voluntary (sukarela)</strong></p>
+            </div>
+            <p>dan Indonesia berkomitmen melaksanakannya secara reguler setiap 5 tahun.</p>
+
+            <h3>Kemudian</h3>
+            <p>Setelah review IMF pada <span class="highlight">2021</span>, Indonesia masuk dalam cakupan negara yang wajib menjalani FSAP secara:</p>
+            <div class="important">
+                <p><strong>mandatory setiap lima tahun</strong></p>
+            </div>
+            <p>berdasarkan perluasan cakupan menjadi 47 negara.</p>
+
+            <p><strong>Jadi:</strong></p>
+            <div class="diagram">
+2010/2013
+    ↓
+Indonesia: Voluntary
+    ↓
+Komitmen periodik 5 tahun
+    ↓
+Review IMF 2021
+    ↓
+Indonesia masuk cakupan mandatory
+    ↓
+FSAP setiap 5 tahun
+            </div>
+        </section>
+
+        <!-- 38. Mengapa Indonesia Mengikuti FSAP? -->
+        <section id="manfaat">
+            <h2>38. Mengapa Indonesia Mengikuti FSAP?</h2>
+            <p>FSAP memberikan manfaat bagi Indonesia dalam mengidentifikasi:</p>
+            <ul>
+                <li>kerentanan sektor keuangan;</li>
+                <li>risiko sistemik;</li>
+                <li>interkoneksitas;</li>
+                <li>kelemahan regulasi;</li>
+                <li>kelemahan pengawasan;</li>
+                <li>kebutuhan penguatan financial safety net;</li>
+                <li>kebutuhan pengembangan pasar;</li>
+                <li>kebutuhan peningkatan inklusi keuangan.</li>
+            </ul>
+
+            <p>Hasil tersebut kemudian dapat menjadi masukan dalam perumusan:</p>
+            <div class="important">
+                <p><strong>policy response</strong></p>
+            </div>
+            <p>yang lebih tepat.</p>
+        </section>
+
+        <!-- 39. Rekomendasi FSAP -->
+        <section>
+            <h2>39. Rekomendasi FSAP</h2>
+            <p>Hasil FSAP dapat menghasilkan rekomendasi terkait:</p>
+
+            <h3>Regulasi</h3>
+            <p>Memperkuat kerangka regulasi sektor keuangan.</p>
+
+            <h3>Manajemen Risiko</h3>
+            <p>Meningkatkan kemampuan mengidentifikasi dan mengelola risiko.</p>
+
+            <h3>Pengawasan</h3>
+            <p>Memperkuat kualitas dan kapasitas pengawasan.</p>
+
+            <h3>Koordinasi</h3>
+            <p>Memperkuat koordinasi:</p>
+            <div class="important">
+                <p><strong>mikroprudensial ↔ makroprudensial</strong></p>
+            </div>
+
+            <h3>Manajemen Krisis</h3>
+            <p>Memperkuat:</p>
+            <ul>
+                <li>kerangka manajemen krisis;</li>
+                <li>financial safety nets.</li>
+            </ul>
+
+            <h3>Intermediasi dan Inklusi</h3>
+            <p>Mendorong:</p>
+            <ul>
+                <li>intermediasi;</li>
+                <li>inklusi keuangan.</li>
+            </ul>
+        </section>
+
+        <!-- 40. Manfaat Publikasi FSAP -->
+        <section>
+            <h2>40. Manfaat Publikasi FSAP</h2>
+            <p>Publikasi hasil FSAP dapat membantu meningkatkan pemahaman publik mengenai:</p>
+            <div class="important">
+                <p><strong>kondisi sektor keuangan domestik.</strong></p>
+            </div>
+
+            <p><strong>Dampaknya dapat berupa:</strong></p>
+            <div class="diagram">
+Publikasi hasil FSAP
+        ↓
+Informasi lebih transparan
+        ↓
+Kepercayaan meningkat
+        ↓
+Kepercayaan domestik & internasional
+        ↓
+Investasi / Capital Inflow
+        ↓
+Aktivitas perdagangan
+        ↓
+Pertumbuhan ekonomi
+            </div>
+
+            <p><em>Perlu dipahami bahwa ini merupakan <strong>jalur manfaat yang diharapkan</strong>, bukan hubungan otomatis bahwa setiap publikasi FSAP pasti langsung meningkatkan capital inflow.</em></p>
+        </section>
+
+        <!-- 41. Manfaat FSAP bagi Indonesia -->
+        <section>
+            <h2>41. Manfaat FSAP bagi Indonesia</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Manfaat</th>
+                            <th>Penjelasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Identifikasi risiko</td>
+                            <td>Menemukan kerentanan utama</td>
+                        </tr>
+                        <tr>
+                            <td>Penguatan stabilitas</td>
+                            <td>Memperkuat ketahanan sistem</td>
+                        </tr>
+                        <tr>
+                            <td>Rekomendasi kebijakan</td>
+                            <td>Menjadi referensi policy response</td>
+                        </tr>
+                        <tr>
+                            <td>Regulasi</td>
+                            <td>Mendorong penguatan kerangka regulasi</td>
+                        </tr>
+                        <tr>
+                            <td>Pengawasan</td>
+                            <td>Meningkatkan kualitas pengawasan</td>
+                        </tr>
+                        <tr>
+                            <td>Koordinasi</td>
+                            <td>Memperkuat koordinasi mikro-makroprudensial</td>
+                        </tr>
+                        <tr>
+                            <td>Manajemen krisis</td>
+                            <td>Memperkuat crisis management</td>
+                        </tr>
+                        <tr>
+                            <td>Safety net</td>
+                            <td>Memperkuat financial safety net</td>
+                        </tr>
+                        <tr>
+                            <td>Pasar keuangan</td>
+                            <td>Mendukung pendalaman pasar</td>
+                        </tr>
+                        <tr>
+                            <td>Inklusi</td>
+                            <td>Mendukung financial inclusion</td>
+                        </tr>
+                        <tr>
+                            <td>Kepercayaan</td>
+                            <td>Meningkatkan pemahaman dan kepercayaan publik</td>
+                        </tr>
+                        <tr>
+                            <td>Ekonomi</td>
+                            <td>Mendukung investasi, perdagangan, dan pertumbuhan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 42. Hubungan FSB – BCBS – FSAP -->
+        <section>
+            <h2>42. Hubungan FSB – BCBS – FSAP</h2>
+            <p>Ketiganya <span class="highlight">bukan hal yang sama</span>.</p>
+
+            <h3>FSB</h3>
+            <p>Fokus pada:</p>
+            <div class="important">
+                <p><strong>stabilitas dan reformasi sistem keuangan global</strong></p>
+            </div>
+
+            <h3>BCBS</h3>
+            <p>Fokus pada:</p>
+            <div class="important">
+                <p><strong>standar prudensial perbankan</strong></p>
+            </div>
+
+            <h3>FSAP</h3>
+            <p>Fokus pada:</p>
+            <div class="important">
+                <p><strong>asesmen stabilitas dan pengembangan sektor keuangan suatu negara</strong></p>
+            </div>
+
+            <p><strong>Diagram:</strong></p>
+            <div class="diagram">
+        STABILITAS KEUANGAN GLOBAL
+                  │
+        ┌─────────┴─────────┐
+        ↓                   ↓
+       FSB                 BCBS
+        │                   │
+ Reformasi global      Standar bank
+        │                   │
+        └─────────┬─────────┘
+                  ↓
+                FSAP
+                  ↓
+      Assessment negara
+                  ↓
+       Rekomendasi kebijakan
+            </div>
+        </section>
+
+        <!-- 43. Hubungan Forum Internasional dengan Stabilitas Domestik -->
+        <section>
+            <h2>43. Hubungan Forum Internasional dengan Stabilitas Domestik</h2>
+            <p><strong>Mengapa BI perlu aktif di forum internasional?</strong></p>
+            <p>Karena:</p>
+            <div class="important">
+                <p><strong>risiko keuangan tidak mengenal batas negara.</strong></p>
+            </div>
+
+            <p><strong>Misalnya:</strong></p>
+            <div class="diagram">
+Krisis global
+     ↓
+Pasar keuangan global
+     ↓
+Capital flow
+     ↓
+Nilai tukar
+     ↓
+Pasar obligasi
+     ↓
+Perbankan
+     ↓
+Perekonomian domestik
+            </div>
+
+            <p>Dengan aktif di forum internasional, Indonesia dapat:</p>
+            <ul>
+                <li>memperoleh informasi perkembangan risiko global;</li>
+                <li>berpartisipasi dalam penyusunan standar;</li>
+                <li>menyampaikan kepentingan Indonesia;</li>
+                <li>memperkuat koordinasi internasional;</li>
+                <li>meningkatkan ketahanan sistem keuangan domestik.</li>
+            </ul>
+        </section>
+
+        <!-- 44. Tabel Perbandingan Lengkap -->
+        <section>
+            <h2>44. Tabel Perbandingan Lengkap</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>FSB</th>
+                            <th>BCBS</th>
+                            <th>FSAP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sifat</td>
+                            <td>Forum internasional</td>
+                            <td>Standard-setting body</td>
+                            <td>Program asesmen</td>
+                        </tr>
+                        <tr>
+                            <td>Fokus</td>
+                            <td>Stabilitas keuangan global</td>
+                            <td>Prudensial perbankan</td>
+                            <td>Stabilitas & pengembangan sektor keuangan</td>
+                        </tr>
+                        <tr>
+                            <td>Pelaksana/anggota utama</td>
+                            <td>Otoritas keuangan anggota</td>
+                            <td>Otoritas perbankan/keuangan</td>
+                            <td>IMF & World Bank</td>
+                        </tr>
+                        <tr>
+                            <td>Fokus risiko</td>
+                            <td>Sistem keuangan global</td>
+                            <td>Risiko perbankan</td>
+                            <td>Risiko sistemik & interkoneksi</td>
+                        </tr>
+                        <tr>
+                            <td>Contoh</td>
+                            <td>Too Big to Fail</td>
+                            <td>Basel III</td>
+                            <td>Stress test</td>
+                        </tr>
+                        <tr>
+                            <td>Output utama</td>
+                            <td>Rekomendasi/reformasi global</td>
+                            <td>Standar prudensial</td>
+                            <td>Assessment & rekomendasi</td>
+                        </tr>
+                        <tr>
+                            <td>Indonesia</td>
+                            <td>BI, Kemenkeu, OJK</td>
+                            <td>BI & OJK</td>
+                            <td>Indonesia sebagai negara peserta</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 45. Peta Konsep Keseluruhan -->
+        <section>
+            <h2>45. Peta Konsep Keseluruhan</h2>
+            <div class="diagram">
+                   BANK INDONESIA
+                         │
+        ┌────────────────┼─────────────────┐
+        ↓                ↓                 ↓
+    DOMESTIK         INTERNASIONAL       FSAP
+        │                │                 │
+   ┌────┼────┐      ┌────┼─────┐      IMF + World Bank
+   ↓    ↓    ↓      ↓    ↓     ↓          │
+  OJK  LPS Kemenkeu FSB BCBS EMEAP         ↓
+   │    │    │                           Assessment
+   └────┼────┘                              │
+        ↓                                   ↓
+       KSSK                          Rekomendasi
+        │                                   │
+        ↓                                   ↓
+Stabilitas Sistem                    Penguatan SSK
+     Keuangan                              │
+        │                                   ↓
+        └───────────────→ Ketahanan & Pertumbuhan
+            </div>
+        </section>
+
+        <!-- 46. Hafalan Super Cepat -->
+        <section id="cheat">
+            <h2>46. Hafalan Super Cepat</h2>
+
+            <h3>Koordinasi domestik</h3>
+            <div class="mnemonic">
+                <h4><strong>O-L-K</strong></h4>
+                <p><strong>O</strong> = OJK → FKMM<br>
+                <strong>L</strong> = LPS → penjaminan & resolusi<br>
+                <strong>K</strong> = Kemenkeu → KSSK</p>
+            </div>
+
+            <h3>Penghubung koordinasi</h3>
+            <div class="important">
+                <p><strong>Focal Point = penghubung pertukaran data/informasi</strong></p>
+            </div>
+
+            <h3>Forum internasional</h3>
+            <div class="mnemonic">
+                <h4><strong>F-B-F</strong></h4>
+                <p><strong>F</strong> = FSB → Financial Stability<br>
+                <strong>B</strong> = BCBS → Banking Standards<br>
+                <strong>F</strong> = FSAP → Financial Assessment</p>
+            </div>
+
+            <h3>Forum FSB</h3>
+            <div class="mnemonic">
+                <h4><strong>S-S-R-E</strong></h4>
+                <p><strong>S</strong> = SCAV → System Vulnerabilities<br>
+                <strong>S</strong> = SRC → Supervision & Regulation<br>
+                <strong>R</strong> = RCG Asia → Regional Outreach<br>
+                <strong>E</strong> = EMEAP-WGBS → East Asia-Pacific Banking Supervision</p>
+            </div>
+
+            <h3>FSAP</h3>
+            <div class="mnemonic">
+                <h4><strong>R-K-K</strong></h4>
+                <p><strong>R</strong> = Risiko jangka pendek<br>
+                <strong>K</strong> = Kerangka kebijakan stabilitas<br>
+                <strong>K</strong> = Kapabilitas mengelola krisis</p>
+            </div>
+        </section>
+
+        <!-- 47. Latihan Soal Pilihan Ganda -->
+        <div class="quiz-section" id="latihan">
+            <h2>47. Latihan Soal Pilihan Ganda</h2>
+
+            <div class="question">
+                <h4>1. Koordinasi BI dengan otoritas lain dilakukan antara lain untuk...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menghapus seluruh kewenangan OJK</li>
+                    <li>B. Harmonisasi kebijakan dan pertukaran data/informasi</li>
+                    <li>C. Menentukan harga saham</li>
+                    <li>D. Menggantikan fungsi pemerintah</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>2. ADG BI ditempatkan sebagai ADK Ex-Officio di...</h4>
+                <ol class="options" type="A">
+                    <li>A. OJK dan LPS</li>
+                    <li>B. DPR dan OJK</li>
+                    <li>C. Kemenkeu dan DPR</li>
+                    <li>D. LPS dan BPS</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>3. Koordinasi BI-OJK dilakukan dalam kerangka...</h4>
+                <ol class="options" type="A">
+                    <li>A. KSSK</li>
+                    <li>B. FKMM</li>
+                    <li>C. FSAP</li>
+                    <li>D. FSB</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>4. Koordinasi BI-LPS dilakukan dalam kerangka...</h4>
+                <ol class="options" type="A">
+                    <li>A. Basel III</li>
+                    <li>B. Penjaminan dan resolusi bank</li>
+                    <li>C. Kebijakan fiskal</li>
+                    <li>D. Perdagangan internasional</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>5. Focal Point berfungsi terutama sebagai...</h4>
+                <ol class="options" type="A">
+                    <li>A. Bank komersial</li>
+                    <li>B. Penghubung koordinasi dan pertukaran data/informasi</li>
+                    <li>C. Lembaga resolusi</li>
+                    <li>D. Pengawas bank</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>6. FSB dibentuk dalam konteks reformasi sektor keuangan global setelah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Krisis 1997</li>
+                    <li>B. Krisis 2008</li>
+                    <li>C. Pandemi 2020</li>
+                    <li>D. Krisis 2023</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>7. BI menjadi anggota FSB sejak...</h4>
+                <ol class="options" type="A">
+                    <li>A. 1999</li>
+                    <li>B. 2005</li>
+                    <li>C. 2009</li>
+                    <li>D. 2014</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>8. Forum yang berfungsi sebagai standard-setting body untuk regulasi prudensial perbankan adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. FSB</li>
+                    <li>B. BCBS</li>
+                    <li>C. FSAP</li>
+                    <li>D. RCG Asia</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>9. SCAV berfokus pada...</h4>
+                <ol class="options" type="A">
+                    <li>A. Kerentanan ekonomi global dan transmisinya ke sektor keuangan</li>
+                    <li>B. Penjaminan deposito</li>
+                    <li>C. Resolusi bank Indonesia</li>
+                    <li>D. Sistem pembayaran domestik</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>10. RCG Asia terutama memiliki fungsi...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menentukan BI-Rate</li>
+                    <li>B. Outreach kepada negara non-FSB</li>
+                    <li>C. Menjamin simpanan</li>
+                    <li>D. Mengawasi bank Indonesia</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>11. FSAP digagas oleh...</h4>
+                <ol class="options" type="A">
+                    <li>A. BIS dan FSB</li>
+                    <li>B. IMF dan World Bank</li>
+                    <li>C. G20 dan OECD</li>
+                    <li>D. BI dan OJK</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>12. FSAP pertama kali digagas pada...</h4>
+                <ol class="options" type="A">
+                    <li>A. 1997</li>
+                    <li>B. 1999</li>
+                    <li>C. 2008</li>
+                    <li>D. 2010</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>13. Salah satu alasan penting pembentukan FSAP adalah adanya...</h4>
+                <ol class="options" type="A">
+                    <li>A. Fiscal multiplier</li>
+                    <li>B. Contagion effect</li>
+                    <li>C. Moral hazard saja</li>
+                    <li>D. Inflation targeting</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>14. Yang BUKAN merupakan tiga area utama FSAP dalam materi adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Risiko jangka pendek</li>
+                    <li>B. Kerangka kebijakan stabilitas keuangan</li>
+                    <li>C. Kapabilitas otoritas mengelola krisis</li>
+                    <li>D. Penentuan BI-Rate</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>D</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>15. Stress test dalam FSAP digunakan untuk...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menguji ketahanan sektor keuangan terhadap skenario tekanan</li>
+                    <li>B. Menentukan nilai tukar</li>
+                    <li>C. Menentukan pajak</li>
+                    <li>D. Menghitung GDP</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>16. Interconnectedness berarti...</h4>
+                <ol class="options" type="A">
+                    <li>A. Tingkat inflasi</li>
+                    <li>B. Keterkaitan antar lembaga/sektor keuangan</li>
+                    <li>C. Jumlah bank</li>
+                    <li>D. Tingkat suku bunga</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>17. Financial safety net berkaitan dengan...</h4>
+                <ol class="options" type="A">
+                    <li>A. Jaring pengaman keuangan</li>
+                    <li>B. Sistem perpajakan</li>
+                    <li>C. Perdagangan ekspor</li>
+                    <li>D. Pasar saham saja</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>18. Menurut materi, setelah review IMF tahun 2021, jumlah negara dalam cakupan systemically important financial sectors menjadi...</h4>
+                <ol class="options" type="A">
+                    <li>A. 25</li>
+                    <li>B. 29</li>
+                    <li>C. 40</li>
+                    <li>D. 47</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>D</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>19. Berdasarkan materi, status partisipasi Indonesia dalam FSAP setelah review 2021 adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Tidak boleh ikut</li>
+                    <li>B. Voluntary selamanya</li>
+                    <li>C. Mandatory setiap lima tahun</li>
+                    <li>D. Hanya jika terjadi krisis</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>20. Salah satu manfaat FSAP bagi Indonesia adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menggantikan seluruh otoritas domestik</li>
+                    <li>B. Memberikan rekomendasi untuk memperkuat stabilitas sistem keuangan</li>
+                    <li>C. Menentukan APBN</li>
+                    <li>D. Menentukan harga komoditas</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+        </div>
+
+        <!-- 48. Latihan FSAP -->
+        <section>
+            <h2>48. Latihan FSAP</h2>
+
+            <div class="question">
+                <h4>21. Sebutkan tiga area utama FSAP!</h4>
+                <div class="answer">
+                    <p><strong>Jawaban: R-K-K</strong></p>
+                    <ol>
+                        <li><strong>R</strong>isiko jangka pendek</li>
+                        <li><strong>K</strong>erangka kebijakan stabilitas keuangan</li>
+                        <li><strong>K</strong>apabilitas otoritas mengelola krisis</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>22. Apa perbedaan FSB dan FSAP?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p><strong>FSB</strong> berfokus pada reformasi dan stabilitas sistem keuangan <strong>global</strong> secara luas.</p>
+                    <p><strong>FSAP</strong> berfokus pada asesmen stabilitas dan pengembangan sektor keuangan suatu <strong>negara</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 49. Soal Esai -->
+        <section>
+            <h2>49. Soal Esai</h2>
+
+            <div class="question">
+                <h4>Soal 1</h4>
+                <p><strong>Jelaskan pentingnya koordinasi BI dengan OJK dan LPS!</strong></p>
+
+                <div class="answer">
+                    <p><strong>Kerangka jawaban:</strong></p>
+                    <p>Koordinasi diperlukan karena stabilitas sistem keuangan membutuhkan keterkaitan antara kebijakan makroprudensial, mikroprudensial, penjaminan, dan resolusi bank. BI dan OJK berkoordinasi dalam FKMM, sedangkan BI dan LPS bekerja sama dalam kerangka penjaminan dan resolusi bank. Koordinasi dilakukan melalui berbagai tingkat, didukung oleh Keputusan Bersama/Nota Kesepahaman dan Focal Point.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 2</h4>
+                <p><strong>Jelaskan perbedaan FSB dan BCBS!</strong></p>
+
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>FSB berfokus pada reformasi dan stabilitas sistem keuangan global secara luas, sedangkan BCBS berfokus pada penyusunan standar prudensial perbankan. Indonesia berpartisipasi dalam keduanya melalui BI, dengan keterlibatan OJK sesuai kewenangannya.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 3</h4>
+                <p><strong>Apa tujuan utama FSAP?</strong></p>
+
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>FSAP bertujuan menilai stabilitas dan kesehatan sektor keuangan secara komprehensif, mengidentifikasi risiko sistemik dan interkoneksitas, menilai kerangka kebijakan serta kapabilitas otoritas dalam mengelola krisis, sekaligus memberikan masukan bagi pengembangan sektor keuangan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 50. Ringkasan Akhir -->
+        <section id="ringkasan">
+            <h2>50. Ringkasan Akhir</h2>
+            <p>Jika materi ini harus diringkas menjadi satu alur:</p>
+            <div class="box-success">
+                <p><strong>BI tidak dapat menjaga stabilitas sistem keuangan sendirian.</strong></p>
+            </div>
+
+            <p><strong>Karena itu BI melakukan:</strong></p>
+
+            <h3>🏛️ Koordinasi domestik</h3>
+            <p>→ OJK, LPS, Kementerian Keuangan<br>
+            → FKMM, penjaminan/resolusi, KSSK<br>
+            → pertukaran data dan informasi<br>
+            → harmonisasi kebijakan.</p>
+
+            <p><strong>Kemudian BI juga melakukan:</strong></p>
+
+            <h3>🌍 Koordinasi internasional</h3>
+            <p>→ FSB<br>
+            → BCBS<br>
+            → SCAV<br>
+            → SRC<br>
+            → RCG Asia<br>
+            → EMEAP-WGBS.</p>
+
+            <p><strong>Selain itu terdapat:</strong></p>
+
+            <h3>📊 FSAP</h3>
+            <p>→ IMF + World Bank<br>
+            → menilai risiko<br>
+            → menilai kebijakan<br>
+            → menilai kemampuan krisis<br>
+            → menilai pengembangan sektor keuangan<br>
+            → menghasilkan rekomendasi<br>
+            → memperkuat stabilitas sistem keuangan Indonesia.</p>
+
+            <div class="cheat-sheet">
+                <h3>🎯 Formula hafalan terakhir:</h3>
+                <p><strong>DOMESTIK = OJK + LPS + KEMENKEU → KSSK</strong></p>
+                <p><strong>INTERNASIONAL = FSB + BCBS + FORUM REGIONAL</strong></p>
+                <p><strong>FSAP = ASSESSMENT → RISIKO + KEBIJAKAN + KRISIS + PENGEMBANGAN</strong></p>
+                <p><strong>TUJUAN AKHIR = SISTEM KEUANGAN YANG LEBIH STABIL, TANGGUH, DAN MAMPU MENDUKUNG PERTUMBUHAN EKONOMI.</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Modul Pembelajaran: Koordinasi Bank Indonesia dengan Lembaga/Otoritas Lain, Forum Internasional, dan FSAP | Dibuat untuk tujuan pendidikan</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], .quiz-section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const scrollPosition = window.scrollY + 120;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight functionality
+        const urlParams = new URLSearchParams(window.location.search);
+        const highlight = urlParams.get('highlight');
+
+        if (highlight) {
+            const elements = document.querySelectorAll('body *:not(script):not(style):not(nav):not(header):not(footer)');
+            elements.forEach(el => {
+                if (el.textContent && el.textContent.includes(highlight)) {
+                    const regex = new RegExp(highlight, 'gi');
+                    el.innerHTML = el.innerHTML.replace(regex, match =>
+                        `<span class="highlight">${match}</span>`
+                    );
+                }
+            });
+        }
+
+        // Add click effect to diagram sections
+        document.querySelectorAll('.diagram, .code-block').forEach(el => {
+            el.addEventListener('click', function() {
+                this.style.backgroundColor = '#f0f4f8';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 200);
+            });
+        });
+
+        // Expand/collapse for long tables
+        document.querySelectorAll('table').forEach(table => {
+            if (table.rows.length > 8) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'expandable-table';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+
+                const toggle = document.createElement('button');
+                toggle.textContent = 'Tampilkan Lebih Banyak';
+                toggle.className = 'toggle-table';
+                toggle.style.cssText = 'margin: 10px 0; padding: 8px 15px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer;';
+                wrapper.parentNode.insertBefore(toggle, wrapper);
+
+                toggle.addEventListener('click', () => {
+                    if (wrapper.style.maxHeight) {
+                        wrapper.style.maxHeight = null;
+                        toggle.textContent = 'Tampilkan Lebih Banyak';
+                    } else {
+                        wrapper.style.maxHeight = '400px';
+                        wrapper.style.overflow = 'hidden';
+                        toggle.textContent = 'Tampilkan Semua';
+                    }
+                });
+            }
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

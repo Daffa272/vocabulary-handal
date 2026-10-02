@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Structure - Subject-Verb Agreement</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin: 20px 0 12px 0;
+            font-size: 1.3rem;
+        }
+
+        .important {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .important p {
+            margin: 5px 0;
+        }
+
+        .tip {
+            background: #d1fae5;
+            border-left: 4px solid var(--success);
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .danger {
+            background: #fee2e2;
+            border-left: 4px solid var(--danger);
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+
+        .example {
+            background: #f1f5f9;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .example p {
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        code {
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .formula {
+            display: block;
+            background: #e0e7ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 30px 0;
+        }
+
+        .strategy {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid var(--success);
+        }
+
+        .step {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .step-number {
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .card {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+            header {
+                background: var(--primary);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="ai-generator.css">
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body data-ai-title="Subject-Verb Agreement" data-ai-topic="subject-verb agreement dalam TOEFL, singular dan plural subject, indefinite pronoun, collective noun, either-or, neither-nor, serta kata yang menjadi distractor">
+    <header>
+        <h1>📚 TOEFL Structure</h1>
+        <p><strong>Subject-Verb Agreement: Materi Lengkap</strong></p>
+    </header>
+
+    <div class="container">
+        <!-- Tujuan Utama -->
+        <div class="card">
+            <h2>🎯 Tujuan Utama</h2>
+            <p>Saat mengerjakan soal seperti ini, <strong>jangan langsung menerjemahkan kalimat</strong>. Gunakan urutan:</p>
+            <div class="formula">
+                1. Cari subject → 2. Tentukan singular/plural → 3. Cari tense → 4. Pilih verb
+            </div>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>The quality of the products ___ excellent.</p>
+                <p><span class="highlight">Jangan terkecoh oleh <code>products</code>.</span></p>
+                <ul>
+                    <li>Subject = <strong>The quality</strong></li>
+                    <li><code>of the products</code> = hanya keterangan</li>
+                    <li>quality = singular</li>
+                    <li>Maka → <strong>is</strong> ✅</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 1-3 -->
+        <div class="card">
+            <h2>1️⃣ Subject Singular → Singular Verb</h2>
+            <p>Subject singular menggunakan verb singular.</p>
+            <h3>Simple Present</h3>
+            <table>
+                <tr><th>Subject</th><th>Verb</th></tr>
+                <tr><td>I</td><td>work</td></tr>
+                <tr><td>You</td><td>work</td></tr>
+                <tr><td>We</td><td>work</td></tr>
+                <tr><td>They</td><td>work</td></tr>
+                <tr><td>He</td><td>works</td></tr>
+                <tr><td>She</td><td>works</td></tr>
+                <tr><td>It</td><td>works</td></tr>
+            </table>
+            <p>Untuk <strong>he/she/it</strong>, biasanya verb mendapat <code>-s/-es</code>.</p>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>The student <strong>works</strong> hard.</p>
+                <p>The manager <strong>arrives</strong> early.</p>
+            </div>
+            <div class="danger">
+                <p><strong>❌ Jebakan TOEFL:</strong></p>
+                <p>The quality of the products <strong>is</strong> excellent. ✅</p>
+                <p>~~The quality of the products <strong>are</strong> excellent.~~ ❌</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣ Subject Plural → Plural Verb</h2>
+            <p>Subject plural menggunakan plural verb.</p>
+            <div class="example">
+                <p>The students <strong>work</strong> hard.</p>
+                <p>The effects of pollution <strong>are</strong> serious.</p>
+            </div>
+            <p>Subject = <strong>effects</strong> → plural.</p>
+        </div>
+
+        <div class="card">
+            <h2>3️⃣ Jangan Terkecoh oleh <code>of + noun</code></h2>
+            <p>Ini salah satu <strong>jebakan paling sering muncul</strong>.</p>
+            <p><strong>Pola: Subject + of + noun + verb</strong></p>
+            <div class="example">
+                <p><strong>Contoh:</strong> The <strong>list</strong> of participants <strong>is</strong> available.</p>
+                <p>Subject = <strong>list</strong> → singular.</p>
+                <p>The <strong>effects</strong> of pollution <strong>are</strong> dangerous.</p>
+                <p>Subject = <strong>effects</strong> → plural.</p>
+            </div>
+            <div class="tip">
+                <strong>🚨 Rumus cepat: The X of Y + verb</strong><br>
+                Lihat <strong>X</strong>, bukan Y.
+            </div>
+        </div>
+
+        <!-- Section 4-5 -->
+        <div class="card">
+            <h2>4️⃣ <code>A Number of</code> vs <code>The Number of</code></h2>
+            <p>Ini <strong>sangat penting untuk TOEFL</strong>.</p>
+            <h3>A number of + plural noun → PLURAL VERB</h3>
+            <div class="example">
+                <p>A number of students <strong>are</strong> absent.</p>
+                <p>A number of researchers <strong>have</strong> participated.</p>
+            </div>
+            <h3>The number of + plural noun → SINGULAR VERB</h3>
+            <div class="example">
+                <p>The number of students <strong>is</strong> increasing.</p>
+                <p>The number of applicants <strong>has</strong> increased.</p>
+            </div>
+            <div class="tip">
+                <strong>🚀 Trik super cepat:</strong><br>
+                A number → ARE<br>
+                The number → IS
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>5️⃣ Indefinite Pronouns: <code>Everyone, Everybody, Each</code></h2>
+            <p>Kata-kata berikut dianggap <strong>singular</strong>:</p>
+            <ul>
+                <li>everyone, everybody, someone, somebody</li>
+                <li>anyone, anybody, no one, nobody</li>
+                <li>each, every</li>
+            </ul>
+            <div class="example">
+                <p>Everyone <strong>is</strong> ready.</p>
+                <p>Nobody <strong>knows</strong> the answer.</p>
+                <p>Each student <strong>has</strong> a book.</p>
+            </div>
+        </div>
+
+        <!-- Section 6-9 -->
+        <div class="card">
+            <h2>6️⃣ <code>Each of + Plural Noun</code> → Singular Verb</h2>
+            <div class="example">
+                <p>Each of the students <strong>has</strong> a computer.</p>
+                <p>Each of the participants <strong>is</strong> required to register.</p>
+            </div>
+            <div class="tip">
+                Cara cepat: Each of the students <strong>has</strong>... ✅
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>7️⃣ <code>Each A and Each B</code> → Singular Verb</h2>
+            <div class="example">
+                <p>Each student and each teacher <strong>is</strong> required to register.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>8️⃣ <code>And</code> Biasanya → Plural</h2>
+            <div class="example">
+                <p>John and Mary <strong>are</strong> students.</p>
+                <p>The manager and the employees <strong>have</strong> agreed.</p>
+            </div>
+            <div class="important">
+                <p><strong>🚨 Tetapi hati-hati:</strong></p>
+                <p>Bread and butter <strong>is</strong> my favorite breakfast.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>9️⃣ <code>Either...or</code> dan <code>Neither...nor</code></h2>
+            <p>Verb mengikuti <strong>subject yang paling dekat dengan verb</strong>.</p>
+            <div class="example">
+                <p>Either the teacher or the <strong>students are</strong> responsible.</p>
+                <p>Neither the manager nor the <strong>employees are</strong> available.</p>
+                <p>Neither the employees nor the <strong>manager is</strong> available.</p>
+            </div>
+            <div class="tip">
+                <strong>🚀 Trik TOEFL:</strong><br>
+                Lihat B! (subject terdekat dengan verb)
+            </div>
+        </div>
+
+        <!-- Section 10-13 -->
+        <div class="card">
+            <h2>🔟 <code>Together with</code>, <code>Along with</code>, <code>As well as</code></h2>
+            <p>Kata-kata ini <strong>tidak membuat subject utama menjadi plural</strong>.</p>
+            <div class="example">
+                <p>The manager, together with several employees, <strong>is</strong> attending.</p>
+                <p>The president, along with his advisors, <strong>is</strong> attending.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1️⃣1️⃣ Relative Clause: <code>Who / Which / That</code></h2>
+            <div class="example">
+                <p><strong>Plural:</strong> The students who <strong>participate</strong> in the program <strong>are</strong> required.</p>
+                <p><strong>Singular:</strong> The student who <strong>participates</strong> in the program <strong>is</strong> required.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1️⃣2️⃣ <code>One of + Plural Noun</code></h2>
+            <p><strong>Pola: One of + plural noun + singular verb</strong></p>
+            <div class="example">
+                <p>One of the students <strong>is</strong> absent.</p>
+                <p>One of the researchers <strong>has</strong> resigned.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1️⃣3️⃣ <code>One of the + plural noun + who...</code></h2>
+            <div class="example">
+                <p>She is one of the researchers who <strong>are</strong> responsible.</p>
+                <p>She is the only one of the researchers who <strong>is</strong> responsible.</p>
+            </div>
+        </div>
+
+        <!-- Section 14-15 -->
+        <div class="card">
+            <h2>1️⃣4️⃣ Percentage / Persentase</h2>
+            <p><strong>Pola: Percentage + of + noun + verb</strong></p>
+            <p>Verb mengikuti noun <strong>setelah <code>of</code></strong>.</p>
+            <h3>Singular/uncountable noun</h3>
+            <div class="example">
+                <p>Fifty percent of the <strong>water is</strong> polluted.</p>
+                <p>Thirty percent of the <strong>population has</strong> access.</p>
+            </div>
+            <h3>Plural noun</h3>
+            <div class="example">
+                <p>Fifty percent of the <strong>students are</strong> absent.</p>
+                <p>Thirty percent of the <strong>houses were</strong> damaged.</p>
+            </div>
+            <div class="tip">
+                <strong>🚀 Rumus super cepat:</strong><br>
+                50% of the <strong>students</strong> → <strong>are</strong><br>
+                50% of the <strong>water</strong> → <strong>is</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1️⃣5️⃣ <code>The Percentage of</code></h2>
+            <p><strong><code>the percentage</code> sendiri adalah subject singular</strong>.</p>
+            <div class="example">
+                <p>The percentage of students <strong>is</strong> increasing.</p>
+            </div>
+            <div class="important">
+                <p><strong>Bandingkan:</strong></p>
+                <p>Fifty percent of the students <strong>are</strong> absent. ✅</p>
+                <p>The percentage of students <strong>is</strong> increasing. ✅</p>
+            </div>
+        </div>
+
+        <!-- Section 16-19 -->
+        <div class="card">
+            <h2>1️⃣6️⃣ <code>All of</code>, <code>Some of</code>, <code>None of</code></h2>
+            <p>Verb mengikuti noun <strong>setelah <code>of</code></strong>.</p>
+            <div class="example">
+                <p>All of the <strong>information is</strong> useful.</p>
+                <p>All of the <strong>students are</strong> ready.</p>
+                <p>Some of the <strong>water is</strong> polluted.</p>
+                <p>Some of the <strong>students are</strong> absent.</p>
+                <p>None of the <strong>equipment is</strong> working.</p>
+                <p>None of the <strong>students are</strong> ready.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>1️⃣9️⃣ Uncountable Nouns</h2>
+            <p>Biasanya dianggap <strong>singular</strong>:</p>
+            <ul>
+                <li>information, equipment, furniture</li>
+                <li>advice, research, knowledge</li>
+                <li>news, money</li>
+            </ul>
+            <div class="example">
+                <p>The information <strong>is</strong> useful.</p>
+                <p>The equipment <strong>is</strong> expensive.</p>
+            </div>
+        </div>
+
+        <!-- Section 20-23 -->
+        <div class="card">
+            <h2>2️⃣0️⃣ <code>Piece(s) of Information</code></h2>
+            <div class="example">
+                <p>A piece of information <strong>is</strong> useful.</p>
+                <p>Several pieces of information <strong>are</strong> useful.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣1️⃣ <code>There is / There are</code></h2>
+            <div class="example">
+                <p>There <strong>is</strong> a student in the room.</p>
+                <p>There <strong>are</strong> several students in the room.</p>
+            </div>
+            <div class="tip">
+                <strong>🚀 Trik:</strong><br>
+                Setelah <code>there</code>, cari noun.<br>
+                There ___ <strong>a book</strong>... → <strong>is</strong><br>
+                There ___ <strong>many books</strong>... → <strong>are</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣2️⃣ Inversion</h2>
+            <p><strong>Pola: Place + verb + subject</strong></p>
+            <div class="example">
+                <p>On the table <strong>are</strong> several books.</p>
+                <p>Behind the building <strong>is</strong> a small laboratory.</p>
+            </div>
+            <p><strong>Cara:</strong> Cari subject <strong>setelah verb</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣3️⃣ <code>More Than One</code> vs <code>More Than Two</code></h2>
+            <div class="example">
+                <p>More than one student <strong>has</strong> complained. ✅</p>
+                <p>More than two students <strong>have</strong> complained. ✅</p>
+            </div>
+        </div>
+
+        <!-- Section 24-29 -->
+        <div class="card">
+            <h2>2️⃣4️⃣ Subject + Prepositional Phrase</h2>
+            <div class="example">
+                <p>The student <strong>in the classrooms</strong> <strong>is</strong> studying.</p>
+                <p>The students <strong>in the classroom</strong> <strong>are</strong> studying.</p>
+            </div>
+            <p><strong>Pola:</strong> Subject + in/on/at/with/of + noun + verb</p>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣7️⃣ <code>The Cost of A and B</code></h2>
+            <div class="example">
+                <p>The cost of transportation and accommodation <strong>is</strong> included.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣8️⃣ Collective Nouns</h2>
+            <p>Diperlakukan sebagai <strong>singular</strong>:</p>
+            <ul>
+                <li>team, family, committee, government</li>
+                <li>audience, class, group</li>
+            </ul>
+            <div class="example">
+                <p>The team <strong>is</strong> ready.</p>
+                <p>The committee <strong>has</strong> reached a decision.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2️⃣9️⃣ Subject Dipisahkan oleh Koma</h2>
+            <div class="example">
+                <p>The manager, together with his employees, <strong>is</strong> attending.</p>
+                <p>John, as well as his friends, <strong>has</strong> arrived.</p>
+            </div>
+            <p><strong>Frasa pengganggu:</strong> together with, along with, as well as, accompanied by, in addition to, including</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Ringkasan -->
+        <div class="card">
+            <h2>🧠 RINGKASAN SUPER CEPAT TOEFL</h2>
+            <table>
+                <tr><th>Pola</th><th>Verb</th></tr>
+                <tr><td>He/She/It</td><td><strong>singular</strong></td></tr>
+                <tr><td>They/We/Students</td><td><strong>plural</strong></td></tr>
+                <tr><td>The list <code>of students</code></td><td><strong>singular</strong></td></tr>
+                <tr><td>The number <code>of students</code></td><td><strong>singular</strong></td></tr>
+                <tr><td>A number <code>of students</code></td><td><strong>plural</strong></td></tr>
+                <tr><td>Each of the students</td><td><strong>singular</strong></td></tr>
+                <tr><td>Everyone/Everybody/Someone</td><td><strong>singular</strong></td></tr>
+                <tr><td>One of the students</td><td><strong>singular</strong></td></tr>
+                <tr><td>Each A and each B</td><td><strong>singular</strong></td></tr>
+                <tr><td>A and B</td><td><strong>plural</strong></td></tr>
+                <tr><td>Either A or B</td><td>ikut <strong>B</strong></td></tr>
+                <tr><td>Neither A nor B</td><td>ikut <strong>B</strong></td></tr>
+                <tr><td>Subject + together with B</td><td>ikut <strong>Subject</strong></td></tr>
+                <tr><td>50% of water</td><td><strong>singular</strong></td></tr>
+                <tr><td>50% of students</td><td><strong>plural</strong></td></tr>
+                <tr><td>The percentage of students</td><td><strong>singular</strong></td></tr>
+                <tr><td>All/Some/None of + noun</td><td>ikut noun <strong>setelah OF</strong></td></tr>
+                <tr><td>More than one student</td><td><strong>singular</strong></td></tr>
+                <tr><td>More than two students</td><td><strong>plural</strong></td></tr>
+                <tr><td>There is + singular</td><td><strong>singular</strong></td></tr>
+                <tr><td>There are + plural</td><td><strong>plural</strong></td></tr>
+                <tr><td>Inversion</td><td>cari subject <strong>setelah verb</strong></td></tr>
+            </table>
+        </div>
+
+        <!-- Strategi -->
+        <div class="strategy">
+            <h2>⚡ STRATEGI 5 DETIK SAAT TOEFL</h2>
+            <div class="step">
+                <span class="step-number">Contoh:</span> The quality of the materials used in these buildings ___ much better.
+            </div>
+            <div class="step">
+                <span class="step-number">Step 1</span> — Coret bagian pengganggu: The <strong>quality</strong> ~~of the materials...~~ ___
+            </div>
+            <div class="step">
+                <span class="step-number">Step 2</span> — Tentukan subject: <strong>quality</strong> → Singular.
+            </div>
+            <div class="step">
+                <span class="step-number">Step 3</span> — Pilih verb: <strong>is</strong> ✅
+            </div>
+        </div>
+
+        <!-- Peta Materi -->
+        <div class="card">
+            <h2>🎯 PETA MATERI</h2>
+            <h3>🟢 LEVEL 1</h3>
+            <ul>
+                <li>Singular vs plural</li>
+                <li><code>and</code></li>
+                <li><code>of + noun</code></li>
+                <li>percentage</li>
+                <li>all/some/none</li>
+                <li>there is/are</li>
+            </ul>
+            <h3>🟡 LEVEL 2</h3>
+            <ul>
+                <li>A number vs the number</li>
+                <li>each</li>
+                <li>either/neither</li>
+                <li>together with/along with</li>
+                <li>inversion</li>
+                <li>more than one</li>
+                <li>one of</li>
+                <li>relative clause</li>
+            </ul>
+            <h3>🔴 LEVEL 3</h3>
+            <ul>
+                <li>Subject + multiple modifiers</li>
+                <li>embedded clauses</li>
+                <li>complex inversion</li>
+                <li>reduced clauses</li>
+                <li>collective nouns</li>
+                <li>tricky relative clauses</li>
+                <li>multiple distractor nouns</li>
+            </ul>
+        </div>
+
+        <footer style="text-align: center; padding: 30px; color: var(--text-light); font-size: 0.9rem;">
+            <p>📚 <strong>TOEFL Structure - Subject-Verb Agreement Guide</strong></p>
+        </footer>
+    </div>
+    <script src="ai-generator.js"></script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

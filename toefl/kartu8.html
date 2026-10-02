@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Structure: Verb & Tenses</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin: 20px 0 12px 0;
+            font-size: 1.3rem;
+        }
+
+        .important {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .tip {
+            background: #d1fae5;
+            border-left: 4px solid var(--success);
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .danger {
+            background: #fee2e2;
+            border-left: 4px solid var(--danger);
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+
+        .example {
+            background: #f1f5f9;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        code {
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula {
+            display: block;
+            background: #e0e7ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 30px 0;
+        }
+
+        .strategy {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid var(--success);
+        }
+
+        .step {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .step-number {
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .cheat-sheet {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .cheat-item {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            header h1 { font-size: 1.8rem; }
+            .card { padding: 15px; }
+        }
+
+        @media print {
+            body { background: white; }
+            .card { box-shadow: none; border-left: none; page-break-inside: avoid; }
+            header { background: var(--primary); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+    <link rel="stylesheet" href="ai-generator.css">
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body data-ai-title="Verb & Tenses" data-ai-topic="jenis verb, penggunaan tenses Bahasa Inggris, simple present, simple past, present perfect, past perfect, future, dan penanda waktu dalam soal TOEFL">
+    <header>
+        <h1>📚 TOEFL Structure: Verb & Tenses</h1>
+        <p><strong>Panduan Lengkap untuk Mengenali dan Menggunakan Tense dengan Tepat</strong></p>
+    </header>
+
+    <div class="container">
+        <!-- Konsep Dasar -->
+        <div class="card">
+            <h2>🎯 Konsep Dasar: Cari "Verb Utama" Dulu</h2>
+            <p>Dalam soal TOEFL Structure, langkah pertama adalah melihat bagian yang kosong:</p>
+            <div class="example">
+                <p>The company _____ three new branches since it expanded.</p>
+            </div>
+            <p><strong>Jangan langsung melihat semua kata.</strong> Tanyakan:</p>
+            <ul>
+                <li>"Kata kerja apa yang dibutuhkan?"</li>
+                <li>Cek 3 hal:
+                    <ul>
+                        <li><strong>Subject</strong> → siapa yang melakukan?</li>
+                        <li><strong>Time signal</strong> → kapan terjadinya?</li>
+                        <li><strong>Konteks</strong> → kejadian berlangsung, sudah selesai, atau masih berlangsung?</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>The company _____ three new branches since 2022.</p>
+                <p>Subject = <strong>The company</strong></p>
+                <p>Time signal = <strong>since 2022</strong></p>
+                <p>Maka: <strong>The company has opened three new branches since 2022.</strong> ✅</p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Simple Present -->
+        <div class="card">
+            <h2>2️⃣ Simple Present</h2>
+            <h3>Fungsi</h3>
+            <p>Digunakan untuk:</p>
+            <ul>
+                <li>kebiasaan</li>
+                <li>fakta</li>
+                <li>kondisi umum</li>
+                <li>aktivitas yang berulang</li>
+                <li>sesuatu yang biasanya terjadi</li>
+            </ul>
+            <h3>Rumus</h3>
+            <table>
+                <tr><th>Subject</th><th>Verb</th></tr>
+                <tr><td>I/You/We/They</td><td>V1</td></tr>
+                <tr><td>He/She/It</td><td>V1 + <strong>s/es</strong></td></tr>
+            </table>
+            <div class="example">
+                <p>They <strong>work</strong>.</p>
+                <p>She <strong>works</strong>.</p>
+            </div>
+            <h3>Time signal</h3>
+            <ul>
+                <li>every day</li>
+                <li>every morning</li>
+                <li>usually</li>
+                <li>generally</li>
+                <li>often</li>
+                <li>always</li>
+                <li>normally</li>
+                <li>regularly</li>
+            </ul>
+            <div class="example">
+                <p><strong>Contoh dari latihan:</strong></p>
+                <p>The professor usually _____ students to use reliable sources.</p>
+                <p>(A) encourage &nbsp;&nbsp; (B) encouraged &nbsp;&nbsp; (C) has encouraged &nbsp;&nbsp; (D) <strong>encourages</strong> ✅</p>
+                <p>Ada <strong>usually</strong> → Simple Present.</p>
+                <p>Subject = The professor → singular.</p>
+                <p>Maka verb harus: <strong>encourages</strong></p>
+            </div>
+            <div class="danger">
+                <p><strong>⚠️ Jebakan TOEFL:</strong></p>
+                <p>Jangan lupa <strong>-s/-es</strong>.</p>
+                <p>The company <strong>develops</strong> software. ✅</p>
+                <p>The companies <strong>develop</strong> software. ✅</p>
+            </div>
+        </div>
+
+        <!-- Simple Past -->
+        <div class="card">
+            <h2>3️⃣ Simple Past</h2>
+            <h3>Fungsi</h3>
+            <p>Digunakan untuk kejadian yang:</p>
+            <ul>
+                <li>terjadi di masa lalu</li>
+                <li>sudah selesai</li>
+            </ul>
+            <h3>Rumus</h3>
+            <p><strong>Subject + V2</strong></p>
+            <div class="example">
+                <p>The company <strong>launched</strong> a new product.</p>
+            </div>
+            <h3>Time signal</h3>
+            <ul>
+                <li>yesterday</li>
+                <li>last week / last year / last month</li>
+                <li>in 2020 / in 2019</li>
+                <li>two years ago</li>
+                <li>earlier this year (jika periode yang dimaksud sudah selesai)</li>
+            </ul>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>The company _____ its first sustainability report in 2021.</p>
+                <p>(A) publishes &nbsp;&nbsp; (B) has published &nbsp;&nbsp; (C) <strong>published</strong> ✅ &nbsp;&nbsp; (D) is publishing</p>
+                <p><strong>in 2021</strong> → waktu spesifik yang sudah lewat.</p>
+                <p>Jadi: <strong>published</strong></p>
+            </div>
+        </div>
+
+        <!-- Present Perfect -->
+        <div class="card">
+            <h2>4️⃣ Present Perfect</h2>
+            <p>Ini salah satu tense <strong>paling penting</strong> dalam soal TOEFL.</p>
+            <h3>Rumus</h3>
+            <table>
+                <tr><th>Subject</th><th>Auxiliary</th></tr>
+                <tr><td>I/You/We/They</td><td><strong>have</strong> + V3</td></tr>
+                <tr><td>He/She/It</td><td><strong>has</strong> + V3</td></tr>
+            </table>
+            <div class="example">
+                <p>They <strong>have developed</strong> a new system.</p>
+                <p>The company <strong>has developed</strong> a new system.</p>
+            </div>
+            <h3>Kapan menggunakan Present Perfect?</h3>
+            <h4>A. Since</h4>
+            <ul>
+                <li>since 2020</li>
+                <li>since Monday</li>
+                <li>since January</li>
+                <li>since the company was founded</li>
+            </ul>
+            <div class="example">
+                <p>The company <strong>has operated</strong> since 2020.</p>
+                <p>Maknanya: <strong>mulai 2020 dan masih relevan/berlangsung sampai sekarang.</strong></p>
+            </div>
+            <h4>B. For</h4>
+            <ul>
+                <li>for five years</li>
+                <li>for several months</li>
+                <li>for decades</li>
+                <li>for a long time</li>
+            </ul>
+            <div class="example">
+                <p>Scientists <strong>have studied</strong> climate change for decades.</p>
+            </div>
+            <h4>C. Recently</h4>
+            <div class="example">
+                <p>Researchers <strong>have discovered</strong> several new applications recently.</p>
+            </div>
+            <h4>D. Over the past...</h4>
+            <ul>
+                <li>over the past decade</li>
+                <li>over the past few years</li>
+            </ul>
+            <div class="example">
+                <p>Digital payment usage <strong>has increased</strong> over the past decade.</p>
+            </div>
+            <p>Ini adalah <strong>jebakan nomor 15</strong> yang tadi kamu salah.</p>
+        </div>
+
+        <!-- Beda Simple Past vs Present Perfect -->
+        <div class="card">
+            <h2>5️⃣ Bedakan Simple Past vs Present Perfect</h2>
+            <p>Ini <strong>wajib banget dikuasai</strong>.</p>
+            <h3>Simple Past</h3>
+            <p><strong>Waktu sudah selesai dan spesifik.</strong></p>
+            <div class="example">
+                <p>The company <strong>opened</strong> a branch last year.</p>
+            </div>
+            <h3>Present Perfect</h3>
+            <p><strong>Periode masa lalu masih terhubung dengan sekarang.</strong></p>
+            <div class="example">
+                <p>The company <strong>has opened</strong> several branches over the past decade.</p>
+            </div>
+            <h3>Perbandingan</h3>
+            <table>
+                <tr><th>Simple Past</th><th>Present Perfect</th></tr>
+                <tr><td>yesterday</td><td>recently</td></tr>
+                <tr><td>last year</td><td>since 2020</td></tr>
+                <tr><td>last month</td><td>for five years</td></tr>
+                <tr><td>in 2020</td><td>over the past decade</td></tr>
+                <tr><td>two years ago</td><td>so far</td></tr>
+                <tr><td>in 2019</td><td>until now</td></tr>
+            </table>
+            <div class="tip">
+                <strong>🚀 Shortcut TOEFL:</strong><br>
+                Kalau melihat: <strong>since / for / recently / over the past...</strong><br>
+                langsung curigai: <strong>HAVE/HAS + V3</strong>
+            </div>
+        </div>
+
+        <!-- Present Continuous -->
+        <div class="card">
+            <h2>6️⃣ Present Continuous</h2>
+            <h3>Rumus</h3>
+            <p><strong>Subject + am/is/are + V-ing</strong></p>
+            <div class="example">
+                <p>I <strong>am working</strong>.</p>
+                <p>She <strong>is working</strong>.</p>
+                <p>They <strong>are working</strong>.</p>
+            </div>
+            <h3>Fungsi</h3>
+            <p>Sesuatu yang <strong>sedang terjadi sekarang</strong>.</p>
+            <h3>Time signal</h3>
+            <ul>
+                <li>now</li>
+                <li>currently</li>
+                <li>at the moment</li>
+                <li>right now</li>
+                <li>these days (tergantung konteks)</li>
+            </ul>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>Currently, the government _____ several programs.</p>
+                <p>(A) develops &nbsp;&nbsp; (B) developed &nbsp;&nbsp; (C) has developed &nbsp;&nbsp; (D) <strong>is developing</strong> ✅</p>
+                <p>Ada: <strong>Currently</strong> → sedang berlangsung.</p>
+            </div>
+        </div>
+
+        <!-- Past Continuous -->
+        <div class="card">
+            <h2>7️⃣ Past Continuous</h2>
+            <h3>Rumus</h3>
+            <p><strong>was/were + V-ing</strong></p>
+            <table>
+                <tr><th>Subject</th><th>Auxiliary</th></tr>
+                <tr><td>I/He/She/It</td><td><strong>was</strong></td></tr>
+                <tr><td>You/We/They</td><td><strong>were</strong></td></tr>
+            </table>
+            <div class="example">
+                <p>She <strong>was working</strong>.</p>
+                <p>They <strong>were working</strong>.</p>
+            </div>
+            <h3>Pola TOEFL yang sangat sering</h3>
+            <ul>
+                <li><strong>While + Past Continuous</strong></li>
+                <li><strong>When + kejadian yang memotong</strong></li>
+            </ul>
+            <div class="example">
+                <p>While the company <strong>was preparing</strong> the report, the CEO called.</p>
+                <p>When the manager arrived, the employees <strong>were preparing</strong> the report.</p>
+            </div>
+            <p><strong>Artinya:</strong> aktivitas sedang berlangsung → kejadian lain terjadi.</p>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>When the electricity went out, the engineers _____ the system.</p>
+                <p>Jawaban: <strong>were testing</strong> ✅</p>
+                <p>Karena <strong>testing</strong> sedang berlangsung ketika listrik mati.</p>
+            </div>
+        </div>
+
+        <!-- Past Perfect -->
+        <div class="card">
+            <h2>8️⃣ Past Perfect</h2>
+            <h3>Rumus</h3>
+            <p><strong>Subject + had + V3</strong></p>
+            <p>Semua subject menggunakan <strong>had</strong>.</p>
+            <div class="example">
+                <p>I <strong>had worked</strong>.</p>
+                <p>She <strong>had worked</strong>.</p>
+                <p>They <strong>had worked</strong>.</p>
+            </div>
+            <h3>Fungsi</h3>
+            <p>Ada dua kejadian di masa lalu, dan kita ingin menunjukkan <strong>mana yang terjadi lebih dulu</strong>.</p>
+            <h3>Pola</h3>
+            <p><strong>Past Perfect → Simple Past</strong></p>
+            <div class="example">
+                <p>The auditors <strong>arrived</strong>.</p>
+                <p>The accounting department <strong>had prepared</strong> the documents.</p>
+            </div>
+            <p><strong>Urutannya:</strong></p>
+            <ol>
+                <li>Department prepared documents</li>
+                <li>Auditors arrived</li>
+            </ol>
+            <p>Maka:</p>
+            <div class="example">
+                <p>By the time the auditors arrived, the accounting department <strong>had prepared</strong> all the documents. ✅</p>
+            </div>
+        </div>
+
+        <!-- Before & By the Time -->
+        <div class="card">
+            <h2>9️⃣ <code>Before</code> dan <code>By the Time</code></h2>
+            <p>Ini sering menjadi sinyal <strong>Past Perfect</strong>.</p>
+            <h3>Before</h3>
+            <div class="example">
+                <p><strong>Before</strong> the meeting started, the director <strong>had reviewed</strong> the report.</p>
+            </div>
+            <p><strong>Urutan:</strong> had reviewed → meeting started</p>
+            <h3>By the time</h3>
+            <div class="example">
+                <p><strong>By the time</strong> the manager arrived, the employees <strong>had finished</strong> the work.</p>
+            </div>
+            <p>Artinya pekerjaan sudah selesai <strong>sebelum</strong> manager datang.</p>
+            <div class="tip">
+                <strong>🚀 Shortcut:</strong><br>
+                Kalau menemukan: <strong>By the time + V2</strong><br>
+                periksa kemungkinan: <strong>had + V3</strong>
+            </div>
+        </div>
+
+        <!-- Future Simple -->
+        <div class="card">
+            <h2>🔟 Future Simple</h2>
+            <h3>Rumus</h3>
+            <p><strong>will + V1</strong></p>
+            <div class="example">
+                <p>The company <strong>will expand</strong> next year.</p>
+            </div>
+            <h3>Time signal</h3>
+            <ul>
+                <li>tomorrow</li>
+                <li>next week / next year</li>
+                <li>in the future</li>
+                <li>by 2030 (hati-hati, bisa Future Perfect)</li>
+            </ul>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>The government _____ a new policy next year.</p>
+                <p>→ <strong>will introduce</strong> ✅</p>
+            </div>
+        </div>
+
+        <!-- Future Perfect -->
+        <div class="card">
+            <h2>1️⃣1️⃣ Future Perfect</h2>
+            <p>Ini level sedikit lebih tinggi.</p>
+            <h3>Rumus</h3>
+            <p><strong>will have + V3</strong></p>
+            <div class="example">
+                <p>The company <strong>will have completed</strong> the project by 2030.</p>
+            </div>
+            <p>Artinya: <strong>pada 2030, pekerjaan tersebut sudah selesai.</strong></p>
+            <h3>Signal</h3>
+            <ul>
+                <li>by + future time</li>
+            </ul>
+            <div class="example">
+                <p>by 2030</p>
+                <p>by next year</p>
+                <p>by the end of this year</p>
+                <p>by next month</p>
+            </div>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>By the end of this year, the company _____ its carbon emissions by 30 percent.</p>
+                <p>Jawaban: <strong>will have reduced</strong> ✅</p>
+            </div>
+        </div>
+
+        <!-- Present Perfect Continuous -->
+        <div class="card">
+            <h2>1️⃣2️⃣ Present Perfect Continuous</h2>
+            <h3>Rumus</h3>
+            <p><strong>have/has been + V-ing</strong></p>
+            <div class="example">
+                <p>Researchers <strong>have been developing</strong> new technology for many years.</p>
+            </div>
+            <h3>Fungsi</h3>
+            <p>Aktivitas:</p>
+            <ul>
+                <li>dimulai di masa lalu</li>
+                <li>berlangsung selama periode tertentu</li>
+                <li>masih berlangsung atau baru saja berlangsung</li>
+            </ul>
+            <h3>Signal</h3>
+            <p>Biasanya:</p>
+            <ul>
+                <li>for + duration</li>
+                <li>since + starting point</li>
+            </ul>
+            <div class="example">
+                <p>Researchers <strong>have been developing</strong> new methods for many years.</p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Ringkasan Semua Tense -->
+        <div class="card">
+            <h2>🧠 Ringkasan Semua Tense</h2>
+            <table>
+                <tr><th>Tense</th><th>Rumus</th><th>Signal utama</th></tr>
+                <tr><td><strong>Simple Present</strong></td><td>V1/V1+s</td><td>usually, every day</td></tr>
+                <tr><td><strong>Simple Past</strong></td><td>V2</td><td>yesterday, last year</td></tr>
+                <tr><td><strong>Present Perfect</strong></td><td>have/has + V3</td><td>since, for, recently</td></tr>
+                <tr><td><strong>Present Continuous</strong></td><td>am/is/are + V-ing</td><td>now, currently</td></tr>
+                <tr><td><strong>Past Continuous</strong></td><td>was/were + V-ing</td><td>while, when</td></tr>
+                <tr><td><strong>Past Perfect</strong></td><td>had + V3</td><td>before, by the time</td></tr>
+                <tr><td><strong>Future Simple</strong></td><td>will + V1</td><td>tomorrow, next year</td></tr>
+                <tr><td><strong>Future Perfect</strong></td><td>will have + V3</td><td>by 2030</td></tr>
+                <tr><td><strong>Present Perfect Continuous</strong></td><td>have/has been + V-ing</td><td>for years, since</td></tr>
+            </table>
+        </div>
+
+        <!-- Strategi Mengerjakan Soal -->
+        <div class="strategy">
+            <h2>🎯 Strategi Mengerjakan Soal TOEFL</h2>
+            <p>Daripada membaca kalimat dari awal sampai akhir dan menerjemahkannya, gunakan <strong>4 langkah</strong>.</p>
+            <div class="step">
+                <span class="step-number">STEP 1</span> — Cari subject
+            </div>
+            <div class="example">
+                <p>The number of electric vehicles _____ rapidly.</p>
+                <p>Subject sebenarnya: <strong>The number</strong> (Bukan: electric vehicles)</p>
+                <p>Karena <strong>the number</strong> = singular.</p>
+                <p>Maka: <strong>has increased</strong> ✅</p>
+            </div>
+            <div class="step">
+                <span class="step-number">STEP 2</span> — Cari time signal
+            </div>
+            <p>Cari kata seperti:</p>
+            <div class="example">
+                <p>since, for, recently, yesterday, last year, currently, usually, while, before, by</p>
+            </div>
+            <p>Ini sering <strong>langsung memberi tahu tense</strong>.</p>
+            <div class="step">
+                <span class="step-number">STEP 3</span> — Tentukan waktunya
+            </div>
+            <p>Tanyakan: "<strong>Ini terjadi kapan?</strong>"</p>
+            <div class="example">
+                <p>Since 2022 → mulai masa lalu → sekarang → <strong>Present Perfect</strong></p>
+            </div>
+            <div class="step">
+                <span class="step-number">STEP 4</span> — Cocokkan bentuk verb
+            </div>
+            <div class="example">
+                <p><strong>Contoh:</strong></p>
+                <p>The company _____ software since 2020.</p>
+                <p>Pilihan: (A) develop &nbsp; (B) develops &nbsp; (C) <strong>has developed</strong> ✅ &nbsp; (D) is developing</p>
+                <p><strong>since</strong> → have/has + V3</p>
+                <p>Jawaban: <strong>C</strong></p>
+            </div>
+        </div>
+
+        <!-- Cheat Sheet -->
+        <div class="cheat-sheet">
+            <h2>🔥 Cheat Sheet untuk Ujian</h2>
+            <p>Kalau waktumu mepet, <strong>hafalkan bagian ini</strong>:</p>
+            <div class="cheat-item">
+                <strong>🟢 Simple Present</strong><br>
+                usually / generally / every / often → <strong>V1 / V1+s</strong><br>
+                <em>The company operates every day.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>🔵 Simple Past</strong><br>
+                yesterday / last / ago / in 2020 → <strong>V2</strong><br>
+                <em>The company opened in 2020.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>🟣 Present Perfect</strong><br>
+                since / for / recently / over the past → <strong>have/has + V3</strong><br>
+                <em>The company has grown since 2020.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>🟠 Present Continuous</strong><br>
+                now / currently / at the moment → <strong>am/is/are + V-ing</strong><br>
+                <em>The company is growing rapidly.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>🔴 Past Continuous</strong><br>
+                while / when + past event → <strong>was/were + V-ing</strong><br>
+                <em>They were working when he arrived.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>⚫ Past Perfect</strong><br>
+                before / by the time + past → <strong>had + V3</strong><br>
+                <em>They had finished before he arrived.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>🟡 Future Simple</strong><br>
+                tomorrow / next / future → <strong>will + V1</strong><br>
+                <em>They will expand next year.</em>
+            </div>
+            <div class="cheat-item">
+                <strong>🟤 Future Perfect</strong><br>
+                by + future time → <strong>will have + V3</strong><br>
+                <em>They will have expanded by 2030.</em>
+            </div>
+        </div>
+
+        <!-- 5 Jebakan -->
+        <div class="card">
+            <h2>⚠️ 5 Jebakan yang Paling Perlu Kamu Waspadai</h2>
+            <ol>
+                <li>
+                    <strong>Jangan tertipu noun yang dekat dengan verb</strong>
+                    <div class="example">
+                        <p>The number of employees <strong>has increased</strong>. ✅</p>
+                        <p>Bukan: The number of employees <strong>have increased</strong>. ❌</p>
+                    </div>
+                </li>
+                <li>
+                    <strong><code>Since</code> hampir selalu alarm Present Perfect</strong>
+                    <div class="example">
+                        <p>Since 2020, the company <strong>has grown</strong>. ✅</p>
+                        <p>Bukan: Since 2020, the company <strong>grew</strong>. ❌ (untuk makna yang masih berlanjut)</p>
+                    </div>
+                </li>
+                <li>
+                    <strong><code>Last</code> biasanya Simple Past</strong>
+                    <div class="example">
+                        <p>Last year, researchers <strong>conducted</strong> a study. ✅</p>
+                        <p>Bukan: Last year, researchers <strong>have conducted</strong> a study. ❌</p>
+                    </div>
+                </li>
+                <li>
+                    <strong><code>Currently</code> → lihat Continuous</strong>
+                    <div class="example">
+                        <p>Currently, researchers <strong>are studying</strong> the issue. ✅</p>
+                    </div>
+                </li>
+                <li>
+                    <strong><code>By the time</code> → cari urutan kejadian</strong>
+                    <div class="example">
+                        <p>By the time he arrived, they <strong>had left</strong>.</p>
+                        <p><strong>had left</strong> terjadi lebih dulu.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <footer style="text-align: center; padding: 30px; color: var(--text-light); font-size: 0.9rem;">
+            <p>📚 <strong>TOEFL Structure: Verb & Tenses Guide</strong></p>
+            <p>Hafalkan rumus dan signal-nya, lalu praktikkan dengan soal latihan!</p>
+        </footer>
+    </div>
+    <script src="ai-generator.js"></script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akuntansi Perpajakan - Studi Kasus PT Maju Bersama Indonesia</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+            --success-color: #48bb78;
+            --warning-color: #ed8936;
+            --danger-color: #f56565;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 15px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            margin-bottom: 40px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        section h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(49, 130, 206, 0.1);
+        }
+
+        .highlight-row {
+            background-color: rgba(72, 187, 120, 0.1) !important;
+        }
+
+        .total-row {
+            background-color: rgba(49, 130, 206, 0.2) !important;
+            font-weight: bold;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Calculation Blocks */
+        .calculation {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 3px solid var(--accent-color);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Answer Blocks */
+        .answer {
+            background-color: #e6fffa;
+            border: 2px solid var(--success-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .answer h3 {
+            color: var(--success-color);
+        }
+
+        /* Question Blocks */
+        .question {
+            background-color: #fffaf0;
+            border: 2px solid var(--warning-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .question h3 {
+            color: var(--warning-color);
+        }
+
+        /* Important Notes */
+        .important {
+            background-color: #ffe6e6;
+            border-left: 4px solid var(--danger-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .important strong {
+            color: var(--danger-color);
+        }
+
+        /* Two Column Layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 5px 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, footer {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            section {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .badge-positive {
+            background-color: rgba(72, 187, 120, 0.2);
+            color: var(--success-color);
+        }
+
+        .badge-negative {
+            background-color: rgba(245, 101, 101, 0.2);
+            color: var(--danger-color);
+        }
+
+        .badge-temporer {
+            background-color: rgba(49, 130, 206, 0.2);
+            color: var(--accent-color);
+        }
+
+        .badge-tetap {
+            background-color: rgba(237, 137, 54, 0.2);
+            color: var(--warning-color);
+        }
+
+        /* Summary Cards */
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .summary-card h3 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#pengantar" class="active">Pengantar</a></li>
+                <li><a href="#perbedaan">Perbedaan Akuntansi & Pajak</a></li>
+                <li><a href="#koreksi">Koreksi Fiskal</a></li>
+                <li><a href="#siklus">Siklus Akuntansi</a></li>
+                <li><a href="#kasus">Studi Kasus</a></li>
+                <li><a href="#jawaban">Kunci Jawaban</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Akuntansi Perpajakan</h1>
+            <p>Panduan Lengkap dengan Studi Kasus PT Maju Bersama Indonesia</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- PENGANTAR -->
+        <section id="pengantar">
+            <h2>📊 Mengenal Akuntansi Perpajakan</h2>
+            
+            <p><strong>Akuntansi Perpajakan</strong> merupakan aktivitas pencatatan keuangan yang bertujuan untuk mengetahui jumlah pajak terutang. Akuntansi Perpajakan biasanya digunakan pada saat perusahaan melaporkan kewajiban perpajakan (SPT) di setiap masa atau tahunnya.</p>
+
+            <div class="important">
+                <strong>Tujuan Akuntansi Pajak:</strong>
+                <ul>
+                    <li>Meningkatkan kesadaran wajib pajak untuk membayar pajak</li>
+                    <li>Membantu perusahaan membuat perencanaan pajak (Tax Planning)</li>
+                    <li>Sebagai bahan evaluasi perusahaan</li>
+                    <li>Membantu analisis dan prediksi pajak di masa depan</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PERBEDAAN AKUNTANSI DAN PAJAK -->
+        <section id="perbedaan">
+            <h2>🔍 Perbedaan Akuntansi dan Pajak</h2>
+
+            <div class="two-columns">
+                <div>
+                    <h3>Beda Tetap (Permanent Difference)</h3>
+                    <p>Adanya perbedaan pengakuan penghasilan ataupun biaya sesuai dengan peraturan pajak dengan prinsip pengakuan akuntansi yang sifatnya permanen.</p>
+                    
+                    <h4>Biaya yang tidak dapat diakui secara pajak:</h4>
+                    <ul>
+                        <li>Biaya sumbangan, CSR, dan/atau sejenisnya</li>
+                        <li>Biaya yang berkaitan dengan pajak kecuali pajak daerah</li>
+                        <li>Dividen yang diterima atau diperoleh Perseroan Terbatas</li>
+                    </ul>
+                    
+                    <h4>Penghasilan yang tidak dapat diakui secara pajak:</h4>
+                    <ul>
+                        <li>Penghasilan dari bunga deposito, bunga obligasi, surat utang negara</li>
+                        <li>Penghasilan berupa hadiah undian</li>
+                        <li>Penghasilan dari transaksi pengalihan harta (bersifat final)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Beda Waktu (Temporary Difference)</h3>
+                    <p>Adanya perbedaan waktu pengakuan pendapatan maupun beban antara aturan pajak dan prinsip akuntansi.</p>
+                    
+                    <h4>Contoh:</h4>
+                    <ul>
+                        <li>Perbedaan metode penyusutan (pajak: garis lurus & saldo menurun)</li>
+                        <li>Perbedaan penilaian persediaan (pajak: FIFO & average method)</li>
+                        <li>Perbedaan pencatatan (akrual basis vs kas basis)</li>
+                    </ul>
+                    <p><em>Koreksi fiskal beda waktu akan diperhitungkan pada tahun pajak yang akan datang.</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KOREKSI FISKAL -->
+        <section id="koreksi">
+            <h2>⚖️ Jenis Koreksi Fiskal</h2>
+
+            <div class="two-columns">
+                <div>
+                    <h3>Koreksi Fiskal Positif</h3>
+                    <p>Terjadi karena beban/biaya yang tidak diperbolehkan untuk dibebankan dalam laporan keuangan fiskal (UU PPh Pasal 9).</p>
+                    
+                    <h4>Contoh biaya yang tidak bisa dibebankan:</h4>
+                    <ul>
+                        <li>Biaya urusan pribadi pengurus/karyawan</li>
+                        <li>Imbalan dalam bentuk natura/kenikmatan</li>
+                        <li>Dana Cadangan</li>
+                        <li>Harta yang dihibahkan, sumbangan, bantuan</li>
+                        <li>Pembayaran pajak (kecuali pajak daerah)</li>
+                        <li>Sanksi administrasi</li>
+                    </ul>
+                    <p><span class="badge badge-positive">Dampak: Laba kena pajak menjadi LEBIH BESAR</span></p>
+                </div>
+
+                <div>
+                    <h3>Koreksi Fiskal Negatif</h3>
+                    <p>Dampaknya: laba kena pajak akan menjadi lebih kecil karena pendapatan versi komersil lebih besar daripada pendapatan fiskal.</p>
+                    
+                    <h4>Contoh:</h4>
+                    <ul>
+                        <li>Nilai penyusutan komersil < penyusutan fiskal</li>
+                        <li>Penghasilan dari hadiah/undian</li>
+                        <li>Penghasilan dari transaksi saham</li>
+                        <li>Penghasilan dari pengalihan harta</li>
+                        <li>Penghasilan dari bunga deposito</li>
+                    </ul>
+                    <p><span class="badge badge-negative">Dampak: Laba kena pajak menjadi LEBIH KECIL</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDI KASUS -->
+        <section id="kasus">
+            <div class="summary-card">
+                <h2>📋 STUDI KASUS AKUNTANSI PERPAJAKAN</h2>
+                <h3>PT Maju Bersama Indonesia</h3>
+                <p>Perusahaan perdagangan peralatan kantor | Omzet: Rp12.000.000.000 (2024)</p>
+            </div>
+
+            <h2>📊 Laporan Laba Rugi Komersial</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Keterangan</th>
+                        <th class="text-center">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Penjualan</td>
+                        <td class="text-center">Rp12.000.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Harga Pokok Penjualan</td>
+                        <td class="text-center">(Rp7.000.000.000)</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Laba Kotor</strong></td>
+                        <td class="text-center"><strong>Rp5.000.000.000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Beban gaji</td>
+                        <td class="text-center">Rp1.200.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban listrik dan telepon</td>
+                        <td class="text-center">Rp250.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban penyusutan</td>
+                        <td class="text-center">Rp400.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban CSR</td>
+                        <td class="text-center">Rp100.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban sanksi administrasi pajak</td>
+                        <td class="text-center">Rp50.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban perjalanan pribadi direktur</td>
+                        <td class="text-center">Rp75.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban bunga pinjaman</td>
+                        <td class="text-center">Rp200.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Beban lainnya</td>
+                        <td class="text-center">Rp300.000.000</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Total Beban</strong></td>
+                        <td class="text-center"><strong>Rp2.575.000.000</strong></td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Laba Sebelum Pajak</strong></td>
+                        <td class="text-center"><strong>Rp2.425.000.000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>📌 Informasi Tambahan untuk Rekonsiliasi Fiskal</h3>
+            <ol>
+                <li>Beban penyusutan komersial: <strong>Rp400.000.000</strong> | Fiskal: <strong>Rp300.000.000</strong></li>
+                <li>Beban CSR <strong>Rp100.000.000</strong> → Tidak memenuhi syarat sebagai biaya fiskal</li>
+                <li>Beban sanksi administrasi pajak <strong>Rp50.000.000</strong> → Tidak dapat dikurangkan</li>
+                <li>Beban perjalanan pribadi direktur <strong>Rp75.000.000</strong> → Pengeluaran pribadi</li>
+                <li>Pendapatan bunga deposito <strong>Rp40.000.000</strong> → Telah dikenakan PPh Final</li>
+                <li>Tidak memiliki kompensasi kerugian fiskal dari tahun sebelumnya</li>
+                <li>Tarif PPh Badan yang digunakan: <strong>22%</strong></li>
+            </ol>
+
+            <h2>❓ Pertanyaan</h2>
+
+            <div class="question">
+                <h3>A. Analisis Akuntansi dan Perpajakan</h3>
+                <ol>
+                    <li>Jelaskan perbedaan antara laba komersial dan laba fiskal.</li>
+                    <li>Tentukan transaksi yang termasuk:
+                        <ul>
+                            <li>Beda tetap</li>
+                            <li>Beda waktu/temporer</li>
+                        </ul>
+                    </li>
+                    <li>Tentukan transaksi yang menyebabkan koreksi fiskal positif.</li>
+                    <li>Tentukan transaksi yang menyebabkan koreksi fiskal negatif.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>B. Rekonsiliasi Fiskal</h3>
+                <ol start="5">
+                    <li>Hitung laba sebelum pajak menurut laporan keuangan komersial.</li>
+                    <li>Hitung total koreksi fiskal positif.</li>
+                    <li>Hitung total koreksi fiskal negatif.</li>
+                    <li>Tentukan Penghasilan Kena Pajak (PKP).</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>C. Perhitungan PPh Badan</h3>
+                <ol start="9">
+                    <li>Hitung PPh Badan terutang dengan tarif 22%.</li>
+                    <li>Hitung laba setelah pajak.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>D. Pajak Tangguhan</h3>
+                <ol start="11">
+                    <li>Identifikasi perbedaan temporer yang terdapat dalam kasus.</li>
+                    <li>Hitung perbedaan antara penyusutan komersial dan fiskal.</li>
+                    <li>Tentukan apakah menimbulkan DTA atau DTL.</li>
+                    <li>Hitung nilai pajak tangguhan (tarif 22%).</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>E. Analisis</h3>
+                <ol start="15">
+                    <li>Jelaskan mengapa beban CSR, sanksi administrasi pajak, dan perjalanan pribadi direktur harus dikoreksi secara fiskal.</li>
+                    <li>Jelaskan mengapa pendapatan bunga deposito tidak dihitung sebagai penghasilan PPh Badan tarif umum.</li>
+                    <li>Jelaskan perbedaan antara PPh Badan terutang saat ini dan pajak tangguhan.</li>
+                    <li>Jelaskan bagaimana rekonsiliasi fiskal membantu perusahaan memenuhi kewajiban perpajakannya.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- KUNCI JAWABAN -->
+        <section id="jawaban">
+            <div class="summary-card">
+                <h2>🔑 KUNCI JAWABAN</h2>
+            </div>
+
+            <!-- Jawaban A -->
+            <div class="answer">
+                <h3>A. Analisis Akuntansi dan Perpajakan</h3>
+
+                <h4>1. Perbedaan Laba Komersial dan Laba Fiskal</h4>
+                <p><strong>Laba Komersial:</strong> Dihitung berdasarkan SAK (Standar Akuntansi Keuangan) dengan prinsip akrual. Semua pendapatan dan beban diakui saat terjadi.</p>
+                <p><strong>Laba Fiskal:</strong> Dihitung berdasarkan UU PPh. Beberapa pendapatan/beban yang diakui komersial mungkin tidak diakui fiskal.</p>
+                <p><strong>PT Maju Bersama:</strong> Laba komersial = Rp2.425.000.000 | Laba fiskal (PKP) = Rp2.710.000.000</p>
+
+                <h4>2. Klasifikasi Perbedaan</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>Jenis</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Penyusutan</td>
+                            <td><span class="badge badge-temporer">Beda Waktu</span></td>
+                            <td>Rp100.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Beban CSR</td>
+                            <td><span class="badge badge-tetap">Beda Tetap</span></td>
+                            <td>Rp100.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Sanksi administrasi</td>
+                            <td><span class="badge badge-tetap">Beda Tetap</span></td>
+                            <td>Rp50.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Perjalanan pribadi</td>
+                            <td><span class="badge badge-tetap">Beda Tetap</span></td>
+                            <td>Rp75.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Bunga deposito</td>
+                            <td><span class="badge badge-tetap">Beda Tetap</span></td>
+                            <td>Rp40.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>3. Koreksi Fiskal Positif</h4>
+                <ul>
+                    <li><span class="badge badge-positive">Penyusutan: Rp100.000.000</span></li>
+                    <li><span class="badge badge-positive">CSR: Rp100.000.000</span></li>
+                    <li><span class="badge badge-positive">Sanksi: Rp50.000.000</span></li>
+                    <li><span class="badge badge-positive">Perjalanan pribadi: Rp75.000.000</span></li>
+                </ul>
+
+                <h4>4. Koreksi Fiskal Negatif</h4>
+                <ul>
+                    <li><span class="badge badge-negative">Bunga deposito: Rp40.000.000</span></li>
+                </ul>
+            </div>
+
+            <!-- Jawaban B -->
+            <div class="answer">
+                <h3>B. Rekonsiliasi Fiskal</h3>
+
+                <h4>5. Laba Sebelum Pajak (Komersial)</h4>
+                <div class="calculation">
+                    <strong>Rp2.425.000.000</strong>
+                </div>
+
+                <h4>6. Total Koreksi Fiskal Positif</h4>
+                <div class="calculation">
+                    Rp100.000.000 (Penyusutan)<br>
+                    + Rp100.000.000 (CSR)<br>
+                    + Rp50.000.000 (Sanksi)<br>
+                    + Rp75.000.000 (Perjalanan pribadi)<br>
+                    = <strong>Rp325.000.000</strong>
+                </div>
+
+                <h4>7. Total Koreksi Fiskal Negatif</h4>
+                <div class="calculation">
+                    <strong>Rp40.000.000</strong> (Bunga deposito PPh Final)
+                </div>
+
+                <h4>8. Penghasilan Kena Pajak (PKP)</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Laba sebelum pajak komersial</td>
+                            <td class="text-center">Rp2.425.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>(+) Koreksi fiskal positif</td>
+                            <td class="text-center">+ Rp325.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>(-) Koreksi fiskal negatif</td>
+                            <td class="text-center">- Rp40.000.000</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Penghasilan Kena Pajak (PKP)</strong></td>
+                            <td class="text-center"><strong>Rp2.710.000.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Jawaban C -->
+            <div class="answer">
+                <h3>C. Perhitungan PPh Badan</h3>
+
+                <h4>9. PPh Badan Terutang</h4>
+                <div class="calculation">
+                    PKP = Rp2.710.000.000<br>
+                    Tarif = 22%<br><br>
+                    <strong>PPh Badan = 22% × Rp2.710.000.000 = Rp596.200.000</strong>
+                </div>
+
+                <h4>10. Laba Setelah Pajak</h4>
+                <div class="calculation">
+                    Laba sebelum pajak: Rp2.425.000.000<br>
+                    PPh Badan: - Rp596.200.000<br><br>
+                    <strong>Laba setelah pajak = Rp1.828.800.000</strong>
+                </div>
+            </div>
+
+            <!-- Jawaban D -->
+            <div class="answer">
+                <h3>D. Pajak Tangguhan</h3>
+
+                <h4>11. Perbedaan Temporer</h4>
+                <p><strong>Penyusutan:</strong> Komersial (Rp400.000.000) vs Fiskal (Rp300.000.000)</p>
+
+                <h4>12. Perbedaan Penyusutan</h4>
+                <div class="calculation">
+                    <strong>Rp400.000.000 - Rp300.000.000 = Rp100.000.000</strong>
+                </div>
+
+                <h4>13. Jenis Pajak Tangguhan</h4>
+                <p><span class="badge badge-positive">Aset Pajak Tangguhan (DTA)</span> - Karena beban komersial > fiskal, akan memberikan manfaat pajak di masa depan.</p>
+
+                <h4>14. Nilai Pajak Tangguhan</h4>
+                <div class="calculation">
+                    Selisih: Rp100.000.000<br>
+                    Tarif: 22%<br><br>
+                    <strong>DTA = 22% × Rp100.000.000 = Rp22.000.000</strong>
+                </div>
+            </div>
+
+            <!-- Jawaban E -->
+            <div class="answer">
+                <h3>E. Analisis</h3>
+
+                <h4>15. Alasan Koreksi Fiskal</h4>
+                <ul>
+                    <li><strong>CSR:</strong> Tidak memenuhi syarat sebagai biaya fiskal (UU PPh Pasal 9).</li>
+                    <li><strong>Sanksi:</strong> Tidak dapat dikurangkan (UU PPh Pasal 9 ayat 1 huruf h) - bersifat denda.</li>
+                    <li><strong>Perjalanan pribadi:</strong> Pengeluaran pribadi (UU PPh Pasal 9 ayat 1 huruf a).</li>
+                </ul>
+
+                <h4>16. Pendapatan Bunga Deposito</h4>
+                <p>Telah dikenakan <strong>PPh Final</strong> (Pasal 4 ayat 2 UU PPh). Pajak final <strong>tidak dapat dikreditkan</strong> dengan PPh Badan tarif umum, sehingga dikeluarkan dari PKP.</p>
+
+                <h4>17. Current Tax vs Deferred Tax</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>Current Tax (PPh Badan)</th>
+                            <th>Deferred Tax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Waktu</td>
+                            <td>Saat ini</td>
+                            <td>Masa depan</td>
+                        </tr>
+                        <tr>
+                            <td>Dasar</td>
+                            <td>PKP periode berjalan</td>
+                            <td>Perbedaan temporer</td>
+                        </tr>
+                        <tr>
+                            <td>Tujuan</td>
+                            <td>Kewajiban pajak sekarang</td>
+                            <td>Dampak pajak perbedaan waktu</td>
+                        </tr>
+                        <tr>
+                            <td>Contoh</td>
+                            <td>Rp596.200.000</td>
+                            <td>DTA Rp22.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>18. Manfaat Rekonsiliasi Fiskal</h4>
+                <ol>
+                    <li>Menyesuaikan laba komersial → laba fiskal</li>
+                    <li>Menghitung PKP yang benar</li>
+                    <li>Memastikan kepatuhan perpajakan</li>
+                    <li>Dasar untuk tax planning</li>
+                    <li>Menghindari sanksi</li>
+                    <li>Transparansi posisi pajak</li>
+                </ol>
+            </div>
+
+            <!-- Ringkasan -->
+            <div class="summary-card">
+                <h3>📌 Ringkasan Hasil PT Maju Bersama Indonesia</h3>
+                <div class="two-columns">
+                    <div>
+                        <h4>Hasil Perhitungan:</h4>
+                        <ul>
+                            <li><strong>Laba Komersial:</strong> Rp2.425.000.000</li>
+                            <li><strong>Koreksi Positif:</strong> Rp325.000.000</li>
+                            <li><strong>Koreksi Negatif:</strong> Rp40.000.000</li>
+                            <li><strong>PKP:</strong> Rp2.710.000.000</li>
+                            <li><strong>PPh Badan:</strong> Rp596.200.000</li>
+                            <li><strong>Laba Setelah Pajak:</strong> Rp1.828.800.000</li>
+                            <li><strong>DTA:</strong> Rp22.000.000</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Alur:</h4>
+                        <ol>
+                            <li>Laba Komersial</li>
+                            <li>↓ Rekonsiliasi Fiskal</li>
+                            <li>↓ Koreksi ±</li>
+                            <li>↓ PKP</li>
+                            <li>↓ PPh Badan</li>
+                            <li>↓ Pajak Tangguhan</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Akuntansi Perpajakan - Studi Kasus PT Maju Bersama Indonesia</strong></p>
+        <p>Dibuat untuk tujuan pendidikan | Tarif PPh Badan: 22%</p>
+    </footer>
+
+    <script>
+        // Smooth scroll navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active nav highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

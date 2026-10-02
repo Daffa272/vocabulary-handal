@@ -1,0 +1,3660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become Ready — Personal Pre-Marriage Preparation</title>
+
+<style>
+:root{
+  --bg:#f5f6fa;
+  --surface:#fff;
+  --surface2:#f8f8fc;
+  --text:#18191f;
+  --muted:#737783;
+  --border:#e7e7ee;
+  --primary:#6857e8;
+  --primary-soft:#eeeaff;
+  --green:#1f9d61;
+  --yellow:#d99616;
+  --red:#d94b4b;
+  --shadow:0 10px 35px rgba(25,25,50,.06);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:linear-gradient(180deg,#f4f5fb 0%, #eef2ff 100%);
+  color:var(--text);
+  line-height:1.5;
+}
+
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+
+button:hover{transform:translateY(-1px)}
+
+.app{display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{
+  width:250px;
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  padding:22px 16px;
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:5px 10px 28px;
+}
+
+.brand-icon{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:var(--primary);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+}
+
+.brand strong{font-size:16px}
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.nav button{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  text-align:left;
+  padding:11px 13px;
+  border-radius:11px;
+  transition:.2s;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:var(--primary-soft);
+  color:var(--primary);
+  font-weight:650;
+}
+
+.sidebar-bottom{
+  position:absolute;
+  bottom:20px;
+  left:16px;
+  right:16px;
+}
+
+/* MAIN */
+.main{
+  margin-left:250px;
+  width:calc(100% - 250px);
+  max-width:1500px;
+  padding:28px;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+  background:linear-gradient(135deg, rgba(104,87,232,0.08), rgba(255,255,255,0.7));
+  border:1px solid rgba(104,87,232,0.08);
+  border-radius:18px;
+  padding:18px 20px;
+}
+
+.topbar h1{font-size:28px}
+.topbar p{color:var(--muted);margin-top:3px}
+.date{color:var(--muted);font-size:13px}
+
+/* COMMON */
+.card{
+  background:rgba(255,255,255,0.9);
+  border:1px solid rgba(104,87,232,0.08);
+  border-radius:20px;
+  padding:21px;
+  box-shadow:0 18px 45px rgba(25,25,50,0.06);
+  backdrop-filter:blur(4px);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 40px rgba(25,25,50,0.08);
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.section-title h2{font-size:18px}
+.section-title span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.btn{
+  border:0;
+  background:linear-gradient(135deg,#6857e8 0%, #805cf5 100%);
+  color:white;
+  padding:10px 15px;
+  border-radius:12px;
+  font-weight:650;
+  box-shadow:0 12px 22px rgba(104,87,232,0.2);
+}
+
+.btn.secondary{
+  background:var(--surface2);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+.btn.danger{
+  background:#fff0f0;
+  color:var(--red);
+}
+
+.btn.small{
+  padding:7px 10px;
+  font-size:12px;
+}
+
+.progress{
+  height:8px;
+  background:#e9e9f0;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  background:var(--primary);
+  border-radius:20px;
+  transition:.35s;
+}
+
+.muted{color:var(--muted)}
+.small-text{font-size:12px;color:var(--muted)}
+
+.ai-coach{
+  margin-top:20px;
+}
+
+.ai-coach-box{
+  display:grid;
+  gap:16px;
+}
+
+.ai-input-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.ai-input-row input{
+  flex:1 1 220px;
+  min-width:0;
+  border:1px solid var(--border);
+  background:var(--surface2);
+  border-radius:10px;
+  padding:11px 12px;
+  outline:none;
+}
+
+.ai-input-row input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(104,87,232,.1);
+}
+
+.ai-status{
+  min-height:18px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.ai-status.error{
+  color:var(--red);
+}
+
+.ai-status.success{
+  color:var(--green);
+}
+
+.ai-output{
+  background:linear-gradient(180deg,#f8f5ff 0%, #f5f7ff 100%);
+  border:1px solid #e7e0ff;
+  border-radius:14px;
+  padding:16px;
+  color:var(--text);
+  line-height:1.7;
+}
+
+.ai-output h4{
+  font-size:14px;
+  margin-bottom:8px;
+  color:var(--primary);
+}
+
+.ai-output ul,
+.ai-output ol{
+  margin:8px 0 0 20px;
+}
+
+.ai-output li + li{
+  margin-top:6px;
+}
+
+/* DASHBOARD HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:20px;
+  margin-bottom:20px;
+}
+
+.score-card{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  min-height:210px;
+}
+
+.score-ring{
+  --score:0%;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:conic-gradient(var(--primary) var(--score),#e9e9f0 0);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  flex-shrink:0;
+}
+
+.score-ring::after{
+  content:"";
+  position:absolute;
+  width:116px;
+  height:116px;
+  border-radius:50%;
+  background:var(--surface);
+}
+
+.score-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+.score-content strong{
+  display:block;
+  font-size:38px;
+}
+
+.score-content small{
+  color:var(--muted);
+}
+
+.hero-copy h2{
+  margin-bottom:6px;
+}
+
+.hero-copy p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* PILLARS */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.pillar{
+  padding:15px;
+  background:var(--surface2);
+  border-radius:13px;
+}
+
+.pillar-top{
+  display:flex;
+  justify-content:space-between;
+  gap:5px;
+  margin-bottom:11px;
+}
+
+.pillar-name{
+  font-size:13px;
+  font-weight:650;
+}
+
+.pillar-score{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* GAP */
+.gap-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.gap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:11px 12px;
+  border-radius:10px;
+  background:var(--surface2);
+}
+
+.gap-left{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+}
+
+.dot.red{background:var(--red)}
+.dot.yellow{background:var(--yellow)}
+.dot.green{background:var(--green)}
+
+/* GOALS */
+.goal{
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.goal:last-child{border-bottom:0}
+
+.goal-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.goal-title{
+  font-size:14px;
+  font-weight:650;
+}
+
+.badge{
+  font-size:10px;
+  padding:4px 8px;
+  border-radius:20px;
+  background:var(--primary-soft);
+  color:var(--primary);
+}
+
+.goal-range{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.goal-range input{
+  width:100%;
+  accent-color:var(--primary);
+}
+
+.goal-percent{
+  width:38px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* CHECKLIST */
+.checklist{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.check{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--surface2);
+  padding:10px;
+  border-radius:10px;
+}
+
+.check input{
+  width:18px;
+  height:18px;
+  accent-color:var(--primary);
+}
+
+.check.done label{
+  text-decoration:line-through;
+  color:#999;
+}
+
+/* PAGE HEADER */
+.page-header{
+  margin-bottom:20px;
+}
+
+.page-header h1{
+  font-size:25px;
+}
+
+.page-header p{
+  color:var(--muted);
+  margin-top:4px;
+}
+
+/* ASSESSMENT */
+.assessment-card{
+  margin-bottom:20px;
+}
+
+.question{
+  padding:15px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.question:last-child{border-bottom:0}
+
+.question-text{
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.answers{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.answers button{
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--muted);
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:11px;
+}
+
+.answers button.selected{
+  color:white;
+  background:var(--primary);
+  border-color:var(--primary);
+}
+
+/* FINANCE */
+.finance-box{
+  padding:18px;
+  border-radius:14px;
+  background:var(--primary-soft);
+}
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.input-group label{
+  font-size:12px;
+  font-weight:650;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea{
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:10px;
+  padding:10px;
+  outline:0;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-color:var(--primary);
+}
+
+.finance-result{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.metric{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:15px;
+}
+
+.metric small{
+  display:block;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+
+.metric strong{font-size:19px}
+
+/* LEARNING */
+.learning{
+  display:flex;
+  flex-direction:column;
+}
+
+.learning-item{
+  display:flex;
+  gap:10px;
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.learning-item:last-child{border-bottom:0}
+
+.learning-item input{
+  width:18px;
+  height:18px;
+  accent-color:var(--primary);
+  margin-top:2px;
+}
+
+.learning-item strong{font-size:13px}
+.learning-item p{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* JOURNAL */
+textarea{
+  width:100%;
+  min-height:130px;
+  resize:vertical;
+}
+
+.journal-entry{
+  padding:15px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.journal-date{
+  color:var(--primary);
+  font-size:11px;
+  margin-bottom:4px;
+}
+
+.journal-text{
+  font-size:14px;
+  white-space:pre-wrap;
+}
+
+/* HABITS */
+.habit-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:7px;
+  margin-top:12px;
+}
+
+.day{
+  height:42px;
+  border-radius:9px;
+  background:var(--surface2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:var(--muted);
+  cursor:pointer;
+}
+
+.day.done{
+  background:var(--primary);
+  color:white;
+}
+
+.habit-editor{
+  display:grid;
+  gap:12px;
+}
+
+.habit-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.habit-row input{
+  flex:1 1 180px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 12px;
+  background:var(--surface2);
+}
+
+.habit-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.habit-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 10px;
+  border-radius:999px;
+  background:var(--primary-soft);
+  color:var(--primary);
+  font-size:12px;
+  font-weight:600;
+}
+
+.habit-chip button{
+  border:0;
+  background:transparent;
+  color:var(--primary);
+  font-weight:700;
+  padding:0;
+  cursor:pointer;
+}
+
+.reminder-card,
+.milestone-card{
+  background:linear-gradient(135deg, #f7f4ff 0%, #f5fbff 100%);
+  border:1px solid rgba(104,87,232,0.08);
+  border-radius:16px;
+  padding:16px;
+}
+
+.reminder-card ul,
+.milestone-card ul{
+  margin-top:10px;
+  padding-left:18px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.milestone-item{
+  padding:10px 12px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.6);
+  margin-top:8px;
+}
+
+.milestone-item strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* SCENARIO */
+.scenario{
+  background:var(--surface2);
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:15px;
+}
+
+.scenario h3{
+  font-size:15px;
+  margin-bottom:7px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  padding:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:10px;
+  margin-top:8px;
+}
+
+.option:hover{
+  border-color:var(--primary);
+}
+
+.feedback{
+  margin-top:15px;
+  padding:13px;
+  background:var(--primary-soft);
+  border-radius:10px;
+  font-size:13px;
+  display:none;
+}
+
+/* TIMELINE */
+.timeline{
+  position:relative;
+  padding-left:28px;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:5px;
+  bottom:5px;
+  width:2px;
+  background:var(--border);
+}
+
+.timeline-item{
+  position:relative;
+  padding-bottom:22px;
+}
+
+.timeline-item::before{
+  content:"";
+  position:absolute;
+  left:-25px;
+  top:4px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--primary);
+}
+
+.timeline-item strong{
+  font-size:14px;
+}
+
+.timeline-item p{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* PROFILE */
+.identity{
+  background:linear-gradient(135deg,var(--primary-soft),var(--surface));
+  padding:22px;
+  border-radius:18px;
+  margin-bottom:20px;
+}
+
+.identity h2{
+  margin-bottom:5px;
+}
+
+.identity p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.identity textarea{
+  margin-top:15px;
+  background:rgba(255,255,255,.8);
+}
+
+/* SETTINGS */
+.setting-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+  .pillars{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero,
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:750px){
+  .sidebar{
+    width:68px;
+    padding:18px 7px;
+  }
+
+  .brand{
+    justify-content:center;
+    padding:0 0 25px;
+  }
+
+  .brand strong,
+  .brand small{
+    display:none;
+  }
+
+  .nav button{
+    text-align:center;
+    font-size:18px;
+  }
+
+  .nav button span{
+    display:none;
+  }
+
+  .main{
+    margin-left:68px;
+    width:calc(100% - 68px);
+    padding:16px;
+  }
+
+  .score-card{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .grid-3,
+  .finance-result{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:500px){
+  .pillars{
+    grid-template-columns:1fr;
+  }
+
+  .topbar h1{
+    font-size:22px;
+  }
+
+  .date{
+    display:none;
+  }
+}
+</style>
+<script defer src="tracker-menu.js"></script>
+</head>
+
+<body>
+
+<div class="global-nav" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;box-shadow:0 8px 18px rgba(25,25,50,0.04);">
+    <a href="index.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">Vocabulary</a>
+    <a href="publicspeaking.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">Public Speaking</a>
+    <a href="chunk.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">ChunkSpeak</a>
+    <a href="material.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">Material</a>
+    <a href="kbbi.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">KBBI</a>
+    <a href="transcript.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">Transcript</a>
+    <a href="pranikah.html" style="padding:8px 12px;border-radius:10px;background:#eeeaff;color:#6857e8;text-decoration:none;font-weight:700;font-size:0.82rem;">Pranikah</a>
+    <a href="psikotest.html" style="padding:8px 12px;border-radius:10px;background:#f8f8fc;color:#18191f;text-decoration:none;font-weight:700;font-size:0.82rem;">Psikotest</a>
+</div>
+
+<div class="app">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+  <div class="brand">
+    <div class="brand-icon">BR</div>
+    <div>
+      <strong>Become Ready</strong>
+      <small>Pre-Marriage Preparation</small>
+    </div>
+  </div>
+
+  <nav class="nav">
+
+    <button class="active" onclick="showPage('dashboard',this)">
+      🏠 <span>Dashboard</span>
+    </button>
+
+    <button onclick="showPage('assessment',this)">
+      🧠 <span>Assessment</span>
+    </button>
+
+    <button onclick="showPage('self',this)">
+      🪞 <span>Self Awareness</span>
+    </button>
+
+    <button onclick="showPage('finance',this)">
+      💰 <span>Financial</span>
+    </button>
+
+    <button onclick="showPage('learning',this)">
+      📚 <span>Learning</span>
+    </button>
+
+    <button onclick="showPage('practice',this)">
+      ⚔️ <span>Practice</span>
+    </button>
+
+    <button onclick="showPage('goals',this)">
+      🎯 <span>Goals & Habits</span>
+    </button>
+
+    <button onclick="showPage('journal',this)">
+      📝 <span>Reflection</span>
+    </button>
+
+  </nav>
+
+  <div class="sidebar-bottom">
+    <button class="nav" onclick="showPage('settings',this)">
+      ⚙️ <span>Settings</span>
+    </button>
+  </div>
+
+</aside>
+
+
+<main class="main">
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="page active">
+
+  <div class="topbar">
+    <div>
+      <h1>Become Ready 👋</h1>
+      <p>Persiapkan dirimu sebelum membangun keluarga.</p>
+    </div>
+
+    <div class="date" id="date"></div>
+  </div>
+
+
+  <div class="hero">
+
+    <div class="card score-card">
+
+      <div class="score-ring" id="scoreRing">
+        <div class="score-content">
+          <strong id="overallScore">0</strong>
+          <small>/ 100</small>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+
+        <h2 id="stageTitle">Building Foundation 🌱</h2>
+
+        <p id="stageDescription">
+          Pernikahan bukan tujuan untuk menjadi sempurna.
+          Fokuslah membangun karakter, tanggung jawab,
+          kemandirian, dan kemampuan untuk terus berkembang.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🎯 Current Focus</h2>
+        <span>Prioritas</span>
+      </div>
+
+      <h3 id="currentFocus">Financial Foundation</h3>
+
+      <p class="small-text" style="margin:7px 0 15px">
+        Fokus pada area dengan gap terbesar.
+      </p>
+
+      <div class="progress">
+        <div class="progress-bar" id="focusBar"></div>
+      </div>
+
+      <p class="small-text" style="margin-top:7px">
+        Readiness: <strong id="focusScore">0%</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- PILLARS -->
+
+  <div class="card" style="margin-bottom:20px">
+
+    <div class="section-title">
+      <h2>🧭 Your 8 Pillars</h2>
+      <span>Personal readiness</span>
+    </div>
+
+    <div class="pillars" id="pillarList"></div>
+
+  </div>
+
+
+  <div class="grid-2">
+
+    <!-- GAPS -->
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🚧 Readiness Gaps</h2>
+        <span>Focus here</span>
+      </div>
+
+      <div class="gap-list" id="gapList"></div>
+
+    </div>
+
+
+    <!-- GOALS -->
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🎯 Current Goals</h2>
+        <span>Progress</span>
+      </div>
+
+      <div id="dashboardGoals"></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="section-title">
+      <h2>✅ Today's Actions</h2>
+      <span id="todayProgress">0/0</span>
+    </div>
+
+    <div class="checklist" id="checklist"></div>
+
+    <div style="margin-top:14px">
+      <div class="progress">
+        <div class="progress-bar" id="todayBar"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grid-2" style="margin-top:20px">
+    <div class="reminder-card">
+      <div class="section-title">
+        <h2>🔔 Smart Reminders</h2>
+      </div>
+      <ul id="reminderList"></ul>
+    </div>
+
+    <div class="milestone-card">
+      <div class="section-title">
+        <h2>🗓️ Marriage Milestones</h2>
+      </div>
+      <ul id="milestoneList"></ul>
+    </div>
+  </div>
+
+  <div class="card ai-coach">
+
+    <div class="section-title">
+      <h2>🤖 AI Coach</h2>
+      <span>Suggestion & Reminder</span>
+    </div>
+
+    <div class="ai-coach-box">
+
+      <div class="ai-input-row">
+        <input
+          id="aiCoachApiKey"
+          type="password"
+          placeholder="Masukkan API key Mistral"
+          aria-label="Mistral API key"
+        >
+        <button class="btn small" type="button" onclick="generateAICoachAdvice()">
+          Generate Advice
+        </button>
+      </div>
+
+      <div id="aiCoachStatus" class="ai-status" aria-live="polite">
+        AI siap memberi saran berdasarkan progress kamu.
+      </div>
+
+      <div id="aiCoachOutput" class="ai-output">
+        <h4>Ringkasan AI</h4>
+        <p>Belum ada saran. Tekan tombol Generate Advice untuk melihat rekomendasi personal.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ASSESSMENT ================= -->
+
+<section id="assessment" class="page">
+
+  <div class="page-header">
+    <h1>🧠 Personal Assessment</h1>
+    <p>Jawab berdasarkan perilakumu saat ini, bukan versi ideal dirimu.</p>
+  </div>
+
+  <div id="assessmentContainer"></div>
+
+</section>
+
+
+<!-- ================= SELF AWARENESS ================= -->
+
+<section id="self" class="page">
+
+  <div class="page-header">
+    <h1>🪞 Self Awareness</h1>
+    <p>Kenali dirimu sebelum meminta orang lain memahami dirimu.</p>
+  </div>
+
+
+  <div class="identity">
+
+    <h2>My Marriage Identity</h2>
+
+    <p>
+      “Pasangan seperti apa yang ingin saya menjadi?”
+    </p>
+
+    <textarea
+      id="identityText"
+      placeholder="Contoh: Saya ingin menjadi pasangan yang bisa dipercaya, bertanggung jawab, tenang ketika menghadapi masalah, dan terus belajar."
+      oninput="saveIdentity()"
+    ></textarea>
+
+  </div>
+
+
+  <div class="grid-2">
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🔎 Know Yourself</h2>
+      </div>
+
+      <div id="selfQuestions"></div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🚩 Things I Need To Improve</h2>
+      </div>
+
+      <textarea
+        id="improvementText"
+        placeholder="Tuliskan kebiasaan, sifat, atau pola yang ingin kamu perbaiki..."
+        oninput="saveImprovement()"
+      ></textarea>
+
+      <p class="small-text" style="margin-top:8px">
+        Fokus pada hal yang bisa kamu kontrol.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FINANCE ================= -->
+
+<section id="finance" class="page">
+
+  <div class="page-header">
+    <h1>💰 Financial Readiness</h1>
+    <p>Tujuannya bukan menjadi kaya terlebih dahulu, tetapi mampu mengelola kehidupan.</p>
+  </div>
+
+
+  <div class="card">
+
+    <div class="grid-3">
+
+      <div class="input-group">
+        <label>Penghasilan / bulan</label>
+        <input id="income" type="number" placeholder="8000000">
+      </div>
+
+      <div class="input-group">
+        <label>Pengeluaran / bulan</label>
+        <input id="expenses" type="number" placeholder="5000000">
+      </div>
+
+      <div class="input-group">
+        <label>Tabungan saat ini</label>
+        <input id="savings" type="number" placeholder="20000000">
+      </div>
+
+    </div>
+
+
+    <button class="btn" style="margin-top:15px" onclick="calculateFinance()">
+      Calculate
+    </button>
+
+
+    <div class="finance-result">
+
+      <div class="metric">
+        <small>Monthly Surplus</small>
+        <strong id="surplus">Rp0</strong>
+      </div>
+
+      <div class="metric">
+        <small>Emergency Fund Target</small>
+        <strong id="emergency">Rp0</strong>
+      </div>
+
+      <div class="metric">
+        <small>Fund Coverage</small>
+        <strong id="coverage">0 bulan</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="section-title">
+      <h2>💡 Financial Principles</h2>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="finance-box">
+        <strong>1. Know your money</strong>
+        <p class="small-text">
+          Ketahui berapa yang masuk dan keluar setiap bulan.
+        </p>
+      </div>
+
+      <div class="finance-box">
+        <strong>2. Build resilience</strong>
+        <p class="small-text">
+          Bangun dana darurat sebelum mengejar gaya hidup.
+        </p>
+      </div>
+
+      <div class="finance-box">
+        <strong>3. Think long-term</strong>
+        <p class="small-text">
+          Rencanakan kehidupan, bukan hanya pesta pernikahan.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LEARNING ================= -->
+
+<section id="learning" class="page">
+
+  <div class="page-header">
+    <h1>📚 Learning Roadmap</h1>
+    <p>Bangun bekal ilmu yang akan berguna dalam kehidupan rumah tangga.</p>
+  </div>
+
+
+  <div class="grid-2">
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🕌 Ilmu Agama</h2>
+        <span id="religionProgress">0%</span>
+      </div>
+
+      <div class="learning" id="religionList"></div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-title">
+        <h2>🏠 Life Skills</h2>
+        <span id="lifeProgress">0%</span>
+      </div>
+
+      <div class="learning" id="lifeList"></div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="section-title">
+      <h2>🧠 Knowledge Beyond Religion</h2>
+    </div>
+
+    <div class="learning">
+
+      <div class="learning-item">
+        <input type="checkbox" data-key="psychology">
+        <div>
+          <strong>Relationship & Psychology</strong>
+          <p>Emotional regulation, attachment, boundaries, conflict.</p>
+        </div>
+      </div>
+
+      <div class="learning-item">
+        <input type="checkbox" data-key="parenting">
+        <div>
+          <strong>Parenting Basics</strong>
+          <p>Dasar pendidikan dan perkembangan anak.</p>
+        </div>
+      </div>
+
+      <div class="learning-item">
+        <input type="checkbox" data-key="financeLearning">
+        <div>
+          <strong>Personal Finance</strong>
+          <p>Budgeting, saving, debt, emergency fund.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PRACTICE ================= -->
+
+<section id="practice" class="page">
+
+  <div class="page-header">
+    <h1>⚔️ Practice & Scenarios</h1>
+    <p>Latih cara berpikir dan merespons situasi sebelum menghadapinya dalam kehidupan nyata.</p>
+  </div>
+
+
+  <div class="card">
+
+    <div class="scenario">
+
+      <h3>Scenario #1 — Communication</h3>
+
+      <p class="small-text">
+        Orang yang kamu sayangi melakukan sesuatu yang membuatmu kecewa.
+        Apa respons pertama yang paling sehat?
+      </p>
+
+    </div>
+
+
+    <button class="option" onclick="scenarioAnswer(1)">
+      A. Langsung marah agar dia tahu saya kecewa.
+    </button>
+
+    <button class="option" onclick="scenarioAnswer(2)">
+      B. Diam dan berharap dia mengerti sendiri.
+    </button>
+
+    <button class="option" onclick="scenarioAnswer(3)">
+      C. Menenangkan diri lalu membicarakannya dengan jelas.
+    </button>
+
+    <button class="option" onclick="scenarioAnswer(4)">
+      D. Membalas dengan melakukan hal yang sama.
+    </button>
+
+
+    <div class="feedback" id="scenarioFeedback"></div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="scenario">
+
+      <h3>Scenario #2 — Emotional Regulation</h3>
+
+      <p class="small-text">
+        Kamu sedang sangat marah dan ingin mengirim pesan panjang.
+        Apa langkah terbaik?
+      </p>
+
+    </div>
+
+
+    <button class="option" onclick="scenario2(1)">
+      A. Kirim sekarang agar semuanya keluar.
+    </button>
+
+    <button class="option" onclick="scenario2(2)">
+      B. Menenangkan diri terlebih dahulu.
+    </button>
+
+    <button class="option" onclick="scenario2(3)">
+      C. Menghubungi orang lain untuk ikut memarahi.
+    </button>
+
+
+    <div class="feedback" id="scenarioFeedback2"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= GOALS ================= -->
+
+<section id="goals" class="page">
+
+  <div class="page-header">
+    <h1>🎯 Goals & Habits</h1>
+    <p>Perubahan besar dibangun dari tindakan kecil yang konsisten.</p>
+  </div>
+
+
+  <div class="card">
+
+    <div class="section-title">
+      <h2>🎯 30 / 90 / 365 Day Goals</h2>
+    </div>
+
+    <div id="goalPage"></div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="section-title">
+      <h2>🔥 Habit Tracker</h2>
+      <span>7 days</span>
+    </div>
+
+    <div id="habitList"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= JOURNAL ================= -->
+
+<section id="journal" class="page">
+
+  <div class="page-header">
+    <h1>📝 Reflection</h1>
+    <p>Jangan hanya mengejar progress. Belajar dari prosesnya.</p>
+  </div>
+
+
+  <div class="card">
+
+    <div class="section-title">
+      <h2>Weekly Reflection</h2>
+    </div>
+
+    <textarea
+      id="journalInput"
+      placeholder="Apa yang saya lakukan dengan baik minggu ini?
+
+Apa kesalahan saya?
+
+Apa yang saya pelajari?
+
+Apa yang ingin saya perbaiki minggu depan?"
+    ></textarea>
+
+    <button class="btn" onclick="addJournal()">
+      Save Reflection
+    </button>
+
+  </div>
+
+
+  <div class="card" style="margin-top:20px">
+
+    <div class="section-title">
+      <h2>📖 Reflection History</h2>
+    </div>
+
+    <div id="journalList"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SETTINGS ================= -->
+
+<section id="settings" class="page">
+
+  <div class="page-header">
+    <h1>⚙️ Settings</h1>
+    <p>Kelola data personalmu.</p>
+  </div>
+
+
+  <div class="card">
+
+    <div class="setting-row">
+
+      <div>
+        <strong>Export Data</strong>
+        <p class="small-text">
+          Simpan seluruh progress sebagai file JSON.
+        </p>
+      </div>
+
+      <button class="btn small" onclick="exportData()">
+        Export
+      </button>
+
+    </div>
+
+
+    <div class="setting-row">
+
+      <div>
+        <strong>Import Data</strong>
+        <p class="small-text">
+          Pulihkan data dari file JSON.
+        </p>
+      </div>
+
+      <button class="btn small" onclick="document.getElementById('importFile').click()">
+        Import
+      </button>
+
+      <input
+        id="importFile"
+        type="file"
+        accept=".json"
+        style="display:none"
+        onchange="importData(event)"
+      >
+
+    </div>
+
+
+    <div class="setting-row">
+
+      <div>
+        <strong>Reset Everything</strong>
+        <p class="small-text">
+          Hapus seluruh progress dari browser.
+        </p>
+      </div>
+
+      <button class="btn danger small" onclick="resetData()">
+        Reset
+      </button>
+
+    </div>
+
+    <div class="setting-row" style="display:block; padding-top:20px; border-top:1px solid var(--border); margin-top:14px;">
+      <div style="margin-bottom:14px;">
+        <strong>Custom Habit</strong>
+        <p class="small-text">
+          Tambahkan atau hapus kebiasaan yang sesuai dengan hidupmu.
+        </p>
+      </div>
+
+      <div id="habitEditor" class="habit-editor"></div>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+</div>
+
+
+<script>
+
+/* =========================================================
+   DATA
+========================================================= */
+
+const pillars = {
+
+  career:{
+    name:"💼 Career",
+    score:70
+  },
+
+  financial:{
+    name:"💰 Financial",
+    score:60
+  },
+
+  religious:{
+    name:"📚 Religious",
+    score:65
+  },
+
+  emotional:{
+    name:"🧠 Emotional",
+    score:75
+  },
+
+  communication:{
+    name:"🗣️ Communication",
+    score:70
+  },
+
+  independence:{
+    name:"🧍 Independence",
+    score:80
+  },
+
+  responsibility:{
+    name:"🤝 Responsibility",
+    score:80
+  },
+
+  relationship:{
+    name:"❤️ Relationship",
+    score:65
+  }
+
+};
+
+
+const assessments = {
+
+  career:{
+    title:"💼 Career Readiness",
+    questions:[
+      "Saya memiliki pekerjaan atau sumber penghasilan yang jelas.",
+      "Saya memiliki skill yang dapat menghasilkan pendapatan.",
+      "Saya memiliki arah perkembangan karier.",
+      "Saya mampu bertanggung jawab terhadap pekerjaan.",
+      "Saya memiliki rencana jika kehilangan pekerjaan."
+    ]
+  },
+
+  emotional:{
+    title:"🧠 Emotional Maturity",
+    questions:[
+      "Saya mampu menahan diri ketika sedang marah.",
+      "Saya mampu mengakui kesalahan.",
+      "Saya mampu meminta maaf tanpa banyak alasan.",
+      "Saya tidak mengambil keputusan besar ketika sedang emosi.",
+      "Saya mampu menerima kritik tanpa langsung defensif."
+    ]
+  },
+
+  communication:{
+    title:"🗣️ Communication",
+    questions:[
+      "Saya mampu mendengarkan tanpa langsung menyela.",
+      "Saya mampu menyampaikan perasaan dengan jelas.",
+      "Saya mampu membicarakan masalah tanpa menyerang pribadi.",
+      "Saya mampu mengatakan tidak dengan sehat.",
+      "Saya mampu mencari solusi ketika terjadi perbedaan."
+    ]
+  },
+
+  responsibility:{
+    title:"🤝 Responsibility",
+    questions:[
+      "Saya menepati janji.",
+      "Saya menyelesaikan tugas tanpa harus terus diingatkan.",
+      "Saya berani mengakui konsekuensi dari keputusan saya.",
+      "Saya tidak selalu menyalahkan keadaan atau orang lain.",
+      "Saya bisa tetap menjalankan kewajiban meskipun sedang tidak mood."
+    ]
+  },
+
+  relationship:{
+    title:"❤️ Relationship Readiness",
+    questions:[
+      "Saya menghormati boundaries orang lain.",
+      "Saya tidak menganggap pasangan harus selalu memenuhi kebutuhan emosional saya.",
+      "Saya mampu memberikan ruang kepada orang lain.",
+      "Saya dapat menerima bahwa pasangan memiliki perbedaan.",
+      "Saya tidak menjadikan hubungan sebagai satu-satunya sumber kebahagiaan saya."
+    ]
+  }
+
+};
+
+
+const religionItems=[
+  ["Tauhid & dasar keimanan","Memperkuat fondasi pemahaman agama."],
+  ["Fikih ibadah","Memahami dasar-dasar ibadah."],
+  ["Pernikahan dalam Islam","Memahami tujuan dan prinsip pernikahan."],
+  ["Hak & kewajiban pasangan","Memahami tanggung jawab masing-masing."],
+  ["Nafkah & tanggung jawab","Memahami aspek finansial keluarga."],
+  ["Akhlak dalam rumah tangga","Membangun adab dalam hubungan."],
+  ["Pendidikan anak","Mempersiapkan diri menjadi orang tua."]
+];
+
+
+const lifeItems=[
+  ["Mengatur keuangan pribadi","Budgeting dan financial planning."],
+  ["Memasak","Mampu menyiapkan makanan sederhana."],
+  ["Laundry","Mampu mengurus pakaian sendiri."],
+  ["Membersihkan rumah","Menjaga tempat tinggal."],
+  ["Mengatur waktu","Menyeimbangkan berbagai tanggung jawab."],
+  ["Administrasi pribadi","Mengurus dokumen dan kebutuhan administratif."]
+];
+
+
+const goals=[
+
+  {
+    title:"Mendapatkan pekerjaan yang stabil",
+    category:"30 Days",
+    progress:60
+  },
+
+  {
+    title:"Membangun dana darurat",
+    category:"90 Days",
+    progress:45
+  },
+
+  {
+    title:"Memperdalam ilmu agama",
+    category:"90 Days",
+    progress:55
+  },
+
+  {
+    title:"Meningkatkan emotional regulation",
+    category:"90 Days",
+    progress:70
+  },
+
+  {
+    title:"Menjadi pribadi yang lebih mandiri",
+    category:"365 Days",
+    progress:40
+  }
+
+];
+
+
+const actions=[
+  "Belajar minimal 30 menit",
+  "Menyelesaikan satu pekerjaan penting",
+  "Menabung / mencatat pengeluaran",
+  "Melakukan aktivitas fisik",
+  "Melakukan refleksi singkat"
+];
+
+
+const defaultHabits=[
+  "Belajar",
+  "Olahraga",
+  "Saving",
+  "Reading",
+  "Reflection"
+];
+
+const habits=[...defaultHabits];
+
+
+let state={
+  answers:{},
+  learning:{},
+  actions:{},
+  habits:{},
+  customHabits:[],
+  journals:[],
+  identity:"",
+  improvement:"",
+  finance:{
+    income:0,
+    expenses:0,
+    savings:0
+  }
+};
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function saveState(){
+  localStorage.setItem(
+    "becomeReadyFinal",
+    JSON.stringify({
+      state,
+      pillars,
+      goals,
+      religionItems,
+      lifeItems
+    })
+  );
+}
+
+
+function loadState(){
+
+  const saved=
+    localStorage.getItem("becomeReadyFinal");
+
+  if(!saved)return;
+
+  try{
+
+    const data=JSON.parse(saved);
+
+    if(data.state)
+      state=Object.assign(state,data.state);
+
+    if(data.pillars){
+
+      Object.keys(data.pillars).forEach(k=>{
+
+        if(pillars[k])
+          pillars[k].score=data.pillars[k].score;
+
+      });
+
+    }
+
+    if(data.goals){
+
+      data.goals.forEach((g,i)=>{
+
+        if(goals[i])
+          goals[i].progress=g.progress;
+
+      });
+
+    }
+
+    if(data.religionItems){
+
+      data.religionItems.forEach((x,i)=>{
+
+        if(religionItems[i])
+          religionItems[i]=x;
+
+      });
+
+    }
+
+    if(data.lifeItems){
+
+      data.lifeItems.forEach((x,i)=>{
+
+        if(lifeItems[i])
+          lifeItems[i]=x;
+
+      });
+
+    }
+
+  }catch(e){
+
+    console.log("Data reset because invalid.");
+
+  }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showPage(id,button){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>page.classList.remove("active"));
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(btn=>btn.classList.remove("active"));
+
+  if(button)
+    button.classList.add("active");
+
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+function overallScore(){
+
+  const values=
+    Object.values(pillars).map(x=>x.score);
+
+  return Math.round(
+    values.reduce((a,b)=>a+b,0)/values.length
+  );
+
+}
+
+
+function renderScore(){
+
+  const score=overallScore();
+
+  document
+    .getElementById("overallScore")
+    .textContent=score;
+
+  document
+    .getElementById("scoreRing")
+    .style.setProperty("--score",score+"%");
+
+
+  let title;
+  let description;
+
+  if(score>=85){
+
+    title="Strong Foundation 💪";
+
+    description=
+      "Fondasi personalmu sudah kuat. Sekarang fokus pada konsistensi, kedalaman ilmu, dan kemampuan menerapkannya dalam kehidupan.";
+
+  }else if(score>=70){
+
+    title="Preparing Well 🌱";
+
+    description=
+      "Kamu sudah memiliki fondasi yang cukup baik. Beberapa area masih perlu diperkuat sebelum menjadi kebiasaan yang stabil.";
+
+  }else if(score>=55){
+
+    title="Building Foundation 🧱";
+
+    description=
+      "Ada beberapa fondasi penting yang masih perlu dibangun. Tidak perlu terburu-buru—fokus pada progress.";
+
+  }else{
+
+    title="Start Building 🌱";
+
+    description=
+      "Gunakan hasil ini sebagai titik awal untuk mengenali diri dan membangun fondasi kehidupan.";
+
+  }
+
+  document
+    .getElementById("stageTitle")
+    .textContent=title;
+
+  document
+    .getElementById("stageDescription")
+    .textContent=description;
+
+}
+
+
+/* =========================================================
+   PILLARS
+========================================================= */
+
+function renderPillars(){
+
+  const container=
+    document.getElementById("pillarList");
+
+  container.innerHTML="";
+
+  Object.keys(pillars).forEach(key=>{
+
+    const p=pillars[key];
+
+    container.innerHTML+=`
+
+      <div class="pillar">
+
+        <div class="pillar-top">
+
+          <span class="pillar-name">
+            ${p.name}
+          </span>
+
+          <span class="pillar-score">
+            ${p.score}%
+          </span>
+
+        </div>
+
+        <div class="progress">
+
+          <div
+            class="progress-bar"
+            style="width:${p.score}%"
+          ></div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+function renderGaps(){
+
+  const container=
+    document.getElementById("gapList");
+
+  const sorted=
+    Object.entries(pillars)
+      .sort((a,b)=>a[1].score-b[1].score)
+      .slice(0,4);
+
+  container.innerHTML="";
+
+  sorted.forEach(([key,p])=>{
+
+    let cls="green";
+
+    if(p.score<60)
+      cls="red";
+    else if(p.score<75)
+      cls="yellow";
+
+    container.innerHTML+=`
+
+      <div class="gap">
+
+        <div class="gap-left">
+
+          <span class="dot ${cls}"></span>
+
+          <span>${p.name}</span>
+
+        </div>
+
+        <strong>${p.score}%</strong>
+
+      </div>
+
+    `;
+
+  });
+
+
+  if(sorted.length){
+
+    const [key,p]=sorted[0];
+
+    document
+      .getElementById("currentFocus")
+      .textContent=p.name.replace(/^[^\s]+\s/,"");
+
+    document
+      .getElementById("focusScore")
+      .textContent=p.score+"%";
+
+    document
+      .getElementById("focusBar")
+      .style.width=p.score+"%";
+
+  }
+
+}
+
+
+/* =========================================================
+   ASSESSMENT
+========================================================= */
+
+function renderAssessment(){
+
+  const container=
+    document.getElementById("assessmentContainer");
+
+  container.innerHTML="";
+
+
+  Object.entries(assessments).forEach(([category,data])=>{
+
+    const card=document.createElement("div");
+
+    card.className="card assessment-card";
+
+    card.innerHTML=`
+
+      <div class="section-title">
+
+        <h2>${data.title}</h2>
+
+        <span id="${category}AssessmentScore">
+          ${pillars[category].score}/100
+        </span>
+
+      </div>
+
+      <div id="${category}Questions"></div>
+
+    `;
+
+    container.appendChild(card);
+
+
+    const questionBox=
+      card.querySelector(`#${category}Questions`);
+
+
+    data.questions.forEach((question,index)=>{
+
+      const div=document.createElement("div");
+
+      div.className="question";
+
+      const current=
+        state.answers?.[category]?.[index];
+
+
+      div.innerHTML=`
+
+        <div class="question-text">
+          ${index+1}. ${question}
+        </div>
+
+        <div class="answers">
+
+          ${[
+            ["Belum",20],
+            ["Kadang",50],
+            ["Sering",75],
+            ["Konsisten",100]
+          ].map(([label,value])=>`
+
+            <button
+              class="${current===value?"selected":""}"
+              onclick="answerAssessment(
+                '${category}',
+                ${index},
+                ${value},
+                this
+              )"
+            >
+              ${label}
+            </button>
+
+          `).join("")}
+
+        </div>
+
+      `;
+
+      questionBox.appendChild(div);
+
+    });
+
+  });
+
+}
+
+
+function answerAssessment(
+  category,
+  index,
+  value,
+  button
+){
+
+  if(!state.answers[category])
+    state.answers[category]={};
+
+  state.answers[category][index]=value;
+
+
+  button
+    .parentElement
+    .querySelectorAll("button")
+    .forEach(b=>b.classList.remove("selected"));
+
+  button.classList.add("selected");
+
+
+  const values=
+    Object.values(state.answers[category]);
+
+
+  pillars[category].score=
+    Math.round(
+      values.reduce((a,b)=>a+b,0)/values.length
+    );
+
+
+  const scoreElement=
+    document.getElementById(
+      category+"AssessmentScore"
+    );
+
+  if(scoreElement)
+    scoreElement.textContent=
+      pillars[category].score+"/100";
+
+
+  renderScore();
+  renderPillars();
+  renderGaps();
+
+  saveState();
+
+}
+
+
+/* =========================================================
+   SELF AWARENESS
+========================================================= */
+
+const selfQuestions=[
+
+  "Apa yang paling saya takutkan tentang pernikahan?",
+
+  "Kebiasaan buruk apa yang paling perlu saya ubah?",
+
+  "Apa yang biasanya membuat saya kehilangan kontrol emosi?",
+
+  "Apa nilai hidup yang paling penting bagi saya?",
+
+  "Apa yang tidak ingin saya kompromikan dalam kehidupan?"
+
+];
+
+
+function renderSelfQuestions(){
+
+  const box=
+    document.getElementById("selfQuestions");
+
+  box.innerHTML="";
+
+
+  selfQuestions.forEach((q,i)=>{
+
+    box.innerHTML+=`
+
+      <div class="question">
+
+        <div class="question-text">
+          ${q}
+        </div>
+
+        <textarea
+          id="selfAnswer${i}"
+          placeholder="Tulis jawabanmu..."
+          oninput="saveSelfAnswer(${i})"
+        ></textarea>
+
+      </div>
+
+    `;
+
+  });
+
+
+  selfQuestions.forEach((q,i)=>{
+
+    const value=
+      state.selfAnswers?.[i]||"";
+
+    const el=
+      document.getElementById("selfAnswer"+i);
+
+    if(el)el.value=value;
+
+  });
+
+}
+
+
+function saveSelfAnswer(index){
+
+  if(!state.selfAnswers)
+    state.selfAnswers={};
+
+  state.selfAnswers[index]=
+    document.getElementById(
+      "selfAnswer"+index
+    ).value;
+
+  saveState();
+
+}
+
+
+function saveIdentity(){
+
+  state.identity=
+    document.getElementById("identityText").value;
+
+  saveState();
+
+}
+
+
+function saveImprovement(){
+
+  state.improvement=
+    document.getElementById("improvementText").value;
+
+  saveState();
+
+}
+
+
+/* =========================================================
+   FINANCE
+========================================================= */
+
+function formatRupiah(value){
+
+  return new Intl.NumberFormat(
+    "id-ID",
+    {
+      style:"currency",
+      currency:"IDR",
+      maximumFractionDigits:0
+    }
+  ).format(value);
+
+}
+
+
+function calculateFinance(){
+
+  const income=
+    Number(document.getElementById("income").value)||0;
+
+  const expenses=
+    Number(document.getElementById("expenses").value)||0;
+
+  const savings=
+    Number(document.getElementById("savings").value)||0;
+
+
+  state.finance={
+    income,
+    expenses,
+    savings
+  };
+
+
+  const surplus=
+    income-expenses;
+
+  const emergency=
+    expenses*6;
+
+  const coverage=
+    expenses>0
+      ? savings/expenses
+      : 0;
+
+
+  document.getElementById("surplus")
+    .textContent=formatRupiah(surplus);
+
+  document.getElementById("emergency")
+    .textContent=formatRupiah(emergency);
+
+  document.getElementById("coverage")
+    .textContent=coverage.toFixed(1)+" bulan";
+
+
+  let score=40;
+
+  if(income>0)score+=10;
+
+  if(surplus>0)score+=15;
+
+  if(coverage>=3)score+=10;
+
+  if(coverage>=6)score+=25;
+
+
+  pillars.financial.score=
+    Math.min(score,100);
+
+
+  renderScore();
+  renderPillars();
+  renderGaps();
+
+  saveState();
+
+}
+
+
+function loadFinance(){
+
+  if(!state.finance)return;
+
+  const f=state.finance;
+
+  if(f.income)
+    document.getElementById("income").value=f.income;
+
+  if(f.expenses)
+    document.getElementById("expenses").value=f.expenses;
+
+  if(f.savings)
+    document.getElementById("savings").value=f.savings;
+
+}
+
+
+/* =========================================================
+   LEARNING
+========================================================= */
+
+function renderLearning(){
+
+  renderLearningGroup(
+    religionItems,
+    "religionList",
+    "religionProgress",
+    "religion"
+  );
+
+  renderLearningGroup(
+    lifeItems,
+    "lifeList",
+    "lifeProgress",
+    "life"
+  );
+
+
+  document
+    .querySelectorAll("[data-key]")
+    .forEach(input=>{
+
+      const key=input.dataset.key;
+
+      input.checked=
+        !!state.learning[key];
+
+      input.onchange=()=>{
+
+        state.learning[key]=
+          input.checked;
+
+        saveState();
+
+      };
+
+    });
+
+}
+
+
+function renderLearningGroup(
+  data,
+  containerId,
+  progressId,
+  type
+){
+
+  const container=
+    document.getElementById(containerId);
+
+  container.innerHTML="";
+
+
+  let completed=0;
+
+
+  data.forEach((item,index)=>{
+
+    const checked=
+      item[2]===true;
+
+    if(checked)completed++;
+
+
+    const div=
+      document.createElement("div");
+
+    div.className="learning-item";
+
+
+    div.innerHTML=`
+
+      <input
+        type="checkbox"
+        ${checked?"checked":""}
+        onchange="
+          toggleLearning(
+            '${type}',
+            ${index},
+            this.checked
+          )
+        "
+      >
+
+      <div>
+
+        <strong>${item[0]}</strong>
+
+        <p>${item[1]}</p>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(div);
+
+  });
+
+
+  const percent=
+    Math.round(
+      completed/data.length*100
+    );
+
+
+  document
+    .getElementById(progressId)
+    .textContent=percent+"%";
+
+}
+
+
+function toggleLearning(type,index,checked){
+
+  if(type==="religion")
+    religionItems[index][2]=checked;
+  else
+    lifeItems[index][2]=checked;
+
+  renderLearning();
+  saveState();
+
+}
+
+
+/* =========================================================
+   GOALS
+========================================================= */
+
+function renderGoals(){
+
+  const dashboard=
+    document.getElementById("dashboardGoals");
+
+  const page=
+    document.getElementById("goalPage");
+
+
+  dashboard.innerHTML="";
+  page.innerHTML="";
+
+
+  goals.forEach((goal,index)=>{
+
+    const html=`
+
+      <div class="goal">
+
+        <div class="goal-top">
+
+          <span class="goal-title">
+            ${goal.title}
+          </span>
+
+          <span class="badge">
+            ${goal.category}
+          </span>
+
+        </div>
+
+        <div class="goal-range">
+
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="${goal.progress}"
+            oninput="updateGoal(
+              ${index},
+              this.value
+            )"
+          >
+
+          <span class="goal-percent">
+            ${goal.progress}%
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    dashboard.innerHTML+=html;
+
+    page.innerHTML+=html;
+
+  });
+
+}
+
+
+function updateGoal(index,value){
+
+  goals[index].progress=
+    Number(value);
+
+  renderGoals();
+  saveState();
+
+}
+
+
+/* =========================================================
+   ACTION CHECKLIST
+========================================================= */
+
+function renderActions(){
+
+  const container=
+    document.getElementById("checklist");
+
+  container.innerHTML="";
+
+
+  actions.forEach((action,index)=>{
+
+    const done=
+      !!state.actions[index];
+
+
+    const div=
+      document.createElement("div");
+
+    div.className=
+      "check "+(done?"done":"");
+
+
+    div.innerHTML=`
+
+      <input
+        type="checkbox"
+        ${done?"checked":""}
+        onchange="
+          toggleAction(
+            ${index},
+            this.checked
+          )
+        "
+      >
+
+      <label>${action}</label>
+
+    `;
+
+
+    container.appendChild(div);
+
+  });
+
+
+  updateActionProgress();
+
+}
+
+
+function toggleAction(index,value){
+
+  state.actions[index]=value;
+
+  renderActions();
+  saveState();
+
+}
+
+
+function updateActionProgress(){
+
+  const done=
+    Object.values(state.actions)
+      .filter(Boolean).length;
+
+  const total=actions.length;
+
+
+  document
+    .getElementById("todayProgress")
+    .textContent=
+      done+"/"+total;
+
+
+  document
+    .getElementById("todayBar")
+    .style.width=
+      (done/total*100)+"%";
+
+  renderReminders();
+
+}
+
+
+function getReminderSuggestions(){
+
+  const weakness = Object.entries(pillars)
+    .sort((a,b)=>a[1].score-b[1].score)[0];
+
+  const done = Object.values(state.actions).filter(Boolean).length;
+  const total = actions.length;
+  const completion = total ? Math.round((done/total)*100) : 0;
+
+  const suggestions = [];
+
+  if(weakness){
+    suggestions.push(`Fokus hari ini pada ${weakness[1].name.toLowerCase()} karena area ini masih paling perlu diperkuat.`);
+  }
+
+  if(completion < 50){
+    suggestions.push("Selesaikan satu tugas penting hari ini agar progres kamu tidak berhenti di awal.");
+  }
+
+  if((state.journals||[]).length < 2){
+    suggestions.push("Tuliskan 5 menit refleksi untuk melihat apa yang sudah baik dan apa yang perlu diperbaiki.");
+  }
+
+  suggestions.push("Lakukan check-in singkat tentang keuangan dan emosi agar persiapan menikah tetap seimbang.");
+  suggestions.push("Tingkatkan satu kebiasaan yang paling berdampak untuk kesiapan rumah tangga, bukan sekadar banyak aktivitas.");
+
+  return suggestions.slice(0, 5);
+
+}
+
+
+function renderReminders(){
+
+  const list=document.getElementById("reminderList");
+
+  if(!list) return;
+
+  const reminders=getReminderSuggestions();
+
+  list.innerHTML = reminders
+    .map(item => `<li>${item}</li>`)
+    .join("");
+
+}
+
+
+function renderMilestones(){
+
+  const list=document.getElementById("milestoneList");
+
+  if(!list) return;
+
+  const milestones=[
+    {title:"3 bulan sebelum menikah", text:"Pastikan finansial, komunikasi, dan kesiapan rumah tangga sudah mulai stabil."},
+    {title:"1 bulan sebelum menikah", text:"Selesaikan agenda utama seperti administrasi, kesiapan hidup bersama, dan evaluasi hubungan."},
+    {title:"1 minggu sebelum menikah", text:"Fokus pada kondisi mental, ritme harian, dan komunikasi yang tenang dengan pasangan."},
+    {title:"Setelah menikah", text:"Terapkan kebiasaan baru secara konsisten dan saling menyesuaikan dalam keseharian."}
+  ];
+
+  list.innerHTML = milestones
+    .map(item => `
+      <li class="milestone-item">
+        <strong>${item.title}</strong>
+        <span>${item.text}</span>
+      </li>
+    `)
+    .join("");
+
+}
+
+
+/* =========================================================
+   HABITS
+========================================================= */
+
+function getHabitList(){
+  return [...defaultHabits, ...(state.customHabits || [])];
+}
+
+
+function renderHabits(){
+
+  const container=
+    document.getElementById("habitList");
+
+  if(!container) return;
+
+  container.innerHTML="";
+
+  const allHabits = getHabitList();
+
+  allHabits.forEach((habit,index)=>{
+
+    const key="habit_"+index;
+
+    const done=
+      state.habits[key]||[];
+
+
+    const wrapper=
+      document.createElement("div");
+
+    wrapper.style.marginBottom="18px";
+
+
+    wrapper.innerHTML=`
+
+      <strong style="font-size:13px">
+        ${habit}
+      </strong>
+
+      <div class="habit-grid">
+
+        ${[
+          "M","T","W","T","F","S","S"
+        ].map((day,i)=>`
+
+          <div
+            class="day ${
+              done.includes(i)?"done":""
+            }"
+            onclick="
+              toggleHabit(
+                '${key}',
+                ${i}
+              )
+            "
+          >
+            ${day}
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    `;
+
+
+    container.appendChild(wrapper);
+
+  });
+
+}
+
+
+function renderCustomHabitEditor(){
+
+  const container=document.getElementById("habitEditor");
+
+  if(!container) return;
+
+  const allHabits=getHabitList();
+
+  container.innerHTML=`
+    <div class="habit-row">
+      <input id="newHabitInput" type="text" placeholder="Tambah kebiasaan baru..." />
+      <button class="btn small" type="button" onclick="addCustomHabit()">Tambah</button>
+    </div>
+    <div class="habit-list">
+      ${allHabits.map((habit, index) => `
+        <span class="habit-chip">
+          ${habit}
+          ${index >= defaultHabits.length ? `<button type="button" onclick="deleteCustomHabit(${index - defaultHabits.length})">×</button>` : ""}
+        </span>
+      `).join("")}
+    </div>
+  `;
+
+}
+
+
+function addCustomHabit(){
+
+  const input=document.getElementById("newHabitInput");
+
+  if(!input) return;
+
+  const value=input.value.trim();
+
+  if(!value) return;
+
+  if(!(state.customHabits||[]).includes(value)){
+    state.customHabits.push(value);
+  }
+
+  input.value="";
+  renderHabits();
+  renderCustomHabitEditor();
+  saveState();
+
+}
+
+
+function deleteCustomHabit(index){
+
+  if(!state.customHabits || !state.customHabits[index]) return;
+
+  state.customHabits.splice(index,1);
+
+  renderHabits();
+  renderCustomHabitEditor();
+  saveState();
+
+}
+
+
+function toggleHabit(key,day){
+
+  if(!state.habits[key])
+    state.habits[key]=[];
+
+
+  const index=
+    state.habits[key].indexOf(day);
+
+
+  if(index===-1)
+    state.habits[key].push(day);
+  else
+    state.habits[key].splice(index,1);
+
+
+  renderHabits();
+  saveState();
+
+}
+
+
+/* =========================================================
+   JOURNAL
+========================================================= */
+
+function addJournal(){
+
+  const input=
+    document.getElementById("journalInput");
+
+  const text=
+    input.value.trim();
+
+
+  if(!text){
+
+    alert("Tulis refleksi terlebih dahulu.");
+
+    return;
+
+  }
+
+
+  state.journals.unshift({
+
+    date:
+      new Date().toLocaleDateString(
+        "id-ID",
+        {
+          weekday:"long",
+          day:"numeric",
+          month:"long",
+          year:"numeric"
+        }
+      ),
+
+    text
+
+  });
+
+
+  input.value="";
+
+  renderJournals();
+
+  saveState();
+
+}
+
+
+function renderJournals(){
+
+  const container=
+    document.getElementById("journalList");
+
+  container.innerHTML="";
+
+
+  if(!state.journals.length){
+
+    container.innerHTML=`
+      <p class="muted">
+        Belum ada reflection.
+      </p>
+    `;
+
+    return;
+
+  }
+
+
+  state.journals.forEach(j=>{
+
+    const div=
+      document.createElement("div");
+
+    div.className="journal-entry";
+
+
+    div.innerHTML=`
+
+      <div class="journal-date">
+        ${j.date}
+      </div>
+
+      <div class="journal-text">
+        ${escapeHTML(j.text)}
+      </div>
+
+    `;
+
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+function escapeHTML(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   SCENARIOS
+========================================================= */
+
+function scenarioAnswer(answer){
+
+  const feedback=
+    document.getElementById(
+      "scenarioFeedback"
+    );
+
+
+  feedback.style.display="block";
+
+
+  if(answer===3){
+
+    feedback.innerHTML=
+      "✅ Respons yang paling sehat dalam konteks ini adalah menenangkan diri terlebih dahulu lalu membicarakan masalah dengan jelas. Tujuannya bukan menghindari konflik, tetapi menyelesaikannya tanpa menyerang pribadi.";
+
+  }else{
+
+    feedback.innerHTML=
+      "💡 Respons tersebut mungkin terasa natural ketika emosi, tetapi coba tanyakan: apakah respons ini menyelesaikan masalah atau hanya melampiaskan emosi?";
+
+  }
+
+}
+
+
+function scenario2(answer){
+
+  const feedback=
+    document.getElementById(
+      "scenarioFeedback2"
+    );
+
+
+  feedback.style.display="block";
+
+
+  if(answer===2){
+
+    feedback.innerHTML=
+      "✅ Benar. Memberi jeda ketika emosi tinggi dapat membantu kita merespons dengan lebih sadar daripada bereaksi secara impulsif.";
+
+  }else{
+
+    feedback.innerHTML=
+      "💡 Ketika emosi sedang tinggi, tujuan pertama bukan memenangkan percakapan, tetapi menurunkan intensitas emosi agar kita bisa berpikir lebih jernih.";
+
+  }
+
+}
+
+
+function buildAICoachSnapshot(){
+
+  const strongAreas=Object.entries(pillars)
+    .filter(([, p]) => p.score >= 70)
+    .map(([key, p]) => `${p.name}: ${p.score}%`);
+
+  const weakAreas=Object.entries(pillars)
+    .filter(([, p]) => p.score < 70)
+    .map(([key, p]) => `${p.name}: ${p.score}%`);
+
+  const focusArea=Object.entries(pillars)
+    .sort((a,b)=>a[1].score-b[1].score)[0];
+
+  const doneActions=Object.values(state.actions).filter(Boolean).length;
+  const actionProgress=Math.round((doneActions/actions.length)*100);
+  const goalAverage=Math.round(goals.reduce((sum,g)=>sum+g.progress,0)/goals.length);
+  const journalCount=state.journals.length;
+
+  return {
+    overallScore:overallScore(),
+    focusArea: focusArea ? `${focusArea[1].name} (${focusArea[1].score}%)` : "Belum ada fokus utama",
+    strongAreas: strongAreas.length ? strongAreas.join("; ") : "Belum ada area yang sangat kuat",
+    weakAreas: weakAreas.length ? weakAreas.join("; ") : "Semua area sudah relatif kuat",
+    goalAverage,
+    actionProgress,
+    journalCount,
+    identity: state.identity ? state.identity.trim() : "User belum menuliskan identitas pasangan yang ingin dibangun.",
+    improvement: state.improvement ? state.improvement.trim() : "User belum menuliskan area yang ingin diperbaiki.",
+    selfAnswers: state.selfAnswers ? Object.values(state.selfAnswers).filter(Boolean).join(" | ") : "Belum ada jawaban self awareness.",
+    finance: state.finance && (state.finance.income || state.finance.expenses || state.finance.savings)
+      ? `Penghasilan ${formatRupiah(state.finance.income || 0)}, pengeluaran ${formatRupiah(state.finance.expenses || 0)}, tabungan ${formatRupiah(state.finance.savings || 0)}`
+      : "Belum ada data finansial yang diisi."
+  };
+
+}
+
+
+function formatCoachMarkdown(text){
+
+  if(!text) return "<p>Belum ada saran AI.</p>";
+
+  const formatted=text
+    .replace(/\n{2,}/g, "</p><p>")
+    .replace(/\n- /g, "<br>• ")
+    .replace(/\n\d+\. /g, "<br>$&")
+    .replace(/\*(.*?)\*/g, "<strong>$1</strong>")
+    .replace(/^(.*)$/gm, (match)=>{
+      if(match.startsWith("• ") || /^\d+\. /.test(match)) return match;
+      return match;
+    });
+
+  return `<p>${formatted}</p>`;
+
+}
+
+
+function renderAICoachOutput(content){
+
+  const container=document.getElementById("aiCoachOutput");
+
+  if(!container) return;
+
+  const safe=String(content || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  const html = formatCoachMarkdown(safe)
+    .replace(/<br>• /g, "<br><br>• ")
+    .replace(/<br>\d+\./g, "<br><br>$&");
+
+  container.innerHTML = html;
+
+  state.aiCoachAdvice = content || "";
+  saveState();
+
+}
+
+
+async function generateAICoachAdvice(){
+
+  const apiKeyInput=document.getElementById("aiCoachApiKey");
+  const status=document.getElementById("aiCoachStatus");
+
+  const apiKey=(apiKeyInput?.value || "").trim() || localStorage.getItem("becomeReadyMistralKey") || localStorage.getItem("mistral_api_key") || "";
+
+  if(!apiKey){
+    if(status){
+      status.textContent="Masukkan API key Mistral terlebih dahulu.";
+      status.className="ai-status error";
+    }
+    return;
+  }
+
+  localStorage.setItem("becomeReadyMistralKey", apiKey);
+  localStorage.setItem("mistral_api_key", apiKey);
+
+  if(apiKeyInput) apiKeyInput.value=apiKey;
+
+  const snapshot=buildAICoachSnapshot();
+
+  if(status){
+    status.textContent="AI sedang menganalisis progress kamu...";
+    status.className="ai-status";
+  }
+
+  const prompt = `
+  Kamu adalah AI coach untuk persiapan pernikahan di Indonesia. 
+  Analisis data berikut dan berikan saran yang personal, praktis, dan motivatif untuk user. 
+  Fokus pada hal yang bisa ditingkatkan dari progress yang sudah dijalani user. 
+  Jangan menggurui terlalu keras; gunakan bahasa yang hangat, jelas, dan membangun.
+
+  Data user:
+  - Skor readiness keseluruhan: ${snapshot.overallScore}/100
+  - Fokus utama saat ini: ${snapshot.focusArea}
+  - Area yang sudah kuat: ${snapshot.strongAreas}
+  - Area yang masih lemah: ${snapshot.weakAreas}
+  - Progress tujuan: ${snapshot.goalAverage}% rata-rata
+  - Progress aksi hari ini: ${snapshot.actionProgress}%
+  - Jumlah refleksi: ${snapshot.journalCount}
+  - Identitas pasangan yang ingin dibangun: ${snapshot.identity}
+  - Area yang ingin diperbaiki: ${snapshot.improvement}
+  - Jawaban self-awareness: ${snapshot.selfAnswers}
+  - Data finansial: ${snapshot.finance}
+
+  Tugas:
+  1. Berikan 3 sampai 5 poin yang perlu ditingkatkan dari progress yang sudah dijalani user.
+  2. Berikan 3 pengingat harian yang relevan.
+  3. Berikan 1 rencana 7 hari yang realistic.
+  4. Sertakan kalimat motivasi singkat di akhir.
+
+  Format jawaban:
+  1. Hal yang perlu ditingkatkan:
+  - ...
+  - ...
+  2. Pengingat hari ini:
+  - ...
+  - ...
+  3. Rencana 7 hari:
+  - ...
+  - ...
+  4. Motivasi:
+  - ...
+  `;
+
+  try{
+
+    const response=await fetch("https://api.mistral.ai/v1/chat/completions",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${apiKey}`
+      },
+      body:JSON.stringify({
+        model:"mistral-small-latest",
+        messages:[
+          {
+            role:"system",
+            content:"Kamu adalah AI coach yang membantu calon pasangan mempersiapkan pernikahan. Jawab dalam Bahasa Indonesia yang santai, jelas, dan supportive."
+          },
+          {
+            role:"user",
+            content:prompt
+          }
+        ],
+        temperature:0.7,
+        max_tokens:500
+      })
+    });
+
+    if(!response.ok){
+      const detail = await response.text();
+      throw new Error(detail || "Gagal terhubung ke Mistral AI.");
+    }
+
+    const data=await response.json();
+    const content=data?.choices?.[0]?.message?.content?.trim();
+
+    if(!content){
+      throw new Error("Respons dari Mistral kosong.");
+    }
+
+    renderAICoachOutput(content);
+
+    if(status){
+      status.textContent="Saran AI berhasil dibuat.";
+      status.className="ai-status success";
+    }
+
+  }catch(error){
+
+    const message = error?.message || "Tidak dapat menghasilkan saran AI.";
+
+    renderAICoachOutput(
+      `1. Hal yang perlu ditingkatkan:\n- Fokus pada area ${snapshot.focusArea}.\n- Perkuat kebiasaan konsisten di ${snapshot.weakAreas}.\n- Jangan terlalu keras pada diri sendiri; progress kecil tetap dihitung.\n2. Pengingat hari ini:\n- Selesaikan satu tugas penting hari ini.\n- Catat satu hal yang sudah baik dari progresmu.\n- Lakukan refleksi 5 menit sebelum tidur.\n3. Rencana 7 hari:\n- Kerjakan satu goal prioritas.\n- Tingkatkan satu kebiasaan yang paling berdampak.\n- Evaluasi hasil dan ulangi.\n4. Motivasi:\n- Kualitas persiapan lebih penting daripada kecepatannya.\n\nCatatan AI: ${message}`
+    );
+
+    if(status){
+      status.textContent="AI gagal terhubung ke Mistral. Saran cadangan ditampilkan.";
+      status.className="ai-status error";
+    }
+
+  }
+
+}
+
+
+function loadAICoachState(){
+
+  const keyField=document.getElementById("aiCoachApiKey");
+  const storedKey = localStorage.getItem("becomeReadyMistralKey") || localStorage.getItem("mistral_api_key") || "";
+
+  if(keyField && storedKey)
+    keyField.value = storedKey;
+
+  if(state.aiCoachAdvice){
+    const output=document.getElementById("aiCoachOutput");
+    if(output)
+      output.innerHTML = formatCoachMarkdown(state.aiCoachAdvice);
+  }
+
+}
+
+
+/* =========================================================
+   IDENTITY LOAD
+========================================================= */
+
+function loadPersonalTexts(){
+
+  document.getElementById("identityText").value=
+    state.identity||"";
+
+  document.getElementById("improvementText").value=
+    state.improvement||"";
+
+}
+
+
+/* =========================================================
+   EXPORT / IMPORT
+========================================================= */
+
+function exportData(){
+
+  const data={
+    state,
+    pillars,
+    goals,
+    religionItems,
+    lifeItems
+  };
+
+
+  const blob=
+    new Blob(
+      [JSON.stringify(data,null,2)],
+      {type:"application/json"}
+    );
+
+
+  const url=
+    URL.createObjectURL(blob);
+
+
+  const a=
+    document.createElement("a");
+
+  a.href=url;
+
+  a.download=
+    "become-ready-backup.json";
+
+  a.click();
+
+
+  URL.revokeObjectURL(url);
+
+}
+
+
+function importData(event){
+
+  const file=
+    event.target.files[0];
+
+  if(!file)return;
+
+
+  const reader=
+    new FileReader();
+
+
+  reader.onload=function(){
+
+    try{
+
+      const data=
+        JSON.parse(reader.result);
+
+
+      if(data.state)
+        state=data.state;
+
+
+      if(data.pillars){
+
+        Object.keys(data.pillars)
+          .forEach(k=>{
+
+            if(pillars[k])
+              pillars[k].score=
+                data.pillars[k].score;
+
+          });
+
+      }
+
+
+      if(data.goals){
+
+        data.goals.forEach((g,i)=>{
+
+          if(goals[i])
+            goals[i].progress=
+              g.progress;
+
+        });
+
+      }
+
+
+      saveState();
+
+      location.reload();
+
+    }catch(e){
+
+      alert(
+        "File tidak valid."
+      );
+
+    }
+
+  };
+
+
+  reader.readAsText(file);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetData(){
+
+  const confirmReset=
+    confirm(
+      "Yakin ingin menghapus seluruh progress?"
+    );
+
+
+  if(!confirmReset)return;
+
+
+  localStorage.removeItem(
+    "becomeReadyFinal"
+  );
+
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function renderDate(){
+
+  document
+    .getElementById("date")
+    .textContent=
+      new Date().toLocaleDateString(
+        "id-ID",
+        {
+          weekday:"long",
+          day:"numeric",
+          month:"long",
+          year:"numeric"
+        }
+      );
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+function init(){
+
+  loadState();
+
+  renderDate();
+
+  renderScore();
+
+  renderPillars();
+
+  renderGaps();
+
+  renderAssessment();
+
+  renderSelfQuestions();
+
+  loadPersonalTexts();
+
+  loadFinance();
+
+  renderLearning();
+
+  renderGoals();
+
+  renderActions();
+
+  renderHabits();
+
+  renderJournals();
+
+  renderReminders();
+
+  renderMilestones();
+
+  renderCustomHabitEditor();
+
+  loadAICoachState();
+
+}
+
+
+init();
+
+</script>
+
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

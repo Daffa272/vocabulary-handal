@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Peran Bank Indonesia dalam Manajemen Krisis & KSSK</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1565c0;
+            --accent: #ff9800;
+            --accent2: #e65100;
+            --dark: #0a2463;
+            --light: #e3f2fd;
+            --success: #2e7d32;
+            --warning: #ff8f00;
+            --danger: #d32f2f;
+            --border: #90caf9;
+            --text: #333;
+            --bg: #f5f7fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        nav.sticky {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            padding: 6px 10px;
+            border: 1.5px solid var(--border);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-size: 0.8em;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-size: 1.7em;
+        }
+
+        section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        section h4 {
+            color: var(--accent);
+            margin: 20px 0 12px 0;
+            font-size: 1.15em;
+        }
+
+        .objectives {
+            background: #fff9f0;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            border-left: 5px solid var(--warning);
+        }
+
+        .objectives h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .objectives ol, .objectives ul {
+            padding-left: 20px;
+        }
+
+        .objectives li {
+            margin-bottom: 10px;
+        }
+
+        .intro, .important, .mnemonic, .summary {
+            margin: 18px 0;
+            padding: 18px;
+            border-radius: 8px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e8 100%);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .important {
+            background: #fff0f0;
+            border-left: 5px solid var(--danger);
+        }
+
+        .mnemonic {
+            background: #f0fff0;
+            border-left: 5px solid var(--success);
+            font-style: italic;
+        }
+
+        .diagram {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 18px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #f0f4f8;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #fff8e1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid var(--border);
+        }
+
+        .quiz-section h2 {
+            color: var(--dark);
+            border-bottom: 2px solid var(--success);
+            padding-bottom: 10px;
+        }
+
+        .question {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .question h4 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .options {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .options li {
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid var(--border);
+        }
+
+        .answer {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            font-weight: 500;
+        }
+
+        .answer p {
+            margin: 5px 0;
+        }
+
+        .cheat-sheet {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .cheat-sheet h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .cheat-sheet p {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .warning-box p {
+            margin: 5px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.7em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            nav a {
+                font-size: 0.75em;
+                padding: 5px 8px;
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+
+            .diagram {
+                font-size: 0.75em;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav.sticky {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section, .intro, .quiz-section, .summary, .objectives, .important, .mnemonic, .warning-box {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+
+            header {
+                background: var(--primary) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cheat-sheet {
+                background: var(--primary) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📘 MODUL PEMBELAJARAN</h1>
+        <p><strong>Peran Bank Indonesia dalam Manajemen Krisis & KSSK</strong></p>
+    </header>
+
+    <div class="container">
+        <nav class="sticky">
+            <ul>
+                <li><a href="#tujuan" class="active">Tujuan</a></li>
+                <li><a href="#gambaran">Gambaran</a></li>
+                <li><a href="#pmk">PMK</a></li>
+                <li><a href="#penting">Pentingnya PMK</a></li>
+                <li><a href="#dasar">Dasar Hukum</a></li>
+                <li><a href="#prinsip">Prinsip</a></li>
+                <li><a href="#pelaksanaan">Pelaksanaan</a></li>
+                <li><a href="#komponen">Komponen</a></li>
+                <li><a href="#simkrisnas">Simkrisnas</a></li>
+                <li><a href="#kewenangan">Kewenangan BI</a></li>
+                <li><a href="#kssk">KSSK</a></li>
+                <li><a href="#tugas">Tugas KSSK</a></li>
+                <li><a href="#perbedaan">Perbedaan</a></li>
+                <li><a href="#konsep">Konsep</a></li>
+                <li><a href="#latihan">Latihan</a></li>
+                <li><a href="#cheat">Cheat Sheet</a></li>
+                <li><a href="#ringkasan">Ringkasan</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Tujuan Pembelajaran -->
+        <section id="tujuan">
+            <h2>1. Tujuan Pembelajaran</h2>
+            <div class="objectives">
+                <p>Setelah mempelajari materi ini, mahasiswa diharapkan mampu:</p>
+                <ol>
+                    <li>Menjelaskan pengertian <span class="highlight">Protokol Manajemen Krisis (PMK)</span>.</li>
+                    <li>Menjelaskan pentingnya PMK dalam menjaga stabilitas sistem keuangan.</li>
+                    <li>Menjelaskan peran Bank Indonesia dalam pencegahan dan penanganan krisis.</li>
+                    <li>Menjelaskan kewenangan BI pada saat kondisi krisis.</li>
+                    <li>Menjelaskan fungsi dan anggota <span class="highlight">Komite Stabilitas Sistem Keuangan (KSSK)</span>.</li>
+                    <li>Memahami koordinasi BI dengan Pemerintah, OJK, dan LPS.</li>
+                    <li>Menjelaskan penguatan KSSK berdasarkan UU PPSK.</li>
+                    <li>Membedakan fungsi BI, KSSK, OJK, dan LPS dalam kerangka stabilitas sistem keuangan.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 2. Gambaran Besar -->
+        <section id="gambaran">
+            <h2>2. Gambaran Besar</h2>
+            <p>Krisis keuangan dapat berkembang dengan sangat cepat dan berdampak luas.</p>
+            <p><strong>Misalnya:</strong></p>
+
+            <div class="diagram">
+Masalah satu bank
+        ↓
+Gangguan likuiditas
+        ↓
+Kepercayaan masyarakat menurun
+        ↓
+Penarikan dana besar-besaran
+        ↓
+Gangguan pasar keuangan
+        ↓
+Penularan ke lembaga keuangan lain
+        ↓
+Risiko sistem keuangan
+        ↓
+Dapat mengganggu perekonomian nasional
+            </div>
+
+            <p>Karena itu, otoritas tidak cukup hanya bertindak <span class="highlight">setelah krisis terjadi</span>.</p>
+            <p>Diperlukan mekanisme:</p>
+            <div class="important">
+                <p><strong>Pencegahan → Deteksi → Koordinasi → Pengambilan keputusan → Penanganan → Evaluasi</strong></p>
+            </div>
+            <p>Mekanisme tersebut dituangkan dalam <span class="highlight">Protokol Manajemen Krisis (PMK)</span>.</p>
+        </section>
+
+        <!-- 3. Protokol Manajemen Krisis (PMK) -->
+        <section id="pmk">
+            <h2>3. Protokol Manajemen Krisis (PMK)</h2>
+
+            <h3>A. Pengertian Protokol</h3>
+            <p>Secara sederhana, <span class="highlight">protokol</span> adalah seperangkat aturan yang menjelaskan:</p>
+            <ul>
+                <li>tindakan yang harus dilakukan,</li>
+                <li>prosedur yang harus ditempuh,</li>
+                <li>pihak yang berwenang,</li>
+                <li>cara berkoordinasi,</li>
+                <li>dan bagaimana keputusan dibuat</li>
+            </ul>
+            <p>dalam suatu situasi tertentu.</p>
+            <p>Dalam konteks krisis keuangan, protokol menjadi <span class="highlight">pedoman tindakan otoritas ketika menghadapi tekanan atau krisis sistem keuangan</span>.</p>
+        </section>
+
+        <!-- 4. Mengapa PMK Penting? -->
+        <section id="penting">
+            <h2>4. Mengapa PMK Penting?</h2>
+            <p>Krisis memiliki karakteristik:</p>
+            <ul>
+                <li>dapat terjadi secara cepat,</li>
+                <li>dapat menimbulkan kepanikan,</li>
+                <li>dapat menyebar antar lembaga,</li>
+                <li>membutuhkan keputusan cepat,</li>
+                <li>membutuhkan koordinasi banyak institusi.</li>
+            </ul>
+
+            <p><strong>Tanpa protokol yang jelas, terdapat risiko:</strong></p>
+            <ul>
+                <li>❌ keputusan terlambat</li>
+                <li>❌ kewenangan tumpang tindih</li>
+                <li>❌ komunikasi tidak konsisten</li>
+                <li>❌ data tidak tersedia secara cepat</li>
+                <li>❌ respons kebijakan tidak terkoordinasi</li>
+            </ul>
+
+            <p><strong>Sebaliknya, PMK membantu memastikan:</strong></p>
+            <ul>
+                <li>✅ respons cepat</li>
+                <li>✅ pembagian kewenangan jelas</li>
+                <li>✅ koordinasi antarotoritas</li>
+                <li>✅ pertukaran informasi</li>
+                <li>✅ pengambilan keputusan terstruktur</li>
+                <li>✅ penanganan krisis lebih efektif</li>
+            </ul>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci ujian:</strong><br>
+                <strong>PMK = pedoman agar otoritas dapat bertindak cepat, tepat, terkoordinasi, dan efektif ketika menghadapi krisis.</strong></p>
+            </div>
+        </section>
+
+        <!-- 5. Dasar Hukum PMK Indonesia -->
+        <section id="dasar">
+            <h2>5. Dasar Hukum PMK Indonesia</h2>
+            <p>Keberadaan PMK di Indonesia diatur dalam:</p>
+            <div class="important">
+                <p><strong>UU No. 9 Tahun 2016 tentang Pencegahan dan Penanganan Krisis Sistem Keuangan</strong></p>
+            </div>
+            <p>yang kemudian diubah terakhir dengan:</p>
+            <div class="important">
+                <p><strong>UU No. 4 Tahun 2023 tentang Pengembangan dan Penguatan Sektor Keuangan (UU PPSK).</strong></p>
+            </div>
+
+            <p>Jadi:</p>
+            <div class="diagram">
+UU 9/2016
+    ↓ diperkuat/diubah
+UU 4/2023 – UU PPSK
+            </div>
+        </section>
+
+        <!-- 6. PMK Bank Indonesia -->
+        <section>
+            <h2>6. PMK Bank Indonesia</h2>
+            <p>PMK Bank Indonesia mencakup dua kelompok besar:</p>
+
+            <h3>1. Pencegahan Krisis</h3>
+            <p>Tujuannya adalah mengurangi kemungkinan berkembangnya tekanan menjadi krisis.</p>
+
+            <h3>2. Penanganan Krisis</h3>
+            <p>Jika krisis terjadi, BI memiliki mekanisme untuk mengambil langkah sesuai kewenangannya.</p>
+
+            <p>Secara sederhana:</p>
+            <div class="diagram">
+        PMK BI
+          │
+     ┌────┴────┐
+     ↓         ↓
+Pencegahan  Penanganan
+     │         │
+Monitoring   Respons
+Evaluasi     Kebijakan
+Koordinasi   Koordinasi
+     └────┬────┘
+          ↓
+ Stabilitas Sistem Keuangan
+            </div>
+        </section>
+
+        <!-- 7. Prinsip PMK Bank Indonesia -->
+        <section id="prinsip">
+            <h2>7. Prinsip PMK Bank Indonesia</h2>
+            <p>PMK BI mengedepankan tiga prinsip utama:</p>
+
+            <h3>A. Tata Kelola yang Baik</h3>
+            <p>Pengambilan keputusan harus dilakukan berdasarkan tata kelola yang baik.</p>
+
+            <h3>B. Mengutamakan Pencegahan</h3>
+            <p>Lebih baik mencegah krisis daripada menangani krisis yang sudah terjadi.</p>
+
+            <h3>C. Percepatan Penanganan</h3>
+            <p>Jika krisis terjadi, penanganannya harus dilakukan dengan cepat.</p>
+
+            <h3>D. Koordinasi dan Komunikasi Efektif</h3>
+            <p>Krisis sistem keuangan tidak dapat ditangani oleh satu lembaga saja.</p>
+            <p>Diperlukan komunikasi dan koordinasi antarotoritas.</p>
+        </section>
+
+        <!-- 8. Bagaimana PMK BI Dijalankan? -->
+        <section id="pelaksanaan">
+            <h2>8. Bagaimana PMK BI Dijalankan?</h2>
+            <p>Dalam prosesnya, protokol dijalankan melalui beberapa aktivitas utama:</p>
+
+            <div class="diagram">
+Pertukaran Data & Informasi
+          ↓
+Pemantauan Tekanan
+          ↓
+Evaluasi Kondisi
+          ↓
+Rapat Dewan Gubernur
+          ↓
+Keputusan Kebijakan
+          ↓
+Koordinasi dengan Institusi Terkait
+          ↓
+Respons Krisis
+          ↓
+Evaluasi Status & Respons
+          ↓
+Komunikasi
+            </div>
+
+            <p>Jadi PMK <span class="highlight">bukan hanya dokumen aturan</span>, tetapi merupakan mekanisme yang digunakan untuk mengatur proses respons terhadap krisis.</p>
+        </section>
+
+        <!-- 9. Komponen Penting PMK BI -->
+        <section id="komponen">
+            <h2>9. Komponen Penting PMK BI</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th>Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data dan informasi</td>
+                            <td>Mengetahui kondisi sistem keuangan</td>
+                        </tr>
+                        <tr>
+                            <td>Koordinasi</td>
+                            <td>Menyatukan respons antarotoritas</td>
+                        </tr>
+                        <tr>
+                            <td>Rapat Dewan Gubernur</td>
+                            <td>Pengambilan keputusan BI</td>
+                        </tr>
+                        <tr>
+                            <td>Evaluasi tekanan</td>
+                            <td>Menilai tingkat permasalahan</td>
+                        </tr>
+                        <tr>
+                            <td>Respons kebijakan</td>
+                            <td>Mengatasi tekanan/krisis</td>
+                        </tr>
+                        <tr>
+                            <td>Komunikasi</td>
+                            <td>Menjaga koordinasi dan penyampaian informasi</td>
+                        </tr>
+                        <tr>
+                            <td>Evaluasi</td>
+                            <td>Menilai efektivitas respons</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 10. Simulasi Krisis Nasional -->
+        <section id="simkrisnas">
+            <h2>10. Simulasi Krisis Nasional</h2>
+            <p>Kerangka kebijakan dan protokol koordinasi antarlembaga tidak cukup hanya dibuat di atas kertas.</p>
+            <p>Kerangka tersebut juga diuji melalui:</p>
+            <div class="important">
+                <p><strong>Simulasi Pencegahan dan Penanganan Krisis Nasional (Simkrisnas)</strong></p>
+            </div>
+
+            <p>Simkrisnas dilaksanakan dari waktu ke waktu untuk menguji kesiapan dalam menghadapi kemungkinan krisis.</p>
+
+            <p><strong>Tujuan utamanya:</strong></p>
+            <div class="mnemonic">
+                <p><strong>Simulasi → menguji protokol → menemukan kelemahan → memperbaiki koordinasi → meningkatkan kesiapan</strong></p>
+            </div>
+        </section>
+
+        <!-- 11-14. Kewenangan BI -->
+        <section id="kewenangan">
+            <h2>11. Kewenangan BI pada Saat Kondisi Krisis</h2>
+            <p>Berdasarkan materi, UU PPSK memberikan kewenangan kepada BI dalam kondisi krisis untuk melakukan beberapa tindakan.</p>
+            <p>Ada <span class="highlight">3 kewenangan utama</span> yang perlu diingat.</p>
+
+            <h3>1. Membeli SBN Berjangka Panjang di Pasar Perdana</h3>
+            <p>BI dapat membeli <span class="highlight">Surat Berharga Negara (SBN) berjangka panjang di pasar perdana</span> untuk penanganan permasalahan sistem keuangan yang membahayakan perekonomian nasional.</p>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br>
+                <strong>SBN → Pasar Perdana → Krisis → Perekonomian Nasional</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>12. Membeli/Reverse Repo SBN Milik LPS</h2>
+            <p>BI dapat melakukan:</p>
+            <div class="important">
+                <p><strong>pembelian/reverse repo SBN yang dimiliki LPS</strong></p>
+            </div>
+            <p>untuk biaya penanganan permasalahan bank.</p>
+
+            <p>Secara sederhana:</p>
+            <div class="diagram">
+LPS memiliki SBN
+      ↓
+Krisis/permasalahan bank
+      ↓
+BI melakukan pembelian/
+reverse repo SBN LPS
+      ↓
+Mendukung biaya penanganan
+permasalahan bank
+            </div>
+        </section>
+
+        <section>
+            <h2>13. Memberikan Akses Pendanaan kepada Korporasi/Swasta</h2>
+            <p>BI juga dapat memberikan akses pendanaan kepada korporasi/swasta melalui:</p>
+            <div class="important">
+                <p><strong>repo SBN yang dimiliki korporasi/swasta melalui perbankan.</strong></p>
+            </div>
+
+            <p><strong>Skemanya:</strong></p>
+            <div class="diagram">
+Korporasi/Swasta
+      │
+      │ memiliki SBN
+      ↓
+    Bank
+      │
+      │ Repo SBN
+      ↓
+     BI
+      │
+      ↓
+Pendanaan
+            </div>
+
+            <p>Perlu diperhatikan bahwa materi menyebut mekanisme tersebut dilakukan <span class="highlight">melalui perbankan</span>.</p>
+        </section>
+
+        <section>
+            <h2>14. Ringkasan 3 Kewenangan BI</h2>
+            <div class="mnemonic">
+                <h3><strong>S-L-K</strong></h3>
+                <p><strong>S</strong> = SBN Pasar Perdana<br>
+                <strong>L</strong> = LPS<br>
+                <strong>K</strong> = Korporasi/Swasta</p>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Kewenangan BI</th>
+                            <th>Tujuan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Membeli SBN jangka panjang di pasar perdana</td>
+                            <td>Menangani masalah sistem keuangan yang membahayakan perekonomian</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Membeli/reverse repo SBN milik LPS</td>
+                            <td>Mendukung biaya penanganan masalah bank</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Repo SBN korporasi/swasta melalui perbankan</td>
+                            <td>Memberikan akses pendanaan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Cara mengingat:</strong><br>
+                <strong>BI saat krisis: SBN – LPS – Korporasi.</strong></p>
+            </div>
+        </section>
+
+        <!-- 15-24. KSSK -->
+        <section id="kssk">
+            <h2>15. Komite Stabilitas Sistem Keuangan (KSSK)</h2>
+
+            <h3>A. Pengertian</h3>
+            <p>Berdasarkan UU PPSK, amanat pencegahan dan penanganan krisis sistem keuangan untuk kepentingan serta ketahanan negara di bidang perekonomian dipegang oleh:</p>
+            <div class="important">
+                <p><strong>Komite Stabilitas Sistem Keuangan (KSSK).</strong></p>
+            </div>
+            <p>KSSK merupakan forum koordinasi utama antarotoritas dalam stabilitas sistem keuangan.</p>
+        </section>
+
+        <section>
+            <h2>16. Anggota KSSK</h2>
+            <p>KSSK terdiri dari <span class="highlight">4 institusi</span>:</p>
+
+            <ol>
+                <li><span class="highlight">Kementerian Keuangan</span></li>
+                <li><span class="highlight">Bank Indonesia</span></li>
+                <li><span class="highlight">Otoritas Jasa Keuangan (OJK)</span></li>
+                <li><span class="highlight">Lembaga Penjamin Simpanan (LPS)</span></li>
+            </ol>
+
+            <p><strong>Struktur sederhananya:</strong></p>
+            <div class="diagram">
+             KSSK
+              │
+   ┌──────────┼──────────┐
+   │          │          │
+Kemenkeu      BI         OJK
+   │                     │
+   └──────────┬──────────┘
+              │
+             LPS
+            </div>
+
+            <p>Lebih mudah diingat:</p>
+            <div class="mnemonic">
+                <h3><strong>K-B-O-L</strong></h3>
+                <p><strong>K</strong> = Kementerian Keuangan<br>
+                <strong>B</strong> = Bank Indonesia<br>
+                <strong>O</strong> = OJK<br>
+                <strong>L</strong> = LPS</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>17. Kepala KSSK</h2>
+            <p>Dalam materi disebutkan:</p>
+            <div class="important">
+                <p><strong>Kementerian Keuangan merupakan Kepala KSSK.</strong></p>
+            </div>
+
+            <p>Setiap anggota KSSK bertindak untuk dan atas nama lembaga yang dipimpinnya sesuai dengan ketentuan peraturan perundang-undangan.</p>
+            <p>Artinya, KSSK bukan menggantikan lembaga-lembaga tersebut.</p>
+            <p>Masing-masing tetap menjalankan kewenangan sesuai mandat dan peraturan yang berlaku.</p>
+        </section>
+
+        <section id="tugas">
+            <h2>18. Tugas KSSK</h2>
+            <p>Berdasarkan materi, terdapat <span class="highlight">3 kelompok tugas utama KSSK</span>.</p>
+
+            <h3>1. Pemantauan dan Pemeliharaan Stabilitas Sistem Keuangan</h3>
+            <p>KSSK melakukan koordinasi untuk:</p>
+            <ul>
+                <li>memantau kondisi sistem keuangan;</li>
+                <li>menjaga stabilitas;</li>
+                <li>mengidentifikasi tekanan.</li>
+            </ul>
+
+            <h3>2. Penanganan Krisis Sistem Keuangan</h3>
+            <p>Jika terjadi krisis, KSSK melakukan koordinasi dalam rangka penanganannya.</p>
+
+            <h3>3. Penanganan Bank Sistemik</h3>
+            <p>KSSK melakukan koordinasi dalam penanganan permasalahan <span class="highlight">bank sistemik</span>, baik ketika:</p>
+            <ul>
+                <li>stabilitas sistem keuangan normal; maupun</li>
+                <li>kondisi krisis.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>19. Tiga Fungsi KSSK</h2>
+            <div class="mnemonic">
+                <h3><strong>Pantau – Tangani – Koordinasikan</strong></h3>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fungsi</th>
+                            <th>Fokus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pantau</td>
+                            <td>Stabilitas sistem keuangan</td>
+                        </tr>
+                        <tr>
+                            <td>Tangani</td>
+                            <td>Krisis sistem keuangan</td>
+                        </tr>
+                        <tr>
+                            <td>Koordinasikan</td>
+                            <td>Permasalahan bank sistemik</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>20. Penguatan KSSK melalui UU PPSK</h2>
+            <p>UU PPSK memperkuat peran dan kewenangan KSSK beserta lembaga anggotanya.</p>
+            <p>Penguatan tersebut dilakukan melalui beberapa instrumen.</p>
+        </section>
+
+        <section>
+            <h2>21. Rencana Pemulihan dan Resolusi Bank</h2>
+            <p>Diperkuat instrumen untuk menghadapi kemungkinan permasalahan bank, termasuk:</p>
+            <ul>
+                <li><span class="highlight">rencana pemulihan bank</span></li>
+                <li><span class="highlight">rencana resolusi bank</span></li>
+            </ul>
+            <p>Tujuannya adalah agar tindakan dapat dipersiapkan sebelum kondisi menjadi lebih buruk.</p>
+        </section>
+
+        <section>
+            <h2>22. Pengaturan Likuiditas Jangka Pendek</h2>
+            <p>Penguatan juga mencakup pengaturan:</p>
+
+            <h3>PLJP</h3>
+            <p><span class="highlight">Pinjaman Likuiditas Jangka Pendek</span> untuk bank konvensional.</p>
+
+            <h3>PLJPS</h3>
+            <p><span class="highlight">Pembiayaan Likuiditas Jangka Pendek Syariah</span> untuk bank syariah.</p>
+
+            <p>Konsepnya berkaitan dengan dukungan likuiditas ketika bank menghadapi kesulitan likuiditas jangka pendek sesuai ketentuan.</p>
+        </section>
+
+        <section>
+            <h2>23. Penempatan Dana oleh LPS</h2>
+            <p>KSSK juga diperkuat melalui instrumen yang berkaitan dengan:</p>
+            <div class="important">
+                <p><strong>penempatan dana oleh LPS.</strong></p>
+            </div>
+            <p>Hal ini menjadi bagian dari instrumen pencegahan dan penanganan permasalahan bank.</p>
+        </section>
+
+        <section>
+            <h2>24. Penguatan Peran LPS sebagai Lembaga Resolusi</h2>
+            <p>UU PPSK menegaskan peran:</p>
+            <div class="important">
+                <p><strong>LPS sebagai lembaga resolusi</strong></p>
+            </div>
+            <p>dengan mandat:</p>
+            <div class="important">
+                <p><strong>risk minimizer</strong></p>
+            </div>
+            <p>atau pengurangan risiko.</p>
+            <p>Maknanya dalam konteks materi adalah LPS tidak hanya berfungsi dalam aspek penjaminan, tetapi juga mempunyai peran penting dalam proses resolusi permasalahan bank.</p>
+        </section>
+
+        <!-- 25. Makroprudensial vs Mikroprudensial -->
+        <section id="perbedaan">
+            <h2>25. Makroprudensial vs Mikroprudensial</h2>
+            <p>Ini merupakan konsep yang <span class="highlight">sangat penting untuk ujian</span>.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>Makroprudensial</th>
+                            <th>Mikroprudensial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fokus</td>
+                            <td>Sistem keuangan secara keseluruhan</td>
+                            <td>Lembaga keuangan individual</td>
+                        </tr>
+                        <tr>
+                            <td>Tujuan</td>
+                            <td>Menjaga stabilitas sistem</td>
+                            <td>Menjaga kesehatan lembaga</td>
+                        </tr>
+                        <tr>
+                            <td>Risiko</td>
+                            <td>Risiko sistemik</td>
+                            <td>Risiko individual lembaga</td>
+                        </tr>
+                        <tr>
+                            <td>Contoh perspektif</td>
+                            <td>Procyclicality, contagion</td>
+                            <td>Modal, likuiditas, kualitas aset</td>
+                        </tr>
+                        <tr>
+                            <td>Otoritas terkait</td>
+                            <td>BI</td>
+                            <td>OJK, sesuai kewenangannya</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Cara mengingat:</strong><br>
+                <strong>Makro = keseluruhan sistem</strong><br>
+                <strong>Mikro = satu lembaga</strong></p>
+            </div>
+        </section>
+
+        <!-- 26. Hubungan BI – OJK – LPS – Kementerian Keuangan -->
+        <section id="konsep">
+            <h2>26. Hubungan BI – OJK – LPS – Kementerian Keuangan</h2>
+            <p>Keempat lembaga mempunyai perspektif berbeda tetapi saling melengkapi.</p>
+
+            <div class="diagram">
+                  KSSK
+                    │
+       ┌────────────┼────────────┐
+       ↓            ↓            ↓
+  Kementerian       BI           OJK
+    Keuangan        │             │
+       │       Stabilitas     Pengawasan
+       │       moneter &      mikroprudensial
+       │       makroprudensial
+       │
+       └────────────┬────────────┘
+                    ↓
+                   LPS
+                    │
+              Penjaminan &
+                Resolusi
+            </div>
+
+            <p><em>Catatan: diagram ini merupakan penyederhanaan untuk pembelajaran; kewenangan aktual masing-masing lembaga mengikuti UU dan ketentuan yang berlaku.</em></p>
+        </section>
+
+        <section>
+            <h2>27. Bagaimana Krisis Ditangani?</h2>
+            <p>Secara konseptual, mekanisme dapat dipahami sebagai berikut:</p>
+
+            <div class="diagram">
+1. PEMANTAUAN
+      ↓
+2. DETEKSI TEKANAN
+      ↓
+3. PERTUKARAN DATA & INFORMASI
+      ↓
+4. EVALUASI STATUS
+      ↓
+5. KOORDINASI ANTAROTORITAS
+      ↓
+6. PENGAMBILAN KEPUTUSAN
+      ↓
+7. IMPLEMENTASI RESPONS
+      ↓
+8. KOMUNIKASI
+      ↓
+9. EVALUASI
+            </div>
+
+            <p>Semakin cepat tahapan tersebut dilakukan dengan baik, semakin besar peluang tekanan dapat ditangani sebelum berkembang menjadi krisis yang lebih luas.</p>
+        </section>
+
+        <section>
+            <h2>28. Contoh Sederhana</h2>
+            <p>Misalkan suatu bank mengalami tekanan likuiditas.</p>
+
+            <h3>Tahap 1 — Deteksi</h3>
+            <p>Tekanan likuiditas teridentifikasi.</p>
+
+            <h3>Tahap 2 — Evaluasi</h3>
+            <p>Otoritas mengevaluasi apakah masalah bersifat individual atau berpotensi sistemik.</p>
+
+            <h3>Tahap 3 — Koordinasi</h3>
+            <p>BI, OJK, LPS, dan Kementerian Keuangan dapat berkoordinasi sesuai kewenangannya.</p>
+
+            <h3>Tahap 4 — Respons</h3>
+            <p>Instrumen yang tersedia digunakan sesuai kondisi dan dasar hukum.</p>
+
+            <h3>Tahap 5 — Evaluasi</h3>
+            <p>Status tekanan dan efektivitas respons terus dievaluasi.</p>
+
+            <div class="intro">
+                <p><strong>Intinya:</strong></p>
+                <p><strong>Krisis tidak hanya membutuhkan "uang", tetapi juga membutuhkan <span class="highlight">informasi, koordinasi, kewenangan, keputusan, dan komunikasi</span>.</strong></p>
+            </div>
+        </section>
+
+        <!-- 29. Perbedaan PMK, BI, dan KSSK -->
+        <section>
+            <h2>29. Perbedaan PMK, BI, dan KSSK</h2>
+            <p>Sering terjadi kekeliruan antara ketiga istilah tersebut.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Istilah</th>
+                            <th>Pengertian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PMK</td>
+                            <td>Protokol/kerangka prosedur untuk pencegahan dan penanganan krisis</td>
+                        </tr>
+                        <tr>
+                            <td>BI</td>
+                            <td>Salah satu otoritas anggota KSSK dengan mandat dan kewenangan tertentu</td>
+                        </tr>
+                        <tr>
+                            <td>KSSK</td>
+                            <td>Komite yang mengoordinasikan pencegahan dan penanganan krisis/stabilitas sistem keuangan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Ingat:</strong><br>
+                <strong>PMK = mekanisme/prosedur</strong><br>
+                <strong>BI = otoritas</strong><br>
+                <strong>KSSK = forum/komite koordinasi</strong></p>
+            </div>
+        </section>
+
+        <!-- 30. Perbedaan Krisis dan Permasalahan Bank -->
+        <section>
+            <h2>30. Perbedaan Krisis dan Permasalahan Bank</h2>
+            <p>Tidak setiap masalah bank otomatis merupakan <span class="highlight">krisis sistem keuangan</span>.</p>
+
+            <p>Secara konseptual:</p>
+            <div class="diagram">
+Permasalahan satu bank
+        ↓
+Apakah berdampak sistemik?
+   ↙             ↘
+Tidak             Ya
+ ↓                 ↓
+Penanganan      Risiko sistem
+individual      keuangan
+                  ↓
+              Koordinasi
+                KSSK
+            </div>
+
+            <p>Karena itu, salah satu hal penting dalam manajemen krisis adalah <span class="highlight">menilai tingkat dan dampak tekanan</span>.</p>
+        </section>
+
+        <!-- 31. Konsep Lender of Last Resort -->
+        <section>
+            <h2>31. Konsep Lender of Last Resort dan Manajemen Krisis</h2>
+            <p>Dalam konteks yang lebih luas, dukungan likuiditas BI seperti <span class="highlight">PLJP/PLJPS</span> berkaitan dengan penanganan kesulitan likuiditas jangka pendek.</p>
+
+            <p>Namun jangan menyamakan:</p>
+            <div class="important">
+                <p><strong>PLJP/PLJPS ≠ seluruh manajemen krisis.</strong></p>
+            </div>
+
+            <p>PLJP/PLJPS merupakan <span class="highlight">salah satu instrumen</span>, sedangkan PMK adalah kerangka/protokol yang jauh lebih luas.</p>
+
+            <div class="mnemonic">
+                <p><strong>Analogi:</strong><br>
+                <strong>PMK = seluruh sistem pertolongan darurat</strong><br>
+                <strong>PLJP = salah satu alat pertolongan</strong></p>
+            </div>
+        </section>
+
+        <!-- 32. Peta Konsep Materi -->
+        <section>
+            <h2>32. Peta Konsep Materi</h2>
+            <div class="diagram">
+             STABILITAS SISTEM KEUANGAN
+                       │
+                       ↓
+             MANAJEMEN KRISIS
+                       │
+             ┌─────────┴─────────┐
+             ↓                   ↓
+         Pencegahan          Penanganan
+             │                   │
+             └─────────┬─────────┘
+                       ↓
+                     PMK
+                       │
+          ┌────────────┼────────────┐
+          ↓            ↓            ↓
+       BI            KSSK      Institusi terkait
+          │            │
+          │       ┌────┼────┬────┐
+          │       ↓    ↓    ↓    ↓
+          │     Kemenkeu BI   OJK  LPS
+          │
+          ↓
+  Instrumen/kewenangan
+          │
+   ┌──────┼──────────────┐
+   ↓      ↓              ↓
+ SBN     LPS       Korporasi/Swasta
+            </div>
+        </section>
+
+        <!-- 33. Ringkasan Penguatan UU PPSK -->
+        <section>
+            <h2>33. Ringkasan Penguatan UU PPSK</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Penguatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>KSSK</td>
+                            <td>Penguatan peran dan kewenangan</td>
+                        </tr>
+                        <tr>
+                            <td>Bank</td>
+                            <td>Rencana pemulihan dan resolusi</td>
+                        </tr>
+                        <tr>
+                            <td>Likuiditas</td>
+                            <td>PLJP/PLJPS</td>
+                        </tr>
+                        <tr>
+                            <td>LPS</td>
+                            <td>Penempatan dana</td>
+                        </tr>
+                        <tr>
+                            <td>Resolusi</td>
+                            <td>Penguatan LPS sebagai lembaga resolusi</td>
+                        </tr>
+                        <tr>
+                            <td>Mandat LPS</td>
+                            <td>Risk minimizer</td>
+                        </tr>
+                        <tr>
+                            <td>Koordinasi</td>
+                            <td>Makroprudensial–mikroprudensial</td>
+                        </tr>
+                        <tr>
+                            <td>Koordinasi lebih lanjut</td>
+                            <td>Makroprudensial–mikroprudensial–resolusi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 34. Mnemonic Utama -->
+        <section>
+            <h2>34. Mnemonic Utama</h2>
+
+            <h3>PMK</h3>
+            <div class="mnemonic">
+                <h4><strong>C-P-K-K</strong></h4>
+                <p><strong>C</strong>egah<br>
+                <strong>P</strong>antau<br>
+                <strong>K</strong>oordinasi<br>
+                <strong>K</strong>omunikasi</p>
+            </div>
+
+            <h3>KSSK</h3>
+            <div class="mnemonic">
+                <h4><strong>K-B-O-L</strong></h4>
+                <p><strong>K</strong>ementerian Keuangan<br>
+                <strong>B</strong>ank Indonesia<br>
+                <strong>O</strong>JK<br>
+                <strong>L</strong>PS</p>
+            </div>
+
+            <h3>Tugas KSSK</h3>
+            <div class="mnemonic">
+                <h4><strong>P-T-B</strong></h4>
+                <p><strong>P</strong>antau stabilitas<br>
+                <strong>T</strong>angani krisis<br>
+                <strong>B</strong>ank sistemik</p>
+            </div>
+
+            <h3>Kewenangan BI dalam kondisi krisis</h3>
+            <div class="mnemonic">
+                <h4><strong>S-L-K</strong></h4>
+                <p><strong>S</strong>BN pasar perdana<br>
+                <strong>L</strong>PS<br>
+                <strong>K</strong>orporasi/swasta</p>
+            </div>
+        </section>
+
+        <!-- 35. Tabel Besar untuk Hafalan Ujian -->
+        <section>
+            <h2>35. Tabel Besar untuk Hafalan Ujian</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Materi</th>
+                            <th>Kata Kunci</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PMK</td>
+                            <td>Pencegahan & penanganan krisis</td>
+                        </tr>
+                        <tr>
+                            <td>Prinsip PMK</td>
+                            <td>Good governance, pencegahan, percepatan, koordinasi</td>
+                        </tr>
+                        <tr>
+                            <td>Simkrisnas</td>
+                            <td>Menguji kesiapan protokol</td>
+                        </tr>
+                        <tr>
+                            <td>KSSK</td>
+                            <td>Kemenkeu, BI, OJK, LPS</td>
+                        </tr>
+                        <tr>
+                            <td>Tugas KSSK</td>
+                            <td>Pantau, tangani, koordinasi</td>
+                        </tr>
+                        <tr>
+                            <td>BI saat krisis</td>
+                            <td>SBN, LPS, korporasi/swasta</td>
+                        </tr>
+                        <tr>
+                            <td>PLJP</td>
+                            <td>Likuiditas jangka pendek bank</td>
+                        </tr>
+                        <tr>
+                            <td>PLJPS</td>
+                            <td>Likuiditas jangka pendek syariah</td>
+                        </tr>
+                        <tr>
+                            <td>LPS</td>
+                            <td>Penjaminan & resolusi</td>
+                        </tr>
+                        <tr>
+                            <td>Risk minimizer</td>
+                            <td>Mandat pengurangan risiko LPS</td>
+                        </tr>
+                        <tr>
+                            <td>Makroprudensial</td>
+                            <td>Sistem</td>
+                        </tr>
+                        <tr>
+                            <td>Mikroprudensial</td>
+                            <td>Lembaga individual</td>
+                        </tr>
+                        <tr>
+                            <td>Resolusi</td>
+                            <td>Penanganan bank bermasalah sesuai mekanisme resolusi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 36-39. Latihan Soal -->
+        <div class="quiz-section" id="latihan">
+            <h2>36. Latihan Soal</h2>
+
+            <h3>A. Pilihan Ganda</h3>
+
+            <div class="question">
+                <h4>1. Apa tujuan utama Protokol Manajemen Krisis?</h4>
+                <ol class="options" type="A">
+                    <li>A. Meningkatkan keuntungan bank</li>
+                    <li>B. Mempercepat dan mengoordinasikan respons terhadap krisis</li>
+                    <li>C. Mengurangi jumlah bank</li>
+                    <li>D. Menentukan suku bunga kredit</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>2. Dasar hukum PMK Indonesia yang disebutkan dalam materi adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. UU No. 9 Tahun 2016</li>
+                    <li>B. UU No. 23 Tahun 1999 saja</li>
+                    <li>C. UU No. 7 Tahun 1992 saja</li>
+                    <li>D. UU No. 21 Tahun 2011 saja</li>
+                </ol>
+                <div class="answer">
+                    <p>Jawaban: <strong>A</strong></p>
+                    <p><em>Catatan: UU tersebut kemudian diubah terakhir melalui <strong>UU No. 4 Tahun 2023 (UU PPSK)</strong>.</em></p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>3. Siapa yang menjadi anggota KSSK?</h4>
+                <ol class="options" type="A">
+                    <li>A. BI dan OJK saja</li>
+                    <li>B. BI, OJK, LPS saja</li>
+                    <li>C. Kementerian Keuangan, BI, OJK, dan LPS</li>
+                    <li>D. BI, DPR, OJK, dan LPS</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>4. Kepala KSSK adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Bank Indonesia</li>
+                    <li>B. Kementerian Keuangan</li>
+                    <li>C. OJK</li>
+                    <li>D. LPS</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>5. Salah satu tugas KSSK adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menentukan seluruh suku bunga bank</li>
+                    <li>B. Melakukan koordinasi pemantauan dan pemeliharaan stabilitas sistem keuangan</li>
+                    <li>C. Mengelola seluruh bank secara langsung</li>
+                    <li>D. Menentukan harga saham</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>6. Dalam kondisi krisis, BI dapat membeli SBN berjangka panjang di...</h4>
+                <ol class="options" type="A">
+                    <li>A. Pasar sekunder saja</li>
+                    <li>B. Pasar perdana</li>
+                    <li>C. Bursa komoditas</li>
+                    <li>D. Pasar valuta asing</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>7. BI dapat membeli/reverse repo SBN yang dimiliki...</h4>
+                <ol class="options" type="A">
+                    <li>A. OJK</li>
+                    <li>B. LPS</li>
+                    <li>C. DPR</li>
+                    <li>D. Perusahaan sekuritas</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>8. Akses pendanaan kepada korporasi/swasta dapat dilakukan melalui repo...</h4>
+                <ol class="options" type="A">
+                    <li>A. Saham</li>
+                    <li>B. SBN yang dimiliki korporasi/swasta melalui perbankan</li>
+                    <li>C. Emas</li>
+                    <li>D. Valuta asing</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>9. Simkrisnas digunakan untuk...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menguji protokol pencegahan dan penanganan krisis</li>
+                    <li>B. Menghitung inflasi</li>
+                    <li>C. Menentukan BI-Rate</li>
+                    <li>D. Menghitung nilai tukar</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>10. Makroprudensial terutama berfokus pada...</h4>
+                <ol class="options" type="A">
+                    <li>A. Satu nasabah</li>
+                    <li>B. Satu bank saja</li>
+                    <li>C. Sistem keuangan secara keseluruhan</li>
+                    <li>D. Satu transaksi</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <h3>B. Soal Pemahaman</h3>
+
+            <div class="question">
+                <h4>11. Mengapa koordinasi sangat penting dalam penanganan krisis?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Karena krisis sistem keuangan dapat melibatkan banyak lembaga dan memiliki dampak lintas sektor. Oleh karena itu, diperlukan pertukaran data, koordinasi kebijakan, pembagian kewenangan yang jelas, dan komunikasi yang efektif.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>12. Apa perbedaan PMK dan KSSK?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>PMK adalah kerangka/protokol yang mengatur proses pencegahan dan penanganan krisis, sedangkan KSSK adalah komite yang beranggotakan Kementerian Keuangan, BI, OJK, dan LPS untuk melakukan koordinasi dalam menjaga stabilitas dan menangani krisis sistem keuangan.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>13. Mengapa Simkrisnas diperlukan?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Untuk menguji kesiapan protokol dan koordinasi antarotoritas sehingga kelemahan dalam mekanisme pencegahan dan penanganan krisis dapat diketahui dan diperbaiki.</p>
+                </div>
+            </div>
+
+            <h3>C. Soal Esai</h3>
+
+            <div class="question">
+                <h4>14. Jelaskan peran BI dalam manajemen krisis!</h4>
+                <div class="answer">
+                    <p><strong>Poin jawaban:</strong></p>
+                    <ul>
+                        <li>BI memiliki PMK untuk pencegahan dan penanganan krisis.</li>
+                        <li>BI melakukan proses pengambilan keputusan dan koordinasi.</li>
+                        <li>BI melakukan pertukaran data dan informasi.</li>
+                        <li>BI mengevaluasi tekanan dan respons kebijakan.</li>
+                        <li>Dalam kondisi krisis, berdasarkan materi, BI memiliki kewenangan:
+                            <ol>
+                                <li>membeli SBN jangka panjang di pasar perdana;</li>
+                                <li>membeli/reverse repo SBN milik LPS;</li>
+                                <li>memberikan akses pendanaan kepada korporasi/swasta melalui repo SBN melalui perbankan.</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>15. Jelaskan tugas KSSK!</h4>
+                <div class="answer">
+                    <p><strong>Jawaban inti:</strong></p>
+                    <p>KSSK melakukan koordinasi untuk:</p>
+                    <ol>
+                        <li>pemantauan dan pemeliharaan stabilitas sistem keuangan;</li>
+                        <li>penanganan krisis sistem keuangan;</li>
+                        <li>penanganan permasalahan bank sistemik baik dalam kondisi normal maupun krisis.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 39. Potensi Jebakan Soal -->
+        <section>
+            <h2>39. Potensi Jebakan Soal</h2>
+
+            <div class="warning-box">
+                <h4>⚠️ Jangan salah:</h4>
+                <p><strong>PMK ≠ KSSK</strong></p>
+                <p>PMK = protokol/kerangka prosedur.</p>
+                <p>KSSK = komite koordinasi.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Jangan salah:</h4>
+                <p><strong>BI ≠ KSSK</strong></p>
+                <p>BI merupakan <strong>salah satu anggota KSSK</strong>.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Jangan salah:</h4>
+                <p><strong>PLJP ≠ PMK</strong></p>
+                <p>PLJP adalah instrumen likuiditas jangka pendek, sedangkan PMK merupakan kerangka manajemen krisis.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Jangan salah:</h4>
+                <p><strong>Makroprudensial ≠ mikroprudensial</strong></p>
+                <p>Makroprudensial → sistem.</p>
+                <p>Mikroprudensial → lembaga individual.</p>
+            </div>
+        </section>
+
+        <!-- 40. Cheat Sheet -->
+        <section id="cheat">
+            <h2>40. Cheat Sheet 1 Menit Sebelum Ujian</h2>
+            <div class="cheat-sheet">
+                <p><strong>PMK</strong> = protokol untuk mencegah dan menangani krisis.</p>
+
+                <p><strong>Dasar utama</strong> = UU 9/2016, diubah terakhir oleh UU 4/2023 (UU PPSK).</p>
+
+                <p><strong>Prinsip PMK BI</strong> = tata kelola baik + pencegahan + percepatan + koordinasi/komunikasi.</p>
+
+                <p><strong>Simkrisnas</strong> = menguji protokol dan kesiapan menghadapi krisis.</p>
+
+                <p><strong>KSSK</strong> = Kemenkeu + BI + OJK + LPS.</p>
+
+                <p><strong>Tugas KSSK</strong> = pantau stabilitas + tangani krisis + koordinasi masalah bank sistemik.</p>
+
+                <p><strong>3 kewenangan BI saat krisis dalam materi</strong> = SBN pasar perdana + SBN LPS + repo SBN korporasi/swasta melalui perbankan.</p>
+
+                <p><strong>LPS</strong> = diperkuat sebagai lembaga resolusi dengan mandat <strong>risk minimizer</strong>.</p>
+
+                <p><strong>PLJP/PLJPS</strong> = dukungan likuiditas jangka pendek.</p>
+
+                <p><strong>Makroprudensial</strong> = sistem.</p>
+                <p><strong>Mikroprudensial</strong> = lembaga.</p>
+
+                <h3>Rumus hafalan terakhir:</h3>
+                <p><strong>PMK → CEGAH & TANGANI</strong></p>
+                <p><strong>KSSK → K-B-O-L</strong></p>
+                <p><strong>KSSK → PANTAU–TANGANI–KOORDINASI</strong></p>
+                <p><strong>BI KRISIS → S-L-K</strong></p>
+                <p><strong>MAKRO → SISTEM</strong></p>
+                <p><strong>MIKRO → LEMBAGA</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Modul Pembelajaran: Peran Bank Indonesia dalam Manajemen Krisis & KSSK | Dibuat untuk tujuan pendidikan</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], .quiz-section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const scrollPosition = window.scrollY + 120;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight functionality
+        const urlParams = new URLSearchParams(window.location.search);
+        const highlight = urlParams.get('highlight');
+
+        if (highlight) {
+            const elements = document.querySelectorAll('body *:not(script):not(style):not(nav):not(header):not(footer)');
+            elements.forEach(el => {
+                if (el.textContent && el.textContent.includes(highlight)) {
+                    const regex = new RegExp(highlight, 'gi');
+                    el.innerHTML = el.innerHTML.replace(regex, match =>
+                        `<span class="highlight">${match}</span>`
+                    );
+                }
+            });
+        }
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

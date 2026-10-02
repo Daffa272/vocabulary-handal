@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPh Pasal 4 Ayat (2) - Studi Kasus & Panduan Lengkap</title>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #1f2937;
+            --border: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        nav .container {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px 20px;
+        }
+        
+        nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding-bottom: 40px;
+        }
+        
+        section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        section h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background: #f1f5f9;
+        }
+        
+        /* Case Study Cards */
+        .case-study {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .case-study h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .case-study .label {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Calculation Box */
+        .calculation {
+            background: #e0f2fe;
+            border: 1px solid #bae6fd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calculation .formula {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .calculation .result {
+            font-weight: bold;
+            color: var(--danger);
+            font-size: 1.1rem;
+        }
+        
+        /* Important Notes */
+        .note {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .note::before {
+            content: "⚠️ ";
+        }
+        
+        .note strong {
+            color: var(--warning);
+        }
+        
+        /* Success Box */
+        .success {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .success::before {
+            content: "✅ ";
+        }
+        
+        /* Flowchart */
+        .flowchart {
+            background: #f8fafc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        
+        /* Mnemonic */
+        .mnemonic {
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .mnemonic h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .mnemonic-code {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            letter-spacing: 3px;
+        }
+        
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .summary .total {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--danger);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>📊 PPh Pasal 4 Ayat (2) - Studi Kasus & Panduan Lengkap</h1>
+                <p>Pajak Penghasilan Final - Definisi, Objek, Tarif, Pemotong, dan Perhitungan</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="no-print">
+        <div class="container">
+            <a href="#definisi" class="active">Definisi</a>
+            <a href="#objek-tarif">Objek & Tarif</a>
+            <a href="#pemotong">Pemotong</a>
+            <a href="#tata-cara">Tata Cara</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#cara-cepat">Cara Cepat</a>
+            <a href="#tabel-hafalan">Tabel Hafalan</a>
+            <a href="#jebakan">Jebakan</a>
+            <a href="#polabesar">Pola Besar</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        
+        <!-- DEFINISI PAJAK FINAL -->
+        <section id="definisi">
+            <h2>📚 Definisi Pajak Final</h2>
+            <p><strong>Pajak Final</strong> adalah pajak yang dikenakan dengan tarif dan dasar pengenaan pajak tertentu atas penghasilan yang diterima atau diperoleh selama tahun berjalan.</p>
+            
+            <h3>Sifat Pajak Final:</h3>
+            <ul>
+                <li>✅ Dikenakan secara langsung dengan tarif dan dasar pengenaan pajak tertentu pada saat menerima penghasilan</li>
+                <li>✅ Tidak diperhitungkan dalam perhitungan SPT Tahunan namun tetap dilaporkan</li>
+                <li>✅ <strong>Final</strong> berarti kewajiban pembayaran pajak telah selesai (berakhir)</li>
+            </ul>
+        </section>
+        
+        <!-- OBJEK DAN TARIF -->
+        <section id="objek-tarif">
+            <h2>🎯 Objek dan Tarif PPh Pasal 4 Ayat (2)</h2>
+            <p>Pajak Penghasilan Pasal 4 Ayat 2 (PPh Pasal 4 Ayat 2) adalah pajak yang dikenakan pada wajib pajak pribadi maupun badan usaha, dengan tarif-tarif yang beragam sesuai dengan objek pajak.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Objek Pajak</th>
+                            <th>Tarif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Bunga deposito/tabungan, diskonto Sertifikat Bank Indonesia (SBI), dan jasa giro</td>
+                            <td><strong>20%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Bunga simpanan yang dibayarkan oleh koperasi kepada para anggotanya (kecuali bunga di Ketentuan ini lebih lanjut diatur dalam PP Nomor 15 Tahun 2009)</td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Dividen yang diterima oleh Wajib Pajak orang pribadi dalam negeri yang tidak investasi</td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Persewaan atas tanah dan/atau bangunan</td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Bunga obligasi dan SUN lebih dari 12 bulan</td>
+                            <td><strong>0-20%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Hadiah atau undian</td>
+                            <td><strong>25%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Transaksi penjualan saham pendiri</td>
+                            <td><strong>0,5%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Transaksi saham bukan pendiri</td>
+                            <td><strong>0,1%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Jasa konstruksi</td>
+                            <td><em>20 hari setelah masa pajak berakhir</em> (batas waktu)</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Jasa pelayaran dalam negeri</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Jasa pelayaran dan/atau penerbangan luar negeri</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Penghasilan perwakilan dagang luar negeri</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Transaksi saham dan sekuritas lainnya di Bursa</td>
+                            <td><strong>0,5%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>UMKM, wiraswasta atau bisnis online dengan omzet ≤ Rp 4,8 miliar/tahun</td>
+                            <td><strong>0,5%</strong> dari omzet per bulan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- PEMOTONG -->
+        <section id="pemotong">
+            <h2>🏢 Pemotong PPh Pasal 4 Ayat (2)</h2>
+            <p>Pemotong PPh Pasal 4 Ayat 2 merupakan instansi atau pihak yang bertanggung jawab untuk pengeluaran pajak tersebut.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Objek Pajak</th>
+                            <th>Pemotong</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bunga deposito, tabungan, diskonto SBI, jasa giro</td>
+                            <td><strong>Bank Dalam Negeri Indonesia (BDNI) atau cabang bank luar negeri (LN) di Indonesia</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Hadiah atau undian</td>
+                            <td><strong>Penyelenggara undian</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Transaksi saham dan sekuritas lainnya di Bursa</td>
+                            <td><strong>Penyelenggaraan Bursa Efek melalui perantara pedagang efek</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Persewaan tanah dan/atau bangunan</td>
+                            <td><strong>Penyewa (jika pemotong pajak) atau Penyetoran sendiri</strong></td>
+                        </tr>
+                        <tr>
+                            <td>UMKM dengan omzet ≤ Rp 4,8 miliar</td>
+                            <td><strong>Wajib Pajak sendiri (0,5% dari omzet per bulan)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- TATA CARA -->
+        <section id="tata-cara">
+            <h2>📋 Tata Cara Pemotongan, Pembayaran dan Pelaporan</h2>
+            <ol>
+                <li><strong>Perhitungan:</strong> Pihak Pemotong melakukan perhitungan PPh Final = DPP × Tarif Pajak Final masing-masing objek</li>
+                <li><strong>Pemotongan:</strong> Pihak Pemotong melakukan pemotongan PPh Final dari penghasilan WP</li>
+                <li><strong>Penyetoran:</strong> Pihak Pemotong melakukan penyetoran PPh Final ke Kas Negara <strong>paling lama tanggal 10 bulan berikutnya</strong></li>
+                <li><strong>Pelaporan:</strong> 
+                    <ul>
+                        <li>Atas pemotongan dengan bukti potong: menerbitkan bukti potong dan melaporkan SPT Unifikasi <strong>maksimal tanggal 20 bulan berikutnya</strong></li>
+                        <li>Beberapa objek PPh Final yang tidak memerlukan bukti potong: bukti potong dipersamakan dengan bukti penerimaan negara/surat setoran pajak</li>
+                        <li>Dapat dilaporkan pada SPT Tahunan</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+        
+        <!-- STUDI KASUS -->
+        <section id="studi-kasus">
+            <h2>📖 Studi Kasus PPh Pasal 4 Ayat (2)</h2>
+            
+            <!-- Kasus 1 -->
+            <div class="case-study">
+                <span class="label">Kasus 1</span>
+                <h4>Persewaan Tanah dan/atau Bangunan</h4>
+                <p><strong>Kasus:</strong> PT Maju Jaya menyewa sebuah gedung kantor milik Bapak Andi selama 1 tahun dengan nilai sewa Rp240.000.000</p>
+                <div class="calculation">
+                    <div><span class="formula">DPP</span> = Rp240.000.000</div>
+                    <div><span class="formula">Tarif</span> = 10%</div>
+                    <div><span class="formula">PPh Final</span> = 10% × Rp240.000.000 = <span class="result">Rp24.000.000</span></div>
+                </div>
+                <p><strong>Jadi:</strong> Nilai sewa = Rp240 juta, PPh Final = <strong>Rp24 juta</strong></p>
+                <p><em>Jika PT Maju Jaya merupakan pihak yang wajib memotong, maka pajak dipotong dari pembayaran kepada pemilik gedung.</em></p>
+            </div>
+            
+            <!-- Kasus 2 -->
+            <div class="case-study">
+                <span class="label">Kasus 2</span>
+                <h4>Bunga Deposito</h4>
+                <p><strong>Kasus:</strong> PT Maju Jaya menerima bunga deposito dari bank sebesar Rp50.000.000</p>
+                <div class="calculation">
+                    <div><span class="formula">DPP</span> = Rp50.000.000</div>
+                    <div><span class="formula">Tarif</span> = 20%</div>
+                    <div><span class="formula">PPh Final</span> = 20% × Rp50.000.000 = <span class="result">Rp10.000.000</span></div>
+                </div>
+                <p><strong>Jadi:</strong> Bunga yang diterima setelah pajak = Rp50 juta - Rp10 juta = <strong>Rp40 juta</strong></p>
+                <p><strong>Pemotong:</strong> Bank dalam negeri/cabang bank luar negeri di Indonesia</p>
+                <p><em>Perusahaan tidak perlu menghitung dan menyetor sendiri untuk transaksi ini.</em></p>
+            </div>
+            
+            <!-- Kasus 3 -->
+            <div class="case-study">
+                <span class="label">Kasus 3</span>
+                <h4>Hadiah Undian</h4>
+                <p><strong>Kasus:</strong> Budi memenangkan hadiah undian berupa uang sebesar Rp100.000.000</p>
+                <div class="calculation">
+                    <div><span class="formula">DPP</span> = Rp100.000.000</div>
+                    <div><span class="formula">Tarif</span> = 25%</div>
+                    <div><span class="formula">PPh Final</span> = 25% × Rp100.000.000 = <span class="result">Rp25.000.000</span></div>
+                </div>
+                <p><strong>Jadi:</strong> Uang yang diterima = Rp100 juta - Rp25 juta = <strong>Rp75 juta</strong></p>
+                <p><strong>Pemotong:</strong> Penyelenggara undian</p>
+                <p><em>Penyelenggara memotong PPh Final sebelum hadiah diberikan.</em></p>
+            </div>
+            
+            <!-- Kasus 4 -->
+            <div class="case-study">
+                <span class="label">Kasus 4</span>
+                <h4>Transaksi Saham Pendiri</h4>
+                <p><strong>Kasus:</strong> Andi menjual saham pendiri dengan nilai transaksi Rp2.000.000.000</p>
+                <div class="calculation">
+                    <div><span class="formula">DPP</span> = Rp2.000.000.000</div>
+                    <div><span class="formula">Tarif</span> = 0,5%</div>
+                    <div><span class="formula">PPh Final</span> = 0,5% × Rp2.000.000.000 = <span class="result">Rp10.000.000</span></div>
+                </div>
+                <p><strong>Jadi:</strong> PPh Final yang dikenakan = <strong>Rp10 juta</strong></p>
+            </div>
+            
+            <!-- Kasus 5 -->
+            <div class="case-study">
+                <span class="label">Kasus 5</span>
+                <h4>Transaksi Saham Bukan Pendiri</h4>
+                <p><strong>Kasus:</strong> Budi melakukan transaksi saham bukan pendiri senilai Rp500.000.000</p>
+                <div class="calculation">
+                    <div><span class="formula">DPP</span> = Rp500.000.000</div>
+                    <div><span class="formula">Tarif</span> = 0,1%</div>
+                    <div><span class="formula">PPh Final</span> = 0,1% × Rp500.000.000 = <span class="result">Rp500.000</span></div>
+                </div>
+                <p><strong>Jadi:</strong> PPh Final = <strong>Rp500 ribu</strong></p>
+            </div>
+            
+            <!-- Kasus 6 -->
+            <div class="case-study">
+                <span class="label">Kasus 6</span>
+                <h4>UMKM</h4>
+                <p><strong>Kasus:</strong> PT Berkah Jaya memiliki omzet bulan Januari Rp300.000.000 (memenuhi ketentuan UMKM)</p>
+                <div class="calculation">
+                    <div><span class="formula">DPP</span> = Rp300.000.000</div>
+                    <div><span class="formula">Tarif</span> = 0,5%</div>
+                    <div><span class="formula">PPh Final Januari</span> = 0,5% × Rp300.000.000 = <span class="result">Rp1.500.000</span></div>
+                </div>
+                <p><strong>Untuk bulan Februari dengan omzet Rp400 juta:</strong></p>
+                <div class="calculation">
+                    <div><span class="formula">PPh Final Februari</span> = 0,5% × Rp400.000.000 = <span class="result">Rp2.000.000</span></div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Bulan</th>
+                                <th>Omzet</th>
+                                <th>Tarif</th>
+                                <th>PPh Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Januari</td>
+                                <td>Rp300 juta</td>
+                                <td>0,5%</td>
+                                <td>Rp1,5 juta</td>
+                            </tr>
+                            <tr>
+                                <td>Februari</td>
+                                <td>Rp400 juta</td>
+                                <td>0,5%</td>
+                                <td>Rp2 juta</td>
+                            </tr>
+                            <tr>
+                                <td>Maret</td>
+                                <td>Rp250 juta</td>
+                                <td>0,5%</td>
+                                <td>Rp1,25 juta</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>Rp950 juta</strong></td>
+                                <td></td>
+                                <td><strong>Rp4,75 juta</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Kasus 7 - Gabungan -->
+            <div class="case-study">
+                <span class="label">Kasus 7</span>
+                <h4>Studi Kasus Gabungan (Soal Ujian)</h4>
+                <p><strong>Kasus:</strong> PT Makmur Sentosa memiliki transaksi berikut selama bulan April:</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Transaksi</th>
+                                <th>Nilai</th>
+                                <th>Tarif</th>
+                                <th>PPh Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sewa gedung</td>
+                                <td>Rp200 juta</td>
+                                <td>10%</td>
+                                <td class="result">Rp20 juta</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Bunga deposito</td>
+                                <td>Rp40 juta</td>
+                                <td>20%</td>
+                                <td class="result">Rp8 juta</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Hadiah undian</td>
+                                <td>Rp50 juta</td>
+                                <td>25%</td>
+                                <td class="result">Rp12,5 juta</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Saham pendiri</td>
+                                <td>Rp1 miliar</td>
+                                <td>0,5%</td>
+                                <td class="result">Rp5 juta</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Saham bukan pendiri</td>
+                                <td>Rp500 juta</td>
+                                <td>0,1%</td>
+                                <td class="result">Rp500 ribu</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Omzet UMKM</td>
+                                <td>Rp300 juta</td>
+                                <td>0,5%</td>
+                                <td class="result">Rp1,5 juta</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: right; font-weight: bold;">Total PPh Final:</td>
+                                <td class="result" style="font-size: 1.2rem;"><strong>Rp47,5 juta</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CARA CEPAT -->
+        <section id="cara-cepat">
+            <h2>🧠 Cara Cepat Mengerjakan Soal</h2>
+            <p>Untuk PPh Pasal 4 Ayat (2), jangan langsung menghitung. Pakai pola:</p>
+            <div class="success">
+                <h4>OBJEK → DPP → TARIF → PEMOTONG</h4>
+            </div>
+            <p><strong>Contoh:</strong> PT menyewa gedung Rp500 juta.</p>
+            <p>Otak langsung: <strong>Sewa tanah/bangunan → 10%</strong></p>
+            <div class="calculation">
+                Rp500 juta × 10% = <span class="result">Rp50 juta</span>
+            </div>
+        </section>
+        
+        <!-- TABEL HAFALAN -->
+        <section id="tabel-hafalan">
+            <h2>📋 Tabel Hafalan Tarif</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Objek</th>
+                            <th>Tarif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bunga deposito/tabungan/jasa giro</td>
+                            <td><strong>20%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Bunga simpanan koperasi</td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Dividen OP DN tertentu</td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Sewa tanah/bangunan</td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Hadiah/undian</td>
+                            <td><strong>25%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Saham pendiri</td>
+                            <td><strong>0,5%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Saham bukan pendiri</td>
+                            <td><strong>0,1%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Jasa pelayaran DN</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Pelayaran/penerbangan LN</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Perwakilan dagang LN</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>UMKM</td>
+                            <td><strong>0,5%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mnemonic">
+                <h4>Mnemonic Sederhana:</h4>
+                <div class="mnemonic-code">20 – 10 – 10 – 25 – 0,5 – 0,1 – 15</div>
+                <p style="margin-top: 15px;">
+                    <strong>20</strong> → deposito | 
+                    <strong>10</strong> → koperasi / dividen / sewa | 
+                    <strong>25</strong> → hadiah | 
+                    <strong>0,5</strong> → saham pendiri / UMKM | 
+                    <strong>0,1</strong> → saham bukan pendiri | 
+                    <strong>15</strong> → pelayaran
+                </p>
+            </div>
+        </section>
+        
+        <!-- BAGIAN YANG SERING MENJEBAK -->
+        <section id="jebakan">
+            <h2>⚠️ Bagian yang Sering Menjebak</h2>
+            
+            <div class="note">
+                <h4>1. PPh Final ≠ PPh biasa</h4>
+                <p>Kalau <strong>final</strong>, pajaknya dianggap selesai untuk penghasilan tersebut. Jangan dimasukkan lagi sebagai pengurang/penghitungan PPh normal secara sembarangan.</p>
+            </div>
+            
+            <div class="note">
+                <h4>2. Jangan lupa cek siapa pemotongnya</h4>
+                <ul>
+                    <li><strong>Deposito</strong> → Bank yang memotong</li>
+                    <li><strong>Hadiah undian</strong> → Penyelenggara undian</li>
+                    <li><strong>Sewa gedung</strong> → Bisa pemotong jika penyewa merupakan pihak yang ditunjuk sebagai pemotong; jika tidak, dapat ada mekanisme setor sendiri sesuai ketentuan</li>
+                </ul>
+            </div>
+            
+            <div class="note">
+                <h4>3. Bedakan "tarif" dan "batas waktu"</h4>
+                <p>Di materi terdapat bagian: <em>"Jasa konstruksi: 20 hari setelah masa pajak berakhir"</em></p>
+                <p>Itu <strong>bukan tarif pajak</strong>, melainkan <strong>batas waktu pelaporan/administrasi</strong>. Jangan menghafalnya sebagai tarif 20%.</p>
+            </div>
+        </section>
+        
+        <!-- POLA BESAR -->
+        <section id="polabesar">
+            <h2>🎯 Pola Besar PPh 4(2)</h2>
+            <div class="flowchart">
+PENGHASILAN
+      ↓
+IDENTIFIKASI OBJEK
+      ↓
+APAKAH PPh FINAL?
+      ↓
+TENTUKAN DPP
+      ↓
+TENTUKAN TARIF
+      ↓
+DPP × TARIF
+      ↓
+SIAPA PEMOTONG?
+      ↓
+POTONG / SETOR
+      ↓
+LAPOR
+      ↓
+BUKTI POTONG / BPN
+            </div>
+            
+            <div class="summary">
+                <h3>Rumus Dasar Perhitungan</h3>
+                <p style="font-size: 1.3rem; font-weight: bold;">
+                    <span style="color: var(--primary);">PPh Final</span> = 
+                    <span style="color: var(--secondary);">DPP</span> × 
+                    <span style="color: var(--success);">Tarif</span>
+                </p>
+                <p style="margin-top: 15px; font-size: 1.1rem;">
+                    <strong>Contoh:</strong> Sewa Rp800 juta → DPP = Rp800 juta, Tarif = 10% → PPh = Rp800 juta × 10% = <span class="result">Rp80 juta</span>
+                </p>
+            </div>
+        </section>
+        
+    </main>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Print functionality
+        function printPage() {
+            window.print();
+        }
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPh Pasal 21 — Materi & Studi Kasus</title>
+<style>
+  :root{
+    --navy:#0f1f3d;
+    --navy2:#16274a;
+    --gold:#b8862c;
+    --gold-light:#e8c987;
+    --paper:#faf8f4;
+    --ink:#1c2230;
+    --muted:#5c6478;
+    --line:#e4e0d6;
+    --good:#2f6b4f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia','Iowan Old Style',ui-serif,serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px 80px;}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1c2f57 100%);
+    color:#f2ede1;
+    padding:56px 24px 44px;
+    margin-bottom:8px;
+  }
+  header.hero .inner{max-width:880px;margin:0 auto;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:12px;
+    color:var(--gold-light);
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-size:38px;
+    margin:0 0 10px;
+    font-weight:400;
+    letter-spacing:-0.5px;
+  }
+  h1.title em{font-style:italic;color:var(--gold-light);}
+  .subtitle{font-size:16px;color:#cfd4e0;max-width:600px;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:300;}
+  .badge-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+  .badge{
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-size:12px;
+    border:1px solid rgba(232,201,135,.4);
+    color:var(--gold-light);
+    padding:5px 12px;
+    border-radius:100px;
+    letter-spacing:.03em;
+  }
+
+  nav.toc{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:-30px auto 40px;
+    max-width:832px;
+    box-shadow:0 12px 28px -18px rgba(15,31,61,.25);
+    font-family:ui-sans-serif,system-ui,sans-serif;
+  }
+  nav.toc h2{
+    font-family:'Georgia',serif;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--gold);
+    margin:0 0 12px;
+  }
+  nav.toc ol{margin:0;padding-left:20px;columns:2;gap:24px;font-size:13.5px;color:var(--muted);}
+  nav.toc li{margin-bottom:6px;break-inside:avoid;}
+  nav.toc a{color:var(--navy);text-decoration:none;border-bottom:1px dotted transparent;}
+  nav.toc a:hover{border-bottom-color:var(--gold);}
+
+  section{margin-bottom:52px;}
+  section > h2.section-title{
+    font-size:26px;
+    color:var(--navy);
+    border-bottom:2px solid var(--gold);
+    padding-bottom:10px;
+    margin-bottom:22px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  section > h2.section-title .num{
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    background:var(--navy);
+    color:var(--gold-light);
+    font-size:13px;
+    padding:3px 9px;
+    border-radius:6px;
+  }
+  h3{color:var(--navy2);font-size:19px;margin-top:30px;margin-bottom:10px;}
+  h4{font-family:ui-sans-serif,system-ui,sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin:22px 0 8px;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 16px;padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  .callout{
+    background:#fff9ec;
+    border-left:4px solid var(--gold);
+    padding:14px 18px;
+    border-radius:0 8px 8px 0;
+    margin:18px 0;
+    font-size:15px;
+  }
+  .callout.note{background:#eef3ff;border-left-color:#3a5ba0;}
+  .callout strong{color:var(--navy);}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0 24px;
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-size:14px;
+    background:#fff;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 1px 0 var(--line);
+  }
+  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);}
+  th{background:var(--navy);color:#f2ede1;font-weight:600;letter-spacing:.02em;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#f7f4ee;}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+  .yes{color:var(--good);font-weight:700;}
+
+  .flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-size:13.5px;
+    margin:18px 0 26px;
+  }
+  .flow .step{
+    background:var(--navy);
+    color:#f2ede1;
+    padding:8px 14px;
+    border-radius:100px;
+    font-weight:600;
+  }
+  .flow .arrow{color:var(--gold);font-size:16px;}
+
+  .case-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:5px solid var(--navy);
+    border-radius:8px;
+    padding:22px 26px;
+    margin:24px 0;
+  }
+  .case-card h3{margin-top:0;}
+  .case-card .meta{
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-size:13px;
+    color:var(--muted);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4px 20px;
+    margin:14px 0 18px;
+    background:#f7f4ee;
+    padding:14px 16px;
+    border-radius:6px;
+  }
+  .case-card .meta div span.k{color:var(--gold);font-weight:600;margin-right:6px;}
+
+  .calc{
+    font-family:'SFMono-Regular',Consolas,monospace;
+    background:var(--navy);
+    color:#eef1f8;
+    padding:16px 20px;
+    border-radius:8px;
+    margin:14px 0;
+    font-size:14px;
+    line-height:1.9;
+    overflow-x:auto;
+  }
+  .calc .result{color:var(--gold-light);font-weight:700;}
+  .calc .line{color:#9fb0d9;}
+
+  .steps-list{list-style:none;padding:0;margin:20px 0;}
+  .steps-list li{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:14px;
+    margin-bottom:16px;
+    align-items:start;
+  }
+  .steps-list .n{
+    background:var(--gold);
+    color:var(--navy);
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-weight:700;
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;
+  }
+  .steps-list .txt strong{color:var(--navy);display:block;margin-bottom:2px;}
+
+  .exercise{
+    background:#f5f8f6;
+    border:1px dashed var(--good);
+    border-radius:8px;
+    padding:20px 24px;
+    margin:20px 0;
+  }
+  .exercise h4{color:var(--good);margin-top:0;}
+  .exercise ol{margin-bottom:0;}
+
+  .mnemonic{
+    text-align:center;
+    background:linear-gradient(135deg,var(--navy),var(--navy2));
+    color:var(--gold-light);
+    border-radius:12px;
+    padding:34px 24px;
+    margin:30px 0;
+    font-family:ui-sans-serif,system-ui,sans-serif;
+  }
+  .mnemonic .big{font-size:20px;letter-spacing:.04em;font-weight:700;color:#fff;}
+  .mnemonic .flow{justify-content:center;margin-top:16px;}
+  .mnemonic .flow .step{background:rgba(255,255,255,.1);border:1px solid rgba(232,201,135,.4);}
+
+  footer{
+    text-align:center;
+    font-family:ui-sans-serif,system-ui,sans-serif;
+    font-size:12.5px;
+    color:var(--muted);
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+
+  @media(max-width:600px){
+    nav.toc ol{columns:1;}
+    .case-card .meta{grid-template-columns:1fr;}
+    h1.title{font-size:28px;}
+  }
+</style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">Corporate Tax Series · Indonesia</div>
+    <h1 class="title">Pajak Penghasilan <em>Pasal 21</em></h1>
+    <p class="subtitle">Ringkasan materi lengkap — pemotong, subjek &amp; objek pajak, tarif, unsur gaji, hingga tata cara pemotongan, penyetoran, dan pelaporan — disertai studi kasus terapan PT Maju Jaya Indonesia.</p>
+    <div class="badge-row">
+      <span class="badge">Ringkasan Materi</span>
+      <span class="badge">Studi Kasus</span>
+      <span class="badge">Latihan Soal</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>Daftar Isi</h2>
+    <ol>
+      <li><a href="#pemotong">Pemotong PPh 21</a></li>
+      <li><a href="#subjek-objek">Subjek &amp; Objek PPh 21</a></li>
+      <li><a href="#tarif">Tarif PPh 21</a></li>
+      <li><a href="#unsur">Unsur Penghasilan Gaji Karyawan</a></li>
+      <li><a href="#tatacara">Cara Pemotongan, Penyetoran, Pelaporan</a></li>
+      <li><a href="#studikasus">Studi Kasus: PT Maju Jaya Indonesia</a></li>
+      <li><a href="#gambaran-besar">Gambaran Besar &amp; Alur Kerja</a></li>
+      <li><a href="#latihan">Latihan Soal</a></li>
+    </ol>
+  </nav>
+
+  <section id="pemotong">
+    <h2 class="section-title"><span class="num">01</span> Pemotong PPh 21</h2>
+    <p>Pasal 21 mengatur pemotongan pajak atas penghasilan sehubungan dengan pekerjaan, jasa, atau kegiatan — dengan nama dan dalam bentuk apapun — yang diterima atau diperoleh oleh Wajib Pajak Orang Pribadi.</p>
+    <p>Kewajiban memotong PPh 21 melekat pada:</p>
+    <ul>
+      <li>Pemberi kerja yang membayar gaji, upah, honorarium, tunjangan, dan pembayaran lain sebagai imbalan sehubungan dengan pekerjaan yang dilakukan oleh pegawai atau bukan pegawai.</li>
+      <li>Bendahara pemerintah yang membayar gaji, upah, honorarium, tunjangan, dan pembayaran lain sehubungan dengan pekerjaan, jasa, atau kegiatan.</li>
+      <li>Dana pensiun atau badan lain yang membayarkan uang pensiun dan pembayaran lain dengan nama apa pun dalam rangka pensiun.</li>
+      <li>Badan yang membayar honorarium atau pembayaran lain sebagai imbalan sehubungan dengan jasa, termasuk jasa tenaga ahli yang melakukan pekerjaan bebas.</li>
+      <li>Penyelenggara kegiatan yang melakukan pembayaran sehubungan dengan pelaksanaan suatu kegiatan.</li>
+    </ul>
+  </section>
+
+  <section id="subjek-objek">
+    <h2 class="section-title"><span class="num">02</span> Subjek &amp; Objek PPh 21</h2>
+    <p>Subjek PPh 21 adalah Wajib Pajak Orang Pribadi yang menerima penghasilan sehubungan dengan pekerjaan, jasa, atau kegiatan dengan nama dan dalam bentuk apapun.</p>
+
+    <h3>Jenis-Jenis Subjek PPh 21</h3>
+    <ul>
+      <li><strong>Pegawai Tetap</strong> — menerima penghasilan dalam jumlah tertentu secara teratur, termasuk anggota dewan komisaris/pengawas yang aktif mengelola perusahaan, serta pegawai kontrak yang bekerja penuh waktu (full time).</li>
+      <li><strong>Pegawai Tidak Tetap / Tenaga Kerja Lepas</strong> — hanya menerima penghasilan apabila bekerja, berdasarkan jumlah hari kerja, jumlah unit hasil pekerjaan, atau penyelesaian jenis pekerjaan tertentu.</li>
+      <li><strong>Bukan Pegawai</strong> — orang pribadi selain pegawai tetap/tidak tetap yang memperoleh penghasilan dari pemotong PPh 21 atas pekerjaan, jasa, atau kegiatan tertentu. Contoh: konsultan.</li>
+      <li><strong>Peserta Kegiatan</strong> — terlibat dalam kegiatan tertentu, meliputi peserta perlombaan, peserta rapat/konferensi/kunjungan kerja, peserta kepanitiaan, peserta pendidikan/pelatihan/magang, dan peserta kegiatan lainnya.</li>
+      <li><strong>Penerima Pensiun</strong> — orang pribadi atau ahli warisnya yang menerima imbalan untuk pekerjaan masa lalu, termasuk penerima tunjangan hari tua atau jaminan hari tua.</li>
+    </ul>
+
+    <h3>Jenis-Jenis Objek Pajak PPh 21</h3>
+    <ul>
+      <li>Gaji, upah, honorarium</li>
+      <li>Tunjangan, bonus, THR, gratifikasi, tantiem</li>
+      <li>Natura/kenikmatan</li>
+      <li>Uang pesangon, uang penghargaan masa kerja, uang penggantian</li>
+      <li>Tunjangan hari tua &amp; jaminan hari tua</li>
+      <li>Imbalan sehubungan jasa — honorarium, komisi, fee</li>
+      <li>Pembayaran sehubungan pelaksanaan kegiatan — uang saku, uang representasi, uang rapat, hadiah/penghargaan</li>
+      <li>Upah harian, mingguan, satuan, borongan, atau bulanan</li>
+    </ul>
+  </section>
+
+  <section id="tarif">
+    <h2 class="section-title"><span class="num">03</span> Tarif PPh 21</h2>
+    <p>Karena PPh 21 memotong penghasilan Orang Pribadi, tarifnya mengacu pada Pasal 17 Ayat 1 UU HPP untuk kategori Pegawai Tetap.</p>
+
+    <h4>Pegawai Tetap, Tidak Tetap, dan Bukan Pegawai</h4>
+    <p>Mengacu pada tarif progresif Pasal 17 Ayat 1 UU HPP.</p>
+
+    <h4>Uang Pesangon, Uang Pensiun, THT, JHT</h4>
+    <p>Berdasarkan PP 68 Tahun 2009 — berlaku untuk pembayaran yang dilakukan sekaligus (dalam 2 tahun kalender).</p>
+
+    <h4>Pegawai Tidak Tetap</h4>
+    <p>Berdasarkan PER-16/PJ/2016 Pasal 10.</p>
+
+    <h4>Bukan Pegawai</h4>
+    <p>Berdasarkan PER-16/PJ/2016 Pasal 10.</p>
+
+    <div class="callout note">
+      <strong>Catatan penting:</strong> Sejak tahun 2024, penghitungan PPh 21 bulanan untuk pegawai umumnya menggunakan mekanisme <strong>Tarif Efektif Rata-rata (TER)</strong>, yang menggantikan sebagian perhitungan manual tarif progresif bulanan. Untuk penerapan aktual, selalu cek ketentuan terbaru dari DJP.
+    </div>
+  </section>
+
+  <section id="unsur">
+    <h2 class="section-title"><span class="num">04</span> Unsur Penghasilan Gaji Karyawan</h2>
+
+    <h3>Unsur Penambah</h3>
+    <table>
+      <tr><th>Kategori</th><th>Komponen</th></tr>
+      <tr><td>Penghasilan Teratur</td><td>Gaji</td></tr>
+      <tr><td>Tunjangan</td><td>Uang lembur, tunjangan makan, tunjangan transportasi</td></tr>
+      <tr><td>Penghasilan Tidak Teratur</td><td>Bonus kinerja, bonus akhir tahun, THR, natura/kenikmatan, tantiem, gratifikasi, jasa produksi</td></tr>
+      <tr><td>Iuran/Premi Perusahaan (BPJSTK)</td><td>Jaminan Keselamatan Kerja, Jaminan Kematian, Jaminan Pemeliharaan Kesehatan, iuran BPJS Kesehatan</td></tr>
+    </table>
+
+    <h3>Unsur Pengurang</h3>
+    <table>
+      <tr><th>Kategori</th><th>Ketentuan</th></tr>
+      <tr><td>Biaya Jabatan</td><td>Maksimal Rp500.000/bulan atau Rp6.000.000/tahun</td></tr>
+      <tr><td>Iuran/Premi Karyawan (BPJSTK)</td><td>Jaminan Hari Tua dan Jaminan Pensiun</td></tr>
+    </table>
+  </section>
+
+  <section id="tatacara">
+    <h2 class="section-title"><span class="num">05</span> Cara Pemotongan, Penyetoran, Pelaporan</h2>
+
+    <h3>Saat Terutang PPh 21</h3>
+    <ul>
+      <li><strong>Sisi Penerima Penghasilan</strong> — terutang pada saat dilakukan pembayaran atau saat terutangnya penghasilan yang bersangkutan.</li>
+      <li><strong>Sisi Pemberi Penghasilan (Perusahaan)</strong> — terutang untuk setiap Masa Pajak, yaitu pada akhir bulan pembayaran atau akhir bulan terutangnya penghasilan.</li>
+    </ul>
+
+    <h3>Tata Cara Pemotongan</h3>
+    <div class="flow">
+      <span class="step">1. Buat kertas kerja</span><span class="arrow">→</span>
+      <span class="step">2. Potong PPh 21</span><span class="arrow">→</span>
+      <span class="step">3. Setor ke kas negara</span>
+    </div>
+    <ul>
+      <li>Pemotong membuat catatan/kertas kerja perhitungan PPh 21 per penerima penghasilan sebagai dasar pelaporan bulanan, dan wajib menyimpannya.</li>
+      <li>Pemotong melakukan pemotongan sehingga <em>take home pay = penghasilan − potongan PPh 21</em>.</li>
+      <li>Pemotong menyetorkan PPh 21 ke kas negara menggunakan kode billing, <strong>maksimal tanggal 10 bulan berikutnya</strong>.</li>
+    </ul>
+
+    <h3>Tata Cara Pelaporan</h3>
+    <ul>
+      <li>SPT PPh 21 dibuat via aplikasi e-SPT PPh 21/26, termasuk bukti potong.</li>
+      <li>Dilaporkan <strong>maksimal tanggal 20 bulan berikutnya</strong>.</li>
+      <li>Setelah lapor, cetak file SPT dalam bentuk PDF termasuk bukti potong.</li>
+      <li>Bukti Potong PPh 21 wajib diberikan kepada penerima penghasilan.</li>
+      <li>Penerima penghasilan dapat mengkreditkan bukti potong pada SPT Tahunan Pribadi masing-masing.</li>
+    </ul>
+  </section>
+
+  <section id="studikasus">
+    <h2 class="section-title"><span class="num">06</span> Studi Kasus: PT Maju Jaya Indonesia</h2>
+    <p>PT Maju Jaya Indonesia adalah perusahaan perdagangan dengan beberapa karyawan tetap. Setiap bulan perusahaan membayar gaji, tunjangan, lembur, serta memberikan bonus dan THR.</p>
+
+    <div class="callout note">
+      Studi kasus ini mengikuti kerangka materi di atas untuk tujuan ilustrasi/latihan. Untuk penerapan pajak aktual, gunakan mekanisme TER yang berlaku sejak 2024 dan ketentuan terbaru DJP.
+    </div>
+
+    <div class="case-card">
+      <h3>Andi — Pegawai Tetap (Januari 2026)</h3>
+      <div class="meta">
+        <div><span class="k">Gaji pokok</span>Rp8.000.000/bulan</div>
+        <div><span class="k">Tunjangan transportasi</span>Rp500.000/bulan</div>
+        <div><span class="k">Tunjangan makan</span>Rp500.000/bulan</div>
+        <div><span class="k">Lembur</span>Rp500.000/bulan</div>
+        <div><span class="k">BPJS dibayar perusahaan</span>Rp200.000/bulan</div>
+        <div><span class="k">Iuran pensiun dibayar Andi</span>Rp200.000/bulan</div>
+        <div><span class="k">THR (April)</span>Rp8.000.000</div>
+      </div>
+
+      <h4>1 · Siapa Pemotongnya?</h4>
+      <p>PT Maju Jaya = <strong>Pemotong PPh 21</strong> (pemberi kerja) · Andi = <strong>Penerima penghasilan/subjek PPh 21</strong></p>
+      <div class="flow">
+        <span class="step">Perusahaan</span><span class="arrow">→</span>
+        <span class="step">Bayar penghasilan</span><span class="arrow">→</span>
+        <span class="step">Potong PPh 21</span><span class="arrow">→</span>
+        <span class="step">Setor</span><span class="arrow">→</span>
+        <span class="step">Lapor</span>
+      </div>
+
+      <h4>2 · Penghasilan Bruto</h4>
+      <table>
+        <tr><th>Penghasilan</th><th class="num">Jumlah</th><th>Objek?</th></tr>
+        <tr><td>Gaji</td><td class="num">Rp8.000.000</td><td class="yes">✓</td></tr>
+        <tr><td>Transportasi</td><td class="num">Rp500.000</td><td class="yes">✓</td></tr>
+        <tr><td>Makan</td><td class="num">Rp500.000</td><td class="yes">✓</td></tr>
+        <tr><td>Lembur</td><td class="num">Rp500.000</td><td class="yes">✓</td></tr>
+        <tr><td>BPJS dibayar perusahaan*</td><td class="num">Rp200.000</td><td class="yes">✓</td></tr>
+        <tr><td><strong>Total penghasilan bruto</strong></td><td class="num"><strong>Rp9.700.000</strong></td><td></td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);">*Perlakuan natura/kenikmatan dan iuran tertentu perlu dilihat berdasarkan ketentuan yang berlaku.</p>
+
+      <h4>3 · Unsur Pengurang</h4>
+      <div class="calc">
+        <span class="line">Biaya jabatan = 5% × Rp9.700.000 = Rp485.000</span><br>
+        <span class="line">(Rp485.000 &lt; batas maks. Rp500.000 → dipakai Rp485.000)</span><br>
+        <span class="line">Iuran pensiun (dibayar Andi) = Rp200.000</span><br>
+        Total pengurang = Rp485.000 + Rp200.000 = <span class="result">Rp685.000</span>
+      </div>
+
+      <h4>4 · Penghasilan Setelah Pengurang</h4>
+      <div class="calc">
+        Rp9.700.000 − Rp485.000 − Rp200.000 = <span class="result">Rp9.015.000</span>
+      </div>
+
+      <h4>5 · Penghasilan Bulan April (dengan THR)</h4>
+      <div class="calc">
+        Penghasilan rutin + THR<br>
+        Rp9.700.000 + Rp8.000.000 = <span class="result">Rp17.700.000</span>
+      </div>
+
+      <h4>6 · Penghasilan Bulan Desember (dengan Bonus)</h4>
+      <p>Bonus kinerja Desember = Rp5.000.000</p>
+      <div class="calc">
+        Rp9.700.000 + Rp5.000.000 = <span class="result">Rp14.700.000</span>
+      </div>
+      <p>Kesimpulan: gaji, tunjangan, lembur, THR, dan bonus semuanya harus diperhitungkan dalam PPh 21.</p>
+    </div>
+
+    <div class="case-card">
+      <h3>Budi — Pegawai Tidak Tetap</h3>
+      <p>Dibayar berdasarkan hari kerja: <strong>Rp400.000/hari</strong>, bekerja 20 hari dalam sebulan.</p>
+      <div class="calc">
+        20 × Rp400.000 = <span class="result">Rp8.000.000</span>
+      </div>
+      <p>Status: <strong>Pegawai tidak tetap/tenaga kerja lepas</strong> — mekanisme penghitungan PPh 21-nya berbeda dari pegawai tetap dan tidak bisa langsung disamakan dengan Andi.</p>
+    </div>
+
+    <div class="case-card">
+      <h3>Citra — Bukan Pegawai (Konsultan)</h3>
+      <p>Honorarium yang diterima: <strong>Rp10.000.000</strong></p>
+      <p>Status: <strong>Bukan pegawai</strong> (contoh: konsultan, tenaga ahli, profesional tertentu). Pembayaran ini dapat menjadi objek PPh 21 sesuai ketentuan, dengan cara hitung yang berbeda dari pegawai tetap.</p>
+    </div>
+
+    <div class="case-card">
+      <h3>Rina — Peserta Kegiatan</h3>
+      <p>Uang representasi dari mengikuti seminar: <strong>Rp500.000</strong></p>
+      <p>Status: <strong>Peserta kegiatan</strong> (bukan pegawai perusahaan). Pembayaran dapat menjadi objek PPh 21 sesuai ketentuan.</p>
+    </div>
+
+    <h3>Ringkasan Status Subjek</h3>
+    <table>
+      <tr><th>Orang</th><th>Status</th></tr>
+      <tr><td>Andi</td><td>Pegawai tetap</td></tr>
+      <tr><td>Budi</td><td>Pegawai tidak tetap</td></tr>
+      <tr><td>Citra</td><td>Bukan pegawai</td></tr>
+      <tr><td>Rina</td><td>Peserta kegiatan</td></tr>
+      <tr><td>Pensiunan</td><td>Penerima pensiun</td></tr>
+    </table>
+    <div class="callout">
+      <strong>Kunci utama:</strong> Jangan langsung menghitung pajak — tentukan dulu status penerima penghasilan, karena status tersebut menentukan mekanisme penghitungan PPh 21.
+    </div>
+
+    <h3>Alur Administrasi PT Maju Jaya (Januari)</h3>
+    <p>Total PPh 21 yang harus dipotong dari seluruh karyawan bulan Januari: <strong>Rp750.000</strong>, dengan PPh 21 Andi sebesar <strong>Rp300.000</strong>.</p>
+
+    <ol class="steps-list">
+      <li>
+        <div class="n">1</div>
+        <div class="txt"><strong>Hitung</strong>PT Maju Jaya membuat kertas kerja: total PPh 21 = Rp750.000.</div>
+      </li>
+      <li>
+        <div class="n">2</div>
+        <div class="txt"><strong>Potong</strong>
+          <div class="calc" style="margin-top:8px;">Take home pay Andi = Rp9.700.000 − Rp300.000 = <span class="result">Rp9.400.000</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="n">3</div>
+        <div class="txt"><strong>Setor</strong>Rp750.000 disetor menggunakan kode billing, maksimal <strong>10 Februari</strong> (tanggal 10 bulan berikutnya).</div>
+      </li>
+      <li>
+        <div class="n">4</div>
+        <div class="txt"><strong>Lapor</strong>SPT PPh 21 dilaporkan maksimal <strong>20 Februari</strong> (tanggal 20 bulan berikutnya).</div>
+      </li>
+      <li>
+        <div class="n">5</div>
+        <div class="txt"><strong>Bukti Potong</strong>Diberikan kepada Andi untuk digunakan dalam SPT Tahunan Orang Pribadi.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="gambaran-besar">
+    <h2 class="section-title"><span class="num">07</span> Gambaran Besar &amp; Alur Kerja</h2>
+    <p>Urutan yang paling enak dipakai untuk mengerjakan soal PPh 21:</p>
+    <div class="mnemonic">
+      <div class="big">SIAPA → PENGHASILAN → PENGURANG → TARIF → POTONG → SETOR → LAPOR → BUKTI POTONG</div>
+      <div class="flow">
+        <span class="step">1. Siapa?</span>
+        <span class="step">2. Penghasilan?</span>
+        <span class="step">3. Pengurang?</span>
+        <span class="step">4. Hitung PPh 21</span>
+        <span class="step">5. Potong</span>
+        <span class="step">6. Setor</span>
+        <span class="step">7. Lapor</span>
+        <span class="step">8. Bukti Potong</span>
+      </div>
+    </div>
+    <p>Pemotong PPh 21 terdiri dari: <strong>Pemberi kerja</strong> + <strong>Bendahara pemerintah</strong> + <strong>Dana pensiun</strong> + <strong>Badan pemberi honor/jasa</strong> + <strong>Penyelenggara kegiatan</strong>.</p>
+  </section>
+
+  <section id="latihan">
+    <h2 class="section-title"><span class="num">08</span> Latihan Soal</h2>
+
+    <div class="exercise">
+      <h4>Kasus 1 — Pegawai Tetap</h4>
+      <p>Doni adalah pegawai tetap PT Sejahtera: Gaji Rp10.000.000, Tunjangan transport Rp1.000.000, Tunjangan makan Rp500.000, Lembur Rp500.000, Iuran pensiun dibayar Doni Rp300.000.</p>
+      <ol>
+        <li>Berapa penghasilan bruto Doni?</li>
+        <li>Berapa biaya jabatan berdasarkan materi?</li>
+        <li>Berapa total pengurang?</li>
+        <li>Berapa penghasilan setelah pengurang?</li>
+        <li>Siapa yang wajib memotong PPh 21?</li>
+        <li>Kapan PPh 21 disetor?</li>
+        <li>Kapan PPh 21 dilaporkan?</li>
+      </ol>
+    </div>
+
+    <div class="exercise">
+      <h4>Kasus 2 — THR</h4>
+      <p>Gaji dan penghasilan rutin Sinta bulan April: Rp10.000.000. Sinta mendapatkan THR Rp10.000.000.</p>
+      <ol>
+        <li>Apakah THR termasuk objek PPh 21?</li>
+        <li>Berapa total penghasilan bruto April?</li>
+        <li>Mengapa PPh 21 April dapat berbeda dengan bulan biasa?</li>
+      </ol>
+    </div>
+
+    <div class="exercise">
+      <h4>Kasus 3 — Identifikasi Subjek</h4>
+      <p>Tentukan status masing-masing (pilihan: Pegawai Tetap — Pegawai Tidak Tetap — Bukan Pegawai — Peserta Perlombaan — Penerima Pensiun):</p>
+      <table>
+        <tr><th>Orang</th><th>Kondisi</th><th>Status?</th></tr>
+        <tr><td>A</td><td>Pegawai full-time dengan gaji bulanan</td><td>?</td></tr>
+        <tr><td>B</td><td>Dibayar berdasarkan jumlah hari kerja</td><td>?</td></tr>
+        <tr><td>C</td><td>Konsultan eksternal</td><td>?</td></tr>
+        <tr><td>D</td><td>Mendapat hadiah karena memenangkan lomba</td><td>?</td></tr>
+        <tr><td>E</td><td>Menerima uang pensiun</td><td>?</td></tr>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Hafalan paling penting:</strong> PPh 21 = Penghasilan Orang Pribadi dari pekerjaan, jasa, atau kegiatan. Ingat urutan: SIAPA → PENGHASILAN → PENGURANG → TARIF → POTONG → SETOR → LAPOR → BUKTI POTONG.
+    </div>
+  </section>
+
+  <footer>
+    Disusun berdasarkan materi Corporate Tax Series — MySkill.id &amp; studi kasus terapan.<br>
+    Untuk penerapan pajak aktual, selalu rujuk ketentuan DJP terbaru (termasuk mekanisme TER sejak 2024).
+  </footer>
+
+</div>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

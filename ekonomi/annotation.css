@@ -1,0 +1,136 @@
+.annotation-toolbar {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #d6dbe4;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+    font: 13px/1.4 Arial, sans-serif;
+}
+
+.annotation-toolbar button,
+.annotation-toolbar input {
+    height: 34px;
+}
+
+.annotation-toolbar button {
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+}
+
+.annotation-toolbar button:hover,
+.annotation-toolbar button.active {
+    background: #e8eaf6;
+    border-color: #3949ab;
+    color: #1a237e;
+}
+
+.annotation-toolbar input[type="color"] {
+    width: 34px;
+    padding: 2px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.annotation-toolbar input[type="range"] {
+    width: 82px;
+    accent-color: #3949ab;
+    cursor: pointer;
+}
+
+#annotationLayer {
+    position: absolute;
+    inset: 0 auto auto 0;
+    z-index: 1000;
+    width: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+#annotationLayer.is-active {
+    pointer-events: auto;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+#annotationTextLayer {
+    position: absolute;
+    inset: 0 auto auto 0;
+    z-index: 1002;
+    width: 100%;
+    min-height: 100%;
+    pointer-events: none;
+}
+
+.annotation-text {
+    position: absolute;
+    width: 240px;
+    min-height: 76px;
+    border: 1px solid #94a3b8;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+    color: #e53935;
+    font: 600 16px/1.35 Arial, sans-serif;
+    pointer-events: auto;
+    resize: both;
+    overflow: hidden;
+}
+
+.annotation-text:focus {
+    outline: 2px solid #3949ab;
+}
+
+.annotation-text-handle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 18px;
+    padding: 0 6px;
+    background: #e8eaf6;
+    border-bottom: 1px solid #cbd5e1;
+    color: #3949ab;
+    cursor: move;
+    font: 700 11px/18px Arial, sans-serif;
+    user-select: none;
+}
+
+.annotation-text-delete {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #b91c1c;
+    cursor: pointer;
+    font: bold 14px/16px Arial, sans-serif;
+}
+
+.annotation-text-content {
+    min-height: 56px;
+    padding: 7px;
+    outline: none;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+    .annotation-toolbar {
+        top: auto;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

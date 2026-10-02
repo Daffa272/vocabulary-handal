@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran: INDONIA, Compounded INDONIA, INDONIA Index, OIS, JIBOR, dan Kurva Imbal Hasil Pasar Uang</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #ff9800;
+            --success-color: #4caf50;
+            --warning-color: #ffc107;
+            --danger-color: #f44336;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --code-bg: #f8f9fa;
+            --highlight-bg: #e3f2fd;
+            --table-header: #1565c0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 4px solid var(--primary-color);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--secondary-color);
+        }
+
+        .bab {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .formula {
+            background-color: var(--code-bg);
+            padding: 18px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .important {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-left: 5px solid var(--success-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .diagram {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 20px 0;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .soal {
+            background-color: #e3f2fd;
+            padding: 22px;
+            border-radius: 8px;
+            margin: 22px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .jawaban {
+            background-color: #e8f5e9;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 5px solid var(--success-color);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 35px 0;
+        }
+
+        .kunci {
+            color: var(--danger-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .hafal {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .math {
+            font-family: 'Courier New', monospace;
+            background-color: var(--code-bg);
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .data-table {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+
+            .diagram {
+                font-size: 0.85em;
+            }
+
+            .toc li {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📚 MATERI PEMBELAJARAN LENGKAP</h1>
+        <h2>INDONIA, COMPOUNDED INDONIA, INDONIA INDEX, OIS, JIBOR, DAN KURVA IMBAL HASIL PASAR UANG</h2>
+        <p><em>Format: Konsep → Mekanisme → Perbandingan → Contoh → Rangkuman → Latihan Soal</em></p>
+    </header>
+
+    <nav class="toc">
+        <h2>Daftar Isi</h2>
+        <ul>
+            <li><a href="#gambaran">1. Gambaran Besar</a></li>
+            <li><a href="#indonia">2. INDONIA</a></li>
+            <li><a href="#ditentukan">3. Bagaimana INDONIA Ditentukan?</a></li>
+            <li><a href="#waktu">4. Waktu Pelaporan dan Publikasi</a></li>
+            <li><a href="#mengapa">5. Mengapa INDONIA Dibuat?</a></li>
+            <li><a href="#karakteristik">6. Karakteristik Utama</a></li>
+            <li><a href="#fallback">7. Ketentuan Fallback</a></li>
+            <li><a href="#compounded">8. Compounded INDONIA</a></li>
+            <li><a href="#analogi">9. Analoginya</a></li>
+            <li><a href="#tenor-compounded">10. Tenor Compounded INDONIA</a></li>
+            <li><a href="#metode">11. Metode Perhitungan</a></li>
+            <li><a href="#index">12. INDONIA Index</a></li>
+            <li><a href="#hubungan">13. Hubungan Ketiga Konsep</a></li>
+            <li><a href="#data">14. Contoh Data</a></li>
+            <li><a href="#ois">15. Matchmaking OIS</a></li>
+            <li><a href="#apa-ois">16. Apa Itu Matchmaking OIS?</a></li>
+            <li><a href="#peserta">17. Siapa Peserta?</a></li>
+            <li><a href="#operator">18. Operator</a></li>
+            <li><a href="#disampaikan">19. Apa yang Disampaikan?</a></li>
+            <li><a href="#aturan">20. Aturan Utama</a></li>
+            <li><a href="#bps">21. Apa Itu bps?</a></li>
+            <li><a href="#mekanisme">22. Mekanisme Matchmaking</a></li>
+            <li><a href="#alur">23. Alur Matchmaking</a></li>
+            <li><a href="#jadwal">24. Jadwal</a></li>
+            <li><a href="#standardisasi">25. Standardisasi</a></li>
+            <li><a href="#jibor">26. JIBOR</a></li>
+            <li><a href="#penetapan">27. Cara Penetapan JIBOR</a></li>
+            <li><a href="#perbedaan">28. Perbedaan INDONIA & JIBOR</a></li>
+            <li><a href="#akhir">29. Akhir Publikasi JIBOR</a></li>
+            <li><a href="#kurva">30. Kurva Imbal Hasil</a></li>
+            <li><a href="#data-yield">31. Data Yield</a></li>
+            <li><a href="#rrt">32. Apa Itu RRT?</a></li>
+            <li><a href="#transaksi">33. Transaksi yang Digunakan</a></li>
+            <li><a href="#membaca">34. Membaca Yield Curve</a></li>
+            <li><a href="#hub-moneter">35. Hubungan dengan Kebijakan Moneter</a></li>
+            <li><a href="#hub-ois">36. Hubungan dengan OIS</a></li>
+            <li><a href="#forward">37. Mengapa OIS Forward-Looking?</a></li>
+            <li><a href="#perbedaan-semua">38. Perbedaan Semua Konsep</a></li>
+            <li><a href="#kasus1">39. Contoh Kasus</a></li>
+            <li><a href="#bandingkan">40. Contoh Membandingkan</a></li>
+            <li><a href="#data-harian">41. Data Harian</a></li>
+            <li><a href="#istilah">42. Istilah Penting</a></li>
+            <li><a href="#rumusan">43. Rumusan Singkat</a></li>
+            <li><a href="#mnemonik">44. Mnemonik</a></li>
+            <li><a href="#kesalahan">45. Kesalahan yang Sering Terjadi</a></li>
+            <li><a href="#pilihan">46. Soal Pilihan Ganda</a></li>
+            <li><a href="#essay">47. Soal Essay</a></li>
+            <li><a href="#studi1">48. Studi Kasus 1</a></li>
+            <li><a href="#studi2">49. Studi Kasus 2</a></li>
+            <li><a href="#studi3">50. Studi Kasus 3</a></li>
+            <li><a href="#ringkasan">51. Ringkasan 1 Menit</a></li>
+            <li><a href="#peta">52. Peta Konsep Akhir</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Gambaran Besar -->
+    <section id="gambaran" class="bab">
+        <h2>1. Gambaran Besar</h2>
+
+        <p>Dalam pasar uang Indonesia terdapat beberapa tingkat referensi suku bunga yang penting:</p>
+
+        <div class="diagram">
+                    PASAR UANG INDONESIA
+                            │
+          ┌─────────────────┴─────────────────┐
+          │                                   │
+      INDONIA                              JIBOR
+          │                                   │
+   Transaksi aktual                    Kuotasi indikatif
+   overnight tanpa agunan             pinjaman tanpa agunan
+          │                                   │
+          └───────────────┬───────────────────┘
+                          │
+                   BENCHMARK RATE
+                          │
+             ┌────────────┴────────────┐
+             │                         │
+     Compounded INDONIA          OIS berbasis INDONIA
+             │                         │
+      Tenor lebih panjang       Forward-looking
+             │                         │
+             └────────────┬────────────┘
+                          │
+                 Pendalaman Pasar Uang
+                          │
+             Transmisi Kebijakan Moneter
+        </div>
+
+        <div class="important">
+            <p><strong>Inti yang harus diingat:</strong></p>
+            <ul>
+                <li><strong>INDONIA</strong> = suku bunga aktual transaksi overnight.</li>
+                <li><strong>Compounded INDONIA</strong> = INDONIA yang diakumulasikan secara majemuk untuk periode tertentu.</li>
+                <li><strong>INDONIA Index</strong> = indeks akumulasi INDONIA.</li>
+                <li><strong>OIS</strong> = transaksi swap yang menggunakan INDONIA sebagai floating reference.</li>
+                <li><strong>JIBOR</strong> = benchmark berbasis kuotasi indikatif, dan sejak 1 Januari 2026 tidak lagi dipublikasikan.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 2. INDONIA -->
+    <section id="indonia" class="bab">
+        <h2>2. INDONIA</h2>
+
+        <h3>A. Pengertian INDONIA</h3>
+        <p><strong>INDONIA (Indonesia Overnight Index Average)</strong> adalah indeks/suku bunga yang mencerminkan transaksi <strong>pinjam-meminjam rupiah tanpa agunan antarbank dengan tenor overnight</strong> di Indonesia.</p>
+
+        <p>INDONIA berfungsi sebagai <strong>benchmark rate pasar uang</strong>, yaitu tingkat referensi yang dapat digunakan pelaku pasar untuk:</p>
+        <ul>
+            <li>menetapkan suku bunga pinjaman;</li>
+            <li>menentukan harga instrumen keuangan;</li>
+            <li>mengukur kinerja instrumen keuangan;</li>
+            <li>menjadi referensi transaksi dan kontrak keuangan.</li>
+        </ul>
+
+        <div class="hafal">
+            <p><strong>Kata kunci</strong></p>
+            <blockquote><strong>INDONIA = transaksi nyata + antarbank + rupiah + tanpa agunan + overnight.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 3. Bagaimana INDONIA Ditentukan? -->
+    <section id="ditentukan" class="bab">
+        <h2>3. Bagaimana INDONIA Ditentukan?</h2>
+
+        <p>INDONIA berbeda dengan benchmark yang hanya berdasarkan penawaran/kuotasi.</p>
+        <p>INDONIA dibentuk dari <strong>transaksi yang benar-benar terjadi di pasar</strong>.</p>
+
+        <p><strong>Alurnya:</strong></p>
+        <div class="diagram">
+Bank melakukan transaksi
+pinjam-meminjam rupiah
+        │
+        ▼
+Tanpa agunan
+        │
+        ▼
+Tenor Overnight
+        │
+        ▼
+Bank melaporkan transaksi
+kepada Bank Indonesia
+        │
+        ▼
+Bank Indonesia mengumpulkan
+seluruh data transaksi
+        │
+        ▼
+Dihitung berdasarkan
+volume-weighted average
+        │
+        ▼
+             INDONIA
+        </div>
+
+        <h3>Apa itu volume-weighted average?</h3>
+        <p>Artinya, transaksi dengan nominal lebih besar mempunyai bobot lebih besar dalam perhitungan rata-rata.</p>
+
+        <p><strong>Misalnya terdapat:</strong></p>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bank</th>
+                        <th>Suku bunga</th>
+                        <th>Volume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td>5%</td>
+                        <td>Rp10 M</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>6%</td>
+                        <td>Rp90 M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Rata-rata sederhana:</p>
+        <div class="math">
+$$
+\frac{5\%+6\%}{2}=5,5\%
+$$
+        </div>
+
+        <p>Tetapi rata-rata tertimbang volumenya:</p>
+        <div class="math">
+$$
+\frac{(5\%\times10)+(6\%\times90)}{100}
+=5,9\%
+$$
+        </div>
+
+        <p>Jadi transaksi dengan volume lebih besar lebih menentukan hasil.</p>
+    </section>
+
+    <!-- 4. Waktu Pelaporan dan Publikasi -->
+    <section id="waktu" class="bab">
+        <h2>4. Waktu Pelaporan dan Publikasi INDONIA</h2>
+
+        <p>Berdasarkan materi:</p>
+
+        <h3>Pelaporan transaksi</h3>
+        <ul>
+            <li>Mulai: <strong>07.00 WIB</strong></li>
+            <li>Berakhir: <strong>18.00 WIB</strong></li>
+            <li>Koreksi online: sampai <strong>19.00 WIB</strong></li>
+        </ul>
+
+        <h3>Publikasi INDONIA</h3>
+        <div class="formula">
+> <strong>19.30 WIB setiap hari kerja</strong>
+        </div>
+
+        <p>INDONIA mulai dipublikasikan Bank Indonesia pada:</p>
+        <div class="formula">
+> <strong>1 Agustus 2018</strong>
+        </div>
+    </section>
+
+    <!-- 5. Mengapa INDONIA Dibuat? -->
+    <section id="mengapa" class="bab">
+        <h2>5. Mengapa INDONIA Dibuat?</h2>
+
+        <p>Salah satu tujuan pentingnya adalah menyediakan benchmark yang lebih mencerminkan <strong>transaksi pasar yang benar-benar terjadi</strong>.</p>
+
+        <p>INDONIA kemudian diharapkan menggantikan fungsi JIBOR untuk tenor overnight.</p>
+
+        <p><strong>Timeline penting:</strong></p>
+        <div class="diagram">
+1 Agustus 2018
+      │
+      ▼
+INDONIA mulai dipublikasikan
+      │
+      ▼
+2 Januari 2019
+      │
+      ▼
+JIBOR Overnight tidak lagi dipublikasikan
+      │
+      ▼
+INDONIA menjadi referensi overnight
+        </div>
+    </section>
+
+    <!-- 6. Karakteristik Utama INDONIA -->
+    <section id="karakteristik" class="bab">
+        <h2>6. Karakteristik Utama INDONIA</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>INDONIA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kepanjangan</td>
+                        <td>Indonesia Overnight Index Average</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis</td>
+                        <td>Benchmark rate pasar uang</td>
+                    </tr>
+                    <tr>
+                        <td>Tenor</td>
+                        <td>Overnight</td>
+                    </tr>
+                    <tr>
+                        <td>Mata uang</td>
+                        <td>Rupiah</td>
+                    </tr>
+                    <tr>
+                        <td>Transaksi</td>
+                        <td>Pinjam-meminjam</td>
+                    </tr>
+                    <tr>
+                        <td>Agunan</td>
+                        <td>Tanpa agunan</td>
+                    </tr>
+                    <tr>
+                        <td>Pelaku</td>
+                        <td>Antarbank</td>
+                    </tr>
+                    <tr>
+                        <td>Dasar perhitungan</td>
+                        <td>Transaksi aktual</td>
+                    </tr>
+                    <tr>
+                        <td>Metode</td>
+                        <td>Volume-weighted average</td>
+                    </tr>
+                    <tr>
+                        <td>Publikasi</td>
+                        <td>19.30 WIB</td>
+                    </tr>
+                    <tr>
+                        <td>Mulai publikasi</td>
+                        <td>1 Agustus 2018</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Hafalan cepat</strong></p>
+            <p><strong>I-N-D-O-N-I-A</strong></p>
+            <ul>
+                <li><strong>I</strong>ndeks</li>
+                <li><strong>N</strong>yata</li>
+                <li><strong>D</strong>ari transaksi</li>
+                <li><strong>O</strong>vernight</li>
+                <li><strong>N</strong>on-collateral</li>
+                <li><strong>I</strong>nterbank</li>
+                <li><strong>A</strong>ktual</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7. Ketentuan Fallback -->
+    <section id="fallback" class="bab">
+        <h2>7. Ketentuan Fallback INDONIA</h2>
+
+        <p>Fallback diperlukan ketika harga acuan yang seharusnya digunakan <strong>tidak dipublikasikan</strong> pada tanggal tertentu.</p>
+
+        <p>Berdasarkan materi:</p>
+        <p>Jika Bank Indonesia tidak mempublikasikan harga acuan pada tanggal yang dirujuk, maka digunakan:</p>
+        <blockquote><strong>tanggal publikasi sebelumnya.</strong></blockquote>
+
+        <p><strong>Contoh:</strong></p>
+        <div class="diagram">
+Tanggal kontrak membutuhkan INDONIA
+            │
+            ▼
+Apakah INDONIA dipublikasikan?
+       ┌────┴────┐
+      YA         TIDAK
+       │           │
+       ▼           ▼
+Gunakan        Gunakan INDONIA
+tanggal itu    dari publikasi sebelumnya
+        </div>
+
+        <p>Penggunaan harga acuan tersebut menjadi tanggung jawab pelaku pasar.</p>
+    </section>
+
+    <!-- 8. Compounded INDONIA -->
+    <section id="compounded" class="bab">
+        <h2>8. Compounded INDONIA</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>Compounded INDONIA</strong> adalah suku bunga yang dihitung berdasarkan:</p>
+        <blockquote><strong>rata-rata bunga majemuk dari INDONIA selama periode tertentu.</strong></blockquote>
+
+        <p><strong>Mengapa diperlukan?</strong></p>
+        <p>Karena INDONIA sendiri memiliki tenor <strong>overnight</strong>, sedangkan transaksi keuangan dapat mempunyai jangka waktu lebih panjang.</p>
+
+        <p><strong>Misalnya:</strong></p>
+        <ul>
+            <li>30 hari</li>
+            <li>90 hari</li>
+            <li>180 hari</li>
+            <li>360 hari</li>
+        </ul>
+
+        <p>Maka INDONIA dapat digunakan secara majemuk untuk menghasilkan tingkat bunga untuk periode yang lebih panjang.</p>
+    </section>
+
+    <!-- 9. Analoginya -->
+    <section id="analogi" class="bab">
+        <h2>9. Analogi Sederhana Compounded INDONIA</h2>
+
+        <p>Bayangkan INDONIA adalah bunga harian.</p>
+
+        <p><strong>Misalnya:</strong></p>
+        <div class="diagram">
+Hari 1 → bunga INDONIA
+Hari 2 → bunga INDONIA
+Hari 3 → bunga INDONIA
+...
+Hari 30 → bunga INDONIA
+        </div>
+
+        <p>Daripada hanya melihat bunga satu hari, seluruh bunga harian tersebut <strong>dikompon</strong> selama periode.</p>
+
+        <div class="success">
+            <p><strong>Jadi:</strong></p>
+            <blockquote><strong>Compounded INDONIA = akumulasi bunga INDONIA secara majemuk.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 10. Tenor Compounded INDONIA -->
+    <section id="tenor-compounded" class="bab">
+        <h2>10. Tenor Compounded INDONIA</h2>
+
+        <p>Bank Indonesia mempublikasikan Compounded INDONIA untuk:</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tenor</th>
+                        <th>Satuan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>30 hari</td>
+                        <td>Kalender</td>
+                    </tr>
+                    <tr>
+                        <td>90 hari</td>
+                        <td>Kalender</td>
+                    </tr>
+                    <tr>
+                        <td>180 hari</td>
+                        <td>Kalender</td>
+                    </tr>
+                    <tr>
+                        <td>360 hari</td>
+                        <td>Kalender</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Publikasi:</strong></p>
+        <div class="formula">
+> <strong>08.00 WIB setiap hari kerja</strong>
+        </div>
+
+        <p><strong>Mulai:</strong></p>
+        <div class="formula">
+> <strong>1 Februari 2023</strong>
+        </div>
+    </section>
+
+    <!-- 11. Metode Perhitungan -->
+    <section id="metode" class="bab">
+        <h2>11. Metode Perhitungan Compounded INDONIA</h2>
+
+        <p>Materi menyebut menggunakan:</p>
+        <blockquote><strong>Compounded Average Interest</strong></blockquote>
+        <p>dengan basis:</p>
+        <blockquote><strong>Fixed Day Structure</strong></blockquote>
+
+        <p>Artinya, perhitungan mengikuti struktur jumlah hari yang telah ditentukan.</p>
+
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+INDONIA hari 1
+      ↓
+INDONIA hari 2
+      ↓
+INDONIA hari 3
+      ↓
+INDONIA hari 4
+      ↓
+      ...
+      ↓
+INDONIA hari terakhir
+      ↓
+Compounding
+      ↓
+Compounded INDONIA
+        </div>
+    </section>
+
+    <!-- 12. INDONIA Index -->
+    <section id="index" class="bab">
+        <h2>12. INDONIA Index</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>INDONIA Index</strong> adalah indeks yang menggambarkan:</p>
+        <blockquote><strong>nilai akumulasi INDONIA yang dibungakan secara majemuk.</strong></blockquote>
+
+        <p>Indeks dihitung setiap hari oleh Bank Indonesia.</p>
+
+        <p><strong>Nilai awal:</strong></p>
+        <div class="formula">
+> <strong>1.000000000 pada 2 Januari 2019</strong>
+        </div>
+
+        <p><strong>Mulai dipublikasikan:</strong></p>
+        <div class="formula">
+> <strong>1 Februari 2023</strong>
+        </div>
+
+        <p><strong>Pukul:</strong></p>
+        <div class="formula">
+> <strong>08.00 WIB setiap hari kerja</strong>
+        </div>
+    </section>
+
+    <!-- 13. Hubungan Ketiga Konsep -->
+    <section id="hubungan" class="bab">
+        <h2>13. Hubungan INDONIA, Compounded INDONIA, dan INDONIA Index</h2>
+
+        <p>Ini merupakan bagian yang <strong>sangat penting untuk ujian</strong>.</p>
+
+        <div class="diagram">
+INDONIA
+   │
+   │ dikompon secara majemuk
+   ▼
+INDONIA Index
+   │
+   │ dapat digunakan untuk
+   │ menghitung
+   ▼
+Compounded INDONIA
+        </div>
+
+        <p>Namun terdapat catatan:</p>
+        <div class="important">
+            <p>Nilai Compounded INDONIA yang dihitung menggunakan INDONIA Index <strong>dapat berbeda</strong> dengan nilai Compounded INDONIA standar yang dipublikasikan BI karena terdapat perbedaan metode perhitungan.</p>
+        </div>
+
+        <div class="success">
+            <p><strong>Jadi:</strong></p>
+            <blockquote><strong>INDONIA Index ≠ Compounded INDONIA</strong><br>meskipun keduanya sangat berkaitan.</blockquote>
+        </div>
+    </section>
+
+    <!-- 14. Contoh Data -->
+    <section id="data" class="bab">
+        <h2>14. Contoh Data INDONIA</h2>
+
+        <p>Dalam data yang diberikan:</p>
+
+        <h3>10 September 2026</h3>
+
+        <h4>INDONIA:</h4>
+        <div class="formula">
+> <strong>5,93825%</strong>
+        </div>
+
+        <h4>Compounded INDONIA:</h4>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tenor</th>
+                        <th>Compounded INDONIA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>30 hari</td>
+                        <td>5,99768%</td>
+                    </tr>
+                    <tr>
+                        <td>90 hari</td>
+                        <td>6,11118%</td>
+                    </tr>
+                    <tr>
+                        <td>180 hari</td>
+                        <td>5,40818%</td>
+                    </tr>
+                    <tr>
+                        <td>360 hari</td>
+                        <td>4,78638%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>INDONIA Index:</h4>
+        <div class="formula">
+> <strong>1,436342236</strong>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Cara membaca</strong></p>
+            <p>INDONIA menunjukkan kondisi suku bunga <strong>overnight saat ini</strong>, sedangkan Compounded INDONIA menunjukkan hasil penggabungan suku bunga INDONIA selama periode tertentu.</p>
+        </div>
+    </section>
+
+    <!-- 15. Matchmaking OIS -->
+    <section id="ois" class="bab">
+        <h2>15. Matchmaking OIS</h2>
+
+        <h3>A. Apa itu OIS?</h3>
+        <p><strong>OIS</strong> adalah:</p>
+        <div class="formula">
+> <strong>Overnight Index Swap</strong>
+        </div>
+
+        <p>Dalam materi ini, floating reference yang digunakan adalah:</p>
+        <div class="formula">
+> <strong>INDONIA</strong>
+        </div>
+
+        <p>OIS merupakan instrumen yang penting dalam pengembangan pasar uang karena dapat membantu membentuk referensi suku bunga yang bersifat <strong>forward-looking</strong>.</p>
+    </section>
+
+    <!-- 16. Apa Itu Matchmaking OIS? -->
+    <section id="apa-ois" class="bab">
+        <h2>16. Apa Itu Matchmaking OIS?</h2>
+
+        <p><strong>Matchmaking OIS</strong> adalah proses mencocokkan penawaran transaksi OIS:</p>
+        <ul>
+            <li><strong>bid</strong></li>
+            <li><strong>ask</strong></li>
+        </ul>
+        <p>yang disampaikan oleh pelaku pasar melalui mekanisme yang ditetapkan BI.</p>
+
+        <p><strong>Tujuan utamanya:</strong></p>
+        <ol>
+            <li>memfasilitasi <strong>price discovery</strong>;</li>
+            <li>mengembangkan pasar OIS;</li>
+            <li>membentuk reference rate berbasis INDONIA;</li>
+            <li>menciptakan reference rate yang <strong>forward-looking</strong>;</li>
+            <li>memperdalam pasar uang;</li>
+            <li>meningkatkan efektivitas transmisi kebijakan moneter.</li>
+        </ol>
+    </section>
+
+    <!-- 17. Siapa Peserta Matchmaking OIS? -->
+    <section id="peserta" class="bab">
+        <h2>17. Siapa Peserta Matchmaking OIS?</h2>
+
+        <p>Berdasarkan materi:</p>
+        <blockquote><strong>Dealer Utama PUVA</strong></blockquote>
+
+        <p>Jadi tidak semua pelaku pasar dapat menjadi peserta matchmaking OIS.</p>
+    </section>
+
+    <!-- 18. Operator Matchmaking OIS -->
+    <section id="operator" class="bab">
+        <h2>18. Operator Matchmaking OIS</h2>
+
+        <p>Operator yang disebut dalam materi:</p>
+        <ol>
+            <li><strong>PT Exco Nusantara Indonesia</strong></li>
+            <li><strong>PT Tradition Indonesia</strong></li>
+        </ol>
+
+        <p>BI memiliki kewenangan menentukan operator yang menjalankan matchmaking pada window tertentu.</p>
+    </section>
+
+    <!-- 19. Apa yang Disampaikan Peserta? -->
+    <section id="disampaikan" class="bab">
+        <h2>19. Apa yang Disampaikan Peserta?</h2>
+
+        <p>Peserta memberikan informasi:</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Informasi</th>
+                        <th>Artinya</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tenor</td>
+                        <td>Jangka waktu transaksi</td>
+                    </tr>
+                    <tr>
+                        <td>Nominal</td>
+                        <td>Nilai transaksi</td>
+                    </tr>
+                    <tr>
+                        <td>Bid</td>
+                        <td>Harga/suku bunga yang bersedia dibayar/diberikan untuk sisi bid</td>
+                    </tr>
+                    <tr>
+                        <td>Ask</td>
+                        <td>Harga/suku bunga yang ditawarkan</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 20. Aturan Utama Matchmaking OIS -->
+    <section id="aturan" class="bab">
+        <h2>20. Aturan Utama Matchmaking OIS</h2>
+
+        <h3>Nominal</h3>
+        <div class="formula">
+> <strong>Rp20 miliar per deal ticket</strong>
+        </div>
+
+        <h3>Maksimum spread</h3>
+        <div class="formula">
+> <strong>15 bps</strong>
+        </div>
+        <p>untuk:</p>
+        <ul>
+            <li>tenor 1 bulan;</li>
+            <li>tenor 3 bulan.</li>
+        </ul>
+
+        <h3>Perubahan penawaran</h3>
+        <p>Peserta dapat mengubah penawaran:</p>
+        <div class="formula">
+> <strong>maksimum 1 kali</strong>
+        </div>
+        <p>untuk setiap penawaran dalam setiap window.</p>
+
+        <h3>Pembatalan</h3>
+        <p>Penawaran:</p>
+        <div class="formula">
+> <strong>tidak dapat dibatalkan.</strong>
+        </div>
+        <p>Peserta juga dapat memberikan lebih dari satu penawaran dalam satu window.</p>
+    </section>
+
+    <!-- 21. Apa Itu bps? -->
+    <section id="bps" class="bab">
+        <h2>21. Apa Itu bps?</h2>
+
+        <p><strong>bps = basis points</strong></p>
+
+        <p><strong>Hubungan:</strong></p>
+        <div class="math">
+$$
+1\text{ bps}=0,01\%
+$$
+        </div>
+
+        <p>Maka:</p>
+        <div class="math">
+$$
+15\text{ bps}=0,15\%
+$$
+        </div>
+
+        <p><strong>Contoh:</strong></p>
+        <p>Jika bid = 5,80% dan ask = 5,95%:</p>
+        <div class="math">
+$$
+5,95\%-5,80\%=0,15\%
+$$
+        </div>
+        <p>maka spread:</p>
+        <div class="formula">
+> <strong>15 bps</strong>
+        </div>
+    </section>
+
+    <!-- 22. Mekanisme Matchmaking -->
+    <section id="mekanisme" class="bab">
+        <h2>22. Mekanisme Matchmaking</h2>
+
+        <p>Terdapat beberapa metode.</p>
+
+        <h3>A. Match Price</h3>
+        <p>Menggunakan:</p>
+        <div class="formula">
+> <strong>harga bid dan ask yang sama.</strong>
+        </div>
+
+        <p><strong>Contoh:</strong></p>
+        <div class="diagram">
+Bid Bank A = 5,95%
+Ask Bank B = 5,95%
+
+          ↓
+
+MATCH
+
+Rate transaksi = 5,95%
+        </div>
+
+        <hr>
+
+        <h3>B. Mid Price 1</h3>
+        <p>Digunakan ketika:</p>
+        <div class="formula">
+> <strong>bid tertinggi lebih tinggi daripada ask terendah.</strong>
+        </div>
+        <p>Rate ditentukan berdasarkan nilai tengah antara bid tertinggi dan ask terendah.</p>
+
+        <hr>
+
+        <h3>C. Mid Price 2</h3>
+        <p>Digunakan ketika:</p>
+        <div class="formula">
+> <strong>bid tertinggi lebih rendah daripada ask terendah.</strong>
+        </div>
+        <p>Rate menggunakan nilai tengah antara keduanya.</p>
+    </section>
+
+    <!-- 23. Alur Matchmaking OIS -->
+    <section id="alur" class="bab">
+        <h2>23. Alur Matchmaking OIS</h2>
+
+        <div class="diagram">
+Peserta Dealer Utama PUVA
+          │
+          ▼
+Mengirim bid/ask
+          │
+          ▼
+09.00 – 09.30 WIB
+Submission Window
+          │
+          ▼
+Operator melakukan fixing
+          │
+          ▼
+09.31 – 09.45 WIB
+          │
+          ▼
+Match Price /
+Mid Price
+          │
+          ▼
+Transaksi OIS
+          │
+          ▼
+Publikasi hasil
+        </div>
+    </section>
+
+    <!-- 24. Jadwal Matchmaking OIS -->
+    <section id="jadwal" class="bab">
+        <h2>24. Jadwal Matchmaking OIS</h2>
+
+        <p>Untuk jadwal yang diberikan:</p>
+
+        <h3>September 2026</h3>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Operator</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>3 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>8 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>10 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>15 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>17 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>22 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>24 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                    <tr>
+                        <td>29 Sep</td>
+                        <td>PIALANG 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Keterangan:</strong></p>
+        <div class="formula">
+> <strong>PIALANG 2 = PT Tradition Indonesia</strong>
+        </div>
+        <div class="formula">
+> <strong>PIALANG 1 = PT Exco Nusantara Indonesia</strong>
+        </div>
+
+        <p>Matchmaking ditiadakan pada:</p>
+        <ul>
+            <li>hari libur;</li>
+            <li>cuti bersama.</li>
+        </ul>
+    </section>
+
+    <!-- 25. Standardisasi Transaksi OIS -->
+    <section id="standardisasi" class="bab">
+        <h2>25. Standardisasi Transaksi OIS</h2>
+
+        <p>Standardisasi mengikuti market convention yang ditetapkan/disepakati APUVINDO.</p>
+
+        <p><strong>Beberapa aspek:</strong></p>
+        <ul>
+            <li>value date;</li>
+            <li>settlement date;</li>
+            <li>business day;</li>
+            <li>perhitungan hari bunga.</li>
+        </ul>
+
+        <p>Dalam tabel:</p>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>1 Bulan</th>
+                        <th>3 Bulan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jenis transaksi</td>
+                        <td>OIS</td>
+                        <td>OIS</td>
+                    </tr>
+                    <tr>
+                        <td>Floating reference</td>
+                        <td>INDONIA</td>
+                        <td>INDONIA</td>
+                    </tr>
+                    <tr>
+                        <td>Nominal</td>
+                        <td>Rp20 M</td>
+                        <td>Rp20 M</td>
+                    </tr>
+                    <tr>
+                        <td>Spread maksimum</td>
+                        <td>15 bps</td>
+                        <td>15 bps</td>
+                    </tr>
+                    <tr>
+                        <td>Submission</td>
+                        <td>09.00–09.30</td>
+                        <td>09.00–09.30</td>
+                    </tr>
+                    <tr>
+                        <td>Business day</td>
+                        <td>Following Business Day</td>
+                        <td>Following Business Day</td>
+                    </tr>
+                    <tr>
+                        <td>Day count</td>
+                        <td>ACT/360</td>
+                        <td>ACT/360</td>
+                    </tr>
+                    <tr>
+                        <td>Value date</td>
+                        <td>Trade date + 1</td>
+                        <td>Trade date + 1</td>
+                    </tr>
+                    <tr>
+                        <td>Settlement</td>
+                        <td>Payment delay 1 hari</td>
+                        <td>Payment delay 1 hari</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 26. JIBOR -->
+    <section id="jibor" class="bab">
+        <h2>26. JIBOR</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>JIBOR (Jakarta Interbank Offered Rate)</strong> adalah benchmark pasar uang yang, berdasarkan materi, berlaku hingga:</p>
+        <div class="formula">
+> <strong>31 Desember 2025</strong>
+        </div>
+
+        <p>JIBOR merupakan rata-rata dari <strong>suku bunga indikasi pinjaman tanpa agunan</strong> yang ditawarkan bank kontributor kepada bank kontributor lainnya untuk meminjamkan rupiah di Indonesia.</p>
+
+        <p><strong>Perbedaan penting:</strong></p>
+        <ul>
+            <li>JIBOR menggunakan <strong>offer rate/kuotasi indikatif</strong>.</li>
+            <li>Sedangkan: INDONIA menggunakan <strong>transaksi aktual</strong>.</li>
+        </ul>
+    </section>
+
+    <!-- 27. Cara Penetapan JIBOR -->
+    <section id="penetapan" class="bab">
+        <h2>27. Cara Penetapan JIBOR</h2>
+
+        <p>Bank kontributor menyampaikan:</p>
+        <div class="formula">
+> <strong>offer rate</strong>
+        </div>
+        <p>kepada BI.</p>
+
+        <p><strong>Window:</strong></p>
+        <ul>
+            <li>07.00–09.30 WIB</li>
+            <li>koreksi online sampai 09.45 WIB.</li>
+        </ul>
+
+        <p>Kemudian BI menghitung:</p>
+        <div class="formula">
+> <strong>simple average</strong>
+        </div>
+        <p>setelah mengeluarkan:</p>
+        <ul>
+            <li>15% data offer rate tertinggi;</li>
+            <li>15% data offer rate terendah.</li>
+        </ul>
+    </section>
+
+    <!-- 28. Perbedaan INDONIA dan JIBOR -->
+    <section id="perbedaan" class="bab">
+        <h2>28. Perbedaan INDONIA dan JIBOR</h2>
+
+        <p>Ini salah satu tabel <strong>wajib hafal</strong>.</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>INDONIA</th>
+                        <th>JIBOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dasar</td>
+                        <td>Transaksi aktual</td>
+                        <td>Kuotasi indikatif</td>
+                    </tr>
+                    <tr>
+                        <td>Sifat</td>
+                        <td>Transaction-based</td>
+                        <td>Quote-based</td>
+                    </tr>
+                    <tr>
+                        <td>Tenor utama</td>
+                        <td>Overnight</td>
+                        <td>Di atas overnight</td>
+                    </tr>
+                    <tr>
+                        <td>Agunan</td>
+                        <td>Tanpa agunan</td>
+                        <td>Tanpa agunan</td>
+                    </tr>
+                    <tr>
+                        <td>Perhitungan</td>
+                        <td>Volume-weighted average</td>
+                        <td>Simple average</td>
+                    </tr>
+                    <tr>
+                        <td>Data</td>
+                        <td>Transaksi bank</td>
+                        <td>Offer rate bank kontributor</td>
+                    </tr>
+                    <tr>
+                        <td>JIBOR O/N</td>
+                        <td>Tidak dipublikasikan sejak 2 Jan 2019</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>JIBOR non-O/N</td>
+                        <td>—</td>
+                        <td>Tidak dipublikasikan sejak 1 Jan 2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Hafalan:</strong></p>
+            <blockquote><strong>INDONIA = TRANSAKSI</strong><br><strong>JIBOR = KUOTASI</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 29. Akhir Publikasi JIBOR -->
+    <section id="akhir" class="bab">
+        <h2>29. Akhir Publikasi JIBOR</h2>
+
+        <p><strong>Timeline:</strong></p>
+        <div class="diagram">
+2 Januari 2019
+        │
+        ▼
+JIBOR Overnight berhenti dipublikasikan
+        │
+        ▼
+INDONIA menjadi benchmark overnight
+        </div>
+
+        <p>Kemudian:</p>
+        <div class="diagram">
+1 Januari 2026
+        │
+        ▼
+JIBOR non-overnight
+1W, 1M, 3M, 6M, 12M
+tidak lagi dipublikasikan
+        </div>
+
+        <div class="important">
+            <p>Sehingga berdasarkan materi:</p>
+            <blockquote><strong>JIBOR tidak lagi dipublikasikan oleh BI sejak 1 Januari 2026 untuk tenor non-overnight.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 30. Kurva Imbal Hasil Pasar Uang -->
+    <section id="kurva" class="bab">
+        <h2>30. Kurva Imbal Hasil Pasar Uang</h2>
+
+        <p>Selain benchmark rate, kita juga dapat melihat <strong>yield curve</strong> pasar uang.</p>
+
+        <p>Data yang diberikan mencakup:</p>
+        <ul>
+            <li>Repo 1 bulan;</li>
+            <li>SRBI 3 bulan;</li>
+            <li>SRBI 6 bulan;</li>
+            <li>SRBI 12 bulan.</li>
+        </ul>
+
+        <p><strong>Data periode:</strong></p>
+        <div class="formula">
+> <strong>31 Agustus–4 September 2026</strong>
+        </div>
+    </section>
+
+    <!-- 31. Data Yield Repo dan SRBI -->
+    <section id="data-yield" class="bab">
+        <h2>31. Data Yield Repo dan SRBI</h2>
+
+        <p>Berdasarkan data yang diberikan:</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Repo 1M</th>
+                        <th>SRBI 3M</th>
+                        <th>SRBI 6M</th>
+                        <th>SRBI 12M</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>31 Ags</td>
+                        <td>6,65%</td>
+                        <td>6,75%</td>
+                        <td>6,85%</td>
+                        <td>6,92%</td>
+                    </tr>
+                    <tr>
+                        <td>1 Sep</td>
+                        <td>6,65%</td>
+                        <td>6,75%</td>
+                        <td>—</td>
+                        <td>7,05%</td>
+                    </tr>
+                    <tr>
+                        <td>2 Sep</td>
+                        <td>6,65%</td>
+                        <td>6,75%</td>
+                        <td>6,97%</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>3 Sep</td>
+                        <td>7,20%</td>
+                        <td>6,78%</td>
+                        <td>6,92%</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>4 Sep</td>
+                        <td>—</td>
+                        <td>6,80%</td>
+                        <td>6,96%</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Tanda:</strong></p>
+        <div class="formula">
+> <strong>(-) = tidak terdapat transaksi.</strong>
+        </div>
+    </section>
+
+    <!-- 32. Apa Itu RRT? -->
+    <section id="rrt" class="bab">
+        <h2>32. Apa Itu RRT?</h2>
+
+        <p>Data tersebut menggunakan:</p>
+        <div class="formula">
+> <strong>RRT = Rata-Rata Tertimbang</strong>
+        </div>
+
+        <p>Artinya harga/suku bunga yang dipublikasikan mempertimbangkan volume transaksi.</p>
+
+        <p><strong>Sumber data:</strong></p>
+        <div class="formula">
+> <strong>Laporan Bank Umum Terintegrasi (LBUT)</strong>
+        </div>
+    </section>
+
+    <!-- 33. Transaksi yang Digunakan -->
+    <section id="transaksi" class="bab">
+        <h2>33. Transaksi yang Digunakan</h2>
+
+        <h3>Repo</h3>
+        <p>Yang digunakan:</p>
+        <div class="formula">
+> <strong>transaksi repo pasar sekunder dengan tenor 1 bulan.</strong>
+        </div>
+
+        <h3>SRBI</h3>
+        <p>Yang digunakan:</p>
+        <div class="formula">
+> <strong>transaksi SRBI pasar sekunder dengan sisa tenor:</strong>
+        </div>
+        <ul>
+            <li>3 bulan;</li>
+            <li>6 bulan;</li>
+            <li>12 bulan.</li>
+        </ul>
+    </section>
+
+    <!-- 34. Membaca Yield Curve -->
+    <section id="membaca" class="bab">
+        <h2>34. Membaca Yield Curve</h2>
+
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+Suku bunga
+   │
+   │                         ● 12M
+   │                  ● 6M
+   │            ● 3M
+   │      ● 1M
+   │
+   └────────────────────────────
+       1M     3M     6M     12M
+                 Tenor
+        </div>
+
+        <p>Kurva ini membantu pelaku pasar melihat hubungan antara:</p>
+        <blockquote><strong>tenor dan tingkat imbal hasil/suku bunga.</strong></blockquote>
+
+        <p>Kurva juga berguna dalam:</p>
+        <ul>
+            <li>pricing instrumen;</li>
+            <li>analisis pasar;</li>
+            <li>pengambilan keputusan investasi;</li>
+            <li>membaca ekspektasi pasar.</li>
+        </ul>
+    </section>
+
+    <!-- 35. Hubungan INDONIA dengan Kebijakan Moneter -->
+    <section id="hub-moneter" class="bab">
+        <h2>35. Hubungan INDONIA dengan Kebijakan Moneter</h2>
+
+        <p>Ini bagian penting untuk memahami keseluruhan sistem.</p>
+
+        <p>Misalnya BI menetapkan arah kebijakan moneter melalui <strong>BI-Rate</strong>.</p>
+        <p>Kemudian operasi moneter dilakukan untuk mengarahkan suku bunga pasar uang.</p>
+
+        <div class="diagram">
+BI-Rate
+   │
+   ▼
+Operasi Moneter BI
+   │
+   ▼
+PUAB Overnight
+   │
+   ▼
+INDONIA
+   │
+   ▼
+Suku bunga pasar uang
+   │
+   ▼
+Suku bunga perbankan
+   │
+   ▼
+Kredit & aktivitas ekonomi
+   │
+   ▼
+Inflasi / pertumbuhan ekonomi
+        </div>
+
+        <p>Dengan demikian, INDONIA penting karena memberikan gambaran mengenai <strong>suku bunga transaksi overnight yang benar-benar terjadi di pasar</strong>.</p>
+    </section>
+
+    <!-- 36. Hubungan INDONIA dengan OIS -->
+    <section id="hub-ois" class="bab">
+        <h2>36. Hubungan INDONIA dengan OIS</h2>
+
+        <p>OIS menggunakan:</p>
+        <div class="formula">
+> <strong>INDONIA sebagai floating reference.</strong>
+        </div>
+
+        <p><strong>Konsep sederhananya:</strong></p>
+        <div class="diagram">
+INDONIA
+   │
+   ▼
+Floating reference
+   │
+   ▼
+OIS
+   │
+   ▼
+Forward-looking reference rate
+   │
+   ▼
+Price discovery
+   │
+   ▼
+Pendalaman pasar uang
+   │
+   ▼
+Transmisi kebijakan moneter
+        </div>
+
+        <p>Jadi OIS membantu mengubah informasi dari pasar overnight menjadi referensi yang lebih berguna untuk tenor tertentu.</p>
+    </section>
+
+    <!-- 37. Mengapa OIS Disebut Forward-Looking? -->
+    <section id="forward" class="bab">
+        <h2>37. Mengapa OIS Disebut Forward-Looking?</h2>
+
+        <p>INDONIA sendiri merupakan tingkat bunga yang berasal dari <strong>transaksi yang sudah terjadi</strong>.</p>
+
+        <p>OIS dapat membantu menghasilkan informasi tingkat bunga yang mencerminkan kondisi/ekspektasi untuk <strong>periode ke depan</strong>.</p>
+
+        <p>Karena itu matchmaking OIS diarahkan untuk:</p>
+        <div class="formula">
+> <strong>membentuk reference rate berbasis INDONIA yang bersifat forward-looking.</strong>
+        </div>
+    </section>
+
+    <!-- 38. Perbedaan Semua Konsep -->
+    <section id="perbedaan-semua" class="bab">
+        <h2>38. Perbedaan INDONIA, Compounded INDONIA, INDONIA Index, dan OIS</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Instrumen</th>
+                        <th>Fungsi utama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>INDONIA</strong></td>
+                        <td>Benchmark overnight berbasis transaksi aktual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compounded INDONIA</strong></td>
+                        <td>Menghasilkan rate untuk periode tertentu dari INDONIA secara majemuk</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INDONIA Index</strong></td>
+                        <td>Menggambarkan akumulasi INDONIA yang dikompon</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OIS</strong></td>
+                        <td>Swap dengan INDONIA sebagai floating reference</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Hafalan:</strong></p>
+            <ul>
+                <li><strong>INDONIA</strong> = HARI INI</li>
+                <li><strong>COMPOUNDED</strong> = KUMPULKAN HARI-HARI</li>
+                <li><strong>INDEX</strong> = NILAI AKUMULASI</li>
+                <li><strong>OIS</strong> = SWAP</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 39. Contoh Kasus Sederhana -->
+    <section id="kasus1" class="bab">
+        <h2>39. Contoh Kasus Sederhana</h2>
+
+        <p>Misalnya sebuah perusahaan membutuhkan referensi suku bunga untuk transaksi selama 90 hari.</p>
+
+        <p>INDONIA hanya menunjukkan:</p>
+        <div class="formula">
+> <strong>tingkat overnight.</strong>
+        </div>
+
+        <p>Maka perusahaan dapat menggunakan:</p>
+        <div class="formula">
+> <strong>Compounded INDONIA 90 hari</strong>
+        </div>
+        <p>sebagai referensi untuk periode tersebut.</p>
+
+        <p>Sementara jika pelaku pasar ingin melakukan transaksi swap berbasis suku bunga overnight, dapat menggunakan:</p>
+        <div class="formula">
+> <strong>OIS dengan INDONIA sebagai floating reference.</strong>
+        </div>
+    </section>
+
+    <!-- 40. Contoh Membandingkan JIBOR dan INDONIA -->
+    <section id="bandingkan" class="bab">
+        <h2>40. Contoh Membandingkan JIBOR dan INDONIA</h2>
+
+        <p>Misalnya terdapat dua bank.</p>
+
+        <h3>Sistem INDONIA</h3>
+        <p>Bank benar-benar melakukan transaksi:</p>
+        <div class="formula">
+> <strong>Rp100 miliar pada 5,9%.</strong>
+        </div>
+        <p>Transaksi tersebut dilaporkan ke BI dan masuk dalam perhitungan.</p>
+
+        <h3>Sistem JIBOR</h3>
+        <p>Bank memberikan indikasi:</p>
+        <div class="formula">
+> <strong>"Saya bersedia meminjamkan pada 6%."</strong>
+        </div>
+        <p>Angka tersebut merupakan <strong>kuotasi indikatif</strong>, bukan necessarily transaksi aktual.</p>
+
+        <p><strong>Maka:</strong></p>
+        <div class="diagram">
+INDONIA → What actually traded?
+JIBOR   → What banks quoted?
+        </div>
+
+        <p>Ini merupakan perbedaan konseptual yang sangat penting.</p>
+    </section>
+
+    <!-- 41. Data Harian 10 September 2026 -->
+    <section id="data-harian" class="bab">
+        <h2>41. Data Harian 10 September 2026</h2>
+
+        <p>Berdasarkan data yang diberikan:</p>
+
+        <h3>INDONIA</h3>
+        <div class="formula">
+> <strong>5,93825%</strong>
+        </div>
+
+        <h3>Compounded INDONIA</h3>
+        <ul>
+            <li>30 hari: <strong>5,99768%</strong></li>
+            <li>90 hari: <strong>6,11118%</strong></li>
+            <li>180 hari: <strong>5,40818%</strong></li>
+            <li>360 hari: <strong>4,78638%</strong></li>
+        </ul>
+
+        <h3>INDONIA Index</h3>
+        <div class="formula">
+> <strong>1,436342236</strong>
+        </div>
+
+        <p>Sedangkan pada <strong>Matchmaking OIS 8 September 2026</strong>:</p>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tenor</th>
+                        <th>Rate</th>
+                        <th>Deal Done</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 bulan</td>
+                        <td>5,95%</td>
+                        <td>Rp40 miliar</td>
+                    </tr>
+                    <tr>
+                        <td>3 bulan</td>
+                        <td>5,95%</td>
+                        <td>Rp40 miliar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Data ini menunjukkan bahwa OIS yang dimatch dapat memberikan tingkat referensi untuk tenor 1 dan 3 bulan berbasis INDONIA.</p>
+    </section>
+
+    <!-- 42. Istilah-Istilah Penting -->
+    <section id="istilah" class="bab">
+        <h2>42. Istilah-Istilah Penting</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Istilah</th>
+                        <th>Arti</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Benchmark rate</strong></td>
+                        <td>Suku bunga acuan/referensi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overnight</strong></td>
+                        <td>Jangka waktu satu malam</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unsecured</strong></td>
+                        <td>Tanpa agunan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Volume-weighted average</strong></td>
+                        <td>Rata-rata tertimbang berdasarkan volume</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Simple average</strong></td>
+                        <td>Rata-rata sederhana</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bid</strong></td>
+                        <td>Penawaran beli</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ask</strong></td>
+                        <td>Penawaran jual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spread</strong></td>
+                        <td>Selisih bid dan ask</td>
+                    </tr>
+                    <tr>
+                        <td><strong>bps</strong></td>
+                        <td>Basis points</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OIS</strong></td>
+                        <td>Overnight Index Swap</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price discovery</strong></td>
+                        <td>Proses pembentukan harga melalui interaksi pasar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Forward-looking</strong></td>
+                        <td>Berorientasi pada kondisi/perkiraan ke depan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fixing</strong></td>
+                        <td>Penetapan tingkat/harga acuan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Value date</strong></td>
+                        <td>Tanggal efektif transaksi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Settlement date</strong></td>
+                        <td>Tanggal penyelesaian transaksi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ACT/360</strong></td>
+                        <td>Konvensi perhitungan hari berdasarkan aktual hari/360</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 43. Rumusan Super Singkat -->
+    <section id="rumusan" class="bab">
+        <h2>43. Rumusan Super Singkat</h2>
+
+        <h3>INDONIA</h3>
+        <div class="formula">
+> <strong>Transaksi aktual overnight tanpa agunan antarbank.</strong>
+        </div>
+
+        <h3>Compounded INDONIA</h3>
+        <div class="formula">
+> <strong>INDONIA yang dihitung secara majemuk selama periode tertentu.</strong>
+        </div>
+
+        <h3>INDONIA Index</h3>
+        <div class="formula">
+> <strong>Indeks akumulasi INDONIA secara majemuk.</strong>
+        </div>
+
+        <h3>OIS</h3>
+        <div class="formula">
+> <strong>Swap berbasis INDONIA sebagai floating reference.</strong>
+        </div>
+
+        <h3>JIBOR</h3>
+        <div class="formula">
+> <strong>Benchmark berdasarkan kuotasi indikatif bank kontributor.</strong>
+        </div>
+    </section>
+
+    <!-- 44. Mnemonik untuk Ujian -->
+    <section id="mnemonik" class="bab">
+        <h2>44. Mnemonik untuk Ujian</h2>
+
+        <h3>INDONIA</h3>
+        <div class="formula">
+> <strong>T-O-V</strong>
+        </div>
+        <ul>
+            <li><strong>T</strong>ransaksi</li>
+            <li><strong>O</strong>vernight</li>
+            <li><strong>V</strong>olume-weighted</li>
+        </ul>
+
+        <hr>
+
+        <h3>JIBOR</h3>
+        <div class="formula">
+> <strong>K-S-15</strong>
+        </div>
+        <ul>
+            <li><strong>K</strong>uotasi</li>
+            <li><strong>S</strong>imple average</li>
+            <li>buang <strong>15%</strong> tertinggi & <strong>15%</strong> terendah</li>
+        </ul>
+
+        <hr>
+
+        <h3>Compounded INDONIA</h3>
+        <div class="formula">
+> <strong>30–90–180–360</strong>
+        </div>
+        <p>Empat tenor standar.</p>
+
+        <hr>
+
+        <h3>OIS</h3>
+        <div class="formula">
+> <strong>I-P-P</strong>
+        </div>
+        <ul>
+            <li><strong>I</strong>NDONIA</li>
+            <li><strong>P</strong>rice discovery</li>
+            <li><strong>P</strong>endalaman pasar</li>
+        </ul>
+    </section>
+
+    <!-- 45. Kesalahan yang Sering Terjadi -->
+    <section id="kesalahan" class="bab">
+        <h2>45. Kesalahan yang Sering Terjadi</h2>
+
+        <h3>❌ Salah 1</h3>
+        <p>"INDONIA adalah suku bunga yang ditawarkan bank."</p>
+        <p><strong>Benar:</strong></p>
+        <p>INDONIA berdasarkan <strong>transaksi aktual</strong> yang dilaporkan bank.</p>
+
+        <hr>
+
+        <h3>❌ Salah 2</h3>
+        <p>"JIBOR dan INDONIA sama-sama dihitung dari transaksi aktual."</p>
+        <p><strong>Benar:</strong></p>
+        <p>INDONIA berbasis transaksi aktual, sedangkan JIBOR berbasis <strong>offer rate/kuotasi indikatif</strong>.</p>
+
+        <hr>
+
+        <h3>❌ Salah 3</h3>
+        <p>"Compounded INDONIA adalah INDONIA overnight."</p>
+        <p><strong>Tidak tepat.</strong></p>
+        <p>Compounded INDONIA merupakan hasil perhitungan <strong>bunga majemuk INDONIA selama periode tertentu</strong>.</p>
+
+        <hr>
+
+        <h3>❌ Salah 4</h3>
+        <p>"INDONIA Index sama dengan Compounded INDONIA."</p>
+        <p><strong>Tidak sama.</strong></p>
+        <p>INDONIA Index adalah <strong>indeks akumulasi</strong>, sedangkan Compounded INDONIA adalah <strong>suku bunga hasil perhitungan majemuk</strong>.</p>
+
+        <hr>
+
+        <h3>❌ Salah 5</h3>
+        <p>"OIS menggunakan JIBOR sebagai floating reference."</p>
+        <p>Dalam materi ini:</p>
+        <div class="formula">
+> <strong>OIS menggunakan INDONIA sebagai floating reference.</strong>
+        </div>
+    </section>
+
+    <!-- 46. Soal Pilihan Ganda -->
+    <section id="pilihan" class="bab">
+        <h2>46. Soal Pilihan Ganda</h2>
+
+        <div class="soal">
+            <h4>Soal 1</h4>
+            <p>INDONIA merupakan benchmark yang berdasarkan:</p>
+            <ol type="A">
+                <li>Kuotasi bank</li>
+                <li>Transaksi aktual</li>
+                <li>Harga saham</li>
+                <li>Nilai tukar</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 2</h4>
+            <p>Tenor INDONIA adalah:</p>
+            <ol type="A">
+                <li>1 minggu</li>
+                <li>1 bulan</li>
+                <li>Overnight</li>
+                <li>12 bulan</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 3</h4>
+            <p>Metode perhitungan INDONIA adalah:</p>
+            <ol type="A">
+                <li>Simple average</li>
+                <li>Median</li>
+                <li>Volume-weighted average</li>
+                <li>Highest rate</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 4</h4>
+            <p>INDONIA mulai dipublikasikan pada:</p>
+            <ol type="A">
+                <li>1 Januari 2018</li>
+                <li>1 Agustus 2018</li>
+                <li>2 Januari 2019</li>
+                <li>1 Februari 2023</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 5</h4>
+            <p>INDONIA dipublikasikan pada:</p>
+            <ol type="A">
+                <li>08.00 WIB</li>
+                <li>09.30 WIB</li>
+                <li>15.30 WIB</li>
+                <li>19.30 WIB</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: D</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 6</h4>
+            <p>Compounded INDONIA dipublikasikan untuk tenor berikut, kecuali:</p>
+            <ol type="A">
+                <li>30 hari</li>
+                <li>90 hari</li>
+                <li>180 hari</li>
+                <li>270 hari</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: D</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 7</h4>
+            <p>Nilai awal INDONIA Index adalah:</p>
+            <ol type="A">
+                <li>100</li>
+                <li>1.000</li>
+                <li>1.000000000</li>
+                <li>10.000</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 8</h4>
+            <p>Floating reference dalam matchmaking OIS adalah:</p>
+            <ol type="A">
+                <li>BI-Rate</li>
+                <li>JIBOR</li>
+                <li>INDONIA</li>
+                <li>JISDOR</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 9</h4>
+            <p>Peserta Matchmaking OIS adalah:</p>
+            <ol type="A">
+                <li>Semua masyarakat</li>
+                <li>Semua perusahaan</li>
+                <li>Dealer Utama PUVA</li>
+                <li>Pemerintah daerah</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 10</h4>
+            <p>Spread maksimum bid/ask Matchmaking OIS adalah:</p>
+            <ol type="A">
+                <li>5 bps</li>
+                <li>10 bps</li>
+                <li>15 bps</li>
+                <li>25 bps</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 11</h4>
+            <p>Nominal Matchmaking OIS adalah:</p>
+            <ol type="A">
+                <li>Rp5 miliar</li>
+                <li>Rp10 miliar</li>
+                <li>Rp20 miliar</li>
+                <li>Rp50 miliar</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 12</h4>
+            <p>JIBOR ditentukan berdasarkan:</p>
+            <ol type="A">
+                <li>Transaksi aktual seluruh bank</li>
+                <li>Offer rate bank kontributor</li>
+                <li>Harga saham</li>
+                <li>JISDOR</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 13</h4>
+            <p>Metode perhitungan JIBOR adalah:</p>
+            <ol type="A">
+                <li>Volume-weighted average</li>
+                <li>Simple average setelah trimming</li>
+                <li>Median</li>
+                <li>Compounded average</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 14</h4>
+            <p>JIBOR non-overnight resmi tidak dipublikasikan sejak:</p>
+            <ol type="A">
+                <li>2018</li>
+                <li>2019</li>
+                <li>2025</li>
+                <li>1 Januari 2026</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: D</strong></p></div>
+        </div>
+    </section>
+
+    <!-- 47. Soal Essay -->
+    <section id="essay" class="bab">
+        <h2>47. Soal Essay</h2>
+
+        <h3>1. Jelaskan pengertian INDONIA!</h3>
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>INDONIA adalah indeks/suku bunga benchmark pasar uang yang mencerminkan transaksi pinjam-meminjam rupiah tanpa agunan dengan tenor overnight antarbank di Indonesia. INDONIA dihitung berdasarkan rata-rata tertimbang menurut volume transaksi aktual yang dilaporkan bank kepada Bank Indonesia.</p>
+        </div>
+
+        <hr>
+
+        <h3>2. Apa perbedaan INDONIA dengan JIBOR?</h3>
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>INDONIA berbasis <strong>transaksi aktual</strong>, sedangkan JIBOR berbasis <strong>kuotasi/offer rate indikatif</strong> dari bank kontributor. INDONIA menggunakan volume-weighted average, sedangkan JIBOR menggunakan simple average setelah mengeluarkan 15% kuotasi tertinggi dan 15% terendah.</p>
+        </div>
+
+        <hr>
+
+        <h3>3. Apa fungsi Compounded INDONIA?</h3>
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>Compounded INDONIA digunakan untuk menghasilkan suku bunga referensi periode yang lebih panjang dengan menghitung bunga majemuk berdasarkan INDONIA selama periode tertentu.</p>
+        </div>
+
+        <hr>
+
+        <h3>4. Apa fungsi Matchmaking OIS?</h3>
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>Matchmaking OIS bertujuan memfasilitasi price discovery dan pengembangan pasar OIS, serta mendorong pembentukan reference rate berbasis INDONIA yang bersifat forward-looking sehingga mendukung pendalaman pasar uang dan efektivitas transmisi kebijakan moneter.</p>
+        </div>
+    </section>
+
+    <!-- 48. Studi Kasus 1 -->
+    <section id="studi1" class="bab">
+        <h2>48. Studi Kasus</h2>
+
+        <h3>Kasus</h3>
+        <p>Bank A dan Bank B ingin melakukan transaksi OIS.</p>
+        <p>Bank A:</p>
+        <div class="formula">
+> <strong>Bid = 5,90%</strong>
+        </div>
+        <p>Bank B:</p>
+        <div class="formula">
+> <strong>Ask = 6,00%</strong>
+        </div>
+
+        <h3>Pertanyaan</h3>
+        <p>Apakah spread tersebut memenuhi batas maksimum 15 bps?</p>
+
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>Selisih:</p>
+            <div class="math">
+$$
+6,00\%-5,90\%=0,10\%
+$$
+            </div>
+            <p>Karena:</p>
+            <div class="math">
+$$
+0,10\%=10\text{ bps}
+$$
+            </div>
+            <p><strong>Maka: Ya, memenuhi</strong>, karena 10 bps ≤ 15 bps.</p>
+        </div>
+    </section>
+
+    <!-- 49. Studi Kasus 2 -->
+    <section id="studi2" class="bab">
+        <h2>49. Studi Kasus 2</h2>
+
+        <p>Sebuah kontrak membutuhkan harga acuan INDONIA pada tanggal tertentu. Namun pada tanggal tersebut BI tidak mempublikasikan harga acuan.</p>
+
+        <h3>Pertanyaan</h3>
+        <p>Apa yang digunakan?</p>
+
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>Menggunakan <strong>tanggal publikasi sebelumnya</strong>, sesuai ketentuan fallback dalam materi.</p>
+        </div>
+    </section>
+
+    <!-- 50. Studi Kasus 3 -->
+    <section id="studi3" class="bab">
+        <h2>50. Studi Kasus 3</h2>
+
+        <p>Seorang mahasiswa mengatakan:</p>
+        <blockquote>“JIBOR lebih mencerminkan transaksi aktual daripada INDONIA.”</blockquote>
+
+        <h3>Pertanyaan</h3>
+        <p>Apakah benar?</p>
+
+        <div class="soal">
+            <h4>Jawaban: SALAH.</h4>
+            <p>Berdasarkan materi:</p>
+            <ul>
+                <li>INDONIA → transaksi aktual;</li>
+                <li>JIBOR → kuotasi indikatif/offer rate.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 51. Ringkasan 1 Menit -->
+    <section id="ringkasan" class="bab">
+        <h2>51. Ringkasan 1 Menit Sebelum Ujian</h2>
+
+        <p>Kalau waktumu sangat terbatas, hafalkan bagian ini:</p>
+
+        <div class="diagram">
+INDONIA
+↓
+Indonesia Overnight Index Average
+↓
+Benchmark pasar uang
+↓
+Transaksi aktual
+↓
+Rupiah
+↓
+Tanpa agunan
+↓
+Antarbank
+↓
+Overnight
+↓
+Volume-weighted average
+↓
+Publikasi 19.30 WIB
+        </div>
+
+        <div class="diagram">
+COMPOUNDED INDONIA
+↓
+INDONIA + bunga majemuk
+↓
+30 / 90 / 180 / 360 hari
+↓
+Publikasi 08.00 WIB
+        </div>
+
+        <div class="diagram">
+INDONIA INDEX
+↓
+Akumulasi INDONIA
+↓
+Compounding
+↓
+Nilai awal 1.000000000
+↓
+2 Januari 2019
+        </div>
+
+        <div class="diagram">
+OIS
+↓
+Overnight Index Swap
+↓
+Floating reference = INDONIA
+↓
+Price discovery
+↓
+Forward-looking
+↓
+Pendalaman pasar uang
+        </div>
+
+        <div class="diagram">
+JIBOR
+↓
+Jakarta Interbank Offered Rate
+↓
+Offer rate / kuotasi indikatif
+↓
+Simple average
+↓
+Trim 15% tertinggi + 15% terendah
+↓
+O/N berhenti 2 Jan 2019
+↓
+Non-O/N berhenti 1 Jan 2026
+        </div>
+    </section>
+
+    <!-- 52. Peta Konsep Akhir -->
+    <section id="peta" class="bab">
+        <h2>52. Peta Konsep Akhir</h2>
+
+        <div class="diagram">
+                    PASAR UANG INDONESIA
+                             │
+             ┌───────────────┴───────────────┐
+             │                               │
+          INDONIA                           JIBOR
+             │                               │
+      Transaksi aktual                 Kuotasi indikatif
+             │                               │
+      Overnight                         > Overnight
+             │
+             ▼
+     Volume-weighted
+        average
+             │
+       ┌─────┴─────┐
+       │           │
+       ▼           ▼
+ INDONIA Index   OIS
+       │           │
+       │           └──────► Forward-looking
+       │
+       ▼
+Compounded INDONIA
+       │
+       ├── 30 hari
+       ├── 90 hari
+       ├── 180 hari
+       └── 360 hari
+       │
+       ▼
+Pendalaman Pasar Uang
+       │
+       ▼
+Efektivitas Transmisi
+Kebijakan Moneter BI
+        </div>
+
+        <div class="summary">
+            <h3>⭐ Inti paling penting</h3>
+            <p><strong>Jangan tertukar:</strong></p>
+            <ul>
+                <li><strong>INDONIA</strong> = transaksi aktual overnight.</li>
+                <li><strong>JIBOR</strong> = kuotasi indikatif.</li>
+                <li><strong>Compounded INDONIA</strong> = INDONIA yang dikompon.</li>
+                <li><strong>INDONIA Index</strong> = indeks akumulasi INDONIA.</li>
+                <li><strong>OIS</strong> = swap berbasis INDONIA.</li>
+                <li><strong>Matchmaking OIS</strong> = mekanisme mencocokkan bid/ask OIS untuk price discovery dan pembentukan reference rate forward-looking.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 3px solid var(--primary-color); background-color: white; border-radius: 10px;">
+        <p><strong>📚 Materi Pembelajaran: INDONIA, Compounded INDONIA, INDONIA Index, OIS, JIBOR, dan Kurva Imbal Hasil Pasar Uang</strong></p>
+        <p>© 2024 | Modul Pembelajaran Sistematik untuk Ujian dan Referensi</p>
+        <p><em>Format: Konsep → Mekanisme → Perbandingan → Contoh → Rangkuman → Latihan Soal</em></p>
+    </footer>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkuman TOEFL Structure</title>
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --ink:#1F2A24;
+    --ink-soft:#4A554D;
+    --line:#D8D2C2;
+    --moss:#3F5B44;
+    --moss-deep:#25382A;
+    --gold:#B08B3E;
+    --card:#FFFFFF;
+    --wrong:#9C4A3C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+    line-height:1.6;
+  }
+  .layout{
+    display:grid;
+    grid-template-columns:260px minmax(0,760px);
+    justify-content:center;
+    gap:56px;
+    max-width:1180px;
+    margin:0 auto;
+    padding:64px 24px 120px;
+  }
+  header.masthead{
+    grid-column:1 / -1;
+    text-align:left;
+    max-width:760px;
+    margin:0 auto 8px calc(260px + 56px);
+    padding-bottom:28px;
+    border-bottom:2px solid var(--moss-deep);
+  }
+  header.masthead .eyebrow{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--gold);
+    margin:0 0 10px;
+  }
+  header.masthead h1{
+    font-size:38px;
+    margin:0 0 10px;
+    line-height:1.15;
+    color:var(--moss-deep);
+  }
+  header.masthead p{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:56ch;
+    margin:0;
+  }
+
+  nav.toc{
+    position:sticky;
+    top:48px;
+    align-self:start;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:13.5px;
+  }
+  nav.toc h2{
+    font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+    font-size:16px;
+    margin:0 0 14px;
+    color:var(--moss-deep);
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:toc;
+    border-left:1px solid var(--line);
+  }
+  nav.toc li{
+    counter-increment:toc;
+    margin:0;
+  }
+  nav.toc a{
+    display:block;
+    padding:7px 0 7px 16px;
+    margin-left:-1px;
+    border-left:2px solid transparent;
+    color:var(--ink-soft);
+    text-decoration:none;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible{
+    color:var(--moss-deep);
+    border-left-color:var(--gold);
+  }
+  nav.toc a::before{
+    content:counter(toc) ". ";
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  main{min-width:0;}
+
+  section.topic{
+    margin-bottom:52px;
+    scroll-margin-top:40px;
+  }
+  section.topic h2{
+    font-size:24px;
+    color:var(--moss-deep);
+    margin:0 0 6px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  section.topic h2 .num{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:14px;
+    color:var(--gold);
+    font-weight:700;
+  }
+  section.topic .pattern{
+    font-family:"JetBrains Mono","SFMono-Regular",Menlo,monospace;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--moss);
+    padding:12px 16px;
+    margin:14px 0;
+    font-size:14.5px;
+    color:var(--moss-deep);
+    border-radius:2px;
+  }
+  section.topic p{margin:12px 0;}
+  .desc{color:var(--ink-soft); font-size:15.5px;}
+
+  .ex{
+    margin:14px 0;
+    padding:14px 18px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+  }
+  .ex .line{margin:4px 0; font-size:16px;}
+  .ex .line.right::before{content:"✓  "; color:var(--moss); font-weight:700;}
+  .ex .line.wrong{color:var(--wrong); text-decoration:line-through; text-decoration-color:rgba(156,74,60,.5);}
+  .ex .line.wrong::before{content:"✗  "; text-decoration:none; display:inline-block;}
+  .ex b{color:var(--moss-deep); text-decoration:none;}
+
+  table.agree{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:15px;
+    background:var(--card);
+    border:1px solid var(--line);
+  }
+  table.agree th, table.agree td{
+    padding:9px 14px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+  }
+  table.agree th{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    font-weight:600;
+    background:#FBFAF6;
+  }
+  table.agree tr:last-child td{border-bottom:none;}
+  table.agree td b{color:var(--moss-deep);}
+
+  .analysis{
+    margin-top:16px;
+    padding:18px 20px;
+    background:#EFEBDD;
+    border-radius:6px;
+    font-size:15.5px;
+  }
+  .analysis .step{margin:8px 0;}
+  .analysis .step .lbl{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:12px;
+    color:var(--gold);
+    font-weight:700;
+    display:block;
+    margin-bottom:2px;
+  }
+
+  .cheatsheet{
+    margin-top:8px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 24px;
+  }
+  .cheatsheet .row{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .cheatsheet .row .label{color:var(--ink-soft);}
+  .cheatsheet .row .form{
+    font-family:"JetBrains Mono","SFMono-Regular",Menlo,monospace;
+    color:var(--moss-deep);
+    text-align:right;
+  }
+
+  .strategy{
+    background:var(--moss-deep);
+    color:#F1EEE3;
+    border-radius:8px;
+    padding:30px 32px;
+  }
+  .strategy h2{
+    color:#fff;
+    font-size:24px;
+    margin-top:0;
+  }
+  .strategy ol{padding-left:20px; margin:14px 0;}
+  .strategy li{margin:6px 0;}
+  .strategy .signals{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px 20px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:14px;
+  }
+  .strategy .signals .row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:6px 0;
+    border-bottom:1px solid rgba(255,255,255,.15);
+  }
+  .strategy .signals .cue{
+    font-family:"JetBrains Mono","SFMono-Regular",Menlo,monospace;
+    color:var(--gold);
+  }
+
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr; padding:32px 20px 80px;}
+    header.masthead{margin-left:0;}
+    nav.toc{position:static; margin-bottom:8px; border-bottom:1px solid var(--line); padding-bottom:24px;}
+    .cheatsheet, .strategy .signals{grid-template-columns:1fr;}
+  }
+</style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+
+<div class="layout">
+  <header class="masthead">
+    <p class="eyebrow">Catatan Belajar — Grammar</p>
+    <h1>Rangkuman TOEFL Structure</h1>
+    <p>Perfect tense, subject–verb agreement, relative clause, conditional sentence, dan inversion — dirangkum dari materi hari ini.</p>
+  </header>
+
+  <nav class="toc">
+    <h2>Daftar Isi</h2>
+    <ol>
+      <li><a href="#t1">Present Perfect</a></li>
+      <li><a href="#t2">Past Perfect</a></li>
+      <li><a href="#t3">Future Perfect</a></li>
+      <li><a href="#t4">Subject–Verb Agreement</a></li>
+      <li><a href="#t5">Relative Clause: That/Who</a></li>
+      <li><a href="#t6">Subject Utama vs Klausa</a></li>
+      <li><a href="#t7">Conditional Sentence</a></li>
+      <li><a href="#t8">Inversion — Second Conditional</a></li>
+      <li><a href="#t9">Inversion — Third Conditional</a></li>
+      <li><a href="#t10">Inversion — Not Until</a></li>
+      <li><a href="#t11">Neither...Nor</a></li>
+      <li><a href="#t12">Rangkuman Pola</a></li>
+      <li><a href="#strategy">Strategi Mengerjakan</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section class="topic" id="t1">
+      <h2><span class="num">01</span> Present Perfect</h2>
+      <p class="desc">Menunjukkan tindakan yang telah terjadi dan masih memiliki hubungan dengan keadaan sekarang.</p>
+      <div class="pattern">Subject + have/has + V3</div>
+      <div class="ex">
+        <p class="line right">Scientists <b>have developed</b> several new methods.</p>
+        <p class="line right">The researcher <b>has completed</b> the experiment.</p>
+      </div>
+      <table class="agree">
+        <tr><th>Subject</th><th>Auxiliary</th></tr>
+        <tr><td>I / You / We / They / Plural noun</td><td><b>have</b></td></tr>
+        <tr><td>He / She / It / Singular noun</td><td><b>has</b></td></tr>
+      </table>
+    </section>
+
+    <section class="topic" id="t2">
+      <h2><span class="num">02</span> Past Perfect</h2>
+      <p class="desc">Menunjukkan tindakan yang terjadi lebih dahulu sebelum tindakan lain di masa lalu.</p>
+      <div class="pattern">Subject + had + V3</div>
+      <div class="ex">
+        <p class="line right">The researchers <b>had completed</b> the experiment before the laboratory closed.</p>
+      </div>
+      <div class="analysis">
+        <div class="step"><span class="lbl">Urutan kejadian</span>had completed → laboratory closed</div>
+        <div class="step"><span class="lbl">Artinya</span>Eksperimen selesai lebih dulu, sebelum lab tutup.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="t3">
+      <h2><span class="num">03</span> Future Perfect</h2>
+      <p class="desc">Menunjukkan tindakan yang diperkirakan sudah selesai pada suatu waktu di masa depan.</p>
+      <div class="pattern">Subject + will have + V3</div>
+      <p class="desc">Kata petunjuk yang sering muncul: <b>by the time</b>, <b>by next year</b>, <b>by the end of...</b></p>
+      <div class="ex">
+        <p class="line right">By next June, the university <b>will have completed</b> the new building.</p>
+      </div>
+    </section>
+
+    <section class="topic" id="t4">
+      <h2><span class="num">04</span> Subject–Verb Agreement</h2>
+      <p class="desc">Bagian penting: tentukan <b>subject sebenarnya</b> sebelum memilih verb. Jangan memilih verb hanya berdasarkan kata yang paling dekat — cari subject utama terlebih dahulu.</p>
+      <div class="ex">
+        <p class="line right">The <b>quality</b> of the products <b>has</b> improved. <span style="color:var(--ink-soft); font-family:-apple-system,sans-serif; font-size:13px;">(subject = quality, singular)</span></p>
+        <p class="line right">The products <b>have</b> been manufactured. <span style="color:var(--ink-soft); font-family:-apple-system,sans-serif; font-size:13px;">(subject = products, plural)</span></p>
+      </div>
+    </section>
+
+    <section class="topic" id="t5">
+      <h2><span class="num">05</span> Relative Clause dengan "That" / "Who"</h2>
+      <p class="desc">Relative clause memberikan informasi tambahan tentang noun sebelumnya — verb di dalam klausa mengikuti noun yang diacunya.</p>
+      <div class="ex">
+        <p class="line right">The products <b>that have been manufactured</b> by the company... <span style="color:var(--ink-soft); font-family:-apple-system,sans-serif; font-size:13px;">(products = plural)</span></p>
+        <p class="line wrong">products that <b>has</b> been manufactured</p>
+        <p class="line right">The product <b>that has been manufactured</b>... <span style="color:var(--ink-soft); font-family:-apple-system,sans-serif; font-size:13px;">(product = singular)</span></p>
+      </div>
+    </section>
+
+    <section class="topic" id="t6">
+      <h2><span class="num">06</span> Subject Utama dan Relative Clause Bisa Berbeda Verb</h2>
+      <p class="desc">Dalam satu kalimat, subject utama dan noun di dalam relative clause bisa memiliki bentuk yang berbeda — sehingga <b>have</b> dan <b>has</b> bisa muncul sekaligus.</p>
+      <div class="ex">
+        <p class="line right">The quality of the products <b>that have been manufactured</b> by the company <b>has improved</b>.</p>
+      </div>
+      <div class="analysis">
+        <div class="step"><span class="lbl">Klausa dalam</span>products → have been manufactured</div>
+        <div class="step"><span class="lbl">Subject utama</span>quality → has improved</div>
+      </div>
+    </section>
+
+    <section class="topic" id="t7">
+      <h2><span class="num">07</span> Conditional Sentence</h2>
+
+      <p class="desc" style="margin-top:0;"><b style="color:var(--moss-deep);">Type 1</b> — kemungkinan realistis</p>
+      <div class="pattern">If + V1, will + V1</div>
+      <div class="ex"><p class="line right">If the technology <b>improves</b>, the company <b>will expand</b> its operations.</p></div>
+
+      <p class="desc"><b style="color:var(--moss-deep);">Type 2</b> — kondisi hipotetis sekarang/masa depan</p>
+      <div class="pattern">If + V2, would + V1</div>
+      <div class="ex"><p class="line right">If I <b>had</b> more time, I <b>would study</b> English.</p></div>
+
+      <p class="desc"><b style="color:var(--moss-deep);">Type 3</b> — kondisi yang tidak terjadi di masa lalu</p>
+      <div class="pattern">If + had + V3, would have + V3</div>
+      <div class="ex"><p class="line right">If the researchers <b>had identified</b> the problem, they <b>would have prevented</b> the accident.</p></div>
+    </section>
+
+    <section class="topic" id="t8">
+      <h2><span class="num">08</span> Inversion — Second Conditional</h2>
+      <p class="desc">Dalam TOEFL, <b>if</b> kadang dihilangkan dan struktur dibalik.</p>
+      <div class="ex">
+        <p class="line" style="color:var(--ink-soft);">Normal: If the company <b>were to increase</b> production, it <b>would be</b> successful.</p>
+        <p class="line right">Inversion: <b>Were the company to increase</b> production, it <b>would be</b> successful.</p>
+      </div>
+      <div class="pattern">Were + subject + to + V1 → would + V1</div>
+      <div class="ex"><p class="line right">Were the university <b>to receive</b> more funding, it <b>would be</b> able to expand.</p></div>
+    </section>
+
+    <section class="topic" id="t9">
+      <h2><span class="num">09</span> Inversion — Third Conditional</h2>
+      <div class="ex">
+        <p class="line" style="color:var(--ink-soft);">Normal: If the information <b>had been</b> available earlier, the committee <b>would have made</b> a different decision.</p>
+        <p class="line right">Inversion: <b>Had the information been</b> available earlier, the committee <b>would have made</b> a different decision.</p>
+      </div>
+      <div class="pattern">Had + subject + V3 → would have + V3</div>
+      <div class="ex">
+        <p class="line right">Had the researchers <b>recognized</b> the warning signs, they <b>would have prevented</b> the accident.</p>
+      </div>
+      <p class="desc"><b style="color:var(--moss-deep);">Penting:</b> setelah <b>had</b> dalam pola ini digunakan V3, bukan V1.</p>
+      <div class="ex">
+        <p class="line right">Had ... <b>been</b></p>
+        <p class="line right">Had ... <b>identified</b></p>
+        <p class="line wrong">Had ... be</p>
+        <p class="line wrong">Had ... identify</p>
+      </div>
+    </section>
+
+    <section class="topic" id="t10">
+      <h2><span class="num">10</span> Inversion dengan "Not Until"</h2>
+      <p class="desc">Ketika <b>Not until</b> diletakkan di awal kalimat, terjadi inversion pada klausa utama.</p>
+      <div class="ex">
+        <p class="line right"><b>Not until the results were available did the scientists understand</b> the significance of the discovery.</p>
+        <p class="line wrong">Not until the results were available the scientists understood...</p>
+      </div>
+      <div class="pattern">Not until + clause + did + subject + V1</div>
+      <p class="desc">Perhatikan bahwa setelah <b>did</b>, verb kembali ke V1: <b>did + understand</b> ✓, bukan <b>did + understood</b> ✗.</p>
+    </section>
+
+    <section class="topic" id="t11">
+      <h2><span class="num">11</span> Neither...Nor</h2>
+      <p class="desc">Dalam struktur <b>Neither A nor B + verb</b>, verb mengikuti subject yang paling dekat dengan verb.</p>
+      <div class="ex">
+        <p class="line right">Neither the professor nor the <b>students have</b> arrived. <span style="color:var(--ink-soft); font-family:-apple-system,sans-serif; font-size:13px;">(students = terdekat, plural)</span></p>
+        <p class="line right">Neither the students nor the <b>professor has</b> arrived. <span style="color:var(--ink-soft); font-family:-apple-system,sans-serif; font-size:13px;">(professor = terdekat, singular)</span></p>
+      </div>
+    </section>
+
+    <section class="topic" id="t12">
+      <h2><span class="num">12</span> Pola Penting yang Perlu Diingat</h2>
+      <div class="cheatsheet">
+        <div class="row"><span class="label">Present Perfect</span><span class="form">have/has + V3</span></div>
+        <div class="row"><span class="label">Past Perfect</span><span class="form">had + V3</span></div>
+        <div class="row"><span class="label">Future Perfect</span><span class="form">will have + V3</span></div>
+        <div class="row"><span class="label">Second Conditional</span><span class="form">If + V2 → would + V1</span></div>
+        <div class="row"><span class="label">Third Conditional</span><span class="form">If + had + V3 → would have + V3</span></div>
+        <div class="row"><span class="label">2nd Cond. Inversion</span><span class="form">Were + S + to V1 → would + V1</span></div>
+        <div class="row"><span class="label">3rd Cond. Inversion</span><span class="form">Had + S + V3 → would have + V3</span></div>
+        <div class="row"><span class="label">Not Until Inversion</span><span class="form">Not until + clause + did + S + V1</span></div>
+      </div>
+    </section>
+
+    <section class="topic strategy" id="strategy">
+      <h2>Strategi Mengerjakan TOEFL Structure</h2>
+      <p>Saat menemukan soal grammar, lakukan tiga langkah:</p>
+      <ol>
+        <li>Cari <b>subject utama</b>.</li>
+        <li>Tentukan apakah kalimat berbicara tentang sekarang, masa lalu, atau masa depan.</li>
+        <li>Periksa apakah ada kata atau struktur khusus (lihat tabel di bawah).</li>
+      </ol>
+      <div class="signals">
+        <div class="row"><span class="cue">by the time</span><span>kemungkinan Future/Past Perfect</span></div>
+        <div class="row"><span class="cue">had</span><span>kemungkinan Past Perfect/Third Conditional</span></div>
+        <div class="row"><span class="cue">were to</span><span>Second Conditional</span></div>
+        <div class="row"><span class="cue">not until</span><span>inversion</span></div>
+        <div class="row"><span class="cue">who/that</span><span>Relative Clause</span></div>
+        <div class="row"><span class="cue">neither...nor</span><span>perhatikan subject terdekat</span></div>
+      </div>
+
+      <p style="margin-top:24px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:var(--gold); letter-spacing:.02em;">Contoh Analisis Cepat</p>
+      <p style="font-size:16px; margin:6px 0 14px;">The quality of the products that have been manufactured has improved.</p>
+      <div class="analysis" style="background:rgba(255,255,255,.08); color:#F1EEE3;">
+        <div class="step"><span class="lbl">Subject utama</span>The quality → singular</div>
+        <div class="step"><span class="lbl">Maka verb utama</span>has improved</div>
+        <div class="step"><span class="lbl">Relative clause</span>products → have been manufactured</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

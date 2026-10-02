@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOEFL Listening Comprehension</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #17232b;
+      --muted: #65737a;
+      --paper: #f5f1e8;
+      --panel: #fffdf8;
+      --line: #d8d5ca;
+      --teal: #087f78;
+      --teal-dark: #075d59;
+      --teal-soft: #dff1ec;
+      --coral: #d96f53;
+      --gold: #eab85b;
+      --shadow: 0 18px 45px rgba(23, 35, 43, .10);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      background: radial-gradient(circle at 8% 6%, #e8f2ed 0 18%, transparent 42%), var(--paper);
+      line-height: 1.55;
+    }
+    .page { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 64px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--ink); color: #fff; }
+    .back { color: var(--teal-dark); font-weight: 700; text-decoration: none; }
+    .hero { display: grid; grid-template-columns: 1.25fr .75fr; gap: 28px; align-items: end; padding: 42px; border-radius: 28px; color: #fff; background: linear-gradient(125deg, #123b3d, #087f78 64%, #db8a58); box-shadow: var(--shadow); }
+    .eyebrow { margin: 0 0 12px; color: #b8eee1; font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    h1, h2 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.04em; line-height: 1.1; }
+    h1 { max-width: 620px; margin: 0; font-size: clamp(2.3rem, 6vw, 4.5rem); }
+    .hero p { max-width: 580px; margin: 18px 0 0; color: #e0f2ed; }
+    .hero-stat { padding: 22px; border: 1px solid rgba(255,255,255,.25); border-radius: 18px; background: rgba(255,255,255,.10); }
+    .hero-stat strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; }
+    .hero-stat span { color: #d9eee9; font-size: .9rem; }
+    .panel { margin-top: 22px; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,253,248,.88); box-shadow: 0 8px 25px rgba(23,35,43,.05); }
+    .panel h2 { margin: 0 0 8px; font-size: 1.6rem; }
+    .muted { margin: 0 0 20px; color: var(--muted); }
+    .controls { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; }
+    input, select, button { font: inherit; }
+    input, select { width: 100%; padding: 13px 14px; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: #fff; }
+    button { border: 0; border-radius: 11px; padding: 13px 18px; font-weight: 700; cursor: pointer; }
+    button:disabled { cursor: wait; opacity: .62; }
+    .primary { color: #fff; background: var(--teal); }
+    .primary:hover { background: var(--teal-dark); }
+    .secondary { color: var(--teal-dark); background: var(--teal-soft); }
+    .status { min-height: 24px; margin-top: 14px; color: var(--muted); font-weight: 600; }
+    .status.error { color: #b4493d; }
+    .status.success { color: var(--teal-dark); }
+    .practice { display: none; }
+    .practice.visible { display: block; }
+    .audio-stage { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 20px; border-radius: 17px; background: #edf6f1; border: 1px solid #cce5da; }
+    .play-button { display: grid; place-items: center; width: 72px; height: 72px; padding: 0; border-radius: 50%; color: #fff; background: var(--coral); font-size: 1.5rem; box-shadow: 0 8px 18px rgba(217,111,83,.27); }
+    .audio-stage strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; }
+    .audio-stage span { color: var(--muted); font-size: .92rem; }
+    .audio-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .question { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .question h3 { margin: 0 0 16px; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; }
+    .options { display: grid; gap: 10px; }
+    .option { display: flex; align-items: flex-start; gap: 11px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer; }
+    .option:hover { border-color: var(--teal); }
+    .option input { width: auto; margin-top: 4px; accent-color: var(--teal); }
+    .feedback { min-height: 28px; margin-top: 16px; font-weight: 700; }
+    .feedback.correct { color: var(--teal-dark); }
+    .feedback.wrong { color: #b4493d; }
+    .explanation { display: none; margin-top: 8px; color: var(--muted); }
+    .explanation.visible { display: block; }
+    .script-reveal { display: none; margin-top: 18px; padding: 16px; border-left: 4px solid var(--gold); border-radius: 10px; background: #fff8df; }
+    .script-reveal.visible { display: block; }
+    .script-reveal strong { display: block; margin-bottom: 6px; font-family: 'Space Grotesk', sans-serif; }
+    .script-reveal p { margin: 0; color: var(--muted); }
+    .script-line { display: block; margin-top: 8px; }
+    .script-line strong { display: inline; margin: 0; color: var(--ink); }
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; padding: 28px 22px; }
+      .controls { grid-template-columns: 1fr; }
+      .panel { padding: 22px 18px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">♫</span><span>English Material</span></div>
+      <a class="back" href="../material.html">← Kembali ke Material</a>
+    </div>
+
+    <header class="hero">
+      <div>
+        <p class="eyebrow">TOEFL Practice · Listening</p>
+        <h1>Listen first. Understand deeper.</h1>
+        <p>AI membuat percakapan pendek dan satu soal pemahaman. Dengarkan audionya, lalu pilih jawaban berdasarkan apa yang kamu dengar.</p>
+      </div>
+      <div class="hero-stat"><strong>1 ×</strong><span>audio passage dan pertanyaan baru setiap kali generate</span></div>
+    </header>
+
+    <section class="panel">
+      <h2>Buat latihan listening</h2>
+      <p class="muted">Masukkan API key Gemini untuk membuat teks audio dan pilihan ganda.</p>
+      <div class="controls">
+        <input id="apiKey" type="password" placeholder="API key Gemini" aria-label="API key Gemini">
+        <input id="topic" value="campus life" placeholder="Topik, contoh: campus life" aria-label="Topik latihan">
+        <button id="generate" class="primary" type="button">Generate latihan</button>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="practice" class="panel practice" aria-live="polite">
+      <h2>Listening passage</h2>
+      <p class="muted">Transcript disembunyikan. Putar audio beberapa kali sebelum menjawab.</p>
+      <div class="audio-stage">
+        <button id="play" class="play-button" type="button" aria-label="Putar audio">▶</button>
+        <div><strong id="audioState">Audio siap diputar</strong><span id="audioHint">Gunakan headphone jika tersedia.</span></div>
+      </div>
+      <div class="audio-actions">
+        <button id="slow" class="secondary" type="button">Putar lebih lambat</button>
+        <button id="stop" class="secondary" type="button">Hentikan</button>
+      </div>
+
+      <div class="question">
+        <h3 id="questionText"></h3>
+        <div id="options" class="options"></div>
+        <button id="check" class="primary" type="button">Periksa jawaban</button>
+        <div id="feedback" class="feedback" role="status"></div>
+        <div id="explanation" class="explanation"></div>
+        <div id="scriptReveal" class="script-reveal">
+          <strong>Skrip dialog</strong>
+          <p id="scriptText"></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const apiKeyInput = document.getElementById('apiKey');
+    const topicInput = document.getElementById('topic');
+    const generateButton = document.getElementById('generate');
+    const status = document.getElementById('status');
+    const practice = document.getElementById('practice');
+    const playButton = document.getElementById('play');
+    const slowButton = document.getElementById('slow');
+    const stopButton = document.getElementById('stop');
+    const audioState = document.getElementById('audioState');
+    const questionText = document.getElementById('questionText');
+    const options = document.getElementById('options');
+    const checkButton = document.getElementById('check');
+    const feedback = document.getElementById('feedback');
+    const explanation = document.getElementById('explanation');
+    const scriptReveal = document.getElementById('scriptReveal');
+    const scriptText = document.getElementById('scriptText');
+    let currentPractice = null;
+    let speechToken = 0;
+    let availableVoices = [];
+
+    function refreshVoices() {
+      availableVoices = 'speechSynthesis' in window ? speechSynthesis.getVoices() : [];
+    }
+
+    refreshVoices();
+    if ('speechSynthesis' in window) speechSynthesis.addEventListener('voiceschanged', refreshVoices);
+
+    apiKeyInput.value = localStorage.getItem('gemini_api_key') || '';
+
+    function setStatus(message, type = '') {
+      status.textContent = message;
+      status.className = `status ${type}`;
+    }
+
+    function cleanJson(value) {
+      return String(value || '').replace(/```json|```/gi, '').trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[character]);
+    }
+
+    function validatePractice(item) {
+      return item && Array.isArray(item.segments) && item.segments.length > 0 &&
+        item.segments.every(segment => segment && ['female', 'male', 'neutral'].includes(String(segment.gender).toLowerCase()) &&
+          typeof segment.speaker === 'string' && segment.speaker.trim() &&
+          typeof segment.text === 'string' && segment.text.trim()) &&
+        typeof item.question === 'string' && item.question.trim() &&
+        Array.isArray(item.options) && item.options.length === 4 &&
+        item.options.every(option => typeof option === 'string' && option.trim()) &&
+        /^[A-D]$/i.test(String(item.answer || '').trim()) &&
+        typeof item.explanation === 'string' && item.explanation.trim() &&
+        !/\b(adalah|dengan|untuk|yang|dalam|karena|pilihan|jawaban|penjelasan|bahasa|inggris|berikut|setiap)\b/i.test(
+          [...item.segments.map(segment => segment.text), item.question, ...item.options, item.explanation].join(' ')
+        );
+    }
+
+    function normalizePractice(item) {
+      return {
+        ...item,
+        segments: item.segments.map((segment, index) => ({
+          ...segment,
+          speaker: String(segment.speaker || `Speaker ${index + 1}`).trim(),
+          text: segment.text.replace(/^\s*[A-Za-z][A-Za-z0-9 .'-]{0,30}:\s*/, '').trim()
+        }))
+      };
+    }
+
+    function randomizeOptions(item) {
+      const correctIndex = String(item.answer).trim().toUpperCase().charCodeAt(0) - 65;
+      const shuffled = item.options.map((text, index) => ({ text, index }));
+      for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+      }
+      return {
+        ...item,
+        options: shuffled.map(option => option.text),
+        answer: String.fromCharCode(65 + shuffled.findIndex(option => option.index === correctIndex))
+      };
+    }
+
+    function renderPractice(item) {
+      currentPractice = item;
+      practice.classList.add('visible');
+      questionText.textContent = item.question;
+      options.innerHTML = item.options.map((option, index) => `
+        <label class="option"><input type="radio" name="listening-answer" value="${String.fromCharCode(65 + index)}"><span>${String.fromCharCode(65 + index)}. ${escapeHtml(option)}</span></label>
+      `).join('');
+      feedback.textContent = '';
+      feedback.className = 'feedback';
+      explanation.textContent = '';
+      explanation.className = 'explanation';
+      scriptText.textContent = '';
+      scriptReveal.className = 'script-reveal';
+      audioState.textContent = 'Audio siap diputar';
+      window.scrollTo({ top: practice.offsetTop - 20, behavior: 'smooth' });
+    }
+
+    function speak(rate = 0.95) {
+      if (!currentPractice) return;
+      if (!('speechSynthesis' in window)) {
+        setStatus('Browser ini tidak mendukung text-to-speech.', 'error');
+        return;
+      }
+      speechSynthesis.cancel();
+      const token = ++speechToken;
+      const voices = availableVoices.length ? availableVoices : speechSynthesis.getVoices();
+      const femaleNames = /zira|hazel|samantha|victoria|ava|zoe|susan|karen|moira|fiona|jenny|aria|libby|sonia|female|woman/i;
+      const maleNames = /david|mark|daniel|alex|george|james|guy|male|man/i;
+
+      function chooseVoice(gender) {
+        const englishVoices = voices.filter(voice => /^en(-|_)/i.test(voice.lang));
+        const pool = englishVoices.length ? englishVoices : voices;
+        if (gender === 'female') return pool.find(voice => femaleNames.test(voice.name));
+        if (gender === 'male') return pool.find(voice => maleNames.test(voice.name));
+        return pool.find(voice => /en-US/i.test(voice.lang)) || pool[0];
+      }
+
+      function speakSegment(index) {
+        if (token !== speechToken) return;
+        if (index >= currentPractice.segments.length) {
+          audioState.textContent = 'Audio selesai';
+          return;
+        }
+        const segment = currentPractice.segments[index];
+        const gender = String(segment.gender).toLowerCase();
+        const utterance = new SpeechSynthesisUtterance(segment.text);
+        utterance.lang = 'en-US';
+        utterance.rate = rate;
+        const voice = chooseVoice(gender);
+        utterance.pitch = gender === 'female' ? (voice ? 1.08 : 1.22) : 0.96;
+        utterance.voice = voice || null;
+        utterance.onstart = () => { audioState.textContent = rate < 1 ? 'Audio sedang diputar perlahan' : 'Audio sedang diputar'; };
+        utterance.onend = () => speakSegment(index + 1);
+        speechSynthesis.speak(utterance);
+      }
+
+      speakSegment(0);
+    }
+
+    playButton.addEventListener('click', () => speak());
+    slowButton.addEventListener('click', () => speak(0.68));
+    stopButton.addEventListener('click', () => { speechToken += 1; speechSynthesis.cancel(); audioState.textContent = 'Audio dihentikan'; });
+
+    checkButton.addEventListener('click', () => {
+      const selected = document.querySelector('input[name="listening-answer"]:checked');
+      if (!selected) {
+        feedback.textContent = 'Pilih salah satu jawaban terlebih dahulu.';
+        feedback.className = 'feedback wrong';
+        return;
+      }
+      const correct = selected.value === String(currentPractice.answer).trim().toUpperCase();
+      feedback.textContent = correct ? 'Benar. Jawabanmu sesuai dengan isi audio.' : `Belum tepat. Jawaban yang benar adalah ${String(currentPractice.answer).trim().toUpperCase()}.`;
+      feedback.className = `feedback ${correct ? 'correct' : 'wrong'}`;
+      explanation.textContent = currentPractice.explanation || '';
+      explanation.className = 'explanation visible';
+      scriptText.innerHTML = currentPractice.segments.map(segment => `
+        <span class="script-line"><strong>${escapeHtml(segment.speaker)}:</strong> ${escapeHtml(segment.text)}</span>
+      `).join('');
+      scriptReveal.className = 'script-reveal visible';
+    });
+
+    generateButton.addEventListener('click', async () => {
+      const apiKey = apiKeyInput.value.trim();
+      const topic = topicInput.value.trim() || 'campus life';
+      if (!apiKey) {
+        setStatus('API key Gemini belum diisi.', 'error');
+        apiKeyInput.focus();
+        return;
+      }
+      localStorage.setItem('gemini_api_key', apiKey);
+      generateButton.disabled = true;
+      setStatus('Sedang membuat passage listening...', '');
+      const prompt = `You are an expert TOEFL ITP listening test developer. Create one original Section 1-style listening comprehension exercise about "${topic}". Make it either a natural campus conversation or a short academic announcement, lasting 80-120 words in total. Write the spoken segments, question, all four answer choices, and explanation entirely in natural English; do not use Indonesian, even if the requested topic is provided in Indonesian. Return valid JSON only with this structure: {"segments":[{"speaker":"Rehan","gender":"male","text":"..."},{"speaker":"Maya","gender":"female","text":"..."}],"question":"...","options":["...","...","...","..."],"answer":"A","explanation":"English explanation"}. Use 1-4 segments. For a conversation, use two speakers with distinct natural first names and assign each segment gender as exactly "female" or "male". For an announcement, use one speaker with a natural name or role label and gender "female" or "male". Do not put speaker names, labels, colons, or stage directions in text; each segment's text must contain only the words that should be spoken. Speaker names are for the post-answer script display only and must never be spoken. The question and choices must be answerable from the spoken segments. Do not include Markdown.`;
+      try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: 'application/json', temperature: 0.7 } })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data?.error?.message || 'Gagal terhubung ke Gemini API.');
+        const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        const generated = normalizePractice(JSON.parse(cleanJson(raw)));
+        if (!validatePractice(generated)) throw new Error('Format latihan dari AI tidak valid.');
+        renderPractice(randomizeOptions(generated));
+        setStatus('Latihan berhasil dibuat. Transcript tetap tersembunyi selama latihan.', 'success');
+      } catch (error) {
+        setStatus(error.message || 'Terjadi kesalahan saat membuat latihan.', 'error');
+      } finally {
+        generateButton.disabled = false;
+      }
+    });
+  </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

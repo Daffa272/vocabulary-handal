@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tes Pauli — Simulasi Psikotes</title>
+<style>
+:root{
+  --bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;
+  --primary:#4f46e5;--primary2:#3730a3;--border:#e4e7ec;
+  --success:#16a34a;--danger:#dc2626;--warning:#d97706;
+  --shadow:0 12px 35px rgba(16,24,40,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.global-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;box-shadow:0 8px 18px rgba(15,23,42,.04)}
+.global-nav a{padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:.82rem}
+.global-nav a.active{background:#e0e7ff;color:#3730a3}
+.screen{display:none;min-height:100vh}
+.screen.active{display:block}
+.container{width:min(1100px,calc(100% - 32px));margin:auto}
+.setup{display:flex;align-items:center;justify-content:center;padding:35px 0}
+.hero{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:38px;box-shadow:var(--shadow)}
+.badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:#eef2ff;color:var(--primary2);font-weight:700;font-size:13px}
+h1{font-size:clamp(30px,5vw,48px);margin:16px 0 10px;letter-spacing:-1.5px}
+h2{margin:0 0 8px}
+.lead{color:var(--muted);font-size:17px;line-height:1.65;max-width:760px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:28px 0}
+.field label{display:block;font-weight:700;margin-bottom:8px}
+.field input,.field select{width:100%;padding:13px 14px;border:1px solid #d0d5dd;border-radius:12px;background:#fff;outline:none}
+.field input:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px #eef2ff}
+.primary,.secondary,.danger{border:0;border-radius:12px;padding:13px 18px;font-weight:800}
+.primary{background:var(--primary);color:#fff}.primary:hover{background:var(--primary2)}
+.secondary{background:#eef2f6;color:#344054}.danger{background:#fee4e2;color:#b42318}
+.instructions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.tip{padding:16px;border:1px solid var(--border);border-radius:14px;background:#fafbff}
+.tip strong{display:block;margin-bottom:5px}.tip span{color:var(--muted);font-size:14px;line-height:1.5}
+.test-header{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.header-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.timer{font-variant-numeric:tabular-nums;font-size:25px;font-weight:900;padding:9px 15px;border-radius:12px;background:#fff;border:1px solid var(--border)}
+.timer.warning{color:var(--warning);background:#fffaeb}.timer.danger{color:var(--danger);background:#fef3f2}
+.session-wrap{display:flex;align-items:center;gap:10px}
+.session-label{font-size:12px;font-weight:700;color:#475467;letter-spacing:.04em;text-transform:uppercase}
+.progress-wrap{height:6px;background:#e4e7ec}.progress{height:100%;background:var(--primary);width:0;transition:width .15s}
+.session-info{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#f8f9fc;color:#475467;font-weight:600}
+.break-banner{display:flex;align-items:center;justify-content:center;min-height:200px;padding:20px;border:1px dashed #c7d2fe;border-radius:16px;background:#eef2ff;color:var(--primary2);font-size:22px;font-weight:800;text-align:center}
+.test-area{padding:28px 0 45px}
+.test-card{background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.test-info{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);gap:15px}
+.test-info small{color:var(--muted)}
+.board{padding:42px 26px 26px;overflow:auto;max-height:calc(100vh - 230px);scroll-behavior:smooth}
+.number-grid{display:flex;gap:13px;min-width:max-content;justify-content:center;padding-top:4px}
+.column{width:64px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.num{width:58px;height:52px;border:1px solid var(--border);border-radius:10px;background:#fafafa;display:flex;align-items:center;justify-content:center;font-size:27px;font-weight:800}
+.num.current{outline:3px solid #c7d2fe;background:#eef2ff}
+.num.done{background:#f2f4f7;color:#667085}
+.answer-row{display:flex;gap:8px;align-items:center}
+.answer{width:58px;height:50px;text-align:center;font-size:24px;font-weight:900;border:2px solid #d0d5dd;border-radius:10px;outline:none}
+.answer:focus{border-color:var(--primary);box-shadow:0 0 0 3px #eef2ff}
+.answer:disabled{background:#f2f4f7;color:#98a2b3}
+.choice-group{display:flex;gap:6px;align-items:center;justify-content:center}
+.choice-btn{width:58px;height:50px;border:2px solid #d0d5dd;border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;padding:4px;cursor:pointer;transition:.15s ease}
+.choice-btn .choice-letter{font-size:12px;font-weight:800;color:#667085;letter-spacing:.08em}
+.choice-btn .choice-value{font-size:22px;font-weight:900;color:#172033}
+.choice-btn .choice-caption{font-size:9px;font-weight:700;color:#475467;letter-spacing:.02em}
+.choice-btn.active{background:#eef2ff;border-color:var(--primary);box-shadow:0 0 0 3px #eef2ff}
+.choice-btn:hover{border-color:#98a2b3}
+.parity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:stretch}
+.parity-card{padding:12px 10px;border:1px solid var(--border);border-radius:12px;background:#fafafa;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;min-height:112px}
+.parity-question{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.controls{display:flex;justify-content:space-between;align-items:center;padding:17px 22px;background:#fafafa;border-top:1px solid var(--border);gap:12px}
+.controls .hint{color:var(--muted);font-size:13px}
+.result{padding:35px 0}
+.result-card{background:#fff;border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow);padding:30px}
+.score{display:flex;align-items:center;gap:22px;margin:22px 0}
+.score-circle{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef2ff;color:var(--primary2);font-size:29px;font-weight:900;border:8px solid #c7d2fe}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.stat{padding:18px;border:1px solid var(--border);border-radius:15px}.stat b{display:block;font-size:25px}.stat span{color:var(--muted);font-size:13px}
+.session-breakdown{margin:28px 0 8px}
+.session-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:12px}
+.session-box{padding:16px;border:1px solid var(--border);border-radius:14px;background:#f9fafb}
+.session-box-header{font-size:12px;font-weight:800;color:#475467;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+.session-box-value{font-size:32px;font-weight:900;color:var(--primary2);line-height:1.1}
+.session-box-meta{margin-top:6px;color:var(--muted);font-size:13px}
+.chart{display:flex;align-items:flex-end;gap:8px;height:230px;padding:18px;border:1px solid var(--border);border-radius:15px;background:#fcfcfd;overflow-x:auto}
+.bar-wrap{height:100%;min-width:28px;display:flex;align-items:flex-end;justify-content:flex-end;flex-direction:column;gap:5px}
+.bar{width:100%;min-height:3px;background:var(--primary);border-radius:6px 6px 2px 2px}
+.bar-label{font-size:10px;color:var(--muted)}
+.result-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.note{padding:15px;border-radius:12px;background:#f8f9fc;color:#475467;line-height:1.6;font-size:14px}
+@media(max-width:760px){
+ .hero{padding:24px}.form-grid,.instructions,.stats{grid-template-columns:1fr}
+ .header-inner{padding:0 10px}.header-inner .title{display:none}
+ .board{padding:18px}.column{width:52px}.num,.answer{width:48px}.num{height:46px;font-size:23px}.answer{height:44px;font-size:21px}
+ .test-info{align-items:flex-start;flex-direction:column}
+}
+</style>
+<script defer src="tracker-menu.js"></script>
+</head>
+<body>
+
+<div class="global-nav">
+  <a href="index.html">Vocabulary</a>
+  <a href="publicspeaking.html">Public Speaking</a>
+  <a href="chunk.html">ChunkSpeak</a>
+  <a href="material.html">Material</a>
+  <a href="kbbi.html">KBBI</a>
+  <a href="transcript.html">Transcript</a>
+  <a href="pranikah.html">Pranikah</a>
+  <a href="psikotest.html" class="active">Psikotest</a>
+</div>
+
+<section id="setupScreen" class="screen active setup">
+  <div class="container">
+    <div class="hero">
+      <span class="badge">SIMULASI PSIKOTES</span>
+      <h1>Tes Pauli</h1>
+      <p class="lead">Latih kecepatan, ketelitian, konsistensi, dan daya tahan konsentrasi dengan simulasi penjumlahan angka. Website ini berjalan sepenuhnya di browser dan tidak membutuhkan internet.</p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="name">Nama peserta</label>
+          <input id="name" type="text" placeholder="Masukkan nama" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="testMode">Aturan utama</label>
+          <select id="testMode">
+            <option value="session" selected>Jumlah sesi</option>
+            <option value="duration">Durasi total</option>
+          </select>
+        </div>
+        <div class="field" id="sessionField">
+          <label for="sessionCount">Jumlah sesi</label>
+          <input id="sessionCount" type="number" min="1" max="12" value="3" step="1">
+        </div>
+        <div class="field" id="durationField" style="display:none">
+          <label for="duration">Durasi tes</label>
+          <select id="duration">
+            <option value="1">1 menit — demo cepat</option>
+            <option value="5">5 menit</option>
+            <option value="10" selected>10 menit</option>
+            <option value="15">15 menit</option>
+            <option value="20">20 menit</option>
+            <option value="30">30 menit</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="columns">Jumlah kolom</label>
+          <select id="columns">
+            <option value="6">6 kolom</option>
+            <option value="8" selected>8 kolom</option>
+            <option value="10">10 kolom</option>
+            <option value="12">12 kolom</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="rows">Angka per kolom</label>
+          <select id="rows">
+            <option value="20">20 angka</option>
+            <option value="30" selected>30 angka</option>
+            <option value="40">40 angka</option>
+            <option value="50">50 angka</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="answerMode">Jenis ujian</label>
+          <select id="answerMode">
+            <option value="digit" selected>Digit terakhir (0–9)</option>
+            <option value="parity">Genap / Ganjil (A=0, B=1)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="session-info">Aturan sesi: 1 menit per sesi, istirahat 10 detik antar sesi.</div>
+      </div>
+
+      <button id="startBtn" class="primary">Mulai Tes →</button>
+
+      <div class="instructions">
+        <div class="tip"><strong>① Jumlahkan</strong><span>Jumlahkan dua angka yang berurutan secara vertikal.</span></div>
+        <div class="tip"><strong>② Aturan jawaban</strong><span id="ruleText">Jika hasil 13, masukkan <b>3</b>. Jika 8, masukkan <b>8</b>.</span></div>
+        <div class="tip"><strong>③ Fokus & konsisten</strong><span>Kerjakan berurutan dan jangan melompati soal.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testScreen" class="screen">
+  <header class="test-header">
+    <div class="container header-inner">
+      <div class="title"><b id="participantLabel">Peserta</b><br><small style="color:#667085">Tes Pauli</small></div>
+      <div class="session-wrap">
+        <span id="sessionLabel" class="session-label">Sesi 1/3</span>
+        <div id="timer" class="timer">01:00</div>
+        <button id="finishBtn" class="danger">Selesai</button>
+      </div>
+    </div>
+    <div class="progress-wrap"><div id="progress" class="progress"></div></div>
+  </header>
+
+  <main class="container test-area">
+    <div class="test-card">
+      <div class="test-info">
+        <div><b id="positionLabel">Soal 1</b><br><small id="directionLabel">Kerjakan dari atas ke bawah.</small></div>
+        <div><small>Benar: <b id="liveCorrect">0</b> · Terjawab: <b id="liveAnswered">0</b></small></div>
+      </div>
+      <div class="board">
+        <div id="numberGrid" class="number-grid"></div>
+      </div>
+      <div class="controls">
+        <span id="answerHint" class="hint">Ketik 1 digit. Setelah diisi, otomatis lanjut.</span>
+        <button id="skipBtn" class="secondary">Lewati</button>
+      </div>
+    </div>
+  </main>
+</section>
+
+<section id="resultScreen" class="screen result">
+  <div class="container">
+    <div class="result-card">
+      <span class="badge">HASIL TES</span>
+      <h1 style="font-size:36px">Hasil Tes Pauli</h1>
+      <p class="lead" id="resultSummary"></p>
+
+      <div class="score">
+        <div class="score-circle" id="scoreCircle">0%</div>
+        <div><h2 id="resultGrade">—</h2><p id="evaluation" class="lead" style="font-size:15px"></p></div>
+      </div>
+
+      <p id="consistencyText" class="lead" style="font-size:15px"></p>
+
+      <div class="stats">
+        <div class="stat"><b id="statAnswered">0</b><span>Terjawab</span></div>
+        <div class="stat"><b id="statCorrect">0</b><span>Benar</span></div>
+        <div class="stat"><b id="statWrong">0</b><span>Salah</span></div>
+        <div class="stat"><b id="statAccuracy">0%</b><span>Akurasi</span></div>
+      </div>
+
+      <div id="sessionBreakdown" class="session-breakdown"></div>
+
+      <h2>Performa per interval</h2>
+      <p style="color:#667085">Jumlah soal yang dikerjakan pada setiap interval waktu.</p>
+      <div id="chart" class="chart"></div>
+
+      <div class="note" style="margin-top:18px">
+        <b>Catatan:</b> hasil ini adalah skor latihan dari simulasi browser, bukan hasil penilaian psikologis resmi. Dalam tes Pauli/Kraepelin profesional, interpretasi juga mempertimbangkan pola kerja, kecepatan, ketelitian, konsistensi, dan norma tes.
+      </div>
+
+      <div class="result-actions">
+        <button id="againBtn" class="primary">Tes Lagi</button>
+        <button id="printBtn" class="secondary">Cetak / Simpan PDF</button>
+        <button id="clearBtn" class="secondary">Hapus Riwayat</button>
+      </div>
+
+      <div id="historyBox" style="margin-top:30px"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const $ = id => document.getElementById(id);
+
+let state = {
+  name:"", durationSec:600, columns:8, rows:30, answerMode:"digit",
+  sessionCount:3, sessionDurationSec:60, breakDurationSec:10,
+  numbers:[], answers:[], current:0, startTime:0, endTime:0,
+  timerId:null, intervalId:null, intervals:[], finished:false,
+  currentSessionIndex:0, sessionResults:[], isBreak:false, breakTimerId:null
+};
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  $(id).classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function refreshTestModeFields(){
+  const mode = $("testMode").value;
+  const sessionVisible = mode === "session";
+  $("sessionField").style.display = sessionVisible ? "" : "none";
+  $("durationField").style.display = sessionVisible ? "none" : "";
+}
+
+function makeNumbers(){
+  const total = state.columns * state.rows;
+  state.numbers = Array.from({length:total},()=>Math.floor(Math.random()*10));
+  state.answers = Array(total-1).fill(null);
+}
+
+function idx(col,row){ return col*state.rows+row; }
+
+function getExpectedAnswer(index){
+  const total=(state.numbers[index]+state.numbers[index+1])%10;
+  if(state.answerMode==="parity"){ return total%2; }
+  return total;
+}
+
+function renderGrid(){
+  const grid=$("numberGrid"); grid.innerHTML="";
+
+  if(state.answerMode === "parity"){
+    const board=document.createElement("div"); board.className="parity-grid";
+    for(let i=0;i<state.answers.length;i++){
+      const card=document.createElement("div"); card.className="parity-card";
+      const question=document.createElement("div"); question.className="parity-question";
+      question.textContent=`${state.numbers[i]} + ${state.numbers[i+1]} =`;
+
+      const choiceGroup=document.createElement("div"); choiceGroup.className="choice-group";
+      [
+        {label:"A", value:0, text:"0"},
+        {label:"B", value:1, text:"1"}
+      ].forEach(option => {
+        const btn=document.createElement("button");
+        btn.type="button";
+        btn.className="answer choice-btn";
+        btn.dataset.answerIndex=String(i);
+        btn.dataset.answerValue=String(option.value);
+        btn.setAttribute("aria-label", `Pilih ${option.label}`);
+        btn.innerHTML=`<span class="choice-letter">${option.label}</span><span class="choice-value">${option.text}</span>`;
+        btn.addEventListener("click",()=>handleChoiceAnswer(i, option.value));
+        if(state.answers[i]===option.value){ btn.classList.add("active"); }
+        choiceGroup.appendChild(btn);
+      });
+
+      card.appendChild(question); card.appendChild(choiceGroup); board.appendChild(card);
+    }
+    grid.appendChild(board);
+    requestAnimationFrame(()=>updateCurrentVisual());
+    return;
+  }
+
+  for(let c=0;c<state.columns;c++){
+    const col=document.createElement("div"); col.className="column";
+    for(let r=0;r<state.rows;r++){
+      const n=document.createElement("div");
+      n.className="num";
+      n.textContent=state.numbers[idx(c,r)];
+      n.dataset.index=idx(c,r);
+      col.appendChild(n);
+      if(r<state.rows-1){
+        const wrap=document.createElement("div"); wrap.className="answer-row";
+        const input=document.createElement("input");
+        input.className="answer"; input.inputMode="numeric"; input.maxLength=1;
+        input.dataset.answerIndex=idx(c,r);
+        input.autocomplete="off";
+        input.addEventListener("input",handleAnswer);
+        input.addEventListener("keydown",e=>{
+          if(e.key==="ArrowUp") focusAnswer(c,r-1);
+          if(e.key==="ArrowDown" || e.key==="Enter") focusAnswer(c,r+1);
+        });
+        wrap.appendChild(input); col.appendChild(wrap);
+      }
+    }
+    grid.appendChild(col);
+  }
+  requestAnimationFrame(()=>updateCurrentVisual());
+}
+
+function keepCurrentVisible(){
+  const board=document.querySelector(".board");
+  const activeInput=document.querySelector('.answer.current');
+  if(!board || !activeInput) return;
+  const boardRect=board.getBoundingClientRect();
+  const inputRect=activeInput.getBoundingClientRect();
+  const padding=18;
+
+  if(inputRect.top < boardRect.top + padding){
+    board.scrollTop -= (boardRect.top + padding - inputRect.top);
+  }
+  if(inputRect.bottom > boardRect.bottom - padding){
+    board.scrollTop += (inputRect.bottom - (boardRect.bottom - padding));
+  }
+
+  if(inputRect.left < boardRect.left + padding){
+    board.scrollLeft -= (boardRect.left + padding - inputRect.left);
+  }
+  if(inputRect.right > boardRect.right - padding){
+    board.scrollLeft += (inputRect.right - (boardRect.right - padding));
+  }
+
+  if (activeInput.dataset.answerIndex === "0") {
+    board.scrollTop = Math.max(0, board.scrollTop - 30);
+    board.scrollLeft = 0;
+  }
+}
+
+function focusIndex(index){
+  const el=document.querySelector(`input[data-answer-index="${index}"]`) || document.querySelector(`button.answer[data-answer-index="${index}"]`);
+  if(el){
+    el.focus();
+    el.scrollIntoView({block:"center",inline:"nearest"});
+    requestAnimationFrame(keepCurrentVisible);
+  }
+}
+
+function getNextAnswerIndex(index){
+  if (state.answerMode === "parity") {
+    return index < state.answers.length - 1 ? index + 1 : index;
+  }
+
+  const c = Math.floor(index / state.rows);
+  const r = index % state.rows;
+  if (r < state.rows - 2) return index + 1;
+  if (c < state.columns - 1) return idx(c + 1, 0);
+  return index;
+}
+
+function focusAnswer(c,r){
+  if(state.answerMode === "parity"){
+    if(r < 0 || r >= state.answers.length) return;
+    focusIndex(r);
+    return;
+  }
+
+  if(r < 0){
+    if(c > 0) focusIndex(idx(c - 1, state.rows - 2));
+    return;
+  }
+
+  if(r >= state.rows - 1){
+    if(c < state.columns - 1) focusIndex(idx(c + 1, 0));
+    return;
+  }
+
+  focusIndex(idx(c,r));
+}
+
+function syncChoiceSelection(){
+  document.querySelectorAll('.choice-btn').forEach(btn => {
+    const idx = Number(btn.dataset.answerIndex);
+    const val = Number(btn.dataset.answerValue);
+    btn.classList.toggle('active', state.answers[idx] === val);
+  });
+}
+
+function handleChoiceAnswer(index, value){
+  maybeStartCountdown();
+  state.answers[index]=Number(value);
+  updateLive();
+
+  const nextIndex = getNextAnswerIndex(index);
+  state.current = nextIndex;
+  syncChoiceSelection();
+  updateCurrentVisual();
+
+  if(nextIndex !== index){
+    setTimeout(()=>focusIndex(nextIndex),30);
+  }
+}
+
+function answerIndexToPosition(i){
+  let c=Math.floor(i/state.rows), r=i%state.rows;
+  return {c,r};
+}
+
+function handleAnswer(e){
+  const input=e.target;
+  let v=input.value.replace(/\D/g,"").slice(-1);
+  input.value=v;
+  if(v==="") return;
+  maybeStartCountdown();
+  const i=Number(input.dataset.answerIndex);
+  state.answers[i]=Number(v);
+  updateLive();
+
+  const nextIndex = getNextAnswerIndex(i);
+  state.current = nextIndex;
+  updateCurrentVisual();
+
+  if(nextIndex !== i){
+    setTimeout(()=>focusIndex(nextIndex),30);
+  }
+}
+
+function updateCurrentVisual(){
+  document.querySelectorAll(".num").forEach(x=>x.classList.remove("current"));
+  document.querySelectorAll(".answer").forEach(x=>x.classList.remove("current"));
+  if(state.answerMode === "parity"){
+    syncChoiceSelection();
+  }
+  const i=Math.min(state.current,state.answers.length-1);
+  if(i<0)return;
+  const el=document.querySelector(`input[data-answer-index="${i}"]`) || document.querySelector(`button.answer[data-answer-index="${i}"]`);
+  if(el){
+    el.classList.add("current");
+    el.focus();
+    el.scrollIntoView({block:"center",inline:"nearest"});
+  }
+  if(state.answerMode !== "parity"){
+    const num=document.querySelector(`.num[data-index="${i}"]`);
+    const num2=document.querySelector(`.num[data-index="${i+1}"]`);
+    if(num)num.classList.add("current");
+    if(num2)num2.classList.add("current");
+  }
+  $("positionLabel").textContent=`Soal ${i+1} dari ${state.answers.length}`;
+  $("progress").style.width=((i/state.answers.length)*100)+"%";
+  const ruleText = state.answerMode === "parity"
+    ? "Aturan: <b>0</b> jika hasilnya genap, <b>1</b> jika hasilnya ganjil."
+    : "Jika hasil 13, masukkan <b>3</b>. Jika 8, masukkan <b>8</b>.";
+  $("ruleText").innerHTML = ruleText;
+  $("answerHint").textContent = state.answerMode === "parity"
+    ? "Pilih A untuk genap (0) atau B untuk ganjil (1). Setelah dipilih, otomatis lanjut."
+    : "Ketik 1 digit. Setelah diisi, otomatis lanjut.";
+  requestAnimationFrame(keepCurrentVisible);
+}
+
+function updateLive(){
+  let answered=0,correct=0;
+  state.answers.forEach((a,i)=>{
+    if(a!==null){
+      answered++;
+      const c=getExpectedAnswer(i);
+      if(a===c)correct++;
+    }
+  });
+  $("liveAnswered").textContent=answered;
+  $("liveCorrect").textContent=correct;
+}
+
+function formatTime(s){
+  s=Math.max(0,Math.ceil(s));
+  const m=Math.floor(s/60), sec=s%60;
+  return `${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+}
+
+function stopSessionTimers(){
+  clearInterval(state.sessionTimerId); clearInterval(state.breakTimerId);
+  state.sessionTimerId = null; state.breakTimerId = null;
+}
+
+function showBreakScreen(){
+  state.isBreak = true;
+  state.startTime = 0;
+  const board=$("numberGrid");
+  board.innerHTML = `<div class="break-banner">Istirahat 10 detik<br><small style="font-size:18px;display:block;margin-top:8px;font-weight:700">Siap untuk sesi berikutnya...</small></div>`;
+  $("sessionLabel").textContent = `Istirahat`;
+  $("timer").textContent = `00:10`;
+  $("timer").classList.remove("warning","danger");
+}
+
+function startSessionCountdown(){
+  clearInterval(state.sessionTimerId);
+  state.startTime = Date.now();
+  state.sessionTimerId = setInterval(()=>{
+    if(state.isBreak) return;
+    const elapsed = (Date.now() - state.startTime) / 1000;
+    const remaining = state.sessionDurationSec - elapsed;
+    $("timer").textContent = formatTime(remaining);
+    $("timer").classList.toggle("warning", remaining <= 10 && remaining > 5);
+    $("timer").classList.toggle("danger", remaining <= 5);
+
+    if (remaining <= 0) {
+      finishSession();
+    }
+  }, 100);
+}
+
+function startSession(index){
+  state.isBreak = false;
+  state.startTime = 0;
+  state.currentSessionIndex = index;
+  state.current = 0;
+  state.answers = Array((state.columns * state.rows) - 1).fill(null);
+  makeNumbers();
+  renderGrid();
+  updateLive();
+  updateCurrentVisual();
+  $("sessionLabel").textContent = `Sesi ${index + 1}/${state.sessionCount}`;
+  $("timer").textContent = formatTime(state.sessionDurationSec);
+  $("timer").classList.remove("warning","danger");
+
+  clearInterval(state.sessionTimerId);
+  state.sessionTimerId = null;
+}
+
+function maybeStartCountdown(){
+  if (state.finished || state.startTime !== 0 || state.isBreak) return;
+  startSessionCountdown();
+}
+
+function finishSession(){
+  clearInterval(state.sessionTimerId);
+  state.startTime = 0;
+  const answered = state.answers.filter(a => a !== null).length;
+  const correct = state.answers.reduce((sum, a, idx) => {
+    if (a === null) return sum;
+    const expected = getExpectedAnswer(idx);
+    return sum + (a === expected ? 1 : 0);
+  }, 0);
+  const accuracy = answered ? (correct / answered) * 100 : 0;
+  state.sessionResults.push({
+    session: state.currentSessionIndex + 1,
+    answered,
+    correct,
+    accuracy
+  });
+
+  if (state.currentSessionIndex < state.sessionCount - 1) {
+    const breakStart = Date.now();
+    showBreakScreen();
+    state.breakTimerId = setInterval(() => {
+      const remaining = Math.max(0, state.breakDurationSec - ((Date.now() - breakStart) / 1000));
+      $("timer").textContent = `00:${String(Math.ceil(remaining)).padStart(2, '0')}`;
+      if (remaining <= 0) {
+        clearInterval(state.breakTimerId);
+        state.breakTimerId = null;
+        startSession(state.currentSessionIndex + 1);
+      }
+    }, 100);
+  } else {
+    finishTest(false);
+  }
+}
+
+function startTimer(){
+  state.startTime = 0;
+  state.sessionResults = [];
+  state.currentSessionIndex = 0;
+  startSession(0);
+  state.intervalId=setInterval(()=>{
+    if (state.startTime === 0) return;
+    const elapsed=(Date.now()-state.startTime)/1000;
+    state.intervals.push({time:Math.floor(elapsed), count:state.answers.filter(a=>a!==null).length});
+  },10000);
+}
+
+function stopTimers(){
+  clearInterval(state.sessionTimerId);
+  clearInterval(state.breakTimerId);
+  clearInterval(state.timerId);
+  clearInterval(state.intervalId);
+  state.startTime = 0;
+  state.sessionTimerId = null;
+  state.breakTimerId = null;
+  state.timerId = null;
+  state.intervalId = null;
+}
+
+function finishTest(auto=false){
+  if(state.finished)return;
+  state.finished=true; stopTimers(); state.endTime=Date.now();
+
+  const totalAnswered = state.sessionResults.reduce((sum, x) => sum + x.answered, 0);
+  const totalCorrect = state.sessionResults.reduce((sum, x) => sum + x.correct, 0);
+  const totalAccuracy = totalAnswered ? (totalCorrect / totalAnswered) * 100 : 0;
+  const wrong = totalAnswered - totalCorrect;
+
+  const sessionAccuracies = state.sessionResults.length ? state.sessionResults.map(x => x.accuracy) : [totalAccuracy];
+  const avg = sessionAccuracies.reduce((s, v) => s + v, 0) / sessionAccuracies.length;
+  const spread = Math.sqrt(sessionAccuracies.reduce((s, v) => s + (v - avg) ** 2, 0) / sessionAccuracies.length);
+  let consistencyText = "Konsistensi: belum cukup data.";
+  if (sessionAccuracies.length > 1) {
+    if (spread <= 8) consistencyText = `Konsistensi cukup stabil: rata-rata akurasi ${avg.toFixed(1)}% dengan variasi ${spread.toFixed(1)}%. Anda cenderung menjaga performa di tiap sesi.`;
+    else if (spread <= 18) consistencyText = `Konsistensi sedang: rata-rata akurasi ${avg.toFixed(1)}% dengan variasi ${spread.toFixed(1)}%. Ada fluktuasi saat sesi berganti.`;
+    else consistencyText = `Konsistensi perlu ditingkatkan: rata-rata akurasi ${avg.toFixed(1)}% dengan variasi ${spread.toFixed(1)}%. Terdapat perubahan performa yang cukup besar antar sesi.`;
+  }
+  $("consistencyText").textContent = consistencyText;
+
+  $("statAnswered").textContent=totalAnswered;
+  $("statCorrect").textContent=totalCorrect;
+  $("statWrong").textContent=wrong;
+  $("statAccuracy").textContent=totalAccuracy.toFixed(1)+"%";
+  $("scoreCircle").textContent=Math.round(totalAccuracy)+"%";
+
+  let grade, evalText;
+  if(totalAccuracy>=95){grade="Sangat teliti";evalText="Akurasi sangat tinggi. Pertahankan kecepatan tanpa mengorbankan ketelitian."}
+  else if(totalAccuracy>=85){grade="Teliti";evalText="Ketelitian sudah baik. Latih ritme agar tetap stabil ketika tekanan waktu meningkat."}
+  else if(totalAccuracy>=70){grade="Cukup";evalText="Masih ada ruang untuk meningkatkan ketelitian dan konsistensi pengerjaan."}
+  else {grade="Perlu latihan";evalText="Prioritaskan ketelitian terlebih dahulu, lalu tingkatkan kecepatan secara bertahap."}
+  $("resultGrade").textContent=grade;
+  $("evaluation").textContent=evalText;
+  $("resultSummary").textContent=`${state.name || "Peserta"} menyelesaikan ${totalAnswered} soal dari seluruh sesi dan mengikuti ${state.sessionCount} sesi latihan dengan jeda 10 detik.`;
+
+  renderSessionBreakdown();
+  renderChart();
+  saveHistory({date:new Date().toLocaleString("id-ID"),name:state.name||"Peserta",duration:state.durationSec,sessions:state.sessionCount,answered:totalAnswered,correct:totalCorrect,accuracy:totalAccuracy});
+  renderHistory();
+  show("resultScreen");
+}
+
+function renderSessionBreakdown(){
+  const container=$("sessionBreakdown");
+  if(!container) return;
+
+  if(!state.sessionResults || !state.sessionResults.length){
+    container.innerHTML="";
+    return;
+  }
+
+  const rows = state.sessionResults.map(session => `
+    <div class="session-box">
+      <div class="session-box-header">Sesi ${session.session}</div>
+      <div class="session-box-value">${session.correct}</div>
+      <div class="session-box-meta">${session.answered} terjawab • ${session.accuracy.toFixed(1)}%</div>
+    </div>
+  `).join("");
+
+  container.innerHTML = `
+    <h2>Konsistensi per sesi</h2>
+    <div class="session-grid">${rows}</div>
+  `;
+}
+
+function renderChart(){
+  const chart=$("chart");chart.innerHTML="";
+  const buckets=Math.max(1,Math.ceil(state.durationSec/60));
+  const counts=Array(buckets).fill(0);
+  state.answers.forEach((a,i)=>{
+    if(a!==null){
+      // Approximate timing using current overall progression for a compact training chart.
+      const pos=i/state.answers.length;
+      const bucket=Math.min(buckets-1,Math.floor(pos*buckets));
+      counts[bucket]++;
+    }
+  });
+  const max=Math.max(...counts,1);
+  counts.forEach((v,i)=>{
+    const wrap=document.createElement("div");wrap.className="bar-wrap";wrap.style.height="100%";wrap.style.flex="1";
+    const val=document.createElement("div");val.style.fontSize="11px";val.textContent=v;
+    const bar=document.createElement("div");bar.className="bar";bar.style.height=(v/max*82+3)+"%";bar.title=`Interval ${i+1}: ${v} soal`;
+    const label=document.createElement("div");label.className="bar-label";label.textContent=i+1;
+    wrap.append(val,bar,label);chart.appendChild(wrap);
+  });
+}
+
+function saveHistory(result){
+  const key="pauli_history_v1";
+  const arr=JSON.parse(localStorage.getItem(key)||"[]");
+  arr.unshift(result);localStorage.setItem(key,JSON.stringify(arr.slice(0,10)));
+}
+
+function renderHistory(){
+  const arr=JSON.parse(localStorage.getItem("pauli_history_v1")||"[]");
+  if(!arr.length){$("historyBox").innerHTML="";return}
+  let rows=arr.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(x.name)}</td><td>${x.date}</td><td>${x.sessions || 1}</td><td>${Math.round(x.answered)}</td><td>${x.correct}</td><td>${x.accuracy.toFixed(1)}%</td></tr>`).join("");
+  $("historyBox").innerHTML=`<h2>Riwayat latihan</h2>
+  <div style="overflow:auto"><table style="width:100%;border-collapse:collapse;margin-top:10px">
+  <thead><tr>${["#","Nama","Tanggal","Sesi","Terjawab","Benar","Akurasi"].map(x=>`<th style="text-align:left;padding:10px;border-bottom:1px solid #e4e7ec">${x}</th>`).join("")}</tr></thead>
+  <tbody>${rows}</tbody></table></div>`;
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+
+$("testMode").addEventListener("change", refreshTestModeFields);
+refreshTestModeFields();
+
+$("startBtn").addEventListener("click",()=>{
+  state.name=$("name").value.trim();
+  const mode = $("testMode").value;
+
+  if (mode === "session") {
+    state.sessionCount=Math.max(1, Math.min(12, Number($("sessionCount").value) || 1));
+    state.durationSec=state.sessionCount * state.sessionDurationSec + Math.max(0, state.sessionCount - 1) * state.breakDurationSec;
+  } else {
+    const totalMinutes = Math.max(1, Number($("duration").value) || 1);
+    state.durationSec = totalMinutes * 60;
+    state.sessionCount = Math.max(1, Math.min(12, Math.round(totalMinutes)));
+  }
+
+  state.columns=Number($("columns").value);
+  state.rows=Number($("rows").value);
+  state.answerMode=$("answerMode").value;
+  state.current=0;state.finished=false;state.intervals=[]; state.sessionResults=[];
+  $("participantLabel").textContent=state.name||"Peserta";
+  $("sessionLabel").textContent=`Sesi 1/${state.sessionCount}`;
+  stopTimers();
+  show("testScreen");
+  startTimer();
+  updateCurrentVisual();
+});
+
+$("finishBtn").addEventListener("click",()=>{
+  if(confirm("Yakin ingin mengakhiri tes sekarang?"))finishTest(false);
+});
+$("skipBtn").addEventListener("click",()=>{
+  const i=Math.min(state.current,state.answers.length-1);
+  if(i<0)return;
+  const p=answerIndexToPosition(i);
+  state.current=Math.min(i+1,state.answers.length-1);
+  focusAnswer(p.c,p.r+1);updateCurrentVisual();
+});
+$("againBtn").addEventListener("click",()=>{stopTimers();show("setupScreen")});
+$("printBtn").addEventListener("click",()=>window.print());
+$("clearBtn").addEventListener("click",()=>{
+  if(confirm("Hapus seluruh riwayat latihan?")){localStorage.removeItem("pauli_history_v1");renderHistory();}
+});
+renderHistory();
+</script>
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPh Pasal 26 — Ringkasan & Studi Kasus</title>
+<style>
+  :root{
+    --bg:#0f1115;
+    --card:#171a21;
+    --card2:#1e222b;
+    --accent:#6ee7b7;
+    --accent2:#60a5fa;
+    --warn:#fbbf24;
+    --danger:#f87171;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+    --border:#2a2f3a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    background:linear-gradient(180deg,#0b0d11,#12151c 400px, var(--bg));
+    color:var(--text);
+    line-height:1.6;
+  }
+  header{
+    padding:48px 20px 28px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+    background:radial-gradient(ellipse at top, rgba(110,231,183,0.08), transparent 60%);
+  }
+  header h1{
+    margin:0 0 8px;
+    font-size:2rem;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  header p{color:var(--muted); margin:4px 0;}
+  nav{
+    position:sticky; top:0; z-index:10;
+    display:flex; flex-wrap:wrap; gap:8px;
+    padding:12px 20px;
+    background:rgba(15,17,21,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    justify-content:center;
+  }
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.85rem;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    transition:.2s;
+    white-space:nowrap;
+  }
+  nav a:hover{color:var(--bg); background:var(--accent); border-color:var(--accent);}
+  main{max-width:900px; margin:0 auto; padding:32px 20px 80px;}
+  section{margin-bottom:40px;}
+  h2{
+    font-size:1.4rem;
+    border-left:4px solid var(--accent);
+    padding-left:12px;
+    margin-bottom:16px;
+  }
+  h2 small{display:block; color:var(--muted); font-weight:400; font-size:0.75rem; margin-top:2px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:14px;
+  }
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+  ul{padding-left:20px; margin:8px 0;}
+  li{margin-bottom:4px;}
+  table{width:100%; border-collapse:collapse; margin:12px 0; font-size:0.92rem;}
+  th,td{border:1px solid var(--border); padding:8px 10px; text-align:left;}
+  th{background:var(--card2); color:var(--accent);}
+  tr:nth-child(even){background:rgba(255,255,255,0.02);}
+  .tag{
+    display:inline-block; font-size:0.72rem; font-weight:600;
+    padding:2px 10px; border-radius:999px; margin-left:6px;
+  }
+  .tag.wpln{background:rgba(110,231,183,0.15); color:var(--accent);}
+  .tag.trap{background:rgba(248,113,113,0.15); color:var(--danger);}
+  .case{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  .case summary{
+    cursor:pointer;
+    padding:16px 20px;
+    font-weight:600;
+    list-style:none;
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--card2);
+  }
+  .case summary::-webkit-details-marker{display:none;}
+  .case summary::after{
+    content:'+';
+    font-size:1.3rem; color:var(--accent);
+  }
+  .case[open] summary::after{content:'–';}
+  .case-body{padding:16px 20px;}
+  .result{
+    background:rgba(110,231,183,0.08);
+    border-left:3px solid var(--accent);
+    padding:10px 14px;
+    border-radius:6px;
+    font-weight:600;
+    margin-top:10px;
+  }
+  .note{
+    background:rgba(96,165,250,0.08);
+    border-left:3px solid var(--accent2);
+    padding:10px 14px;
+    border-radius:6px;
+    font-size:0.9rem;
+    color:var(--muted);
+  }
+  .warn-box{
+    background:rgba(251,191,36,0.08);
+    border:1px solid rgba(251,191,36,0.35);
+    border-radius:10px;
+    padding:14px 18px;
+    font-size:0.9rem;
+    color:#fde68a;
+  }
+  pre.tree{
+    background:#0a0c10;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px;
+    overflow-x:auto;
+    color:var(--accent);
+    font-size:0.85rem;
+  }
+  .calc-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+  }
+  .calc-box label{display:block; font-size:0.85rem; color:var(--muted); margin:12px 0 6px;}
+  select,input[type=number]{
+    width:100%;
+    padding:10px 12px;
+    background:var(--card2);
+    border:1px solid var(--border);
+    color:var(--text);
+    border-radius:8px;
+    font-size:0.95rem;
+  }
+  button{
+    margin-top:16px;
+    width:100%;
+    padding:12px;
+    background:var(--accent);
+    border:none;
+    border-radius:8px;
+    font-weight:700;
+    font-size:0.95rem;
+    cursor:pointer;
+    color:#0b0d11;
+    transition:.2s;
+  }
+  button:hover{opacity:0.85;}
+  #calcResult{
+    margin-top:16px;
+    padding:14px;
+    border-radius:8px;
+    background:rgba(110,231,183,0.08);
+    border-left:3px solid var(--accent);
+    display:none;
+    font-size:0.95rem;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.8rem;
+    padding:24px 20px 40px;
+    border-top:1px solid var(--border);
+  }
+</style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>PPh Pasal 26</h1>
+  <p>Ringkasan konsep, dasar hukum, dan studi kasus komprehensif</p>
+  <p style="font-size:0.8rem;">Disarikan dari materi Corporate Tax Series — MySkill.id</p>
+</header>
+
+<nav>
+  <a href="#konsep">Konsep Dasar</a>
+  <a href="#objek">Objek & DPP</a>
+  <a href="#kasus">Studi Kasus</a>
+  <a href="#kalkulator">Kalkulator</a>
+  <a href="#treedecision">Decision Tree</a>
+  <a href="#banding">PPh 23 vs 26</a>
+</nav>
+
+<main>
+
+  <section id="konsep">
+    <h2>1. Konsep Dasar<small>Subjek & Objek PPh 26</small></h2>
+    <div class="card">
+      <p><strong>PPh Pasal 26</strong> dikenakan atas penghasilan yang diterima <strong>Wajib Pajak Luar Negeri (WPLN)</strong> yang bersumber dari Indonesia.</p>
+      <p><strong>Kriteria WPLN:</strong></p>
+      <ul>
+        <li>Tidak tinggal di Indonesia</li>
+        <li>Tinggal di Indonesia kurang dari 183 hari dalam 12 bulan</li>
+        <li>Memperoleh penghasilan dari Indonesia, baik melalui BUT maupun tidak</li>
+      </ul>
+      <div class="warn-box">🧠 Ingat: transaksi dengan pihak luar negeri <strong>tidak otomatis</strong> kena PPh 26 — yang menentukan adalah <em>jenis penghasilannya</em>, bukan sekadar lawan transaksinya berada di luar negeri (lihat Kasus 5).</div>
+    </div>
+  </section>
+
+  <section id="objek">
+    <h2>2. Objek Pajak & Dasar Pengenaan<small>Tarif umum, DPP khusus</small></h2>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--accent2);">Objek Umum (DPP = Bruto, Tarif 20%)</h3>
+        <ul>
+          <li>Dividen</li>
+          <li>Bunga (termasuk premium & diskonto)</li>
+          <li>Hadiah dan penghargaan</li>
+          <li>Pensiun & pembayaran berkala</li>
+          <li>Royalti & sewa harta</li>
+          <li>Premi swap & lindung nilai</li>
+          <li>Imbalan jasa/pekerjaan/kegiatan</li>
+          <li>Keuntungan pembebasan utang</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--warn);">Objek dengan DPP Khusus</h3>
+        <table>
+          <tr><th>Transaksi</th><th>Perkiraan Neto</th><th>Tarif Efektif</th></tr>
+          <tr><td>Jual harta mewah di Indonesia</td><td>25% × Harga Jual</td><td>5%</td></tr>
+          <tr><td>Jual saham (bukan Emiten)</td><td>25% × Harga Jual</td><td>5%</td></tr>
+          <tr><td>Premi asuransi: polis→LN</td><td>50% × Premi</td><td>10%</td></tr>
+          <tr><td>Premi asuransi: DN→LN</td><td>10% × Premi</td><td>2%</td></tr>
+          <tr><td>Premi reasuransi: DN→LN</td><td>5% × Premi</td><td>1%</td></tr>
+        </table>
+        <p style="font-size:0.8rem;color:var(--muted);">Pengecualian: penjualan harta oleh WPLN Orang Pribadi ≤ Rp10.000.000 per jenis transaksi <strong>tidak dipotong</strong> PPh 26.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kasus">
+    <h2>3. Studi Kasus<small>Klik untuk membuka pembahasan</small></h2>
+
+    <details class="case">
+      <summary>Kasus 1 — Jasa Konsultan dari Singapura <span class="tag wpln">Jasa</span></summary>
+      <div class="case-body">
+        <p>PT Maju Jaya membayar jasa konsultan Rp200.000.000 ke perusahaan Singapura (WPLN).</p>
+        <p>DPP = Rp200.000.000 | Tarif = 20%</p>
+        <div class="result">PPh 26 = 20% × Rp200.000.000 = <strong>Rp40.000.000</strong></div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 2 — Dividen ke WPLN <span class="tag wpln">Dividen</span></summary>
+      <div class="case-body">
+        <p>PT Indonesia Makmur membagikan dividen Rp500.000.000 ke pemegang saham luar negeri.</p>
+        <div class="result">PPh 26 = 20% × Rp500.000.000 = <strong>Rp100.000.000</strong> (diterima bersih Rp400 juta)</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 3 — Royalti ke Jepang <span class="tag wpln">Royalti</span></summary>
+      <div class="case-body">
+        <p>Royalti teknologi & merek Rp300.000.000 ke perusahaan Jepang.</p>
+        <div class="result">PPh 26 = 20% × Rp300.000.000 = <strong>Rp60.000.000</strong></div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 4 — Sewa Mesin dari Luar Negeri <span class="tag wpln">Sewa</span></summary>
+      <div class="case-body">
+        <p>Sewa mesin Rp400.000.000 dari perusahaan luar negeri.</p>
+        <div class="result">PPh 26 = 20% × Rp400.000.000 = <strong>Rp80.000.000</strong></div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 5 — Jebakan: Tidak Semua Transaksi LN Kena PPh 26 <span class="tag trap">Konseptual</span></summary>
+      <div class="case-body">
+        <table>
+          <tr><th>Transaksi</th><th>Nilai</th><th>Status</th></tr>
+          <tr><td>Royalti ke Jepang</td><td>Rp100 jt</td><td>Objek PPh 26</td></tr>
+          <tr><td>Dividen ke Singapura</td><td>Rp200 jt</td><td>Objek PPh 26</td></tr>
+          <tr><td>Jasa konsultan dari AS</td><td>Rp150 jt</td><td>Objek PPh 26</td></tr>
+          <tr><td>Pembelian barang dari China</td><td>Rp300 jt</td><td><strong>Bukan</strong> objek PPh 26</td></tr>
+        </table>
+        <div class="note">Yang menentukan adalah <em>jenis penghasilan</em>, bukan sekadar lawan transaksi berada di luar negeri.</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 6 — Premi Asuransi (Polis → LN) <span class="tag wpln">Asuransi</span></summary>
+      <div class="case-body">
+        <p>Premi Rp1.000.000.000 dibayar langsung pemegang polis ke asuransi luar negeri.</p>
+        <p>Perkiraan neto = 50% × Rp1 M = Rp500 juta</p>
+        <div class="result">PPh 26 = 20% × Rp500 juta = <strong>Rp100.000.000</strong> (shortcut: 10% × premi)</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 7 — Premi Asuransi (DN → LN) <span class="tag wpln">Asuransi</span></summary>
+      <div class="case-body">
+        <p>Perusahaan asuransi DN membayar premi Rp2.000.000.000 ke asuransi luar negeri.</p>
+        <p>Perkiraan neto = 10% × Rp2 M = Rp200 juta</p>
+        <div class="result">PPh 26 = 20% × Rp200 juta = <strong>Rp40.000.000</strong> (shortcut: 2% × premi)</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 8 — Penjualan Mobil Mewah oleh WPLN <span class="tag wpln">Harta</span></summary>
+      <div class="case-body">
+        <p>WPLN menjual mobil mewah di Indonesia seharga Rp800.000.000.</p>
+        <p>Perkiraan neto = 25% × Rp800 juta = Rp200 juta</p>
+        <div class="result">PPh 26 = 20% × Rp200 juta = <strong>Rp40.000.000</strong> (shortcut: 5% × harga jual)</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 9 — Transaksi di Bawah Rp10 Juta <span class="tag trap">Pengecualian</span></summary>
+      <div class="case-body">
+        <p>WPLN Orang Pribadi menjual barang antik senilai Rp8.000.000.</p>
+        <div class="result">Rp8 juta ≤ Rp10 juta → <strong>Tidak dipotong PPh 26</strong></div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 10 — Branch Profit Tax <span class="tag wpln">BUT</span></summary>
+      <div class="case-body">
+        <p>BUT memperoleh Penghasilan Kena Pajak Rp5.000.000.000, PPh yang telah dibayar Rp1.100.000.000.</p>
+        <p>Branch Profit = Rp5 M − Rp1,1 M = Rp3,9 M</p>
+        <div class="result">Branch Profit Tax = 20% × Rp3,9 M = <strong>Rp780.000.000</strong></div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 11 — Branch Profit Ditanam Kembali <span class="tag trap">Pengecualian</span></summary>
+      <div class="case-body">
+        <p>Branch profit Rp2.000.000.000 seluruhnya diinvestasikan kembali di Indonesia sesuai ketentuan (PMK 14/PMK.03/2011).</p>
+        <div class="result">Jika seluruh syarat penanaman kembali terpenuhi → <strong>PPh 26 = Rp0</strong></div>
+        <div class="note">Jangan langsung hitung PKP × 20% — cek dulu apakah profit ditanamkan kembali sesuai syarat jangka waktu dan jenis investasi.</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>Kasus 12 — P3B / Tax Treaty <span class="tag wpln">Treaty</span></summary>
+      <div class="case-body">
+        <p>Royalti Rp1.000.000.000 ke negara yang punya P3B dengan Indonesia. Tarif domestik 20%, tarif treaty (misal) 10%, dan Surat Keterangan Domisili (SKD) terpenuhi.</p>
+        <div class="result">Jika syarat treaty + SKD terpenuhi → PPh 26 = 10% × Rp1 M = <strong>Rp100.000.000</strong> (bukan Rp200 juta)</div>
+        <div class="note">P3B adalah <em>lex specialis</em> — jika ada perbedaan dengan UU PPh, ketentuan P3B yang berlaku, dengan syarat SKD terpenuhi.</div>
+      </div>
+    </details>
+
+    <details class="case" open>
+      <summary>Kasus Komprehensif — PT Indonesia Global (5 Transaksi) <span class="tag wpln">Gabungan</span></summary>
+      <div class="case-body">
+        <table>
+          <tr><th>Transaksi</th><th>Jenis</th><th>DPP / Perhitungan</th><th>PPh 26</th></tr>
+          <tr><td>A — Royalti (Jepang)</td><td>Royalti</td><td>20% × Rp500 jt</td><td>Rp100 jt</td></tr>
+          <tr><td>B — Jasa (Singapura)</td><td>Jasa</td><td>20% × Rp300 jt</td><td>Rp60 jt</td></tr>
+          <tr><td>C — Dividen (AS)</td><td>Dividen</td><td>20% × Rp1 M</td><td>Rp200 jt</td></tr>
+          <tr><td>D — Premi Asuransi</td><td>Asuransi (polis→LN)</td><td>20% × (50% × Rp2 M)</td><td>Rp200 jt</td></tr>
+          <tr><td>E — Bunga (Inggris)</td><td>Bunga</td><td>20% × Rp400 jt</td><td>Rp80 jt</td></tr>
+        </table>
+        <div class="result">TOTAL PPh 26 dipotong = <strong>Rp640.000.000</strong></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="kalkulator">
+    <h2>4. Kalkulator Cepat<small>Simulasi PPh 26 sesuai jenis transaksi</small></h2>
+    <div class="calc-box">
+      <label>Jenis Transaksi</label>
+      <select id="jenis">
+        <option value="umum">Objek umum (Dividen/Bunga/Royalti/Sewa/Jasa) — 20%</option>
+        <option value="hartaOP">Penjualan harta mewah / saham (efektif) — 5%</option>
+        <option value="asuransiPolis">Premi asuransi: Polis → LN — efektif 10%</option>
+        <option value="asuransiDN">Premi asuransi: DN → LN — efektif 2%</option>
+        <option value="reasuransi">Premi reasuransi: DN → LN — efektif 1%</option>
+        <option value="branch">Branch Profit Tax — 20% × (PKP − PPh terutang)</option>
+      </select>
+
+      <div id="mainInputs">
+        <label id="labelDPP">Nilai Transaksi (Rp)</label>
+        <input type="number" id="nilai1" placeholder="contoh: 500000000">
+      </div>
+
+      <div id="branchInputs" style="display:none;">
+        <label>Pajak yang Telah Dibayar BUT (Rp)</label>
+        <input type="number" id="nilai2" placeholder="contoh: 1100000000">
+      </div>
+
+      <button onclick="hitung()">Hitung PPh 26</button>
+      <div id="calcResult"></div>
+    </div>
+  </section>
+
+  <section id="treedecision">
+    <h2>5. Decision Tree<small>Alur berpikir cepat saat mengerjakan soal</small></h2>
+    <pre class="tree">
+                PEMBAYARAN
+                    ↓
+             PENERIMA SIAPA?
+                    ↓
+                  WPLN?
+              ↙          ↘
+           TIDAK          YA
+             ↓              ↓
+       Bukan PPh 26    JENIS PENGHASILAN
+                             ↓
+              ┌──────────────┼──────────────┐
+              ↓              ↓              ↓
+           Dividen         Bunga          Royalti
+              ↓              ↓              ↓
+             20%            20%            20%
+
+  PENJUALAN HARTA          ASURANSI LN          BRANCH PROFIT        ADA P3B?
+        ↓                       ↓                     ↓                  ↓
+  Harga Jual × 25%      Tentukan % neto        PKP − PPh BUT           YA
+        ↓                       ↓                     ↓                  ↓
+       × 20%                  × 20%                 × 20%        CEK SKD + SYARAT
+        ↓                                                                ↓
+   EFEKTIF 5%                                                  GUNAKAN TARIF P3B
+                                                                  JIKA MEMENUHI
+    </pre>
+  </section>
+
+  <section id="banding">
+    <h2>6. PPh 23 vs PPh 26<small>Perbandingan agar tidak tertukar</small></h2>
+    <div class="card">
+      <table>
+        <tr><th></th><th>PPh 23</th><th>PPh 26</th></tr>
+        <tr><td>Penerima</td><td>Umumnya WPDN</td><td>WPLN</td></tr>
+        <tr><td>Sumber penghasilan</td><td>Indonesia</td><td>Indonesia</td></tr>
+        <tr><td>Dasar umum</td><td>Jumlah bruto</td><td>Jumlah bruto</td></tr>
+        <tr><td>Tarif</td><td>Tergantung objek</td><td>Umumnya 20%</td></tr>
+        <tr><td>P3B</td><td>Relevan dalam kondisi tertentu</td><td>Sangat penting</td></tr>
+        <tr><td>SKD</td><td>—</td><td>Penting untuk tarif P3B</td></tr>
+        <tr><td>Penjualan harta khusus</td><td>—</td><td>Ada ketentuan khusus</td></tr>
+        <tr><td>Branch profit tax</td><td>—</td><td>Ada</td></tr>
+      </table>
+      <div class="warn-box" style="margin-top:14px;">🧠 Cara cepat membedakan: <strong>PPh 23 = Dalam Negeri</strong>, <strong>PPh 26 = Luar Negeri</strong>. "PT Indonesia bayar royalti ke PT Jepang" → langsung pikir WPLN → PPh 26.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="warn-box">
+      ⚠️ Materi ini disarikan dari sumber MySkill.id terbit 2024 dan memuat ketentuan historis/spesifik (mis. PMK 82/2009, KMK 624/1994, KMK 434/1999, PMK 14/2011). Untuk perhitungan pajak aktual, tarif, treaty, SKD, dan ketentuan pemotongan terkini, verifikasi terhadap peraturan DJP terbaru.
+    </div>
+  </section>
+
+</main>
+
+<footer>Dibuat sebagai rangkuman belajar PPh Pasal 26 — bukan nasihat pajak resmi.</footer>
+
+<script>
+const jenisSelect = document.getElementById('jenis');
+const branchInputs = document.getElementById('branchInputs');
+const mainInputs = document.getElementById('mainInputs');
+const labelDPP = document.getElementById('labelDPP');
+
+jenisSelect.addEventListener('change', () => {
+  const v = jenisSelect.value;
+  if (v === 'branch') {
+    branchInputs.style.display = 'block';
+    labelDPP.textContent = 'Penghasilan Kena Pajak / PKP (Rp)';
+  } else {
+    branchInputs.style.display = 'none';
+    labelDPP.textContent = 'Nilai Transaksi (Rp)';
+  }
+});
+
+function formatRp(n){
+  return 'Rp' + Math.round(n).toLocaleString('id-ID');
+}
+
+function hitung(){
+  const v = jenisSelect.value;
+  const nilai1 = parseFloat(document.getElementById('nilai1').value) || 0;
+  const resultBox = document.getElementById('calcResult');
+  let pph = 0, penjelasan = '';
+
+  if (v === 'umum') {
+    pph = 0.20 * nilai1;
+    penjelasan = `PPh 26 = 20% × ${formatRp(nilai1)}`;
+  } else if (v === 'hartaOP') {
+    const neto = 0.25 * nilai1;
+    pph = 0.20 * neto;
+    penjelasan = `Perkiraan neto = 25% × ${formatRp(nilai1)} = ${formatRp(neto)}<br>PPh 26 = 20% × ${formatRp(neto)} (efektif 5%)`;
+  } else if (v === 'asuransiPolis') {
+    const neto = 0.50 * nilai1;
+    pph = 0.20 * neto;
+    penjelasan = `Perkiraan neto = 50% × ${formatRp(nilai1)} = ${formatRp(neto)}<br>PPh 26 = 20% × ${formatRp(neto)} (efektif 10%)`;
+  } else if (v === 'asuransiDN') {
+    const neto = 0.10 * nilai1;
+    pph = 0.20 * neto;
+    penjelasan = `Perkiraan neto = 10% × ${formatRp(nilai1)} = ${formatRp(neto)}<br>PPh 26 = 20% × ${formatRp(neto)} (efektif 2%)`;
+  } else if (v === 'reasuransi') {
+    const neto = 0.05 * nilai1;
+    pph = 0.20 * neto;
+    penjelasan = `Perkiraan neto = 5% × ${formatRp(nilai1)} = ${formatRp(neto)}<br>PPh 26 = 20% × ${formatRp(neto)} (efektif 1%)`;
+  } else if (v === 'branch') {
+    const nilai2 = parseFloat(document.getElementById('nilai2').value) || 0;
+    const bpt = nilai1 - nilai2;
+    pph = 0.20 * bpt;
+    penjelasan = `Branch Profit = ${formatRp(nilai1)} − ${formatRp(nilai2)} = ${formatRp(bpt)}<br>Branch Profit Tax = 20% × ${formatRp(bpt)}`;
+  }
+
+  resultBox.style.display = 'block';
+  resultBox.innerHTML = penjelasan + `<div style="margin-top:8px;font-size:1.1rem;">PPh 26 = <strong>${formatRp(pph)}</strong></div>`;
+}
+</script>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

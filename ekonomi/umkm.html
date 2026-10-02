@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Pengembangan UMKM oleh Bank Indonesia</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #4a90e2;
+            --accent: #ff6b35;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --border: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav.sticky {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            padding: 8px 15px;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-size: 1.8em;
+        }
+
+        section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        section h4 {
+            color: var(--accent);
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .intro h2 {
+            color: var(--dark);
+            border-bottom: none;
+        }
+
+        .objectives {
+            background: #fff9f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .objectives h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .objectives ul {
+            list-style: decimal;
+            padding-left: 20px;
+        }
+
+        .objectives li {
+            margin-bottom: 8px;
+        }
+
+        .diagram {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+            white-space: pre;
+            border: 1px solid var(--border);
+        }
+
+        .important {
+            background: #fff0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--danger);
+        }
+
+        .important p {
+            margin: 0;
+        }
+
+        .mnemonic {
+            background: #f0fff0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--success);
+            font-style: italic;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e9ecef;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .quiz-section h2 {
+            color: #2c5e2c;
+            border-bottom: 2px solid #4caf50;
+        }
+
+        .question {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .question h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .options {
+            margin: 15px 0;
+        }
+
+        .options li {
+            margin: 8px 0;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .answer {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            font-weight: bold;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #fff8e1 0%, #e8f5e8 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid var(--warning);
+        }
+
+        .summary h2 {
+            color: #8b4513;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cheat-sheet {
+            background: #1a1a2e;
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .cheat-sheet h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .cheat-sheet p {
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-left: 4px solid var(--secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            nav a {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .diagram {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav.sticky {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section, .intro, .quiz-section, .summary {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+
+            .diagram, .code-block {
+                background: #f8f9fa !important;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📘 MODUL PEMBELAJARAN</h1>
+        <p><strong>Pengembangan UMKM oleh Bank Indonesia</strong></p>
+    </header>
+
+    <div class="container">
+        <nav class="sticky">
+            <ul>
+                <li><a href="#tujuan" class="active">Tujuan Pembelajaran</a></li>
+                <li><a href="#gambaran">Gambaran Besar</a></li>
+                <li><a href="#penting">Mengapa UMKM Penting?</a></li>
+                <li><a href="#permasalahan">Permasalahan Utama</a></li>
+                <li><a href="#laporan">Laporan Keuangan</a></li>
+                <li><a href="#peran-bi">Peran BI</a></li>
+                <li><a href="#tujuan-bi">Tujuan BI</a></li>
+                <li><a href="#program">6 Program Strategis</a></li>
+                <li><a href="#roadmap">Peta Jalan UMKM</a></li>
+                <li><a href="#ruang-lingkup">Ruang Lingkup</a></li>
+                <li><a href="#percepatan">Percepatan Akses</a></li>
+                <li><a href="#ekosistem">Ekosistem</a></li>
+                <li><a href="#faktor">Faktor Keberhasilan</a></li>
+                <li><a href="#latihan">Latihan Soal</a></li>
+                <li><a href="#ringkasan">Ringkasan</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Tujuan Pembelajaran -->
+        <section id="tujuan">
+            <h2>1. Tujuan Pembelajaran</h2>
+            <div class="objectives">
+                <p>Setelah mempelajari materi ini, Anda diharapkan mampu:</p>
+                <ol>
+                    <li>Menjelaskan peran UMKM dalam perekonomian Indonesia.</li>
+                    <li>Menjelaskan alasan <span class="highlight">akses keuangan</span> menjadi perhatian BI dalam pengembangan UMKM.</li>
+                    <li>Menjelaskan peran BI dalam pengembangan UMKM.</li>
+                    <li>Menjelaskan tujuan kebijakan pengembangan UMKM BI.</li>
+                    <li>Menjelaskan <span class="highlight">4 tahapan peta jalan UMKM BI</span>.</li>
+                    <li>Menjelaskan ruang lingkup pengembangan produk UMKM.</li>
+                    <li>Menjelaskan aspek percepatan akses UMKM.</li>
+                    <li>Menjelaskan pentingnya infrastruktur dan kelembagaan dalam ekosistem UMKM.</li>
+                    <li>Mengidentifikasi faktor pendorong keberhasilan pengembangan UMKM.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 2. Gambaran Besar -->
+        <section id="gambaran">
+            <h2>2. Gambaran Besar</h2>
+            <p>Secara sederhana, hubungan BI dengan pengembangan UMKM dapat digambarkan sebagai berikut:</p>
+
+            <div class="diagram" id="x6j0by">
+                 BANK INDONESIA
+                       │
+                       ↓
+             Kebijakan Makroprudensial
+                       │
+             ┌─────────┴─────────┐
+             ↓                   ↓
+       Intermediasi         Akses Keuangan
+                                 │
+                                 ↓
+                         PENGEMBANGAN UMKM
+                                 │
+          ┌──────────────────────┼──────────────────────┐
+          ↓                      ↓                      ↓
+     Akses Keuangan         Kapasitas SDM          Inovasi
+          │                      │                      │
+          └──────────────────────┼──────────────────────┘
+                                 ↓
+                         UMKM Lebih Kuat
+                                 ↓
+                    Pertumbuhan Ekonomi
+            </div>
+
+            <div class="intro">
+                <h3>Inti materi:</h3>
+                <p>BI berperan dalam pengembangan UMKM terutama untuk mendukung <span class="highlight">akses keuangan, kapasitas, manajerial, inovasi, dan ekosistem UMKM</span>.</p>
+            </div>
+        </section>
+
+        <!-- 3. Mengapa UMKM Penting? -->
+        <section id="penting">
+            <h2>3. Mengapa UMKM Penting?</h2>
+            <p>UMKM memiliki peran penting dalam perekonomian Indonesia karena memberikan kontribusi signifikan, khususnya dalam:</p>
+
+            <h3>1. Pembentukan Produk Domestik Bruto (PDB)</h3>
+            <p>UMKM memberikan sumbangan terhadap aktivitas ekonomi nasional.</p>
+
+            <h3>2. Penyerapan Tenaga Kerja</h3>
+            <p>UMKM menjadi salah satu bagian penting dalam menciptakan lapangan pekerjaan.</p>
+
+            <h3>3. Ketahanan Ekonomi</h3>
+            <p>UMKM dipercaya memiliki ketahanan ekonomi yang relatif tinggi sehingga dapat menjadi salah satu penopang:</p>
+            <ul>
+                <li>stabilitas sistem keuangan;</li>
+                <li>perekonomian.</li>
+            </ul>
+
+            <div class="mnemonic">
+                <p><strong>Rumus hafalan:</strong></p>
+                <p><strong>UMKM = PDB + Tenaga Kerja + Ketahanan Ekonomi</strong></p>
+            </div>
+        </section>
+
+        <!-- 4. Permasalahan Utama UMKM -->
+        <section id="permasalahan">
+            <h2>4. Permasalahan Utama UMKM</h2>
+            <p>Walaupun memiliki peran besar, UMKM masih menghadapi berbagai kendala.</p>
+            <p>Salah satu kendala penting adalah:</p>
+
+            <div class="important">
+                <p><strong>akses keuangan.</strong></p>
+            </div>
+
+            <p><strong>Mengapa?</strong></p>
+            <p>Salah satu penyebab yang disebutkan dalam materi adalah:</p>
+
+            <div class="important">
+                <p><strong>keterbatasan kemampuan UMKM dalam menghasilkan laporan keuangan.</strong></p>
+            </div>
+        </section>
+
+        <!-- 5. Mengapa Laporan Keuangan Penting? -->
+        <section id="laporan">
+            <h2>5. Mengapa Laporan Keuangan Penting?</h2>
+            <p>Laporan keuangan merupakan salah satu alat utama lembaga keuangan untuk menilai:</p>
+
+            <div class="important">
+                <p><strong>kelayakan kredit.</strong></p>
+            </div>
+
+            <p><strong>Hubungannya:</strong></p>
+
+            <div class="diagram" id="c4h6dv">
+UMKM membutuhkan kredit
+        ↓
+Bank perlu menilai kelayakan
+        ↓
+Membutuhkan informasi keuangan
+        ↓
+Laporan keuangan
+        ↓
+Penilaian kredit
+            </div>
+
+            <p>Jika UMKM mengalami keterbatasan dalam membuat laporan keuangan, maka proses penilaian kelayakan kredit dapat menjadi lebih sulit.</p>
+
+            <div class="important">
+                <p><strong>Jadi, salah satu masalah akses pembiayaan adalah:</strong><br>
+                <strong>Keterbatasan laporan keuangan → informasi usaha terbatas → penilaian kredit lebih sulit.</strong></p>
+            </div>
+        </section>
+
+        <!-- 6. Mengapa BI Ikut Berperan? -->
+        <section id="peran-bi">
+            <h2>6. Mengapa BI Ikut Berperan?</h2>
+            <p>BI merupakan bank sentral dan memiliki mandat kebijakan makroprudensial, termasuk dalam:</p>
+
+            <div class="important">
+                <p><strong>mendorong fungsi intermediasi serta peningkatan akses keuangan.</strong></p>
+            </div>
+
+            <p>Karena itu, pengembangan UMKM menjadi salah satu bagian dari upaya BI.</p>
+            <p>Namun, pengembangan UMKM BI tidak hanya berkaitan dengan pembiayaan.</p>
+
+            <p>Materi menyebutkan tiga sasaran penting:</p>
+
+            <h3><span class="highlight">Akses + Kapasitas + Inovasi</span></h3>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sasaran</th>
+                            <th>Fokus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Akses</td>
+                            <td>Meningkatkan akses keuangan</td>
+                        </tr>
+                        <tr>
+                            <td>Kapasitas</td>
+                            <td>Meningkatkan kemampuan dan manajerial SDM</td>
+                        </tr>
+                        <tr>
+                            <td>Inovasi</td>
+                            <td>Mendorong inovasi UMKM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7. Tujuan Pengembangan UMKM oleh BI -->
+        <section id="tujuan-bi">
+            <h2>7. Tujuan Pengembangan UMKM oleh BI</h2>
+            <p>Berdasarkan materi, kebijakan pengembangan UMKM BI bertujuan antara lain untuk:</p>
+
+            <h3>A. Meningkatkan akses keuangan</h3>
+            <p>UMKM lebih mudah mengakses layanan/pembiayaan keuangan.</p>
+
+            <h3>B. Meningkatkan kapasitas UMKM</h3>
+            <p>Termasuk:</p>
+            <ul>
+                <li>kemampuan;</li>
+                <li>kapasitas SDM;</li>
+                <li>kemampuan manajerial.</li>
+            </ul>
+
+            <h3>C. Mendorong inovasi</h3>
+            <p>UMKM didorong untuk mengembangkan inovasi dalam produk maupun proses bisnis.</p>
+        </section>
+
+        <!-- 8. Enam Program Strategis BI -->
+        <section id="program">
+            <h2>8. Enam Program Strategis BI</h2>
+            <p>Kebijakan pengembangan UMKM BI diimplementasikan sebagai bagian dari program strategis BI.</p>
+            <p>Ada <span class="highlight">6 poin</span> yang perlu dipahami.</p>
+
+            <h3>1. Memperkuat Kebijakan Moneter dan Bauran Kebijakan BI</h3>
+            <p><strong>Tujuannya:</strong></p>
+            <div class="important">
+                <p>mencapai stabilitas nilai Rupiah.</p>
+            </div>
+            <p>Artinya, kebijakan pengembangan UMKM berada dalam konteks yang lebih luas dari kebijakan BI secara keseluruhan.</p>
+
+            <h3>2. Sinergi dengan Kebijakan Fiskal dan Reformasi Struktural</h3>
+            <p>BI memperkuat sinergi dengan:</p>
+            <ul>
+                <li>kebijakan fiskal;</li>
+                <li>reformasi struktural pemerintah.</li>
+            </ul>
+            <p>Salah satu konteksnya adalah:</p>
+            <div class="important">
+                <p>mengelola defisit transaksi berjalan dan mendorong pertumbuhan ekonomi berkelanjutan.</p>
+            </div>
+
+            <h3>3. Kebijakan dan Surveilans Makroprudensial</h3>
+            <p>BI memperkuat:</p>
+            <div class="important">
+                <p><strong>kebijakan dan surveilans makroprudensial</strong></p>
+            </div>
+            <p>untuk turut memelihara:</p>
+            <div class="important">
+                <p><strong>Stabilitas Sistem Keuangan (SSK).</strong></p>
+            </div>
+
+            <h3>4. Ekonomi dan Keuangan Digital</h3>
+            <p>BI memperkuat kebijakan dan sinergi dengan:</p>
+            <ul>
+                <li>pemerintah;</li>
+                <li>OJK;</li>
+            </ul>
+            <p>untuk mengembangkan:</p>
+            <div class="important">
+                <p><strong>ekonomi dan keuangan digital.</strong></p>
+            </div>
+
+            <h3>5. Ekonomi dan Keuangan Syariah</h3>
+            <p>BI juga mengembangkan kebijakan yang bersinergi dengan pihak lain untuk mendukung:</p>
+            <div class="important">
+                <p><strong>pengembangan ekonomi dan keuangan syariah.</strong></p>
+            </div>
+
+            <h3>6. Kerja Sama Internasional</h3>
+            <p>BI memperkuat kerja sama internasional untuk:</p>
+            <div class="important">
+                <p><strong>memperjuangkan kepentingan BI dan Republik Indonesia.</strong></p>
+            </div>
+        </section>
+
+        <!-- Cara Menghafal 6 Program Strategis -->
+        <section>
+            <h2>9. Cara Menghafal 6 Program Strategis</h2>
+            <div class="mnemonic">
+                <p><strong>Gunakan:</strong></p>
+                <h3><strong>M-M-M-D-S-I</strong></h3>
+                <p><strong>M</strong> = Moneter<br>
+                <strong>M</strong> = Makro/fiskal & reformasi struktural<br>
+                <strong>M</strong> = Makroprudensial<br>
+                <strong>D</strong> = Digital<br>
+                <strong>S</strong> = Syariah<br>
+                <strong>I</strong> = Internasional</p>
+            </div>
+            <p>Atau secara lebih sederhana:</p>
+            <div class="important">
+                <p><strong>Moneter – Fiskal – Makroprudensial – Digital – Syariah – Internasional</strong></p>
+            </div>
+        </section>
+
+        <!-- 10. Peta Jalan Pengembangan UMKM -->
+        <section id="roadmap">
+            <h2>10. Peta Jalan Pengembangan UMKM</h2>
+            <p>Salah satu bagian <span class="highlight">paling penting untuk ujian</span> adalah 4 tahapan peta jalan UMKM BI.</p>
+            <p>Terdiri dari:</p>
+
+            <ol>
+                <li><strong>UMKM Potensial</strong></li>
+                <li><strong>UMKM Success / Link to Market & Finance</strong></li>
+                <li><strong>UMKM Go Digital</strong></li>
+                <li><strong>UMKM Go Export</strong></li>
+            </ol>
+        </section>
+
+        <!-- 11-14. Detail Tahapan -->
+        <section>
+            <h2>11. Tahap 1 — UMKM Potensial</h2>
+            <p>Pada tahap ini, fokusnya adalah mengembangkan UMKM yang memiliki:</p>
+            <div class="important">
+                <p><strong>potensi untuk berkembang.</strong></p>
+            </div>
+            <p>Tujuan akhirnya adalah agar UMKM dapat bergerak menuju tahap yang lebih matang.</p>
+        </section>
+
+        <section>
+            <h2>12. Tahap 2 — Success / Link to Market & Finance</h2>
+            <p>UMKM mulai diarahkan untuk memiliki akses terhadap:</p>
+
+            <h3>Market</h3>
+            <p>Pasar yang lebih luas.</p>
+
+            <h3>Finance</h3>
+            <p>Akses terhadap sumber pembiayaan/keuangan.</p>
+
+            <p><strong>Skemanya:</strong></p>
+            <div class="diagram" id="9wq3jq">
+UMKM Potensial
+      ↓
+Penguatan usaha
+      ↓
+Success
+      ↓
+Link to Market
+      +
+Link to Finance
+            </div>
+        </section>
+
+        <section>
+            <h2>13. Tahap 3 — UMKM Go Digital</h2>
+            <p>Setelah memiliki kapasitas dan akses yang lebih baik, UMKM didorong untuk memanfaatkan:</p>
+            <div class="important">
+                <p><strong>digitalisasi.</strong></p>
+            </div>
+            <p>Digitalisasi dapat membantu UMKM dalam pengembangan aktivitas bisnis dan akses pasar.</p>
+        </section>
+
+        <section>
+            <h2>14. Tahap 4 — UMKM Go Export</h2>
+            <p>Tahap lanjutan adalah mendorong UMKM agar mampu masuk ke:</p>
+            <div class="important">
+                <p><strong>pasar ekspor.</strong></p>
+            </div>
+            <p>Dengan demikian, roadmap dapat dilihat sebagai proses peningkatan kelas:</p>
+            <div class="diagram" id="y4t7ga">
+POTENSIAL
+   ↓
+SUCCESS
+   ↓
+MARKET + FINANCE
+   ↓
+GO DIGITAL
+   ↓
+GO EXPORT
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Hafalan:</strong><br><strong>Potensial → Success → Digital → Export</strong></p>
+            </div>
+        </section>
+
+        <!-- 15. Ruang Lingkup Pengembangan Produk UMKM -->
+        <section id="ruang-lingkup">
+            <h2>15. Ruang Lingkup Pengembangan Produk UMKM</h2>
+            <p>Materi menyebutkan tiga ruang lingkup utama:</p>
+
+            <h3>1. Volatile Food</h3>
+            <p>Pengembangan produk yang berkaitan dengan komoditas <span class="highlight">volatile food</span>.</p>
+
+            <h3>2. Local Economic Development</h3>
+            <p>Pengembangan ekonomi lokal.</p>
+
+            <h3>3. Wirausaha Bank Indonesia (WUBI)</h3>
+            <p>Program pengembangan wirausaha melalui WUBI.</p>
+
+            <div class="mnemonic">
+                <h3><strong>Mnemonic: V-L-W</strong></h3>
+                <p><strong>V</strong>olatile Food<br>
+                <strong>L</strong>ocal Economic Development<br>
+                <strong>W</strong>UBI</p>
+            </div>
+        </section>
+
+        <!-- 16. Percepatan Akses UMKM -->
+        <section id="percepatan">
+            <h2>16. Percepatan Akses UMKM</h2>
+            <p>Pengembangan UMKM juga dilakukan melalui percepatan akses.</p>
+            <p>Ada empat aspek utama:</p>
+
+            <div class="mnemonic">
+                <h3><strong>F-M-K-I</strong></h3>
+                <p><strong>F</strong> = Financial<br>
+                <strong>M</strong> = Market<br>
+                <strong>K</strong> = Knowledge Network<br>
+                <strong>I</strong> = Innovation & Digitalization</p>
+            </div>
+
+            <h3>A. Financial Access</h3>
+            <p>Akses terhadap layanan dan sumber keuangan.</p>
+            <p>Tujuannya membantu UMKM mengatasi salah satu kendala utama, yaitu akses pembiayaan.</p>
+
+            <h3>B. Market Access</h3>
+            <p>UMKM didorong agar memiliki akses ke pasar yang lebih luas.</p>
+            <div class="diagram" id="ub3j75">
+Produksi UMKM
+     ↓
+Akses Pasar
+     ↓
+Penjualan
+     ↓
+Pengembangan Usaha
+            </div>
+
+            <h3>C. Knowledge Network</h3>
+            <p>UMKM membutuhkan jaringan pengetahuan untuk meningkatkan kemampuan dan kapasitas.</p>
+            <p>Misalnya dalam konteks materi:</p>
+            <ul>
+                <li>pengetahuan bisnis;</li>
+                <li>pengelolaan usaha;</li>
+                <li>pengembangan produk;</li>
+                <li>akses informasi.</li>
+            </ul>
+
+            <h3>D. Innovation & Digitalization</h3>
+            <p>UMKM didorong untuk:</p>
+            <ul>
+                <li>melakukan inovasi;</li>
+                <li>memanfaatkan teknologi;</li>
+                <li>melakukan digitalisasi.</li>
+            </ul>
+        </section>
+
+        <!-- 17-18. Ekosistem UMKM -->
+        <section id="ekosistem">
+            <h2>17. Ekosistem UMKM</h2>
+            <p>Pengembangan UMKM tidak dapat dilakukan hanya dengan memberikan pembiayaan.</p>
+            <p>Diperlukan:</p>
+            <div class="important">
+                <p><strong>ekosistem UMKM yang optimal.</strong></p>
+            </div>
+            <p>Ekosistem tersebut didukung oleh:</p>
+            <ol>
+                <li>regulasi/kebijakan;</li>
+                <li>keuangan inklusif;</li>
+                <li>perlindungan konsumen;</li>
+                <li>edukasi/literasi;</li>
+                <li>model bisnis;</li>
+                <li>monitoring;</li>
+                <li>evaluasi;</li>
+                <li>penguatan kelembagaan;</li>
+                <li>sistem informasi.</li>
+            </ol>
+
+            <h2>18. Hubungan Ekosistem UMKM</h2>
+            <div class="diagram" id="w3v3qs">
+                  EKOSISTEM UMKM
+                        │
+       ┌────────────────┼────────────────┐
+       ↓                ↓                ↓
+    Regulasi         Keuangan          Literasi
+    /Kebijakan       Inklusif          & Edukasi
+       │                │                │
+       ├────────────────┼────────────────┤
+       ↓                ↓                ↓
+Perlindungan       Model Bisnis     Sistem Informasi
+ Konsumen
+       │
+       ↓
+Monitoring & Evaluasi
+       │
+       ↓
+Penguatan Kelembagaan
+       │
+       ↓
+   UMKM BERKEMBANG
+            </div>
+        </section>
+
+        <!-- 19. Mengapa Ekosistem Penting? -->
+        <section>
+            <h2>19. Mengapa Ekosistem Penting?</h2>
+            <p>Bayangkan UMKM mendapatkan pinjaman tetapi:</p>
+            <ul>
+                <li>tidak memiliki kemampuan manajemen;</li>
+                <li>tidak memiliki pasar;</li>
+                <li>tidak melakukan inovasi;</li>
+                <li>tidak memahami teknologi;</li>
+                <li>tidak memiliki informasi yang akurat.</li>
+            </ul>
+            <p>Maka pembiayaan saja belum tentu menghasilkan perkembangan usaha yang optimal.</p>
+            <p>Karena itu:</p>
+            <div class="important">
+                <p><strong>Akses keuangan harus didukung oleh kapasitas, pasar, pengetahuan, inovasi, kelembagaan, dan informasi.</strong></p>
+            </div>
+        </section>
+
+        <!-- 20-21. Faktor Pendorong Keberhasilan -->
+        <section id="faktor">
+            <h2>20. Faktor Pendorong Keberhasilan Pengembangan UMKM</h2>
+            <p>Materi menyebut beberapa faktor penting:</p>
+
+            <h3>1. Korporatisasi</h3>
+            <p>Penguatan UMKM melalui proses korporatisasi.</p>
+
+            <h3>2. Akurasi Informasi dan Data</h3>
+            <p>Penyempurnaan kualitas informasi dan data UMKM.</p>
+
+            <h3>3. Koordinasi Antar-Kementerian/Lembaga</h3>
+            <p>Koordinasi harus dilakukan secara intensif.</p>
+
+            <h3>4. Inovasi dan Teknologi</h3>
+            <p>Meningkatkan pemanfaatan inovasi dan teknologi.</p>
+
+            <h3>5. Ekosistem Pendukung</h3>
+            <p>Menciptakan lingkungan yang mendukung perkembangan UMKM.</p>
+
+            <h2>21. Lima Faktor Keberhasilan</h2>
+            <div class="mnemonic">
+                <h3><strong>K-D-K-I-E</strong></h3>
+                <p><strong>K</strong> = Korporatisasi<br>
+                <strong>D</strong> = Data akurat<br>
+                <strong>K</strong> = Koordinasi<br>
+                <strong>I</strong> = Inovasi & teknologi<br>
+                <strong>E</strong> = Ekosistem</p>
+            </div>
+        </section>
+
+        <!-- 22. Hubungan Seluruh Kebijakan -->
+        <section>
+            <h2>22. Hubungan Seluruh Kebijakan</h2>
+            <p>Materi dapat disatukan menjadi satu alur:</p>
+            <div class="diagram" id="p2w8m1">
+             MANDAT BI
+                 ↓
+        Kebijakan Makroprudensial
+                 ↓
+        Dorong Intermediasi
+                 ↓
+         Tingkatkan Akses
+                 ↓
+         PENGEMBANGAN UMKM
+                 │
+       ┌─────────┼──────────┐
+       ↓         ↓          ↓
+    Finance    Market    Knowledge
+       │         │          │
+       └─────────┼──────────┘
+                 ↓
+       Inovasi & Digitalisasi
+                 ↓
+        Penguatan Kapasitas
+                 ↓
+          Ekosistem UMKM
+                 ↓
+          Go Digital
+                 ↓
+           Go Export
+                 ↓
+       Pertumbuhan Ekonomi
+            </div>
+        </section>
+
+        <!-- 23. Perbedaan Akses Keuangan dan Pengembangan UMKM -->
+        <section>
+            <h2>23. Perbedaan Akses Keuangan dan Pengembangan UMKM</h2>
+            <p><strong>Jangan menyamakan keduanya.</strong></p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Akses Keuangan</th>
+                            <th>Pengembangan UMKM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Salah satu fokus utama</td>
+                            <td>Konsep lebih luas</td>
+                        </tr>
+                        <tr>
+                            <td>Berkaitan dengan akses pembiayaan/layanan keuangan</td>
+                            <td>Mencakup akses, kapasitas, inovasi, pasar, digitalisasi, dll.</td>
+                        </tr>
+                        <tr>
+                            <td>Membantu mengatasi kendala pembiayaan</td>
+                            <td>Bertujuan meningkatkan kemampuan UMKM secara menyeluruh</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="intro">
+                <p><strong>Intinya:</strong></p>
+                <p><strong>Akses keuangan adalah bagian dari pengembangan UMKM, bukan keseluruhan pengembangan UMKM.</strong></p>
+            </div>
+        </section>
+
+        <!-- 24. Perbedaan UMKM Go Digital dan Go Export -->
+        <section>
+            <h2>24. Perbedaan UMKM Go Digital dan Go Export</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Go Digital</th>
+                            <th>Go Export</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fokus pada pemanfaatan digitalisasi</td>
+                            <td>Fokus pada pasar ekspor</td>
+                        </tr>
+                        <tr>
+                            <td>Berkaitan dengan teknologi</td>
+                            <td>Berkaitan dengan pasar internasional</td>
+                        </tr>
+                        <tr>
+                            <td>Salah satu tahap roadmap</td>
+                            <td>Tahap lanjutan roadmap</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Urutannya:</p>
+            <div class="important">
+                <p><strong>Go Digital → Go Export</strong><br>bukan sebaliknya.</p>
+            </div>
+        </section>
+
+        <!-- 25. Peta Konsep Lengkap -->
+        <section>
+            <h2>25. Peta Konsep Lengkap</h2>
+            <div class="diagram" id="2h5x3u">
+                       PENGEMBANGAN UMKM BI
+                                │
+              ┌─────────────────┼─────────────────┐
+              ↓                 ↓                 ↓
+        Akses Keuangan       Kapasitas         Inovasi
+              │                 │                 │
+              └─────────────────┼─────────────────┘
+                                ↓
+                        ROADMAP UMKM
+                                │
+         ┌────────────┬─────────┴─────────┐
+         ↓            ↓                   ↓
+    Potensial       Success            Go Digital
+         │       Market + Finance          │
+         └────────────┬────────────────────┘
+                      ↓
+                  Go Export
+                      │
+                      ↓
+                Pengembangan
+                 Ekonomi
+            </div>
+        </section>
+
+        <!-- 26-27. Latihan Soal -->
+        <div class="quiz-section" id="latihan">
+            <h2>26. Latihan Soal Pilihan Ganda</h2>
+
+            <div class="question">
+                <h4>1. Salah satu perhatian utama BI dalam pengembangan UMKM adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Pajak UMKM</li>
+                    <li>B. Akses keuangan</li>
+                    <li>C. Harga saham</li>
+                    <li>D. Kebijakan perdagangan</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>2. Salah satu penyebab keterbatasan akses keuangan UMKM adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. UMKM tidak membutuhkan pembiayaan</li>
+                    <li>B. Keterbatasan kemampuan menghasilkan laporan keuangan</li>
+                    <li>C. Semua UMKM tidak memiliki pasar</li>
+                    <li>D. Bank tidak melakukan penilaian kredit</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>3. Laporan keuangan penting bagi lembaga keuangan terutama untuk...</h4>
+                <ol class="options" type="A">
+                    <li>A. Menentukan ekspor</li>
+                    <li>B. Menilai kelayakan kredit</li>
+                    <li>C. Menentukan kurs</li>
+                    <li>D. Menghitung inflasi</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>4. Salah satu tujuan pengembangan UMKM BI adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Mengurangi jumlah UMKM</li>
+                    <li>B. Meningkatkan kapasitas dan kemampuan manajerial SDM</li>
+                    <li>C. Menghapus akses keuangan</li>
+                    <li>D. Mengurangi digitalisasi</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>5. Tahap pertama roadmap UMKM BI adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Go Export</li>
+                    <li>B. Go Digital</li>
+                    <li>C. UMKM Potensial</li>
+                    <li>D. Success</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>6. Urutan roadmap yang benar adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Export → Digital → Potensial → Success</li>
+                    <li>B. Potensial → Success/Link Market & Finance → Go Digital → Go Export</li>
+                    <li>C. Digital → Potensial → Export → Success</li>
+                    <li>D. Success → Export → Digital → Potensial</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>7. Salah satu ruang lingkup pengembangan produk UMKM adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Volatile food</li>
+                    <li>B. Pasar saham</li>
+                    <li>C. Kebijakan fiskal</li>
+                    <li>D. Surat Utang Negara</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>8. Yang termasuk aspek percepatan akses UMKM adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Financial, market, knowledge network, innovation & digitalization</li>
+                    <li>B. Pajak, ekspor, impor, saham</li>
+                    <li>C. Moneter, fiskal, pajak, APBN</li>
+                    <li>D. Inflasi, suku bunga, kurs, cadangan devisa</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>9. Salah satu unsur ekosistem UMKM adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Perlindungan konsumen</li>
+                    <li>B. Penetapan BI-Rate</li>
+                    <li>C. Pengelolaan APBN</li>
+                    <li>D. Penetapan pajak</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>10. Salah satu faktor keberhasilan pengembangan UMKM adalah...</h4>
+                <ol class="options" type="A">
+                    <li>A. Mengurangi koordinasi</li>
+                    <li>B. Mengurangi penggunaan teknologi</li>
+                    <li>C. Penyempurnaan akurasi informasi dan data</li>
+                    <li>D. Mengurangi kelembagaan</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+        </div>
+
+        <section>
+            <h2>27. Soal Pemahaman</h2>
+
+            <div class="question">
+                <h4>11. Mengapa akses keuangan penting bagi UMKM?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Karena akses keuangan merupakan salah satu kendala dalam pengembangan UMKM. Keterbatasan kemampuan UMKM menghasilkan laporan keuangan dapat menjadi kendala dalam penilaian kelayakan kredit oleh lembaga keuangan. Karena itu, peningkatan akses keuangan menjadi salah satu perhatian BI.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>12. Apakah pengembangan UMKM BI hanya berkaitan dengan pembiayaan?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Tidak. Berdasarkan materi, pengembangan UMKM juga mencakup peningkatan kapasitas dan kemampuan manajerial SDM serta inovasi UMKM, di samping peningkatan akses keuangan.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>13. Mengapa digitalisasi menjadi bagian dari roadmap UMKM?</h4>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Karena salah satu tahapan pengembangan UMKM adalah <strong>UMKM Go Digital</strong>, yang menunjukkan bahwa inovasi dan pemanfaatan teknologi menjadi bagian dari proses peningkatan kapasitas UMKM menuju tahap pengembangan yang lebih tinggi, termasuk Go Export.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>28. Soal Esai</h2>
+
+            <div class="question">
+                <h4>Soal 1</h4>
+                <p><strong>Jelaskan peran BI dalam pengembangan UMKM!</strong></p>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>BI memiliki peran dalam pengembangan UMKM sebagai bagian dari pelaksanaan mandat kebijakan makroprudensial, khususnya dalam mendorong fungsi intermediasi dan peningkatan akses keuangan. Selain meningkatkan akses keuangan, pengembangan UMKM BI juga diarahkan untuk meningkatkan kapasitas dan kemampuan manajerial SDM serta mendorong inovasi UMKM.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 2</h4>
+                <p><strong>Jelaskan empat tahapan roadmap pengembangan UMKM BI!</strong></p>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Empat tahapan tersebut adalah:</p>
+                    <ol>
+                        <li><strong>UMKM Potensial</strong></li>
+                        <li><strong>UMKM Success/Link to Market & Finance</strong></li>
+                        <li><strong>UMKM Go Digital</strong></li>
+                        <li><strong>UMKM Go Export</strong></li>
+                    </ol>
+                    <p>Roadmap tersebut menggambarkan proses peningkatan UMKM dari tahap potensial menuju kemampuan untuk mengakses pasar dan pembiayaan, melakukan digitalisasi, hingga memasuki pasar ekspor.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 3</h4>
+                <p><strong>Sebutkan aspek percepatan akses dalam pengembangan UMKM!</strong></p>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <ol>
+                        <li>Financial</li>
+                        <li>Market</li>
+                        <li>Knowledge Network</li>
+                        <li>Innovation and Digitalization</li>
+                    </ol>
+                    <div class="mnemonic">
+                        <p><strong>Mnemonic: F-M-K-I</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>29. Soal Analisis</h2>
+
+            <div class="question">
+                <h4>Kasus</h4>
+                <p>Sebuah UMKM memiliki produk yang bagus, tetapi:</p>
+                <ul>
+                    <li>tidak memiliki laporan keuangan yang baik;</li>
+                    <li>kesulitan memperoleh pembiayaan;</li>
+                    <li>belum memiliki akses pasar luas;</li>
+                    <li>belum memanfaatkan teknologi digital.</li>
+                </ul>
+
+                <h4>Pertanyaan:</h4>
+                <p>Apa saja area yang perlu diperkuat berdasarkan materi?</p>
+
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>UMKM tersebut perlu diperkuat melalui:</p>
+                    <ol>
+                        <li><strong>Financial access</strong><br>Untuk mengatasi kendala akses keuangan.</li>
+                        <li><strong>Knowledge network</strong><br>Untuk meningkatkan pengetahuan dan kemampuan pengelolaan usaha.</li>
+                        <li><strong>Market access</strong><br>Untuk memperluas akses pasar.</li>
+                        <li><strong>Innovation & digitalization</strong><br>Untuk meningkatkan pemanfaatan teknologi.</li>
+                    </ol>
+                    <p>Selain itu diperlukan penguatan ekosistem, termasuk edukasi/literasi, model bisnis, sistem informasi, monitoring, evaluasi, dan kelembagaan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 30. Ringkasan Ujian -->
+        <section id="ringkasan">
+            <h2>30. Ringkasan Ujian</h2>
+
+            <div class="summary">
+                <h3>Mengapa UMKM penting?</h3>
+                <p><strong>UMKM = PDB + Tenaga Kerja + Ketahanan Ekonomi</strong></p>
+
+                <h3>Masalah utama yang menjadi perhatian BI?</h3>
+                <p><strong>Akses keuangan</strong></p>
+
+                <h3>Salah satu penyebab masalah akses keuangan?</h3>
+                <p><strong>Keterbatasan laporan keuangan</strong></p>
+
+                <h3>Tujuan pengembangan UMKM BI?</h3>
+                <p><strong>Akses keuangan + kapasitas manajerial + inovasi</strong></p>
+
+                <h3>Roadmap?</h3>
+                <p><strong>Potensial → Success/Market & Finance → Go Digital → Go Export</strong></p>
+
+                <h3>Produk UMKM?</h3>
+                <p><strong>Volatile Food + Local Economic Development + WUBI</strong></p>
+
+                <h3>Percepatan akses?</h3>
+                <p><strong>Financial + Market + Knowledge Network + Innovation/Digitalization</strong></p>
+
+                <h3>Ekosistem?</h3>
+                <p><strong>Regulasi + keuangan inklusif + perlindungan konsumen + edukasi/literasi + model bisnis + monitoring/evaluasi + kelembagaan + sistem informasi</strong></p>
+
+                <h3>Faktor keberhasilan?</h3>
+                <p><strong>Korporatisasi + data akurat + koordinasi + inovasi/teknologi + ekosistem</strong></p>
+            </div>
+        </section>
+
+        <!-- 31. Cheat Sheet -->
+        <section>
+            <h2>31. Cheat Sheet 30 Detik</h2>
+
+            <div class="cheat-sheet">
+                <p><strong>BI → Makroprudensial → Intermediasi → Akses Keuangan → UMKM</strong></p>
+                <p><strong>UMKM penting → PDB + Tenaga Kerja + Ketahanan</strong></p>
+                <p><strong>Masalah → Laporan Keuangan → Akses Kredit</strong></p>
+                <p><strong>Solusi BI → Finance + Capacity + Innovation</strong></p>
+
+                <h3>ROADMAP → P-S-D-E</h3>
+                <p><strong>P</strong>otensial → <strong>S</strong>uccess/Market & Finance → <strong>D</strong>igital → <strong>E</strong>xport</p>
+
+                <h3>AKSES → F-M-K-I</h3>
+                <p><strong>F</strong>inancial | <strong>M</strong>arket | <strong>K</strong>nowledge Network | <strong>I</strong>nnovation & Digitalization</p>
+
+                <h3>PRODUK → V-L-W</h3>
+                <p><strong>V</strong>olatile Food | <strong>L</strong>ocal Economic Development | <strong>W</strong>UBI</p>
+
+                <h3>KEBERHASILAN → K-D-K-I-E</h3>
+                <p><strong>K</strong>orporatisasi | <strong>D</strong>ata | <strong>K</strong>oordinasi | <strong>I</strong>novasi | <strong>E</strong>kosistem</p>
+            </div>
+
+            <div class="intro">
+                <p><strong>Inti paling penting:</strong></p>
+                <p><strong>Pengembangan UMKM BI bukan sekadar memberikan akses pembiayaan. BI mendorong terbentuknya UMKM yang memiliki akses keuangan, akses pasar, pengetahuan, kapasitas manajerial, inovasi, digitalisasi, dan ekosistem yang mendukung hingga mampu berkembang menuju pasar ekspor.</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Modul Pembelajaran Pengembangan UMKM oleh Bank Indonesia | Dibuat untuk tujuan pendidikan</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight search functionality
+        const urlParams = new URLSearchParams(window.location.search);
+        const highlight = urlParams.get('highlight');
+
+        if (highlight) {
+            const elements = document.querySelectorAll(`*:not(script):not(style)`);
+            elements.forEach(el => {
+                if (el.textContent.includes(highlight)) {
+                    const regex = new RegExp(highlight, 'gi');
+                    el.innerHTML = el.innerHTML.replace(regex, match =>
+                        `<span class="highlight">${match}</span>`
+                    );
+                }
+            });
+        }
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

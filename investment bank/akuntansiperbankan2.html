@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fundamental of Banking — Sesi 2: Konsep Dasar Akuntansi Perbankan</title>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f7;--card:#fff;--ink:#12263a;--mute:#5a6b7b;--line:#d5dde4;--a:#0d7a64;--as:#dcf1ec;--l:#b4541a;--ls:#fbe9dc;--e:#2b5fa8;--es:#dde8f7;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a26;--card:#152636;--ink:#e6edf3;--mute:#93a6b8;--line:#28405a;--a:#4fd1b3;--as:#12403a;--l:#f0a070;--ls:#43291a;--e:#7fb0f0;--es:#1c3557;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0e1a26;--card:#152636;--ink:#e6edf3;--mute:#93a6b8;--line:#28405a;--a:#4fd1b3;--as:#12403a;--l:#f0a070;--ls:#43291a;--e:#7fb0f0;--es:#1c3557;--bad:#ff8a80}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:1.15;margin:0 0 .6em}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.7rem;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.1rem;font-weight:600}
+a{color:var(--e)}
+.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;max-width:1120px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;align-self:start;padding:28px 0;max-height:100vh;overflow:auto}
+nav b{display:block;font-family:"Bricolage Grotesque",sans-serif;margin-bottom:10px}
+nav a{display:block;padding:5px 10px;border-left:3px solid var(--line);color:var(--mute);text-decoration:none;font-size:.9rem}
+nav a:hover,nav a.on{border-color:var(--a);color:var(--ink);font-weight:600}
+header{padding:56px 0 20px}
+header p{max-width:60ch;color:var(--mute);font-size:1.1rem}
+section{padding:36px 0;border-top:1px solid var(--line)}
+p,li{max-width:70ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.g .card{margin:0}
+.tag{display:inline-block;padding:1px 9px;border-radius:99px;font-size:.8rem;font-weight:600}
+.A{background:var(--as);color:var(--a)}.L{background:var(--ls);color:var(--l)}.E{background:var(--es);color:var(--e)}
+.f{font-family:"Bricolage Grotesque",sans-serif;font-size:1.3rem;font-weight:800;padding:12px 16px;background:var(--card);border-left:5px solid var(--a);border-radius:6px;margin:12px 0;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.sc{overflow-x:auto}
+button{font:inherit;font-weight:600;padding:8px 16px;border-radius:8px;border:1px solid var(--a);background:var(--a);color:#fff;cursor:pointer}
+[data-theme="dark"] button,:root:not([data-theme="light"]) button{color:#06231d}
+button.s{background:transparent;color:var(--a)}
+button:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:3px solid var(--e);outline-offset:2px}
+.sim{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:14px 0}
+.col{border-radius:10px;padding:14px;border:1px solid var(--line)}
+.col.A{background:var(--as)}.col.LE{background:var(--ls)}
+.row{display:flex;justify-content:space-between;padding:3px 0;font-variant-numeric:tabular-nums}
+.row.t{border-top:1px solid var(--line);margin-top:6px;padding-top:6px;font-weight:700}
+.log{font-size:.95rem;color:var(--mute);min-height:3em}
+.ok{font-weight:700;color:var(--a)}
+label{display:block;font-size:.85rem;color:var(--mute)}
+input{width:100%;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.ins{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.bar{height:14px;border-radius:3px;background:var(--a);min-width:2px}
+.bar.neg{background:var(--l)}
+.wf{display:grid;grid-template-columns:150px 1fr 90px;gap:8px;align-items:center;font-size:.92rem;padding:3px 0}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0}
+.chain span{padding:6px 12px;border-radius:8px;background:var(--card);border:1px solid var(--line);font-weight:600;font-size:.9rem}
+.chain i{color:var(--mute);font-style:normal}
+.chain span.r{border-color:var(--bad);color:var(--bad)}
+.no{color:var(--bad);font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:.6em 0 0;color:var(--mute)}
+ol.steps{padding-left:1.2em}
+footer{padding:30px 0 50px;color:var(--mute);font-size:.9rem}
+@media(max-width:820px){.wrap{display:block}nav{position:static;display:flex;flex-wrap:wrap;gap:4px;padding:14px 0 0;max-height:none}nav b{width:100%}nav a{border:1px solid var(--line);border-radius:99px;padding:3px 10px}.wf{grid-template-columns:110px 1fr 70px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Daftar isi"><b>Sesi 2</b>
+<a href="#tujuan">Tujuan belajar</a><a href="#beda">Kenapa beda?</a><a href="#persamaan">A = L + E</a><a href="#bs">Balance sheet</a><a href="#earning">Earning assets</a><a href="#is">Income statement</a><a href="#ecl">Provision & ECL</a><a href="#npl">Loan → NPL → Profit</a><a href="#baca">Cara baca laporan</a><a href="#salah">Salah kaprah</a><a href="#recall">Active recall</a></nav>
+<main>
+<header>
+<h1>Konsep Dasar Akuntansi Perbankan</h1>
+<p>Fundamental of Banking, Sesi 2. Fondasi sebelum masuk ke risiko perbankan dan rasio keuangan bank: bagaimana aktivitas bisnis bank dicatat di laporan keuangan.</p>
+</header>
+
+<section id="tujuan"><h2>Tujuan belajar</h2>
+<ul>
+<li>Paham karakteristik akuntansi perbankan dan hubungan Assets = Liabilities + Equity.</li>
+<li>Bisa baca struktur dasar Balance Sheet dan Income Statement bank.</li>
+<li>Bedakan interest income, interest expense, dan non-interest income.</li>
+<li>Paham loan, NPL, provision, expected credit loss, serta hubungannya dengan profit.</li>
+<li>Bedakan earning assets dan non-earning assets, lalu hubungkan transaksi dengan laporan keuangan.</li>
+</ul></section>
+
+<section id="beda"><h2>Kenapa akuntansi perbankan berbeda?</h2>
+<div class="g">
+<div class="card"><h3>Perusahaan manufaktur</h3><p>Persediaan → Produksi → Penjualan → Revenue → Profit</p></div>
+<div class="card"><h3>Bank</h3><p>Menghimpun dana → Menyalurkan dana → Menghasilkan bunga/fee → Mengelola risiko</p></div>
+</div>
+<div class="sc card"><table>
+<tr><th>Aspek</th><th>Non-keuangan</th><th>Bank</th></tr>
+<tr><td>Revenue utama</td><td>Penjualan barang/jasa</td><td>Interest + fee + lainnya</td></tr>
+<tr><td>Aset utama</td><td>Inventory, PP&amp;E, receivables</td><td>Loans, securities, placements</td></tr>
+<tr><td>Liabilitas utama</td><td>Debt, payables</td><td>Deposits, borrowings</td></tr>
+<tr><td>Risiko utama</td><td>Operasional/bisnis</td><td>Kredit, pasar, likuiditas, operasional</td></tr>
+<tr><td>Modal</td><td>Equity</td><td>Equity + kerangka regulatory capital</td></tr>
+<tr><td>Leverage</td><td>Penting</td><td>Sangat penting</td></tr>
+<tr><td>Regulasi</td><td>Umumnya lebih rendah</td><td>Sangat ketat</td></tr>
+<tr><td>Credit loss</td><td>Bisa ada</td><td>Sangat material</td></tr>
+</table></div></section>
+
+<section id="persamaan"><h2>Persamaan dasar akuntansi</h2>
+<div class="f">Assets = Liabilities + Equity</div>
+<div class="g">
+<div class="card"><span class="tag A">Assets</span><p>Yang dimiliki/dikendalikan bank: cash, loans, securities, placements, fixed assets.</p></div>
+<div class="card"><span class="tag L">Liabilities</span><p>Kewajiban bank: customer deposits, borrowings, debt securities, other liabilities.</p></div>
+<div class="card"><span class="tag E">Equity</span><p>Hak pemilik: paid-in capital, retained earnings, komponen ekuitas lain.</p></div>
+</div>
+<h3>Simulator: transaksi demi transaksi (Rp miliar)</h3>
+<p>Bank baru berdiri. Terapkan transaksi satu per satu dan lihat persamaan tetap balance.</p>
+<div class="sim" aria-live="polite">
+<div class="col A"><b>Assets</b>
+<div class="row"><span>Cash</span><span id="s-cash">0</span></div>
+<div class="row"><span>Loans (net)</span><span id="s-loan">0</span></div>
+<div class="row t"><span>Total</span><span id="s-ta">0</span></div></div>
+<div class="col LE"><b>Liabilities &amp; Equity</b>
+<div class="row"><span>Deposits</span><span id="s-dep">0</span></div>
+<div class="row"><span>Equity</span><span id="s-eq">0</span></div>
+<div class="row t"><span>Total</span><span id="s-tle">0</span></div></div>
+</div>
+<p class="log" id="s-log">Belum ada transaksi.</p>
+<p class="ok" id="s-chk">0 = 0 + 0, balance</p>
+<button id="s-next">Terapkan transaksi berikutnya</button> <button class="s" id="s-reset">Reset</button>
+<p style="color:var(--mute);font-size:.9rem">Catatan: transaksi 4 dan 6 disederhanakan. Bunga diterima langsung tunai, dan provision langsung mengurangi nilai bersih loan. Aturan akuntansi sebenarnya mengikuti standar yang berlaku.</p>
+</section>
+
+<section id="bs"><h2>Balance sheet bank</h2>
+<div class="g">
+<div class="card"><span class="tag A">Assets</span><ol><li><b>Cash &amp; equivalents</b>: likuiditas bank</li><li><b>Placements</b>: dana di bank/lembaga lain</li><li><b>Securities</b>: surat berharga</li><li><b>Loans</b>: kredit ke individu, perusahaan, institusi</li><li><b>Fixed assets</b>: gedung, peralatan</li><li><b>Other assets</b></li></ol></div>
+<div class="card"><span class="tag L">Liabilities</span><ol><li><b>Customer deposits</b>: giro, tabungan, deposito</li><li><b>Borrowings</b>: dari bank lain, lembaga keuangan</li><li><b>Debt securities</b>: obligasi terbitan bank</li><li><b>Other liabilities</b></li></ol><span class="tag E">Equity</span><p>Paid-in capital, share capital, retained earnings, reserves, OCI. Equity = Assets − Liabilities.</p></div>
+</div>
+<h3>Contoh: Bank ABC (Rp miliar)</h3>
+<div class="sc card"><table>
+<tr><th>Assets</th><th class="n">Rp M</th><th>Liabilities &amp; Equity</th><th class="n">Rp M</th></tr>
+<tr><td>Cash</td><td class="n">100</td><td>Deposits</td><td class="n">900</td></tr>
+<tr><td>Placements</td><td class="n">100</td><td>Borrowings</td><td class="n">150</td></tr>
+<tr><td>Securities</td><td class="n">200</td><td>Other liabilities</td><td class="n">50</td></tr>
+<tr><td>Loans</td><td class="n">700</td><td>Equity</td><td class="n">100</td></tr>
+<tr><td>Fixed assets</td><td class="n">50</td><td></td><td></td></tr>
+<tr><td>Other assets</td><td class="n">50</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="n">1.200</th><th>Total</th><th class="n">1.200</th></tr>
+</table><p>1.200 = 1.100 + 100. Balance.</p></div>
+</section>
+
+<section id="earning"><h2>Earning vs non-earning assets</h2>
+<div class="g">
+<div class="card"><span class="tag A">Earning assets</span><p>Menghasilkan pendapatan: loans, securities, sebagian placements.</p><p>Kredit Rp1 T dengan yield rata-rata 10% → interest income ≈ Rp100 M.</p></div>
+<div class="card"><span class="tag L">Non-earning assets</span><p>Tidak langsung menghasilkan interest income: cash tertentu, fixed assets, aset operasional. Bank harus mengelola komposisinya.</p></div>
+</div></section>
+
+<section id="is"><h2>Income statement bank</h2>
+<div class="chain"><span>Interest income</span><i>−</i><span>Interest expense</span><i>=</i><span>NII</span><i>+</i><span>Non-interest income</span><i>−</i><span>Opex</span><i>−</i><span>Credit cost</span><i>=</i><span>PBT</span><i>−</i><span>Tax</span><i>=</i><span>Net income</span></div>
+<div class="g">
+<div class="card"><h3>Interest income</h3><p>Bunga dari kredit, securities, placements. Rp1 M × 10% ≈ Rp100 juta per tahun (sebelum outstanding balance, repricing, pokok, dan metode pengakuan).</p></div>
+<div class="card"><h3>Interest expense</h3><p>Biaya dana. Deposito Rp1 M × 5% ≈ Rp50 juta per tahun.</p></div>
+<div class="card"><h3>Non-interest income</h3><p>Transfer, administrasi, kartu, bancassurance, trade finance, wealth management, investment banking, fee/income valas.</p></div>
+<div class="card"><h3>Operating expense</h3><p>Personnel (gaji, bonus, benefit), G&amp;A (kantor, IT, utilitas, marketing, jasa profesional), dan depresiasi.</p></div>
+</div>
+<div class="f">NII = Interest Income − Interest Expense</div>
+<h3>Kalkulator (Rp miliar), default Bank ABC</h3>
+<div class="card"><div class="ins">
+<div><label for="i1">Interest income</label><input id="i1" type="number" value="600"></div>
+<div><label for="i2">Interest expense</label><input id="i2" type="number" value="250"></div>
+<div><label for="i3">Non-interest income</label><input id="i3" type="number" value="100"></div>
+<div><label for="i4">Operating expense</label><input id="i4" type="number" value="200"></div>
+<div><label for="i5">Provision</label><input id="i5" type="number" value="50"></div>
+<div><label for="i6">Tax</label><input id="i6" type="number" value="40"></div>
+</div><div id="wf" style="margin-top:14px" aria-live="polite"></div></div>
+</section>
+
+<section id="ecl"><h2>Provision &amp; expected credit loss</h2>
+<p>Loan tidak selalu menghasilkan profit karena ada risiko debitur gagal bayar. <b>Provision</b> adalah beban yang mencerminkan estimasi kerugian kredit yang diharapkan sesuai kerangka akuntansi yang berlaku, dan dampaknya profit turun. ECL bersifat <i>forward-looking</i>: bukan cuma "sudah gagal bayar atau belum", tapi berapa kerugian yang diperkirakan terjadi berdasarkan data historis, kondisi saat ini, dan informasi ekonomi ke depan.</p>
+<div class="f">ECL ≈ PD × LGD × EAD</div>
+<div class="g">
+<div class="card"><b>PD</b> (Probability of Default): kemungkinan debitur default.</div>
+<div class="card"><b>LGD</b> (Loss Given Default): persentase rugi saat default, setelah recovery/collateral.</div>
+<div class="card"><b>EAD</b> (Exposure at Default): besar exposure saat default.</div>
+</div>
+<p style="color:var(--mute);font-size:.9rem">Ini penyederhanaan untuk memahami konsep, bukan formula lengkap semua situasi akuntansi.</p>
+<div class="card"><div class="ins">
+<div><label for="pd">PD (%)</label><input id="pd" type="number" value="5"></div>
+<div><label for="lgd">LGD (%)</label><input id="lgd" type="number" value="40"></div>
+<div><label for="ead">EAD (Rp juta)</label><input id="ead" type="number" value="1000"></div>
+</div><p style="margin-top:12px"><b>ECL ≈ Rp <span id="eclo">20</span> juta</b></p></div>
+</section>
+
+<section id="npl"><h2>Loan → NPL → Provision → Profit</h2>
+<div class="chain"><span>Bank beri loan</span><i>→</i><span>Loan tumbuh</span><i>→</i><span>Credit quality</span><i>→</i><span class="r">Memburuk: NPL</span><i>→</i><span class="r">Expected loss naik</span><i>→</i><span class="r">Provision</span><i>→</i><span class="r">Profit turun</span></div>
+<p><b>NPL</b> (Non-Performing Loan) adalah kredit yang masuk kategori bermasalah sesuai definisi/regulasi yang berlaku. Pertumbuhan kredit tidak otomatis berarti profit makin besar. Yang penting adalah <b>quality of growth</b>. NPL dibahas lebih dalam di Sesi 3 (risiko) dan Sesi 4 (rasio).</p></section>
+
+<section id="baca"><h2>Cara baca laporan keuangan bank</h2>
+<p>Pegang annual report bank? Jangan langsung lihat ROE. Ikuti urutan ini:</p>
+<ol class="steps">
+<li><b>Balance sheet</b>: total assets, loans, securities, deposits, borrowings, equity.</li>
+<li><b>Asset quality</b>: NPL, loan growth, provision, credit cost.</li>
+<li><b>Income</b>: interest income, interest expense, NII, fee income.</li>
+<li><b>Expense</b>: operating expenses, personnel cost, cost efficiency.</li>
+<li><b>Profitability</b>: net income, ROA, ROE, NIM.</li>
+<li><b>Capital &amp; liquidity</b>: capital adequacy, metrik likuiditas.</li>
+</ol>
+<h3>Tiga laporan saling terhubung</h3>
+<p>Balance sheet (apa yang dimiliki dan bagaimana dibiayai) → income statement (pendapatan, biaya, profit) → cash flow (perubahan posisi kas). Laba ditahan menambah retained earnings, lalu equity naik. Net income tidak selalu sama dengan cash, dan cash flow bank tidak boleh dibaca dengan pola pikir manufaktur karena deposit, loan, securities, dan funding adalah bagian model bisnisnya.</p>
+<div class="chain"><span>Aktivitas bisnis</span><i>→</i><span>Revenue &amp; expense</span><i>→</i><span>Net income</span><i>→</i><span>Retained earnings</span><i>→</i><span>Equity</span></div>
+</section>
+
+<section id="salah"><h2>Hal yang sering salah dipahami</h2>
+<div class="card"><p><span class="no">✗ "Deposit adalah aset bank."</span><br>Deposit = liability, karena bank punya kewajiban ke nasabah.</p>
+<p><span class="no">✗ "Loan adalah revenue."</span><br>Loan = asset. Bunganya yang jadi interest income.</p>
+<p><span class="no">✗ "Semakin tinggi loan pasti semakin bagus."</span><br>Lihat loan growth + loan quality + profitability + capital + liquidity.</p>
+<p><span class="no">✗ "Provision berarti bank sudah kehilangan uang sebesar provision."</span><br>Provision adalah pengakuan akuntansi atas estimasi kerugian, tidak sesederhana uang yang sudah hilang.</p>
+<p><span class="no">✗ "Net income menunjukkan cash bank."</span><br>Net income hasil akuntansi. Posisi kas dianalisis lewat balance sheet dan cash flow.</p></div>
+<h3>Rumus wajib hafal</h3>
+<div class="f">Equity = Assets − Liabilities</div>
+<div class="f" style="font-size:1.05rem">Profit ≈ NII + Non-Interest Income − Operating Expenses − Credit Costs − Tax</div>
+</section>
+
+<section id="recall"><h2>Active recall</h2>
+<p>Jawab dulu tanpa lihat materi, baru buka jawabannya.</p>
+<details><summary>1. Kenapa deposito nasabah dicatat sebagai liability bagi bank?</summary><p>Karena bank punya kewajiban mengembalikan dana itu ke nasabah. Uangnya masuk sebagai cash (asset), tapi bukan milik bank.</p></details>
+<details><summary>2. Kenapa kredit yang diberikan dicatat sebagai asset?</summary><p>Karena bank punya hak tagih atas pokok dan bunga yang diharapkan menghasilkan pendapatan.</p></details>
+<details><summary>3. Interest income Rp800 M, interest expense Rp300 M. Berapa NII?</summary><p><b>Rp500 M</b> (800 − 300).</p></details>
+<details><summary>4. Assets Rp20 T, Liabilities Rp18 T. Berapa Equity?</summary><p><b>Rp2 T</b> (20 − 18).</p></details>
+<details><summary>5. Beda interest income dan interest expense?</summary><p>Interest income = bunga yang diterima dari aset (kredit, securities, placements). Interest expense = bunga yang dibayar atas dana yang dihimpun (deposito, borrowings).</p></details>
+<details><summary>6. Apa itu earning assets?</summary><p>Aset yang menghasilkan pendapatan, seperti loans, securities, dan sebagian placements.</p></details>
+<details><summary>7. Hubungan NPL → Provision → Profit?</summary><p>NPL naik → expected loss naik → provision (credit cost) naik → profit turun.</p></details>
+<details><summary>8. Beda Balance Sheet dan Income Statement?</summary><p>Balance sheet = posisi aset, liabilitas, equity pada satu titik waktu. Income statement = pendapatan, biaya, dan profit selama satu periode.</p></details>
+<details><summary>9. Interest income Rp1 T, interest expense Rp400 M, fee Rp150 M, opex Rp300 M, provision Rp100 M. Berapa PBT?</summary><p>NII = 1.000 − 400 = 600. Operating income = 600 + 150 = 750. PBT = 750 − 300 − 100 = <b>Rp350 M</b>.</p></details>
+<details><summary>10. Kenapa analisis bank tidak cukup hanya lihat Net Income?</summary><p>Net income adalah hasil akuntansi dan bisa tertekan atau tertolong credit cost. Perlu juga cek asset quality, loan growth, capital, liquidity, dan cash flow untuk tahu kualitas pertumbuhan dan ketahanan bank.</p></details>
+</section>
+<footer>Ringkasan Fundamental of Banking, Sesi 2. Semua rumus adalah penyederhanaan konseptual.</footer>
+</main></div>
+<script>
+(function(){
+var T=[
+["Pemilik setor modal Rp100 M: cash naik, equity naik.",{c:100,e:100}],
+["Nasabah menabung Rp500 M: cash naik, deposits naik.",{c:500,d:500}],
+["Bank beri kredit Rp300 M: cash turun, loans naik. Total aset tetap.",{c:-300,l:300}],
+["Bank terima bunga Rp30 M: cash naik, interest income menambah profit dan equity.",{c:30,e:30}],
+["Bank bayar bunga deposito Rp10 M: cash turun, interest expense menurunkan profit dan equity.",{c:-10,e:-10}],
+["Bank catat provision Rp20 M: credit loss expense naik, nilai bersih loan turun, profit turun.",{l:-20,e:-20}]];
+var s,i=0;
+function $(x){return document.getElementById(x)}
+function f(n){return n.toLocaleString("id-ID")}
+function reset(){s={c:0,l:0,d:0,e:0};i=0;$("s-log").textContent="Belum ada transaksi.";$("s-next").disabled=false;draw()}
+function draw(){
+$("s-cash").textContent=f(s.c);$("s-loan").textContent=f(s.l);$("s-dep").textContent=f(s.d);$("s-eq").textContent=f(s.e);
+var a=s.c+s.l,r=s.d+s.e;$("s-ta").textContent=f(a);$("s-tle").textContent=f(r);
+$("s-chk").textContent=f(a)+" = "+f(s.d)+" + "+f(s.e)+(a===r?", balance":", TIDAK balance")}
+$("s-next").onclick=function(){
+if(i>=T.length)return;var t=T[i][1];
+["c","l","d","e"].forEach(function(k){s[k]+=t[k]||0});
+$("s-log").textContent="Transaksi "+(i+1)+": "+T[i][0];i++;
+if(i>=T.length)$("s-next").disabled=true;draw()};
+$("s-reset").onclick=reset;reset();
+function is(){
+var v=[1,2,3,4,5,6].map(function(n){return +$("i"+n).value||0});
+var nii=v[0]-v[1],oi=nii+v[2],ob=oi-v[3],pbt=ob-v[4],ni=pbt-v[5];
+var rows=[["Interest income",v[0]],["Interest expense",-v[1]],["Net interest income",nii],["Non-interest income",v[2]],["Operating income",oi],["Operating expense",-v[3]],["Credit provision",-v[4]],["Profit before tax",pbt],["Tax",-v[5]],["Net income",ni]];
+var m=Math.max.apply(null,rows.map(function(r){return Math.abs(r[1])}))||1;
+$("wf").innerHTML=rows.map(function(r){var w=Math.max(Math.abs(r[1])/m*100,0.5);
+var b=/income$|Profit|Net|Operating income/.test(r[0])&&r[0]!=="Interest expense";
+return '<div class="wf"><span'+(b?' style="font-weight:700"':'')+'>'+r[0]+'</span><div><div class="bar'+(r[1]<0?' neg':'')+'" style="width:'+w+'%"></div></div><span style="text-align:right;font-variant-numeric:tabular-nums">'+f(r[1])+'</span></div>'}).join("")}
+for(var n=1;n<=6;n++)$("i"+n).oninput=is;is();
+function ecl(){var x=(+$("pd").value||0)/100*(+$("lgd").value||0)/100*(+$("ead").value||0);$("eclo").textContent=f(Math.round(x*100)/100)}
+["pd","lgd","ead"].forEach(function(k){$(k).oninput=ecl});ecl();
+var links=document.querySelectorAll("nav a"),secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute("href"))});
+function spy(){var y=window.scrollY+120,c=0;secs.forEach(function(e,k){if(e.offsetTop<=y)c=k});links.forEach(function(a,k){a.classList.toggle("on",k===c)})}
+window.addEventListener("scroll",spy,{passive:true});spy();
+})();
+</script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

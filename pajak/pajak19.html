@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPh Orang Pribadi - Studi Kasus Bapak Andi Pratama</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+            --success-color: #48bb78;
+            --warning-color: #ed8936;
+            --danger-color: #f56565;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 15px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            margin-bottom: 40px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        section h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(49, 130, 206, 0.1);
+        }
+
+        .highlight-row {
+            background-color: rgba(72, 187, 120, 0.1) !important;
+        }
+
+        .total-row {
+            background-color: rgba(49, 130, 206, 0.2) !important;
+            font-weight: bold;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Calculation Blocks */
+        .calculation {
+            background-color: #f0f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 3px solid var(--accent-color);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Answer Blocks */
+        .answer {
+            background-color: #e6fffa;
+            border: 2px solid var(--success-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .answer h3 {
+            color: var(--success-color);
+        }
+
+        /* Question Blocks */
+        .question {
+            background-color: #fffaf0;
+            border: 2px solid var(--warning-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .question h3 {
+            color: var(--warning-color);
+        }
+
+        /* Important Notes */
+        .important {
+            background-color: #ffe6e6;
+            border-left: 4px solid var(--danger-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .important strong {
+            color: var(--danger-color);
+        }
+
+        /* Two Column Layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 5px 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, footer {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            section {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .badge-final {
+            background-color: rgba(49, 130, 206, 0.2);
+            color: var(--accent-color);
+        }
+
+        .badge-nonfinal {
+            background-color: rgba(72, 187, 120, 0.2);
+            color: var(--success-color);
+        }
+
+        .badge-bukan-objek {
+            background-color: rgba(245, 101, 101, 0.2);
+            color: var(--danger-color);
+        }
+
+        .badge-dn {
+            background-color: rgba(72, 187, 120, 0.2);
+            color: var(--success-color);
+        }
+
+        .badge-ln {
+            background-color: rgba(245, 101, 101, 0.2);
+            color: var(--danger-color);
+        }
+
+        /* Summary Cards */
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .summary-card h3 {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .info-box strong {
+            color: var(--primary-color);
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#pengantar" class="active">Pengantar</a></li>
+                <li><a href="#subjek">Subjek Pajak</a></li>
+                <li><a href="#objek">Objek Pajak</a></li>
+                <li><a href="#ptkp">PTKP & Tarif</a></li>
+                <li><a href="#spt">SPT PPh OP</a></li>
+                <li><a href="#kasus">Studi Kasus</a></li>
+                <li><a href="#jawaban">Kunci Jawaban</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Pajak Penghasilan Orang Pribadi</h1>
+            <p>Panduan Lengkap dengan Studi Kasus Bapak Andi Pratama</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- PENGANTAR -->
+        <section id="pengantar">
+            <h2>📋 Pengantar PPh Orang Pribadi</h2>
+            <p><strong>Pajak Penghasilan Orang Pribadi (PPh OP)</strong> adalah pajak yang dikenakan atas penghasilan yang diterima atau diperoleh oleh orang pribadi, baik dari dalam negeri maupun luar negeri, sesuai dengan ketentuan perpajakan yang berlaku.</p>
+        </section>
+
+        <!-- SUBJEK PAJAK -->
+        <section id="subjek">
+            <h2>👥 Subjek Pajak</h2>
+
+            <p><strong>Subjek Pajak</strong> adalah pihak-pihak baik orang pribadi maupun badan yang memenuhi syarat untuk membayar kewajiban perpajakannya setiap masa ataupun setiap satu tahun pajak.</p>
+
+            <h3>A. Jenis Subjek Pajak Orang Pribadi</h3>
+            <ol>
+                <li><strong>Orang Pribadi:</strong> Orang yang bertempat tinggal atau berada di dalam negeri maupun luar negeri.</li>
+                <li><strong>Warisan:</strong> Warisan yang belum terbagi sebagai satu kesatuan, menggantikan mereka yang berhak (ahli waris).</li>
+            </ol>
+
+            <h3>B. Kelompok Subjek Pajak</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>🏡 Subjek Pajak Dalam Negeri (DN)</h4>
+                    <p>Orang pribadi yang:</p>
+                    <ul>
+                        <li>Bertempat tinggal di Indonesia, <strong>atau</strong></li>
+                        <li>Berada di Indonesia <strong>lebih dari 183 hari</strong> dalam jangka waktu 12 bulan, <strong>atau</strong></li>
+                        <li>Mempunyai niat untuk bertempat tinggal di Indonesia.</li>
+                    </ul>
+                    <div class="important">
+                        <strong>Perlakuan:</strong>
+                        <ul>
+                            <li>Dikenakan pajak atas penghasilan dari <strong>dalam dan luar negeri</strong></li>
+                            <li>Dikenakan pajak berdasarkan <strong>penghasilan neto</strong> dengan tarif umum</li>
+                            <li>Wajib menyampaikan SPT setiap tahun pajak (maksimal bulan ketiga)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>🌍 Subjek Pajak Luar Negeri (LN)</h4>
+                    <p>Orang pribadi yang:</p>
+                    <ul>
+                        <li>Tidak bertempat tinggal di Indonesia, <strong>dan</strong></li>
+                        <li>Berada di Indonesia <strong>kurang dari 183 hari</strong> dalam jangka waktu 12 bulan.</li>
+                    </ul>
+                    <div class="info-box">
+                        <strong>Perlakuan:</strong>
+                        <ul>
+                            <li>Dikenakan pajak <strong>hanya atas penghasilan yang berasal dari Indonesia</strong></li>
+                            <li>Dikenakan pajak berdasarkan <strong>bruto</strong> dengan tarif sepadan</li>
+                            <li>Tidak wajib menyampaikan SPT (kewajiban bersifat final)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>C. Yang Tidak Termasuk Subjek Pajak</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>🎓 Diplomat</h4>
+                    <p>Pejabat perwakilan diplomatik, konsulat, atau lainnya dari negara asing.</p>
+                    <p><strong>Syarat:</strong></p>
+                    <ul>
+                        <li>Bukan Warga Negara Indonesia (WNI)</li>
+                        <li>Di Indonesia tidak menerima penghasilan lain</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>🌐 Perwakilan Organisasi Internasional</h4>
+                    <p>Perwakilan organisasi internasional yang ditetapkan oleh Keputusan Menteri Keuangan.</p>
+                    <p><strong>Syarat:</strong></p>
+                    <ul>
+                        <li>Bukan WNI</li>
+                        <li>Tidak menjalankan usaha dan/atau pekerjaan di Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBJEK PAJAK -->
+        <section id="objek">
+            <h2>💰 Objek Pajak</h2>
+
+            <p><strong>Objek pajak</strong> adalah penghasilan yang masuk dalam kategori yang terkena pajak, baik dari dalam negeri maupun luar negeri, yang bertujuan untuk dikonsumsi atau menambah kekayaan dalam bentuk apapun.</p>
+
+            <h3>A. Jenis Objek Pajak</h3>
+            <ol>
+                <li><strong>Penghasilan dari pekerjaan</strong> (gaji, upah, honorarium, tunjangan, bonus, THR, dll.)</li>
+                <li><strong>Penghasilan dari modal dan/atau investasi</strong> (keuntungan penjualan harta, bunga, dividen, royalti, sewa, dll.)</li>
+                <li><strong>Penghasilan lain-lain</strong> (hadiah undian, keuntungan selisih kurs, dll.)</li>
+            </ol>
+
+            <h3>B. Penghasilan dari Pekerjaan</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>💼 Penggantian atau Imbalan</h4>
+                    <p>Berhubungan dengan pekerjaan atau jasa:</p>
+                    <ul>
+                        <li>Gaji</li>
+                        <li>Upah</li>
+                        <li>Honorarium</li>
+                        <li>Tunjangan</li>
+                        <li>Komisi</li>
+                        <li>Bonus</li>
+                        <li>THR</li>
+                        <li>Gratifikasi</li>
+                        <li>Uang pensiun</li>
+                        <li>Bentuk lainnya (kecuali ditentukan lain)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>🎁 Hadiah</h4>
+                    <p>Sehubungan dengan pekerjaan, kegiatan, atau penghargaan.</p>
+                    <p><em>Contoh: Hadiah uang karena memenangkan kompetisi kerja.</em></p>
+                </div>
+            </div>
+
+            <h3>C. Penghasilan dari Usaha/Pekerjaan Bebas</h3>
+            <ul>
+                <li><strong>Laba usaha</strong></li>
+                <li><strong>Iuran</strong></li>
+            </ul>
+
+            <h3>D. Penghasilan dari Modal dan/atau Investasi</h3>
+            <ol>
+                <li>Keuntungan karena penjualan atau pengalihan harta</li>
+                <li>Bunga (termasuk diskonto, premium, imbalan jaminan pengembalian utang)</li>
+                <li>Dividen (dengan nama dan bentuk apapun)</li>
+                <li>Royalti atau imbalan atas penggunaan hak</li>
+                <li>Sewa dan penghasilan lain sehubungan dengan penggunaan harta</li>
+            </ol>
+
+            <h3>E. Penghasilan Lain-Lain</h3>
+            <ol>
+                <li>Hadiah dari undian</li>
+                <li>Penerimaan kembali pembayaran pajak yang telah dibebankan sebagai biaya</li>
+                <li>Penerimaan atau pembayaran yang diperoleh secara berkala</li>
+                <li>Keuntungan karena pembebasan utang</li>
+                <li>Keuntungan karena selisih kurs</li>
+                <li>Tambahan kekayaan yang berasal dari penghasilan belum dikenakan pajak</li>
+                <li>Penghasilan dari usaha berbasis syariah</li>
+                <li>Imbalan bunga (UU KUP)</li>
+                <li>Surplus Bank Indonesia</li>
+            </ol>
+        </section>
+
+        <!-- JENIS PENGHASILAN -->
+        <section>
+            <h2>📊 Jenis Penghasilan</h2>
+
+            <p>Secara harfiah, jenis penghasilan menurut pajak dibagi menjadi tiga:</p>
+
+            <div class="two-columns">
+                <div>
+                    <h3>🔹 Pasal 4(1)</h3>
+                    <p><strong>Penghasilan non-final</strong> - Setiap penambahan kemampuan ekonomis yang diterima atau diperoleh wajib pajak.</p>
+                    <p><strong>Dapat dikreditkan</strong> dengan pajak penghasilan lainnya.</p>
+                    <p><strong>Contoh:</strong> Gaji, laba usaha, keuntungan penjualan harta, dll.</p>
+                </div>
+                <div>
+                    <h3>🔹 Pasal 4(2)</h3>
+                    <p><strong>Penghasilan final</strong> - Pajak yang telah dikenakan dengan tarif DPP tertentu.</p>
+                    <p><strong>Tidak dapat dikreditkan</strong> dengan PPh terutang.</p>
+                    <p><strong>Contoh:</strong> Bunga deposito, hadiah undian, transaksi saham, pengalihan harta, dll.</p>
+                </div>
+            </div>
+
+            <h3>📌 Penghasilan Pasal 4(2) - Final</h3>
+            <ol>
+                <li>Bunga deposito, tabungan, obligasi, surat utang negara, simpanan koperasi</li>
+                <li>Hadiah undian</li>
+                <li>Transaksi saham, sekuritas, derivatif di bursa, pengalihan penyertaan modal</li>
+                <li>Transaksi pengalihan harta (tanah/bangunan, jasa konstruksi, real estate, persewaan)</li>
+                <li>Penghasilan tertentu lainnya</li>
+            </ol>
+
+            <h3>📌 Penghasilan Pasal 4(1) - Non-Final</h3>
+            <ol>
+                <li>Penggantian/imbalan pekerjaan (gaji, upah, tunjangan, dll.)</li>
+                <li>Hadiah dari undian/pekerjaan/kegiatan dan penghargaan</li>
+                <li>Laba usaha</li>
+                <li>Keuntungan penjualan/pengalihan harta</li>
+                <li>Bunga, dividen, royalti, sewa</li>
+                <li>Keuntungan selisih kurs, pembebasan utang</li>
+            </ol>
+
+            <h3>🚫 Penghasilan Pasal 4(3) - Bukan Objek Pajak (Negative List)</h3>
+            <div class="two-columns">
+                <div>
+                    <ul>
+                        <li>Bantuan atau sumbangan</li>
+                        <li>Harta hibahan</li>
+                        <li>Warisan</li>
+                        <li>Harta setor tunai</li>
+                        <li>Penggantian/imbalan dalam bentuk natura/kenikmatan</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>Pembayaran dari asuransi</li>
+                        <li>Dividen/bagian laba (dengan syarat)</li>
+                        <li>Iuran</li>
+                        <li>Penghasilan dari modal ventura</li>
+                        <li>Beasiswa</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PTKP & TARIF -->
+        <section id="ptkp">
+            <h2>💳 PTKP & Tarif PPh Orang Pribadi</h2>
+
+            <h3>A. Penghasilan Tidak Kena Pajak (PTKP)</h3>
+            <p>PTKP merupakan penghasilan minimum yang <strong>tidak dikenakan pajak</strong>.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WP Orang Pribadi (TK/0)</td>
+                        <td class="text-right">Rp54.000.000/tahun</td>
+                    </tr>
+                    <tr>
+                        <td>Tambahan karena kawin</td>
+                        <td class="text-right">Rp4.500.000</td>
+                    </tr>
+                    <tr>
+                        <td>Tambahan per tanggungan</td>
+                        <td class="text-right">Rp4.500.000/orang</td>
+                    </tr>
+                    <tr class="important">
+                        <td>Maksimal tanggungan</td>
+                        <td class="text-right"><strong>3 orang</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>B. Status Wajib Pajak (Suami-Istri)</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>👨‍👩‍👧‍👦 KK (Kepala Keluarga)</h4>
+                    <p>Suami-istri <strong>tidak menghendaki</strong> pelaporan terpisah.</p>
+                    <p>Istri menggunakan NPWP suami.</p>
+                    <p>Penghasilan digabungkan.</p>
+                </div>
+                <div>
+                    <h4>👨‍👩‍👧‍👦 HB (Hidup Berpisah)</h4>
+                    <p>Penghasilan dikenai pajak <strong>terpisah</strong>.</p>
+                    <p>Berdasarkan keputusan hakim.</p>
+                </div>
+            </div>
+
+            <div class="two-columns">
+                <div>
+                    <h4>💼 PH (Pemisahan Harta)</h4>
+                    <p>Penghasilan dikenai pajak <strong>terpisah</strong>.</p>
+                    <p>Berdasarkan kehendak tertulis pemisahan harta.</p>
+                </div>
+                <div>
+                    <h4>👩 MT (Memilih Terpisah)</h4>
+                    <p>Penghasilan istri dikenai pajak <strong>terpisah</strong>.</p>
+                    <p>Berdasarkan kehendak istri.</p>
+                </div>
+            </div>
+
+            <h3>C. Tarif PPh Orang Pribadi (Progresif)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lapisan Penghasilan Kena Pajak</th>
+                        <th class="text-center">Tarif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sampai dengan Rp60.000.000</td>
+                        <td class="text-center">5%</td>
+                    </tr>
+                    <tr>
+                        <td>Di atas Rp60.000.000 s.d. Rp250.000.000</td>
+                        <td class="text-center">15%</td>
+                    </tr>
+                    <tr>
+                        <td>Di atas Rp250.000.000 s.d. Rp500.000.000</td>
+                        <td class="text-center">25%</td>
+                    </tr>
+                    <tr>
+                        <td>Di atas Rp500.000.000 s.d. Rp5.000.000.000</td>
+                        <td class="text-center">30%</td>
+                    </tr>
+                    <tr>
+                        <td>Di atas Rp5.000.000.000</td>
+                        <td class="text-center">35%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Catatan: Tarif dikenakan secara progresif (bertahap) sesuai lapisan PKP.</em></p>
+        </section>
+
+        <!-- PEMBUKUAN & PENCATATAN -->
+        <section>
+            <h2>📒 Pembukuan & Pencatatan</h2>
+
+            <h3>A. Pembukuan</h3>
+            <p><strong>Pembukuan</strong> adalah proses pencatatan yang dilakukan secara teratur untuk mengumpulkan data keuangan (harta, kewajiban, modal, pendapatan, biaya).</p>
+            <p><strong>Output:</strong> Laporan keuangan untuk pelaporan SPT PPh.</p>
+
+            <h4>Syarat Penyelenggaraan:</h4>
+            <ol>
+                <li>Dengan itikad baik dan mencerminkan keadaan usaha yang sebenarnya</li>
+                <li>Di Indonesia, menggunakan huruf latin, mata uang rupiah, Bahasa Indonesia/asing (dengan izin Menkeu)</li>
+                <li>Dengan prinsip taat asas</li>
+            </ol>
+
+            <h4>Isi Pembukuan:</h4>
+            <ul>
+                <li>Catatan harta, kewajiban, modal, pendapatan, biaya</li>
+                <li>Catatan penjualan dan pembelian</li>
+            </ul>
+
+            <h3>B. Pencatatan</h3>
+            <p><strong>Pencatatan</strong> adalah pengumpulan data tentang peredaran/penerimaan bruto untuk menghitung pajak terutang.</p>
+
+            <h4>Syarat Penyelenggaraan:</h4>
+            <ol>
+                <li>Menggambarkan peredaran/penerimaan bruto</li>
+                <li>Menggambarkan penghasilan bukan objek pajak atau final</li>
+                <li>Untuk WP dengan >1 jenis usaha: mencantumkan keseluruhan jenis usaha</li>
+                <li>Wajib mencantumkan harta dan kewajiban (utang)</li>
+            </ol>
+
+            <h3>C. Kewajiban Pembukuan/Pencatatan</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>📊 Wajib Pembukuan</h4>
+                    <p>WP Orang Pribadi dengan:</p>
+                    <ul>
+                        <li>Omset (peredaran bruto) <strong>lebih dari Rp4,8 Milyar</strong> per tahun</li>
+                        <li>Melakukan kegiatan usaha/pekerjaan bebas</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>📝 Wajib Pencatatan</h4>
+                    <p>WP Orang Pribadi dengan:</p>
+                    <ul>
+                        <li>Omset <strong>kurang dari Rp4,8 Milyar</strong></li>
+                        <li>Dapat menggunakan norma penghitungan penghasilan neto</li>
+                        <li>Wajib memberitahukan ke DJP (jatuh tempo: 3 bulan pertama tahun pajak)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPT PPh OP -->
+        <section id="spt">
+            <h2>📄 SPT PPh Orang Pribadi</h2>
+
+            <h3>A. Perbedaan E-Filing dan E-Form</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>💻 E-Filing</h4>
+                    <p>Pengisian dan penyampaian SPT <strong>secara online</strong> di:</p>
+                    <ul>
+                        <li>Situs DJP Online</li>
+                        <li>Aplikasi ASP (Application Service Provider)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>📋 E-Form</h4>
+                    <p>Pengisian dan penyampaian SPT menggunakan <strong>file elektronik</strong> (PDF/Adobe Reader).</p>
+                    <p>Mendapatkan <strong>kode token</strong> via email terdaftar.</p>
+                    <p>Pengisian menggunakan laptop/komputer.</p>
+                </div>
+            </div>
+
+            <h3>B. Jenis SPT PPh OP</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis SPT</th>
+                        <th>Kriteria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SPT 1770</strong></td>
+                        <td>Untuk WP dengan penghasilan dari usaha/pekerjaan bebas (warung, salon, dokter, konsultan, notaris)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SPT 1770 S</strong></td>
+                        <td>Untuk WP dengan penghasilan dari satu/lebih pemberi kerja, minimal penghasilan bruto Rp60 juta/tahun</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SPT 1770 SS</strong></td>
+                        <td>Untuk WP dengan penghasilan dari <strong>satu pemberi kerja</strong>, maksimal penghasilan bruto Rp60 juta/tahun</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>C. Isi SPT Menurut Jenis</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>📄 SPT 1770</h4>
+                    <ul>
+                        <li>Isi tahun pajak, NPWP, penghasilan</li>
+                        <li>Lampiran 1: Penyesuaian fiskal positif/negatif</li>
+                        <li>Lampiran 2: Kredit pajak (PPh 21, 22, 23, 24, 25, 26)</li>
+                        <li>Lampiran 3: Penghasilan final, bukan objek pajak, penghasilan terpisah</li>
+                        <li>Lampiran 4: Pembukuan/Pencatatan</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>📄 SPT 1770 S & 1770 SS</h4>
+                    <ul>
+                        <li>Pengurang penghasilan bruto (biaya jabatan, iuran pensiun/JHT)</li>
+                        <li>PTKP (dihitung otomatis)</li>
+                        <li>Pajak yang dipotong perusahaan (bukti potong)</li>
+                        <li>DPP (penghasilan final)</li>
+                        <li>Penghasilan bukan objek pajak</li>
+                        <li>Tanda tangan WP</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>D. Dokumen yang Perlu Disiapkan</h3>
+            <ul>
+                <li>Peredaran bruto (untuk UMKM omset ≤ Rp4,8M)</li>
+                <li>Laporan keuangan (untuk pekerja bebas: notaris, penulis, dll.)</li>
+                <li>Jumlah penghasilan, PPh Pasal 25, Pemberitahuan norma (untuk usahawan omset > Rp4,8M)</li>
+            </ul>
+
+            <h3>E. Kode Harta & Utang</h3>
+            <h4>Kode Harta:</h4>
+            <div class="two-columns">
+                <div>
+                    <table>
+                        <tbody>
+                            <tr><td>011</td><td>Uang Tunai</td></tr>
+                            <tr><td>012</td><td>Tabungan</td></tr>
+                            <tr><td>013</td><td>Giro</td></tr>
+                            <tr><td>014</td><td>Deposito</td></tr>
+                            <tr><td>019</td><td>Setara kas lainnya</td></tr>
+                            <tr><td>021</td><td>Piutang</td></tr>
+                            <tr><td>022</td><td>Piutang afiliasi</td></tr>
+                            <tr><td>029</td><td>Piutang lainnya</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr><td>031</td><td>Saham (untuk dijual)</td></tr>
+                            <tr><td>032</td><td>Saham</td></tr>
+                            <tr><td>033</td><td>Obligasi perusahaan</td></tr>
+                            <tr><td>034</td><td>Obligasi Pemerintah</td></tr>
+                            <tr><td>035</td><td>Surat utang lainnya</td></tr>
+                            <tr><td>036</td><td>Reksadana</td></tr>
+                            <tr><td>037</td><td>Instrumen derivative</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="two-columns">
+                <div>
+                    <table>
+                        <tbody>
+                            <tr><td>038</td><td>Penyertaan modal (CV, Firma)</td></tr>
+                            <tr><td>039</td><td>Investasi lainnya</td></tr>
+                            <tr><td>041</td><td>Sepeda</td></tr>
+                            <tr><td>042</td><td>Sepeda motor</td></tr>
+                            <tr><td>043</td><td>Mobil</td></tr>
+                            <tr><td>049</td><td>Alat transportasi lain</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr><td>051</td><td>Logam mulia</td></tr>
+                            <tr><td>052</td><td>Batu mulia</td></tr>
+                            <tr><td>053</td><td>Barang seni/antik</td></tr>
+                            <tr><td>054</td><td>Kapal pesiar, pesawat</td></tr>
+                            <tr><td>055</td><td>Peralatan elektronik, furniture</td></tr>
+                            <tr><td>059</td><td>Harta bergerak lainnya</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <table>
+                    <tbody>
+                        <tr><td>061</td><td>Tanah/bangunan untuk tinggal</td></tr>
+                        <tr><td>062</td><td>Tanah/bangunan untuk usaha</td></tr>
+                        <tr><td>063</td><td>Tanah usaha (perkebunan)</td></tr>
+                        <tr><td>069</td><td>Harta tidak bergerak lainnya</td></tr>
+                        <tr><td>071</td><td>Paten</td></tr>
+                        <tr><td>072</td><td>Royalti</td></tr>
+                        <tr><td>073</td><td>Merek dagang</td></tr>
+                        <tr><td>079</td><td>Harta tidak berwujud lainnya</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Kode Utang:</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kode</th>
+                        <th>Jenis Utang</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>101</td><td>Utang Bank/Lembaga Bukan Bank (KPR, Leasing)</td></tr>
+                    <tr><td>102</td><td>Kartu kredit</td></tr>
+                    <tr><td>103</td><td>Utang afiliasi</td></tr>
+                    <tr><td>109</td><td>Utang lainnya</td></tr>
+                </tbody>
+            </table>
+            <p><em>Catatan: Pengisian SPT dimulai dari lampiran terakhir (Lampiran 2 → Lampiran 1 → Induk SPT).</em></p>
+        </section>
+
+        <!-- STUDI KASUS -->
+        <section id="kasus">
+            <div class="summary-card">
+                <h2>📋 STUDI KASUS PPh ORANG PRIBADI</h2>
+                <h3>Bapak Andi Pratama — Karyawan dan Pengusaha</h3>
+                <p>Warga Negara Indonesia | Tinggal di Jakarta | NPWP Aktif | >183 hari di Indonesia (2026)</p>
+                <p>Status: Menikah (Ibu Sinta) | 2 Anak | Pembukuan untuk usaha</p>
+            </div>
+
+            <h2>📊 Data Penghasilan Tahun 2026</h2>
+
+            <h3>A. Penghasilan dari Pekerjaan (Karyawan)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Keterangan</th>
+                        <th class="text-right">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gaji setahun</td>
+                        <td class="text-right">Rp240.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Tunjangan</td>
+                        <td class="text-right">Rp24.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>THR</td>
+                        <td class="text-right">Rp20.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Bonus</td>
+                        <td class="text-right">Rp16.000.000</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Total Penghasilan Bruto</strong></td>
+                        <td class="text-right"><strong>Rp300.000.000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>PPh Pasal 21 yang dipotong</td>
+                        <td class="text-right">(Rp18.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Iuran pensiun/JHT (pengurang)</td>
+                        <td class="text-right">(Rp6.000.000)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>B. Penghasilan dari Usaha (Perdagangan Komputer)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Keterangan</th>
+                        <th class="text-right">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Peredaran usaha</td>
+                        <td class="text-right">Rp1.500.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Harga pokok penjualan</td>
+                        <td class="text-right">(Rp900.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Beban gaji pegawai</td>
+                        <td class="text-right">(Rp150.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Beban listrik dan internet</td>
+                        <td class="text-right">(Rp50.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Beban sewa toko</td>
+                        <td class="text-right">(Rp60.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Beban penyusutan</td>
+                        <td class="text-right">(Rp40.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Biaya pribadi pemilik</td>
+                        <td class="text-right">(Rp30.000.000)</td>
+                    </tr>
+                    <tr>
+                        <td>Denda pajak</td>
+                        <td class="text-right">(Rp10.000.000)</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td><strong>Total Beban</strong></td>
+                        <td class="text-right"><strong>(Rp1.240.000.000)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="important">
+                <strong>Catatan Fiskal:</strong>
+                <ul>
+                    <li>Biaya pribadi pemilik <strong>TIDAK</strong> dapat menjadi pengurang fiskal</li>
+                    <li>Denda pajak <strong>TIDAK</strong> dapat menjadi pengurang fiskal</li>
+                    <li>PPh Pasal 25 yang dibayar: <strong>Rp12.000.000</strong></li>
+                </ul>
+            </div>
+
+            <h3>C. Penghasilan dari Investasi</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sumber</th>
+                        <th>Jumlah</th>
+                        <th>Status Pajak</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bunga deposito</td>
+                        <td class="text-right">Rp20.000.000</td>
+                        <td><span class="badge badge-final">Final (PPh Pasal 4(2))</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dividen saham</td>
+                        <td class="text-right">Rp30.000.000</td>
+                        <td><span class="badge badge-bukan-objek">Bukan Objek Pajak*</span></td>
+                    </tr>
+                    <tr>
+                        <td>Penjualan tanah</td>
+                        <td class="text-right">Rp500.000.000</td>
+                        <td><span class="badge badge-final">Final (PPh Pasal 4(2))</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>*Diasumsikan memenuhi ketentuan pengecualian dividen sebagai objek pajak.</em></p>
+
+            <h3>D. Penghasilan dari Luar Negeri</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sumber</th>
+                        <th class="text-right">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jasa konsultasi (Singapura)</td>
+                        <td class="text-right">Rp80.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>Pajak yang dibayar di Singapura</td>
+                        <td class="text-right">(Rp8.000.000)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Pajak luar negeri memenuhi syarat sebagai <strong>kredit pajak luar negeri (PPh Pasal 24)</strong>.</em></p>
+
+            <h3>E. Harta dan Utang (Akhir Tahun 2026)</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>💰 Harta</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jenis</th>
+                                <th class="text-right">Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Uang tunai</td><td class="text-right">Rp50.000.000</td></tr>
+                            <tr><td>Tabungan</td><td class="text-right">Rp100.000.000</td></tr>
+                            <tr><td>Deposito</td><td class="text-right">Rp200.000.000</td></tr>
+                            <tr><td>Saham</td><td class="text-right">Rp150.000.000</td></tr>
+                            <tr><td>Mobil</td><td class="text-right">Rp250.000.000</td></tr>
+                            <tr><td>Rumah</td><td class="text-right">Rp700.000.000</td></tr>
+                            <tr><td>Peralatan usaha</td><td class="text-right">Rp100.000.000</td></tr>
+                            <tr class="total-row">
+                                <td><strong>Total Harta</strong></td>
+                                <td class="text-right"><strong>Rp1.550.000.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h4>💳 Utang</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jenis</th>
+                                <th class="text-right">Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>KPR</td><td class="text-right">Rp400.000.000</td></tr>
+                            <tr><td>Kredit kendaraan</td><td class="text-right">Rp100.000.000</td></tr>
+                            <tr class="total-row">
+                                <td><strong>Total Utang</strong></td>
+                                <td class="text-right"><strong>Rp500.000.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3>F. Informasi Tambahan</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>📌 PTKP</h4>
+                    <ul>
+                        <li>WP Orang Pribadi: Rp54.000.000</li>
+                        <li>Tambahan kawin: Rp4.500.000</li>
+                        <li>Tambahan per tanggungan: Rp4.500.000</li>
+                        <li>Maksimal tanggungan: 3 orang</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>📈 Tarif PPh OP</h4>
+                    <ul>
+                        <li>Sampai Rp60juta: 5%</li>
+                        <li>Rp60juta - Rp250juta: 15%</li>
+                        <li>Rp250juta - Rp500juta: 25%</li>
+                        <li>Rp500juta - Rp5M: 30%</li>
+                        <li>Di atas Rp5M: 35%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>❓ Pertanyaan</h2>
+
+            <div class="question">
+                <h3>A. Subjek dan Objek Pajak</h3>
+                <ol>
+                    <li>Tentukan apakah Bapak Andi merupakan Subjek Pajak Dalam Negeri atau Subjek Pajak Luar Negeri.</li>
+                    <li>Jelaskan alasan penentuan status tersebut.</li>
+                    <li>Kelompokkan seluruh penghasilan Bapak Andi menjadi:
+                        <ul>
+                            <li>Penghasilan nonfinal;</li>
+                            <li>Penghasilan final;</li>
+                            <li>Penghasilan bukan objek pajak.</li>
+                        </ul>
+                    </li>
+                    <li>Tentukan penghasilan mana yang dapat digabungkan dalam perhitungan PPh tahunan.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>B. Penghasilan dari Pekerjaan</h3>
+                <ol start="5">
+                    <li>Hitung total penghasilan bruto Bapak Andi dari pekerjaan.</li>
+                    <li>Hitung penghasilan neto dari pekerjaan setelah memperhitungkan iuran yang diperbolehkan.</li>
+                    <li>Tentukan jumlah PPh Pasal 21 yang telah dipotong pemberi kerja.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>C. Penghasilan Usaha</h3>
+                <ol start="8">
+                    <li>Hitung laba komersial usaha Bapak Andi.</li>
+                    <li>Tentukan biaya yang harus dikoreksi secara fiskal.</li>
+                    <li>Hitung koreksi fiskal positif.</li>
+                    <li>Tentukan penghasilan neto usaha setelah koreksi fiskal.</li>
+                    <li>Tentukan apakah biaya pribadi pemilik dapat menjadi pengurang.</li>
+                    <li>Tentukan apakah denda pajak dapat menjadi pengurang.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>D. Penghasilan Investasi</h3>
+                <ol start="14">
+                    <li>Tentukan perlakuan pajak atas bunga deposito.</li>
+                    <li>Tentukan perlakuan pajak atas dividen.</li>
+                    <li>Tentukan perlakuan pajak atas pengalihan tanah.</li>
+                    <li>Tentukan penghasilan mana yang harus dimasukkan ke perhitungan PPh dengan tarif progresif.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>E. Penghasilan Luar Negeri</h3>
+                <ol start="18">
+                    <li>Tentukan perlakuan pajak atas penghasilan konsultasi dari Singapura.</li>
+                    <li>Tentukan apakah pajak yang dibayar di Singapura dapat menjadi kredit pajak.</li>
+                    <li>Hitung batas maksimum kredit pajak luar negeri yang dapat dikreditkan.</li>
+                    <li>Tentukan jumlah PPh Pasal 24 yang dapat dikreditkan.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>F. Perhitungan PPh Orang Pribadi</h3>
+                <ol start="22">
+                    <li>Hitung total penghasilan neto yang dikenakan pajak.</li>
+                    <li>Hitung PTKP Bapak Andi.</li>
+                    <li>Hitung Penghasilan Kena Pajak (PKP).</li>
+                    <li>Hitung PPh terutang menggunakan tarif progresif.</li>
+                    <li>Hitung total kredit pajak yang dimiliki Bapak Andi.</li>
+                    <li>Tentukan apakah SPT Tahunan Bapak Andi:
+                        <ul>
+                            <li>Kurang bayar;</li>
+                            <li>Nihil; atau</li>
+                            <li>Lebih bayar.</li>
+                        </ul>
+                    </li>
+                    <li>Jika kurang bayar, hitung jumlah PPh yang masih harus dibayar.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>G. SPT Tahunan</h3>
+                <ol start="29">
+                    <li>Tentukan jenis SPT yang tepat untuk Bapak Andi:
+                        <ul>
+                            <li>1770;</li>
+                            <li>1770 S; atau</li>
+                            <li>1770 SS.</li>
+                        </ul>
+                    </li>
+                    <li>Jelaskan alasan pemilihan formulir tersebut.</li>
+                    <li>Tentukan informasi apa saja yang harus dicantumkan dalam SPT.</li>
+                    <li>Tentukan harta dan utang yang harus dilaporkan.</li>
+                    <li>Tentukan penghasilan final yang perlu dicantumkan dalam SPT.</li>
+                    <li>Tentukan penghasilan yang bukan objek pajak yang perlu dicantumkan dalam SPT.</li>
+                    <li>Tentukan kredit pajak yang harus dicantumkan.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- KUNCI JAWABAN -->
+        <section id="jawaban">
+            <div class="summary-card">
+                <h2>🔑 KUNCI JAWABAN</h2>
+            </div>
+
+            <!-- Jawaban A -->
+            <div class="answer">
+                <h3>A. Subjek dan Objek Pajak</h3>
+
+                <h4>1. Status Subjek Pajak</h4>
+                <p><span class="badge badge-dn">Subjek Pajak Dalam Negeri (DN)</span></p>
+
+                <h4>2. Alasan</h4>
+                <p>Bapak Andi <strong>tinggal di Indonesia</strong> dan <strong>berada di Indonesia lebih dari 183 hari</strong> dalam jangka waktu 12 bulan (tahun 2026).</p>
+                <p>Sebagai Subjek Pajak Dalam Negeri, <strong>semua penghasilan</strong> (dari dalam dan luar negeri) <strong>diperhitungkan</strong> sesuai ketentuan perpajakan Indonesia.</p>
+
+                <h4>3. Pengelompokan Penghasilan</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Penghasilan</th>
+                            <th class="text-right">Nilai</th>
+                            <th>Klasifikasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gaji, tunjangan, THR, bonus</td>
+                            <td class="text-right">Rp300.000.000</td>
+                            <td><span class="badge badge-nonfinal">Nonfinal</span></td>
+                        </tr>
+                        <tr>
+                            <td>Laba usaha</td>
+                            <td class="text-right">Dihitung</td>
+                            <td><span class="badge badge-nonfinal">Nonfinal</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bunga deposito</td>
+                            <td class="text-right">Rp20.000.000</td>
+                            <td><span class="badge badge-final">Final (PPh 4(2))</span></td>
+                        </tr>
+                        <tr>
+                            <td>Dividen</td>
+                            <td class="text-right">Rp30.000.000</td>
+                            <td><span class="badge badge-bukan-objek">Bukan Objek*</span></td>
+                        </tr>
+                        <tr>
+                            <td>Penjualan tanah</td>
+                            <td class="text-right">Rp500.000.000</td>
+                            <td><span class="badge badge-final">Final (PPh 4(2))</span></td>
+                        </tr>
+                        <tr>
+                            <td>Konsultasi Singapura</td>
+                            <td class="text-right">Rp80.000.000</td>
+                            <td><span class="badge badge-nonfinal">Nonfinal</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>*Diasumsikan memenuhi ketentuan pengecualian dividen sebagai objek pajak.</em></p>
+
+                <h4>4. Penghasilan yang Digabungkan</h4>
+                <p><strong>Penghasilan nonfinal</strong> yang digabungkan dalam perhitungan PPh tahunan:</p>
+                <ul>
+                    <li>Penghasilan dari pekerjaan (gaji, tunjangan, THR, bonus)</li>
+                    <li>Laba usaha</li>
+                    <li>Penghasilan dari luar negeri (konsultasi Singapura)</li>
+                </ul>
+                <p><strong>Penghasilan final dan bukan objek pajak TIDAK digabungkan</strong> ke PKP tarif progresif.</p>
+            </div>
+
+            <!-- Jawaban B -->
+            <div class="answer">
+                <h3>B. Penghasilan dari Pekerjaan</h3>
+
+                <h4>5. Total Penghasilan Bruto</h4>
+                <div class="calculation">
+                    Gaji: Rp240.000.000<br>
+                    Tunjangan: Rp24.000.000<br>
+                    THR: Rp20.000.000<br>
+                    Bonus: Rp16.000.000<br>
+                    <strong>Total = Rp240.000.000 + Rp24.000.000 + Rp20.000.000 + Rp16.000.000 = Rp300.000.000</strong>
+                </div>
+
+                <h4>6. Penghasilan Neto dari Pekerjaan</h4>
+                <div class="calculation">
+                    Penghasilan bruto: Rp300.000.000<br>
+                    Iuran pensiun/JHT: (Rp6.000.000)<br><br>
+                    <strong>Penghasilan neto = Rp300.000.000 - Rp6.000.000 = Rp294.000.000</strong>
+                </div>
+
+                <h4>7. PPh Pasal 21 yang Dipotong</h4>
+                <div class="calculation">
+                    <strong>Rp18.000.000</strong> (sudah dipotong oleh pemberi kerja)
+                </div>
+            </div>
+
+            <!-- Jawaban C -->
+            <div class="answer">
+                <h3>C. Penghasilan Usaha</h3>
+
+                <h4>8. Laba Komersial Usaha</h4>
+                <div class="calculation">
+                    Peredaran usaha: Rp1.500.000.000<br>
+                    Total biaya: Rp900.000.000 + Rp150.000.000 + Rp50.000.000 + Rp60.000.000 + Rp40.000.000 + Rp30.000.000 + Rp10.000.000 = Rp1.240.000.000<br><br>
+                    <strong>Laba komersial = Rp1.500.000.000 - Rp1.240.000.000 = Rp260.000.000</strong>
+                </div>
+
+                <h4>9. Biaya yang Harus Dikoreksi Fiskal</h4>
+                <ul>
+                    <li><strong>Biaya pribadi pemilik: Rp30.000.000</strong> → Tidak berhubungan dengan usaha</li>
+                    <li><strong>Denda pajak: Rp10.000.000</strong> → Tidak dapat dikurangkan (UU PPh Pasal 9)</li>
+                </ul>
+
+                <h4>10. Koreksi Fiskal Positif</h4>
+                <div class="calculation">
+                    Biaya pribadi: Rp30.000.000<br>
+                    Denda pajak: Rp10.000.000<br><br>
+                    <strong>Total koreksi fiskal positif = Rp30.000.000 + Rp10.000.000 = Rp40.000.000</strong>
+                </div>
+
+                <h4>11. Penghasilan Neto Usaha Setelah Koreksi</h4>
+                <div class="calculation">
+                    Laba komersial: Rp260.000.000<br>
+                    Koreksi fiskal positif: + Rp40.000.000<br><br>
+                    <strong>Penghasilan neto usaha = Rp260.000.000 + Rp40.000.000 = Rp300.000.000</strong>
+                </div>
+
+                <h4>12. Biaya Pribadi Pemilik</h4>
+                <p><strong>TIDAK</strong> dapat menjadi pengurang fiskal.</p>
+                <p><em>Alasan:</em> Biaya pribadi tidak berhubungan dengan kegiatan usaha (UU PPh Pasal 9 ayat 1 huruf a).</p>
+
+                <h4>13. Denda Pajak</h4>
+                <p><strong>TIDAK</strong> dapat menjadi pengurang fiskal.</p>
+                <p><em>Alasan:</em> Denda pajak bersifat sanksi, bukan biaya usaha (UU PPh Pasal 9 ayat 1 huruf h).</p>
+            </div>
+
+            <!-- Jawaban D -->
+            <div class="answer">
+                <h3>D. Penghasilan Investasi</h3>
+
+                <h4>14. Perlakuan Pajak Bunga Deposito</h4>
+                <p><strong><span class="badge badge-final">PPh Final (Pasal 4(2))</span></strong></p>
+                <p>Bunga deposito dikenakan <strong>PPh Final</strong> dengan tarif tertentu.</p>
+                <p><strong>Tidak digabungkan</strong> ke PKP tarif progresif dan <strong>tidak dapat dikreditkan</strong>.</p>
+
+                <h4>15. Perlakuan Pajak Dividen</h4>
+                <p><strong><span class="badge badge-bukan-objek">Bukan Objek Pajak</span></strong></p>
+                <p>Dalam kasus ini, dividen <strong>diasumsikan memenuhi ketentuan pengecualian</strong> sebagai objek pajak.</p>
+                <p><strong>Tidak digabungkan</strong> ke PKP tarif progresif.</p>
+
+                <h4>16. Perlakuan Pajak Pengalihan Tanah</h4>
+                <p><strong><span class="badge badge-final">PPh Final (Pasal 4(2))</span></strong></p>
+                <p>Pengalihan tanah dikenakan <strong>PPh Final</strong> dengan tarif tertentu.</p>
+                <p><strong>Tidak digabungkan</strong> ke PKP tarif progresif dan <strong>tidak dapat dikreditkan</strong>.</p>
+
+                <h4>17. Penghasilan yang Dimasukkan ke PKP</h4>
+                <p><strong>Hanya penghasilan nonfinal</strong> yang digabungkan:</p>
+                <ul>
+                    <li>Penghasilan dari pekerjaan</li>
+                    <li>Laba usaha</li>
+                    <li>Penghasilan dari luar negeri (konsultasi Singapura)</li>
+                </ul>
+                <p><strong>Penghasilan final (bunga deposito, penjualan tanah) dan bukan objek pajak (dividen) TIDAK dimasukkan.</strong></p>
+            </div>
+
+            <!-- Jawaban E -->
+            <div class="answer">
+                <h3>E. Penghasilan Luar Negeri</h3>
+
+                <h4>18. Perlakuan Pajak Penghasilan Konsultasi</h4>
+                <p>Sebagai <span class="badge badge-dn">Subjek Pajak Dalam Negeri</span>, penghasilan dari luar negeri (Singapura) <strong>dikenakan pajak di Indonesia</strong>.</p>
+                <p>Penghasilan ini <strong>digabungkan</strong> ke penghasilan lain untuk dihitung PKP.</p>
+
+                <h4>19. Kredit Pajak Luar Negeri</h4>
+                <p><strong>DAPAT</strong> menjadi kredit pajak (PPh Pasal 24).</p>
+                <p><em>Alasan:</em> Pajak yang dibayar di Singapura memenuhi syarat sebagai kredit pajak luar negeri.</p>
+
+                <h4>20. Batas Maksimum Kredit Pajak Luar Negeri</h4>
+                <div class="calculation">
+                    Penghasilan luar negeri: Rp80.000.000<br>
+                    Tarif PPh OP untuk lapisan ini: 30% (asumsi)<br><br>
+                    <strong>Batas maksimum = Rp80.000.000 × 30% = Rp24.000.000</strong><br><br>
+                    <em>Catatan: Pajak yang dibayar di Singapura (Rp8.000.000) ≤ Rp24.000.000, sehingga seluruhnya dapat dikreditkan.</em>
+                </div>
+
+                <h4>21. Jumlah PPh Pasal 24 yang Dapat Dikreditkan</h4>
+                <div class="calculation">
+                    <strong>Rp8.000.000</strong> (seluruh pajak yang dibayar di Singapura dapat dikreditkan)
+                </div>
+            </div>
+
+            <!-- Jawaban F -->
+            <div class="answer">
+                <h3>F. Perhitungan PPh Orang Pribadi</h3>
+
+                <h4>22. Total Penghasilan Neto yang Dikenakan Pajak</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sumber</th>
+                            <th class="text-right">Penghasilan Neto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pekerjaan</td>
+                            <td class="text-right">Rp294.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Usaha</td>
+                            <td class="text-right">Rp300.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Konsultasi Singapura</td>
+                            <td class="text-right">Rp80.000.000</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total Penghasilan Neto</strong></td>
+                            <td class="text-right"><strong>Rp674.000.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>23. PTKP Bapak Andi</h4>
+                <div class="calculation">
+                    Status: K/2 (Kawin, 2 tanggungan)<br><br>
+                    WP pribadi: Rp54.000.000<br>
+                    Tambahan kawin: + Rp4.500.000<br>
+                    Tambahan 2 tanggungan: + (2 × Rp4.500.000) = + Rp9.000.000<br><br>
+                    <strong>PTKP = Rp54.000.000 + Rp4.500.000 + Rp9.000.000 = Rp67.500.000</strong>
+                </div>
+
+                <h4>24. Penghasilan Kena Pajak (PKP)</h4>
+                <div class="calculation">
+                    Penghasilan neto: Rp674.000.000<br>
+                    PTKP: (Rp67.500.000)<br><br>
+                    <strong>PKP = Rp674.000.000 - Rp67.500.000 = Rp606.500.000</strong>
+                </div>
+
+                <h4>25. PPh Terutang (Tarif Progresif)</h4>
+                <div class="calculation">
+                    PKP: Rp606.500.000<br><br>
+                    Lapisan 1 (Rp0 - Rp60.000.000):<br>
+                    Rp60.000.000 × 5% = Rp3.000.000<br><br>
+                    Lapisan 2 (Rp60.000.000 - Rp250.000.000):<br>
+                    Rp190.000.000 × 15% = Rp28.500.000<br><br>
+                    Lapisan 3 (Rp250.000.000 - Rp500.000.000):<br>
+                    Rp250.000.000 × 25% = Rp62.500.000<br><br>
+                    Lapisan 4 (Rp500.000.000 - Rp606.500.000):<br>
+                    Rp106.500.000 × 30% = Rp31.950.000<br><br>
+                    <strong>PPh Terutang = Rp3.000.000 + Rp28.500.000 + Rp62.500.000 + Rp31.950.000 = Rp125.950.000</strong>
+                </div>
+
+                <h4>26. Total Kredit Pajak</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis Kredit</th>
+                            <th class="text-right">Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PPh Pasal 21</td>
+                            <td class="text-right">Rp18.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>PPh Pasal 25</td>
+                            <td class="text-right">Rp12.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>PPh Pasal 24 (kredit luar negeri)</td>
+                            <td class="text-right">Rp8.000.000</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total Kredit Pajak</strong></td>
+                            <td class="text-right"><strong>Rp38.000.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>27. Status SPT Tahunan</h4>
+                <div class="calculation">
+                    PPh terutang: Rp125.950.000<br>
+                    Total kredit pajak: Rp38.000.000<br><br>
+                    <strong>PPh kurang bayar = Rp125.950.000 - Rp38.000.000 = Rp87.950.000</strong>
+                </div>
+                <p><span class="badge badge-danger">Status: KURANG BAYAR Rp87.950.000</span></p>
+
+                <h4>28. Jumlah PPh yang Masih Harus Dibayar</h4>
+                <div class="calculation">
+                    <strong>Rp87.950.000</strong>
+                </div>
+            </div>
+
+            <!-- Jawaban G -->
+            <div class="answer">
+                <h3>G. SPT Tahunan</h3>
+
+                <h4>29. Jenis SPT</h4>
+                <p><strong>SPT 1770</strong></p>
+
+                <h4>30. Alasan</h4>
+                <p>Bapak Andi:</p>
+                <ul>
+                    <li>Memiliki penghasilan dari <strong>pekerjaan</strong> (karyawan)</li>
+                    <li>Memiliki penghasilan dari <strong>usaha</strong> (perdagangan komputer)</li>
+                    <li>Menggunakan <strong>pembukuan</strong> untuk usahanya</li>
+                </ul>
+                <p>Oleh karena itu, <strong>harus menggunakan SPT 1770</strong>, bukan 1770 S atau 1770 SS.</p>
+
+                <h4>31. Informasi yang Harus Dicantumkan</h4>
+                <ul>
+                    <li>Tahun pajak, NPWP, identitas WP</li>
+                    <li>Penghasilan dari pekerjaan (Rp294.000.000)</li>
+                    <li>Laba usaha setelah koreksi fiskal (Rp300.000.000)</li>
+                    <li>Penghasilan luar negeri (Rp80.000.000)</li>
+                    <li>Penghasilan final (bunga deposito, penjualan tanah)</li>
+                    <li>Penghasilan bukan objek pajak (dividen)</li>
+                    <li>Kredit pajak (PPh 21, 24, 25)</li>
+                    <li>Harta dan utang</li>
+                    <li>PKP, PPh terutang, status SPT</li>
+                </ul>
+
+                <h4>32. Harta yang Harus Dilaporkan</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Jenis Harta</th>
+                            <th class="text-right">Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>011</td><td>Uang tunai</td><td class="text-right">Rp50.000.000</td></tr>
+                        <tr><td>012</td><td>Tabungan</td><td class="text-right">Rp100.000.000</td></tr>
+                        <tr><td>014</td><td>Deposito</td><td class="text-right">Rp200.000.000</td></tr>
+                        <tr><td>032</td><td>Saham</td><td class="text-right">Rp150.000.000</td></tr>
+                        <tr><td>043</td><td>Mobil</td><td class="text-right">Rp250.000.000</td></tr>
+                        <tr><td>061</td><td>Rumah</td><td class="text-right">Rp700.000.000</td></tr>
+                        <tr><td>055</td><td>Peralatan usaha</td><td class="text-right">Rp100.000.000</td></tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Harta</strong></td>
+                            <td class="text-right"><strong>Rp1.550.000.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>33. Utang yang Harus Dilaporkan</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Jenis Utang</th>
+                            <th class="text-right">Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>101</td><td>KPR</td><td class="text-right">Rp400.000.000</td></tr>
+                        <tr><td>109</td><td>Kredit kendaraan</td><td class="text-right">Rp100.000.000</td></tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Utang</strong></td>
+                            <td class="text-right"><strong>Rp500.000.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>34. Penghasilan Final yang Dicantumkan</h4>
+                <ul>
+                    <li>Bunga deposito: <strong>Rp20.000.000</strong></li>
+                    <li>Penjualan tanah: <strong>Rp500.000.000</strong></li>
+                </ul>
+                <p><em>Dicantumkan di Lampiran 3 SPT 1770.</em></p>
+
+                <h4>35. Penghasilan Bukan Objek Pajak yang Dicantumkan</h4>
+                <ul>
+                    <li>Dividen: <strong>Rp30.000.000</strong> (diasumsikan memenuhi syarat pengecualian)</li>
+                </ul>
+                <p><em>Dicantumkan di Lampiran 3 SPT 1770.</em></p>
+
+                <h4>Kredit Pajak yang Dicantumkan</h4>
+                <ul>
+                    <li>PPh Pasal 21: <strong>Rp18.000.000</strong> (Lampiran 2)</li>
+                    <li>PPh Pasal 24: <strong>Rp8.000.000</strong> (Lampiran 2)</li>
+                    <li>PPh Pasal 25: <strong>Rp12.000.000</strong> (Lampiran 2)</li>
+                </ul>
+            </div>
+
+            <!-- Ringkasan Akhir -->
+            <div class="summary-card">
+                <h3>📌 Ringkasan Hasil Perhitungan</h3>
+                <div class="two-columns">
+                    <div>
+                        <h4>Hasil Utama:</h4>
+                        <ul>
+                            <li><strong>Status:</strong> <span class="badge badge-dn">Subjek Pajak DN</span></li>
+                            <li><strong>Penghasilan Neto:</strong> Rp674.000.000</li>
+                            <li><strong>PTKP (K/2):</strong> Rp67.500.000</li>
+                            <li><strong>PKP:</strong> Rp606.500.000</li>
+                            <li><strong>PPh Terutang:</strong> Rp125.950.000</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Status SPT:</h4>
+                        <ul>
+                            <li><strong>Kredit Pajak:</strong> Rp38.000.000</li>
+                            <li><strong>Kurang Bayar:</strong> Rp87.950.000</li>
+                            <li><strong>Jenis SPT:</strong> 1770</li>
+                            <li><strong>Total Harta:</strong> Rp1.550.000.000</li>
+                            <li><strong>Total Utang:</strong> Rp500.000.000</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>🔄 Alur Pengisian SPT 1770</h3>
+                <ol>
+                    <li>Identifikasi status WP (DN/LN)</li>
+                    <li>↓ Identifikasi seluruh penghasilan</li>
+                    <li>↓ Pisahkan: final, nonfinal, bukan objek</li>
+                    <li>↓ Hitung penghasilan neto</li>
+                    <li>↓ Lakukan koreksi fiskal</li>
+                    <li>↓ Gabungkan penghasilan neto nonfinal</li>
+                    <li>↓ Kurangi PTKP</li>
+                    <li>↓ Dapatkan PKP</li>
+                    <li>↓ Hitung PPh dengan tarif progresif</li>
+                    <li>↓ Kurangi kredit pajak</li>
+                    <li>↓ Tentukan kurang/lebih bayar</li>
+                    <li>↓ Isi harta dan utang</li>
+                    <li>↓ Pilih SPT 1770</li>
+                    <li>↓ Lapor SPT</li>
+                </ol>
+            </div>
+
+            <div class="summary-card">
+                <h3>🎯 Kesimpulan Kasus</h3>
+                <p>Bapak Andi merupakan <strong>Subjek Pajak Dalam Negeri</strong> dengan berbagai sumber penghasilan yang harus diperlakukan berbeda dalam SPT.</p>
+                <p><strong>Penghasilan nonfinal</strong> (pekerjaan, usaha, luar negeri) <strong>digabungkan</strong> untuk menghitung PKP, sedangkan <strong>penghasilan final</strong> (bunga deposito, penjualan tanah) dan <strong>bukan objek pajak</strong> (dividen) <strong>tidak digabungkan</strong>.</p>
+                <p>Setelah perhitungan, Bapak Andi <strong>kurang bayar PPh sebesar Rp87.950.000</strong> dan harus melaporkan SPT menggunakan <strong>formulir 1770</strong>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Pajak Penghasilan Orang Pribadi - Studi Kasus Bapak Andi Pratama</strong></p>
+        <p>Dibuat untuk tujuan pendidikan perpajakan | Tarif PPh OP: Progresif (5%-35%)</p>
+    </footer>
+
+    <script>
+        // Smooth scroll navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active nav highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

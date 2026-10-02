@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPh UMKM Vol. 2 — Studi Kasus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC;
+    --ledger-line:#DAD2BC;
+    --ink:#20241F;
+    --ink-soft:#565B4F;
+    --navy:#1F3A34;
+    --navy-soft:#2E5148;
+    --gold:#B8862B;
+    --stamp-red:#8C3B2E;
+    --card-bg:#FFFDF7;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* subtle ledger-paper texture via repeating lines */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 37px,
+      var(--ledger-line) 37px,
+      var(--ledger-line) 38px
+    );
+    opacity:.35;
+    z-index:0;
+  }
+
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:760px;
+    margin:0 auto;
+    padding:64px 24px 120px;
+  }
+
+  header.masthead{
+    border-bottom:3px solid var(--navy);
+    padding-bottom:28px;
+    margin-bottom:44px;
+  }
+
+  .eyebrow-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    letter-spacing:.02em;
+    margin-bottom:18px;
+  }
+
+  h1{
+    font-family:'Source Serif 4', serif;
+    font-weight:700;
+    font-size:clamp(2rem, 5vw, 2.9rem);
+    line-height:1.08;
+    margin:0 0 10px;
+    color:var(--navy);
+  }
+
+  .subhead{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0;
+  }
+
+  .stamp{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:22px;
+    padding:6px 14px;
+    border:1.5px solid var(--stamp-red);
+    color:var(--stamp-red);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.06em;
+    transform:rotate(-1.2deg);
+    border-radius:2px;
+  }
+
+  section.block{
+    margin-bottom:52px;
+  }
+
+  h2.section-title{
+    font-family:'Source Serif 4', serif;
+    font-size:1.5rem;
+    font-weight:600;
+    color:var(--navy);
+    border-bottom:1px solid var(--ledger-line);
+    padding-bottom:10px;
+    margin:0 0 22px;
+  }
+
+  p{ margin:0 0 14px; }
+
+  ul{ margin:0 0 14px; padding-left:22px; }
+  li{ margin-bottom:6px; }
+
+  strong{ color:var(--navy); }
+
+  /* case cards */
+  .case{
+    background:var(--card-bg);
+    border:1px solid var(--ledger-line);
+    border-left:4px solid var(--navy-soft);
+    border-radius:3px;
+    padding:22px 24px;
+    margin-bottom:20px;
+  }
+
+  .case-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:12px;
+  }
+
+  .case-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--gold);
+    font-weight:500;
+  }
+
+  .case-title{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    color:var(--ink);
+  }
+
+  .case p, .case ul{ font-size:.96rem; }
+
+  .kasus-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin:14px 0 6px;
+  }
+
+  .answer-box{
+    margin-top:14px;
+    padding:12px 16px;
+    background:#EFF3EA;
+    border-left:3px solid var(--navy-soft);
+    font-size:.95rem;
+  }
+  .answer-box strong{ display:block; margin-bottom:4px; }
+
+  .formula{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.92rem;
+    background:#F1ECDD;
+    border:1px dashed var(--ledger-line);
+    padding:10px 14px;
+    border-radius:2px;
+    margin:10px 0;
+    white-space:pre-wrap;
+    color:var(--navy);
+  }
+
+  /* tables */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:.92rem;
+  }
+  th, td{
+    text-align:left;
+    padding:8px 10px;
+    border-bottom:1px solid var(--ledger-line);
+  }
+  th{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-bottom:2px solid var(--navy);
+  }
+  tr:last-child td{ border-bottom:none; }
+  td.highlight{ color:var(--stamp-red); font-weight:600; }
+
+  /* mnemonic row */
+  .mnemonic-row{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin:18px 0;
+  }
+  .mnemonic-chip{
+    flex:1 1 140px;
+    background:var(--navy);
+    color:var(--paper);
+    padding:16px 14px;
+    border-radius:3px;
+    text-align:center;
+  }
+  .mnemonic-chip .num{
+    font-family:'Source Serif 4', serif;
+    font-size:2rem;
+    font-weight:700;
+    display:block;
+    color:var(--gold);
+  }
+  .mnemonic-chip .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.03em;
+  }
+
+  /* flow diagram */
+  .flow{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    margin:24px 0;
+  }
+  .flow-node{
+    background:var(--card-bg);
+    border:1.5px solid var(--navy-soft);
+    padding:9px 18px;
+    border-radius:3px;
+    font-size:.88rem;
+    text-align:center;
+    min-width:160px;
+  }
+  .flow-node.emph{
+    border-color:var(--stamp-red);
+    color:var(--stamp-red);
+    font-weight:600;
+  }
+  .flow-arrow{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--ink-soft);
+    font-size:.85rem;
+    padding:4px 0;
+  }
+  .flow-branch{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:4px 0;
+  }
+
+  .note{
+    font-size:.88rem;
+    color:var(--ink-soft);
+    border-top:1px solid var(--ledger-line);
+    padding-top:16px;
+    margin-top:8px;
+  }
+  .note strong{ color:var(--stamp-red); }
+
+  footer{
+    margin-top:60px;
+    padding-top:22px;
+    border-top:3px solid var(--navy);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  @media (max-width:600px){
+    .page{ padding:44px 16px 90px; }
+    .eyebrow-row{ flex-direction:column; gap:4px; align-items:flex-start; }
+    footer{ flex-direction:column; gap:6px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div class="eyebrow-row">
+      <span>MYSKILL · CORPORATE TAX SERIES</span>
+      <span>MAR 2024</span>
+    </div>
+    <h1>Pajak Penghasilan UMKM, Jilid Dua</h1>
+    <p class="subhead">Batas waktu PPh Final 0,5%, peralihan ke tarif normal, administrasi pembayaran, dan persiapan pembukuan — dibedah lewat empat belas studi kasus dan satu kasus komprehensif.</p>
+    <span class="stamp">✓ Materi latihan — bukan panduan kepatuhan terkini</span>
+  </header>
+
+  <section class="block">
+    <h2 class="section-title">Batas Waktu Penerapan PP 23</h2>
+    <p>PP 23 memberi Wajib Pajak masa pembelajaran sebelum dikenai PPh dengan rezim umum — waktu untuk menyiapkan finansial, meningkatkan kepatuhan, memperkuat pembukuan, dan berkonsultasi dengan profesional pajak.</p>
+    <p>Tapi batas waktu ini juga punya sisi sulit: keterbatasan waktu bagi yang belum siap, aturan yang membingungkan, dan risiko denda bila terlambat menyesuaikan diri.</p>
+
+    <div class="kasus-label">Jangka waktu berdasarkan bentuk Wajib Pajak</div>
+    <table>
+      <tr><th>Bentuk WP</th><th>Jangka waktu</th><th>Dihitung sejak</th></tr>
+      <tr><td>Orang Pribadi</td><td>7 tahun pajak</td><td>Tahun terdaftar (atau 2018 bila terdaftar sebelumnya)</td></tr>
+      <tr><td>Koperasi / CV / Firma</td><td>4 tahun pajak</td><td>Tahun terdaftar (atau 2018 bila terdaftar sebelumnya)</td></tr>
+      <tr><td>Perseroan Terbatas</td><td>3 tahun pajak</td><td>Tahun terdaftar (atau 2018 bila terdaftar sebelumnya)</td></tr>
+    </table>
+
+    <div class="mnemonic-row">
+      <div class="mnemonic-chip"><span class="num">7</span><span class="label">ORANG PRIBADI</span></div>
+      <div class="mnemonic-chip"><span class="num">4</span><span class="label">CV / FIRMA / KOPERASI</span></div>
+      <div class="mnemonic-chip"><span class="num">3</span><span class="label">PT</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Studi Kasus — Menghitung Batas Waktu</h2>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">01</span><span class="case-title">Wajib Pajak Orang Pribadi</span></div>
+      <p>Andi membuka usaha Apotek Sehat pada tahun 2020 dan terdaftar sebagai Wajib Pajak di tahun yang sama. Omzetnya masih memenuhi ketentuan PPh Final UMKM.</p>
+      <p><em>Sampai tahun berapa Andi dapat menggunakan PPh Final 0,5%?</em></p>
+      <table>
+        <tr><th>Tahun</th><th>Status</th></tr>
+        <tr><td>2020</td><td>Tahun 1</td></tr>
+        <tr><td>2021</td><td>Tahun 2</td></tr>
+        <tr><td>2022</td><td>Tahun 3</td></tr>
+        <tr><td>2023</td><td>Tahun 4</td></tr>
+        <tr><td>2024</td><td>Tahun 5</td></tr>
+        <tr><td>2025</td><td>Tahun 6</td></tr>
+        <tr><td>2026</td><td>Tahun 7</td></tr>
+        <tr><td>2027</td><td class="highlight">Tarif normal</td></tr>
+      </table>
+      <div class="answer-box"><strong>Jawaban</strong>PPh Final 0,5% berlaku sampai 31 Desember 2026. Mulai Tahun Pajak 2027, Andi wajib menggunakan tarif normal.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">02</span><span class="case-title">CV</span></div>
+      <p>CV Maju Jaya didirikan dan terdaftar sebagai Wajib Pajak pada tahun 2022, dan memenuhi ketentuan PPh Final UMKM.</p>
+      <table>
+        <tr><th>Tahun</th><th>Tahun penggunaan</th></tr>
+        <tr><td>2022</td><td>1</td></tr>
+        <tr><td>2023</td><td>2</td></tr>
+        <tr><td>2024</td><td>3</td></tr>
+        <tr><td>2025</td><td>4</td></tr>
+        <tr><td>2026</td><td class="highlight">Tarif normal</td></tr>
+      </table>
+      <div class="answer-box"><strong>Jawaban</strong>PPh Final 0,5% berlaku 2022–2025. Mulai 2026, CV Maju Jaya menggunakan tarif normal.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">03</span><span class="case-title">PT</span></div>
+      <p>PT Berkah Abadi terdaftar sebagai Wajib Pajak pada 1 Januari 2024 dan memenuhi kriteria PPh Final UMKM.</p>
+      <table>
+        <tr><th>Tahun</th><th>Status</th></tr>
+        <tr><td>2024</td><td>Tahun 1</td></tr>
+        <tr><td>2025</td><td>Tahun 2</td></tr>
+        <tr><td>2026</td><td>Tahun 3</td></tr>
+        <tr><td>2027</td><td class="highlight">Tarif normal</td></tr>
+      </table>
+      <div class="answer-box"><strong>Jawaban</strong>PT Berkah Abadi menggunakan PPh Final 0,5% pada 2024–2026. Mulai 2027, tarif normal berlaku.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">04</span><span class="case-title">Membandingkan OP, CV, dan PT</span></div>
+      <p>Ketiga bentuk usaha ini terdaftar pada tahun yang sama, 2024 — perbandingannya menunjukkan langsung efek dari jangka waktu 7/4/3 tahun.</p>
+      <table>
+        <tr><th>Bentuk WP</th><th>Jangka waktu</th><th>Tahun Final 0,5%</th><th>Mulai normal</th></tr>
+        <tr><td>Orang Pribadi</td><td>7 tahun</td><td>2024–2030</td><td class="highlight">2031</td></tr>
+        <tr><td>CV</td><td>4 tahun</td><td>2024–2027</td><td class="highlight">2028</td></tr>
+        <tr><td>PT</td><td>3 tahun</td><td>2024–2026</td><td class="highlight">2027</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Studi Kasus — Administrasi &amp; Pembayaran</h2>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">05</span><span class="case-title">Setor Sendiri</span></div>
+      <p>CV Makmur mencatat omzet Agustus 2026 sebesar Rp300.000.000 dan memilih mekanisme setor sendiri.</p>
+      <div class="formula">PPh Final = 0,5% × Rp300.000.000
+          = Rp1.500.000</div>
+      <div class="kasus-label">Langkah yang dilakukan</div>
+      <ul>
+        <li>Hitung omzet bulanan — Rp300 juta</li>
+        <li>Hitung PPh Final — Rp1,5 juta</li>
+        <li>Buat kode billing di djponline.pajak.go.id</li>
+        <li>Bayar PPh Final</li>
+        <li>Arsipkan BPN, SSP, dan NTPN</li>
+        <li>Rekap bukti pembayaran, misalnya dalam format PDF</li>
+      </ul>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">06</span><span class="case-title">Menentukan Deadline</span></div>
+      <p>PT ABC mencatat omzet September 2026 sebesar Rp400 juta dan melakukan setor sendiri.</p>
+      <div class="formula">PPh Final = 0,5% × Rp400.000.000
+          = Rp2.000.000</div>
+      <div class="answer-box"><strong>Batas pembayaran</strong>Tanggal 15 bulan berikutnya — yaitu 15 Oktober 2026.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">07</span><span class="case-title">Bulan Tanpa Omzet</span></div>
+      <p>Toko Sukses tidak melakukan penjualan sama sekali selama November 2026.</p>
+      <div class="formula">PPh Final = 0,5% × Rp0
+          = Rp0</div>
+      <div class="answer-box"><strong>Kesimpulan</strong>Tidak ada PPh Final yang perlu dibayarkan untuk bulan tersebut.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">08</span><span class="case-title">Transaksi dengan Pemotong / Pemungut</span></div>
+      <p>PT Maju Jaya menjual barang senilai Rp200 juta kepada perusahaan yang berstatus Pemotong/Pemungut Pajak, dan sudah memegang Surat Keterangan PP 23.</p>
+      <div class="formula">PPh Final = 0,5% × Rp200.000.000
+          = Rp1.000.000</div>
+      <div class="flow">
+        <div class="flow-node">PT Maju Jaya</div>
+        <div class="flow-arrow">↓ menyerahkan Surat Keterangan PP 23</div>
+        <div class="flow-node">Pemotong / Pemungut</div>
+        <div class="flow-arrow">↓ melakukan pemotongan</div>
+        <div class="flow-node emph">PPh Final Rp1.000.000</div>
+      </div>
+      <p>PT Maju Jaya kemudian menerima bukti pemotongan untuk diarsipkan.</p>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">09</span><span class="case-title">Surat Keterangan PP 23</span></div>
+      <p>CV Sejahtera ingin bertransaksi dengan perusahaan besar yang akan melakukan pemotongan PPh, sehingga perlu mengajukan Surat Keterangan PP 23.</p>
+      <div class="kasus-label">Syarat pengajuan</div>
+      <ul>
+        <li>Memenuhi syarat administrasi</li>
+        <li>Mengajukan permohonan sesuai format yang ditetapkan</li>
+        <li>Ditandatangani oleh WP atau kuasanya</li>
+        <li>Telah menyampaikan SPT Tahunan tahun pajak terakhir</li>
+        <li>Memenuhi syarat sebagai subjek PP 23</li>
+      </ul>
+      <div class="answer-box"><strong>Proses di KPP</strong>Maksimal 3 hari kerja untuk menerbitkan Surat Keterangan atau Surat Penolakan. Bila lewat dari 3 hari tanpa penerbitan, permohonan dianggap diterima.</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Studi Kasus — Persiapan Pembukuan</h2>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">10</span><span class="case-title">Persiapan Masuk Tarif Normal</span></div>
+      <p>PT Nusantara berdiri tahun 2024 dan hanya dapat menggunakan PPh Final 0,5% selama 2024–2026 — tahun 2027 sudah masuk tarif normal. Masalahnya, sepanjang 2024–2026 perusahaan hanya mencatat lewat buku kas sederhana, tanpa laporan laba rugi, neraca, kartu persediaan, rekonsiliasi bank, maupun SOP keuangan.</p>
+      <div class="answer-box"><strong>Yang harus dilakukan</strong>Mulai membangun sistem pembukuan sebelum tarif normal berlaku, bukan menunggu sampai 2027 tiba.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">11</span><span class="case-title">Membangun Sistem Pembukuan</span></div>
+      <div class="kasus-label">1 — SDM</div>
+      <p>Merekrut staf yang memahami akuntansi, keuangan, dan perpajakan agar pencatatan konsisten.</p>
+      <div class="kasus-label">2 — Aplikasi pembukuan</div>
+      <div class="flow">
+        <div class="flow-node">Penjualan</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Pembelian</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Kas</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Bank</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Persediaan</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Beban</div>
+      </div>
+      <div class="kasus-label">3 — SOP keuangan</div>
+      <div class="flow">
+        <div class="flow-node">Transaksi terjadi</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node">Bukti transaksi dibuat</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node">Transaksi dicatat</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node">Dokumen disimpan</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node">Rekonsiliasi</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node emph">Laporan keuangan</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">12</span><span class="case-title">SOP Kas Kecil</span></div>
+      <p>Dana kas kecil ditetapkan Rp5.000.000. Selama bulan berjalan, tercatat pengeluaran berikut:</p>
+      <table>
+        <tr><th>Pengeluaran</th><th>Nilai</th></tr>
+        <tr><td>ATK</td><td>Rp500.000</td></tr>
+        <tr><td>Parkir</td><td>Rp150.000</td></tr>
+        <tr><td>Materai</td><td>Rp200.000</td></tr>
+        <tr><td>Konsumsi rapat</td><td>Rp350.000</td></tr>
+        <tr><td>Kurir</td><td>Rp300.000</td></tr>
+        <tr><td><strong>Total</strong></td><td class="highlight">Rp1.500.000</td></tr>
+      </table>
+      <p>SOP mengharuskan setiap pengeluaran dicatat dengan tanggal, tujuan, nominal, bukti pembayaran, dan pihak yang melakukan transaksi.</p>
+      <div class="formula">Saldo akhir = Saldo awal − Pengeluaran
+           = Rp5.000.000 − Rp1.500.000
+           = Rp3.500.000</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">13</span><span class="case-title">Rekonsiliasi Rekening Koran</span></div>
+      <p>Catatan perusahaan menunjukkan saldo bank Rp100 juta, tapi rekening koran menunjukkan Rp95 juta. Setelah diperiksa, ada biaya administrasi bank Rp2 juta dan transfer keluar Rp3 juta yang belum dicatat.</p>
+      <div class="formula">Rp100.000.000 − Rp2.000.000 − Rp3.000.000
+          = Rp95.000.000</div>
+      <div class="answer-box"><strong>Hasil</strong>Saldo pembukuan kini sama dengan saldo bank — menunjukkan pentingnya rekonsiliasi rekening koran secara berkala.</div>
+    </div>
+
+    <div class="case">
+      <div class="case-head"><span class="case-num">14</span><span class="case-title">Kartu Persediaan</span></div>
+      <p>Toko ABC memiliki persediaan awal 100 unit, membeli 50 unit, dan menjual 80 unit.</p>
+      <div class="formula">Persediaan akhir = 100 + 50 − 80
+              = 70 unit</div>
+      <p>Kartu persediaan mencatat barang masuk dan keluar agar perusahaan tahu nilai serta jumlah stoknya — penting saat memasuki sistem pembukuan yang lebih formal.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Studi Kasus Komprehensif — PT Maju Terus</h2>
+    <div class="case">
+      <p>PT Maju Terus terdaftar sebagai Wajib Pajak pada 1 Januari 2024 dan memenuhi ketentuan PPh Final UMKM.</p>
+      <table>
+        <tr><th>Tahun</th><th>Omzet</th></tr>
+        <tr><td>2024</td><td>Rp2 miliar</td></tr>
+        <tr><td>2025</td><td>Rp3 miliar</td></tr>
+        <tr><td>2026</td><td>Rp4 miliar</td></tr>
+      </table>
+      <p>Pada akhir 2026, manajemen mulai mempersiapkan pembukuan karena tahun berikutnya perusahaan memasuki tarif normal.</p>
+
+      <div class="kasus-label">1 — Sampai kapan PPh Final berlaku?</div>
+      <p>PT: jangka waktu 3 tahun. 2024 = tahun 1, 2025 = tahun 2, 2026 = tahun 3.</p>
+      <div class="answer-box"><strong>Jawaban</strong>PPh Final 0,5% berlaku 2024–2026. Mulai 2027, tarif normal.</div>
+
+      <div class="kasus-label">2 — Apa yang harus dipersiapkan?</div>
+      <ul>
+        <li><strong>SDM</strong> — merekrut staf akuntansi/keuangan</li>
+        <li><strong>Aplikasi</strong> — menggunakan software atau spreadsheet pembukuan</li>
+        <li><strong>SOP</strong> — menyusun alur Kas kecil → Bank → Invoice → Persediaan → Pelaporan</li>
+      </ul>
+
+      <div class="kasus-label">3 — Administrasi PPh selama 2026</div>
+      <p>Misal omzet Desember Rp400 juta:</p>
+      <div class="formula">PPh Final = 0,5% × Rp400.000.000
+          = Rp2.000.000</div>
+      <p>Jika setor sendiri: buat billing → bayar → simpan BPN/SSP/NTPN → rekap. Batas pembayaran 15 Januari 2027.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Peta Besar &amp; Hafalan Cepat</h2>
+    <div class="flow">
+      <div class="flow-node emph">UMKM</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">Cek bentuk WP</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-branch">
+        <div class="flow-node">OP — 7 th</div>
+        <div class="flow-node">CV — 4 th</div>
+        <div class="flow-node">PT — 3 th</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">PPh Final 0,5%</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">Batas waktu habis</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node emph">Tarif normal</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">PPh Pasal 25</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">Perlu pembukuan</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-branch">
+        <div class="flow-node">SDM</div>
+        <div class="flow-node">Aplikasi</div>
+        <div class="flow-node">SOP</div>
+      </div>
+    </div>
+
+    <div class="kasus-label">Hafalan super cepat</div>
+    <p>7 — 4 — 3, lalu 0,5% → habis masa → normal → pembukuan.</p>
+    <p>Administrasinya: hitung omzet → billing → bayar → BPN/SSP/NTPN → arsip → laporkan.</p>
+
+    <div class="note">
+      <strong>Catatan penting.</strong> Materi ini menyebut "PP 23 Tahun 2023", tapi judul dan ketentuan yang dibahas sebenarnya merujuk pada PP 23 Tahun 2018. Aturan PPh UMKM Indonesia sudah mengalami perubahan sejak materi MySkill ini diterbitkan, jadi studi kasus di atas mengikuti materi aslinya untuk keperluan belajar — bukan panduan kepatuhan pajak terkini.
+    </div>
+  </section>
+
+  <footer>
+    <span>MySkill.id — Corporate Tax Series</span>
+    <span>PPh UMKM · Vol. 2</span>
+  </footer>
+
+</div>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

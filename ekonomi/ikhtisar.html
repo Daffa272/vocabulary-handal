@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Materi Ekonomi</title>
+	<style>
+		:root {
+			--primary: #0f766e;
+			--primary-dark: #115e59;
+			--background: #f0fdfa;
+			--card: #ffffff;
+			--text: #172033;
+			--muted: #64748b;
+			--border: #ccfbf1;
+			--shadow: 0 12px 28px rgba(15, 118, 110, 0.1);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			font-family: "Segoe UI", Tahoma, sans-serif;
+			color: var(--text);
+			background: linear-gradient(135deg, #f0fdfa, #f8fafc);
+		}
+
+		.page {
+			width: min(1120px, calc(100% - 32px));
+			margin: 0 auto;
+			padding: 36px 0 48px;
+		}
+
+		.header {
+			margin-bottom: 28px;
+			padding: 32px;
+			color: white;
+			background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+			border-radius: 18px;
+			box-shadow: var(--shadow);
+		}
+
+		.header h1 {
+			margin: 0 0 10px;
+			font-size: clamp(2rem, 5vw, 3rem);
+		}
+
+		.header p {
+			max-width: 720px;
+			margin: 0;
+			color: rgba(255, 255, 255, 0.86);
+			line-height: 1.7;
+		}
+
+		.cards {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 18px;
+		}
+
+		.card {
+			display: flex;
+			min-height: 220px;
+			flex-direction: column;
+			padding: 22px;
+			color: inherit;
+			text-decoration: none;
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+			transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+		}
+
+		.card:hover {
+			transform: translateY(-4px);
+			border-color: #5eead4;
+			box-shadow: var(--shadow);
+		}
+
+		.number {
+			display: grid;
+			width: 42px;
+			height: 42px;
+			place-items: center;
+			margin-bottom: 18px;
+			color: var(--primary-dark);
+			font-weight: 800;
+			background: #ccfbf1;
+			border-radius: 11px;
+		}
+
+		.card h2 {
+			margin: 0 0 10px;
+			font-size: 1.15rem;
+		}
+
+		.card p {
+			flex: 1;
+			margin: 0 0 18px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		.link-label {
+			color: var(--primary);
+			font-weight: 700;
+		}
+
+		.link-label::after {
+			content: "  ->";
+		}
+
+		.study-schedule {
+			margin-bottom: 24px;
+			padding: 22px;
+			background: linear-gradient(135deg, #ecfdf5, #ffffff 68%);
+			border: 1px solid #99f6e4;
+			border-radius: 16px;
+			box-shadow: var(--shadow);
+		}
+
+		.schedule-heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 16px;
+			margin-bottom: 16px;
+		}
+
+		.schedule-heading h2 { margin: 0; font-size: 1.25rem; }
+		.schedule-heading p { margin: 4px 0 0; color: var(--muted); font-size: .88rem; }
+		.schedule-count { padding: 6px 10px; border-radius: 999px; background: #ccfbf1; color: var(--primary-dark); font-size: .78rem; font-weight: 800; white-space: nowrap; }
+		.schedule-form { display: grid; grid-template-columns: minmax(180px, 1fr) 150px 125px auto; gap: 10px; margin-bottom: 16px; }
+		.schedule-form input { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid var(--border); border-radius: 9px; background: white; color: var(--text); font: inherit; outline: none; }
+		.schedule-form input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15, 118, 110, .12); }
+		.schedule-form button { border: 0; border-radius: 9px; padding: 11px 16px; background: var(--primary); color: white; font: inherit; font-weight: 800; cursor: pointer; }
+		.schedule-form button:hover { background: var(--primary-dark); }
+		.schedule-list { display: grid; gap: 8px; }
+		.schedule-empty { padding: 16px; border: 1px dashed #5eead4; border-radius: 10px; color: var(--muted); text-align: center; font-size: .88rem; }
+		.schedule-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 12px 14px; background: rgba(255, 255, 255, .86); border: 1px solid #99f6e4; border-radius: 10px; }
+		.schedule-item.is-done .schedule-task { color: #94a3b8; text-decoration: line-through; }
+		.schedule-check { width: 19px; height: 19px; accent-color: var(--primary); cursor: pointer; }
+		.schedule-task { display: block; font-weight: 700; overflow-wrap: anywhere; }
+		.schedule-time { display: block; margin-top: 2px; color: var(--muted); font-size: .78rem; }
+		.schedule-delete { border: 0; padding: 6px 8px; border-radius: 7px; background: transparent; color: var(--primary-dark); font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
+		.schedule-delete:hover { background: #ccfbf1; }
+
+		@media (max-width: 560px) {
+			.page {
+				width: min(100% - 20px, 1120px);
+				padding-top: 20px;
+			}
+
+			.header {
+				padding: 24px;
+			}
+
+			.schedule-form { grid-template-columns: 1fr 1fr; }
+			.schedule-form input[type="text"], .schedule-form button { grid-column: 1 / -1; }
+		}
+	</style>
+<link rel="stylesheet" href="annotation.css">
+</head>
+<body>
+	<main class="page">
+		<header class="header">
+			<h1>Materi Ekonomi</h1>
+			<p>Pilih kartu untuk membuka materi ekonomi yang tersedia di folder ini.</p>
+		</header>
+
+		<section class="study-schedule" aria-labelledby="schedule-title">
+			<div class="schedule-heading">
+				<div><h2 id="schedule-title">To-do Jadwal Belajar</h2><p>Atur agenda belajar dan tandai tugas yang sudah selesai.</p></div>
+				<span class="schedule-count" id="schedule-count">0 agenda</span>
+			</div>
+			<form class="schedule-form" id="schedule-form">
+				<input id="schedule-task" type="text" placeholder="Contoh: Pelajari inflasi" aria-label="Nama kegiatan" required maxlength="120">
+				<input id="schedule-date" type="date" aria-label="Tanggal kegiatan" required>
+				<input id="schedule-time" type="time" aria-label="Waktu kegiatan" required>
+				<button type="submit">+ Tambah agenda</button>
+			</form>
+			<div class="schedule-list" id="schedule-list" aria-live="polite"></div>
+		</section>
+
+		<section class="cards" aria-label="Daftar materi ekonomi">
+			<a class="card" href="bi-rate.html">
+				<span class="number">01</span>
+				<h2>BI-Rate</h2>
+				<p>Memahami BI-Rate dan BI 7-Day Reverse Repo Rate sebagai instrumen kebijakan moneter.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="indikatormoneter.html">
+				<span class="number">02</span>
+				<h2>Indikator Moneter</h2>
+				<p>Mengenal indikator moneter Bank Indonesia dan kegunaannya untuk membaca kondisi ekonomi.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="INDONIA.html">
+				<span class="number">03</span>
+				<h2>INDONIA</h2>
+				<p>Mempelajari INDONIA, Compounded INDONIA, OIS, JIBOR, dan kurva imbal hasil pasar uang.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="inflasi.html">
+				<span class="number">04</span>
+				<h2>Inflasi</h2>
+				<p>Memahami definisi, pengukuran, penyebab, dampak, dan pengendalian inflasi.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="jisdor.html">
+				<span class="number">05</span>
+				<h2>JISDOR</h2>
+				<p>Mempelajari JISDOR, kurs acuan non-USD/IDR, dan kurs transaksi Bank Indonesia.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="moneter.html">
+				<span class="number">06</span>
+				<h2>Kebijakan Moneter</h2>
+				<p>Membahas kebijakan moneter, transmisi kebijakan, dan pengendalian inflasi.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="operasimoneter.html">
+				<span class="number">07</span>
+				<h2>Operasi Moneter</h2>
+				<p>Memahami pengendalian moneter dan operasi moneter Bank Indonesia.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="pasaruang.html">
+				<span class="number">08</span>
+				<h2>Pasar Uang dan Valuta Asing</h2>
+				<p>Mengenal pasar uang dan pasar valuta asing dalam kerangka PUVA.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="ikhtisar2.html">
+				<span class="number">09</span>
+				<h2>Stabilitas Sistem Keuangan</h2>
+				<p>Mempelajari stabilitas sistem keuangan dan peran Bank Indonesia.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="keuanganhijau.html">
+				<span class="number">10</span>
+				<h2>Keuangan Hijau</h2>
+				<p>Membahas peran Bank Indonesia dalam pengembangan keuangan hijau.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="keuanganinklusif.html">
+				<span class="number">11</span>
+				<h2>Keuangan Inklusif</h2>
+				<p>Memahami konsep dan pentingnya akses keuangan yang inklusif.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="koordinasibi.html">
+				<span class="number">12</span>
+				<h2>Koordinasi Bank Indonesia</h2>
+				<p>Mengenal koordinasi BI dengan lembaga, otoritas, dan forum internasional.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="krisismanajemen.html">
+				<span class="number">13</span>
+				<h2>Manajemen Krisis dan KSSK</h2>
+				<p>Mempelajari peran Bank Indonesia dalam manajemen krisis dan KSSK.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="makroprudensial.html">
+				<span class="number">14</span>
+				<h2>Kebijakan Makroprudensial</h2>
+				<p>Memahami kebijakan makroprudensial Bank Indonesia dan tujuannya.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="profilbi.html">
+				<span class="number">15</span>
+				<h2>Profil Bank Indonesia</h2>
+				<p>Mengenal sejarah, tujuan, tugas, fungsi, dan peran Bank Indonesia.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+
+			<a class="card" href="umkm.html">
+				<span class="number">16</span>
+				<h2>Pengembangan UMKM</h2>
+				<p>Mempelajari peran Bank Indonesia dalam pengembangan UMKM.</p>
+				<span class="link-label">Buka materi</span>
+			</a>
+		</section>
+	</main>
+	<script>
+		const scheduleStorageKey = 'english-ekonomi-schedule';
+		const scheduleForm = document.getElementById('schedule-form');
+		const scheduleTask = document.getElementById('schedule-task');
+		const scheduleDate = document.getElementById('schedule-date');
+		const scheduleTime = document.getElementById('schedule-time');
+		const scheduleList = document.getElementById('schedule-list');
+		const scheduleCount = document.getElementById('schedule-count');
+		let schedules = JSON.parse(localStorage.getItem(scheduleStorageKey) || '[]');
+
+		const saveSchedules = () => localStorage.setItem(scheduleStorageKey, JSON.stringify(schedules));
+		const formatScheduleDate = (date, time) => new Date(`${date}T${time}`).toLocaleString('id-ID', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+		const renderSchedules = () => {
+			scheduleCount.textContent = `${schedules.filter((schedule) => !schedule.done).length} agenda`;
+			scheduleList.innerHTML = '';
+			if (!schedules.length) { scheduleList.innerHTML = '<div class="schedule-empty">Belum ada agenda. Tambahkan jadwal belajar pertamamu.</div>'; return; }
+			[...schedules].sort((first, second) => `${first.date}T${first.time}`.localeCompare(`${second.date}T${second.time}`)).forEach((schedule) => {
+				const item = document.createElement('div');
+				item.className = `schedule-item${schedule.done ? ' is-done' : ''}`;
+				item.innerHTML = `<input class="schedule-check" type="checkbox" aria-label="Tandai selesai" ${schedule.done ? 'checked' : ''}><div><span class="schedule-task"></span><span class="schedule-time">${formatScheduleDate(schedule.date, schedule.time)}</span></div><button class="schedule-delete" type="button">Hapus</button>`;
+				item.querySelector('.schedule-task').textContent = schedule.task;
+				item.querySelector('.schedule-check').addEventListener('change', (event) => { schedule.done = event.target.checked; saveSchedules(); renderSchedules(); });
+				item.querySelector('.schedule-delete').addEventListener('click', () => { schedules = schedules.filter((entry) => entry.id !== schedule.id); saveSchedules(); renderSchedules(); });
+				scheduleList.appendChild(item);
+			});
+		};
+		scheduleForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			schedules.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, task: scheduleTask.value.trim(), date: scheduleDate.value, time: scheduleTime.value, done: false });
+			saveSchedules(); renderSchedules(); scheduleForm.reset(); scheduleTask.focus();
+		});
+		renderSchedules();
+	</script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

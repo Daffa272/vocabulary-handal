@@ -1,0 +1,1477 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PBB - Studi Kasus & Panduan Lengkap</title>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #3b82f6;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #991b1b;
+            --info: #06b6d4;
+            --light: #eff6ff;
+            --dark: #0c4a6e;
+            --border: #bae6fd;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        nav .container {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px 20px;
+        }
+        
+        nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.85rem;
+            border-radius: var(--radius);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding-bottom: 40px;
+        }
+        
+        section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        section h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background: #eff6ff;
+        }
+        
+        /* Case Study Cards */
+        .case-study {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .case-study h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .case-study .label {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Calculation Box */
+        .calculation {
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calculation .formula {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .calculation .result {
+            font-weight: bold;
+            color: var(--danger);
+            font-size: 1.1rem;
+        }
+        
+        /* Important Notes */
+        .note {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .note::before {
+            content: "⚠️ ";
+        }
+        
+        .note strong {
+            color: var(--warning);
+        }
+        
+        /* Success Box */
+        .success {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .success::before {
+            content: "✅ ";
+        }
+        
+        /* Info Box */
+        .info {
+            background: #cffafe;
+            border: 1px solid #bfdbfe;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .info::before {
+            content: "ℹ️ ";
+        }
+        
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .summary .total {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--danger);
+        }
+        
+        /* Key Point */
+        .key-point {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--info);
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-p2 { background: #dbeafe; color: #1e40af; }
+        .badge-p3 { background: #dcfce7; color: #047857; }
+        .badge-bebas { background: #d1fae5; color: #047857; }
+        .badge-njop { background: #fef3c7; color: #92400e; }
+        .badge-njoptkp { background: #f3e8ff; color: #6b21a8; }
+        .badge-njkp { background: #e0e7ff; color: #3730a3; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Flowchart */
+        .flowchart {
+            background: #f8fafc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>🏠 PBB - Studi Kasus & Panduan Lengkap</h1>
+                <p>Pajak Bumi dan Bangunan - Subjek, Objek, NJOP, NJOPTKP, NJKP, dan Perhitungan</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="no-print">
+        <div class="container">
+            <a href="#dasar" class="active">Dasar Hukum</a>
+            <a href="#mengenal">Mengenal PBB</a>
+            <a href="#subjek-objek">Subjek & Objek</a>
+            <a href="#pbb-p2-p3">PBB-P2 & PBB-P3</a>
+            <a href="#njop">NJOP & NJOPTKP</a>
+            <a href="#njkp">NJKP & Tarif</a>
+            <a href="#sistem">Sistem Pemungutan</a>
+            <a href="#pelaporan">Pelaporan</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#jawaban">Kunci Jawaban</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        
+        <!-- DASAR HUKUM -->
+        <section id="dasar">
+            <h2>⚖️ Dasar Hukum PBB</h2>
+            
+            <h3>📜 Riwayat Dasar Hukum:</h3>
+            <ol>
+                <li>UU Nomor 12 Tahun 1985 tentang Pajak Bumi dan Bangunan</li>
+                <li>UU Nomor 12 Tahun 1994 tentang Perubahan atas UU Nomor 12 Tahun 1985</li>
+                <li><strong>Sejak 2014:</strong> Pemindahan wewenang PBB-P2 dari DJP ke Pemerintah Daerah (UU №28/2009 tentang PDRD)</li>
+            </ol>
+            
+            <div class="info">
+                <h4>ℹ️ Catatan Penting:</h4>
+                <p><strong>PBB-P2</strong> (Perdesaan, Perkotaan) → Dikelola <strong>Pemerintah Daerah</strong></p>
+                <p><strong>PBB-P3</strong> (Perkebunan, Perhutanan, Pertambangan) → Dikelola <strong>Direktorat Jenderal Pajak</strong></p>
+            </div>
+        </section>
+        
+        <!-- MENGENAL PBB -->
+        <section id="mengenal">
+            <h2>📚 Mengenal PBB</h2>
+            
+            <p><strong>Pajak Bumi dan Bangunan (PBB)</strong> dikenakan atas <strong>bumi</strong> dan/atau <strong>bangunan</strong>.</p>
+            
+            <h3>📌 Definisi:</h3>
+            
+            <div class="info">
+                <h4>🌍 Bumi:</h4>
+                <p>Permukaan bumi dan tubuh bumi yang ada di bawahnya, meliputi <strong>tanah dan perairan</strong> serta laut wilayah Indonesia.</p>
+                <p><strong>Contoh:</strong> Ladang, Kebun, Sawah, Pekarangan, Pertambangan</p>
+            </div>
+            
+            <div class="info">
+                <h4>🏗️ Bangunan:</h4>
+                <p>Konstruksi teknik yang ditanam atau dilekatkan secara tetap pada tanah dan/atau perairan.</p>
+                <p><strong>Contoh:</strong> Jalan Lingkungan, Jalan Tol, Kolam Renang, Pagar Mewah, Kilang Minyak, Pipa Minyak, Galangan Kapal, Dermaga, Taman Mewah, Tempat Olahraga, Fasilitas Lain Yang Memberi Manfaat</p>
+            </div>
+            
+            <h3>📊 Istilah Penting:</h3>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Istilah</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-njop">NJOP</span></td>
+                            <td><strong>Nilai Jual Objek Pajak</strong> - Harga rata-rata dari transaksi jual beli yang wajar</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-njoptkp">NJOPTKP</span></td>
+                            <td><strong>Nilai Jual Objek Pajak Tidak Kena Pajak</strong> - Angka pengurang dalam penghitungan NJOP</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-njkp">NJKP</span></td>
+                            <td><strong>Nilai Jual Kena Pajak</strong> - Nilai jual yang digunakan sebagai dasar pengenaan tarif PBB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SPOP</strong></td>
+                            <td><strong>Surat Pemberitahuan Objek Pajak</strong> - Surat untuk melaporkan data objek pajak</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SPPT</strong></td>
+                            <td><strong>Surat Pemberitahuan Pajak Terutang</strong> - Surat pemberitahuan besar pajak terutang</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- SUBJEK & OBJEK -->
+        <section id="subjek-objek">
+            <h2>👥 Subjek dan Objek PBB</h2>
+            
+            <h3>📌 Subjek PBB:</h3>
+            <p>Subjek PBB adalah entitas yang memiliki tanggung jawab untuk membayar pajak atas kepemilikan atau pemanfaatan bumi dan bangunan.</p>
+            
+            <div class="success">
+                <h4>✅ Yang Termasuk Subjek PBB:</h4>
+                <ol>
+                    <li><strong>Orang Pribadi:</strong> Individu yang memiliki hak atau manfaat atas bumi dan bangunan</li>
+                    <li><strong>Badan:</strong> Entitas hukum (perusahaan, yayasan, institusi) yang memiliki hak atau manfaat atas bumi dan bangunan</li>
+                </ol>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Kewajiban Subjek Pajak:</h4>
+                <ol>
+                    <li>Mempunyai hak atas bumi</li>
+                    <li>Memperoleh manfaat atas bumi</li>
+                    <li>Memiliki, menguasai, atau memperoleh manfaat atas bangunan</li>
+                </ol>
+            </div>
+            
+            <h3>💎 Objek PBB:</h3>
+            <p><strong>Objek PBB adalah <span class="badge badge-njop">bumi</span> dan/atau <span class="badge badge-njop">bangunan</span>.</strong></p>
+            
+            <h3>📊 Faktor Penentu Nilai Pajak:</h3>
+            <ol>
+                <li><strong>Letak:</strong> Lokasi bumi dan bangunan</li>
+                <li><strong>Bahan yang Digunakan:</strong> Material konstruksi</li>
+                <li><strong>Peruntukan:</strong> Penggunaan atau fungsi</li>
+                <li><strong>Rekayasa:</strong> Desain dan teknik konstruksi</li>
+                <li><strong>Pemanfaatan:</strong> Cara bumi dan bangunan dimanfaatkan</li>
+                <li><strong>Kondisi Lingkungan:</strong> Lingkungan sekitar</li>
+            </ol>
+            
+            <h3>❌ Objek yang Tidak Dikenakan PBB:</h3>
+            <div class="success">
+                <h4>✅ Dibebaskan dari PBB (Kepentingan Umum):</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Contoh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tempat Ibadah</td>
+                                <td>Masjid, gereja, pura, vihara</td>
+                            </tr>
+                            <tr>
+                                <td>Sosial</td>
+                                <td>Panti asuhan</td>
+                            </tr>
+                            <tr>
+                                <td>Kesehatan</td>
+                                <td>Rumah sakit</td>
+                            </tr>
+                            <tr>
+                                <td>Pendidikan</td>
+                                <td>Madrasah, pesantren</td>
+                            </tr>
+                            <tr>
+                                <td>Kebudayaan Nasional</td>
+                                <td>Candi, museum</td>
+                            </tr>
+                            <tr>
+                                <td>Lain-lain</td>
+                                <td>
+                                    <ul>
+                                        <li>Hutan lindung, suaka alam, wisata, taman nasional</li>
+                                        <li>Tanah/bangunan untuk kuburan, peninggalan purbakala</li>
+                                        <li>Tanah penggembalaan yang dikuasai oleh desa</li>
+                                        <li>Tanah negara yang belum dibebani suatu hak</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Pembebasan Berdasarkan Asas Timbal Balik:</h4>
+                <ol>
+                    <li><strong>Perwakilan Diplomatik dan Konsulat</strong></li>
+                    <li><strong>Organisasi Internasional</strong> (badan/perwakilan yang ditentukan oleh Menteri Keuangan)</li>
+                </ol>
+            </div>
+        </section>
+        
+        <!-- PBB-P2 & PBB-P3 -->
+        <section id="pbb-p2-p3">
+            <h2>🏛️ PBB-P2 vs PBB-P3</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>PBB-P2</th>
+                            <th>PBB-P3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Kepanjangan</strong></td>
+                            <td>Perdesaan, Perkotaan</td>
+                            <td>Perkebunan, Perhutanan, Pertambangan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pengelola</strong></td>
+                            <td><span class="badge badge-p2">Pemerintah Daerah</span></td>
+                            <td><span class="badge badge-p3">Direktorat Jenderal Pajak</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mulai Berlaku</strong></td>
+                            <td>1 Januari 2014</td>
+                            <td>Sebelum 2014</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Objek</strong></td>
+                            <td>Tanah/bangunan untuk tempat tinggal atau usaha</td>
+                            <td>
+                                <ul>
+                                    <li>Perkebunan</li>
+                                    <li>Perhutanan</li>
+                                    <li>Pertambangan</li>
+                                    <li>Perikanan tangkap</li>
+                                    <li>Budidaya ikan</li>
+                                    <li>Jaringan pipa, kabel telekomunikasi, kabel listrik</li>
+                                    <li>Jalan tol</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dasar Hukum</strong></td>
+                            <td>UU PDRD №28/2009</td>
+                            <td>PMK Nomor 23/2014</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="success">
+                <h4>✅ Keunggulan Sistem Official Assessment:</h4>
+                <ol>
+                    <li><strong>Akurasi Penilaian:</strong> Petugas yang berkompeten → nilai pajak lebih akurat</li>
+                    <li><strong>Kemudahan bagi WP:</strong> Tidak perlu menghitung sendiri → mengurangi risiko kesalahan</li>
+                    <li><strong>Kepastian Hukum:</strong> Penetapan resmi → kepastian hukum yang kuat</li>
+                </ol>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Pentingnya Pengelolaan Terpisah:</h4>
+                <ol>
+                    <li><strong>Efisiensi & Spesialisasi:</strong> Fokus pada bidang spesifik → meningkatkan efisiensi dan akurasi</li>
+                    <li><strong>Kepastian Hukum:</strong> Kejelasan instansi berwenang → mengurangi kebingungan dan sengketa</li>
+                </ol>
+            </div>
+        </section>
+        
+        <!-- NJOP -->
+        <section id="njop">
+            <h2>💰 Nilai Jual Objek Pajak (NJOP)</h2>
+            
+            <p><strong>NJOP</strong> adalah <strong>harga rata-rata yang diperoleh dari transaksi jual beli yang terjadi secara wajar</strong>, dan dinyatakan <strong>per meter persegi</strong>.</p>
+            
+            <div class="info">
+                <h4>ℹ️ Jika Tidak Ada Transaksi Jual Beli:</h4>
+                <p>NJOP ditentukan melalui:</p>
+                <ol>
+                    <li>Perbandingan harga dengan objek lain yang sejenis</li>
+                    <li>Nilai perolehan baru</li>
+                    <li>Nilai Jual Objek Pajak Pengganti (NJOPP)</li>
+                </ol>
+            </div>
+            
+            <div class="key-point">
+                <h4>🔑 Rumus NJOP:</h4>
+                <p style="font-size: 1.1rem;">
+                    <span style="color: var(--primary);">NJOP Bumi</span> = Total luas areal × NJOP Bumi per m²<br>
+                    <span style="color: var(--primary);">NJOP Bangunan</span> = Total luas bangunan × NJOP Bangunan per m²<br>
+                    <span style="color: var(--primary);">Total NJOP</span> = NJOP Bumi + NJOP Bangunan
+                </p>
+            </div>
+            
+            <h3>📊 NJOPTKP (Nilai Jual Objek Pajak Tidak Kena Pajak):</h3>
+            <p>NJOPTKP merupakan <strong>angka pengurang</strong> dalam penghitungan NJOP.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis PBB</th>
+                            <th>Besaran NJOPTKP</th>
+                            <th>Dasar Hukum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-p2">PBB-P2</span></td>
+                            <td>Tergantung Pemerintah Daerah masing-masing, <strong>paling rendah Rp10.000.000</strong></td>
+                            <td>UU PDRD №28/2009</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-p3">PBB-P3</span></td>
+                            <td><strong>Rp12.000.000</strong> (tetap)</td>
+                            <td>PMK Nomor 23/2014</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h4>⚠️ Catatan NJOPTKP:</h4>
+                <p>Setiap Wajib Pajak hanya memperoleh pengurangan NJOPTKP <strong>sebanyak satu kali</strong> dalam satu Tahun Pajak.</p>
+                <p>Hanya untuk <strong>satu objek PBB yang terbesar</strong> jika Wajib Pajak memiliki beberapa objek PBB.</p>
+            </div>
+        </section>
+        
+        <!-- NJKP & TARIF -->
+        <section id="njkp">
+            <h2>📊 NJKP & Tarif PBB</h2>
+            
+            <h3>💎 NJKP (Nilai Jual Kena Pajak):</h3>
+            <p><strong>NJKP</strong> adalah nilai jual yang dipergunakan sebagai <strong>dasar pengenaan tarif PBB</strong>.</p>
+            
+            <div class="tarif-table">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jenis PBB</th>
+                                <th>Persentase NJKP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2"><span class="badge badge-p3">PBB-P3</span></td>
+                                <td><strong>40% × NJOP</strong></td>
+                            </tr>
+                            <tr>
+                                <td><em>Untuk Perkebunan, Perhutanan, Pertambangan</em></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"><span class="badge badge-p2">PBB-P2</span></td>
+                                <td><strong>40% × NJOP</strong> (jika NJOP ≥ Rp1.000.000.000)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>20% × NJOP</strong> (jika NJOP < Rp1.000.000.000)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="text-align: center; margin-top: 10px;"><strong>Sumber:</strong> PP No 25 Tahun 2002</p>
+            </div>
+            
+            <h3>💵 Tarif PBB:</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis PBB</th>
+                            <th>Tarif</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-p3">PBB-P3</span></td>
+                            <td><strong>0,5%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-p2">PBB-P2</span></td>
+                            <td><strong>Paling tinggi 0,5%</strong>, tergantung kebijakan pemerintah daerah</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="key-point">
+                <h4>🔑 Rumus PBB Terutang:</h4>
+                <p style="font-size: 1.2rem; font-weight: bold; text-align: center;">
+                    <span style="color: var(--primary);">PBB Terutang</span> = 
+                    <span style="color: var(--secondary);">Tarif PBB</span> × 
+                    <span style="color: var(--info);">NJKP</span>
+                </p>
+                <p style="text-align: center; margin-top: 10px; font-size: 1.1rem;">
+                    <strong>atau</strong><br>
+                    PBB Terutang = Tarif PBB × (Persentase NJKP × (NJOP — NJOPTKP))
+                </p>
+            </div>
+            
+            <div class="calculation">
+                <div><strong>Contoh:</strong> Rumah pribadi dengan NJOP Bumi = Rp500M, NJOP Bangunan = Rp100M, NJOPTKP = Rp10M, NJKP = 20%, Tarif = 0,2%</div>
+                <div style="margin-top: 5px;">PBB = 0,2% × (20% × (Rp500M + Rp100M - Rp10M)) = 0,2% × (20% × Rp590M) = <span class="result">Rp236.000</span></div>
+            </div>
+        </section>
+        
+        <!-- SISTEM PEMUNGUTAN -->
+        <section id="sistem">
+            <h2>⚙️ Sistem Pemungutan PBB</h2>
+            
+            <div class="success">
+                <h4>✅ PBB Menggunakan Sistem:</h4>
+                <h3 style="color: var(--primary);">Official Assessment</h3>
+            </div>
+            
+            <h3>📌 Penjelasan:</h3>
+            <p><strong>Official Assessment</strong> adalah sistem pemungutan perpajakan yang memberikan wewenang kepada <strong>fiskus/petugas pajak</strong> untuk:</p>
+            <ol>
+                <li>Melakukan penilaian terhadap objek pajak (bumi dan/atau bangunan)</li>
+                <li>Menetapkan <span class="badge badge-njop">NJOP</span></li>
+                <li>Menentukan besar pajak yang harus dibayar oleh Wajib Pajak</li>
+            </ol>
+            
+            <div class="info">
+                <h4>ℹ️ Perbedaan Official Assessment vs Self Assessment:</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspek</th>
+                                <th>Official Assessment</th>
+                                <th>Self Assessment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Penghitungan</strong></td>
+                                <td>Fiskus/petugas pajak</td>
+                                <td>Wajib Pajak sendiri</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contoh Pajak</strong></td>
+                                <td>PBB</td>
+                                <td>PPN, PPh</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kepastian</strong></td>
+                                <td>Tinggi (penetapan resmi)</td>
+                                <td>Tergantung WP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PELAPORAN -->
+        <section id="pelaporan">
+            <h2>📋 Pelaporan PBB</h2>
+            
+            <h3>📅 Alur Pelaporan PBB-P2:</h3>
+            <ol>
+                <li><strong>Wajib Pajak / Kuasa:</strong> Setelah 30 hari sejak diterima, <strong>SPOP</strong> yang telah diisi dikembalikan kepada DJP/Pemda</li>
+                <li><strong>Penerbitan SPPT:</strong> <strong>SPPT</strong> diterbitkan dan disampaikan kepada Wajib Pajak</li>
+                <li><strong>Pembayaran:</strong> Wajib Pajak melakukan pembayaran, dengan batas waktu <strong>enam bulan</strong> setelah SPPT diterima</li>
+            </ol>
+            
+            <h3>💰 Pembayaran PBB:</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cara Pembayaran</th>
+                            <th>Channel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Online</strong></td>
+                            <td>Internet Banking, Mobile Banking, ATM, e-Commerce, dll.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Offline</strong></td>
+                            <td>SAMSAT, Kantor Pos, Bank, dll.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Jumlah yang Dibayar:</h4>
+                <p>Sesuai dengan <strong>SPPT (Surat Pemberitahuan Pajak Terutang)</strong> yang diterima oleh Wajib Pajak.</p>
+            </div>
+            
+            <h3>🎁 Diskon PBB-P2 (Contoh DKI Jakarta 2023):</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Periode Pembayaran</th>
+                            <th>Diskon PBB</th>
+                            <th>Diskon Sanksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maret - Juni 2023</td>
+                            <td><strong>10%</strong></td>
+                            <td><strong>20%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Juli - September 2023</td>
+                            <td><strong>5%</strong></td>
+                            <td><strong>10%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="note">
+                <p><strong>⚠️ Catatan:</strong> Diskon dan ketentuannya tergantung kebijakan masing-masing daerah.</p>
+            </div>
+        </section>
+        
+        <!-- STUDI KASUS -->
+        <section id="studi-kasus">
+            <h2>📖 Studi Kasus PBB</h2>
+            
+            <div class="case-study">
+                <span class="label">PT Sejahtera Properti Indonesia</span>
+                <p><strong>Profil:</strong> Perusahaan properti dengan berbagai objek tanah dan bangunan</p>
+                <p><strong>Tahun Pajak:</strong> 2024</p>
+                
+                <h4>📊 Data Objek:</h4>
+                
+                <!-- Objek 1 -->
+                <h4>Objek 1 — Gedung Perkantoran</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Luas tanah</td>
+                                <td>1.000 m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bumi</td>
+                                <td>Rp3.000.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>Luas bangunan</td>
+                                <td>600 m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bangunan</td>
+                                <td>Rp4.000.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOPTKP</td>
+                                <td>Rp10.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Tarif PBB-P2</td>
+                                <td>0,2%</td>
+                            </tr>
+                            <tr>
+                                <td>NJKP</td>
+                                <td>40%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Objek 2 -->
+                <h4>Objek 2 — Rumah Tinggal Direktur</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Luas tanah</td>
+                                <td>500 m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bumi</td>
+                                <td>Rp2.500.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>Luas bangunan</td>
+                                <td>300 m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bangunan</td>
+                                <td>Rp3.500.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOPTKP</td>
+                                <td>Rp10.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Tarif PBB-P2</td>
+                                <td>0,2%</td>
+                            </tr>
+                            <tr>
+                                <td>NJKP</td>
+                                <td>20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Objek 3 -->
+                <h4>Objek 3 — Perkebunan</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Luas tanah</td>
+                                <td>20 hektare (1 hektare = 10.000 m²)</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bumi</td>
+                                <td>Rp150.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bangunan/fasilitas</td>
+                                <td>Rp2.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>NJOPTKP</td>
+                                <td>Rp12.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Tarif PBB-P3</td>
+                                <td>0,5%</td>
+                            </tr>
+                            <tr>
+                                <td>NJKP</td>
+                                <td>40%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Objek 4 -->
+                <h4>Objek 4 — Rumah Ibadah (Masjid)</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Luas tanah</td>
+                                <td>800 m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bumi</td>
+                                <td>Rp1.500.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>Luas bangunan</td>
+                                <td>400 m²</td>
+                            </tr>
+                            <tr>
+                                <td>NJOP bangunan</td>
+                                <td>Rp2.000.000/m²</td>
+                            </tr>
+                            <tr>
+                                <td>Kegunaan</td>
+                                <td>Tempat ibadah, tidak untuk keuntungan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Objek 5 -->
+                <h4>Objek 5 — Tanah Negara</h4>
+                <p><strong>Status:</strong> Tanah negara yang belum dibebani suatu hak, digunakan untuk kegiatan sosial masyarakat</p>
+            </div>
+            
+            <h3>❓ Pertanyaan:</h3>
+            
+            <h4>A. Identifikasi Objek Pajak</h4>
+            <ol>
+                <li>Tentukan objek mana yang termasuk <span class="badge badge-p2">PBB-P2</span>.</li>
+                <li>Tentukan objek mana yang termasuk <span class="badge badge-p3">PBB-P3</span>.</li>
+                <li>Apakah rumah pribadi direktur termasuk objek PBB?</li>
+                <li>Apakah masjid merupakan objek yang dikenakan PBB?</li>
+                <li>Bagaimana status tanah negara yang belum dibebani suatu hak?</li>
+            </ol>
+            
+            <h4>B. Perhitungan NJOP</h4>
+            <p>Untuk Objek 1, hitung:</p>
+            <ol>
+                <li>NJOP bumi</li>
+                <li>NJOP bangunan</li>
+                <li>Total NJOP</li>
+            </ol>
+            <p>Untuk Objek 2 dan 3, lakukan perhitungan yang sama.</p>
+            
+            <h4>C. Perhitungan PBB Objek 1</h4>
+            <p>Hitung PBB terutang atas gedung perkantoran PT Sejahtera.</p>
+            <p><strong>Rumus:</strong> <span class="formula">PBB Terutang = Tarif PBB × NJKP</span></p>
+            <p><span class="formula">NJKP = Persentase NJKP × (NJOP − NJOPTKP)</span></p>
+            
+            <h4>D. Perhitungan PBB Objek 2</h4>
+            <p>Hitung PBB terutang atas rumah tinggal direktur.</p>
+            
+            <h4>E. Perhitungan PBB-P3 Objek 3</h4>
+            <p>Hitung:</p>
+            <ol>
+                <li>Luas perkebunan dalam m²</li>
+                <li>NJOP bumi</li>
+                <li>Total NJOP</li>
+                <li>NJOP setelah dikurangi NJOPTKP</li>
+                <li>NJKP</li>
+                <li>PBB-P3 terutang</li>
+            </ol>
+            
+            <h4>F. Analisis Objek yang Tidak Dikenakan PBB</h4>
+            <p>Jelaskan mengapa:</p>
+            <ol>
+                <li>Masjid tidak dikenakan PBB</li>
+                <li>Tanah negara yang belum dibebani suatu hak tidak dikenakan PBB</li>
+            </ol>
+            
+            <h4>G. Administrasi dan Pelaporan</h4>
+            <p>Untuk masing-masing objek, tentukan pihak yang bertanggung jawab atas administrasi PBB:</p>
+            <ol>
+                <li>Pemerintah Daerah</li>
+                <li>Direktorat Jenderal Pajak</li>
+            </ol>
+            <p>Jelaskan juga perbedaan <strong>SPOP</strong> dan <strong>SPPT</strong>.</p>
+            
+            <h4>H. Sistem Pemungutan</h4>
+            <ol>
+                <li>Sistem pemungutan PBB yang digunakan dalam materi adalah apa?</li>
+                <li>Jelaskan perbedaan <strong>Official Assessment</strong> dengan <strong>Self Assessment</strong>.</li>
+                <li>Siapa yang menentukan besarnya pajak terutang dalam sistem Official Assessment?</li>
+            </ol>
+        </section>
+        
+        <!-- KUNCI JAWABAN -->
+        <section id="jawaban">
+            <h2>🔑 Kunci Jawaban & Pembahasan</h2>
+            
+            <!-- A. Identifikasi -->
+            <div class="case-study">
+                <span class="label">A. Identifikasi Objek Pajak</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Objek</th>
+                                <th>Jenis PBB</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gedung perkantoran</td>
+                                <td><span class="badge badge-p2">PBB-P2</span></td>
+                                <td><strong>Terutang</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Rumah direktur</td>
+                                <td><span class="badge badge-p2">PBB-P2</span></td>
+                                <td><strong>Terutang</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Perkebunan</td>
+                                <td><span class="badge badge-p3">PBB-P3</span></td>
+                                <td><strong>Terutang</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Masjid</td>
+                                <td><span class="badge badge-p2">PBB-P2</span></td>
+                                <td><span class="badge badge-bebas">Tidak dikenakan PBB</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tanah negara belum dibebani hak</td>
+                                <td>-</td>
+                                <td><span class="badge badge-bebas">Tidak dikenakan PBB</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="info">
+                    <h4>ℹ️ Penjelasan:</h4>
+                    <p><strong>PBB dikenakan atas bumi dan/atau bangunan.</strong> Orang pribadi maupun badan dapat menjadi subjek pajak apabila memiliki hak, menguasai, atau memperoleh manfaat atas bumi/bangunan.</p>
+                </div>
+            </div>
+            
+            <!-- B. NJOP -->
+            <div class="case-study">
+                <span class="label">B. Perhitungan NJOP</span>
+                
+                <h4>Objek 1 — Gedung Perkantoran:</h4>
+                <div class="calculation">
+                    <div><span class="formula">1. NJOP Bumi</span> = Luas tanah × NJOP bumi</div>
+                    <div>= 1.000 m² × Rp3.000.000/m² = <span class="result">Rp3.000.000.000</span></div>
+                    <div style="margin-top: 5px;"><span class="formula">2. NJOP Bangunan</span> = Luas bangunan × NJOP bangunan</div>
+                    <div>= 600 m² × Rp4.000.000/m² = <span class="result">Rp2.400.000.000</span></div>
+                    <div style="margin-top: 5px;"><span class="formula">3. Total NJOP</span> = NJOP Bumi + NJOP Bangunan</div>
+                    <div>= Rp3.000.000.000 + Rp2.400.000.000 = <span class="result">Rp5.400.000.000</span></div>
+                </div>
+                
+                <h4>Objek 2 — Rumah Tinggal:</h4>
+                <div class="calculation">
+                    <div><span class="formula">NJOP Bumi</span> = 500 m² × Rp2.500.000/m² = <span class="result">Rp1.250.000.000</span></div>
+                    <div><span class="formula">NJOP Bangunan</span> = 300 m² × Rp3.500.000/m² = <span class="result">Rp1.050.000.000</span></div>
+                    <div><span class="formula">Total NJOP</span> = Rp1.250.000.000 + Rp1.050.000.000 = <span class="result">Rp2.300.000.000</span></div>
+                </div>
+                
+                <h4>Objek 3 — Perkebunan:</h4>
+                <div class="calculation">
+                    <div><span class="formula">1. Konversi luas</span> = 20 hektare × 10.000 m² = <span class="result">200.000 m²</span></div>
+                    <div><span class="formula">2. NJOP Bumi</span> = 200.000 m² × Rp150.000/m² = <span class="result">Rp30.000.000.000</span></div>
+                    <div><span class="formula">3. Total NJOP</span> = Rp30.000.000.000 + Rp2.000.000.000 = <span class="result">Rp32.000.000.000</span></div>
+                </div>
+            </div>
+            
+            <!-- C. PBB Objek 1 -->
+            <div class="case-study">
+                <span class="label">C. Perhitungan PBB Objek 1 (Gedung Perkantoran)</span>
+                <p><strong>Diketahui:</strong> NJOP = Rp5.400.000.000, NJOPTKP = Rp10.000.000, NJKP = 40%, Tarif = 0,2%</p>
+                <div class="calculation">
+                    <div><span class="formula">1. NJOP setelah NJOPTKP</span> = Rp5.400.000.000 - Rp10.000.000 = <span class="result">Rp5.390.000.000</span></div>
+                    <div><span class="formula">2. NJKP</span> = 40% × Rp5.390.000.000 = <span class="result">Rp2.156.000.000</span></div>
+                    <div><span class="formula">3. PBB Terutang</span> = 0,2% × Rp2.156.000.000 = <span class="result">Rp4.312.000</span></div>
+                </div>
+                <div class="success">
+                    <p><strong>✅ Jawaban:</strong> PBB terutang Objek 1 = <span class="badge badge-p2">Rp4.312.000</span></p>
+                </div>
+            </div>
+            
+            <!-- D. PBB Objek 2 -->
+            <div class="case-study">
+                <span class="label">D. Perhitungan PBB Objek 2 (Rumah Tinggal)</span>
+                <p><strong>Diketahui:</strong> NJOP = Rp2.300.000.000, NJOPTKP = Rp10.000.000, NJKP = 20%, Tarif = 0,2%</p>
+                <div class="calculation">
+                    <div><span class="formula">1. NJOP setelah NJOPTKP</span> = Rp2.300.000.000 - Rp10.000.000 = <span class="result">Rp2.290.000.000</span></div>
+                    <div><span class="formula">2. NJKP</span> = 20% × Rp2.290.000.000 = <span class="result">Rp458.000.000</span></div>
+                    <div><span class="formula">3. PBB Terutang</span> = 0,2% × Rp458.000.000 = <span class="result">Rp916.000</span></div>
+                </div>
+                <div class="success">
+                    <p><strong>✅ Jawaban:</strong> PBB terutang rumah tinggal = <span class="badge badge-p2">Rp916.000</span></p>
+                </div>
+            </div>
+            
+            <!-- E. PBB-P3 Objek 3 -->
+            <div class="case-study">
+                <span class="label">E. Perhitungan PBB-P3 Objek 3 (Perkebunan)</span>
+                <p><strong>Diketahui:</strong> NJOP = Rp32.000.000.000, NJOPTKP = Rp12.000.000, NJKP = 40%, Tarif = 0,5%</p>
+                <div class="calculation">
+                    <div><span class="formula">1. Luas perkebunan</span> = 20 hektare × 10.000 m² = <span class="result">200.000 m²</span></div>
+                    <div><span class="formula">2. NJOP Bumi</span> = 200.000 m² × Rp150.000/m² = <span class="result">Rp30.000.000.000</span></div>
+                    <div><span class="formula">3. Total NJOP</span> = Rp30.000.000.000 + Rp2.000.000.000 = <span class="result">Rp32.000.000.000</span></div>
+                    <div><span class="formula">4. NJOP - NJOPTKP</span> = Rp32.000.000.000 - Rp12.000.000 = <span class="result">Rp31.988.000.000</span></div>
+                    <div><span class="formula">5. NJKP</span> = 40% × Rp31.988.000.000 = <span class="result">Rp12.795.200.000</span></div>
+                    <div><span class="formula">6. PBB-P3 Terutang</span> = 0,5% × Rp12.795.200.000 = <span class="result">Rp63.976.000</span></div>
+                </div>
+                <div class="success">
+                    <p><strong>✅ Jawaban:</strong> PBB-P3 terutang = <span class="badge badge-p3">Rp63.976.000</span></p>
+                </div>
+            </div>
+            
+            <!-- F. Analisis Objek Tidak Dikenakan -->
+            <div class="case-study">
+                <span class="label">F. Analisis Objek yang Tidak Dikenakan PBB</span>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>Masjid:</strong> Masjid termasuk objek yang <strong>tidak dikenakan PBB</strong> karena digunakan untuk <strong>kepentingan umum tanpa tujuan memperoleh keuntungan</strong>. Materi memasukkan tempat ibadah (masjid, gereja, pura, vihara) ke dalam kategori objek yang tidak dikenakan PBB.</li>
+                        <li><strong>Tanah negara:</strong> Tanah negara yang belum dibebani suatu hak juga <strong>tidak dikenakan PBB</strong> berdasarkan materi.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- G. Administrasi -->
+            <div class="case-study">
+                <span class="label">G. Administrasi dan Pelaporan</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Objek</th>
+                                <th>Pengelola Administrasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gedung perkantoran</td>
+                                <td><span class="badge badge-p2">Pemerintah Daerah</span></td>
+                            </tr>
+                            <tr>
+                                <td>Rumah tinggal</td>
+                                <td><span class="badge badge-p2">Pemerintah Daerah</span></td>
+                            </tr>
+                            <tr>
+                                <td>Perkebunan</td>
+                                <td><span class="badge badge-p3">Direktorat Jenderal Pajak</span></td>
+                            </tr>
+                            <tr>
+                                <td>Masjid</td>
+                                <td><span class="badge badge-bebas">Tidak dikenakan</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tanah negara</td>
+                                <td><span class="badge badge-bebas">Tidak dikenakan</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4>📄 Perbedaan SPOP dan SPPT:</h4>
+                <div class="info">
+                    <p><strong>SPOP (Surat Pemberitahuan Objek Pajak):</strong> Surat yang digunakan oleh <strong>wajib pajak</strong> untuk <strong>melaporkan data objek pajak</strong> menurut ketentuan undang-undang PBB.</p>
+                    <p><strong>SPPT (Surat Pemberitahuan Pajak Terutang):</strong> Surat yang digunakan oleh <strong>Direktorat Jenderal Pajak</strong> untuk <strong>memberitahukan besarnya pajak terutang</strong> kepada wajib pajak.</p>
+                </div>
+            </div>
+            
+            <!-- H. Sistem Pemungutan -->
+            <div class="case-study">
+                <span class="label">H. Sistem Pemungutan</span>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>Sistem yang digunakan:</strong> <strong>Official Assessment</strong></li>
+                        <li><strong>Perbedaan Official Assessment vs Self Assessment:</strong>
+                            <ul>
+                                <li><strong>Official Assessment:</strong> Fiskus/petugas pajak menentukan besarnya pajak terutang</li>
+                                <li><strong>Self Assessment:</strong> Wajib Pajak sendiri yang menghitung dan melaporkan besarnya pajak terutang</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pihak yang menentukan pajak terutang:</strong> <strong>Fiskus/petugas pajak</strong> melakukan penilaian terhadap objek, menetapkan NJOP, dan menentukan pajak yang harus dibayar.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Ringkasan -->
+            <div class="summary">
+                <h3>📊 Ringkasan Hasil Perhitungan</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Objek</th>
+                                <th>NJOP</th>
+                                <th>NJOPTKP</th>
+                                <th>NJKP</th>
+                                <th>Tarif</th>
+                                <th>PBB Terutang</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gedung perkantoran</td>
+                                <td>Rp5.400.000.000</td>
+                                <td>Rp10.000.000</td>
+                                <td>Rp2.156.000.000</td>
+                                <td>0,2%</td>
+                                <td class="result"><strong>Rp4.312.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Rumah tinggal</td>
+                                <td>Rp2.300.000.000</td>
+                                <td>Rp10.000.000</td>
+                                <td>Rp458.000.000</td>
+                                <td>0,2%</td>
+                                <td class="result"><strong>Rp916.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Perkebunan</td>
+                                <td>Rp32.000.000.000</td>
+                                <td>Rp12.000.000</td>
+                                <td>Rp12.795.200.000</td>
+                                <td>0,5%</td>
+                                <td class="result"><strong>Rp63.976.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Masjid</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="badge badge-bebas">Tidak dikenakan</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tanah negara</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="badge badge-bebas">Tidak dikenakan</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" style="text-align: right; font-weight: bold;">Total PBB terutang:</td>
+                                <td class="result" style="font-size: 1.2rem;"><strong>Rp69.204.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="key-point">
+                <h4>🔑 Kompetensi yang Diuji:</h4>
+                <ol>
+                    <li><strong>Identifikasi Objek PBB:</strong> PBB-P2 vs PBB-P3, objek yang dibebaskan</li>
+                    <li><strong>Perhitungan NJOP:</strong> Luas × NJOP per m², total NJOP</li>
+                    <li><strong>Perhitungan NJKP:</strong> Persentase NJKP × (NJOP - NJOPTKP)</li>
+                    <li><strong>Perhitungan PBB Terutang:</strong> Tarif × NJKP</li>
+                    <li><strong>Sistem Pemungutan:</strong> Official Assessment vs Self Assessment</li>
+                    <li><strong>Administrasi:</strong> SPOP, SPPT, pengelola (Pemda vs DJP)</li>
+                    <li><strong>Pembebasan:</strong> Objek yang tidak dikenakan PBB</li>
+                </ol>
+            </div>
+            
+            <div class="note">
+                <h4>⚠️ Catatan Penting:</h4>
+                <p><strong>NJOPTKP:</strong> Hanya <strong>satu kali</strong> dalam satu Tahun Pajak, untuk <strong>satu objek terbesar</strong>.</p>
+                <p><strong>NJKP PBB-P2:</strong> 40% untuk NJOP ≥ Rp1M, 20% untuk NJOP < Rp1M.</p>
+                <p><strong>NJKP PBB-P3:</strong> Selalu 40%.</p>
+                <p><strong>PBB-P2:</strong> Dikelola <strong>Pemerintah Daerah</strong>.</p>
+                <p><strong>PBB-P3:</strong> Dikelola <strong>Direktorat Jenderal Pajak</strong>.</p>
+            </div>
+        </section>
+        
+        <!-- FLOWCHART -->
+        <section>
+            <h2>📋 Alur Perhitungan PBB</h2>
+            <div class="flowchart">
+OBJEK PAJAK (Bumi dan/atau Bangunan)
+      ↓
+IDENTIFIKASI JENIS PBB (P2 atau P3)
+      ↓
+APAKAH OBJEK DIBEBASKAN? (Tempat ibadah, sosial, kesehatan, pendidikan, dll.)
+      ↓
+HITUNG NJOP
+  = Luas × NJOP per m²
+  NJOP = NJOP Bumi + NJOP Bangunan
+      ↓
+KURANGI NJOPTKP (hanya 1 kali dalam 1 Tahun Pajak)
+      ↓
+HITUNG NJKP
+  PBB-P2: 40% (NJOP ≥ Rp1M) atau 20% (NJOP < Rp1M)
+  PBB-P3: 40%
+      ↓
+HITUNG PBB TERUTANG
+  = Tarif PBB × NJKP
+  PBB-P2: Tarif ≤ 0,5% (tergantung daerah)
+  PBB-P3: Tarif = 0,5%
+      ↓
+PELAKSANAAN PEMUNGUTAN (Official Assessment)
+  Fiskus menilai, menetapkan NJOP, menentukan pajak terutang
+      ↓
+PELAPORAN
+  WP mengisi SPOP → Petugas menerbitkan SPPT → WP membayar
+      ↓
+PEMBAYARAN
+  Sesuai SPPT, batas waktu 6 bulan setelah diterima
+            </div>
+        </section>
+        
+    </main>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

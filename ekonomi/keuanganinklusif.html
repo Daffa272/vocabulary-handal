@@ -1,0 +1,1935 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran: Keuangan Inklusif</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1976d2;
+            --accent: #ff9800;
+            --accent2: #4caf50;
+            --dark: #0a2463;
+            --light: #e3f2fd;
+            --success: #2e7d32;
+            --warning: #ffc107;
+            --danger: #f44336;
+            --border: #90caf9;
+            --bg: #f5f7fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        nav.sticky {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            padding: 6px 10px;
+            border: 1.5px solid var(--border);
+            border-radius: 15px;
+            transition: all 0.3s;
+            font-size: 0.8em;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-size: 1.7em;
+        }
+
+        section h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        section h4 {
+            color: var(--accent);
+            margin: 20px 0 12px 0;
+            font-size: 1.15em;
+        }
+
+        .objectives {
+            background: #fff9f0;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            border-left: 5px solid var(--warning);
+        }
+
+        .objectives ol, .objectives ul {
+            padding-left: 20px;
+        }
+
+        .objectives li {
+            margin-bottom: 10px;
+        }
+
+        .intro, .important, .mnemonic, .summary {
+            margin: 18px 0;
+            padding: 18px;
+            border-radius: 8px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e8 100%);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .important {
+            background: #fff0f0;
+            border-left: 5px solid var(--danger);
+        }
+
+        .mnemonic {
+            background: #f0fff0;
+            border-left: 5px solid var(--success);
+            font-style: italic;
+        }
+
+        .diagram {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 18px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #f0f4f8;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #fff8e1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid var(--border);
+        }
+
+        .quiz-section h2, .quiz-section h3 {
+            color: var(--dark);
+            border-bottom: 2px solid var(--success);
+            padding-bottom: 10px;
+        }
+
+        .question {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .question h4 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .options {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .options li {
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 3px solid var(--border);
+        }
+
+        .answer {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            font-weight: 500;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--warning);
+        }
+
+        .cheat-sheet {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .cheat-sheet h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .cheat-sheet p {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.7em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            nav a {
+                font-size: 0.75em;
+                padding: 5px 8px;
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+
+            .diagram {
+                font-size: 0.75em;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav.sticky {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section, .intro, .quiz-section, .summary, .objectives, .important, .mnemonic, .warning-box {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+
+            header {
+                background: var(--primary) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cheat-sheet {
+                background: var(--primary) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        html {
+            scroll-padding-top: 100px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📘 MODUL PEMBELAJARAN</h1>
+        <p><strong>KEUANGAN INKLUSIF</strong></p>
+    </header>
+
+    <div class="container">
+        <nav class="sticky">
+            <ul>
+                <li><a href="#tujuan" class="active">Tujuan</a></li>
+                <li><a href="#pengertian">Pengertian</a></li>
+                <li><a href="#penting">Pentingnya</a></li>
+                <li><a href="#unbanked">Unbanked</a></li>
+                <li><a href="#momentum">Momentum</a></li>
+                <li><a href="#prinsip">9 Prinsip</a></li>
+                <li><a href="#lembaga">Lembaga</a></li>
+                <li><a href="#definisi">Definisi</a></li>
+                <li><a href="#hambatan">Hambatan</a></li>
+                <li><a href="#manfaat">Manfaat</a></li>
+                <li><a href="#pendekatan">Pendekatan</a></li>
+                <li><a href="#aktor">Aktor</a></li>
+                <li><a href="#hubungan">Hubungan</a></li>
+                <li><a href="#latihan">Latihan</a></li>
+                <li><a href="#cheat">Cheat Sheet</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Tujuan Pembelajaran -->
+        <section id="tujuan">
+            <h2>1. Tujuan Pembelajaran</h2>
+            <div class="objectives">
+                <p>Setelah mempelajari materi ini, Anda diharapkan mampu:</p>
+                <ol>
+                    <li>Menjelaskan latar belakang munculnya konsep <span class="highlight">keuangan inklusif</span>.</li>
+                    <li>Menjelaskan pengertian keuangan inklusif menurut beberapa lembaga.</li>
+                    <li>Mengidentifikasi kelompok masyarakat yang mengalami <span class="highlight">financial exclusion</span>.</li>
+                    <li>Menjelaskan hambatan akses keuangan dari sisi <span class="highlight">supply</span> dan <span class="highlight">demand</span>.</li>
+                    <li>Menjelaskan manfaat keuangan inklusif.</li>
+                    <li>Menjelaskan pendekatan penerapan keuangan inklusif.</li>
+                    <li>Menjelaskan pihak-pihak yang terlibat dalam penerapan keuangan inklusif.</li>
+                    <li>Memahami hubungan keuangan inklusif dengan stabilitas sistem keuangan, pertumbuhan ekonomi, dan pengentasan kemiskinan.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 2. Apa Itu Keuangan Inklusif? -->
+        <section id="pengertian">
+            <h2>2. Apa Itu Keuangan Inklusif?</h2>
+            <h3>Konsep sederhananya</h3>
+            <p><span class="highlight">Keuangan inklusif (financial inclusion)</span> adalah kondisi/proses yang memungkinkan masyarakat, termasuk kelompok yang selama ini belum terlayani, memperoleh akses terhadap layanan keuangan formal yang:</p>
+            <ul>
+                <li>sesuai kebutuhan;</li>
+                <li>mudah diakses;</li>
+                <li>aman;</li>
+                <li>terjangkau;</li>
+                <li>bertanggung jawab;</li>
+                <li>transparan.</li>
+            </ul>
+
+            <p>Layanan tersebut antara lain:</p>
+            <div class="important">
+                <p><strong>Kredit + Tabungan + Pembayaran + Asuransi</strong></p>
+            </div>
+        </section>
+
+        <!-- 3. Mengapa Keuangan Inklusif Menjadi Penting? -->
+        <section id="penting">
+            <h2>3. Mengapa Keuangan Inklusif Menjadi Penting?</h2>
+            <p>Konsep <em>financial inclusion</em> menjadi semakin penting setelah:</p>
+            <div class="important">
+                <p><strong>Krisis keuangan global 2008.</strong></p>
+            </div>
+
+            <p>Salah satu alasan utamanya adalah dampak krisis yang besar terhadap kelompok masyarakat:</p>
+            <div class="important">
+                <p><strong>bottom of the pyramid</strong></p>
+            </div>
+
+            <p>Kelompok tersebut antara lain:</p>
+            <ul>
+                <li>masyarakat berpendapatan rendah;</li>
+                <li>masyarakat dengan pendapatan tidak teratur;</li>
+                <li>masyarakat di daerah terpencil;</li>
+                <li>penyandang disabilitas;</li>
+                <li>buruh yang tidak mempunyai dokumen identitas legal;</li>
+                <li>masyarakat pinggiran;</li>
+                <li>kelompok <span class="highlight">unbanked</span>.</li>
+            </ul>
+        </section>
+
+        <!-- 4. Apa Itu Unbanked? -->
+        <section id="unbanked">
+            <h2>4. Apa Itu <em>Unbanked</em>?</h2>
+            <p><span class="highlight">Unbanked</span> adalah masyarakat yang belum atau tidak menggunakan layanan perbankan formal.</p>
+
+            <p>Secara sederhana:</p>
+            <div class="diagram">
+Masyarakat
+    ↓
+Tidak memiliki / tidak menggunakan
+akses layanan keuangan formal
+    ↓
+UNBANKED
+    ↓
+Financial Exclusion
+            </div>
+
+            <p>Masalahnya bukan hanya tidak memiliki rekening bank.</p>
+            <p><em>Financial exclusion</em> dapat berarti masyarakat tidak mendapatkan akses yang memadai terhadap:</p>
+            <ul>
+                <li>kredit;</li>
+                <li>tabungan;</li>
+                <li>pembayaran;</li>
+                <li>asuransi;</li>
+                <li>layanan keuangan formal lainnya.</li>
+            </ul>
+        </section>
+
+        <!-- 5. Momentum Internasional -->
+        <section id="momentum">
+            <h2>5. Momentum Internasional</h2>
+            <p>Setelah krisis 2008, isu keuangan inklusif semakin mendapat perhatian internasional.</p>
+
+            <h3>G20 Pittsburgh Summit 2009</h3>
+            <p>Anggota G20 menyepakati pentingnya:</p>
+            <div class="important">
+                <p><strong>meningkatkan akses keuangan bagi kelompok yang selama ini belum terlayani.</strong></p>
+            </div>
+
+            <p>Kemudian pada:</p>
+            <h3>G20 Toronto Summit 2010</h3>
+            <p>dikeluarkan:</p>
+            <div class="important">
+                <h3><strong>9 Principles for Innovative Financial Inclusion</strong></h3>
+            </div>
+            <p>yang menjadi pedoman pengembangan inklusi keuangan.</p>
+        </section>
+
+        <!-- 6. 9 Principles -->
+        <section id="prinsip">
+            <h2>6. 9 Principles for Innovative Financial Inclusion</h2>
+            <p>Sembilan prinsip tersebut adalah:</p>
+
+            <ol>
+                <li><strong>Leadership</strong></li>
+                <li><strong>Diversity</strong></li>
+                <li><strong>Innovation</strong></li>
+                <li><strong>Protection</strong></li>
+                <li><strong>Empowerment</strong></li>
+                <li><strong>Cooperation</strong></li>
+                <li><strong>Knowledge</strong></li>
+                <li><strong>Proportionality</strong></li>
+                <li><strong>Framework</strong></li>
+            </ol>
+
+            <div class="mnemonic">
+                <h3><strong>L-D-I-P-E-C-K-P-F</strong></h3>
+            </div>
+
+            <p>Agar lebih mudah memahami, kelompokkan:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prinsip</th>
+                            <th>Inti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Leadership</td>
+                            <td>Kepemimpinan</td>
+                        </tr>
+                        <tr>
+                            <td>Diversity</td>
+                            <td>Keberagaman</td>
+                        </tr>
+                        <tr>
+                            <td>Innovation</td>
+                            <td>Inovasi</td>
+                        </tr>
+                        <tr>
+                            <td>Protection</td>
+                            <td>Perlindungan</td>
+                        </tr>
+                        <tr>
+                            <td>Empowerment</td>
+                            <td>Pemberdayaan</td>
+                        </tr>
+                        <tr>
+                            <td>Cooperation</td>
+                            <td>Kerja sama</td>
+                        </tr>
+                        <tr>
+                            <td>Knowledge</td>
+                            <td>Pengetahuan</td>
+                        </tr>
+                        <tr>
+                            <td>Proportionality</td>
+                            <td>Proporsionalitas</td>
+                        </tr>
+                        <tr>
+                            <td>Framework</td>
+                            <td>Kerangka</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Cara mengingat:</strong><br>
+                <em>Pemimpin mendorong keberagaman dan inovasi, melindungi serta memberdayakan masyarakat melalui kerja sama, pengetahuan, proporsionalitas, dan kerangka yang tepat.</em></p>
+            </div>
+        </section>
+
+        <!-- 7. Lembaga Internasional -->
+        <section id="lembaga">
+            <h2>7. Lembaga Internasional yang Mendorong Keuangan Inklusif</h2>
+            <p>Setelah isu ini berkembang, berbagai forum dan lembaga internasional ikut memberikan perhatian, antara lain:</p>
+            <ul>
+                <li><span class="highlight">CGAP</span></li>
+                <li><span class="highlight">World Bank</span></li>
+                <li><span class="highlight">APEC</span></li>
+                <li><span class="highlight">Asian Development Bank (ADB)</span></li>
+                <li><span class="highlight">Alliance for Financial Inclusion (AFI)</span></li>
+                <li><span class="highlight">BIS</span></li>
+                <li><span class="highlight">Financial Action Task Force (FATF)</span></li>
+            </ul>
+            <p>Indonesia juga termasuk negara yang mengembangkan agenda keuangan inklusif.</p>
+        </section>
+
+        <!-- 8-10. Definisi -->
+        <section id="definisi">
+            <h2>8. Definisi Keuangan Inklusif Menurut CGAP-GPFI</h2>
+            <p>Menurut <span class="highlight">CGAP-GPFI</span>, keuangan inklusif menggambarkan kondisi ketika orang dewasa usia kerja memiliki akses efektif terhadap:</p>
+            <ul>
+                <li>kredit;</li>
+                <li>tabungan;</li>
+                <li>pembayaran;</li>
+                <li>asuransi;</li>
+            </ul>
+            <p>dari penyedia jasa formal.</p>
+
+            <p>Yang dimaksud <span class="highlight">effective access</span> bukan hanya layanan tersedia.</p>
+            <p>Layanan harus:</p>
+            <ul>
+                <li>nyaman;</li>
+                <li>bertanggung jawab;</li>
+                <li>terjangkau bagi nasabah;</li>
+                <li>berkelanjutan bagi penyedia layanan.</li>
+            </ul>
+
+            <p>Tujuannya agar masyarakat yang sebelumnya mengalami eksklusi dapat menggunakan:</p>
+            <div class="important">
+                <p><strong>layanan keuangan formal</strong>, bukan hanya layanan informal.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. Definisi Menurut FATF</h2>
+            <p>Menurut FATF, <em>financial inclusion</em> menekankan penyediaan:</p>
+            <div class="important">
+                <p><strong>layanan keuangan yang memadai, aman, nyaman, dan terjangkau.</strong></p>
+            </div>
+
+            <p>Sasarannya terutama:</p>
+            <ul>
+                <li>kelompok kurang beruntung;</li>
+                <li>kelompok rentan;</li>
+                <li>masyarakat berpendapatan rendah;</li>
+                <li>masyarakat pedesaan;</li>
+                <li>masyarakat tanpa dokumen tertentu;</li>
+                <li>kelompok yang kurang terlayani atau tidak terlayani sektor keuangan formal.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>10. Definisi Menurut RBI</h2>
+            <p>Reserve Bank of India menekankan:</p>
+            <div class="important">
+                <p><strong>proses memastikan seluruh lapisan masyarakat memperoleh akses terhadap produk dan layanan keuangan yang sesuai.</strong></p>
+            </div>
+
+            <p>Layanan tersebut harus:</p>
+            <ul>
+                <li>terjangkau;</li>
+                <li>adil;</li>
+                <li>transparan;</li>
+                <li>diberikan oleh lembaga formal yang diatur.</li>
+            </ul>
+        </section>
+
+        <!-- 11. Benang Merah -->
+        <section>
+            <h2>11. Benang Merah dari Ketiga Definisi</h2>
+            <p>Walaupun definisinya berbeda, terdapat unsur yang sama:</p>
+            <div class="diagram">
+KEUANGAN INKLUSIF
+       ↓
+    AKSES
+       +
+ PRODUK SESUAI
+       +
+ TERJANGKAU
+       +
+ AMAN
+       +
+ BERTANGGUNG JAWAB
+       +
+ TRANSPARAN
+       ↓
+MASYARAKAT MENGGUNAKAN
+LAYANAN KEUANGAN FORMAL
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci ujian:</strong><br>
+                <strong>Access – Appropriate – Affordable – Safe – Responsible</strong></p>
+            </div>
+        </section>
+
+        <!-- 12-17. Hambatan -->
+        <section id="hambatan">
+            <h2>12. Mengapa Masyarakat Menjadi <em>Unbanked</em>?</h2>
+            <p>Ada berbagai hambatan yang menyebabkan masyarakat tidak menggunakan layanan keuangan.</p>
+            <p>Hambatan tersebut berasal dari:</p>
+
+            <h3><span class="highlight">Supply side</span></h3>
+            <p>dan</p>
+            <h3><span class="highlight">Demand side</span></h3>
+
+            <p>Materi mengelompokkan hambatan ke dalam empat <em>barrier</em>:</p>
+            <div class="mnemonic">
+                <h3><strong>P-I-D-C</strong></h3>
+            </div>
+        </section>
+
+        <section>
+            <h2>13. Price Barrier</h2>
+            <h3>Artinya:</h3>
+            <p>Hambatan karena:</p>
+            <div class="important">
+                <p><strong>biaya atau harga layanan terlalu mahal.</strong></p>
+            </div>
+
+            <p><strong>Contoh sederhana:</strong></p>
+            <div class="diagram">
+Biaya layanan tinggi
+       ↓
+Masyarakat berpendapatan rendah
+kesulitan menggunakan layanan
+       ↓
+Akses keuangan rendah
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br>
+                <strong>Price = Mahal</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>14. Information Barrier</h2>
+            <h3>Artinya:</h3>
+            <p>Masyarakat:</p>
+            <div class="important">
+                <p><strong>tidak mengetahui</strong> atau kurang memahami layanan keuangan.</p>
+            </div>
+
+            <p>Misalnya masyarakat tidak memahami:</p>
+            <ul>
+                <li>cara membuka rekening;</li>
+                <li>produk kredit;</li>
+                <li>manfaat asuransi;</li>
+                <li>mekanisme pembayaran;</li>
+                <li>risiko produk keuangan.</li>
+            </ul>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br>
+                <strong>Information = Tidak tahu</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>15. Design Product Barrier</h2>
+            <h3>Artinya:</h3>
+            <p>Produk keuangan yang tersedia:</p>
+            <div class="important">
+                <p><strong>tidak sesuai dengan kebutuhan masyarakat.</strong></p>
+            </div>
+
+            <p>Contohnya, produk dirancang untuk nasabah dengan karakteristik tertentu, tetapi tidak sesuai bagi masyarakat:</p>
+            <ul>
+                <li>berpendapatan rendah;</li>
+                <li>pendapatan tidak tetap;</li>
+                <li>tinggal di daerah tertentu;</li>
+                <li>memiliki kebutuhan khusus.</li>
+            </ul>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br>
+                <strong>Design = Produk tidak cocok</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>16. Channel Barrier</h2>
+            <h3>Artinya:</h3>
+            <p>Tidak tersedianya:</p>
+            <div class="important">
+                <p><strong>sarana atau saluran layanan yang sesuai.</strong></p>
+            </div>
+            <p>Misalnya akses layanan keuangan sulit dijangkau karena kondisi geografis atau keterbatasan saluran layanan.</p>
+
+            <div class="mnemonic">
+                <p><strong>Kata kunci:</strong><br>
+                <strong>Channel = Sarana tidak sesuai</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>17. Empat Barrier</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Barrier</th>
+                            <th>Masalah</th>
+                            <th>Kata Kunci</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Price</strong></td>
+                            <td>Terlalu mahal</td>
+                            <td>💰 Mahal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Information</strong></td>
+                            <td>Tidak mengetahui</td>
+                            <td>💡 Tidak tahu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Design Product</strong></td>
+                            <td>Produk tidak sesuai</td>
+                            <td>📦 Tidak cocok</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Channel</strong></td>
+                            <td>Sarana tidak sesuai</td>
+                            <td>📍 Sulit akses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mnemonic">
+                <p><strong>Mnemonic:</strong><br>
+                <strong>P-I-D-C = Price – Information – Design – Channel</strong></p>
+            </div>
+        </section>
+
+        <!-- 18. Solusi -->
+        <section>
+            <h2>18. Bagaimana Keuangan Inklusif Menjawab Hambatan?</h2>
+            <div class="diagram">
+PRICE BARRIER
+↓
+Layanan lebih terjangkau
+
+INFORMATION BARRIER
+↓
+Edukasi & literasi
+
+DESIGN PRODUCT BARRIER
+↓
+Produk sesuai kebutuhan
+
+CHANNEL BARRIER
+↓
+Saluran layanan yang sesuai
+
+              ↓
+       KEUANGAN INKLUSIF
+              ↓
+        AKSES MENINGKAT
+            </div>
+        </section>
+
+        <!-- 19-20. Manfaat -->
+        <section id="manfaat">
+            <h2>19. Manfaat Keuangan Inklusif</h2>
+            <p>Keuangan inklusif memberikan manfaat kepada:</p>
+            <ul>
+                <li>masyarakat;</li>
+                <li>regulator;</li>
+                <li>pemerintah;</li>
+                <li>sektor swasta;</li>
+                <li>perekonomian secara keseluruhan.</li>
+            </ul>
+            <p>Materi menyebut beberapa manfaat utama.</p>
+
+            <h3>1. Meningkatkan Efisiensi Ekonomi</h3>
+            <p>Dengan semakin luasnya akses terhadap layanan keuangan formal:</p>
+            <div class="important">
+                <p><strong>transaksi dan aktivitas ekonomi dapat dilakukan secara lebih efisien.</strong></p>
+            </div>
+
+            <h3>2. Mendukung Stabilitas Sistem Keuangan</h3>
+            <p>Semakin banyak masyarakat masuk ke dalam sistem keuangan formal:</p>
+            <div class="important">
+                <p><strong>sistem keuangan menjadi lebih terintegrasi dan dapat mendukung stabilitas.</strong></p>
+            </div>
+
+            <h3>3. Mengurangi <em>Shadow Banking</em> / <em>Irresponsible Finance</em></h3>
+            <p>Keuangan inklusif mendorong masyarakat menggunakan:</p>
+            <div class="important">
+                <p><strong>layanan keuangan formal dan teratur.</strong></p>
+            </div>
+            <p>Hal ini dapat mengurangi ketergantungan pada layanan keuangan informal yang tidak bertanggung jawab.</p>
+
+            <h3>4. Mendukung Pendalaman Pasar Keuangan</h3>
+            <p>Semakin banyak masyarakat menggunakan produk dan layanan keuangan:</p>
+            <div class="important">
+                <p><strong>semakin luas basis pengguna pasar keuangan.</strong></p>
+            </div>
+
+            <h3>5. Menciptakan Potensi Pasar Baru</h3>
+            <p>Bagi perbankan dan pelaku industri keuangan:</p>
+            <div class="important">
+                <p><strong>masyarakat yang sebelumnya belum terlayani dapat menjadi pasar baru.</strong></p>
+            </div>
+
+            <h3>6. Mendukung Human Development Index</h3>
+            <p>Keuangan inklusif juga berpotensi mendukung:</p>
+            <div class="important">
+                <p><strong>Human Development Index (HDI)</strong> Indonesia.</p>
+            </div>
+
+            <h3>7. Mendukung Pertumbuhan Ekonomi</h3>
+            <p>Keuangan inklusif berkontribusi terhadap:</p>
+            <div class="important">
+                <p><strong>pertumbuhan ekonomi lokal dan nasional yang berkelanjutan.</strong></p>
+            </div>
+
+            <h3>8. Mengurangi Kesenjangan</h3>
+            <p>Keuangan inklusif dapat membantu mengurangi:</p>
+            <div class="important">
+                <p><strong>inequality</strong></p>
+            </div>
+            <p>dan mengurangi kekakuan:</p>
+            <div class="important">
+                <p><strong>low income trap</strong></p>
+            </div>
+            <p>yang pada akhirnya dapat meningkatkan kesejahteraan dan membantu menurunkan kemiskinan.</p>
+        </section>
+
+        <section>
+            <h2>20. Hubungan Keuangan Inklusif dan Kemiskinan</h2>
+            <p>Salah satu konsep yang penting:</p>
+            <div class="diagram">
+AKSES KEUANGAN
+      ↓
+Kemampuan menabung / melakukan pembayaran /
+memperoleh pembiayaan / perlindungan
+      ↓
+Kesempatan ekonomi meningkat
+      ↓
+Kesejahteraan meningkat
+      ↓
+Inequality berkurang
+      ↓
+Low Income Trap berkurang
+      ↓
+Kemiskinan dapat berkurang
+            </div>
+        </section>
+
+        <!-- 21-23. Pendekatan -->
+        <section id="pendekatan">
+            <h2>21. Dua Pendekatan Penerapan Keuangan Inklusif</h2>
+            <p>Untuk mengurangi <em>financial exclusion</em>, terdapat dua pendekatan umum:</p>
+
+            <h3>Pendekatan 1</h3>
+            <p><strong>Strategi nasional yang komprehensif</strong></p>
+            <p><strong>Contoh yang disebutkan:</strong></p>
+            <ul>
+                <li>Indonesia;</li>
+                <li>Nigeria;</li>
+                <li>Tanzania.</li>
+            </ul>
+
+            <h3>Pendekatan 2</h3>
+            <p><strong>Program terpisah</strong></p>
+            <p>Contohnya:</p>
+            <div class="important">
+                <p><strong>edukasi keuangan seperti yang dilakukan pemerintah Amerika Serikat pascakrisis 2008.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>22. Pendekatan Strategi Nasional</h2>
+            <p>Secara umum, strategi nasional mencakup <span class="highlight">3 aspek utama</span>:</p>
+
+            <h3>1. Penyediaan sarana layanan yang sesuai</h3>
+            <p>Masyarakat harus memiliki:</p>
+            <div class="important">
+                <p><strong>channel/sarana yang dapat diakses.</strong></p>
+            </div>
+
+            <h3>2. Penyediaan produk yang cocok</h3>
+            <p>Produk harus:</p>
+            <div class="important">
+                <p><strong>sesuai dengan kebutuhan masyarakat.</strong></p>
+            </div>
+
+            <h3>3. <em>Responsible Finance</em></h3>
+            <p>Meliputi:</p>
+            <ul>
+                <li>edukasi keuangan;</li>
+                <li>perlindungan konsumen.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>23. Tiga Pilar Penerapan</h2>
+            <div class="mnemonic">
+                <h3><strong>S-P-R</strong></h3>
+                <p><strong>S</strong> = Sarana<br>
+                <strong>P</strong> = Produk<br>
+                <strong>R</strong> = Responsible Finance</p>
+            </div>
+
+            <div class="diagram">
+        KEUANGAN INKLUSIF
+               │
+      ┌────────┼────────┐
+      ↓        ↓        ↓
+   SARANA    PRODUK   RESPONSIBLE
+   SESUAI    COCOK      FINANCE
+                        │
+                  ┌─────┴─────┐
+                  ↓           ↓
+               Edukasi    Perlindungan
+               Keuangan     Konsumen
+            </div>
+        </section>
+
+        <!-- 24. Bertahap -->
+        <section>
+            <h2>24. Penerapan Dilakukan Secara Bertahap</h2>
+            <p>Keuangan inklusif umumnya tidak langsung diterapkan kepada seluruh masyarakat.</p>
+            <p>Pendekatannya dapat dimulai dengan:</p>
+            <div class="important">
+                <p><strong>target yang jelas dan kelompok sasaran tertentu.</strong></p>
+            </div>
+
+            <p><strong>Contoh dalam materi:</strong></p>
+            <ul>
+                <li>penerima bantuan program sosial pemerintah;</li>
+                <li>pekerja migran/TKI.</li>
+            </ul>
+
+            <p>Kemudian secara bertahap diperluas:</p>
+            <div class="diagram">
+Kelompok sasaran tertentu
+          ↓
+Peningkatan akses
+          ↓
+Evaluasi
+          ↓
+Perluasan
+          ↓
+Masyarakat umum
+            </div>
+        </section>
+
+        <!-- 25-34. Aktor -->
+        <section id="aktor">
+            <h2>25. Siapa Saja yang Menerapkan Keuangan Inklusif?</h2>
+            <p>Ini merupakan bagian penting karena:</p>
+            <div class="important">
+                <p><strong>keuangan inklusif bukan program yang hanya menjadi tugas Bank Indonesia.</strong></p>
+            </div>
+
+            <p>Keuangan inklusif merupakan:</p>
+            <div class="mnemonic">
+                <h3><strong>inisiatif kolaboratif</strong></h3>
+            </div>
+
+            <p>yang melibatkan berbagai:</p>
+            <ul>
+                <li>regulator;</li>
+                <li>kementerian;</li>
+                <li>lembaga;</li>
+                <li>pemerintah daerah;</li>
+                <li>sektor swasta;</li>
+                <li>akademisi;</li>
+                <li>masyarakat.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>26. Peta Aktor Keuangan Inklusif</h2>
+            <p>Berdasarkan gambar yang diberikan:</p>
+            <div class="diagram">
+                     KEUANGAN INKLUSIF
+                            │
+        ┌───────────┬───────┼───────┬───────────┐
+        ↓           ↓       ↓       ↓           ↓
+       BI       Kemen/Lembaga Otoritas Swasta Akademisi
+        │
+        ↓
+Perekonomian Nasional
+        +
+Perekonomian Daerah
+            </div>
+
+            <p>Gambar juga menunjukkan keterlibatan:</p>
+            <ul>
+                <li>Bank Indonesia;</li>
+                <li>Kantor Sekretariat Wakil Presiden;</li>
+                <li>pihak swasta;</li>
+                <li>akademisi;</li>
+                <li>kementerian terkait;</li>
+                <li>pemerintah daerah;</li>
+                <li>otoritas terkait.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>27. Bank Indonesia</h2>
+            <p>Dalam gambar, BI mencakup:</p>
+            <ul>
+                <li><span class="highlight">Kantor Pusat</span></li>
+                <li><span class="highlight">Kantor Perwakilan</span></li>
+            </ul>
+            <p>BI menjadi salah satu aktor dalam strategi keuangan inklusif bersama berbagai pemangku kepentingan.</p>
+        </section>
+
+        <section>
+            <h2>28. Kantor Sekretariat Wakil Presiden</h2>
+            <p>Dalam gambar, keterlibatan Kantor Sekretariat Wakil Presiden mencakup:</p>
+            <div class="important">
+                <p><strong>Tim Nasional Percepatan Penanggulangan Kemiskinan (TNP2K)</strong></p>
+            </div>
+            <p>Hal ini menunjukkan hubungan antara agenda:</p>
+            <div class="important">
+                <p><strong>keuangan inklusif ↔ pengentasan kemiskinan.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>29. Kementerian Terkait</h2>
+            <p>Gambar mencantumkan berbagai kementerian terkait, antara lain:</p>
+            <ul>
+                <li>Kementerian Koordinator Bidang Perekonomian;</li>
+                <li>Kementerian Koordinator Bidang Kesejahteraan Rakyat;</li>
+                <li>Kementerian Keuangan;</li>
+                <li>Kementerian PPN/Bappenas;</li>
+                <li>Kementerian BUMN;</li>
+                <li>Kementerian Dalam Negeri;</li>
+                <li>Kementerian Koperasi & UMKM;</li>
+                <li>Kementerian Pertanian;</li>
+                <li>Kementerian Komunikasi dan Informatika;</li>
+                <li>Kementerian Tenaga Kerja dan Transmigrasi;</li>
+                <li>Kementerian Kelautan dan Perikanan;</li>
+                <li>Kementerian Perindustrian;</li>
+                <li>Kementerian Perdagangan;</li>
+                <li>Kementerian Kesehatan;</li>
+                <li>Kementerian Agama;</li>
+                <li>Kementerian Pekerjaan Umum.</li>
+            </ul>
+
+            <div class="intro">
+                <p><strong>Intinya:</strong><br>
+                <strong>Keuangan inklusif berkaitan dengan banyak sektor kehidupan masyarakat sehingga membutuhkan koordinasi lintas kementerian.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>30. Otoritas Terkait</h2>
+            <p>Gambar mencantumkan:</p>
+            <h3>Otoritas Jasa Keuangan (OJK)</h3>
+            <p>dan:</p>
+            <h3>Pusat Pelaporan dan Analisis Transaksi Keuangan (PPATK)</h3>
+            <p>Keduanya menjadi bagian dari ekosistem penerapan keuangan inklusif.</p>
+        </section>
+
+        <section>
+            <h2>31. Pihak Swasta</h2>
+            <p>Pihak swasta yang disebut dalam gambar antara lain:</p>
+            <ul>
+                <li><span class="highlight">Perbankan</span></li>
+                <li><span class="highlight">Telco</span></li>
+                <li><span class="highlight">Asosiasi</span></li>
+                <li>dan pihak lainnya.</li>
+            </ul>
+
+            <p>Hal ini menunjukkan bahwa inklusi keuangan tidak dapat hanya mengandalkan pemerintah.</p>
+            <p>Sektor swasta berperan sebagai:</p>
+            <div class="important">
+                <p><strong>penyedia layanan, teknologi, jaringan, produk, dan inovasi.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>32. Pemerintah Daerah</h2>
+            <p>Pemerintah daerah juga terlibat karena sebagian hambatan keuangan inklusif bersifat:</p>
+            <ul>
+                <li>geografis;</li>
+                <li>lokal;</li>
+                <li>terkait karakteristik masyarakat daerah.</li>
+            </ul>
+
+            <p>Dengan demikian:</p>
+            <div class="important">
+                <p><strong>strategi nasional perlu diterjemahkan ke dalam kebutuhan daerah.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>33. Akademisi</h2>
+            <p>Akademisi berperan dalam:</p>
+            <ul>
+                <li>pengetahuan;</li>
+                <li>riset;</li>
+                <li>analisis;</li>
+                <li>pengembangan kebijakan.</li>
+            </ul>
+
+            <p>Sehingga kebijakan keuangan inklusif dapat didukung oleh:</p>
+            <div class="important">
+                <p><strong>knowledge-based policy.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>34. Peta Lengkap Kolaborasi</h2>
+            <div class="diagram">
+                       STRATEGI NASIONAL
+                      KEUANGAN INKLUSIF
+                              │
+       ┌──────────────────────┼──────────────────────┐
+       │                      │                      │
+       ↓                      ↓                      ↓
+ PEMERINTAH/BI             OTORITAS               SWASTA
+       │                      │                      │
+       │                  OJK / PPATK          Perbankan
+       │                                       Telco
+       │                                       Asosiasi
+       │
+       ├── Kementerian
+       ├── Pemerintah Daerah
+       └── Sekretariat Wapres/TNP2K
+                              │
+                              ↓
+                         AKADEMISI
+                              │
+                              ↓
+                    MASYARAKAT LUAS
+                              │
+                              ↓
+                 AKSES KEUANGAN MENINGKAT
+            </div>
+        </section>
+
+        <!-- 35-36. Hubungan -->
+        <section id="hubungan">
+            <h2>35. Hubungan Keuangan Inklusif dengan Stabilitas</h2>
+            <p>Keuangan inklusif bukan hanya persoalan sosial.</p>
+            <p>Ada dimensi:</p>
+
+            <h3>Ekonomi</h3>
+            <p>Mendorong aktivitas ekonomi.</p>
+
+            <h3>Keuangan</h3>
+            <p>Memperluas penggunaan layanan formal.</p>
+
+            <h3>Sosial</h3>
+            <p>Mengurangi kesenjangan.</p>
+
+            <h3>Stabilitas</h3>
+            <p>Mendukung stabilitas sistem keuangan.</p>
+
+            <h3>Kemiskinan</h3>
+            <p>Meningkatkan kesejahteraan dan membantu mengurangi kemiskinan.</p>
+        </section>
+
+        <section>
+            <h2>36. Peta Konsep Besar</h2>
+            <div class="diagram">
+                  KRISIS 2008
+                      ↓
+       Dampak besar terhadap kelompok rentan
+                      ↓
+             FINANCIAL EXCLUSION
+                      ↓
+              Masyarakat UNBANKED
+                      ↓
+       ┌──────────────┼──────────────┐
+       ↓              ↓              ↓
+    MAHAL          TIDAK TAHU     PRODUK/SARANA
+  Price Barrier   Information     TIDAK SESUAI
+                    Barrier       Design/Channel
+       └──────────────┼──────────────┘
+                      ↓
+             KEUANGAN INKLUSIF
+                      ↓
+         ┌────────────┼────────────┐
+         ↓            ↓            ↓
+       AKSES        PRODUK      RESPONSIBLE
+      SESUAI        COCOK         FINANCE
+                                  │
+                          Edukasi + Perlindungan
+                      ↓
+            Penggunaan layanan formal
+                      ↓
+       ┌──────────────┼──────────────┐
+       ↓              ↓              ↓
+   Efisiensi        SSK           Pertumbuhan
+    ekonomi                       berkelanjutan
+       ↓              ↓              ↓
+    Inequality ↓ → Kesejahteraan ↑
+                      ↓
+                 Kemiskinan ↓
+            </div>
+        </section>
+
+        <!-- 37. Perbandingan -->
+        <section>
+            <h2>37. Perbandingan Istilah Penting</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Istilah</th>
+                            <th>Arti sederhana</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Financial Inclusion</strong></td>
+                            <td>Akses masyarakat terhadap layanan keuangan formal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Financial Exclusion</strong></td>
+                            <td>Kondisi ketika masyarakat tidak/kurang memperoleh akses keuangan formal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unbanked</strong></td>
+                            <td>Masyarakat yang belum/tidak menggunakan layanan perbankan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bottom of the Pyramid</strong></td>
+                            <td>Kelompok masyarakat berpendapatan rendah/rentan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Responsible Finance</strong></td>
+                            <td>Layanan keuangan yang bertanggung jawab</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shadow Banking</strong></td>
+                            <td>Aktivitas keuangan di luar perbankan formal yang dapat menimbulkan risiko</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price Barrier</strong></td>
+                            <td>Hambatan karena biaya mahal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Information Barrier</strong></td>
+                            <td>Hambatan karena kurang informasi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Design Product Barrier</strong></td>
+                            <td>Hambatan karena produk tidak sesuai</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Channel Barrier</strong></td>
+                            <td>Hambatan karena sarana/channel tidak sesuai</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 38. Supply vs Demand -->
+        <section>
+            <h2>38. Perbedaan Supply dan Demand</h2>
+            <p>Ini sering menjadi jebakan soal.</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sisi</th>
+                            <th>Fokus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Supply</strong></td>
+                            <td>Penyedia layanan keuangan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Demand</strong></td>
+                            <td>Masyarakat/pengguna layanan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>Contoh:</strong></p>
+            <h3>Supply</h3>
+            <ul>
+                <li>produk tidak sesuai;</li>
+                <li>channel tidak tersedia;</li>
+                <li>biaya layanan.</li>
+            </ul>
+
+            <h3>Demand</h3>
+            <ul>
+                <li>masyarakat tidak mengetahui produk;</li>
+                <li>masyarakat tidak memahami manfaat;</li>
+                <li>keterbatasan kemampuan/kebutuhan tertentu.</li>
+            </ul>
+
+            <p>Namun, dalam praktiknya satu <em>barrier</em> dapat berkaitan dengan kedua sisi.</p>
+        </section>
+
+        <!-- 39. Keuangan Inklusif ≠ Sekadar Membuka Rekening -->
+        <section>
+            <h2>39. Keuangan Inklusif ≠ Sekadar Membuka Rekening</h2>
+            <p><strong>Kesalahan umum:</strong></p>
+            <div class="warning-box">
+                <p><strong>“Kalau seseorang sudah punya rekening, berarti sudah inklusif.”</strong></p>
+            </div>
+            <p><strong>Tidak selalu.</strong></p>
+
+            <p>Konsep keuangan inklusif lebih luas karena mencakup:</p>
+            <div class="diagram">
+AKSES
+ +
+KETERSEDIAAN PRODUK
+ +
+KESESUAIAN
+ +
+KETERJANGKAUAN
+ +
+KEAMANAN
+ +
+TANGGUNG JAWAB
+ +
+TRANSPARANSI
+            </div>
+
+            <p><strong>Yang penting adalah:</strong></p>
+            <div class="important">
+                <p><strong>effective access</strong></p>
+            </div>
+            <p>dan penggunaan layanan formal yang sesuai.</p>
+        </section>
+
+        <!-- 40. Mnemonic Utama -->
+        <section>
+            <h2>40. Mnemonic Utama</h2>
+
+            <h3>🌏 Latar belakang</h3>
+            <div class="mnemonic">
+                <p><strong>2008 → 2009 → 2010</strong></p>
+                <p><strong>2008</strong> = Krisis global<br>
+                <strong>2009</strong> = G20 Pittsburgh<br>
+                <strong>2010</strong> = G20 Toronto + 9 Principles</p>
+            </div>
+
+            <h3>🚧 Hambatan</h3>
+            <div class="mnemonic">
+                <h3><strong>P-I-D-C</strong></h3>
+                <p><strong>P</strong>rice<br>
+                <strong>I</strong>nformation<br>
+                <strong>D</strong>esign Product<br>
+                <strong>C</strong>hannel</p>
+            </div>
+
+            <h3>🏦 Layanan keuangan</h3>
+            <div class="mnemonic">
+                <h3><strong>K-T-P-A</strong></h3>
+                <p><strong>K</strong>redit<br>
+                <strong>T</strong>abungan<br>
+                <strong>P</strong>embayaran<br>
+                <strong>A</strong>suransi</p>
+            </div>
+
+            <h3>🧩 Penerapan</h3>
+            <div class="mnemonic">
+                <h3><strong>S-P-R</strong></h3>
+                <p><strong>S</strong>arana sesuai<br>
+                <strong>P</strong>roduk cocok<br>
+                <strong>R</strong>esponsible finance</p>
+            </div>
+
+            <h3>🌱 Manfaat</h3>
+            <div class="mnemonic">
+                <p><strong>Ingat:</strong><br>
+                <strong>Efisiensi → Stabilitas → Pendalaman → Pasar → HDI → Pertumbuhan → Kesenjangan ↓ → Kemiskinan ↓</strong></p>
+            </div>
+        </section>
+
+        <!-- 41. Latihan Pilihan Ganda -->
+        <div class="quiz-section" id="latihan">
+            <h2>41. Latihan Pilihan Ganda</h2>
+
+            <div class="question">
+                <h4>Soal 1</h4>
+                <p>Konsep keuangan inklusif semakin mendapat perhatian setelah...</p>
+                <ol class="options" type="A">
+                    <li>A. Krisis 1998</li>
+                    <li>B. Krisis global 2008</li>
+                    <li>C. Krisis 2015</li>
+                    <li>D. Pandemi 2020</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 2</h4>
+                <p>Kelompok <em>bottom of the pyramid</em> dalam materi antara lain...</p>
+                <ol class="options" type="A">
+                    <li>A. Hanya perusahaan besar</li>
+                    <li>B. Masyarakat berpendapatan rendah dan kelompok rentan</li>
+                    <li>C. Investor institusional</li>
+                    <li>D. Bank sentral</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 3</h4>
+                <p>G20 Pittsburgh Summit berlangsung pada...</p>
+                <ol class="options" type="A">
+                    <li>A. 2008</li>
+                    <li>B. 2009</li>
+                    <li>C. 2010</li>
+                    <li>D. 2011</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 4</h4>
+                <p>Salah satu prinsip Innovative Financial Inclusion adalah...</p>
+                <ol class="options" type="A">
+                    <li>A. Inflation</li>
+                    <li>B. Leadership</li>
+                    <li>C. Exchange Rate</li>
+                    <li>D. Capital Buffer</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 5</h4>
+                <p>Yang <strong>bukan</strong> termasuk empat <em>barrier</em> dalam materi adalah...</p>
+                <ol class="options" type="A">
+                    <li>A. Price barrier</li>
+                    <li>B. Information barrier</li>
+                    <li>C. Design product barrier</li>
+                    <li>D. Inflation barrier</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>D</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 6</h4>
+                <p>Jika produk keuangan tidak sesuai dengan kebutuhan masyarakat, hambatan tersebut disebut...</p>
+                <ol class="options" type="A">
+                    <li>A. Price barrier</li>
+                    <li>B. Information barrier</li>
+                    <li>C. Design product barrier</li>
+                    <li>D. Channel barrier</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 7</h4>
+                <p>Salah satu aspek penerapan strategi nasional keuangan inklusif adalah...</p>
+                <ol class="options" type="A">
+                    <li>A. Penyediaan produk yang cocok</li>
+                    <li>B. Peningkatan pajak</li>
+                    <li>C. Pengurangan jumlah bank</li>
+                    <li>D. Pembatasan akses keuangan</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 8</h4>
+                <p><em>Responsible finance</em> mencakup...</p>
+                <ol class="options" type="A">
+                    <li>A. Edukasi keuangan dan perlindungan konsumen</li>
+                    <li>B. Penetapan kurs dan suku bunga</li>
+                    <li>C. Kebijakan fiskal dan moneter</li>
+                    <li>D. Ekspor dan impor</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>A</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 9</h4>
+                <p>Manakah yang termasuk pihak yang terlibat dalam keuangan inklusif menurut gambar?</p>
+                <ol class="options" type="A">
+                    <li>A. Hanya Bank Indonesia</li>
+                    <li>B. Hanya perbankan</li>
+                    <li>C. BI, pemerintah, otoritas, swasta, akademisi dan pihak terkait lainnya</li>
+                    <li>D. Hanya pemerintah daerah</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>C</strong></div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 10</h4>
+                <p>Keuangan inklusif dapat membantu mengurangi...</p>
+                <ol class="options" type="A">
+                    <li>A. Financial access</li>
+                    <li>B. Inequality</li>
+                    <li>C. Financial literacy</li>
+                    <li>D. Produktivitas</li>
+                </ol>
+                <div class="answer">Jawaban: <strong>B</strong></div>
+            </div>
+        </div>
+
+        <!-- 42-45. Soal Analisis -->
+        <section>
+            <h2>42. Soal Analisis</h2>
+
+            <div class="question">
+                <h4>Soal 11</h4>
+                <p><strong>Mengapa keuangan inklusif dapat mendukung stabilitas sistem keuangan?</strong></p>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Karena keuangan inklusif mendorong masyarakat menggunakan layanan keuangan formal. Hal tersebut dapat memperluas partisipasi masyarakat dalam sistem keuangan, mengurangi ketergantungan pada layanan informal yang tidak bertanggung jawab, serta mendukung pendalaman dan stabilitas sistem keuangan.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 12</h4>
+                <p><strong>Mengapa edukasi keuangan penting dalam keuangan inklusif?</strong></p>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Karena salah satu hambatan <em>financial exclusion</em> adalah <strong>information barrier</strong>. Masyarakat yang tidak mengetahui atau tidak memahami layanan keuangan akan sulit menggunakannya secara efektif. Edukasi membantu meningkatkan pengetahuan dan penggunaan layanan keuangan secara bertanggung jawab.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>Soal 13</h4>
+                <p><strong>Mengapa pemerintah tidak dapat menjalankan keuangan inklusif sendirian?</strong></p>
+                <div class="answer">
+                    <p><strong>Jawaban:</strong></p>
+                    <p>Karena keuangan inklusif membutuhkan penyediaan produk, channel, edukasi, perlindungan konsumen, teknologi, regulasi, serta penyesuaian dengan kebutuhan masyarakat. Oleh karena itu dibutuhkan kolaborasi antara pemerintah, BI, otoritas, kementerian/lembaga, pemerintah daerah, swasta, akademisi, dan pemangku kepentingan lainnya.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 43-45. Studi Kasus -->
+        <section>
+            <h2>43. Studi Kasus</h2>
+
+            <div class="question">
+                <h4>Kasus</h4>
+                <p>Seorang petani di daerah terpencil ingin memperoleh kredit untuk mengembangkan usahanya. Namun kantor layanan keuangan sulit dijangkau, produk kredit yang tersedia tidak sesuai dengan pola pendapatannya, dan ia kurang memahami produk keuangan.</p>
+
+                <h4>Identifikasi masalah!</h4>
+                <p>Terdapat setidaknya:</p>
+
+                <h3>1. Channel Barrier</h3>
+                <p>Karena sarana layanan sulit dijangkau.</p>
+
+                <h3>2. Design Product Barrier</h3>
+                <p>Karena produk tidak sesuai dengan kebutuhan/pola pendapatan.</p>
+
+                <h3>3. Information Barrier</h3>
+                <p>Karena masyarakat kurang memahami produk.</p>
+
+                <h4>Solusi keuangan inklusif:</h4>
+                <div class="diagram">
+Channel sesuai
+      +
+Produk sesuai
+      +
+Edukasi
+      ↓
+Akses keuangan meningkat
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>44. Studi Kasus 2 — Price Barrier</h2>
+            <div class="question">
+                <p>Sebuah kelompok masyarakat berpendapatan rendah sebenarnya mengetahui produk tabungan, tetapi biaya yang harus dibayar dianggap terlalu mahal.</p>
+
+                <h4>Masalah:</h4>
+                <div class="important">
+                    <p><strong>Price Barrier</strong></p>
+                </div>
+
+                <h4>Solusi:</h4>
+                <p>Penyediaan layanan yang:</p>
+                <div class="important">
+                    <p><strong>affordable / terjangkau</strong></p>
+                </div>
+                <p>sehingga masyarakat dapat menggunakan layanan formal.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>45. Studi Kasus 3 — Pendekatan Bertahap</h2>
+            <div class="question">
+                <p>Pemerintah ingin meningkatkan penggunaan layanan keuangan bagi masyarakat yang menerima bantuan sosial.</p>
+                <p>Berdasarkan materi, apakah tepat jika kelompok tersebut dijadikan sasaran awal?</p>
+
+                <h4>Jawaban:</h4>
+                <div class="answer">
+                    <p><strong>Ya.</strong></p>
+                    <p>Materi menyebut bahwa penerapan keuangan inklusif umumnya dilakukan bertahap dengan target yang jelas, misalnya:</p>
+                    <ul>
+                        <li>penerima bantuan program sosial pemerintah;</li>
+                        <li>pekerja migran/TKI.</li>
+                    </ul>
+                    <p>Kemudian diperluas secara bertahap kepada masyarakat umum.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 46. Ringkasan Super Cepat -->
+        <section>
+            <h2>46. ⭐ Ringkasan Super Cepat</h2>
+            <p>Jika hanya punya <span class="highlight">30 detik sebelum ujian</span>, ingat ini:</p>
+
+            <div class="cheat-sheet">
+                <p><strong>Keuangan inklusif</strong> = akses layanan keuangan formal yang sesuai, aman, terjangkau, bertanggung jawab, dan transparan.</p>
+
+                <h3>Latar belakang:</h3>
+                <p><strong>Krisis 2008</strong></p>
+
+                <h3>G20:</h3>
+                <p><strong>Pittsburgh 2009 → Toronto 2010</strong></p>
+
+                <h3>9 Principles:</h3>
+                <p><strong>Leadership, Diversity, Innovation, Protection, Empowerment, Cooperation, Knowledge, Proportionality, Framework</strong></p>
+
+                <h3>Hambatan:</h3>
+                <p><strong>P-I-D-C</strong></p>
+                <p>Price – Information – Design Product – Channel</p>
+
+                <h3>Penerapan:</h3>
+                <p><strong>S-P-R</strong></p>
+                <p>Sarana – Produk – Responsible Finance</p>
+
+                <h3>Layanan:</h3>
+                <p><strong>Kredit – Tabungan – Pembayaran – Asuransi</strong></p>
+
+                <h3>Manfaat:</h3>
+                <p><strong>Efisiensi + SSK + Pendalaman + Pasar + HDI + Pertumbuhan + Inequality ↓ + Kemiskinan ↓</strong></p>
+
+                <h3>Pelaksana:</h3>
+                <p><strong>BI + Pemerintah + Otoritas + Kementerian/Lembaga + Pemda + Swasta + Akademisi + Stakeholders</strong></p>
+            </div>
+        </section>
+
+        <!-- 47. Inti yang Paling Sering Keluar -->
+        <section id="cheat">
+            <h2>47. 🎯 Inti yang Paling Sering Keluar dalam Soal</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Materi</th>
+                            <th>Jawaban kunci</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Keuangan inklusif</td>
+                            <td>Akses layanan keuangan formal</td>
+                        </tr>
+                        <tr>
+                            <td>Momentum utama</td>
+                            <td>Krisis global 2008</td>
+                        </tr>
+                        <tr>
+                            <td>G20 Pittsburgh</td>
+                            <td>2009</td>
+                        </tr>
+                        <tr>
+                            <td>G20 Toronto</td>
+                            <td>2010</td>
+                        </tr>
+                        <tr>
+                            <td>Pedoman</td>
+                            <td>9 Principles for Innovative Financial Inclusion</td>
+                        </tr>
+                        <tr>
+                            <td><em>Unbanked</em></td>
+                            <td>Belum/tidak menggunakan layanan perbankan</td>
+                        </tr>
+                        <tr>
+                            <td>Price barrier</td>
+                            <td>Mahal</td>
+                        </tr>
+                        <tr>
+                            <td>Information barrier</td>
+                            <td>Tidak tahu</td>
+                        </tr>
+                        <tr>
+                            <td>Design product barrier</td>
+                            <td>Produk tidak sesuai</td>
+                        </tr>
+                        <tr>
+                            <td>Channel barrier</td>
+                            <td>Sarana tidak sesuai</td>
+                        </tr>
+                        <tr>
+                            <td>Strategi nasional</td>
+                            <td>Sarana + Produk + Responsible Finance</td>
+                        </tr>
+                        <tr>
+                            <td><em>Responsible finance</em></td>
+                            <td>Edukasi + Perlindungan konsumen</td>
+                        </tr>
+                        <tr>
+                            <td>Penerapan</td>
+                            <td>Bertahap dengan target jelas</td>
+                        </tr>
+                        <tr>
+                            <td>Pelaksana</td>
+                            <td>Multi-stakeholder</td>
+                        </tr>
+                        <tr>
+                            <td>Manfaat</td>
+                            <td>Efisiensi, SSK, pendalaman, pertumbuhan, pemerataan</td>
+                        </tr>
+                        <tr>
+                            <td>Dampak sosial</td>
+                            <td>Inequality dan kemiskinan dapat berkurang</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cheat-sheet">
+                <h3>🔑 Kalimat inti untuk dihafalkan</h3>
+                <p><strong>“Keuangan inklusif adalah upaya memastikan masyarakat, terutama kelompok yang belum terlayani dan rentan, memperoleh akses efektif terhadap layanan keuangan formal yang sesuai, aman, terjangkau, bertanggung jawab, dan transparan melalui kolaborasi berbagai pemangku kepentingan.”</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Modul Pembelajaran: Keuangan Inklusif | Dibuat untuk tujuan pendidikan</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], .quiz-section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const scrollPosition = window.scrollY + 120;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight functionality
+        const urlParams = new URLSearchParams(window.location.search);
+        const highlight = urlParams.get('highlight');
+
+        if (highlight) {
+            const elements = document.querySelectorAll('body *:not(script):not(style):not(nav):not(header):not(footer)');
+            elements.forEach(el => {
+                if (el.textContent && el.textContent.includes(highlight)) {
+                    const regex = new RegExp(highlight, 'gi');
+                    el.innerHTML = el.innerHTML.replace(regex, match =>
+                        `<span class="highlight">${match}</span>`
+                    );
+                }
+            });
+        }
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>
+```

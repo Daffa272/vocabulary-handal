@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Preposition &amp; Collocation — TOEFL Structure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f3ea;
+    --paper-2:#edE7d7;
+    --ink:#20281f;
+    --ink-soft:#4b5245;
+    --green:#2f4b3c;
+    --green-deep:#1c3128;
+    --mustard:#c98f2b;
+    --mustard-soft:#e9d3a3;
+    --rule:#cabf9f;
+    --card:#fffdf7;
+    --radius:4px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#161c17; --paper-2:#1f2a21; --ink:#eee7d6; --ink-soft:#b9b09a;
+      --green:#7fae93; --green-deep:#a9d3bb; --mustard:#e2ae4f; --mustard-soft:#3a3120;
+      --rule:#3a4136; --card:#1c241d;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#161c17; --paper-2:#1f2a21; --ink:#eee7d6; --ink-soft:#b9b09a;
+    --green:#7fae93; --green-deep:#a9d3bb; --mustard:#e2ae4f; --mustard-soft:#3a3120;
+    --rule:#3a4136; --card:#1c241d;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:calc(24px + env(safe-area-inset-top,0px));}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif; line-height:1.6;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2,h3{font-family:'Source Serif 4',Georgia,serif; font-weight:600; color:var(--ink); margin:0;}
+  .pair{font-family:'IBM Plex Mono',monospace; font-weight:600;}
+
+  header.masthead{
+    background:var(--green-deep); color:var(--paper); padding:56px 24px 44px;
+    padding-top:calc(56px + env(safe-area-inset-top,0px));
+  }
+  .masthead-inner{max-width:920px; margin:0 auto;}
+  .kicker{font-size:.85rem; color:var(--mustard-soft); margin-bottom:10px; letter-spacing:.02em;}
+  header.masthead h1{font-size:2.3rem; line-height:1.15; color:#fdfaf2;}
+  header.masthead p{max-width:60ch; color:#d8e0d6; margin-top:14px; font-size:1.02rem;}
+
+  .layout{max-width:1040px; margin:0 auto; display:grid; grid-template-columns:200px 1fr; gap:40px; padding:40px 24px 100px;}
+  @media (max-width:760px){ .layout{grid-template-columns:1fr;} nav.toc{position:static; order:2;} }
+
+  nav.toc{position:sticky; top:24px; align-self:start; font-size:.88rem;}
+  nav.toc ol{list-style:none; margin:0; padding:0; border-left:2px solid var(--rule);}
+  nav.toc li a{
+    display:block; padding:6px 0 6px 14px; color:var(--ink-soft); text-decoration:none;
+    border-left:2px solid transparent; margin-left:-2px;
+  }
+  nav.toc li a:hover, nav.toc li a:focus-visible{color:var(--green); border-left-color:var(--mustard);}
+
+  main{min-width:0; max-width:70ch;}
+  section{margin-bottom:52px; scroll-margin-top:20px;}
+  section h2{font-size:1.5rem; border-bottom:2px solid var(--rule); padding-bottom:10px; margin-bottom:18px;}
+  section h2 .num{color:var(--mustard); margin-right:8px;}
+  p{margin:0 0 14px;}
+  .lede{color:var(--ink-soft); font-size:1rem;}
+
+  .rule-list{margin:0 0 16px; padding-left:0; list-style:none;}
+  .rule-list li{padding:3px 0;}
+
+  .example{
+    background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--green);
+    border-radius:var(--radius); padding:12px 16px; margin:10px 0; font-size:.98rem;
+  }
+  .example .en{color:var(--ink);}
+  .example b{color:var(--green); font-family:'IBM Plex Mono',monospace; font-weight:600;}
+  .wrong{color:#b2483b; font-style:italic; font-size:.92rem; margin:4px 0 0;}
+
+  .collocation-card{
+    background:var(--card); border:1px solid var(--rule); border-radius:var(--radius);
+    padding:16px 18px; margin:14px 0;
+  }
+  .collocation-card h3{font-size:1.08rem; margin-bottom:4px;}
+  .collocation-card .pattern{color:var(--ink-soft); font-size:.9rem; margin-bottom:10px;}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.94rem;}
+  th,td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--rule);}
+  th{color:var(--ink-soft); font-weight:600; font-size:.82rem; text-transform:none;}
+  td.pair{color:var(--green);}
+
+  .grid-pairs{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; margin:16px 0;}
+  .chip{
+    background:var(--paper-2); border:1px solid var(--rule); border-radius:var(--radius);
+    padding:10px 12px;
+  }
+  .chip .pair{display:block; color:var(--green); font-size:.98rem;}
+  .chip .desc{font-size:.82rem; color:var(--ink-soft);}
+
+  .callout{
+    background:var(--mustard-soft); border-radius:var(--radius); padding:14px 18px; margin:16px 0;
+    font-size:.95rem;
+  }
+  .callout b{color:var(--green-deep);}
+
+  .steps{counter-reset:step; padding:0; list-style:none;}
+  .steps li{
+    counter-increment:step; position:relative; padding:6px 0 6px 34px; margin-bottom:6px;
+  }
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:4px; width:22px; height:22px;
+    border-radius:50%; background:var(--green); color:var(--paper); font-size:.78rem;
+    display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace;
+  }
+
+  footer{max-width:1040px; margin:0 auto; padding:0 24px 60px; color:var(--ink-soft); font-size:.85rem;}
+</style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="kicker">TOEFL Structure &amp; Written Expression</div>
+    <h1>Preposition &amp; Collocation</h1>
+    <p>Fokus soal jenis ini bukan menerjemahkan preposition kata per kata, melainkan mengenali pasangan kata (collocation) yang sudah baku — verb, adjective, atau noun tertentu yang selalu diikuti preposition yang sama.</p>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Daftar isi">
+    <ol>
+      <li><a href="#s1">1. Apa itu Preposition</a></li>
+      <li><a href="#s2">2. Verb + Preposition</a></li>
+      <li><a href="#s3">3. Adjective + Preposition</a></li>
+      <li><a href="#s4">4. Noun + Preposition</a></li>
+      <li><a href="#s5">5. Preposition + Gerund</a></li>
+      <li><a href="#s6">6. Verb + Object + Prep.</a></li>
+      <li><a href="#s7">7. Between vs Among</a></li>
+      <li><a href="#s8">8. Of vs From</a></li>
+      <li><a href="#s9">9. For vs To</a></li>
+      <li><a href="#s10">10. Tabel Collocation</a></li>
+      <li><a href="#s11">11. Cara Mengerjakan Soal</a></li>
+      <li><a href="#s12">12. Pola Cepat</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="s1">
+      <h2><span class="num">1</span>Apa itu Preposition?</h2>
+      <p><b>Preposition</b> adalah kata yang menghubungkan suatu kata dengan kata lain untuk menunjukkan hubungan seperti tempat, waktu, arah, atau hubungan abstrak.</p>
+      <table>
+        <tr><th>Preposition</th><th>Makna umum</th></tr>
+        <tr><td class="pair">about</td><td>tentang</td></tr>
+        <tr><td class="pair">at</td><td>pada / di</td></tr>
+        <tr><td class="pair">by</td><td>oleh / dengan</td></tr>
+        <tr><td class="pair">for</td><td>untuk</td></tr>
+        <tr><td class="pair">from</td><td>dari</td></tr>
+        <tr><td class="pair">in</td><td>di / dalam</td></tr>
+        <tr><td class="pair">of</td><td>dari</td></tr>
+        <tr><td class="pair">on</td><td>pada / di atas</td></tr>
+        <tr><td class="pair">to</td><td>kepada / ke</td></tr>
+        <tr><td class="pair">with</td><td>dengan</td></tr>
+        <tr><td class="pair">between</td><td>antara dua</td></tr>
+        <tr><td class="pair">among</td><td>di antara beberapa</td></tr>
+        <tr><td class="pair">into / through</td><td>ke dalam / melalui</td></tr>
+      </table>
+      <div class="callout">Jangan hanya menerjemahkan preposition secara langsung — banyak yang harus dipelajari sebagai <b>pasangan kata (collocation)</b>, bukan makna lepas.</div>
+    </section>
+
+    <section id="s2">
+      <h2><span class="num">2</span>Verb + Preposition</h2>
+      <div class="collocation-card">
+        <h3><span class="pair">depend on</span></h3>
+        <div class="pattern">depend on + noun / pronoun</div>
+        <div class="example">Success depends <b>on</b> hard work.</div>
+        <p class="wrong">❌ depend at &nbsp; ❌ depend in</p>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">participate in</span></h3>
+        <div class="pattern">participate in + noun</div>
+        <div class="example">Many students participate <b>in</b> the competition.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">invest in</span></h3>
+        <div class="pattern">invest in + noun / V-ing</div>
+        <div class="example">They invested money <b>in improving</b> the system.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">apologize to / apologize for</span></h3>
+        <div class="pattern">apologize to + person · apologize for + noun/V-ing</div>
+        <div class="example">He apologized <b>to</b> his teacher <b>for</b> being late.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">concentrate on</span></h3>
+        <div class="pattern">concentrate on + noun / V-ing</div>
+        <div class="example">Please concentrate <b>on answering</b> the question.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">look up to</span></h3>
+        <div class="pattern">satu kesatuan — artinya "mengagumi/menghormati seseorang"</div>
+        <div class="example">Many children look <b>up to</b> their parents.</div>
+      </div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="num">3</span>Adjective + Preposition</h2>
+      <p class="lede">Pola ini sangat penting dalam soal TOEFL.</p>
+      <div class="grid-pairs">
+        <div class="chip"><span class="pair">interested in</span><span class="desc">+ noun / V-ing</span></div>
+        <div class="chip"><span class="pair">aware of</span><span class="desc">bukan "aware about"</span></div>
+        <div class="chip"><span class="pair">capable of</span><span class="desc">+ V-ing</span></div>
+        <div class="chip"><span class="pair">afraid of</span><span class="desc">+ noun / V-ing</span></div>
+        <div class="chip"><span class="pair">responsible for</span><span class="desc">+ noun / V-ing</span></div>
+        <div class="chip"><span class="pair">different from</span><span class="desc">distractor: with, than, about</span></div>
+        <div class="chip"><span class="pair">pleased with</span><span class="desc">+ noun</span></div>
+        <div class="chip"><span class="pair">successful in</span><span class="desc">+ noun / V-ing</span></div>
+        <div class="chip"><span class="pair">concerned about</span><span class="desc">+ noun</span></div>
+      </div>
+      <div class="example">She is interested <b>in learning</b> English.</div>
+      <div class="example">This method is different <b>from</b> the previous method.</div>
+      <div class="example">The company was successful <b>in developing</b> a new product.</div>
+    </section>
+
+    <section id="s4">
+      <h2><span class="num">4</span>Noun + Preposition</h2>
+      <div class="grid-pairs">
+        <div class="chip"><span class="pair">respect for</span><span class="desc">respect for person/thing</span></div>
+        <div class="chip"><span class="pair">interest in</span><span class="desc">interest in something</span></div>
+        <div class="chip"><span class="pair">concern about</span><span class="desc">concern about something</span></div>
+        <div class="chip"><span class="pair">reason for</span><span class="desc">reason for + noun/V-ing</span></div>
+      </div>
+      <div class="example">There is no reason <b>for worrying</b>.</div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="num">5</span>Preposition + Gerund</h2>
+      <p>Jika setelah preposition terdapat kata kerja, gunakan <b class="pair">V-ing</b>, bukan bentuk dasar.</p>
+      <div class="example"><span class="en">interested <b>in learning</b> · responsible <b>for managing</b> · successful <b>in solving</b> · afraid <b>of making</b> · concentrate <b>on studying</b> · capable <b>of solving</b></span></div>
+      <p class="wrong">❌ interested in learn</p>
+      <div class="example">She is interested <b>in learning</b> English. ✅</div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="num">6</span>Verb + Object + Preposition</h2>
+      <div class="collocation-card">
+        <h3><span class="pair">provide someone with something</span></h3>
+        <div class="example">The school provided students <b>with</b> new books.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">distinguish between A and B</span></h3>
+        <div class="example">We must distinguish <b>between</b> fact and opinion.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">judge someone by something</span></h3>
+        <div class="example">We should not judge people <b>by</b> their appearance.</div>
+      </div>
+      <div class="collocation-card">
+        <h3><span class="pair">prevent someone from doing something</span></h3>
+        <div class="example">The rule prevents students <b>from using</b> their phones.</div>
+      </div>
+    </section>
+
+    <section id="s7">
+      <h2><span class="num">7</span>Between vs Among</h2>
+      <table>
+        <tr><th>Kata</th><th>Digunakan untuk</th><th>Contoh</th></tr>
+        <tr><td class="pair">between</td><td>dua pihak/hal — <span class="pair">between A and B</span></td><td>The difference <b>between</b> theory and practice.</td></tr>
+        <tr><td class="pair">among</td><td>lebih dari dua, dalam kelompok — <span class="pair">among + group</span></td><td>The teacher walked <b>among</b> the students.</td></tr>
+      </table>
+    </section>
+
+    <section id="s8">
+      <h2><span class="num">8</span>Of vs From</h2>
+      <p><span class="pair">of</span> menunjukkan hubungan, bagian, atau kepemilikan: <b>aware of</b>, <b>capable of</b>, <b>afraid of</b>.</p>
+      <p><span class="pair">from</span> menunjukkan asal atau perbedaan: <b>different from</b>, <b>come from</b> Indonesia, information <b>from</b> the government.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="num">9</span>For vs To</h2>
+      <p><span class="pair">for</span> → tujuan / manfaat / karena apa: <b>responsible for</b>, <b>reason for</b>, apologize <b>for</b> being late.</p>
+      <p><span class="pair">to</span> → penerima tindakan / kepada siapa: apologize <b>to</b> the teacher, provide information <b>to</b> students.</p>
+      <div class="example">He apologized <b>to</b> his teacher <b>for</b> being late.</div>
+    </section>
+
+    <section id="s10">
+      <h2><span class="num">10</span>Tabel Collocation Penting</h2>
+      <p class="lede">Hafalkan sebagai satu unit, bukan kata per kata.</p>
+      <table>
+        <tr><th>Expression</th><th>Pola</th></tr>
+        <tr><td class="pair">depend on</td><td>depend on something</td></tr>
+        <tr><td class="pair">participate in</td><td>participate in something</td></tr>
+        <tr><td class="pair">invest in</td><td>invest in something</td></tr>
+        <tr><td class="pair">concentrate on</td><td>concentrate on something</td></tr>
+        <tr><td class="pair">apologize to</td><td>apologize to someone</td></tr>
+        <tr><td class="pair">apologize for</td><td>apologize for something</td></tr>
+        <tr><td class="pair">look up to</td><td>look up to someone</td></tr>
+        <tr><td class="pair">interested in</td><td>interested in something</td></tr>
+        <tr><td class="pair">aware of</td><td>aware of something</td></tr>
+        <tr><td class="pair">capable of</td><td>capable of something</td></tr>
+        <tr><td class="pair">afraid of</td><td>afraid of something</td></tr>
+        <tr><td class="pair">responsible for</td><td>responsible for something</td></tr>
+        <tr><td class="pair">pleased with</td><td>pleased with something</td></tr>
+        <tr><td class="pair">successful in</td><td>successful in something</td></tr>
+        <tr><td class="pair">concerned about</td><td>concerned about something</td></tr>
+        <tr><td class="pair">different from</td><td>different from something</td></tr>
+        <tr><td class="pair">respect for</td><td>respect for someone/something</td></tr>
+        <tr><td class="pair">reason for</td><td>reason for something</td></tr>
+        <tr><td class="pair">judge by</td><td>judge by something</td></tr>
+        <tr><td class="pair">provide with</td><td>provide someone with something</td></tr>
+        <tr><td class="pair">distinguish between</td><td>distinguish between A and B</td></tr>
+        <tr><td class="pair">prevent from</td><td>prevent someone from doing something</td></tr>
+      </table>
+    </section>
+
+    <section id="s11">
+      <h2><span class="num">11</span>Cara Mengerjakan Soal</h2>
+      <ol class="steps">
+        <li><b>Identifikasi kata sebelum blank.</b> "The students are interested ___ science." → kata kuncinya <span class="pair">interested</span> → ingat <span class="pair">interested in</span>.</li>
+        <li><b>Jangan menerjemahkan kata per kata.</b> "She is capable ___ solving the problem." → kenali pola <span class="pair">capable of</span>, bukan terjemahan literal.</li>
+        <li><b>Perhatikan kata setelah blank.</b> "He apologized ___ being late." → setelah blank ada V-ing (being) → pola <span class="pair">apologize for</span> + V-ing.</li>
+        <li><b>Hafalkan sebagai pasangan</b>, bukan "aware = sadar, of = dari" — tapi langsung <span class="pair">aware of</span>, <span class="pair">depend on</span>, <span class="pair">capable of</span>.</li>
+      </ol>
+    </section>
+
+    <section id="s12">
+      <h2><span class="num">12</span>Pola Cepat untuk TOEFL</h2>
+      <table>
+        <tr><th>Saat melihat kata ini…</th><th>…pikirkan preposition</th></tr>
+        <tr><td>interested</td><td class="pair">in</td></tr>
+        <tr><td>depends</td><td class="pair">on</td></tr>
+        <tr><td>capable</td><td class="pair">of</td></tr>
+        <tr><td>responsible</td><td class="pair">for</td></tr>
+        <tr><td>different</td><td class="pair">from</td></tr>
+        <tr><td>successful</td><td class="pair">in</td></tr>
+      </table>
+      <div class="callout"><b>Ringkasan:</b> fokus utama bukan arti tiap preposition, tapi <b>collocation</b>. 10 pasangan paling penting: <span class="pair">depend on, interested in, aware of, capable of, responsible for, different from, successful in, pleased with, concerned about, concentrate on</span> — dan ingat, setelah preposition + kata kerja, selalu gunakan <b>V-ing</b>.</div>
+    </section>
+  </main>
+</div>
+
+<footer>Ringkasan materi Structure &amp; Written Expression — Preposition &amp; Collocation.</footer>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

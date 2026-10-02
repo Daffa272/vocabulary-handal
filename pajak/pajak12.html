@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPN - Studi Kasus & Panduan Lengkap</title>
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --secondary: #10b981;
+            --success: #06d6a0;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --info: #3b82f6;
+            --light: #f0fdf4;
+            --dark: #064e3b;
+            --border: #bbf7d0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        nav .container {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px 20px;
+        }
+        
+        nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding-bottom: 40px;
+        }
+        
+        section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        section h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background: #ecfdf5;
+        }
+        
+        /* Case Study Cards */
+        .case-study {
+            background: #f0fdf4;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .case-study h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .case-study .label {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Calculation Box */
+        .calculation {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calculation .formula {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .calculation .result {
+            font-weight: bold;
+            color: var(--danger);
+            font-size: 1.1rem;
+        }
+        
+        /* Important Notes */
+        .note {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .note::before {
+            content: "⚠️ ";
+        }
+        
+        .note strong {
+            color: var(--warning);
+        }
+        
+        /* Success Box */
+        .success {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .success::before {
+            content: "✅ ";
+        }
+        
+        /* Info Box */
+        .info {
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .info::before {
+            content: "ℹ️ ";
+        }
+        
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .summary h3 {
+            color: var(--info);
+            margin-bottom: 15px;
+        }
+        
+        .summary .total {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--danger);
+        }
+        
+        /* Key Point */
+        .key-point {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-pk { background: #dbeafe; color: #1e40af; }
+        .badge-pm { background: #d1fae5; color: #047857; }
+        .badge-pk-out { background: #fef3c7; color: #92400e; }
+        .badge-0 { background: #f3e8ff; color: #6b21a8; }
+        .badge-not-obj { background: #fee2e2; color: #991b1b; }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>💰 PPN - Studi Kasus & Panduan Lengkap</h1>
+                <p>Pajak Pertambahan Nilai - Definisi, Objek, Tarif, Pajak Masukan/Keluaran, dan Faktur Pajak</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="no-print">
+        <div class="container">
+            <a href="#definisi" class="active">Definisi</a>
+            <a href="#objek">Objek & Bukan Objek</a>
+            <a href="#penyerahan">Penyerahan BKP/JKP</a>
+            <a href="#tarif">Tarif & Perhitungan</a>
+            <a href="#pm-pk">PM & PK</a>
+            <a href="#faktur">Faktur Pajak</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#kunci-jawaban">Kunci Jawaban</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        
+        <!-- DEFINISI -->
+        <section id="definisi">
+            <h2>📚 Definisi Dasar PPN</h2>
+            <p><strong>Pajak Pertambahan Nilai (PPN)</strong> adalah pajak yang dikenakan atas konsumsi Barang Kena Pajak (BKP) dan Jasa Kena Pajak (JKP) di dalam negeri.</p>
+            
+            <div class="info">
+                <h4>📌 Definisi BKP dan JKP:</h4>
+                <p><strong>Barang Kena Pajak (BKP):</strong> barang yang dikenai PPN berupa barang berwujud, sifat atau hukumnya dapat berupa barang bergerak atau barang tidak bergerak, dan barang tidak berwujud.</p>
+                <p><strong>Jasa Kena Pajak (JKP):</strong> Jasa yang dikenai PPN. Berupa kegiatan pelayanan yang berdasarkan suatu perikatan atau perbuatan hukum yang menyebabkan suatu barang, fasilitas, kemudahan, kemudahan atau hak tersedia untuk dipakai, termasuk pelayanan pesanan.</p>
+            </div>
+        </section>
+        
+        <!-- JENIS PENYERAHAN BKP -->
+        <section id="penyerahan">
+            <h2>📦 Jenis Penyerahan Barang Kena Pajak (BKP)</h2>
+            
+            <h3>✅ Merupakan Penyerahan BKP (Pasal 4 UU PPN):</h3>
+            <ol>
+                <li>Penyerahan hak atas BKP karena suatu perjanjian</li>
+                <li>Pengalihan BKP karena suatu perjanjian sewa beli dan/atau perjanjian sewa guna usaha (leasing)</li>
+                <li>Penyerahan BKP kepada pedagang perantara atau melalui juru lelang</li>
+                <li><strong>Pemakaian sendiri dan/atau pemberian cuma-cuma atas BKP</strong></li>
+                <li>BKP berupa persediaan dan/atau aktiva yang menurut tujuan semula tidak untuk diperjualbelikan, yang masih tersisa pada saat pembubaran perusahaan</li>
+                <li>Penyerahan BKP dari pusat ke cabang atau sebaliknya dan/atau penyerahan BKP antar cabang</li>
+                <li>Penyerahan BKP secara konsinyasi</li>
+                <li>Penyerahan BKP oleh PKP dalam rangka perjanjian pembiayaan yang dilakukan berdasarkan prinsip syariah</li>
+            </ol>
+            
+            <h3>❌ Bukan Penyerahan BKP:</h3>
+            <ol>
+                <li>Penyerahan BKP kepada makelar</li>
+                <li>Penyerahan BKP untuk jaminan utang-piutang</li>
+                <li>Penyerahan BKP dalam hal PKP melakukan pemusatan tempat pajak terutang</li>
+                <li>Pengalihan BKP dalam rangka penggabungan, peleburan, pemekaran, pemecahan, dan pengambilalihan usaha dengan syarat pihak yang melakukan pengalihan dan yang menerima pengalihan adalah PKP</li>
+                <li>BKP berupa aktiva yang menurut tujuan semula tidak untuk diperjualbelikan, yang masih tersisa pada saat pembubaran perusahaan, dan yang Pajak Masukan atas perolehannya tidak dapat dikreditkan</li>
+            </ol>
+        </section>
+        
+        <!-- OBJEK DAN BUKAN OBJEK -->
+        <section id="objek">
+            <h2>🎯 Objek dan Bukan Objek PPN</h2>
+            
+            <h3>✅ Objek PPN:</h3>
+            <ol>
+                <li>Penyerahan BKP di dalam negeri yang dilakukan oleh pengusaha</li>
+                <li>Impor BKP</li>
+                <li>Penyerahan JKP di dalam negeri yang dilakukan oleh pengusaha</li>
+                <li>Pemanfaatan BKP Tidak Berwujud dari LN di dalam negeri</li>
+                <li>Pemanfaatan JKP dari LN di dalam negeri</li>
+                <li>Ekspor BKP Berwujud oleh PKP</li>
+                <li>Ekspor BKP Tidak Berwujud oleh PKP</li>
+                <li>Ekspor JKP oleh PKP</li>
+            </ol>
+            
+            <h3>❌ Jenis Barang yang Tidak Dikenai PPN (Pasal 4A):</h3>
+            <ol>
+                <li>Makanan dan minuman yang disajikan di hotel, restoran, rumah makan, warung, dan sejenisnya</li>
+                <li>Uang, emas batangan untuk kepentingan cadangan devisa negara, dan surat berharga</li>
+            </ol>
+            
+            <h3>❌ Jenis Jasa yang Tidak Dikenai PPN (Pasal 4A):</h3>
+            <ol>
+                <li>Jasa keagamaan</li>
+                <li>Jasa yang disediakan oleh pemerintah dalam rangka menjalankan pemerintahan secara umum</li>
+                <li>Jasa kesenian dan hiburan</li>
+                <li>Jasa perhotelan</li>
+                <li>Jasa penyediaan tempat parkir</li>
+                <li>Jasa boga atau katering</li>
+                <li>Jasa pelayanan kesehatan medis (dokter, rumah sakit, klinik, dll.)</li>
+                <li>Jasa keuangan (perbankan, pembiayaan, asuransi, penjaminan)</li>
+                <li>Jasa pendidikan</li>
+            </ol>
+            
+            <div class="info">
+                <h4>📌 Fasilitas PPN (Pasal 16B):</h4>
+                <p>PPN Terutang tidak dipungut atau dibebaskan untuk:</p>
+                <ul>
+                    <li>Kegiatan di kawasan tertentu</li>
+                    <li>Penyerahan BKP/JKP tertentu</li>
+                    <li>Impor BKP tertentu</li>
+                    <li>Pemanfaatan BKP Tidak Berwujud/JKP dari LN tertentu</li>
+                </ul>
+                <p><strong>Tujuan:</strong> Mendukung ekspor, hilirisasi industri, kebutuhan pokok, jasa kesehatan, jasa keuangan, dan jasa pendidikan.</p>
+            </div>
+        </section>
+        
+        <!-- TARIF -->
+        <section id="tarif">
+            <h2>💵 Tarif dan Cara Perhitungan PPN</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis Transaksi</th>
+                            <th>Tarif PPN</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Penyerahan BKP/JKP di dalam negeri</td>
+                            <td><strong>11%</strong> (berlaku 1 April 2022)</td>
+                            <td>Tarif umum</td>
+                        </tr>
+                        <tr>
+                            <td>Penyerahan BKP/JKP di dalam negeri</td>
+                            <td><strong>12%</strong></td>
+                            <td>Berlaku paling lambat 1 Januari 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Ekspor BKP Berwujud</td>
+                            <td><strong>0%</strong></td>
+                            <td>Dikenai PPN dengan tarif 0%</td>
+                        </tr>
+                        <tr>
+                            <td>Ekspor BKP Tidak Berwujud</td>
+                            <td><strong>0%</strong></td>
+                            <td>Dikenai PPN dengan tarif 0%</td>
+                        </tr>
+                        <tr>
+                            <td>Ekspor JKP</td>
+                            <td><strong>0%</strong></td>
+                            <td>Dikenai PPN dengan tarif 0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="key-point">
+                <h4>🔑 Rumus Dasar Perhitungan PPN:</h4>
+                <p style="font-size: 1.2rem; font-weight: bold; text-align: center;">
+                    <span style="color: var(--primary);">PPN</span> = 
+                    <span style="color: var(--secondary);">Tarif</span> × 
+                    <span style="color: var(--info);">Dasar Pengenaan Pajak (DPP)</span>
+                </p>
+                <p style="text-align: center; margin-top: 10px;">
+                    <em>DPP meliputi: Harga Jual, Penggantian, Nilai Impor, Nilai Ekspor, atau nilai lain</em>
+                </p>
+            </div>
+        </section>
+        
+        <!-- PAJAK MASUKAN DAN KELUARAN -->
+        <section id="pm-pk">
+            <h2>📊 Pajak Masukan (PM) dan Pajak Keluaran (PK)</h2>
+            
+            <div class="info">
+                <h4>📌 Definisi:</h4>
+                <p><strong>Pajak Masukan (PM):</strong> PPN yang seharusnya sudah dibayar oleh PKP karena perolehan BKP dan JKP, pemanfaatan BKP Tidak Berwujud dan JKP dari LN, dan/atau impor BKP.</p>
+                <p><em>PM = PPN saat PKP membeli BKP/menerima JKP</em></p>
+                <p><strong>Pajak Keluaran (PK):</strong> PPN terutang yang wajib dipungut oleh PKP yang melakukan penyerahan BKP dan JKP, ekspor BKP/JKP.</p>
+                <p><em>PK = PPN saat PKP menjual BKP dan JKP</em></p>
+            </div>
+            
+            <h3>📋 Ketentuan Pajak Masukan:</h3>
+            <ol>
+                <li><strong>Pengkreditan:</strong> PM dalam suatu Masa Pajak dikreditkan dengan PK dalam Masa Pajak yang sama</li>
+                <li><strong>Rumus:</strong> <span class="badge badge-pk">PK</span> – <span class="badge badge-pm">PM</span></li>
+            </ol>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kondisi</th>
+                            <th>Hasil</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PK > PM</td>
+                            <td>PPN Kurang Bayar</td>
+                            <td>Harus disetor paling lama akhir bulan berikutnya</td>
+                        </tr>
+                        <tr>
+                            <td>PK < PM</td>
+                            <td>PPN Lebih Bayar</td>
+                            <td>Dapat dikompensasikan ke masa pajak berikutnya atau diajukan pengembalian</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>📌 Syarat Pengkreditan PM:</h3>
+            <ol>
+                <li>Harus menggunakan Faktur Pajak yang memenuhi persyaratan</li>
+                <li>Pembelian BKP/JKP mempunyai hubungan langsung dengan kegiatan usaha</li>
+                <li>PM atas perolehan barang modal yang belum berproduksi dapat dikreditkan</li>
+                <li>PM yang dapat dikreditkan tetapi belum dikreditkan dapat dikreditkan pada Masa Pajak berikutnya (maksimal 3 Masa Pajak)</li>
+                <li><strong>PM yang dibayar atas perolehan BKP/JKP yang penyerahannya dibebaskan dari PPN <span style="color: var(--danger);">TIDAK DAPAT DIKREDITKAN</span></strong></li>
+            </ol>
+            
+            <h3>⏰ Saat Terutang PPN:</h3>
+            <p>PPN terutang pada saat:</p>
+            <ol>
+                <li>Penyerahan BKP</li>
+                <li>Impor BKP</li>
+                <li>Penyerahan JKP</li>
+                <li>Pemanfaatan BKP Tidak Berwujud dari LN</li>
+                <li>Pemanfaatan JKP dari LN</li>
+                <li>Ekspor BKP/JKP</li>
+            </ol>
+            <div class="note">
+                <p><strong>Catatan:</strong> Jika pembayaran diterima <strong>sebelum</strong> penyerahan BKP/JKP atau pemanfaatan, maka PPN terutang <strong>saat pembayaran</strong>.</p>
+            </div>
+        </section>
+        
+        <!-- FAKTUR PAJAK -->
+        <section id="faktur">
+            <h2>📄 Faktur Pajak</h2>
+            
+            <h3>📌 PKP Wajib Membuat Faktur Pajak untuk:</h3>
+            <ol>
+                <li>Penyerahan BKP</li>
+                <li>Ekspor BKP Tidak Berwujud</li>
+                <li>Penyerahan JKP</li>
+                <li>Ekspor JKP</li>
+            </ol>
+            
+            <h3>⏰ Waktu Pembuatan Faktur Pajak:</h3>
+            <ol>
+                <li>Saat penyerahan BKP dan/atau penyerahan JKP</li>
+                <li>Saat penerimaan pembayaran (jika pembayaran diterima sebelum penyerahan)</li>
+                <li>Saat penerimaan pembayaran termin (untuk penyerahan sebagian)</li>
+                <li>Saat lain yang diatur dengan PMK</li>
+            </ol>
+            
+            <div class="info">
+                <p><strong>Catatan:</strong> PKP dapat membuat 1 Faktur Pajak meliputi seluruh penyerahan kepada pembeli yang sama selama 1 bulan kalender, dengan batas waktu pembuatan <strong>paling lama akhir bulan penyerahan</strong>.</p>
+            </div>
+            
+            <h3>📋 Ketentuan Faktur Pajak:</h3>
+            <p>Faktur Pajak harus memuat keterangan:</p>
+            <ol>
+                <li>Nama, alamat, dan NPWP penjual/pemberi jasa</li>
+                <li>Nama, alamat, dan NPWP pembeli/penerima jasa</li>
+                <li>Jenis barang/jasa, jumlah Harga Jual/Penggantian, dan potongan harga</li>
+                <li>PPN yang dipungut</li>
+                <li>Kode, nomor seri, dan tanggal pembuatan FP</li>
+                <li>Nama dan tanda tangan yang berhak menandatangani FP</li>
+            </ol>
+            <div class="note">
+                <p><strong>DJP dapat menetapkan dokumen tertentu yang kedudukannya dipersamakan dengan Faktur Pajak.</strong></p>
+            </div>
+        </section>
+        
+        <!-- STUDI KASUS -->
+        <section id="studi-kasus">
+            <h2>📖 Studi Kasus PPN - PT Maju Jaya</h2>
+            
+            <div class="info">
+                <h4>📌 Profil Perusahaan:</h4>
+                <p><strong>PT Maju Jaya</strong> merupakan perusahaan perdagangan elektronik yang telah dikukuhkan sebagai <span class="badge badge-pk">Pengusaha Kena Pajak (PKP)</span>.</p>
+                <p><strong>Masa Pajak:</strong> September 2026</p>
+            </div>
+            
+            <h3>📊 Data Transaksi:</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Transaksi</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Membeli persediaan laptop dari pemasok dalam negeri</td>
+                            <td>Rp300.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Menjual laptop kepada PT Nusantara</td>
+                            <td>Rp450.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Membeli jasa konsultasi IT dari perusahaan dalam negeri</td>
+                            <td>Rp50.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Menjual jasa pemeliharaan sistem kepada PT Sejahtera</td>
+                            <td>Rp100.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Mengimpor server dari Jepang</td>
+                            <td>Rp200.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Menjual mesin bekas perusahaan yang sebelumnya digunakan dalam kegiatan usaha</td>
+                            <td>Rp80.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Memberikan 2 unit laptop secara cuma-cuma kepada pelanggan sebagai hadiah promosi (Harga jual normal Rp20.000.000)</td>
+                            <td>Rp20.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Membayar jasa cloud computing kepada perusahaan Singapura</td>
+                            <td>Rp60.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Mengekspor perangkat elektronik ke Australia</td>
+                            <td>Rp250.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Membayar uang muka Rp110.000.000 kepada pemasok atas pembelian barang yang baru akan diserahkan bulan Oktober</td>
+                            <td>Rp110.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info">
+                <h4>📌 Asumsi:</h4>
+                <ul>
+                    <li>Seluruh nilai transaksi <strong>belum termasuk PPN</strong>, kecuali dinyatakan lain</li>
+                    <li>Seluruh transaksi memenuhi persyaratan sebagai transaksi usaha</li>
+                    <li>Faktur Pajak atas pembelian dalam negeri tersedia dan memenuhi ketentuan</li>
+                    <li>Pajak Masukan yang berkaitan langsung dengan kegiatan usaha dapat dikreditkan</li>
+                    <li>Gunakan <strong>tarif PPN 11%</strong> (berlaku untuk Masa Pajak September 2026)</li>
+                </ul>
+            </div>
+            
+            <h3>❓ Pertanyaan:</h3>
+            
+            <h4>A. Identifikasi Transaksi</h4>
+            <p>Untuk setiap transaksi nomor 1-10, tentukan:</p>
+            <ol>
+                <li>Apakah transaksi tersebut merupakan <strong>objek PPN atau bukan objek PPN</strong>?</li>
+                <li>Jika merupakan objek PPN, termasuk jenis apa?</li>
+                <li>Kapan <strong>PPN mulai terutang</strong>?</li>
+            </ol>
+            
+            <h4>B. Pajak Keluaran</h4>
+            <p>Hitung <span class="badge badge-pk-out">Pajak Keluaran (PK)</span> PT Maju Jaya atas transaksi yang merupakan penyerahan BKP/JKP. Pisahkan antara:</p>
+            <ol>
+                <li>Penjualan BKP dalam negeri</li>
+                <li>Penyerahan JKP dalam negeri</li>
+                <li>Pemakaian sendiri/pemberian cuma-cuma</li>
+                <li>Ekspor BKP</li>
+            </ol>
+            
+            <h4>C. Pajak Masukan</h4>
+            <p>Hitung <span class="badge badge-pm">Pajak Masukan (PM)</span> yang dapat dikreditkan atas:</p>
+            <ol>
+                <li>Pembelian persediaan laptop</li>
+                <li>Jasa konsultasi IT</li>
+                <li>Impor server</li>
+                <li>Pemanfaatan jasa cloud computing dari Singapura</li>
+            </ol>
+            <p>Kemudian tentukan apakah masing-masing PM <strong>dapat dikreditkan</strong> atau <strong>tidak dapat dikreditkan</strong>.</p>
+            
+            <h4>D. PPN Kurang/Lebih Bayar</h4>
+            <p>Gunakan rumus: <strong>PPN yang harus disetor = PK - PM yang dapat dikreditkan</strong></p>
+            <p>Tentukan apakah PT Maju Jaya mengalami <span class="badge badge-danger">PPN Kurang Bayar</span> atau <span class="badge badge-success">PPN Lebih Bayar</span>, dan hitung nominalnya.</p>
+            
+            <h4>E. Faktur Pajak</h4>
+            <p>Untuk transaksi nomor 2 dan 4:</p>
+            <ol>
+                <li>Apakah PT Maju Jaya wajib membuat Faktur Pajak?</li>
+                <li>Kapan Faktur Pajak dibuat?</li>
+                <li>Informasi apa saja yang wajib dicantumkan?</li>
+            </ol>
+            
+            <h4>F. Analisis Uang Muka</h4>
+            <p>PT Maju Jaya membayar uang muka sebesar Rp110.000.000 pada September 2026, sedangkan barang baru diserahkan pada Oktober 2026.</p>
+            <ol>
+                <li>Kapan PPN terutang?</li>
+                <li>Berapa PPN yang harus diperhitungkan?</li>
+                <li>Kapan Faktur Pajak dibuat?</li>
+            </ol>
+        </section>
+        
+        <!-- KUNCI JAWABAN -->
+        <section id="kunci-jawaban">
+            <h2>🔑 Kunci Jawaban & Pembahasan</h2>
+            
+            <!-- Transaksi 1 -->
+            <div class="case-study">
+                <span class="label">Transaksi 1</span>
+                <h4>Pembelian persediaan laptop</h4>
+                <p><strong>Nilai:</strong> Rp300.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Perolehan BKP dari dalam negeri</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat pembelian (penyerahan BKP)</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Masukan (PM)</span> = Rp300.000.000 × 11% = <span class="result">Rp33.000.000</span></div>
+                </div>
+                <p><strong>💡 Status:</strong> <span class="badge badge-pm">Dapat dikreditkan</span> (laptop dibeli untuk kegiatan usaha, tersedia Faktur Pajak)</p>
+            </div>
+            
+            <!-- Transaksi 2 -->
+            <div class="case-study">
+                <span class="label">Transaksi 2</span>
+                <h4>Penjualan laptop</h4>
+                <p><strong>Nilai:</strong> Rp450.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Penyerahan BKP di dalam negeri</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat penjualan</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Keluaran (PK)</span> = Rp450.000.000 × 11% = <span class="result">Rp49.500.000</span></div>
+                </div>
+                <p><strong>📄 Faktur Pajak:</strong> <strong>Wajib dibuat</strong> saat penyerahan</p>
+            </div>
+            
+            <!-- Transaksi 3 -->
+            <div class="case-study">
+                <span class="label">Transaksi 3</span>
+                <h4>Jasa konsultasi IT</h4>
+                <p><strong>Nilai:</strong> Rp50.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Perolehan JKP dalam negeri</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat penerimaan jasa</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Masukan (PM)</span> = Rp50.000.000 × 11% = <span class="result">Rp5.500.000</span></div>
+                </div>
+                <p><strong>💡 Status:</strong> <span class="badge badge-pm">Dapat dikreditkan</span> (jasa berkaitan langsung dengan kegiatan usaha, Faktur Pajak memenuhi persyaratan)</p>
+            </div>
+            
+            <!-- Transaksi 4 -->
+            <div class="case-study">
+                <span class="label">Transaksi 4</span>
+                <h4>Penyerahan jasa pemeliharaan sistem</h4>
+                <p><strong>Nilai:</strong> Rp100.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Penyerahan JKP di dalam negeri</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat penyerahan jasa</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Keluaran (PK)</span> = Rp100.000.000 × 11% = <span class="result">Rp11.000.000</span></div>
+                </div>
+                <p><strong>📄 Faktur Pajak:</strong> <strong>Wajib dibuat</strong> saat penyerahan</p>
+            </div>
+            
+            <!-- Transaksi 5 -->
+            <div class="case-study">
+                <span class="label">Transaksi 5</span>
+                <h4>Impor server</h4>
+                <p><strong>Nilai:</strong> Rp200.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Impor BKP</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat impor</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Masukan (PM)</span> = Rp200.000.000 × 11% = <span class="result">Rp22.000.000</span></div>
+                </div>
+                <p><strong>💡 Status:</strong> <span class="badge badge-pm">Dapat dikreditkan</span> (server digunakan untuk kegiatan usaha)</p>
+            </div>
+            
+            <!-- Transaksi 6 -->
+            <div class="case-study">
+                <span class="label">Transaksi 6</span>
+                <h4>Penjualan mesin bekas</h4>
+                <p><strong>Nilai:</strong> Rp80.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Penyerahan aktiva (BKP) - mesin yang digunakan dalam kegiatan usaha</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat penjualan</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Keluaran (PK)</span> = Rp80.000.000 × 11% = <span class="result">Rp8.800.000</span></div>
+                </div>
+                <div class="note">
+                    <p><strong>💡 Catatan:</strong> Penjualan aktiva oleh PKP dapat menjadi penyerahan yang dikenai PPN, tidak hanya persediaan barang dagangan.</p>
+                </div>
+            </div>
+            
+            <!-- Transaksi 7 -->
+            <div class="case-study">
+                <span class="label">Transaksi 7</span>
+                <h4>Pemberian laptop secara cuma-cuma</h4>
+                <p><strong>Nilai:</strong> Rp20.000.000 (harga jual normal)</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Pemberian cuma-cuma atas BKP (salah satu jenis penyerahan BKP)</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat pemberian</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Keluaran (PK)</span> = Rp20.000.000 × 11% = <span class="result">Rp2.200.000</span></div>
+                </div>
+                <div class="note">
+                    <p><strong>💡 Catatan:</strong> Pemberian cuma-cuma atas BKP merupakan penyerahan yang dapat terutang PPN.</p>
+                </div>
+            </div>
+            
+            <!-- Transaksi 8 -->
+            <div class="case-study">
+                <span class="label">Transaksi 8</span>
+                <h4>Jasa cloud computing dari Singapura</h4>
+                <p><strong>Nilai:</strong> Rp60.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Pemanfaatan JKP dari luar negeri di dalam negeri</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat pemanfaatan jasa</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Masukan (PM)</span> = Rp60.000.000 × 11% = <span class="result">Rp6.600.000</span></div>
+                </div>
+                <p><strong>💡 Status:</strong> <span class="badge badge-pm">Dapat dikreditkan</span> (jasa berkaitan dengan kegiatan usaha, memenuhi ketentuan pengkreditan)</p>
+            </div>
+            
+            <!-- Transaksi 9 -->
+            <div class="case-study">
+                <span class="label">Transaksi 9</span>
+                <h4>Ekspor perangkat elektronik</h4>
+                <p><strong>Nilai:</strong> Rp250.000.000</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Ekspor BKP Berwujud</p>
+                    <p><strong>📅 Saat Terutang:</strong> Saat ekspor</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN Keluaran (PK)</span> = Rp250.000.000 × <strong>0%</strong> = <span class="result">Rp0</span></div>
+                </div>
+                <div class="key-point">
+                    <p><strong>⚠️ Catatan Penting:</strong> Ekspor BKP dikenai PPN dengan <strong>tarif 0%</strong>, bukan berarti <strong>bukan objek PPN</strong>.</p>
+                    <p><em>Objek PPN ≠ selalu menghasilkan PPN yang harus dibayar.</em></p>
+                </div>
+            </div>
+            
+            <!-- Transaksi 10 -->
+            <div class="case-study">
+                <span class="label">Transaksi 10</span>
+                <h4>Uang muka pembelian barang</h4>
+                <p><strong>Nilai:</strong> Rp110.000.000 (barang diserahkan Oktober 2026)</p>
+                <div class="success">
+                    <p><strong>✅ Objek PPN:</strong> Pembayaran sebelum penyerahan BKP</p>
+                    <p><strong>📅 Saat Terutang:</strong> <strong>Saat pembayaran</strong> (September 2026, bukan menunggu penyerahan)</p>
+                </div>
+                <div class="calculation">
+                    <div><span class="formula">PPN</span> = Rp110.000.000 × 11% = <span class="result">Rp12.100.000</span></div>
+                </div>
+                <p><strong>📄 Faktur Pajak:</strong> Wajib dibuat <strong>saat penerimaan pembayaran</strong> (September 2026)</p>
+            </div>
+            
+            <!-- Ringkasan Perhitungan -->
+            <h3>📊 Ringkasan Perhitungan PPN</h3>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Transaksi</th>
+                            <th>Jenis</th>
+                            <th>PK/PM</th>
+                            <th>Nominal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Pembelian laptop</td>
+                            <td>Perolehan BKP DN</td>
+                            <td><span class="badge badge-pm">PM</span></td>
+                            <td>Rp33.000.000</td>
+                            <td><span class="badge badge-pm">Dapat dikreditkan</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Penjualan laptop</td>
+                            <td>Penyerahan BKP DN</td>
+                            <td><span class="badge badge-pk">PK</span></td>
+                            <td>Rp49.500.000</td>
+                            <td>Terutang</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Konsultasi IT</td>
+                            <td>Perolehan JKP DN</td>
+                            <td><span class="badge badge-pm">PM</span></td>
+                            <td>Rp5.500.000</td>
+                            <td><span class="badge badge-pm">Dapat dikreditkan</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Jasa pemeliharaan</td>
+                            <td>Penyerahan JKP DN</td>
+                            <td><span class="badge badge-pk">PK</span></td>
+                            <td>Rp11.000.000</td>
+                            <td>Terutang</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Impor server</td>
+                            <td>Impor BKP</td>
+                            <td><span class="badge badge-pm">PM</span></td>
+                            <td>Rp22.000.000</td>
+                            <td><span class="badge badge-pm">Dapat dikreditkan</span></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Penjualan mesin</td>
+                            <td>Penyerahan aktiva</td>
+                            <td><span class="badge badge-pk">PK</span></td>
+                            <td>Rp8.800.000</td>
+                            <td>Terutang</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Laptop gratis</td>
+                            <td>Pemberian cuma-cuma</td>
+                            <td><span class="badge badge-pk">PK</span></td>
+                            <td>Rp2.200.000</td>
+                            <td>Terutang</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Cloud computing</td>
+                            <td>Pemanfaatan JKP LN</td>
+                            <td><span class="badge badge-pm">PM</span></td>
+                            <td>Rp6.600.000</td>
+                            <td><span class="badge badge-pm">Dapat dikreditkan</span></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Ekspor elektronik</td>
+                            <td>Ekspor BKP</td>
+                            <td><span class="badge badge-pk">PK</span></td>
+                            <td class="badge badge-0">Rp0 (0%)</td>
+                            <td>Terutang (tarif 0%)</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Uang muka</td>
+                            <td>Pembayaran sebelum penyerahan</td>
+                            <td><span class="badge badge-pk">PK</span></td>
+                            <td>Rp12.100.000</td>
+                            <td>Terutang</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: right; font-weight: bold;">Total Pajak Keluaran (PK):</td>
+                            <td style="font-weight: bold; color: var(--danger);">Rp83.600.000</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: right; font-weight: bold;">Total Pajak Masukan (PM) Dapat Dikreditkan:</td>
+                            <td style="font-weight: bold; color: var(--primary);">Rp67.100.000</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: right; font-weight: bold;">PPN Kurang Bayar:</td>
+                            <td style="font-weight: bold; color: var(--danger); font-size: 1.2rem;">Rp16.500.000</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="summary">
+                <h3>🎯 Kesimpulan</h3>
+                <p style="font-size: 1.2rem;">
+                    <span class="badge badge-pk">PK: Rp83.600.000</span> – 
+                    <span class="badge badge-pm">PM: Rp67.100.000</span> = 
+                    <span class="badge badge-danger">PPN Kurang Bayar: Rp16.500.000</span>
+                </p>
+                <p style="margin-top: 15px;">PT Maju Jaya harus menyetor PPN sebesar <strong>Rp16.500.000</strong> paling lama <strong>akhir Oktober 2026</strong>.</p>
+            </div>
+            
+            <h3>📄 Jawaban Faktur Pajak (E)</h3>
+            <div class="success">
+                <p><strong>Transaksi 2 (Penjualan laptop):</strong></p>
+                <ol>
+                    <li><strong>Wajib membuat Faktur Pajak?</strong> ✅ Ya</li>
+                    <li><strong>Kapan dibuat?</strong> Saat penyerahan BKP (saat penjualan)</li>
+                    <li><strong>Informasi yang wajib:</strong> Nama, alamat, NPWP penjual & pembeli, jenis barang, harga jual, PPN, kode/nomor seri, tanggal, tanda tangan</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Transaksi 4 (Jasa pemeliharaan):</strong></p>
+                <ol>
+                    <li><strong>Wajib membuat Faktur Pajak?</strong> ✅ Ya</li>
+                    <li><strong>Kapan dibuat?</strong> Saat penyerahan JKP</li>
+                    <li><strong>Informasi yang wajib:</strong> Nama, alamat, NPWP pemberi & penerima jasa, jenis jasa, penggantian, PPN, kode/nomor seri, tanggal, tanda tangan</li>
+                </ol>
+            </div>
+            
+            <h3>💰 Jawaban Uang Muka (F)</h3>
+            <div class="success">
+                <ol>
+                    <li><strong>Kapan PPN terutang?</strong> <strong>Saat pembayaran</strong> (September 2026), bukan saat penyerahan barang</li>
+                    <li><strong>PPN yang harus diperhitungkan?</strong> Rp110.000.000 × 11% = <strong>Rp12.100.000</strong></li>
+                    <li><strong>Kapan Faktur Pajak dibuat?</strong> <strong>Saat penerimaan pembayaran</strong> (September 2026)</li>
+                </ol>
+            </div>
+            
+            <div class="note">
+                <h4>⚠️ Catatan Penting:</h4>
+                <p><strong>Objek PPN ≠ selalu menghasilkan PPN yang harus dibayar.</strong> Ekspor BKP/JKP dikenai PPN dengan tarif 0%, tetapi tetap merupakan objek PPN.</p>
+                <p><strong>Saat terutang PPN:</strong> Jika pembayaran diterima sebelum penyerahan, PPN terutang saat pembayaran, bukan saat penyerahan.</p>
+            </div>
+        </section>
+        
+    </main>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

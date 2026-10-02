@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Pajak - 25 Kartu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f3f6fb; --card: #fff; --text: #0f172a; --muted: #52607a; --line: #e2e8f0; --primary: #0f766e; --primary-soft: #ccfbf1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, sans-serif; color: var(--text); background: linear-gradient(180deg, #ecfeff 0%, var(--bg) 28%, #f8fafc 100%); line-height: 1.6; }
+    .page { max-width: 1200px; margin: auto; padding: 28px 18px 64px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; padding: 14px 18px; background: rgba(255,255,255,.85); border: 1px solid var(--line); border-radius: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand-badge { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #0f766e; color: white; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    nav a { padding: 8px 12px; color: var(--text); background: #f8fafc; border: 1px solid var(--line); border-radius: 9px; text-decoration: none; font-size: .78rem; font-weight: 700; }
+    nav a.active { color: #115e59; background: var(--primary-soft); border-color: #99f6e4; }
+    .hero { margin-bottom: 28px; padding: 34px 28px; color: white; background: linear-gradient(135deg, #134e4a, #0f766e 52%, #0891b2); border-radius: 24px; box-shadow: 0 18px 40px rgba(15,118,110,.16); }
+    .hero .tag { display: inline-block; padding: 6px 11px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: rgba(255,255,255,.12); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.05em; line-height: 1.1; }
+    .hero p { max-width: 760px; margin: 12px 0 0; color: rgba(255,255,255,.84); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card { display: block; min-height: 205px; padding: 20px; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 18px; text-decoration: none; box-shadow: 0 10px 24px rgba(15,23,42,.05); transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .card:hover { transform: translateY(-4px); border-color: #5eead4; box-shadow: 0 16px 30px rgba(15,118,110,.13); }
+    .number { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 16px; color: #115e59; background: var(--primary-soft); border-radius: 11px; font-weight: 800; }
+    .card h2 { margin: 0 0 9px; font-size: 1.08rem; line-height: 1.35; letter-spacing: -.025em; }
+    .card p { margin: 0 0 16px; color: var(--muted); font-size: .9rem; }
+    .link-label { color: var(--primary); font-weight: 800; font-size: .88rem; }
+    .link-label::after { content: ' →'; }
+    .back { display: inline-block; margin-top: 28px; color: #115e59; font-weight: 800; text-decoration: none; }
+  .study-schedule { margin-bottom: 24px; padding: 22px; background: linear-gradient(135deg, #ecfdf5, #ffffff 68%); border: 1px solid #99f6e4; border-radius: 18px; box-shadow: 0 10px 24px rgba(15,23,42,.05); }
+  .schedule-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+  .schedule-heading h2 { margin: 0; font-size: 1.25rem; }
+  .schedule-heading p { margin: 4px 0 0; color: var(--muted); font-size: .88rem; }
+  .schedule-count { padding: 6px 10px; border-radius: 999px; background: #ccfbf1; color: #115e59; font-size: .78rem; font-weight: 800; white-space: nowrap; }
+  .schedule-form { display: grid; grid-template-columns: minmax(180px, 1fr) 150px 125px auto; gap: 10px; margin-bottom: 16px; }
+  .schedule-form input { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: white; color: var(--text); font: inherit; outline: none; }
+  .schedule-form input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15,118,110,.12); }
+  .schedule-form button { border: 0; border-radius: 10px; padding: 11px 16px; background: var(--primary); color: white; font: inherit; font-weight: 800; cursor: pointer; }
+  .schedule-form button:hover { background: #115e59; }
+  .schedule-list { display: grid; gap: 8px; }
+  .schedule-empty { padding: 16px; border: 1px dashed #5eead4; border-radius: 12px; color: var(--muted); text-align: center; font-size: .88rem; }
+  .schedule-item { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 12px 14px; background: rgba(255,255,255,.86); border: 1px solid #99f6e4; border-radius: 12px; }
+  .schedule-item.is-done .schedule-task { color: #94a3b8; text-decoration: line-through; }
+  .schedule-check { width: 19px; height: 19px; accent-color: var(--primary); cursor: pointer; }
+  .schedule-task { display: block; font-weight: 700; overflow-wrap: anywhere; }
+  .schedule-time { display: block; margin-top: 2px; color: var(--muted); font-size: .78rem; }
+  .schedule-delete { border: 0; padding: 6px 8px; border-radius: 8px; background: transparent; color: #115e59; font: inherit; font-size: .78rem; font-weight: 700; cursor: pointer; }
+  .schedule-delete:hover { background: #ccfbf1; }
+    @media (max-width: 620px) { .hero { padding: 26px 20px; } }
+  @media (max-width: 620px) { .schedule-form { grid-template-columns: 1fr 1fr; } .schedule-form input[type="text"], .schedule-form button { grid-column: 1 / -1; } }
+  </style>
+<script defer src="tracker-menu.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="brand"><div class="brand-badge">₿</div><span>Materi Keuangan</span></div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Vocabulary</a>
+        <a href="publicspeaking.html">Public Speaking</a>
+        <a href="material.html" class="active">Material</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="tag">Kumpulan Materi</div>
+      <h1>25 Kartu Pajak</h1>
+      <p>Pilih kartu untuk membuka materi perpajakan sesuai topik yang ingin dipelajari.</p>
+    </header>
+
+  <section class="study-schedule" aria-labelledby="schedule-title">
+    <div class="schedule-heading"><div><h2 id="schedule-title">To-do Jadwal Belajar</h2><p>Atur agenda belajar dan tandai tugas yang sudah selesai.</p></div><span class="schedule-count" id="schedule-count">0 agenda</span></div>
+    <form class="schedule-form" id="schedule-form">
+      <input id="schedule-task" type="text" placeholder="Contoh: Pelajari PPh 21" aria-label="Nama kegiatan" required maxlength="120">
+      <input id="schedule-date" type="date" aria-label="Tanggal kegiatan" required>
+      <input id="schedule-time" type="time" aria-label="Waktu kegiatan" required>
+      <button type="submit">+ Tambah agenda</button>
+    </form>
+    <div class="schedule-list" id="schedule-list" aria-live="polite"></div>
+  </section>
+
+    <main class="cards">
+      <a class="card" href="pajak/pajak1.html"><div class="number">01</div><h2>General Provisions of Taxation</h2><p>Ketentuan umum perpajakan dan administrasi pajak.</p><span class="link-label">Buka pajak 1</span></a>
+      <a class="card" href="pajak/pajak2.html"><div class="number">02</div><h2>Corporate Income Tax Vol. 1</h2><p>Pajak penghasilan badan volume pertama.</p><span class="link-label">Buka pajak 2</span></a>
+      <a class="card" href="pajak/pajak3.html"><div class="number">03</div><h2>Corporate Income Tax Vol. 2</h2><p>Pajak penghasilan badan volume kedua.</p><span class="link-label">Buka pajak 3</span></a>
+      <a class="card" href="pajak/pajak4.html"><div class="number">04</div><h2>Provisions of Corporate Income Tax</h2><p>Ketentuan pajak penghasilan badan.</p><span class="link-label">Buka pajak 4</span></a>
+      <a class="card" href="pajak/pajak5.html"><div class="number">05</div><h2>Pajak Penghasilan (PPh) UMKM Vol. 1</h2><p>Pajak penghasilan untuk UMKM volume pertama.</p><span class="link-label">Buka pajak 5</span></a>
+      <a class="card" href="pajak/pajak6.html"><div class="number">06</div><h2>PPh UMKM Vol. 2 — Studi Kasus</h2><p>Pajak penghasilan UMKM volume kedua dan studi kasus.</p><span class="link-label">Buka pajak 6</span></a>
+      <a class="card" href="pajak/pajak7.html"><div class="number">07</div><h2>PPh Pasal 21 — Materi &amp; Studi Kasus</h2><p>Materi dan studi kasus pajak penghasilan pasal 21.</p><span class="link-label">Buka pajak 7</span></a>
+      <a class="card" href="pajak/pajak8.html"><div class="number">08</div><h2>PPh Pasal 22 — Ringkasan &amp; Studi Kasus</h2><p>Ringkasan dan studi kasus PPh pasal 22.</p><span class="link-label">Buka pajak 8</span></a>
+      <a class="card" href="pajak/pajak9.html"><div class="number">09</div><h2>PPh 23 — Konsep &amp; Studi Kasus</h2><p>Konsep dan studi kasus PPh pasal 23.</p><span class="link-label">Buka pajak 9</span></a>
+      <a class="card" href="pajak/pajak10.html"><div class="number">10</div><h2>PPh Pasal 26 — Ringkasan &amp; Studi Kasus</h2><p>Ringkasan dan studi kasus PPh pasal 26.</p><span class="link-label">Buka pajak 10</span></a>
+      <a class="card" href="pajak/pajak11.html"><div class="number">11</div><h2>PPh Pasal 4 Ayat (2) — Studi Kasus &amp; Panduan Lengkap</h2><p>Materi pajak final dan panduan lengkap.</p><span class="link-label">Buka pajak 11</span></a>
+      <a class="card" href="pajak/pajak12.html"><div class="number">12</div><h2>PPN — Studi Kasus &amp; Panduan Lengkap</h2><p>Pajak Pertambahan Nilai dan studi kasus.</p><span class="link-label">Buka pajak 12</span></a>
+      <a class="card" href="pajak/pajak13.html"><div class="number">13</div><h2>PPh Umum — Studi Kasus &amp; Panduan Lengkap</h2><p>Pajak penghasilan umum dan studi kasus.</p><span class="link-label">Buka pajak 13</span></a>
+      <a class="card" href="pajak/pajak14.html"><div class="number">14</div><h2>PPnBM — Studi Kasus &amp; Panduan Lengkap</h2><p>Pajak Penjualan atas Barang Mewah.</p><span class="link-label">Buka pajak 14</span></a>
+      <a class="card" href="pajak/pajak15.html"><div class="number">15</div><h2>PBB — Studi Kasus &amp; Panduan Lengkap</h2><p>Pajak Bumi dan Bangunan.</p><span class="link-label">Buka pajak 15</span></a>
+      <a class="card" href="pajak/pajak16.html"><div class="number">16</div><h2>Studi Kasus BPHTB</h2><p>Bea Perolehan Hak atas Tanah dan Bangunan.</p><span class="link-label">Buka pajak 16</span></a>
+      <a class="card" href="pajak/pajak17.html"><div class="number">17</div><h2>Akuntansi Perpajakan</h2><p>Studi kasus akuntansi perpajakan perusahaan.</p><span class="link-label">Buka pajak 17</span></a>
+      <a class="card" href="pajak/pajak18.html"><div class="number">18</div><h2>Studi Kasus SPT Masa PPN &amp; PPh Elektronik</h2><p>Pelaporan SPT masa secara elektronik.</p><span class="link-label">Buka pajak 18</span></a>
+      <a class="card" href="pajak/pajak19.html"><div class="number">19</div><h2>PPh Orang Pribadi — Studi Kasus</h2><p>Pajak penghasilan orang pribadi dan studi kasus.</p><span class="link-label">Buka pajak 19</span></a>
+      <a class="card" href="pajak/pajak20.html"><div class="number">20</div><h2>SPT PPh Badan &amp; BUT — Bagian 1</h2><p>SPT pajak penghasilan badan dan bentuk usaha tetap.</p><span class="link-label">Buka pajak 20</span></a>
+      <a class="card" href="pajak/pajak21.html"><div class="number">21</div><h2>Perencanaan Pajak</h2><p>Tax planning dan studi kasus perusahaan.</p><span class="link-label">Buka pajak 21</span></a>
+      <a class="card" href="pajak/pajak22.html"><div class="number">22</div><h2>Pajak Internasional</h2><p>Konsep dan studi kasus pajak internasional.</p><span class="link-label">Buka pajak 22</span></a>
+      <a class="card" href="pajak/pajak23.html"><div class="number">23</div><h2>Pemeriksaan dan Penyidikan Pajak</h2><p>Dasar hukum dan studi kasus pemeriksaan pajak.</p><span class="link-label">Buka pajak 23</span></a>
+      <a class="card" href="pajak/pajak24.html"><div class="number">24</div><h2>Tarif Efektif Rata-Rata (TER) PPh Pasal 21</h2><p>Materi tarif TER dan studi kasus PPh pasal 21.</p><span class="link-label">Buka pajak 24</span></a>
+      <a class="card" href="pajak/pajak25.html"><div class="number">25</div><h2>Brevet Pajak A &amp; B — Studi Kasus</h2><p>Materi terpadu brevet pajak A dan B.</p><span class="link-label">Buka pajak 25</span></a>
+    </main>
+
+    <a class="back" href="material.html">← Kembali ke Material</a>
+  </div>
+  <script>
+  const scheduleStorageKey = 'english-pajak-schedule';
+  const scheduleForm = document.getElementById('schedule-form');
+  const scheduleTask = document.getElementById('schedule-task');
+  const scheduleDate = document.getElementById('schedule-date');
+  const scheduleTime = document.getElementById('schedule-time');
+  const scheduleList = document.getElementById('schedule-list');
+  const scheduleCount = document.getElementById('schedule-count');
+  let schedules = JSON.parse(localStorage.getItem(scheduleStorageKey) || '[]');
+  const saveSchedules = () => localStorage.setItem(scheduleStorageKey, JSON.stringify(schedules));
+  const formatScheduleDate = (date, time) => new Date(`${date}T${time}`).toLocaleString('id-ID', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const renderSchedules = () => {
+    scheduleCount.textContent = `${schedules.filter((schedule) => !schedule.done).length} agenda`;
+    scheduleList.innerHTML = '';
+    if (!schedules.length) { scheduleList.innerHTML = '<div class="schedule-empty">Belum ada agenda. Tambahkan jadwal belajar pertamamu.</div>'; return; }
+    [...schedules].sort((first, second) => `${first.date}T${first.time}`.localeCompare(`${second.date}T${second.time}`)).forEach((schedule) => {
+      const item = document.createElement('div');
+      item.className = `schedule-item${schedule.done ? ' is-done' : ''}`;
+      item.innerHTML = `<input class="schedule-check" type="checkbox" aria-label="Tandai selesai" ${schedule.done ? 'checked' : ''}><div><span class="schedule-task"></span><span class="schedule-time">${formatScheduleDate(schedule.date, schedule.time)}</span></div><button class="schedule-delete" type="button">Hapus</button>`;
+      item.querySelector('.schedule-task').textContent = schedule.task;
+      item.querySelector('.schedule-check').addEventListener('change', (event) => { schedule.done = event.target.checked; saveSchedules(); renderSchedules(); });
+      item.querySelector('.schedule-delete').addEventListener('click', () => { schedules = schedules.filter((entry) => entry.id !== schedule.id); saveSchedules(); renderSchedules(); });
+      scheduleList.appendChild(item);
+    });
+  };
+  scheduleForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    schedules.push({ id: `${Date.now()}-${Math.random().toString(16).slice(2)}`, task: scheduleTask.value.trim(), date: scheduleDate.value, time: scheduleTime.value, done: false });
+    saveSchedules(); renderSchedules(); scheduleForm.reset(); scheduleTask.focus();
+  });
+  renderSchedules();
+  </script>
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

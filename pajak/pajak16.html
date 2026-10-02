@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus BPHTB - Bea Perolehan Hak atas Tanah dan Bangunan</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #2d8f9f;
+            --accent-color: #e67e22;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            font-size: 1.8em;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        .section h4 {
+            color: var(--accent-color);
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9f7fe;
+        }
+
+        .highlight-row {
+            background-color: #e8f5e9 !important;
+        }
+
+        .no-bphtb {
+            background-color: #ffebee !important;
+        }
+
+        /* Case Study Box */
+        .case-study {
+            background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .case-study h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .transaction {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .transaction h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .transaction-details {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .transaction-details p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        /* Answer Section */
+        .answer-section {
+            background: #f0f8ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .answer-section h4 {
+            color: var(--primary-color);
+        }
+
+        /* Formula */
+        .formula {
+            background: #fffde7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px dashed var(--warning-color);
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .summary h3 {
+            color: var(--success-color);
+        }
+
+        /* Question Section */
+        .question {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .question h3 {
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .section, .case-study, .transaction, .answer-section, .question, .summary {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            header {
+                background: var(--primary-color);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .total-row {
+            background-color: var(--primary-color) !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .currency {
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Studi Kasus BPHTB</h1>
+            <p>Bea Perolehan Hak atas Tanah dan Bangunan - Analisis Lengkap dengan Solusi</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Article Section -->
+        <section class="section">
+            <h2>📚 Mengenal BPHTB</h2>
+            <p><strong>Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB)</strong> memegang peranan yang cukup penting dalam transaksi hukum yang berkaitan dengan perolehan hak atas tanah dan bangunan. Ketentuan UU BPHTB menentukan bahwa pejabat yang memiliki wewenang yang mengesahkan suatu transaksi perolehan hak atas tanah dan bangunan yaitu notaris/PPAT, pejabat lelang, dan pejabat pertahanan hanya dapat menandatangani akta/risalah lelang/surat keputusan pemberian hak atas tanah setelah pihak yang memperoleh hak atas tanah dan bangunan telah menyerahkan bukti pelunasan BPHTB terutang.</p>
+            
+            <p>BPHTB merupakan pajak yang wajib dibayarkan kepada pemerintah untuk tiap-tiap transaksi pembelian dan/atau pemindahan hak atas tanah dan bangunan, besaran nilai pajak yang wajib disetorkan telah diatur di dalam Undang-Undang No 20 tahun 2000 tentang Bea Perolehan Hak atas Tanah.</p>
+
+            <h3>📜 Dasar Hukum BPHTB</h3>
+            <p>Dasar hukum BPHTB adalah Undang-Undang Nomor 21 tahun 1997 yang telah diubah menjadi Undang-Undang Nomor 20 tahun 2000 tentang Bea Perolehan Hak atas Tanah dan Bangunan. Kemudian, pajak ini masuk ke dalam Undang-Undang Nomor 28 tahun 2009 tentang PDRD Pasal 85 sampai dengan Pasal terkait aturan-aturan lainnya:</p>
+            <ul>
+                <li>Peraturan Pemerintah Nomor 111 s/d 114 tahun 2000;</li>
+                <li>Keputusan Menteri Keuangan Nomor 561/KMK.04/2004 sebagaimana telah diubah menjadi Peraturan Menteri Keuangan Nomor 91.03/2006 tentang Pemberian Pengurangan Bea Perolehan Hak atas Tanah dan Bangunan;</li>
+                <li>Keputusan Menteri Keuangan Nomor 516/KMK.04/2000 jo. PMK Nomor 14/PMK.03/2009 tentang Tata Cara Penentuan Besarnya Nilai Perolehan Objek Tidak Kena Pajak Bea Perolehan Hak atas Tanah dan Bangunan.</li>
+            </ul>
+
+            <h3>🎯 Objek dan Subjek BPHTB</h3>
+            <h4>Objek BPHTB</h4>
+            <p>Objek Pajak BPHTB adalah perolehan hak atas tanah atau bangunan yang meliputi pemindahan atau pemberian hak baru yang disahkan oleh hukum.</p>
+            
+            <h4>Perolehan Hak Karena Pemindahan Hak:</h4>
+            <ul>
+                <li><strong>Jual beli:</strong> Transaksi pembelian dan penjualan tanah atau bangunan.</li>
+                <li><strong>Tukar menukar:</strong> Pertukaran hak antara pihak-pihak yang bertransaksi.</li>
+                <li><strong>Hibah:</strong> Pemberian tanah atau bangunan sebagai hadiah tanpa adanya pembayaran.</li>
+                <li><strong>Hibah wasiat:</strong> Pemberian tanah atau bangunan berdasarkan wasiat.</li>
+                <li><strong>Waris:</strong> Perolehan hak atas tanah atau bangunan karena warisan.</li>
+                <li><strong>Pemasukan dalam perseroan:</strong> Pemasukan tanah atau bangunan ke dalam modal perusahaan.</li>
+                <li><strong>Pemisahan hak:</strong> Pemisahan hak yang mengakibatkan peralihan.</li>
+                <li><strong>Penunjukkan pembeli lelang:</strong> Pengalihan hak melalui proses lelang.</li>
+                <li><strong>Pelaksanaan putusan hakim:</strong> Peralihan hak berdasarkan putusan pengadilan.</li>
+                <li><strong>Penggabungan/peleburan/pemekaran usaha:</strong> Peralihan hak dalam rangka restrukturisasi usaha.</li>
+                <li><strong>Hadiah:</strong> Pemberian hak atas tanah atau bangunan sebagai hadiah.</li>
+            </ul>
+
+            <h4>Yang Tidak Dikenakan BPHTB:</h4>
+            <ul>
+                <li>Perwakilan diplomatik dan konsulat berdasarkan asas timbal balik.</li>
+                <li>Negara untuk penyelenggaraan pemerintahan dan pelaksanaan pembangunan guna kepentingan umum.</li>
+                <li>Badan atau perwakilan organisasi internasional yang ditetapkan dengan Keputusan Menteri.</li>
+                <li>Orang pribadi atau badan karena konversi hak tanpa adanya perubahan nama.</li>
+                <li>Orang pribadi atau badan karena wakaf.</li>
+                <li>Orang pribadi atau badan yang digunakan untuk <strong>kepentingan ibadah</strong>.</li>
+            </ul>
+
+            <h4>Subjek BPHTB</h4>
+            <p>Subjek pajak BPHTB adalah <strong>orang pribadi atau badan yang memperoleh hak atas tanah dan bangunan</strong>. Artinya, pihak yang menerima pengalihan hak, baik itu badan hukum maupun individu, menjadi subjek BPHTB.</p>
+        </section>
+
+        <!-- Case Study Section -->
+        <section class="section">
+            <h2>📊 STUDI KASUS BPHTB</h2>
+            
+            <div class="case-study">
+                <h3>Kasus Terpadu</h3>
+                <p>Pada tahun 2024, Bapak <strong>Andi</strong> melakukan beberapa transaksi yang berkaitan dengan perolehan hak atas tanah dan bangunan. Untuk keperluan latihan, seluruh transaksi berada di wilayah kabupaten/kota yang menetapkan <strong>NPOPTKP sebesar Rp60.000.000</strong> dan menggunakan <strong>tarif BPHTB sebesar 5%</strong>.</p>
+
+                <div class="transaction">
+                    <h4>🏠 Transaksi 1 — Jual Beli Rumah</h4>
+                    <div class="transaction-details">
+                        <p><strong>Tanggal:</strong> 10 Januari 2024</p>
+                        <p><strong>Harga tanah dan bangunan:</strong> <span class="currency">Rp1.200.000.000</span></p>
+                        <p><strong>Nilai pasar berdasarkan penilaian:</strong> <span class="currency">Rp1.350.000.000</span></p>
+                        <p><strong>NPOPTKP:</strong> <span class="currency">Rp60.000.000</span></p>
+                        <p><strong>Tarif BPHTB:</strong> 5%</p>
+                        <p><strong>Akta jual beli ditandatangani:</strong> 10 Januari 2024</p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>🎁 Transaksi 2 — Hibah Tanah</h4>
+                    <div class="transaction-details">
+                        <p><strong>Tanggal:</strong> 15 Februari 2024</p>
+                        <p><strong>Nilai pasar tanah:</strong> <span class="currency">Rp800.000.000</span></p>
+                        <p><strong>NPOPTKP:</strong> <span class="currency">Rp60.000.000</span></p>
+                        <p><strong>Tarif BPHTB:</strong> 5%</p>
+                        <p><strong>Akta hibah ditandatangani:</strong> 15 Februari 2024</p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>💼 Transaksi 3 — Warisan</h4>
+                    <div class="transaction-details">
+                        <p><strong>Tanggal:</strong> 20 Maret 2024</p>
+                        <p><strong>Nilai pasar tanah:</strong> <span class="currency">Rp700.000.000</span></p>
+                        <p><strong>Nilai pasar bangunan:</strong> <span class="currency">Rp300.000.000</span></p>
+                        <p><strong>NPOPTKP:</strong> <span class="currency">Rp60.000.000</span></p>
+                        <p><strong>Tarif BPHTB:</strong> 5%</p>
+                        <p><strong>Pendaftaran peralihan hak:</strong> 25 Maret 2024</p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>🏛️ Transaksi 4 — Pembelian Melalui Lelang</h4>
+                    <div class="transaction-details">
+                        <p><strong>Tanggal:</strong> 5 April 2024</p>
+                        <p><strong>Harga lelang:</strong> <span class="currency">Rp900.000.000</span></p>
+                        <p><strong>Nilai pasar ruko:</strong> <span class="currency">Rp1.000.000.000</span></p>
+                        <p><strong>NPOPTKP:</strong> <span class="currency">Rp60.000.000</span></p>
+                        <p><strong>Tarif BPHTB:</strong> 5%</p>
+                        <p><strong>Pemenang lelang ditetapkan:</strong> 5 April 2024</p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>🏢 Transaksi 5 — Pemasukan Tanah ke Dalam Perseroan</h4>
+                    <div class="transaction-details">
+                        <p><strong>Tanggal:</strong> 20 Mei 2024</p>
+                        <p><strong>Nilai pasar tanah:</strong> <span class="currency">Rp2.000.000.000</span></p>
+                        <p><strong>NPOPTKP:</strong> <span class="currency">Rp60.000.000</span></p>
+                        <p><strong>Tarif BPHTB:</strong> 5%</p>
+                        <p><strong>Akta pemasukan ditandatangani:</strong> 20 Mei 2024</p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>⛪ Transaksi 6 — Tanah untuk Tempat Ibadah</h4>
+                    <div class="transaction-details">
+                        <p><strong>Nilai tanah:</strong> <span class="currency">Rp500.000.000</span></p>
+                        <p><strong>Kegunaan:</strong> Pembangunan tempat ibadah</p>
+                        <p><strong>Status:</strong> <span style="color: var(--success-color); font-weight: bold;">Tidak dikenakan BPHTB</span></p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>🏛️ Transaksi 7 — Perwakilan Diplomatik</h4>
+                    <div class="transaction-details">
+                        <p><strong>Nilai perolehan:</strong> <span class="currency">Rp5.000.000.000</span></p>
+                        <p><strong>Status:</strong> Perolehan berdasarkan hubungan diplomatik dengan asas timbal balik</p>
+                        <p><strong>Status:</strong> <span style="color: var(--success-color); font-weight: bold;">Tidak dikenakan BPHTB</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Questions Section -->
+        <section class="section">
+            <h2>❓ PERTANYAAN</h2>
+
+            <div class="question">
+                <h3>A. Identifikasi Objek BPHTB</h3>
+                <p>Tentukan apakah masing-masing transaksi berikut merupakan objek BPHTB:</p>
+                <ol>
+                    <li>Jual beli rumah.</li>
+                    <li>Hibah tanah.</li>
+                    <li>Waris.</li>
+                    <li>Pembelian melalui lelang.</li>
+                    <li>Pemasukan tanah ke dalam perseroan.</li>
+                    <li>Tanah yang digunakan untuk kepentingan ibadah.</li>
+                    <li>Perolehan oleh perwakilan diplomatik.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>B. Menentukan NPOP</h3>
+                <p>Tentukan <strong>Nilai Perolehan Objek Pajak (NPOP)</strong> untuk transaksi:</p>
+                <ol>
+                    <li>Jual beli.</li>
+                    <li>Hibah.</li>
+                    <li>Waris.</li>
+                    <li>Lelang.</li>
+                    <li>Pemasukan tanah ke dalam perseroan.</li>
+                </ol>
+                <p>Gunakan ketentuan dari materi mengenai dasar pengenaan BPHTB.</p>
+            </div>
+
+            <div class="question">
+                <h3>C. Menghitung BPHTB</h3>
+                <p>Hitung BPHTB terutang untuk:</p>
+                <ol>
+                    <li>Transaksi jual beli.</li>
+                    <li>Transaksi hibah.</li>
+                    <li>Transaksi waris.</li>
+                    <li>Transaksi lelang.</li>
+                    <li>Pemasukan tanah ke dalam perseroan.</li>
+                </ol>
+                <div class="formula">
+                    BPHTB = 5% × (NPOP − NPOPTKP)
+                </div>
+                <p>dengan NPOPTKP sebesar <span class="currency">Rp60.000.000</span>.</p>
+            </div>
+
+            <div class="question">
+                <h3>D. Saat Terutang</h3>
+                <p>Tentukan kapan BPHTB terutang untuk masing-masing transaksi:</p>
+                <ol>
+                    <li>Jual beli.</li>
+                    <li>Hibah.</li>
+                    <li>Waris.</li>
+                    <li>Lelang.</li>
+                    <li>Pemasukan tanah ke dalam perseroan.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>E. Analisis Pengecualian</h3>
+                <p>Apakah transaksi berikut dikenakan BPHTB?</p>
+                <ol>
+                    <li>Perolehan tanah oleh perwakilan diplomatik berdasarkan asas timbal balik.</li>
+                    <li>Tanah yang digunakan untuk kepentingan ibadah.</li>
+                </ol>
+                <p>Jelaskan alasanmu.</p>
+            </div>
+
+            <div class="question">
+                <h3>F. Administrasi BPHTB</h3>
+                <p>Untuk transaksi jual beli rumah, sebutkan minimal <strong>5 dokumen</strong> yang perlu disiapkan untuk proses BPHTB.</p>
+            </div>
+
+            <div class="question">
+                <h3>G. Proses Pembayaran</h3>
+                <p>Jelaskan urutan proses pembayaran BPHTB mulai dari:</p>
+                <p><strong>melengkapi dokumen → mengisi SSPD → pembayaran → verifikasi.</strong></p>
+            </div>
+        </section>
+
+        <!-- Answer Key Section -->
+        <section class="section">
+            <h2>🔑 KUNCI JAWABAN</h2>
+
+            <!-- Section A -->
+            <div class="answer-section">
+                <h3>A. Identifikasi Objek BPHTB</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>Jenis Perolehan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>1</td>
+                            <td>Jual beli</td>
+                            <td><strong>Objek BPHTB</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>2</td>
+                            <td>Hibah</td>
+                            <td><strong>Objek BPHTB</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>3</td>
+                            <td>Waris</td>
+                            <td><strong>Objek BPHTB</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>4</td>
+                            <td>Lelang</td>
+                            <td><strong>Objek BPHTB</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>5</td>
+                            <td>Pemasukan ke perseroan</td>
+                            <td><strong>Objek BPHTB</strong></td>
+                        </tr>
+                        <tr class="no-bphtb">
+                            <td>6</td>
+                            <td>Kepentingan ibadah</td>
+                            <td><strong>Tidak dikenakan BPHTB</strong></td>
+                        </tr>
+                        <tr class="no-bphtb">
+                            <td>7</td>
+                            <td>Perwakilan diplomatik</td>
+                            <td><strong>Tidak dikenakan BPHTB</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Materi menyebutkan jual beli, hibah, waris, penunjukan pembeli lelang, serta pemasukan ke dalam perseroan sebagai perolehan hak yang menjadi objek BPHTB. Sementara itu, perolehan oleh perwakilan diplomatik berdasarkan asas timbal balik dan perolehan untuk kepentingan ibadah termasuk yang tidak dikenakan BPHTB.</em></p>
+            </div>
+
+            <!-- Section B -->
+            <div class="answer-section">
+                <h3>B. Menentukan NPOP</h3>
+                <p>Berdasarkan materi:</p>
+                <ul>
+                    <li><strong>Jual beli</strong> → <strong>harga transaksi</strong></li>
+                    <li><strong>Tukar-menukar</strong> → nilai pasar</li>
+                    <li><strong>Hibah</strong> → <strong>nilai pasar</strong></li>
+                    <li><strong>Waris</strong> → <strong>nilai pasar</strong></li>
+                    <li><strong>Pemasukan ke perseroan</strong> → <strong>nilai pasar</strong></li>
+                    <li><strong>Lelang</strong> → <strong>harga transaksi</strong></li>
+                </ul>
+
+                <h4>1. Jual beli</h4>
+                <p><strong>NPOP = <span class="currency">Rp1.200.000.000</span></strong></p>
+                <p><em>Catatan: dalam studi kasus ini digunakan harga transaksi sesuai ketentuan yang diberikan dalam materi.</em></p>
+
+                <h4>2. Hibah</h4>
+                <p><strong>NPOP = <span class="currency">Rp800.000.000</span></strong></p>
+
+                <h4>3. Waris</h4>
+                <p>Nilai tanah + nilai bangunan = <span class="currency">Rp700.000.000</span> + <span class="currency">Rp300.000.000</span> = <strong><span class="currency">Rp1.000.000.000</span></strong></p>
+
+                <h4>4. Lelang</h4>
+                <p><strong>NPOP = <span class="currency">Rp900.000.000</span></strong></p>
+
+                <h4>5. Pemasukan ke perseroan</h4>
+                <p><strong>NPOP = <span class="currency">Rp2.000.000.000</span></strong></p>
+            </div>
+
+            <!-- Section C -->
+            <div class="answer-section">
+                <h3>C. Perhitungan BPHTB</h3>
+                <div class="formula">
+                    BPHTB = 5% × (NPOP − NPOPTKP)<br>
+                    <small>dengan NPOPTKP = Rp60.000.000</small>
+                </div>
+
+                <h4>1. Jual Beli</h4>
+                <table>
+                    <tr><td>NPOP</td><td>=</td><td class="text-right"><span class="currency">Rp1.200.000.000</span></td></tr>
+                    <tr><td>NPOPTKP</td><td>=</td><td class="text-right"><span class="currency">Rp60.000.000</span></td></tr>
+                    <tr><td>NPOP Kena Pajak</td><td>=</td><td class="text-right"><span class="currency">Rp1.200.000.000 − Rp60.000.000 = Rp1.140.000.000</span></td></tr>
+                    <tr><td>BPHTB</td><td>=</td><td class="text-right">5% × <span class="currency">Rp1.140.000.000</span> = <strong><span class="currency">Rp57.000.000</span></strong></td></tr>
+                </table>
+                <p><strong>BPHTB terutang = <span class="currency">Rp57.000.000</span></strong></p>
+
+                <h4>2. Hibah</h4>
+                <table>
+                    <tr><td>NPOP</td><td>=</td><td class="text-right"><span class="currency">Rp800.000.000</span></td></tr>
+                    <tr><td>NPOPTKP</td><td>=</td><td class="text-right"><span class="currency">Rp60.000.000</span></td></tr>
+                    <tr><td>NPOP Kena Pajak</td><td>=</td><td class="text-right"><span class="currency">Rp800.000.000 − Rp60.000.000 = Rp740.000.000</span></td></tr>
+                    <tr><td>BPHTB</td><td>=</td><td class="text-right">5% × <span class="currency">Rp740.000.000</span> = <strong><span class="currency">Rp37.000.000</span></strong></td></tr>
+                </table>
+                <p><strong>BPHTB terutang = <span class="currency">Rp37.000.000</span></strong></p>
+
+                <h4>3. Waris</h4>
+                <table>
+                    <tr><td>NPOP</td><td>=</td><td class="text-right"><span class="currency">Rp1.000.000.000</span></td></tr>
+                    <tr><td>NPOPTKP</td><td>=</td><td class="text-right"><span class="currency">Rp60.000.000</span></td></tr>
+                    <tr><td>NPOP Kena Pajak</td><td>=</td><td class="text-right"><span class="currency">Rp1.000.000.000 − Rp60.000.000 = Rp940.000.000</span></td></tr>
+                    <tr><td>BPHTB</td><td>=</td><td class="text-right">5% × <span class="currency">Rp940.000.000</span> = <strong><span class="currency">Rp47.000.000</span></strong></td></tr>
+                </table>
+                <p><strong>BPHTB terutang = <span class="currency">Rp47.000.000</span></strong></p>
+
+                <h4>4. Lelang</h4>
+                <table>
+                    <tr><td>NPOP</td><td>=</td><td class="text-right"><span class="currency">Rp900.000.000</span></td></tr>
+                    <tr><td>NPOPTKP</td><td>=</td><td class="text-right"><span class="currency">Rp60.000.000</span></td></tr>
+                    <tr><td>NPOP Kena Pajak</td><td>=</td><td class="text-right"><span class="currency">Rp900.000.000 − Rp60.000.000 = Rp840.000.000</span></td></tr>
+                    <tr><td>BPHTB</td><td>=</td><td class="text-right">5% × <span class="currency">Rp840.000.000</span> = <strong><span class="currency">Rp42.000.000</span></strong></td></tr>
+                </table>
+                <p><strong>BPHTB terutang = <span class="currency">Rp42.000.000</span></strong></p>
+
+                <h4>5. Pemasukan Tanah ke Perseroan</h4>
+                <table>
+                    <tr><td>NPOP</td><td>=</td><td class="text-right"><span class="currency">Rp2.000.000.000</span></td></tr>
+                    <tr><td>NPOPTKP</td><td>=</td><td class="text-right"><span class="currency">Rp60.000.000</span></td></tr>
+                    <tr><td>NPOP Kena Pajak</td><td>=</td><td class="text-right"><span class="currency">Rp2.000.000.000 − Rp60.000.000 = Rp1.940.000.000</span></td></tr>
+                    <tr><td>BPHTB</td><td>=</td><td class="text-right">5% × <span class="currency">Rp1.940.000.000</span> = <strong><span class="currency">Rp97.000.000</span></strong></td></tr>
+                </table>
+                <p><strong>BPHTB terutang = <span class="currency">Rp97.000.000</span></strong></p>
+            </div>
+
+            <!-- Section D -->
+            <div class="answer-section">
+                <h3>D. Saat Terutang BPHTB</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>Saat Terutang</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jual beli</td>
+                            <td>Saat akta jual beli dibuat dan ditandatangani</td>
+                            <td><strong>10 Januari 2024</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Hibah</td>
+                            <td>Saat akta hibah ditandatangani</td>
+                            <td><strong>15 Februari 2024</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Waris</td>
+                            <td>Saat pendaftaran peralihan hak di kantor pertanahan</td>
+                            <td><strong>25 Maret 2024</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Lelang</td>
+                            <td>Saat penunjukan pemenang lelang</td>
+                            <td><strong>5 April 2024</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Pemasukan perseroan</td>
+                            <td>Saat akta dibuat dan ditandatangani</td>
+                            <td><strong>20 Mei 2024</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Materi secara khusus menjelaskan saat terutang untuk masing-masing jenis perolehan tersebut.</em></p>
+            </div>
+
+            <!-- Section E -->
+            <div class="answer-section">
+                <h3>E. Analisis Pengecualian</h3>
+                <h4>1. Perwakilan diplomatik</h4>
+                <p><strong>Tidak dikenakan BPHTB.</strong></p>
+                <p><em>Alasannya, materi memasukkan perwakilan diplomatik dan konsulat sebagai perolehan yang tidak dikenakan BPHTB berdasarkan <strong>asas timbal balik</strong>.</em></p>
+
+                <h4>2. Kepentingan ibadah</h4>
+                <p><strong>Tidak dikenakan BPHTB.</strong></p>
+                <p><em>Materi menyebutkan bahwa orang pribadi atau badan yang memperoleh tanah/bangunan untuk <strong>kepentingan ibadah</strong> termasuk yang tidak dikenakan BPHTB.</em></p>
+            </div>
+
+            <!-- Section F -->
+            <div class="answer-section">
+                <h3>F. Dokumen Jual Beli</h3>
+                <p>Berdasarkan materi, beberapa dokumen yang diperlukan untuk transaksi jual beli tanah atau bangunan:</p>
+                <ol>
+                    <li><strong>Surat Setoran Pajak Daerah (SSPD)</strong></li>
+                    <li>Fotokopi <strong>Surat Pemberitahuan Pajak Terutang (SPPT) PBB</strong> untuk tahun yang bersangkutan.</li>
+                    <li>Fotokopi <strong>KTP wajib pajak</strong>.</li>
+                    <li>Fotokopi <strong>Surat Tanda Terima Setoran (STTS)</strong> pembayaran PBB untuk 5 tahun terakhir.</li>
+                    <li>Fotokopi bukti kepemilikan tanah, seperti:</li>
+                </ol>
+                <ul>
+                    <li>sertifikat,</li>
+                    <li>akta jual beli,</li>
+                    <li>letter C, atau</li>
+                    <li>girik.</li>
+                </ul>
+            </div>
+
+            <!-- Section G -->
+            <div class="answer-section">
+                <h3>G. Proses Pembayaran BPHTB</h3>
+                <ol>
+                    <li><strong>Tahap 1 — Melengkapi dokumen</strong><br>
+                        Wajib pajak mengumpulkan dokumen yang diperlukan sesuai dengan jenis transaksi.
+                    </li>
+                    <li><strong>Tahap 2 — Mengisi SSPD</strong><br>
+                        Wajib pajak mengisi <strong>Surat Setoran Pajak Daerah (SSPD)</strong>.
+                    </li>
+                    <li><strong>Tahap 3 — Pembayaran</strong><br>
+                        BPHTB dibayarkan melalui tempat yang ditunjuk, seperti:<br>
+                        <ul>
+                            <li>kantor pos,</li>
+                            <li>bank BUMN,</li>
+                            <li>bank BUMD, atau</li>
+                            <li>tempat lain yang ditunjuk.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tahap 4 — Verifikasi</strong><br>
+                        Bukti pembayaran dan dokumen terkait diserahkan kepada <strong>PPAT/notaris</strong> untuk diverifikasi sebelum akta atau surat keputusan ditandatangani.
+                    </li>
+                </ol>
+                <p><em>Alur tersebut sesuai dengan tahapan pembayaran yang tercantum dalam materi.</em></p>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="section">
+            <h2>📈 REKAPITULASI</h2>
+            <div class="summary">
+                <h3>Ringkasan Perhitungan BPHTB</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>NPOP</th>
+                            <th>NPOPTKP</th>
+                            <th>NPOP Kena Pajak</th>
+                            <th>Tarif</th>
+                            <th>BPHTB Terutang</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jual beli</td>
+                            <td class="text-right"><span class="currency">Rp1.200.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp60.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp1.140.000.000</span></td>
+                            <td class="text-center">5%</td>
+                            <td class="text-right"><strong><span class="currency">Rp57.000.000</span></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Hibah</td>
+                            <td class="text-right"><span class="currency">Rp800.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp60.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp740.000.000</span></td>
+                            <td class="text-center">5%</td>
+                            <td class="text-right"><strong><span class="currency">Rp37.000.000</span></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Waris</td>
+                            <td class="text-right"><span class="currency">Rp1.000.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp60.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp940.000.000</span></td>
+                            <td class="text-center">5%</td>
+                            <td class="text-right"><strong><span class="currency">Rp47.000.000</span></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Lelang</td>
+                            <td class="text-right"><span class="currency">Rp900.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp60.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp840.000.000</span></td>
+                            <td class="text-center">5%</td>
+                            <td class="text-right"><strong><span class="currency">Rp42.000.000</span></strong></td>
+                        </tr>
+                        <tr>
+                            <td>Pemasukan perseroan</td>
+                            <td class="text-right"><span class="currency">Rp2.000.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp60.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp1.940.000.000</span></td>
+                            <td class="text-center">5%</td>
+                            <td class="text-right"><strong><span class="currency">Rp97.000.000</span></strong></td>
+                        </tr>
+                        <tr class="no-bphtb">
+                            <td>Ibadah</td>
+                            <td class="text-right"><span class="currency">Rp500.000.000</span></td>
+                            <td class="text-right">—</td>
+                            <td class="text-right">—</td>
+                            <td class="text-center">—</td>
+                            <td class="text-right"><strong>Tidak dikenakan</strong></td>
+                        </tr>
+                        <tr class="no-bphtb">
+                            <td>Diplomatik</td>
+                            <td class="text-right"><span class="currency">Rp5.000.000.000</span></td>
+                            <td class="text-right">—</td>
+                            <td class="text-right">—</td>
+                            <td class="text-center">—</td>
+                            <td class="text-right"><strong>Tidak dikenakan</strong></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="5" class="text-right"><strong>Total BPHTB transaksi yang terutang:</strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp280.000.000</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-center" style="margin-top: 20px; font-weight: bold;">
+                    <span class="currency">Rp57.000.000</span> + <span class="currency">Rp37.000.000</span> + <span class="currency">Rp47.000.000</span> + <span class="currency">Rp42.000.000</span> + <span class="currency">Rp97.000.000</span> = <span class="currency">Rp280.000.000</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="section text-center">
+            <p><strong>Studi Kasus BPHTB - Bea Perolehan Hak atas Tanah dan Bangunan</strong></p>
+            <p>Sumber: Materi MySkill.id - Corporate Tax Series</p>
+            <p>© 2024 | NPOPTKP: Rp60.000.000 | Tarif BPHTB: 5%</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple interactivity for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Highlight tables on hover
+            document.querySelectorAll('table').forEach(table => {
+                table.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+                });
+                table.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // Print functionality
+            window.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'p') {
+                    window.print();
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

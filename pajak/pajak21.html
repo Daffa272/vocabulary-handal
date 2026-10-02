@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perencanaan Pajak - PT Nusantara Digital Indonesia</title>
+    <style>
+        :root {
+            --primary: #1a5f7a; --secondary: #2d3748; --accent: #3182ce;
+            --bg: #f7fafc; --card: #fff; --text: #2d3748; --border: #e2e8f0;
+            --success: #48bb78; --warning: #ed8936; --danger: #f56565;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+            line-height: 1.6; color: var(--text); background: var(--bg);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white; padding: 40px 0; text-align: center; margin-bottom: 30px;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        nav {
+            background: var(--card); border-bottom: 2px solid var(--accent);
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul { display: flex; list-style: none; padding: 15px 0; justify-content: center; flex-wrap: wrap; }
+        nav li { margin: 0 10px; }
+        nav a {
+            text-decoration: none; color: var(--text); font-weight: 600;
+            padding: 8px 12px; border-radius: 4px; transition: all 0.3s; font-size: 0.85rem;
+        }
+        nav a:hover, nav a.active { background: var(--accent); color: white; }
+        main { margin-bottom: 40px; }
+        section {
+            background: var(--card); border-radius: 8px; padding: 30px;
+            margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent);
+        }
+        section h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+        section h3 { color: var(--secondary); font-size: 1.4rem; margin: 25px 0 15px 0; }
+        section h4 { color: var(--primary); font-size: 1.2rem; margin: 20px 0 10px 0; }
+        p { margin-bottom: 15px; text-align: justify; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--primary); color: white; font-weight: 600; }
+        tr:hover { background: rgba(49, 130, 206, 0.1); }
+        .highlight-row { background: rgba(72, 187, 120, 0.1) !important; }
+        .total-row { background: rgba(49, 130, 206, 0.2) !important; font-weight: bold; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        ul, ol { margin: 15px 0; padding-left: 30px; }
+        li { margin-bottom: 8px; }
+        .calculation {
+            background: #f0f4f8; padding: 15px; border-radius: 4px; margin: 15px 0;
+            border-left: 3px solid var(--accent); font-family: 'Courier New', monospace; font-size: 0.95rem;
+        }
+        .answer {
+            background: #e6fffa; border: 2px solid var(--success); border-radius: 8px;
+            padding: 20px; margin: 20px 0;
+        }
+        .answer h3 { color: var(--success); }
+        .question {
+            background: #fffaf0; border: 2px solid var(--warning); border-radius: 8px;
+            padding: 20px; margin: 20px 0;
+        }
+        .question h3 { color: var(--warning); }
+        .important {
+            background: #ffe6e6; border-left: 4px solid var(--danger); padding: 15px;
+            margin: 15px 0; border-radius: 4px;
+        }
+        .important strong { color: var(--danger); }
+        .info-box {
+            background: #e3f2fd; border-left: 4px solid var(--accent); padding: 15px;
+            margin: 15px 0; border-radius: 4px;
+        }
+        .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 20px 0; }
+        @media (max-width: 768px) { .two-columns { grid-template-columns: 1fr; } }
+        footer {
+            background: var(--secondary); color: white; text-align: center;
+            padding: 20px; margin-top: 40px;
+        }
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 25px; border-radius: 8px; margin: 20px 0; text-align: center;
+        }
+        .summary-card h3 { color: white; font-size: 1.5rem; }
+        .badge {
+            display: inline-block; padding: 4px 12px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: bold; margin-right: 8px;
+        }
+        .badge-legal { background: rgba(72, 187, 120, 0.2); color: var(--success); }
+        .badge-ilegal { background: rgba(245, 101, 101, 0.2); color: var(--danger); }
+        .badge-planning { background: rgba(49, 130, 206, 0.2); color: var(--accent); }
+        .step-list { list-style-type: none; counter-reset: step-counter; padding-left: 0; }
+        .step-list li { counter-increment: step-counter; margin-bottom: 15px; padding-left: 40px; position: relative; }
+        .step-list li::before {
+            content: counter(step-counter); background: var(--accent); color: white;
+            width: 30px; height: 30px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; position: absolute; left: 0; font-weight: bold;
+        }
+        .comparison-table th, .comparison-table td { text-align: center; padding: 12px; }
+        .comparison-table th { background: var(--primary); color: white; }
+        .comparison-table tr:nth-child(even) { background: rgba(249, 250, 251, 0.5); }
+        @media print { nav, footer { display: none; } body { background: white; } section { box-shadow: none; border-left: none; } }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#pengantar" class="active">Pengantar</a></li>
+                <li><a href="#perbedaan">Perbedaan</a></li>
+                <li><a href="#tujuan">Tujuan</a></li>
+                <li><a href="#tata-cara">Tata Cara</a></li>
+                <li><a href="#skema">Skema</a></li>
+                <li><a href="#kasus">Studi Kasus</a></li>
+                <li><a href="#jawaban">Pembahasan</a></li>
+                <li><a href="#kesimpulan">Kesimpulan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Perencanaan Pajak (Tax Planning)</h1>
+            <p>Panduan Lengkap dengan Studi Kasus PT Nusantara Digital Indonesia</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- PENGANTAR -->
+        <section id="pengantar">
+            <h2>📊 Mengenal Perencanaan Pajak</h2>
+            <p><strong>Perencanaan pajak (Tax Planning)</strong> adalah upaya untuk <strong>mengurangi pajak yang terutang secara legal</strong> (diperbolehkan dalam Undang-Undang), baik pajak penghasilan maupun pajak lainnya.</p>
+            <p>Tujuan: <strong>Mengoptimalkan pengelolaan pajak</strong> untuk mengurangi biaya pajak yang harus dibayar dan <strong>meningkatkan pendapatan neto</strong>.</p>
+            <div class="info-box">
+                <strong>Tujuan Utama:</strong>
+                <ul>
+                    <li>Mengurangi beban pajak</li>
+                    <li>Meningkatkan pendapatan neto</li>
+                    <li>Mengoptimalkan arus kas perusahaan</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PERBEDAAN -->
+        <section id="perbedaan">
+            <h2>⚖️ Perbedaan: Tax Planning, Tax Avoidance, Tax Evasion</h2>
+            <div class="two-columns">
+                <div>
+                    <h3><span class="badge badge-planning">Tax Planning</span></h3>
+                    <p>Upaya menghindari pajak dengan cara <strong>legal</strong> sesuai peraturan perpajakan.</p>
+                    <p><strong>Tujuan:</strong> Memperkecil pengeluaran pajak untuk efisiensi perusahaan.</p>
+                    <h4>Contoh:</h4>
+                    <ul>
+                        <li>Menggunakan metode net/gross/gross up untuk PPh Pasal 21</li>
+                        <li>Memberikan kompensasi dalam bentuk natura/kenikmatan yang tidak dikenakan pajak</li>
+                        <li>Mengoptimalkan kredit pajak (PPh 22, 23, 24, 25)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><span class="badge badge-avoidance">Tax Avoidance</span></h3>
+                    <p>Upaya penghindaran pajak dengan <strong>memanfaatkan celah aturan pajak</strong>.</p>
+                    <p><strong>Status:</strong> Tidak selalu illegal, tetapi <strong>dapat melanggar jiwa peraturan</strong>.</p>
+                    <h4>Contoh:</h4>
+                    <ul>
+                        <li>Memanfaatkan struktur transaksi rumit untuk menghindari pajak</li>
+                        <li>Menggunakan entitas di negara dengan tarif pajak rendah tanpa substansi ekonomi</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <h3><span class="badge badge-evasion">Tax Evasion</span></h3>
+                <p>Upaya meminimalkan pajak dengan cara <strong>ilegal</strong>, melanggar peraturan perpajakan.</p>
+                <p><strong>Risiko:</strong> Sanksi, denda, bahkan pidana penjara.</p>
+                <h4>Contoh:</h4>
+                <ul>
+                    <li>Menyembunyikan omzet/penghasilan</li>
+                    <li>Membuat faktur pajak fiktif</li>
+                    <li>Memalsukan bukti potong pajak</li>
+                    <li>Mencatat biaya pribadi sebagai biaya perusahaan</li>
+                </ul>
+            </div>
+
+            <h3>📋 Tabel Perbandingan</h3>
+            <table class="comparison-table">
+                <thead><tr><th>Aspek</th><th>Tax Planning</th><th>Tax Avoidance</th><th>Tax Evasion</th></tr></thead>
+                <tbody>
+                    <tr><td>Tujuan</td><td>Efisiensi pajak</td><td>Mengurangi pajak</td><td>Mengurangi pajak</td></tr>
+                    <tr><td>Legalitas</td><td><span class="badge badge-legal">Legal</span></td><td>Abu-abu</td><td><span class="badge badge-ilegal">Ilegal</span></td></tr>
+                    <tr><td>Bukti Transaksi</td><td>Valid & benar</td><td>Dapat dipertanyakan</td><td>Palsu/tidak benar</td></tr>
+                    <tr><td>Risiko</td><td><span class="badge badge-legal">Rendah</span></td><td>Sedang</td><td><span class="badge badge-ilegal">Tinggi</span></td></tr>
+                    <tr><td>Sanksi</td><td>Tidak ada</td><td>Dapat dikenakan</td><td>Dikenakan (denda/pidana)</td></tr>
+                    <tr><td>Substansi Ekonomi</td><td>Ada</td><td>Dapat dipertanyakan</td><td>Tidak ada</td></tr>
+                </tbody>
+            </table>
+            <div class="important">
+                <strong>Catatan:</strong>
+                <p><em>Tax avoidance</em> tidak selalu identik dengan tindak pidana. Yang menjadi masalah adalah apabila suatu skema:</p>
+                <ul><li>Bertentangan dengan ketentuan perpajakan</li><li>Tidak memiliki substansi ekonomi yang memadai</li><li>Dapat dianggap sebagai penyalahgunaan aturan</li></ul>
+                <p>Oleh karena itu, <strong>tax planning sebaiknya berfokus pada pilihan yang jelas-jelas diperbolehkan regulasi</strong>.</p>
+            </div>
+        </section>
+
+        <!-- TUJUAN -->
+        <section id="tujuan">
+            <h2>🎯 Tujuan Perencanaan Pajak</h2>
+            <ol>
+                <li><strong>Mengoptimalkan pengeluaran pajak:</strong> Memperkecil pengeluaran untuk pembayaran pajak, sehingga pengeluaran perusahaan lebih efisien.</li>
+                <li><strong>Mempersiapkan angsuran pajak:</strong> Meminimalisir sanksi/denda yang dapat memperbesar pengeluaran pajak.</li>
+                <li><strong>Kepatuhan perpajakan:</strong> Memperhitungkan pembayaran pajak agar sesuai dengan peraturan.</li>
+                <li><strong>Menghindari pajak berganda:</strong> Mencegah pengenaan pajak yang sama atas transaksi yang sama.</li>
+                <li><strong>Meningkatkan likuiditas:</strong> Mengelola arus kas dengan lebih optimal.</li>
+            </ol>
+        </section>
+
+        <!-- TATA CARA -->
+        <section id="tata-cara">
+            <h2>📋 Tata Cara Perencanaan Pajak</h2>
+            <h3>Tahapan Perencanaan Pajak:</h3>
+            <ol class="step-list">
+                <li><h4>Analisis Informasi Perusahaan</h4><p>Menganalisis komponen-komponen yang menjadi dasar objek pajak (PPh, PPN, Pajak Daerah, Bea Cukai). Aktivitas utama: Analisis aktivitas keuangan (alur proses bisnis, uang masuk/keluar).</p></li>
+                <li><h4>Menentukan Cara Penerapan Pajak</h4><p>Menentukan metode penerapan pajak. Contoh untuk PPh Pasal 21: Gross Up, Gross, Net Method.</p></li>
+                <li><h4>Menerapkan Tax Compliance</h4><p>Tindakan prosedural dan administratif guna memenuhi kewajiban wajib pajak. Frekuensi: Rutin setiap masa pajak. Tujuan: Memastikan penerapan sistem perpajakan dengan baik.</p></li>
+                <li><h4>Tax Review</h4><p>Dilakukan di akhir tahun pajak untuk mengevaluasi penerapan pajak. Tujuan: Mengetahui apakah penerapan pajak sudah berjalan, tepat, dan tujuan meminimalisir pajak sudah tercapai.</p></li>
+                <li><h4>Evaluasi dan Perbaikan</h4><p>Dilakukan untuk mengetahui kendala-kendala yang dialami. Aktivitas: Analisis ulang aktivitas keuangan, perbaikan sesuai regulasi terbaru.</p></li>
+            </ol>
+        </section>
+
+        <!-- SKEMA -->
+        <section id="skema">
+            <h2>💡 Skema Perencanaan Pajak</h2>
+            <div class="two-columns">
+                <div>
+                    <h3>💰 Tax Saving</h3>
+                    <p>Penghematan pajak dilakukan dengan cara legal.</p>
+                    <h4>Contoh:</h4>
+                    <ul><li>Pemilihan tarif pajak yang lebih rendah (PPh Final 0.5% untuk UMKM)</li><li>Perjanjian dengan pihak ketiga yang berkaitan dengan aspek perpajakan</li><li>Penerapan metode perhitungan PPN yang optimal (Rumah Sakit: pemisahan instalasi farmasi rawat jalan & rawat inap)</li></ul>
+                </div>
+                <div>
+                    <h3>⚖️ Tax Avoidance</h3>
+                    <p>Pemanfaatan celah aturan pajak untuk meminimalisir pajak.</p>
+                    <h4>Contoh:</h4>
+                    <ul><li>Pemberian tunjangan karyawan dalam bentuk natura/kenikmatan</li><li>Struktur transaksi yang rumit untuk menghindari pajak</li></ul>
+                    <div class="important"><strong>Catatan:</strong> Pemberian imbalan berupa natura <strong>tetap harus sesuai</strong> dengan regulasi perpajakan.</div>
+                </div>
+            </div>
+            <div class="two-columns" style="margin-top: 30px;">
+                <div>
+                    <h3>🛡️ Penghindaran Sanksi/Denda</h3>
+                    <p>Menghindari sanksi perpajakan berupa:</p>
+                    <ul><li><strong>Sanksi administrasi:</strong> Denda, bunga</li><li><strong>Sanksi pidana:</strong> Kurungan penjara</li></ul>
+                    <p><strong>Cara:</strong> Wajib pajak harus paham regulasi pajak yang berlaku.</p>
+                </div>
+                <div>
+                    <h3>⏳ Penundaan Pembayaran Pajak</h3>
+                    <p>Strategi penundaan pembayaran pajak <strong>dengan tetap mematuhi ketentuan</strong>.</p>
+                    <h4>Saat Terutang PPN:</h4>
+                    <ol><li>Akhir bulan berikutnya setelah penyerahan BKP/JKP</li><li>Saat penerimaan pembayaran (jika diterima sebelum penyerahan)</li><li>Saat penerimaan pembayaran termin</li><li>Saat ekspor BKP/JKP</li></ol>
+                </div>
+            </div>
+            <h3>🔄 Mengoptimalkan Kredit Pajak</h3>
+            <p>Kredit pajak berfungsi untuk <strong>mengurangi kewajiban pajak terutang</strong>.</p>
+            <h4>Jenis Pajak yang Dapat Dikreditkan:</h4>
+            <ul><li><strong>PPh Pasal 22:</strong> Atas impor barang</li><li><strong>PPh Pasal 23:</strong> Atas penghasilan dari luar negeri</li><li><strong>PPh Pasal 24:</strong> Pajak yang dipotong di luar negeri</li><li><strong>PPh Pasal 25:</strong> Angsuran pajak</li><li><strong>STP PPh 25:</strong> Hanya pokoknya</li></ul>
+            <h4>Syarat:</h4>
+            <ol><li>Tidak melanggar regulasi pajak</li><li>Tidak memalsukan bukti pendukung</li><li>Kegiatan tax planning masuk ke dalam kegiatan bisnis</li></ol>
+        </section>
+
+        
+    </main>
+    <footer><p><strong>Perencanaan Pajak - PT Nusantara Digital Indonesia</strong></p></footer>
+</body>
+</html>
+
+        <!-- JENIS PERENCANAAN -->
+        <section id="jenis">
+            <h2>🌍 Jenis Perencanaan Pajak</h2>
+            <div class="two-columns">
+                <div>
+                    <h3>🏛️ National Tax Planning</h3>
+                    <p>Praktik tax planning yang <strong>mengikuti regulasi domestik</strong>.</p>
+                    <p><strong>Target:</strong> Wajib Pajak Badan dengan usaha di Indonesia dan/atau transaksi dengan WP dalam negeri.</p>
+                    <h4>Contoh Regulasi:</h4>
+                    <ul><li>UU Pajak Penghasilan</li><li>UU Pajak Pertambahan Nilai</li><li>UU Pajak Daerah</li></ul>
+                </div>
+                <div>
+                    <h3>🌎 International Tax Planning</h3>
+                    <p>Praktik tax planning yang <strong>mengikuti regulasi pajak internasional</strong>.</p>
+                    <p><strong>Target:</strong> Wajib Pajak dengan usaha di luar negeri dan/atau transaksi dengan WP dalam & luar negeri.</p>
+                    <h4>Kunci:</h4>
+                    <ul><li>Menguasai <strong>tax treaty</strong></li><li>Memahami <strong>transfer pricing</strong></li><li>Menerapkan prinsip <strong>arm's length</strong></li></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDI KASUS -->
+        <section id="kasus">
+            <div class="summary-card">
+                <h2>📋 STUDI KASUS PERENCANAAN PAJAK</h2>
+                <h3>PT Nusantara Digital Indonesia</h3>
+                <p><strong>Bidang:</strong> Jasa TI & Penjualan Perangkat Komputer | <strong>Karyawan:</strong> 80 orang</p>
+                <p><strong>Tujuan:</strong> Meningkatkan efisiensi beban pajak secara legal (2025)</p>
+            </div>
+
+            <h2>📊 Data Perusahaan 2025</h2>
+            <table>
+                <thead><tr><th>Keterangan</th><th class="text-right">Nilai</th></tr></thead>
+                <tbody>
+                    <tr><td>Peredaran usaha</td><td class="text-right">Rp15.000.000.000</td></tr>
+                    <tr><td>Laba komersial sebelum pajak</td><td class="text-right">Rp2.500.000.000</td></tr>
+                    <tr><td>Jumlah karyawan</td><td class="text-right">80 orang</td></tr>
+                    <tr><td>PPh Pasal 22</td><td class="text-right">Rp50.000.000</td></tr>
+                    <tr><td>PPh Pasal 23</td><td class="text-right">Rp75.000.000</td></tr>
+                    <tr><td>PPh Pasal 25 telah dibayar</td><td class="text-right">Rp300.000.000</td></tr>
+                    <tr><td>PPN Keluaran</td><td class="text-right">Rp1.650.000.000</td></tr>
+                    <tr class="highlight-row"><td>PPN Masukan (dapat dikreditkan)</td><td class="text-right">Rp1.200.000.000</td></tr>
+                </tbody>
+            </table>
+            <p><em>Tarif PPh Badan: <strong>22%</strong></em></p>
+
+            <h2>📌 Kondisi Saat Ini</h2>
+            <h3>A. Kebijakan PPh Pasal 21</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>🔹 Alternatif A – Gross Method</h4>
+                    <p><strong>PPh Pasal 21 ditanggung karyawan.</strong></p>
+                    <div class="calculation">
+                        Total penghasilan bruto: Rp6.000.000.000<br>
+                        PPh Pasal 21 dipotong: Rp600.000.000<br><br>
+                        <strong>Perusahaan TIDAK memberikan tunjangan PPh 21</strong>
+                    </div>
+                    <h4>✅ Keuntungan:</h4><ul><li>Administrasi sederhana</li><li>Biaya perusahaan rendah</li></ul>
+                    <h4>❌ Kekurangan:</h4><ul><li>Take-home pay karyawan rendah</li><li>Daya tarik kompensasi menurun</li></ul>
+                </div>
+                <div>
+                    <h4>🔹 Alternatif B – Gross Up Method</h4>
+                    <p><strong>Perusahaan memberikan tunjangan pajak.</strong></p>
+                    <div class="calculation">
+                        Tunjangan PPh 21: Rp600.000.000<br>
+                        <em>Diasumsikan dapat dibebankan sebagai biaya</em><br><br>
+                        <strong>Tax saving PPh Badan = Rp600.000.000 × 22% = Rp132.000.000</strong>
+                    </div>
+                </div>
+            </div>
+
+            <h3>B. Biaya Natura & Kenikmatan (Rp530.000.000)</h3>
+            <table>
+                <thead><tr><th>Jenis Fasilitas</th><th class="text-right">Nilai</th></tr></thead>
+                <tbody>
+                    <tr><td>Makan/minum karyawan</td><td class="text-right">Rp180.000.000</td></tr>
+                    <tr><td>Fasilitas kendaraan jabatan</td><td class="text-right">Rp200.000.000</td></tr>
+                    <tr><td>Rekreasi karyawan</td><td class="text-right">Rp100.000.000</td></tr>
+                    <tr><td>Beasiswa karyawan</td><td class="text-right">Rp50.000.000</td></tr>
+                    <tr class="total-row"><td><strong>Total</strong></td><td class="text-right"><strong>Rp530.000.000</strong></td></tr>
+                </tbody>
+            </table>
+            <div class="important"><strong>Catatan:</strong> Perlakuan pajak harus diperiksa berdasarkan jenis fasilitas, penerima, lokasi, dan ketentuan.</div>
+
+            <h3>C. Biaya Entertainment (Rp250.000.000)</h3>
+            <table>
+                <thead><tr><th>Keterangan</th><th class="text-right">Nilai</th></tr></thead>
+                <tbody>
+                    <tr><td>Dengan daftar nominatif lengkap</td><td class="text-right">Rp180.000.000</td></tr>
+                    <tr><td>Tanpa daftar nominatif</td><td class="text-right">Rp70.000.000</td></tr>
+                    <tr class="total-row"><td><strong>Total</strong></td><td class="text-right"><strong>Rp250.000.000</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h3>D. Kredit Pajak</h3>
+            <table>
+                <thead><tr><th>Jenis Pajak</th><th class="text-right">Nilai</th></tr></thead>
+                <tbody>
+                    <tr><td>PPh Pasal 22</td><td class="text-right">Rp50.000.000</td></tr>
+                    <tr><td>PPh Pasal 23</td><td class="text-right">Rp75.000.000</td></tr>
+                    <tr><td>PPh Pasal 25</td><td class="text-right">Rp300.000.000</td></tr>
+                    <tr class="total-row"><td><strong>Total Kredit Pajak</strong></td><td class="text-right"><strong>Rp425.000.000</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h3>E. PPN</h3>
+            <div class="calculation">
+                PPN Keluaran: Rp1.650.000.000<br>
+                PPN Masukan: (Rp1.200.000.000)<br><br>
+                <strong>PPN Kurang Bayar = Rp450.000.000</strong>
+            </div>
+
+            <h3>F. Angsuran PPh Pasal 25</h3>
+            <div class="calculation">
+                Estimasi PPh Badan terutang: Rp550.000.000<br>
+                PPh Pasal 25 dibayar: (Rp300.000.000)<br><br>
+                <strong>Sisa yang harus dibayar = Rp250.000.000</strong>
+            </div>
+
+            <h2>❓ Pertanyaan</h2>
+            <div class="question">
+                <h3>Pertanyaan 1</h3>
+                <p>Apakah perusahaan sebaiknya menggunakan Gross Method atau Gross Up Method untuk PPh Pasal 21? Jelaskan dampak masing-masing terhadap:</p>
+                <ul><li>Penghasilan karyawan</li><li>Biaya perusahaan</li><li>PPh Badan</li><li>Administrasi perusahaan</li></ul>
+            </div>
+            <div class="question">
+                <h3>Pertanyaan 2</h3>
+                <p>Apakah perusahaan dapat menggunakan natura/kenikmatan sebagai strategi tax planning? Jelaskan syarat-syaratnya.</p>
+            </div>
+            <div class="question">
+                <h3>Pertanyaan 3</h3>
+                <p>Berapa biaya entertainment yang berpotensi dapat menjadi biaya fiskal?</p>
+            </div>
+            <div class="question">
+                <h3>Pertanyaan 4</h3>
+                <p>Hitung total kredit pajak perusahaan.</p>
+            </div>
+            <div class="question">
+                <h3>Pertanyaan 5</h3>
+                <p>Jika PPh Badan terutang Rp550.000.000 dan kredit pajak Rp425.000.000, berapa PPh Pasal 29?</p>
+            </div>
+            <div class="question">
+                <h3>Pertanyaan 6</h3>
+                <p>Apakah perusahaan boleh menunda penerbitan faktur pajak? Jelaskan perbedaan tax planning legal vs penundaan ilegal.</p>
+            </div>
+        </section>
+
+                <!-- PEMBAHASAN -->
+        <section id="jawaban">
+            <div class="summary-card"><h2>🔑 PEMBAHASAN & KUNCI JAWABAN</h2></div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 1: Gross vs Gross Up</h3>
+                <div class="two-columns">
+                    <div>
+                        <h4>🔹 Gross Method</h4>
+                        <p><strong>PPh Pasal 21 ditanggung karyawan.</strong></p>
+                        <h4>Dampak:</h4>
+                        <ul><li><strong>Penghasilan karyawan:</strong> Take-home pay rendah</li><li><strong>Biaya perusahaan:</strong> Rendah</li><li><strong>PPh Badan:</strong> Tidak berubah</li><li><strong>Administrasi:</strong> Sederhana</li></ul>
+                    </div>
+                    <div>
+                        <h4>🔹 Gross Up Method</h4>
+                        <p><strong>Perusahaan memberikan tunjangan pajak.</strong></p>
+                        <h4>Dampak:</h4>
+                        <ul><li><strong>Penghasilan karyawan:</strong> Take-home pay tinggi</li><li><strong>Biaya perusahaan:</strong> Tinggi</li><li><strong>PPh Badan:</strong> Berpotensi menurun</li><li><strong>Administrasi:</strong> Kompleks</li></ul>
+                    </div>
+                </div>
+                <div class="calculation">
+                    Gross Up: Tambahan biaya = Rp600.000.000 | Tax saving = Rp132.000.000<br>
+                    <strong>Net cost = Rp468.000.000</strong>
+                </div>
+                <p><strong>Kesimpulan:</strong> Gross up <strong>tidak otomatis lebih murah</strong>. Perusahaan harus bandingkan tambahan biaya vs penghematan PPh Badan.</p>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 2: Natura & Kenikmatan</h3>
+                <p><strong>DAPAT</strong>, tetapi dengan syarat ketentuan perpajakan.</p>
+                <p><strong>TIDAK BOLEH</strong> beranggapan: <em>\"Kalau dalam bentuk barang/fasilitas, pasti tidak kena pajak.\"</em></p>
+                <h4>📋 Alur Tax Planning yang Benar:</h4>
+                <ol class="step-list">
+                    <li><h4>Identifikasi fasilitas</h4><p>Klasifikasikan jenis natura/kenikmatan.</p></li>
+                    <li><h4>Tentukan perlakuan PPh penerima</h4><p>Apakah objek PPh bagi karyawan?</p></li>
+                    <li><h4>Tentukan apakah biaya dapat dikurangkan</h4><p>Apakah dapat dibebankan sebagai biaya perusahaan?</p></li>
+                    <li><h4>Pastikan memenuhi persyaratan</h4><p>Apakah memenuhi ketentuan perpajakan?</p></li>
+                    <li><h4>Dokumentasikan transaksi</h4><p>Buat dokumentasi lengkap.</p></li>
+                    <li><h4>Lakukan review</h4><p>Review secara berkala.</p></li>
+                </ol>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 3: Biaya Entertainment</h3>
+                <div class="calculation">
+                    Dengan daftar nominatif: Rp180.000.000<br>
+                    Tanpa daftar nominatif: Rp70.000.000<br><br>
+                    <strong>Diasumsikan:</strong> Tanpa daftar nominatif <strong>TIDAK dapat dibebankan</strong>.<br>
+                    <strong>Berpotensi menjadi biaya fiskal: Rp180.000.000</strong>
+                </div>
+                <h4>💡 Rekomendasi:</h4>
+                <p>Perbaiki dokumentasi entertainment Rp70.000.000 agar memiliki daftar nominatif.</p>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 4: Total Kredit Pajak</h3>
+                <div class="calculation">
+                    PPh Pasal 22: Rp50.000.000<br>
+                    PPh Pasal 23: Rp75.000.000<br>
+                    PPh Pasal 25: Rp300.000.000<br><br>
+                    <strong>Total Kredit Pajak = Rp425.000.000</strong>
+                </div>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 5: PPh Pasal 29</h3>
+                <div class="calculation">
+                    PPh Badan terutang: Rp550.000.000<br>
+                    Total kredit pajak: (Rp425.000.000)<br><br>
+                    <strong>PPh Pasal 29 = Rp550.000.000 - Rp425.000.000 = Rp125.000.000</strong>
+                </div>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 6: Penundaan Faktur Pajak</h3>
+                <p><strong>TIDAK BOLEH</strong> menunda penerbitan faktur pajak <strong>di luar ketentuan</strong>.</p>
+                <div class="two-columns">
+                    <div>
+                        <h4>✅ Tax Planning Legal</h4>
+                        <ul><li>Mengatur transaksi <strong>sesuai batas waktu</strong></li><li>Memilih metode yang <strong>diperbolehkan</strong></li><li>Mengoptimalkan kredit pajak <strong>dengan bukti valid</strong></li></ul>
+                    </div>
+                    <div>
+                        <h4>❌ Penundaan Ilegal</h4>
+                        <ul><li>Menunda <strong>melebihi batas waktu</strong></li><li>Menyembunyikan transaksi</li><li>Memalsukan tanggal</li></ul>
+                        <p><strong>Risiko:</strong> Sanksi, denda, pidana.</p>
+                    </div>
+                </div>
+                <p><strong>Kesimpulan:</strong> Tax planning ≠ menunda pajak secara ilegal. Tax planning yang benar adalah <strong>mengatur transaksi sesuai ketentuan</strong>.</p>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 7: Waktu Transaksi</h3>
+                <p><strong>DAPAT</strong>, selama <strong>sesuai ketentuan dan memiliki substansi ekonomi</strong>.</p>
+                <h4>📌 Contoh Legal:</h4>
+                <ol>
+                    <li><strong>Memilih struktur kompensasi:</strong> Bandingkan gross, gross up, net.</li>
+                    <li><strong>Mengoptimalkan biaya:</strong> Pastikan biaya memiliki bukti, hubungan dengan usaha, dokumentasi.</li>
+                    <li><strong>Mengoptimalkan kredit pajak:</strong> Pastikan bukti PPh 22, 23, 25 diterima, diverifikasi, dicatat.</li>
+                    <li><strong>Mengelola waktu transaksi:</strong> Atur jadwal berdasarkan kebutuhan bisnis & ketentuan perpajakan.</li>
+                </ol>
+            </div>
+
+            <div class="answer">
+                <h3>Jawaban Pertanyaan 8: Tax Compliance</h3>
+                <p>PT Nusantara Digital Indonesia perlu melakukan <strong>tax compliance secara rutin</strong>.</p>
+                <h4>📅 Jadwal Kegiatan:</h4>
+                <table>
+                    <thead><tr><th>Kegiatan</th><th>Frekuensi</th><th>Tujuan</th></tr></thead>
+                    <tbody>
+                        <tr><td>Pemeriksaan bukti potong</td><td>Setiap masa pajak</td><td>Memastikan bukti valid</td></tr>
+                        <tr><td>Rekonsiliasi PPN</td><td>Setiap masa</td><td>Memastikan PPN sesuai</td></tr>
+                        <tr><td>Rekonsiliasi PPh</td><td>Setiap masa</td><td>Memastikan perhitungan PPh</td></tr>
+                        <tr><td>Review faktur pajak</td><td>Setiap masa</td><td>Memastikan tepat waktu</td></tr>
+                        <tr><td>Pemeriksaan kredit pajak</td><td>Bulanan</td><td>Memastikan kredit pajak</td></tr>
+                        <tr><td>Tax review</td><td>Akhir tahun</td><td>Evaluasi menyeluruh</td></tr>
+                        <tr><td>Evaluasi tax planning</td><td>Akhir tahun</td><td>Evaluasi efektivitas</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Tujuan:</strong> Memastikan strategi tax planning <strong>tetap sesuai regulasi</strong>.</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>📌 Ringkasan Hasil</h3>
+                <div class="two-columns">
+                    <div>
+                        <h4>Data Utama:</h4>
+                        <ul><li><strong>Peredaran usaha:</strong> Rp15.000.000.000</li><li><strong>Laba komersial:</strong> Rp2.500.000.000</li><li><strong>PPN Kurang Bayar:</strong> Rp450.000.000</li></ul>
+                    </div>
+                    <div>
+                        <h4>Hasil Perhitungan:</h4>
+                        <ul><li><strong>Total Kredit Pajak:</strong> Rp425.000.000</li><li><strong>PPh Pasal 29:</strong> Rp125.000.000</li><li><strong>Entertainment (tidak dapat dibebankan):</strong> Rp70.000.000</li></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KESIMPULAN -->
+        <section id="kesimpulan">
+            <div class="summary-card"><h2>🎯 KESIMPULAN</h2></div>
+            <p>PT Nusantara Digital Indonesia memiliki <strong>peluang untuk tax planning secara legal</strong>.</p>
+            <h3>📊 Hasil Utama:</h3>
+            <ul><li><strong>PPN Kurang Bayar:</strong> Rp450.000.000</li><li><strong>Total Kredit PPh:</strong> Rp425.000.000</li><li><strong>PPh Badan Terutang:</strong> Rp550.000.000</li><li><strong>PPh Pasal 29:</strong> Rp125.000.000</li></ul>
+            <h3>💡 Inti Tax Planning:</h3>
+            <div class="important">
+                <p><strong>Tax Planning BUKAN:</strong> <em>\"Bagaimana supaya pajak tidak dibayar\"</em></p>
+                <p><strong>Tax Planning ADALAH:</strong></p>
+                <p style="font-style: italic; font-weight: bold; font-size: 1.1em;">"Bagaimana perusahaan mengelola transaksi dan kewajiban pajaknya secara efisien, legal, terdokumentasi, dan sesuai ketentuan perpajakan."</p>
+            </div>
+            <h3>📋 Tahapan Tax Planning yang Baik:</h3>
+            <ol class="step-list">
+                <li><h4>Analisis informasi perusahaan</h4></li>
+                <li><h4>Menentukan strategi pajak</h4></li>
+                <li><h4>Tax compliance</h4></li>
+                <li><h4>Tax review</h4></li>
+                <li><h4>Evaluasi dan perbaikan</h4></li>
+            </ol>
+            <h3>🎯 Manfaat:</h3>
+            <p>Dengan pendekatan tersebut, perusahaan dapat:</p>
+            <ul><li>Menekan beban pajak</li><li>Meminimalkan risiko sanksi</li><li>Meningkatkan efisiensi operasional</li><li>Memastikan kepatuhan perpajakan</li></ul>
+        </section>
+    </main>
+    <footer><p><strong>Perencanaan Pajak - PT Nusantara Digital Indonesia</strong></p></footer>
+    <script>
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            let current = '';
+            sections.forEach(section => {
+                if (window.pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,1179 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL Structure - 25 Materi & Latihan Final</title>
+
+<style>
+    /* =========================
+       GLOBAL & RESET
+    ========================= */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f4f8;
+        color: #1e293b;
+        line-height: 1.6;
+    }
+
+    .container {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 30px 0;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+    header {
+        background: linear-gradient(135deg, #0f172a, #0ea5e9);
+        color: white;
+        padding: 50px 20px;
+        text-align: center;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        font-size: 38px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    header p {
+        font-size: 18px;
+        opacity: 0.9;
+    }
+
+    .section-header {
+        background: #1e293b;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 12px;
+        margin: 40px 0 25px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    
+    .section-header h2 {
+        font-size: 24px;
+    }
+
+    /* =========================
+       MATERI SECTION
+    ========================= */
+    .material-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 14px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        border-top: 5px solid #0ea5e9;
+        transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+        color: #0f172a;
+        font-size: 19px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .pattern {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px;
+        margin: 12px 0;
+        font-family: Consolas, monospace;
+        font-weight: bold;
+        color: #0369a1;
+        text-align: center;
+    }
+
+    .correct, .wrong, .tip {
+        padding: 10px 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    .correct {
+        background: #dcfce7;
+        color: #166534;
+        border-left: 4px solid #22c55e;
+    }
+
+    .wrong {
+        background: #fee2e2;
+        color: #991b1b;
+        border-left: 4px solid #ef4444;
+    }
+
+    .tip {
+        background: #fef9c3;
+        color: #854d0e;
+        border-left: 4px solid #eab308;
+    }
+
+    /* =========================
+       QUIZ SECTION
+    ========================= */
+    .info-box {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        border-left: 5px solid #0ea5e9;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .info-box ol {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .question-card {
+        background: white;
+        margin-bottom: 25px;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .question-card h3 {
+        color: #0ea5e9;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .sentence {
+        font-size: 18px;
+        font-weight: 600;
+        background: #f0f7ff;
+        padding: 18px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .options-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .option-label {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 16px;
+    }
+
+    .option-label:hover {
+        background: #f8fafc;
+        border-color: #cbd5e1;
+    }
+
+    .option-label input {
+        margin-right: 15px;
+        transform: scale(1.2);
+    }
+
+    /* Option states after check */
+    .option-label.correct-choice {
+        background: #dcfce7;
+        border-color: #22c55e;
+        color: #166534;
+        font-weight: bold;
+    }
+
+    .option-label.wrong-choice {
+        background: #fee2e2;
+        border-color: #ef4444;
+        color: #991b1b;
+    }
+
+    .feedback {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        animation: fadeIn 0.5s;
+    }
+
+    .feedback.show {
+        display: block;
+    }
+
+    .feedback.is-correct {
+        background: #f0fdf4;
+        border: 2px solid #4ade80;
+    }
+
+    .feedback.is-wrong {
+        background: #fef2f2;
+        border: 2px solid #f87171;
+    }
+
+    .explanation-box {
+        margin-top: 15px;
+        padding: 15px;
+        background: #fffbeb;
+        border-left: 4px solid #fbbf24;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    /* =========================
+       BUTTONS & SCORE
+    ========================= */
+    .action-area {
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    button {
+        border: none;
+        padding: 16px 35px;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.2s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    button:active {
+        transform: scale(0.97);
+    }
+
+    .btn-submit {
+        background: #0ea5e9;
+        color: white;
+    }
+
+    .btn-submit:hover {
+        background: #0284c7;
+    }
+
+    .btn-reset {
+        background: #64748b;
+        color: white;
+        margin-left: 15px;
+    }
+
+    .btn-reset:hover {
+        background: #475569;
+    }
+
+    #result-box {
+        display: none;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 30px 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        border-top: 8px solid #0f172a;
+    }
+
+    .score-circle {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 8px solid #0ea5e9;
+        margin: 20px 0;
+    }
+
+    .score-text {
+        font-size: 48px;
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1;
+    }
+
+    .percentage-text {
+        font-size: 20px;
+        color: #64748b;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .result-message {
+        font-size: 20px;
+        margin: 15px 0 25px;
+        color: #334155;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+    @media(max-width: 768px) {
+        header h1 { font-size: 28px; }
+        .material-grid { grid-template-columns: 1fr; }
+        .btn-reset { margin-left: 0; margin-top: 15px; display: block; width: 100%; }
+        .btn-submit { width: 100%; display: block; }
+        .action-area { display: flex; flex-direction: column; gap: 10px; }
+    }
+</style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>TOEFL STRUCTURE: LATIHAN FINAL</h1>
+    <p>25 Materi Penting + 25 Latihan Soal & Pembahasan Lengkap</p>
+</header>
+
+<div class="container">
+
+    <!-- =====================================================
+         BAGIAN MATERI
+    ===================================================== -->
+    <div class="section-header">
+        <h2>📚 Bagian A: Materi TOEFL Structure</h2>
+    </div>
+
+    <div class="material-grid">
+        <!-- Card 1-25 (Dari Kode 1) -->
+        <div class="card">
+            <h3>1. Comparative Adjective</h3>
+            <p>Digunakan untuk membandingkan dua hal atau dua orang.</p>
+            <div class="pattern">
+                Short adjective + -er + than<br>
+                Long adjective → more + adjective + than
+            </div>
+            <div class="correct">✅ This method is more efficient than the traditional method.</div>
+            <div class="wrong">❌ This method is more efficient that the traditional method.</div>
+            <div class="tip">💡 Kata <b>than</b> digunakan setelah comparative.</div>
+        </div>
+
+        <div class="card">
+            <h3>2. Subject–Verb Agreement</h3>
+            <p>Verb harus sesuai dengan jumlah subject.</p>
+            <div class="pattern">
+                Singular → V-s / is / has<br>
+                Plural → V1 / are / have
+            </div>
+            <div class="correct">✅ The number of students is increasing.</div>
+            <div class="wrong">❌ The number of students are increasing.</div>
+            <div class="tip">💡 <b>The number of + plural noun</b> dianggap singular.</div>
+        </div>
+
+        <div class="card">
+            <h3>3. Relative Clause</h3>
+            <p>Digunakan untuk memberikan informasi tambahan tentang noun.</p>
+            <div class="pattern">
+                who → orang<br>
+                whom → orang sebagai object<br>
+                which → benda/hewan<br>
+                whose → kepemilikan<br>
+                where → tempat
+            </div>
+            <div class="correct">✅ The scientist who discovered the medicine won an award.</div>
+            <div class="wrong">❌ The scientist which discovered the medicine...</div>
+        </div>
+
+        <div class="card">
+            <h3>4. Many of Whom</h3>
+            <p>Digunakan untuk merujuk kepada orang sebagai object setelah "many of".</p>
+            <div class="pattern">many of whom + clause</div>
+            <div class="correct">✅ Many of whom came from overseas.</div>
+            <div class="tip">💡 Untuk benda biasanya digunakan <b>many of which</b>.</div>
+        </div>
+
+        <div class="card">
+            <h3>5. Reduced Adjective Clause</h3>
+            <p>Relative clause dapat dipersingkat.</p>
+            <div class="pattern">
+                Active → noun + V-ing<br>
+                Passive → noun + V3
+            </div>
+            <div class="correct">✅ The aircraft tested last month is efficient.</div>
+            <div class="wrong">❌ The aircraft testing last month is efficient.</div>
+        </div>
+
+        <div class="card">
+            <h3>6. Gerund (V-ing)</h3>
+            <p>Gerund adalah verb-ing yang berfungsi sebagai noun.</p>
+            <div class="pattern">Subject + V-ing | Verb + V-ing</div>
+            <div class="correct">✅ I recommend analyzing the data.</div>
+            <div class="wrong">❌ I recommend to analyze the data.</div>
+            <div class="tip">💡 recommend, suggest, avoid, enjoy → biasanya diikuti V-ing.</div>
+        </div>
+
+        <div class="card">
+            <h3>7. Gerund setelah Preposition</h3>
+            <p>Setelah preposition, gunakan V-ing.</p>
+            <div class="pattern">Preposition + V-ing</div>
+            <div class="correct">✅ She succeeded in solving the problem.</div>
+            <div class="wrong">❌ She succeeded in solve the problem.</div>
+            <div class="tip">💡 in, on, at, by, without, after, before + V-ing.</div>
+        </div>
+
+        <div class="card">
+            <h3>8. Infinitive (to + V1)</h3>
+            <p>Digunakan untuk menunjukkan tujuan atau mengikuti kata tertentu.</p>
+            <div class="pattern">to + V1</div>
+            <div class="correct">✅ The software allows users to process data.</div>
+            <div class="wrong">❌ The software allows users to processing data.</div>
+        </div>
+
+        <div class="card">
+            <h3>9. In Order To</h3>
+            <p>Menunjukkan tujuan.</p>
+            <div class="pattern">in order to + V1</div>
+            <div class="correct">✅ They built the road in order to improve transportation.</div>
+            <div class="wrong">❌ They built the road in order improving transportation.</div>
+        </div>
+
+        <div class="card">
+            <h3>10. Noun Clause</h3>
+            <p>Noun clause berfungsi sebagai noun dalam kalimat.</p>
+            <div class="pattern">how / what / when / where / whether / if + clause</div>
+            <div class="correct">✅ I know what he wants.</div>
+            <div class="wrong">❌ I know what does he want.</div>
+            <div class="tip">💡 Noun clause menggunakan susunan statement, bukan question.</div>
+        </div>
+
+        <div class="card">
+            <h3>11. Whether</h3>
+            <p>Digunakan untuk menunjukkan pilihan atau ketidakpastian.</p>
+            <div class="pattern">whether + subject + verb</div>
+            <div class="correct">✅ Scientists are studying whether the treatment is effective.</div>
+        </div>
+
+        <div class="card">
+            <h3>12. It Was Not Until ... That</h3>
+            <p>Struktur khusus untuk menekankan waktu.</p>
+            <div class="pattern">It was not until + time + that + clause</div>
+            <div class="correct">✅ It was not until the twentieth century that scientists understood DNA.</div>
+            <div class="wrong">❌ It was not until the twentieth century scientists understood DNA.</div>
+        </div>
+
+        <div class="card">
+            <h3>13. Despite vs Although</h3>
+            <div class="pattern">
+                despite + noun / V-ing<br>
+                although + subject + verb
+            </div>
+            <div class="correct">✅ They succeeded despite several problems.<br>✅ They succeeded although the system was difficult.</div>
+            <div class="wrong">❌ Despite the system was difficult...</div>
+        </div>
+
+        <div class="card">
+            <h3>14. Passive Voice</h3>
+            <p>Passive menekankan tindakan atau objek yang dikenai tindakan.</p>
+            <div class="pattern">be + V3</div>
+            <div class="correct">✅ The data was collected yesterday.</div>
+            <div class="wrong">❌ The data was collect yesterday.</div>
+            <div class="tip">💡 Past participle/V3 adalah ciri utama passive voice.</div>
+        </div>
+
+        <div class="card">
+            <h3>15. Past Perfect</h3>
+            <div class="pattern">had + V3</div>
+            <div class="correct">✅ The storm had ended before they arrived.</div>
+            <div class="tip">💡 Digunakan untuk kejadian yang terjadi lebih dahulu di masa lalu.</div>
+        </div>
+
+        <div class="card">
+            <h3>16. Present Perfect</h3>
+            <div class="pattern">has/have + V3</div>
+            <div class="correct">✅ The number of users has increased.</div>
+            <div class="wrong">❌ The number of users have increased.</div>
+        </div>
+
+        <div class="card">
+            <h3>17. The More ..., The More ...</h3>
+            <p>Menunjukkan hubungan perbandingan sebab-akibat.</p>
+            <div class="pattern">The + comparative, the + comparative</div>
+            <div class="correct">✅ The more you practice, the better you become.</div>
+        </div>
+
+        <div class="card">
+            <h3>18. Correlative Conjunctions</h3>
+            <p>Menghubungkan dua elemen yang sejajar.</p>
+            <div class="pattern">
+                both ... and<br> either ... or<br> neither ... nor<br> not only ... but also
+            </div>
+            <div class="correct">✅ She is both intelligent and hardworking.</div>
+            <div class="wrong">❌ She is both intelligent and works hard.</div>
+        </div>
+
+        <div class="card">
+            <h3>19. Adjective vs Adverb</h3>
+            <div class="pattern">
+                Adjective → menjelaskan noun<br>
+                Adverb → menjelaskan verb/adjective
+            </div>
+            <div class="correct">✅ She is a careful driver.<br>✅ She drives carefully.</div>
+            <div class="wrong">❌ She drives careful.</div>
+        </div>
+
+        <div class="card">
+            <h3>20. Where Relative Adverb</h3>
+            <p>Where digunakan untuk menunjukkan tempat.</p>
+            <div class="pattern">place + where + subject + verb</div>
+            <div class="correct">✅ This is the city where she was born.</div>
+            <div class="wrong">❌ This is the city where she was born in.</div>
+        </div>
+
+        <div class="card">
+            <h3>21. Neither ... Nor</h3>
+            <p>Verb mengikuti subject yang paling dekat.</p>
+            <div class="pattern">Neither A nor B + verb</div>
+            <div class="correct">✅ Neither the manager nor the employees are available.</div>
+            <div class="wrong">❌ Neither the manager nor the employees is available.</div>
+        </div>
+
+        <div class="card">
+            <h3>22. Future Tense</h3>
+            <div class="pattern">will + V1</div>
+            <div class="correct">✅ The amount of waste will increase.</div>
+            <div class="wrong">❌ The amount of waste will increases.</div>
+        </div>
+
+        <div class="card">
+            <h3>23. Parallel Structure</h3>
+            <p>Elemen yang sejajar harus mempunyai bentuk grammar yang sama.</p>
+            <div class="pattern">V-ing + V-ing + V-ing (contoh)</div>
+            <div class="correct">✅ Students enjoy reading, writing, and communicating.</div>
+            <div class="wrong">❌ Students enjoy reading, writing, and communicate.</div>
+        </div>
+
+        <div class="card">
+            <h3>24. Adjective / Adverb Comparison</h3>
+            <div class="pattern">
+                Adjective → -er / more<br>
+                Adverb → -er / more
+            </div>
+            <div class="correct">✅ She is more careful than before.<br>✅ She works more carefully now.</div>
+        </div>
+
+        <div class="card">
+            <h3>25. Preposition + Noun / V-ing</h3>
+            <p>Setelah preposition dapat digunakan noun atau gerund.</p>
+            <div class="pattern">preposition + noun / V-ing</div>
+            <div class="correct">✅ He left without saying goodbye.</div>
+            <div class="wrong">❌ He left without say goodbye.</div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         BAGIAN KUIS (Di-generate via JavaScript)
+    ===================================================== -->
+    <div class="section-header">
+        <h2>📝 Bagian B: Latihan TOEFL Structure (25 Soal)</h2>
+    </div>
+
+    <div class="info-box">
+        <strong>Petunjuk Pengerjaan:</strong>
+        <ol>
+            <li>Pilih satu jawaban yang paling tepat untuk melengkapi kalimat.</li>
+            <li>Klik tombol <b>"Periksa Semua Jawaban"</b> di bagian paling bawah setelah selesai.</li>
+            <li>Sistem akan otomatis menandai jawaban yang <b>✓ BENAR</b> (hijau) atau <b>✗ SALAH</b> (merah).</li>
+            <li>Pelajari penjelasan lengkap di setiap soal setelah diperiksa.</li>
+        </ol>
+    </div>
+
+    <div id="quiz-container">
+        <!-- Kuis akan dirender di sini oleh JavaScript -->
+    </div>
+
+    <div class="action-area">
+        <button class="btn-submit" onclick="checkAnswers()">✅ PERIKSA SEMUA JAWABAN</button>
+        <button class="btn-reset" onclick="resetQuiz()">🔄 ULANGI KUIS</button>
+    </div>
+
+    <div id="result-box">
+        <h2>HASIL LATIHAN KAMU</h2>
+        <div class="score-circle">
+            <span class="score-text" id="final-score">0/25</span>
+            <span class="percentage-text" id="final-percent">0%</span>
+        </div>
+        <p class="result-message" id="final-message"></p>
+        <button class="btn-submit" onclick="resetQuiz()">COBA LAGI</button>
+    </div>
+
+</div>
+
+<footer>
+    TOEFL Structure Practice &copy; 2024 - 25 Questions Masterclass
+</footer>
+
+<script>
+/* =====================================================
+   DATABASE SOAL & PENJELASAN
+===================================================== */
+const quizData = [
+    {
+        topic: "Subject-Verb Agreement",
+        sentence: "The number of students in this university _____ rapidly every year.",
+        options: ["increase", "increases", "increasing", "have increased"],
+        answer: 1,
+        explanation: `Subjek utama adalah <b>The number</b>, bukan "students". "The number of + plural noun" menggunakan <b>singular verb</b>.<br><br>Rumus: <strong>The number of + plural noun + singular verb</strong>.`
+    },
+    {
+        topic: "Relative Clause",
+        sentence: "The scientist _____ discovered the new vaccine received an award.",
+        options: ["whom", "which", "who", "whose"],
+        answer: 2,
+        explanation: `"Scientist" adalah orang dan berfungsi sebagai <b>subject</b> dalam relative clause "who discovered the new vaccine".<br><br><strong>Who</strong> digunakan untuk orang sebagai subject.`
+    },
+    {
+        topic: "Gerund",
+        sentence: "The professor recommends _____ the experiment several times.",
+        options: ["repeating", "to repeat", "repeat", "repeated"],
+        answer: 0,
+        explanation: `Kata kerja <strong>recommend</strong> selalu diikuti gerund (V-ing).<br><br>Rumus: <strong>recommend + V-ing</strong>.<br>Contoh: I recommend studying every day.`
+    },
+    {
+        topic: "Infinitive",
+        sentence: "The company hired additional workers _____ production.",
+        options: ["increase", "increasing", "increased", "to increase"],
+        answer: 3,
+        explanation: `Infinitive digunakan untuk menunjukkan tujuan.<br>Pekerja direkrut <strong>dengan tujuan</strong> meningkatkan produksi.<br><br>Rumus: <strong>to + V1</strong>`
+    },
+    {
+        topic: "Passive Voice",
+        sentence: "The documents _____ by the manager yesterday.",
+        options: ["signed", "were signed", "are signing", "have sign"],
+        answer: 1,
+        explanation: `Kalimat pasif di masa lampau (yesterday).<br>Documents = plural, sehingga menggunakan <strong>were</strong>.<br><br>Rumus passive past: <strong>was/were + V3</strong>.`
+    },
+    {
+        topic: "Noun Clause",
+        sentence: "The researchers do not know _____ the experiment will succeed.",
+        options: ["what", "who", "whether", "which"],
+        answer: 2,
+        explanation: `"Whether" digunakan untuk menyatakan pilihan atau ketidakpastian apakah sesuatu akan terjadi (apakah akan sukses atau tidak).`
+    },
+    {
+        topic: "Present Perfect",
+        sentence: "The number of internet users _____ significantly over the past decade.",
+        options: ["has increased", "have increased", "increased", "increasing"],
+        answer: 0,
+        explanation: `Subjeknya adalah <strong>The number</strong> (singular). Karena ada "over the past decade", <strong>present perfect</strong> tepat digunakan.<br><br>Rumus: <strong>has/have + V3</strong>.`
+    },
+    {
+        topic: "Comparative",
+        sentence: "This method is _____ than the traditional method.",
+        options: ["efficient", "most efficient", "efficiently", "more efficient"],
+        answer: 3,
+        explanation: `Kalimat membandingkan dua metode (ditandai kata "than"). "Efficient" merupakan adjective panjang sehingga memakai:<br><br><strong>more + adjective + than</strong>.`
+    },
+    {
+        topic: "Preposition + Gerund",
+        sentence: "The students left the classroom without _____ the teacher.",
+        options: ["inform", "informing", "to inform", "informed"],
+        answer: 1,
+        explanation: `Setelah preposition "without", wajib gunakan gerund.<br><br><strong>without + V-ing</strong><br>Contoh: without studying, without speaking.`
+    },
+    {
+        topic: "Subject-Verb Agreement",
+        sentence: "Each of the applicants _____ required to submit two references.",
+        options: ["are", "have", "is", "were"],
+        answer: 2,
+        explanation: `Kata <strong>Each</strong> selalu dianggap <strong>singular</strong>. Walaupun ada "applicants" (plural), verb tetap mengikuti "Each".<br><br>Each of the applicants <strong>is</strong> required...`
+    },
+    {
+        topic: "Infinitive",
+        sentence: "The researchers need _____ additional information before making a conclusion.",
+        options: ["to obtain", "obtaining", "obtained", "obtain"],
+        answer: 0,
+        explanation: `Kata kerja "need" dapat diikuti infinitive.<br><br>Rumus: <strong>need + to + V1</strong><br>need to obtain = perlu memperoleh.`
+    },
+    {
+        topic: "Relative Pronoun",
+        sentence: "The laboratory _____ equipment was damaged has been closed.",
+        options: ["who", "whom", "which", "whose"],
+        answer: 3,
+        explanation: `"Whose" digunakan untuk menunjukkan kepemilikan relasional.<br><br>"the laboratory whose equipment..." = laboratorium yang peralatannya...`
+    },
+    {
+        topic: "Past Perfect",
+        sentence: "The students _____ the assignment before the professor arrived.",
+        options: ["complete", "had completed", "have completed", "completing"],
+        answer: 1,
+        explanation: `Ada dua kejadian di masa lampau. Kegiatan menyelesaikan tugas terjadi <strong>lebih dahulu</strong> sebelum professor datang.<br><br>Kejadian yang lebih dahulu menggunakan: <strong>had + V3</strong>.`
+    },
+    {
+        topic: "Parallel Structure",
+        sentence: "The course requires students to read, write, and _____ regularly.",
+        options: ["discussion", "discussing", "speak", "spoken"],
+        answer: 2,
+        explanation: `Struktur harus parallel (sejajar):<br>to read, (to) write, and <strong>(to) speak</strong>.<br>Setelah "to" pertama, bentuk berikutnya menggunakan V1 murni.`
+    },
+    {
+        topic: "Noun Clause",
+        sentence: "The professor explained _____ the students had failed the examination.",
+        options: ["why", "which", "whose", "whom"],
+        answer: 0,
+        explanation: `"Why" digunakan untuk menanyakan/menjelaskan alasan.<br><br>"Why + subject + verb" membentuk susunan noun clause yang utuh.`
+    },
+    {
+        topic: "Passive Voice",
+        sentence: "Many ancient buildings _____ by earthquakes throughout history.",
+        options: ["destroy", "destroyed", "have destroy", "have been destroyed"],
+        answer: 3,
+        explanation: `Kalimat merupakan passive voice (dihancurkan oleh) dalam tense present perfect (throughout history).<br><br>Buildings = plural → <strong>have been destroyed</strong>.`
+    },
+    {
+        topic: "The More ... The More",
+        sentence: "The more you practice, _____ your English becomes.",
+        options: ["better", "the better", "best", "the best"],
+        answer: 1,
+        explanation: `Pola kalimat perbandingan sebab-akibat ganda:<br><br><strong>The + comparative, the + comparative</strong><br>Contoh: The more you study, the better you become.`
+    },
+    {
+        topic: "Correlative Conjunction",
+        sentence: "The program is designed to improve _____ reading and writing skills.",
+        options: ["either", "neither", "both", "whether"],
+        answer: 2,
+        explanation: `"Both" digunakan untuk menunjukkan dua hal sekaligus. Pasangannya adalah "and".<br><br><strong>both A and B</strong>`
+    },
+    {
+        topic: "Adjective vs Adverb",
+        sentence: "The new software operates _____ on older computers.",
+        options: ["efficiently", "efficient", "efficiency", "more efficient"],
+        answer: 0,
+        explanation: `Kata "operates" adalah kata kerja (verb). Kita membutuhkan <strong>adverb</strong> untuk menjelaskan BAGAIMANA software beroperasi.<br><br>efficient = adjective, efficiently = adverb.`
+    },
+    {
+        topic: "Despite / Although",
+        sentence: "_____ the heavy rain, the researchers continued their work.",
+        options: ["Although", "Even though", "Because", "Despite"],
+        answer: 3,
+        explanation: `"Despite" diikuti noun atau noun phrase, bukan kalimat utuh (Subject+Verb).<br><br><strong>Despite + noun phrase</strong><br>"the heavy rain" adalah noun phrase.`
+    },
+    {
+        topic: "Neither ... Nor",
+        sentence: "Neither the manager nor the employees _____ aware of the problem.",
+        options: ["is", "are", "was", "has"],
+        answer: 1,
+        explanation: `Pada struktur <strong>neither A nor B</strong>, verb mengikuti subject yang <strong>paling dekat</strong> dengannya.<br><br>Subject terdekat adalah "employees" (plural) → <strong>are</strong>.`
+    },
+    {
+        topic: "Future Tense",
+        sentence: "The amount of electronic waste _____ significantly by 2030.",
+        options: ["increase", "increased", "will increase", "increasing"],
+        answer: 2,
+        explanation: `"By 2030" menunjukkan prediksi atau kejadian di masa depan.<br><br>Gunakan pola future: <strong>will + V1</strong>.`
+    },
+    {
+        topic: "Reduced Relative Clause",
+        sentence: "The documents _____ yesterday contain important information.",
+        options: ["submitted", "submitting", "were submitting", "have submit"],
+        answer: 0,
+        explanation: `Ini adalah reduced passive relative clause.<br>Aslinya: "The documents <strong>that were submitted</strong> yesterday..."<br>Dipersingkat menjadi: "The documents <strong>submitted</strong> yesterday..."`
+    },
+    {
+        topic: "Preposition + Gerund",
+        sentence: "The students improved their writing skills by _____ academic articles.",
+        options: ["read", "to read", "reading", "reading"], // C and D both read reading in original, let's fix options
+        // Fixed options below to avoid duplicate text
+        options: ["read", "to read", "reads", "reading"],
+        answer: 3,
+        explanation: `"By" adalah preposition. Setelah preposition harus menggunakan gerund.<br><br><strong>by + V-ing</strong> (by reading = dengan membaca).`
+    },
+    {
+        topic: "Subject-Verb Agreement",
+        sentence: "A number of researchers _____ interested in studying climate change.",
+        options: ["is", "are", "has", "was"],
+        answer: 1,
+        explanation: `Berbeda dengan "the number of", frasa <strong>a number of + plural noun</strong> dianggap <strong>plural</strong>.<br><br>A number of researchers <strong>are</strong>...`
+    }
+];
+
+/* =====================================================
+   RENDER KUIS KE HTML
+===================================================== */
+const quizContainer = document.getElementById("quiz-container");
+
+function renderQuiz() {
+    quizContainer.innerHTML = "";
+    
+    quizData.forEach((q, index) => {
+        const qNumber = index + 1;
+        
+        let optionsHTML = "";
+        const labels = ['A', 'B', 'C', 'D'];
+        
+        q.options.forEach((opt, i) => {
+            optionsHTML += `
+                <label class="option-label" id="label-q${qNumber}-opt${i}">
+                    <input type="radio" name="q${qNumber}" value="${i}">
+                    <strong>${labels[i]}.</strong> &nbsp; ${opt}
+                </label>
+            `;
+        });
+
+        const cardHTML = `
+            <div class="question-card" id="card-${qNumber}">
+                <h3>${qNumber}. ${q.topic}</h3>
+                <div class="sentence">${q.sentence}</div>
+                <div class="options-group">
+                    ${optionsHTML}
+                </div>
+                <div class="feedback" id="feedback-${qNumber}">
+                    <div id="feedback-text-${qNumber}"></div>
+                    <div class="explanation-box">
+                        <strong>💡 Penjelasan:</strong><br>
+                        ${q.explanation}
+                    </div>
+                </div>
+            </div>
+        `;
+        quizContainer.innerHTML += cardHTML;
+    });
+}
+
+// Inisialisasi tampilan awal
+renderQuiz();
+
+/* =====================================================
+   FUNGSI CEK JAWABAN
+===================================================== */
+function checkAnswers() {
+    let score = 0;
+    const totalQuestions = quizData.length;
+
+    quizData.forEach((q, index) => {
+        const qNumber = index + 1;
+        const selectedOption = document.querySelector(`input[name="q${qNumber}"]:checked`);
+        const feedbackDiv = document.getElementById(`feedback-${qNumber}`);
+        const feedbackText = document.getElementById(`feedback-text-${qNumber}`);
+        
+        // Reset class label
+        q.options.forEach((opt, i) => {
+            const label = document.getElementById(`label-q${qNumber}-opt${i}`);
+            label.classList.remove("correct-choice", "wrong-choice");
+            
+            // Highlight jawaban yang benar terlepas dari pilihan user
+            if(i === q.answer) {
+                label.classList.add("correct-choice");
+            }
+        });
+
+        feedbackDiv.classList.remove("is-correct", "is-wrong");
+        feedbackDiv.classList.add("show");
+
+        const labelsText = ['A', 'B', 'C', 'D'];
+
+        if (selectedOption) {
+            const userAnswerIndex = parseInt(selectedOption.value);
+            
+            if (userAnswerIndex === q.answer) {
+                // Jawaban Benar
+                score++;
+                feedbackDiv.classList.add("is-correct");
+                feedbackText.innerHTML = `✅ <strong>Jawaban Kamu BENAR:</strong> ${labelsText[userAnswerIndex]}. ${q.options[userAnswerIndex]}`;
+            } else {
+                // Jawaban Salah
+                const labelUser = document.getElementById(`label-q${qNumber}-opt${userAnswerIndex}`);
+                labelUser.classList.add("wrong-choice"); // Highlight merah jawaban user yang salah
+                
+                feedbackDiv.classList.add("is-wrong");
+                feedbackText.innerHTML = `❌ <strong>Jawaban Kamu SALAH:</strong> ${labelsText[userAnswerIndex]}. ${q.options[userAnswerIndex]} <br> 
+                                          ✅ <strong>Jawaban Tepat:</strong> ${labelsText[q.answer]}. ${q.options[q.answer]}`;
+            }
+        } else {
+            // Tidak dijawab
+            feedbackDiv.classList.add("is-wrong");
+            feedbackText.innerHTML = `⚠️ <strong>Kamu belum menjawab soal ini!</strong> <br>
+                                      ✅ <strong>Jawaban Tepat:</strong> ${labelsText[q.answer]}. ${q.options[q.answer]}`;
+        }
+    });
+
+    // Kalkulasi Hasil
+    const percentage = Math.round((score / totalQuestions) * 100);
+    const resultBox = document.getElementById("result-box");
+    
+    document.getElementById("final-score").innerText = `${score}/${totalQuestions}`;
+    document.getElementById("final-percent").innerText = `${percentage}%`;
+
+    let message = "";
+    if (percentage >= 90) message = "🏆 Luar biasa! Penguasaan TOEFL Structure kamu sangat baik.";
+    else if (percentage >= 75) message = "👏 Sangat Baik! Terus pertahankan dan perhalus pola grammar yang masih meleset.";
+    else if (percentage >= 60) message = "👍 Cukup Baik. Coba ulangi materi pada bagian jawaban yang masih merah.";
+    else message = "💪 Jangan menyerah! Pelajari kembali materi di Bagian A dan coba kuis ini lagi.";
+    
+    document.getElementById("final-message").innerText = message;
+
+    // Tampilkan Result Box dan Scroll
+    resultBox.style.display = "block";
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* =====================================================
+   FUNGSI RESET KUIS
+===================================================== */
+function resetQuiz() {
+    if(confirm("Apakah kamu yakin ingin mengulang kuis? Semua jawabanmu akan dihapus.")) {
+        // Re-render murni dari awal untuk menghapus semua status
+        renderQuiz();
+        document.getElementById("result-box").style.display = "none";
+        
+        // Scroll ke atas (Awal Kuis)
+        document.querySelector(".info-box").scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+</script>
+
+<style>
+    .ai-generator {
+        margin: 35px 0;
+        background: #ffffff;
+        border: 1px solid #dbe5ef;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 5px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .ai-generator h2 {
+        color: #0f3d73;
+        margin-bottom: 8px;
+    }
+
+    .ai-generator > p {
+        color: #52607a;
+        margin-bottom: 16px;
+    }
+
+    .ai-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .ai-controls input {
+        flex: 1 1 260px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .ai-controls button,
+    .ai-check-btn {
+        border: 0;
+        border-radius: 8px;
+        padding: 11px 16px;
+        background: #0f3d73;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .ai-status {
+        display: none;
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .ai-status.show { display: block; }
+    .ai-status.loading { background: #eef6ff; color: #1d4ed8; }
+    .ai-status.success { background: #ecfdf5; color: #166534; }
+    .ai-status.error { background: #fef2f2; color: #991b1b; }
+
+    .ai-question {
+        margin-top: 16px;
+        padding: 18px;
+        background: #f8fafc;
+        border: 1px solid #dbe5ef;
+        border-radius: 12px;
+    }
+
+    .ai-question p { font-weight: bold; margin: 0 0 12px; }
+
+    .ai-question label {
+        display: block;
+        padding: 10px;
+        margin: 7px 0;
+        background: white;
+        border: 1px solid #dbe5ef;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .ai-answer,
+    .ai-expl {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .ai-question.checked .ai-answer,
+    .ai-question.checked .ai-expl {
+        display: block;
+    }
+
+    .ai-answer { color: #0f766e; font-weight: bold; }
+    .ai-expl { color: #475569; }
+</style>
+
+<section class="ai-generator">
+    <h2>TOEFL ITP Section 2: Structure and Written Expression</h2>
+    <p>Generate 20 original questions on parallel structure and error analysis. Your saved Gemini API key will be used.</p>
+    <div class="ai-controls">
+        <input id="aiApiKey5" type="password" placeholder="Enter Gemini API key" />
+        <button id="generateGeminiBtn5" type="button">Generate 20 TOEFL Questions</button>
+    </div>
+    <div id="aiStatus5" class="ai-status"></div>
+    <div id="aiResult5"></div>
+</section>
+
+<script>
+(function () {
+    const keyInput = document.getElementById('aiApiKey5');
+    const button = document.getElementById('generateGeminiBtn5');
+    const status = document.getElementById('aiStatus5');
+    const result = document.getElementById('aiResult5');
+    keyInput.value = localStorage.getItem('gemini_api_key') || '';
+
+    function setStatus(message, type) {
+        status.textContent = message;
+        status.className = `ai-status show ${type}`;
+    }
+
+    function renderQuestions(questions) {
+        result.innerHTML = questions.slice(0, 20).map((item, index) => {
+            const options = Array.isArray(item.options) ? item.options : [];
+            const answer = String(item.answer || '').trim().toUpperCase();
+            return `
+                <article class="ai-question" data-answer="${answer}">
+                    <p>${index + 1}. ${item.question || 'Question not available'}</p>
+                    ${options.map((option, optionIndex) => `
+                        <label><input type="radio" name="ai-q5-${index}" value="${String.fromCharCode(65 + optionIndex)}"> ${String.fromCharCode(65 + optionIndex)}. ${option}</label>
+                    `).join('')}
+                    <button type="button" class="ai-check-btn">Check Answer</button>
+                    <div class="ai-answer">Answer: ${answer || 'Not available'}</div>
+                    <div class="ai-expl">Explanation: ${item.explanation || 'Explanation not available.'}</div>
+                </article>
+            `;
+        }).join('');
+
+        result.querySelectorAll('.ai-check-btn').forEach((checkButton) => {
+            checkButton.addEventListener('click', () => {
+                const question = checkButton.closest('.ai-question');
+                const selected = question.querySelector('input[type="radio"]:checked');
+                if (!selected) {
+                    checkButton.textContent = 'Select an answer first';
+                    return;
+                }
+                question.classList.add('checked');
+                checkButton.textContent = selected.value === question.dataset.answer ? 'Correct' : 'Try again';
+            });
+        });
+    }
+
+    async function generateQuestions() {
+        const apiKey = (keyInput.value || localStorage.getItem('gemini_api_key') || '').trim() || window.prompt('Enter a Gemini API key:');
+        if (!apiKey) {
+            setStatus('A Gemini API key is required.', 'error');
+            return;
+        }
+
+        keyInput.value = apiKey;
+        localStorage.setItem('gemini_api_key', apiKey);
+        setStatus('Sedang membuat 20 soal AI...', 'loading');
+
+        const prompt = `You are an expert TOEFL ITP test-item writer. Create exactly 20 original Section 2 (Structure and Written Expression) questions about parallel structure and error analysis. Write every question, answer choice, and explanation entirely in academic English; never use Indonesian. Include 10 Structure items with a sentence-completion blank and 10 Written Expression items asking which underlined part is incorrect, marked (A), (B), (C), and (D). Focus on parallel forms in lists, gerunds, infinitives, adjectives, nouns, correlative conjunctions, and common grammar errors. Each item must have exactly four plausible choices, one correct answer, and a concise English explanation. Do not reproduce official TOEFL questions. Return valid JSON only, without Markdown or extra text, using [{"question":"English question","options":["choice A","choice B","choice C","choice D"],"answer":"A","explanation":"English explanation"}].`;
+
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        responseMimeType: 'application/json',
+                        temperature: 0,
+                        topK: 1
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errorBody = await response.text();
+                throw new Error(`Gemini API menolak permintaan (${response.status}). ${errorBody}`);
+            }
+
+            const data = await response.json();
+            const raw = String(data.candidates?.[0]?.content?.parts?.map((part) => part.text || '').join('') || '').trim();
+            const parsed = JSON.parse(raw.replace(/```json|```/gi, '').trim());
+            const questions = Array.isArray(parsed) ? parsed : parsed.questions;
+
+            const hasIndonesian = (text) => /\b(adalah|dengan|untuk|yang|dalam|karena|pilihan|jawaban|penjelasan|bahasa|inggris|berikut|setiap)\b/i.test(text);
+            const isValidQuestion = (item) => item && typeof item.question === 'string' && item.question.trim()
+                && Array.isArray(item.options) && item.options.length === 4
+                && item.options.every((option) => typeof option === 'string' && option.trim())
+                && new Set(item.options.map((option) => option.trim().toLowerCase())).size === 4
+                && /^[A-D]$/i.test(String(item.answer || '').trim())
+                && typeof item.explanation === 'string' && item.explanation.trim()
+                && !hasIndonesian([item.question, ...item.options, item.explanation].join(' '));
+            if (!Array.isArray(questions) || questions.length !== 20 || !questions.every(isValidQuestion)) {
+                throw new Error('The response must contain exactly 20 valid TOEFL questions written entirely in English. Please try again.');
+            }
+
+            renderQuestions(questions);
+            setStatus('Generated 20 TOEFL ITP Structure and Written Expression questions.', 'success');
+        } catch (error) {
+            setStatus(error.message || 'An error occurred while generating TOEFL questions.', 'error');
+        }
+    }
+
+    button.addEventListener('click', generateQuestions);
+})();
+</script>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

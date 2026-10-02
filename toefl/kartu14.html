@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL Structure &amp; Written Expression — Buku Catatan</title>
+<style>
+  :root{
+    --paper: #F6F1E4;
+    --paper-2: #EFE7D3;
+    --ink: #23261F;
+    --ink-soft: #55584C;
+    --navy: #1E3A3A;
+    --navy-2: #2E5252;
+    --gold: #B8863B;
+    --rule: #CDBF9F;
+    --card: #FFFDF6;
+    --danger: #A33C2E;
+    --ok: #3B6E4A;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: 'Iowan Old Style','Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+    line-height:1.6;
+  }
+
+  ::selection{ background:var(--gold); color:#fff; }
+
+  a{ color:var(--navy-2); }
+
+  .layout{
+    display:grid;
+    grid-template-columns: 268px minmax(0,1fr);
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  aside{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    padding:38px 22px 38px 28px;
+    border-right:1px solid var(--rule);
+  }
+
+  .brand{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    color:var(--gold);
+    margin:0 0 4px;
+    font-weight:600;
+  }
+
+  .brand-title{
+    font-size:22px;
+    margin:0 0 30px;
+    line-height:1.25;
+    color:var(--navy);
+  }
+
+  nav ol{
+    list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:sec;
+  }
+
+  nav li{
+    counter-increment:sec;
+    margin:0;
+  }
+
+  nav a{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:13.5px;
+    padding:7px 8px;
+    border-radius:3px;
+    transition:background .15s ease, color .15s ease;
+  }
+
+  nav a::before{
+    content: counter(sec);
+    font-size:11px;
+    color:var(--gold);
+    min-width:16px;
+    text-align:right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  nav a:hover, nav a:focus-visible{
+    background:var(--paper-2);
+    color:var(--navy);
+    outline:none;
+  }
+
+  .side-foot{
+    margin-top:34px;
+    padding-top:18px;
+    border-top:1px solid var(--rule);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- MAIN ---------- */
+  main{
+    padding:56px 56px 120px;
+    min-width:0;
+  }
+
+  header.hero{
+    margin-bottom:56px;
+    padding-bottom:36px;
+    border-bottom:2px solid var(--navy);
+  }
+
+  .hero-eyebrow{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:.12em;
+    margin:0 0 14px;
+    font-weight:600;
+  }
+
+  h1.hero-title{
+    font-size:44px;
+    margin:0 0 18px;
+    color:var(--navy);
+    line-height:1.15;
+  }
+
+  .hero-desc{
+    max-width:62ch;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  section.topic{
+    margin-bottom:64px;
+    scroll-margin-top:30px;
+  }
+
+  section.topic h2{
+    font-size:28px;
+    color:var(--navy);
+    margin:0 0 6px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+  }
+
+  section.topic h2 .num{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:15px;
+    color:var(--gold);
+    font-weight:700;
+  }
+
+  section.topic > .lead{
+    color:var(--ink-soft);
+    max-width:68ch;
+    margin:0 0 22px;
+  }
+
+  section.topic h3{
+    font-size:16px;
+    color:var(--navy-2);
+    margin:26px 0 10px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-weight:700;
+  }
+
+  p{ max-width:70ch; }
+
+  /* formula card */
+  .formula{
+    background:var(--card);
+    border-left:4px solid var(--gold);
+    padding:14px 20px;
+    margin:14px 0 20px;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:15px;
+    color:var(--navy);
+    max-width:60ch;
+  }
+
+  /* example list */
+  ul.examples{
+    list-style:none;
+    margin:0 0 18px;
+    padding:0;
+    max-width:66ch;
+  }
+
+  ul.examples li{
+    padding:9px 0 9px 18px;
+    border-bottom:1px dashed var(--rule);
+    position:relative;
+  }
+
+  ul.examples li::before{
+    content:"›";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+  }
+
+  ul.examples li:last-child{ border-bottom:none; }
+
+  ul.examples strong{ color:var(--navy); }
+
+  .wrong{ color:var(--danger); }
+  .wrong::before{ content:"✕  "; font-weight:700; }
+  .right{ color:var(--ok); }
+  .right::before{ content:"✓  "; font-weight:700; }
+
+  .pair{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+    margin:16px 0 20px;
+    max-width:74ch;
+  }
+
+  .pair .box{
+    background:var(--card);
+    padding:14px 18px;
+    border-radius:2px;
+    border:1px solid var(--rule);
+  }
+
+  .pair .box .tag{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--gold);
+    display:block;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+
+  /* tables */
+  table{
+    border-collapse:collapse;
+    width:100%;
+    max-width:74ch;
+    margin:10px 0 24px;
+    font-size:15px;
+    background:var(--card);
+  }
+
+  caption{
+    text-align:left;
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+
+  th, td{
+    text-align:left;
+    padding:9px 14px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  th{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    color:var(--navy);
+    background:var(--paper-2);
+    font-weight:700;
+  }
+
+  tr:last-child td{ border-bottom:none; }
+
+  .note{
+    background: #FBEFE0;
+    border:1px solid #E6CE9F;
+    padding:12px 18px;
+    max-width:60ch;
+    font-size:14.5px;
+    color:#6B4E1A;
+    margin:16px 0;
+  }
+
+  .note::before{ content:"⚠ Perhatian — "; font-weight:700; }
+
+  .steps{
+    counter-reset: step;
+    max-width:66ch;
+    padding:0;
+    margin:16px 0;
+    list-style:none;
+  }
+
+  .steps li{
+    counter-increment: step;
+    padding:12px 0 12px 46px;
+    position:relative;
+    border-bottom:1px solid var(--rule);
+  }
+
+  .steps li:last-child{ border-bottom:none; }
+
+  .steps li::before{
+    content: counter(step);
+    position:absolute;
+    left:0;
+    top:10px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--paper);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .steps li strong{ color:var(--navy); }
+
+  /* final summary */
+  .summary{
+    margin-top:70px;
+    padding:42px 44px;
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:2px;
+  }
+
+  .summary h2{
+    color:var(--paper);
+    font-size:26px;
+    margin:0 0 6px;
+  }
+
+  .summary .lead{ color:#C9D6D2; max-width:60ch; }
+
+  .summary table{
+    background:transparent;
+    max-width:100%;
+  }
+
+  .summary th{
+    background:rgba(255,255,255,.08);
+    color:var(--paper);
+  }
+
+  .summary td{
+    color:#E7E2D0;
+    border-bottom:1px solid rgba(255,255,255,.15);
+  }
+
+  .keystone{
+    margin-top:26px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.2);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    font-size:15px;
+  }
+
+  .keystone .tag{
+    display:block;
+    font-size:11px;
+    letter-spacing:.1em;
+    color:var(--gold);
+    margin-bottom:8px;
+    font-weight:700;
+  }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; }
+    aside{ position:relative; height:auto; border-right:none; border-bottom:1px solid var(--rule); }
+    main{ padding:40px 24px 90px; }
+    h1.hero-title{ font-size:32px; }
+    .pair{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+<link rel="stylesheet" href="ai-generator.css">
+<script defer src="ai-generator.js"></script>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside>
+    <p class="brand">CATATAN BELAJAR</p>
+    <h1 class="brand-title">Structure &amp;<br>Written Expression</h1>
+    <nav aria-label="Daftar isi">
+      <ol>
+        <li><a href="#s1">Subject–Verb Agreement</a></li>
+        <li><a href="#s2">Simple Present</a></li>
+        <li><a href="#s3">Simple Past</a></li>
+        <li><a href="#s4">Present Perfect</a></li>
+        <li><a href="#s5">Past Perfect</a></li>
+        <li><a href="#s6">Passive Voice</a></li>
+        <li><a href="#s7">Gerund</a></li>
+        <li><a href="#s8">Gerund sebagai Subject</a></li>
+        <li><a href="#s9">Infinitive</a></li>
+        <li><a href="#s10">Conditional Type 1</a></li>
+        <li><a href="#s11">Conditional Type 2</a></li>
+        <li><a href="#s12">Conditional Type 3</a></li>
+        <li><a href="#s13">Mengenali Tense</a></li>
+        <li><a href="#s14">Cara Mengerjakan</a></li>
+        <li><a href="#ringkasan">Ringkasan Super Cepat</a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">Rangkuman konsep tata bahasa untuk bagian Structure &amp; Written Expression — tanpa soal evaluasi.</div>
+  </aside>
+
+  <main>
+
+    <header class="hero">
+      <p class="hero-eyebrow">RANGKUMAN MATERI</p>
+      <h1 class="hero-title">TOEFL Structure &amp; Written Expression</h1>
+      <p class="hero-desc">Empat belas konsep tata bahasa yang paling sering diuji, disusun dari subject–verb agreement hingga conditional sentence, lengkap dengan rumus, contoh, dan langkah pengerjaan.</p>
+    </header>
+
+    <!-- 1 -->
+    <section class="topic" id="s1">
+      <h2><span class="num">01</span>Subject–Verb Agreement</h2>
+      <p class="lead">Subject dan verb harus sesuai dalam jumlah — singular bertemu singular, plural bertemu plural.</p>
+
+      <h3>Singular → verb + -s/-es</h3>
+      <ul class="examples">
+        <li>The student <strong>studies</strong> every day.</li>
+        <li>The professor <strong>explains</strong> the lesson.</li>
+        <li>Reading regularly <strong>improves</strong> vocabulary.</li>
+      </ul>
+
+      <h3>Plural → verb dasar</h3>
+      <ul class="examples">
+        <li>The students <strong>study</strong> every day.</li>
+        <li>The professors <strong>explain</strong> the lessons.</li>
+        <li>Many people <strong>use</strong> technology.</li>
+      </ul>
+
+      <h3>Perhatikan subject sebenarnya</h3>
+      <div class="pair">
+        <div class="box">
+          <span class="tag">THE NUMBER OF</span>
+          The <strong>number</strong> of students <strong>is</strong> increasing.<br>
+          <span style="color:var(--ink-soft); font-size:13.5px;">Subject-nya adalah "the number" → singular.</span>
+        </div>
+        <div class="box">
+          <span class="tag">A NUMBER OF</span>
+          A <strong>number</strong> of students <strong>are</strong> absent.<br>
+          <span style="color:var(--ink-soft); font-size:13.5px;">"A number of + plural noun" → plural verb.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="topic" id="s2">
+      <h2><span class="num">02</span>Simple Present Tense</h2>
+      <p class="lead">Digunakan untuk fakta, kebiasaan, keadaan umum, dan sesuatu yang terjadi secara rutin.</p>
+
+      <div class="formula">Subject + V1 &nbsp;·&nbsp; untuk he/she/it → Subject + V1-s/-es</div>
+
+      <ul class="examples">
+        <li>The university <strong>offers</strong> several programs.</li>
+        <li>Students <strong>attend</strong> classes regularly.</li>
+      </ul>
+
+      <h3>Kata petunjuk</h3>
+      <p style="max-width:66ch; color:var(--ink-soft);">usually · often · always · generally · every day · every year · regularly</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="topic" id="s3">
+      <h2><span class="num">03</span>Simple Past Tense</h2>
+      <p class="lead">Digunakan untuk kejadian yang sudah selesai di masa lalu.</p>
+
+      <div class="formula">Subject + V2</div>
+
+      <ul class="examples">
+        <li>The museum <strong>opened</strong> a new exhibition last year.</li>
+        <li>Thousands of visitors <strong>visited</strong> the museum.</li>
+      </ul>
+
+      <h3>Penanda waktu</h3>
+      <p style="max-width:66ch; color:var(--ink-soft);">yesterday · last year · last week · two days ago · in 2020 · when + kejadian masa lalu</p>
+
+      <h3>Contoh TOEFL</h3>
+      <p>When the professor arrived, the students <strong>stopped</strong> talking. Jika konteksnya jelas berada di masa lalu, gunakan V2.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="topic" id="s4">
+      <h2><span class="num">04</span>Present Perfect</h2>
+      <p class="lead">Untuk kejadian yang telah terjadi, memiliki hubungan dengan keadaan sekarang, atau terjadi dalam periode waktu yang belum selesai.</p>
+
+      <div class="formula">Subject + has/have + V3</div>
+
+      <table>
+        <caption>Auxiliary berdasarkan subject</caption>
+        <thead><tr><th>Subject</th><th>Auxiliary</th></tr></thead>
+        <tbody>
+          <tr><td>He / She / It</td><td>has</td></tr>
+          <tr><td>I / You / We / They</td><td>have</td></tr>
+        </tbody>
+      </table>
+
+      <ul class="examples">
+        <li>The company <strong>has developed</strong> several new products.</li>
+        <li>People <strong>have become</strong> more aware of environmental problems.</li>
+      </ul>
+
+      <h3>Kata petunjuk</h3>
+      <p style="max-width:66ch; color:var(--ink-soft);">already · recently · just · since · for · over the past few years · in recent years</p>
+
+      <ul class="examples">
+        <li class="wrong">The students <em>has</em> completed the assignment.</li>
+        <li class="right">The students <em>have</em> completed the assignment.</li>
+      </ul>
+    </section>
+
+    <!-- 5 -->
+    <section class="topic" id="s5">
+      <h2><span class="num">05</span>Past Perfect</h2>
+      <p class="lead">Digunakan ketika ada dua kejadian di masa lalu, untuk menunjukkan kejadian mana yang terjadi lebih dahulu.</p>
+
+      <div class="formula">Subject + had + V3</div>
+
+      <p>When the researchers arrived, the experiment <strong>had started</strong>.</p>
+
+      <div class="note">Urutannya: experiment started → researchers arrived. Karena experiment terjadi lebih dahulu, digunakan had + V3.</div>
+
+      <h3>Kata yang sering muncul</h3>
+      <p style="max-width:66ch; color:var(--ink-soft);">before · after · already · when · by the time</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="topic" id="s6">
+      <h2><span class="num">06</span>Passive Voice</h2>
+      <p class="lead">Digunakan ketika fokus kalimat berada pada objek yang dikenai tindakan, bukan pelakunya.</p>
+
+      <div class="formula">Subject + be + V3</div>
+
+      <ul class="examples">
+        <li>The documents <strong>were reviewed</strong> by the university.</li>
+        <li>The historical documents <strong>are preserved</strong> carefully.</li>
+      </ul>
+
+      <table>
+        <caption>Bentuk passive berdasarkan tense</caption>
+        <thead><tr><th>Tense</th><th>Passive</th></tr></thead>
+        <tbody>
+          <tr><td>Simple Present</td><td>am/is/are + V3</td></tr>
+          <tr><td>Simple Past</td><td>was/were + V3</td></tr>
+          <tr><td>Present Perfect</td><td>has/have been + V3</td></tr>
+          <tr><td>Future</td><td>will be + V3</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pair">
+        <div class="box"><span class="tag">ACTIVE</span>The university <strong>built</strong> the library.</div>
+        <div class="box"><span class="tag">PASSIVE</span>The library <strong>was built</strong> by the university.</div>
+      </div>
+
+      <div class="note">Jika menemukan pola "The documents ____ carefully", kemungkinan besar yang dibutuhkan adalah passive voice — terutama jika dokumen tersebut "diperiksa", "disimpan", atau "ditulis".</div>
+    </section>
+
+    <!-- 7 -->
+    <section class="topic" id="s7">
+      <h2><span class="num">07</span>Gerund</h2>
+      <p class="lead">Gerund adalah V-ing yang berfungsi sebagai noun.</p>
+
+      <p><strong>Reading</strong> regularly improves vocabulary — "Reading" berfungsi sebagai subject.</p>
+
+      <h3>Gerund setelah preposition</h3>
+      <div class="formula">Preposition + V-ing</div>
+
+      <ul class="examples">
+        <li>interested in <strong>learning</strong></li>
+        <li>good at <strong>speaking</strong></li>
+        <li>responsible for <strong>maintaining</strong></li>
+        <li>excited about <strong>visiting</strong></li>
+      </ul>
+
+      <ul class="examples">
+        <li class="wrong">interested in <em>learn</em></li>
+        <li class="wrong">interested in <em>to learn</em></li>
+        <li class="right">interested in <em>learning</em></li>
+      </ul>
+    </section>
+
+    <!-- 8 -->
+    <section class="topic" id="s8">
+      <h2><span class="num">08</span>Gerund sebagai Subject</h2>
+      <p class="lead">Jika V-ing menjadi subject, biasanya dianggap singular.</p>
+
+      <ul class="examples">
+        <li class="right"><strong>Studying</strong> foreign languages helps students.</li>
+        <li class="wrong">Studying foreign languages <em>help</em> students.</li>
+      </ul>
+
+      <p>Karena subject-nya adalah aktivitas <em>studying</em>, maka verb-nya <strong>helps</strong>.</p>
+
+      <ul class="examples">
+        <li><strong>Reading</strong> regularly <strong>improves</strong> vocabulary.</li>
+        <li><strong>Working</strong> with professionals <strong>gives</strong> students practical skills.</li>
+      </ul>
+    </section>
+
+    <!-- 9 -->
+    <section class="topic" id="s9">
+      <h2><span class="num">09</span>Infinitive</h2>
+      <p class="lead">Infinitive menggunakan bentuk to + V1.</p>
+
+      <div class="formula">to + V1</div>
+
+      <ul class="examples">
+        <li>The professor encouraged the students <strong>to present</strong> their research.</li>
+        <li>Students need <strong>to study</strong> regularly.</li>
+      </ul>
+
+      <h3>Verb yang sering diikuti infinitive</h3>
+      <p style="max-width:66ch; color:var(--ink-soft);">want to · need to · decide to · encourage someone to · allow someone to · expect someone to · plan to</p>
+
+      <p>The teacher encouraged the students <strong>to participate</strong>.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="topic" id="s10">
+      <h2><span class="num">10</span>Conditional Sentence Type 1</h2>
+      <p class="lead">Digunakan untuk kondisi yang mungkin terjadi di masa depan.</p>
+
+      <div class="formula">If + Simple Present, Subject + will + V1</div>
+
+      <p>If the weather <strong>is</strong> good, the students <strong>will visit</strong> the site.</p>
+
+      <ul class="examples">
+        <li class="wrong">If the weather <em>will be</em> good...</li>
+        <li class="right">If the weather <em>is</em> good...</li>
+      </ul>
+    </section>
+
+    <!-- 11 -->
+    <section class="topic" id="s11">
+      <h2><span class="num">11</span>Conditional Sentence Type 2</h2>
+      <p class="lead">Digunakan untuk kondisi yang hipotetis, tidak nyata, atau kemungkinan kecil.</p>
+
+      <div class="formula">If + Simple Past, Subject + would + V1</div>
+
+      <ul class="examples">
+        <li>If I <strong>had</strong> more time, I <strong>would study</strong> another language.</li>
+        <li>If the company <strong>increased</strong> its production, it <strong>would meet</strong> the demand.</li>
+      </ul>
+
+      <div class="note">Jangan tertukar — Type 1: If + Present, will + V1. Type 2: If + Past, would + V1.</div>
+    </section>
+
+    <!-- 12 -->
+    <section class="topic" id="s12">
+      <h2><span class="num">12</span>Conditional Sentence Type 3</h2>
+      <p class="lead">Digunakan untuk membicarakan kondisi masa lalu yang tidak terjadi.</p>
+
+      <div class="formula">If + Past Perfect, would have + V3</div>
+
+      <p>If I <strong>had studied</strong> harder, I <strong>would have passed</strong> the examination.<br>
+      <span style="color:var(--ink-soft); font-size:14.5px;">Artinya: saya tidak belajar cukup keras → saya tidak lulus.</span></p>
+
+      <table>
+        <caption>Perbandingan tiga tipe conditional</caption>
+        <thead><tr><th>Type</th><th>If Clause</th><th>Main Clause</th></tr></thead>
+        <tbody>
+          <tr><td>Type 1</td><td>Present</td><td>will + V1</td></tr>
+          <tr><td>Type 2</td><td>Past</td><td>would + V1</td></tr>
+          <tr><td>Type 3</td><td>Past Perfect</td><td>would have + V3</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 13 -->
+    <section class="topic" id="s13">
+      <h2><span class="num">13</span>Mengenali Tense dari Konteks</h2>
+      <p class="lead">Jangan hanya melihat satu kata — perhatikan konteks seluruh kalimat.</p>
+
+      <ul class="examples">
+        <li>The company ____ several new products <strong>in recent years</strong>. → <em>Present Perfect</em></li>
+        <li>The company ____ a new product <strong>last year</strong>. → <em>Simple Past</em></li>
+        <li>The company ____ a new product <strong>every year</strong>. → <em>Simple Present</em></li>
+      </ul>
+
+      <table>
+        <caption>Petunjuk cepat</caption>
+        <thead><tr><th>Petunjuk</th><th>Kemungkinan tense</th></tr></thead>
+        <tbody>
+          <tr><td>every day / year</td><td>Simple Present</td></tr>
+          <tr><td>usually / often</td><td>Simple Present</td></tr>
+          <tr><td>yesterday / last year</td><td>Simple Past</td></tr>
+          <tr><td>ago</td><td>Simple Past</td></tr>
+          <tr><td>recently</td><td>Present Perfect</td></tr>
+          <tr><td>since / for</td><td>Present Perfect</td></tr>
+          <tr><td>over the past few years</td><td>Present Perfect</td></tr>
+          <tr><td>before another past event</td><td>Past Perfect</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 14 -->
+    <section class="topic" id="s14">
+      <h2><span class="num">14</span>Cara Mengerjakan TOEFL Structure</h2>
+      <p class="lead">Lima langkah untuk mendekati setiap soal secara konsisten.</p>
+
+      <ol class="steps">
+        <li><strong>Cari Subject.</strong> Tentukan siapa atau apa yang melakukan/menjadi fokus kalimat — mis. "The number of students ____ increasing" → subject sebenarnya adalah "the number".</li>
+        <li><strong>Tentukan singular atau plural.</strong> student → singular · students → plural · the number → singular · reading / studying → singular.</li>
+        <li><strong>Cari petunjuk waktu.</strong> Perhatikan kata seperti yesterday, last year, recently, since, every year, already, when, before.</li>
+        <li><strong>Tentukan bentuk verb.</strong> Present? Past? Present Perfect? Past Perfect? Passive? Gerund? Infinitive? Conditional?</li>
+        <li><strong>Periksa pola kalimat.</strong> Misalnya If + Past → would + V1; Preposition + V-ing; has/have + V3; had + V3; be + V3.</li>
+      </ol>
+    </section>
+
+    <section class="summary" id="ringkasan">
+      <h2>Ringkasan Super Cepat</h2>
+      <p class="lead">Seluruh rumus dalam satu tabel untuk pengulangan cepat sebelum ujian.</p>
+
+      <table>
+        <thead><tr><th>Materi</th><th>Rumus</th></tr></thead>
+        <tbody>
+          <tr><td>Simple Present</td><td>S + V1/V1-s</td></tr>
+          <tr><td>Simple Past</td><td>S + V2</td></tr>
+          <tr><td>Present Perfect</td><td>S + has/have + V3</td></tr>
+          <tr><td>Past Perfect</td><td>S + had + V3</td></tr>
+          <tr><td>Passive</td><td>S + be + V3</td></tr>
+          <tr><td>Gerund</td><td>V-ing sebagai noun</td></tr>
+          <tr><td>Preposition</td><td>prep + V-ing</td></tr>
+          <tr><td>Infinitive</td><td>to + V1</td></tr>
+          <tr><td>Conditional Type 1</td><td>If + Present → will + V1</td></tr>
+          <tr><td>Conditional Type 2</td><td>If + Past → would + V1</td></tr>
+          <tr><td>Conditional Type 3</td><td>If + Past Perfect → would have + V3</td></tr>
+        </tbody>
+      </table>
+
+      <div class="keystone">
+        <span class="tag">KUNCI UTAMA TOEFL STRUCTURE</span>
+        Cari Subject → tentukan jumlahnya → cari petunjuk waktu → tentukan tense → cek pola grammar.
+      </div>
+    </section>
+
+  </main>
+</div>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

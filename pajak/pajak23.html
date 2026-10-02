@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemeriksaan dan Penyidikan Pajak - MySkill.id</title>
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #1e3a8a;
+            --accent-color: #dc2626;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --info-color: #0284c7;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        header .source {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            white-space: nowrap;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 600;
+        }
+
+        section h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        section h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin: 1rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Box Styles */
+        .legal-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid var(--info-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .legal-box h3, .legal-box h4 {
+            color: var(--info-color);
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border: 2px solid var(--danger-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .case-study h2, .case-study h3 {
+            color: var(--danger-color);
+        }
+
+        .answer-box {
+            background: #f0fdf4;
+            border: 2px solid var(--success-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .answer-box h4 {
+            color: #065f46;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid var(--warning-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: #78350f;
+        }
+
+        .formula {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px dashed var(--border-color);
+        }
+
+        /* Law Reference */
+        .law-ref {
+            background: #f8fafc;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--primary-color);
+            font-style: italic;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            background: #e2e8f0;
+            height: 200px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Flow Chart */
+        .flow-chart {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .flow-chart p {
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem 0;
+        }
+
+        .flow-step::before {
+            content: "↓";
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header .subtitle {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1.25rem;
+            }
+
+            nav .nav-container {
+                padding: 0.5rem;
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+
+            ul, ol {
+                padding-left: 1.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            header {
+                background: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #fef3c7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav class="no-print">
+        <div class="nav-container">
+            <a href="#dasar-hukum">Dasar Hukum</a>
+            <a href="#pemeriksaan">Pemeriksaan Pajak</a>
+            <a href="#penyidikan">Penyidikan</a>
+            <a href="#latar-belakang">Latar Belakang</a>
+            <a href="#tujuan">Tujuan</a>
+            <a href="#kriteria">Kriteria</a>
+            <a href="#jenis">Jenis Pemeriksaan</a>
+            <a href="#wewenang">Wewenang</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#pertanyaan">Pertanyaan</a>
+            <a href="#kunci-jawaban">Kunci Jawaban</a>
+            <a href="#kesimpulan">Kesimpulan</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Pemeriksaan dan Penyidikan Pajak</h1>
+        <p class="subtitle">Corporate Tax Series - Accounting, Finance and Tax Path</p>
+        <p class="source">MySkill.id | 21 Juni 2024</p>
+    </header>
+
+    <main class="container">
+        <!-- Dasar Hukum -->
+        <section id="dasar-hukum">
+            <h2>⚖️ Dasar Hukum</h2>
+            
+            <div class="legal-box">
+                <h3>Pemeriksaan Pajak</h3>
+                <p><strong>Pemeriksaan pajak</strong> merupakan serangkaian kegiatan menghimpun dan mengolah data, keterangan, dan/atau bukti yang dilaksanakan secara objektif dan profesional berdasarkan suatu standar pemeriksaan untuk menguji kepatuhan pemenuhan kewajiban perpajakan dan/atau untuk tujuan lain dalam rangka melaksanakan ketentuan peraturan perundang-undangan perpajakan.</p>
+                <div class="law-ref">Dasar hukum: Pasal 1 angka (25) UU KUP</div>
+                <div class="law-ref">Dasar Hukum Pemeriksaan: Pasal 29 ayat (1) UU KUP</div>
+                <p>Dalam pasal ini Direktorat Jenderal Pajak diberikan kewenangan untuk melakukan pemeriksaan untuk menguji kepatuhan pemenuhan kewajiban perpajakan Wajib Pajak dan untuk tujuan lain dalam rangka melaksanakan ketentuan peraturan perundang-undangan perpajakan.</p>
+                <div class="law-ref">PMK No 18/PMK.03/2021: Berisi tentang semua ketentuan terkait pemeriksaan pajak. Dijelaskan apa saja bentuk pemeriksaan pajak, tata cara pelaksanaan pemeriksaan pajak, hak dan kewajiban Wajib Pajak maupun petugas pajak, dan lain sebagainya.</div>
+            </div>
+
+            <div class="legal-box">
+                <h3>Penyidikan Pajak</h3>
+                <p><strong>Penyidikan pajak</strong> dalam hal tindak pidana di bidang perpajakan adalah serangkaian tindakan yang dilakukan oleh penyidik untuk mencari serta mengumpulkan bukti yang mana dengan bukti itu membuat terang tindak pidana di bidang perpajakan yang terjadi serta menemukan tersangkanya.</p>
+                <p>Dengan kata lain, kegiatan penyidikan terhadap tindak pidana ini dapat dilakukan sesuai dengan ketentuan hukum, yang berlaku di dalam UU (Undang-Undang) hukum acara pidana.</p>
+                <div class="law-ref">Dasar hukum: Pasal 1 angka (31) UU KUP</div>
+                <div class="law-ref">Dasar Hukum Penyidikan: Pasal 43A — 44B UU KUP</div>
+                <p>Merupakan Bab IX dari UU KUP yang membahas secara khusus tentang penyidikan. Intinya, jika terdapat informasi, data, laporan, dan pengaduan, Direktorat Jenderal Pajak wajib melakukan pemeriksaan bukti permulaan sebelum dilanjutkan dengan penyidikan.</p>
+                <p>Hal ini terjadi ketika terdapat Wajib Pajak yang melakukan pelanggaran ketentuan perpajakan dan mengakibatkan terjadinya kerugian terhadap kas negara.</p>
+            </div>
+        </section>
+
+        <!-- Latar Belakang -->
+        <section id="latar-belakang">
+            <h2>📋 Latar Belakang Terjadi Pemeriksaan</h2>
+            <p>Pajak Penghasilan yang dikelola oleh Pemerintah Pusat, melalui Direktorat Jenderal Pajak (DJP) bersifat <strong class="highlight">self assessment</strong>. Artinya semua perhitungan, pembayaran dan pelaporan dilakukan sendiri oleh Wajib Pajak sesuai ketentuan berlaku.</p>
+            <p>Namun, DJP tetap berwenang untuk menguji kebenaran atas pajak yang telah tertuang dalam Surat Pemberitahuan baik tahunan maupun masa yang telah dilaporkan oleh Wajib Pajak.</p>
+            <p><strong>Tidak semua transaksi perpajakan Wajib Pajak akan dilakukan pemeriksaan oleh DJP.</strong> Terhadap Wajib Pajak yang diperiksa bisa dilakukan pemeriksaan hingga lima tahun pajak kebelakang.</p>
+        </section>
+
+        <!-- Tujuan Pemeriksaan -->
+        <section id="tujuan">
+            <h2>🎯 Tujuan Pemeriksaan Pajak</h2>
+            
+            <h3>Uji Kepatuhan Pemenuhan Kewajiban Perpajakan</h3>
+            <p>Dalam hal menguji kepatuhan kewajiban perpajakan, terdapat ruang lingkup berupa batasan jenis dan masa pajak yang diperiksa, yaitu bisa berupa satu, beberapa, atau seluruh jenis pajak (<em>single tax</em> atau <em>all taxes</em>), untuk satu atau beberapa masa pajak, bagian tahun pajak, atau tahun pajak dalam tahun lalu maupun tahun berjalan.</p>
+            
+            <h3>Tujuan Lain</h3>
+            <p>Untuk pemeriksaan tujuan lain, ruang lingkupnya adalah tentang penentuan, pencocokan, atau pengumpulan materi yang berkaitan dengan tujuan pemeriksaan.</p>
+        </section>
+
+        <!-- Kriteria Pemeriksaan -->
+        <section id="kriteria">
+            <h2>✅ Kriteria Pemeriksaan</h2>
+            
+            <h3>Kriteria Pemeriksaan Uji Kepatuhan</h3>
+            <p>Atas Wajib Pajak yang memenuhi kriteria berikut, DJP dapat melakukan pemeriksaan Uji Kepatuhan:</p>
+            <ol>
+                <li>Wajib Pajak yang mengajukan permohonan pengembalian kelebihan pembayaran pajak sebagaimana dimaksud dalam Pasal 17B UU KUP;</li>
+                <li>Terdapat data konkret, yaitu data faktur, data bukti potong, data lain terkait Wajib Pajak yang tidak melaporkan SPT, yang menyebabkan pajak yang terutang tidak atau kurang dibayar;</li>
+                <li>Wajib Pajak menyampaikan SPT yang menyatakan lebih bayar, selain yang mengajukan permohonan pengembalian kelebihan pembayaran pajak sebagaimana dimaksud pada angka 1;</li>
+                <li>Wajib Pajak yang telah diberikan pengembalian pendahuluan kelebihan pembayaran pajak;</li>
+                <li>Wajib Pajak menyampaikan SPT yang menyatakan rugi;</li>
+                <li>Wajib Pajak melakukan penggabungan, peleburan, pemekaran, likuidasi, pembubaran, atau akan meninggalkan Indonesia untuk selama-lamanya;</li>
+                <li>Wajib Pajak melakukan perubahan tahun buku atau metode pembukuan atau karena dilakukannya penilaian kembali aktiva tetap;</li>
+                <li>Wajib Pajak tidak menyampaikan atau menyampaikan SPT tetapi melampaui jangka waktu yang telah ditetapkan dalam surat teguran yang terpilih untuk dilakukan pemeriksaan berdasarkan analisis risiko;</li>
+                <li>Wajib Pajak menyampaikan SPT yang terpilih untuk dilakukan pemeriksaan berdasarkan analisis risiko;</li>
+                <li>Pengusaha Kena Pajak (PKP) tidak melakukan penyerahan Barang Kena Pajak dan/atau Jasa Kena Pajak dan/atau ekspor Barang Kena Pajak dan/atau Jasa Kena Pajak dan telah diberikan pengembalian Pajak Masukan atau telah mengkreditkan Pajak Masukan sebagaimana dimaksud dalam Pasal 9 ayat (6e) UU PPN.</li>
+            </ol>
+            
+            <h3>Kriteria Pemeriksaan Tujuan Lain</h3>
+            <p>Pemeriksaan tujuan lain dapat dilakukan dalam rangka:</p>
+            <ol>
+                <li>Pemberian Nomor Pokok Wajib Pajak (NPWP) secara jabatan selain yang dilakukan berdasarkan verifikasi;</li>
+                <li>Penghapusan NPWP selain yang dilakukan berdasarkan verifikasi;</li>
+                <li>Pengukuhan atau pencabutan pengukuhan PKP selain yang dilakukan berdasarkan verifikasi;</li>
+                <li>Wajib Pajak mengajukan keberatan;</li>
+                <li>Pengumpulan bahan guna penyusunan norma penghitungan penghasilan neto;</li>
+                <li>Pencocokan data dan/atau alat keterangan;</li>
+                <li>Penentuan Wajib Pajak berlokasi di daerah terpencil;</li>
+                <li>Penentuan satu atau lebih tempat terutang PPN;</li>
+                <li>Pemeriksaan dalam rangka penagihan pajak;</li>
+                <li>Penentuan saat produksi dimulai atau memperpanjang jangka waktu kompensasi kerugian sehubungan dengan pemberian fasilitas perpajakan;</li>
+                <li>Memenuhi permintaan informasi dari negara mitra Perjanjian Penghindaran Pajak Berganda.</li>
+            </ol>
+        </section>
+
+        <!-- Jenis Pemeriksaan -->
+        <section id="jenis">
+            <h2>📑 Jenis Pemeriksaan Pajak</h2>
+            <p>Jenis Pemeriksaan Pajak di Indonesia terdiri dari dua jenis:</p>
+            
+            <h3>1. Pemeriksaan Kantor</h3>
+            <p>Pemeriksaan pajak yang dilakukan di kantor Direktorat Jenderal Pajak (DJP). Pemeriksaan ini biasanya dilakukan untuk menguji kepatuhan pemenuhan kewajiban perpajakan dan untuk tujuan lain, tergantung tujuan dan kriteria pemeriksaan pajak yang dilakukan. Wajib Pajak harus memenuhi panggilan untuk menghadiri pemeriksaan, memperlihatkan dokumen yang relevan, dan memberikan keterangan yang diperlukan.</p>
+            
+            <h3>2. Pemeriksaan Lapangan</h3>
+            <p>Pemeriksaan pajak yang dilakukan di tempat tinggal atau tempat usaha Wajib Pajak. Pemeriksaan ini juga dapat dilakukan untuk menguji kepatuhan pemenuhan kewajiban perpajakan dan untuk tujuan lain. Pemeriksaan lapangan dapat diperpanjang 2 bulan jika terjadi hal-hal seperti pemeriksaan diperluas ke Masa Pajak, Bagian Tahun Pajak, atau Tahun Pajak lainnya, atau jika terdapat konfirmasi atau permintaan data/keterangan kepada pihak ketiga.</p>
+            
+            <p><strong>Contoh-contoh pemeriksaan:</strong></p>
+            <ul>
+                <li>Pemeriksaan lebih bayar: Dilakukan dengan jenis pemeriksaan lapangan.</li>
+                <li>Pemeriksaan data konkret: Dilakukan dengan jenis pemeriksaan kantor.</li>
+            </ul>
+            <p>Dalam pelaksanaan pemeriksaan, Wajib Pajak harus memenuhi panggilan, memperlihatkan dokumen yang relevan, dan memberikan keterangan yang diperlukan. Mereka juga berhak meminta penjelasan tentang alasan dan tujuan pemeriksaan, meminta untuk memperlihatkan Tanda Pengenal Pemeriksa Pajak dan Surat Perintah Pemeriksaan, dan memberikan pendapat atau penilaian atas pelaksanaan pemeriksaan.</p>
+        </section>
+
+        <!-- Wewenang Pemeriksa -->
+        <section id="wewenang">
+            <h2>👔 Wewenang dan Kewajiban Pemeriksa Pajak</h2>
+            
+            <h3>Wewenang Pemeriksa Pajak</h3>
+            <p><strong>Fungsional Pemeriksa Pajak:</strong></p>
+            <ol>
+                <li>Melakukan pemeriksaan untuk tujuan lain, seperti:</li>
+                    <ul>
+                        <li>Pemeriksaan lebih bayar restitusi</li>
+                        <li>Pemeriksaan SPT Tahunan rugi</li>
+                        <li>Pemeriksaan berdasarkan analisis risiko</li>
+                        <li>Pemeriksaan likuidasi / merger</li>
+                        <li>Pemeriksaan pindah tahun buku</li>
+                        <li>Pemeriksaan PKP yang belum beroperasi namun telah mengkreditkan pajak masukan</li>
+                    </ul>
+                <li><strong>Account Representative:</strong> Melakukan pemeriksaan data konkret</li>
+                <li><strong>Fungsional Penyuluh Perpajakan:</strong> Melakukan pemeriksaan pengembalian pendahuluan</li>
+            </ol>
+            
+            <p><strong>Pemeriksaan Tujuan Lain:</strong> Untuk pemeriksaan tujuan lain, dilakukan oleh pegawai pelaksana atau jabatan tertentu pada Direktorat Jenderal Pajak sesuai dengan kriteria pemeriksaan.</p>
+            
+            <p><strong>Wewenang Pemeriksa Pajak dalam menjalankan tugas:</strong></p>
+            <ol>
+                <li>Melihat / meminjam buku, catatan, dan dokumen yang menjadi dasar pembukuan / pencatatan Wajib Pajak</li>
+                <li>Mengakses / mengunduh data yang dikelola secara elektronik</li>
+                <li>Memasuki dan memeriksa tempat, barang tidak bergerak maupun bergerak yang diduga sebagai penyimpanan buku, catatan, dokumen dasar pembukuan (khusus jenis pemeriksaan lapangan)</li>
+                <li>Meminta keterangan lisan dan / atau tertulis dari Wajib Pajak</li>
+                <li>Meminta pada Wajib Pajak untuk membantu dalam menyediakan tenaga ahli / peralatan khusus untuk mengakses data elektronik, untuk membuka akses barang bergerak atau tidak bergerak, dan menyediakan ruangan khusus tempat dilakukannya pemeriksaan lapangan di tempat Wajib Pajak</li>
+                <li>Melakukan penyegelan tempat atau ruang tertentu serta barang bergerak / tidak bergerak, dalam kondisi Wajib Pajak menolak untuk memberikan akses tempat / barang tersebut dalam rangka pemeriksaan lapangan.</li>
+                <li>Meminta keterangan dan/ atau bukti yang diperlukan kepada pihak ketiga yang memiliki hubungan dengan Wajib Pajak.</li>
+            </ol>
+            
+            <h3>Kewajiban Pemeriksa Pajak</h3>
+            <ol>
+                <li>Wajib menyampaikan Surat Pemberitahuan Pemeriksaan dan Surat Panggilan Dalam Rangka Pemeriksaan.</li>
+                <li>Memperlihatkan tanda pengenal Pemeriksa Pajak dan Surat Perintah Pemeriksaan (SP2) kepada Wajib Pajak saat melakukan pemeriksaan.</li>
+                <li>Memperlihatkan surat perubahan tim pemeriksa apabila susunan tim pemeriksa terjadi perubahan.</li>
+                <li>Menyampaikan kuesioner pemeriksaan kepada Wajib Pajak</li>
+                <li>Melakukan pertemuan dengan Wajib Pajak dan menjelaskan tentang:
+                    <ol>
+                        <li>Alasan dan tujuan pemeriksaan</li>
+                        <li>Hak dan kewajiban Wajib Pajak dalam proses pemeriksaan</li>
+                        <li>Hak Wajib Pajak mengajukan untuk dilakukan Quality Assurance, dalam hal terdapat dasar hukum yang belum disepakati antara Wajib Pajak dan Pemeriksa Pajak</li>
+                    </ol>
+                </li>
+                <li>Menuangkan hasil pertemuan dengan Wajib Pajak dalam berita acara pertemuan dengan Wajib Pajak.</li>
+                <li>Menyampaikan Surat Pemberitahuan Hasil Pemeriksaan (SPHP) kepada Wajib Pajak.</li>
+                <li>Memberikan hak untuk hadir kepada Wajib Pajak dalam rangka Pembahasan Akhir Hasil Pemeriksaan pada waktu yang telah ditentukan.</li>
+                <li>Melakukan pembinaan kepada Wajib Pajak dalam memenuhi kewajiban perpajakannya.</li>
+                <li>Mengembalikan buku, catatan dan/atau dokumen yang dipinjam dari Wajib Pajak.</li>
+                <li>Merahasiakan kepada pihak lain yang tidak berhak atas segala sesuatu yang diketahui atau diberitahukan kepadanya oleh Wajib Pajak dalam rangka pemeriksaan.</li>
+            </ol>
+            
+            <h3>Hak & Kewajiban Wajib Pajak</h3>
+            <p>Yang menjadi hak Wajib Pajak dalam rangka pemeriksaan pada intinya adalah memastikan kewajiban Pemeriksa Pajak yang telah diuraikan sebelumnya telah dilaksanakan.</p>
+            <p>Sedangkan untuk kewajiban Wajib Pajak dalam rangka pemeriksaan, adalah semua poin yang harus dipenuhi Wajib Pajak dalam kewenangan Pemeriksa Pajak.</p>
+        </section>
+
+        <!-- Metode Pemeriksaan -->
+        <section id="metode">
+            <h2>🔍 Metode, Prosedur dan Jangka Waktu Pemeriksaan</h2>
+            
+            <h3>Metode Pemeriksaan</h3>
+            <p>Merupakan teknik pemeriksaan dan prosedur pemeriksaan yang dilakukan terhadap buku, catatan, dan dokumen serta data, informasi, dan keterangan lain</p>
+            <ul>
+                <li><strong>Teknik pemeriksaan:</strong> cara-cara pengumpulan bukti, pengujian, dan / atau pembuktian yang dikembangkan oleh Pemeriksa Pajak untuk meyakini kebenaran pos dalam laporan keuangan yang diperiksa.</li>
+                <li><strong>Prosedur pemeriksaan:</strong> serangkaian langkah dalam suatu teknik pemeriksaan, berupa petunjuk rinci yang biasanya tertulis dalam bentuk perintah, untuk dilakukan oleh Pemeriksa Pajak.</li>
+            </ul>
+            
+            <h4>Metode Langsung</h4>
+            <p>Menguji kebenaran pos-pos dalam SPT diperiksa secara langsung terhadap buku, catatan, dan dokumen terkait dengan pos-pos yang diperiksa</p>
+            
+            <h4>Metode Tidak Langsung</h4>
+            <p>Penguji kebenaran pos-pos dalam SPT diperiksa secara tidak langsung melalui suatu pendekatan perhitungan tertentu</p>
+            <ul>
+                <li>Dapat diterapkan untuk mendukung metode langsung atau melakukan identifikasi masalah</li>
+                <li>Diperbolehkan hanya menggunakan metode tidak langsung apabila metode langsung terbukti tidak dapat digunakan</li>
+            </ul>
+            
+            <p><strong>Metode tidak langsung yang digunakan:</strong></p>
+            <ol>
+                <li>Transaksi Tunai dan Bank</li>
+                <li>Sumber dan Penggunaan Dana</li>
+                <li>Perhitungan Rasio</li>
+                <li>Satuan dan/atau Volume</li>
+                <li>Perhitungan Biaya Hidup</li>
+                <li>Pertambahan Kekayaan Bersih (Net Worth)</li>
+            </ol>
+            
+            <h4>Teknik Pemeriksaan</h4>
+            <p><strong>Teknik-teknik pemeriksaan yang dapat digunakan:</strong></p>
+            <ol>
+                <li>Pemanfaatan informasi internal / eksternal DJP</li>
+                <li>Pengujian keabsahan dokumen</li>
+                <li>Evaluasi</li>
+                <li>Analisis angka-angka</li>
+                <li>Penelusuran bukti</li>
+                <li>Pengujian keterkaitan</li>
+                <li>Ekualisasi atau rekonsiliasi</li>
+                <li>Permintaan keterangan atau bukti</li>
+                <li>Teknik Audit Berbantuan Komputer (TABK)</li>
+                <li>Konfirmasi</li>
+                <li>Inspeksi</li>
+                <li>Evaluasi</li>
+                <li>Pengujian kebenaran fisik</li>
+                <li>Pengujian kebenaran perhitungan matematis</li>
+                <li>Pengujian keterkaitan</li>
+                <li>Wawancara</li>
+                <li>Uji petik (sampling)</li>
+                <li>Teknik-Teknik pemeriksaan lainnya</li>
+            </ol>
+            
+            <h3>Prosedur Pemeriksaan</h3>
+            <p>Tertuang dalam PMK №18 Tahun 2021, prosedur pemeriksaan meliputi:</p>
+            <ol>
+                <li><strong>Wajib Pajak menerima Surat Pemberitahuan Pemeriksaan</strong><br>
+                    Surat Pemberitahuan akan disampaikan kepada Wajib Pajak melalui pos/ekspedisi lainnya atau secara elektronik. Selain itu Pemeriksa Pajak juga akan menunjukkan Surat Perintah Pemeriksaan (SP2). Dalam menjalani tahapan pemeriksaan diharapkan kepada Wajib Pajak untuk kooperatif, dan berhak untuk didampingi oleh konsultan pajak.</li>
+                
+                <li><strong>Wajib Pajak menerima Surat Panggilan Dalam Rangka Pemeriksaan</strong><br>
+                    Surat Panggilan Dalam Rangka Pemeriksaan disampaikan kepada Wajib Pajak, berisi tentang hari, tanggal, dan tempat Wajib Pajak dipanggil untuk memberikan keterangan terkait pemeriksaan. Terdapat juga Permintaan Peminjaman Buku, Catatan, Dokumen yang harus dipenuhi oleh Wajib Pajak.</li>
+                
+                <li><strong>Wajib Pajak memenuhi panggilan dalam rangka pemeriksaan</strong><br>
+                    Pada tanggal yang ditentukan, Wajib Pajak dapat hadir untuk memberikan keterangan. Biasanya pada tahap ini akan dilakukan penandatangan Berita Acara Pertemuan, Pakta Integritas, dan Berita Acara Pemberian Keterangan.<br>
+                    Namun jika Wajib Pajak tidak dapat hadir sesuai tanggal panggilan, Pemeriksa Pajak akan membuat berita acara ketidakhadiran Wajib Pajak, dan selanjutnya akan dilakukan penjadwalan ulang untuk pertemuan pertama.</li>
+                
+                <li><strong>Proses Pemeriksaan Berlangsung</strong><br>
+                    Proses pemeriksaan berlangsung dalam jangka waktu tertentu tergantung jenis pemeriksaannya. Dalam tahap ini Pemeriksa Pajak akan mengumpulkan buku, catatan, dokumen atau informasi lain untuk selanjutnya menghitung kewajiban pajak Wajib Pajak yang diperiksa.</li>
+                
+                <li><strong>SPHP diterbitkan dan disampaikan kepada Wajib Pajak</strong><br>
+                    Surat Pemberitahuan Hasil Pemeriksaan (SPHP) berisi mengenai hasil temuan pemeriksaan yang dijabarkan pada setiap pos-pos SPT yang dikoreksi, meliputi nilai koreksi, dasar koreksi, perhitungan sementara pokok pajak terutang, dan perhitungan sementara sanksi administrasi.<br>
+                    Atas SPHP yang disampaikan Pemeriksa Pajak, Wajib Pajak menyampaikan tanggapan tertulis atas SPHP tersebut, apakah menyetujui seluruhnya, menyetujui sebagian, atau tidak setuju seluruhnya.</li>
+                
+                <li><strong>Pembahasan akhir dan penandatanganan dokumen</strong><br>
+                    Setelah Wajib Pajak menyampaikan tanggapan tertulis, Pemeriksa Pajak akan mengundang Wajib Pajak untuk melakukan pembahasan akhir, dilanjutkan untuk penandatanganan dokumen pembahasan akhir, yaitu:<br>
+                    Risalah Pembahasan<br>
+                    Ikhtisar Hasil Pembahasan Akhir<br>
+                    Penerbitan Surat Kertetapan Pajak (SKP)<br>
+                    Berdasarkan Risalah Pembahasan dan Ihtisar Hasil Pembahasan Akhir, Pemeriksa Pajak akan membuat Laporan Hasil Pemeriksaan dan Nota Hitung sebagai dasar penerbitan Surat Ketetapan Pajak. Surat ini bisa berupa:<br>
+                    Surat Ketetapan Pajak Nihil (SKPN)<br>
+                    Surat Ketetapan Pajak Kurang Bayar (SKPKB)<br>
+                    Surat Ketetapan Pajak Lebih Bayar (SKPLB)<br>
+                    Dalam hal Wajib Pajak menyetujui hasil SKPKB, jatuh tempo pembayarannya adalah 30 hari sejak diterbitkannya SKPKB. Namun jika Wajib Pajak ingin mengajukan keberatan, permohonan tersebut dapat disampaikan dalam jangka waktu 3 bulan sejak tanggal dikirim SKP.</li>
+            </ol>
+            
+            <h3>Jangka Waktu Pemeriksaan</h3>
+            <p><strong>Pemeriksaan Kantor dan Lapangan</strong></p>
+            <ul>
+                <li><strong>Pemeriksaan Kantor:</strong> Wajib Pajak harus memenuhi panggilan dan meminjamkan buku, catatan, dokumen dalam waktu 4 bulan sejak tanggal Wajib Pajak menerima panggilan.</li>
+                <li><strong>Pemeriksaan Lapangan:</strong> Pemeriksa Pajak dapat menerbitkan Surat Peringatan I dalam waktu 2 minggu dan Surat Peringatan II dalam waktu 3 minggu sejak permohonan disampaikan.</li>
+            </ul>
+            
+            <p><strong>Jangka Waktu Pemenuhan Buku, Catatan, Dokumen</strong></p>
+            <p>Pemenuhan Buku, Catatan, Dokumen: Wajib Pajak wajib meminjamkan buku, catatan, dokumen paling lama 1 bulan sejak disampaikannya permohonan peminjaman buku, catatan, dokumen oleh Pemeriksa Pajak.</p>
+            
+            <p><strong>Jangka Waktu Pembahasan</strong></p>
+            <p><strong>Tanggapan Tertulis Atas SPHP:</strong> Wajib Pajak harus membuat tanggapan tertulis atas Surat Pemberitahuan Hasil Pemeriksaan (SPHP) dalam waktu 7 hari sejak SPHP disampaikan dan diterima Wajib Pajak. Namun, Wajib Pajak dapat melakukan perpanjangan waktu tanggapan tertulis selama 3 hari, yang disampaikan kepada DJP maksimal pada hari batas waktu terakhir 7 hari tersebut.</p>
+        </section>
+
+        <!-- Penyidikan -->
+        <section id="penyidikan">
+            <h2>🔎 Penyidikan Pajak</h2>
+            
+            <h3>Latar Belakang Penyidikan</h3>
+            <p><strong>Penyidikan Tindak Pidana Perpajakan:</strong> Penyidikan terjadi ketika adanya bukti permulaan, yaitu keadaan, bukti, atau benda yang memberi petunjuk adanya suatu tindak pidana perpajakan yang dilakukan.</p>
+            <p><strong>Tindak Pidana Perpajakan:</strong> Tindak pidana perpajakan adalah kondisi dimana terjadi pelanggaran dalam bidang pajak yang secara jelas mengakibatkan kerugian kas negara.</p>
+            <p><strong>Penyidikan:</strong> Penyidikan tindak pidana dalam perpajakan hanya boleh dilakukan oleh Pejabat Pegawai Negeri Sipil (PPNS) tertentu di lingkungan DJP yang diberi wewenang khusus sebagai Penyidik.</p>
+            
+            <h3>Proses Penyidikan</h3>
+            <p>Untuk dapat melakukan penyidikan, DJP melalui PPNS yang berdasarkan informasi, data, laporan, dan pengaduan, berwenang untuk melakukan pemeriksaan bukti permulaan, sebelum dilakukan penyidikan tindak pidana perpajakan.</p>
+            <p>Dalam menjalankan penyidikan tindak pidana perpajakan, PPNS harus memberitahukan dimulainya penyidikan. Kemudian, menyampaikan hasil penyidikan kepada penuntut umum, melalui penyidik pejabat Kepolisian Negara Republik Indonesia (Polri) sesuai dengan ketentuan yang diatur dalam Undang-Undang Hukum Acara Pidana.</p>
+            
+            <h3>Wewenang Penyidik Pajak</h3>
+            <p><strong>Wewenang Penyidik:</strong></p>
+            <ol>
+                <li>Menerima, mencari, mengumpulkan, dan meneliti keterangan / laporan terkait tindak pidana perpajakan agar keterangan / laporan tersebut menjadi lengkap</li>
+                <li>Meneliti, mencari, dan mengumpulkan keterangan tentang Orang Pribadi / Badan tentang kebenaran terkait tindak pidana perpajakan</li>
+                <li>Meminta keterangan / bahan bukti</li>
+                <li>Memeriksa buku, catatan, dan dokumen lain berkenaan dengan tindak pidana di bidang perpajakan</li>
+                <li>Melakukan penggeledahan untuk mendapat barang bukti</li>
+                <li>Meminta bantuan ahli dalam rangka pelaksanaan tugas penyidikan</li>
+                <li>Melarang seseorang meninggalkan suatu tempat pada saat pemeriksaan berlangsung</li>
+                <li>Memotret seseorang yang berkaitan dengan tindak pidana perpajakan</li>
+                <li>Memanggil orang untuk didengar keterangan, diperiksa sebagai tersangka atau saksi</li>
+                <li>Melakukan Pemblokiran harta kekayaan milik tersangka</li>
+                <li>Menghentikan penyidikan</li>
+                <li>Melakukan tindakan lain yang diperlukan untuk kelancaran penyidikan tindak pidana perpajakan</li>
+            </ol>
+            
+            <h3>Pemberhentian Penyidikan</h3>
+            <p>PPNS dapat menghentikan penyidikan dalam hal:</p>
+            <ol>
+                <li>Wajib Pajak melakukan pengungkapan ketidakbenaran atas perbuatannya sesuai dengan yang diatur dalam Pasal 8 ayat (3) UU KUP, sepanjang dimulainya penyidikan belum diberitahukan kepada Penuntut Umum.</li>
+                <li>Tidak terdapat cukup bukti;</li>
+                <li>Peristiwa tersebut bukan merupakan tindak pidana di bidang perpajakan;</li>
+                <li>Batal demi hukum, dalam artian adanya ketidakpatuhan hukum yang mendasar.</li>
+            </ol>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section id="studi-kasus">
+            <div class="case-study">
+                <h2>📊 STUDI KASUS PEMERIKSAAN DAN PENYIDIKAN PAJAK</h2>
+                
+                <h3>A. Identitas Wajib Pajak</h3>
+                <table>
+                    <tr><th>Nama</th><td>PT Arunika Digital Indonesia</td></tr>
+                    <tr><th>NPWP</th><td>01.234.567.8-012.000</td></tr>
+                    <tr><th>Bidang Usaha</th><td>Perdagangan perangkat elektronik dan jasa teknologi informasi</td></tr>
+                    <tr><th>Tahun Pajak</th><td>2024</td></tr>
+                    <tr><th>Status</th><td>Pengusaha Kena Pajak (PKP)</td></tr>
+                </table>
+                <p>PT Arunika Digital Indonesia merupakan perusahaan yang bergerak dalam perdagangan komputer, laptop, dan perangkat pendukung teknologi serta memberikan jasa pemeliharaan sistem kepada perusahaan lain.</p>
+                
+                <p>Pada SPT Tahunan PPh Badan Tahun Pajak 2024, perusahaan melaporkan:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Uraian</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Peredaran usaha</td><td>Rp25.000.000.000</td></tr>
+                        <tr><td>Harga pokok penjualan</td><td>Rp15.000.000.000</td></tr>
+                        <tr><td>Beban operasional</td><td>Rp6.000.000.000</td></tr>
+                        <tr><td>Laba komersial</td><td>Rp4.000.000.000</td></tr>
+                        <tr><td>Penghasilan kena pajak menurut SPT</td><td>Rp3.800.000.000</td></tr>
+                        <tr><td>PPh Badan terutang menurut SPT</td><td>Rp836.000.000</td></tr>
+                        <tr><td>Kredit pajak</td><td>Rp700.000.000</td></tr>
+                        <tr><td>PPh Pasal 29</td><td>Rp136.000.000</td></tr>
+                    </tbody>
+                </table>
+                <p>Dalam SPT tersebut, PT Arunika menyatakan bahwa seluruh transaksi penjualan dan pembelian telah dicatat dan dilaporkan.</p>
+            </div>
+
+            <h3>B. Pemicu Pemeriksaan Pajak</h3>
+            <p>Pada tahun 2025, DJP melakukan analisis risiko terhadap data perpajakan PT Arunika.</p>
+            <p>Dari hasil pencocokan data, DJP menemukan beberapa perbedaan:</p>
+            <ol>
+                <li>Data penjualan dari pihak ketiga menunjukkan transaksi sebesar <strong>Rp27.000.000.000</strong>, sedangkan omzet dalam SPT hanya <strong>Rp25.000.000.000</strong>.</li>
+                <li>Terdapat faktur pajak keluaran sebesar <strong>Rp2.000.000.000</strong> yang belum tercermin dalam pelaporan perusahaan.</li>
+                <li>PT Arunika mengkreditkan Pajak Masukan sebesar <strong>Rp1.500.000.000</strong>.</li>
+                <li>Dari hasil pencocokan dengan pemasok, ditemukan Pajak Masukan sebesar <strong>Rp300.000.000</strong> yang dokumen pendukungnya tidak dapat segera ditunjukkan.</li>
+                <li>Perusahaan membebankan biaya representasi sebesar <strong>Rp200.000.000</strong>, tetapi tidak memiliki daftar nominatif yang memadai.</li>
+                <li>Terdapat pembayaran kepada pemegang saham sebesar <strong>Rp150.000.000</strong> yang dicatat sebagai biaya perusahaan.</li>
+            </ol>
+            <p>Berdasarkan analisis risiko tersebut, DJP memutuskan untuk melakukan <strong>pemeriksaan untuk menguji kepatuhan pemenuhan kewajiban perpajakan</strong> PT Arunika.</p>
+
+            <h3>C. Pelaksanaan Pemeriksaan</h3>
+            <p>PT Arunika menerima Surat Pemberitahuan Pemeriksaan dan Surat Panggilan Dalam Rangka Pemeriksaan.</p>
+            <p>Pemeriksa Pajak kemudian meminta perusahaan menyediakan:</p>
+            <ul>
+                <li>buku besar;</li>
+                <li>jurnal transaksi;</li>
+                <li>laporan keuangan;</li>
+                <li>SPT Tahunan PPh Badan;</li>
+                <li>SPT Masa PPN;</li>
+                <li>faktur pajak;</li>
+                <li>bukti pembayaran;</li>
+                <li>rekening koran;</li>
+                <li>kontrak dengan pelanggan;</li>
+                <li>kontrak dengan pemasok;</li>
+                <li>daftar aset;</li>
+                <li>dokumen biaya;</li>
+                <li>serta data elektronik yang berkaitan dengan transaksi.</li>
+            </ul>
+            <p>Pemeriksa juga memperlihatkan <strong>tanda pengenal Pemeriksa Pajak dan Surat Perintah Pemeriksaan (SP2)</strong>.</p>
+            <p>PT Arunika menunjuk konsultan pajak untuk mendampingi perusahaan selama proses pemeriksaan.</p>
+
+            <h3>D. Temuan Pemeriksaan</h3>
+            <p>Setelah melakukan pemeriksaan terhadap pembukuan dan dokumen perusahaan, Pemeriksa Pajak menemukan beberapa koreksi.</p>
+            
+            <h4>1. Koreksi omzet</h4>
+            <ul>
+                <li>Omzet sebenarnya: <strong>Rp27.000.000.000</strong></li>
+                <li>Omzet yang dilaporkan: <strong>Rp25.000.000.000</strong></li>
+                <li>Koreksi positif: <strong>Rp27.000.000.000 − Rp25.000.000.000 = Rp2.000.000.000</strong></li>
+            </ul>
+
+            <h4>2. Koreksi biaya representasi</h4>
+            <p>PT Arunika membebankan biaya representasi sebesar Rp200.000.000.</p>
+            <p>Namun, sebesar Rp100.000.000 tidak didukung daftar nominatif dan bukti yang memadai.</p>
+            <p>Pemeriksa menganggap bagian tersebut tidak dapat menjadi pengurang penghasilan bruto sesuai ketentuan yang berlaku.</p>
+            <p>Koreksi positif: <strong>Rp100.000.000</strong></p>
+
+            <h4>3. Pembayaran kepada pemegang saham</h4>
+            <p>Perusahaan mencatat pembayaran Rp150.000.000 kepada pemegang saham sebagai biaya perusahaan.</p>
+            <p>Setelah diperiksa, pembayaran tersebut ternyata digunakan untuk kepentingan pribadi pemegang saham dan tidak berhubungan dengan kegiatan usaha.</p>
+            <p>Koreksi positif: <strong>Rp150.000.000</strong></p>
+
+            <h4>4. Pajak Masukan</h4>
+            <p>Dari Pajak Masukan sebesar Rp1.500.000.000 yang dikreditkan perusahaan, ditemukan Rp300.000.000 yang tidak didukung dokumen yang memadai.</p>
+            <p>Maka Pajak Masukan yang dapat dikreditkan berdasarkan hasil pemeriksaan: <strong>Rp1.200.000.000</strong></p>
+            <p>Koreksi Pajak Masukan: <strong>Rp300.000.000</strong></p>
+
+            <h3>E. Penggunaan Metode Pemeriksaan</h3>
+            <p>Dalam kasus ini, Pemeriksa Pajak menggunakan <strong>metode langsung</strong> dengan membandingkan:</p>
+            <ul>
+                <li>SPT;</li>
+                <li>pembukuan;</li>
+                <li>faktur pajak;</li>
+                <li>rekening bank;</li>
+                <li>kontrak;</li>
+                <li>bukti pembayaran;</li>
+                <li>serta data pihak ketiga.</li>
+            </ul>
+            <p><strong>Selain itu, Pemeriksa melakukan beberapa teknik pemeriksaan:</strong></p>
+            <ol>
+                <li><strong>Ekualisasi/rekonsiliasi</strong> antara omzet pembukuan dengan data pihak ketiga.</li>
+                <li><strong>Konfirmasi</strong> kepada pelanggan dan pemasok.</li>
+                <li><strong>Penelusuran bukti transaksi</strong>.</li>
+                <li><strong>Analisis angka-angka</strong> dalam laporan keuangan.</li>
+                <li><strong>Pengujian keterkaitan</strong> antara transaksi penjualan dan penerimaan bank.</li>
+                <li><strong>Pengujian dokumen elektronik</strong>.</li>
+                <li><strong>Permintaan keterangan kepada pihak ketiga</strong>.</li>
+            </ol>
+            <p>Apabila pembukuan tidak dapat digunakan atau tidak memadai, Pemeriksa dapat mempertimbangkan metode tidak langsung seperti pendekatan transaksi tunai dan bank, sumber dan penggunaan dana, rasio, atau pertambahan kekayaan bersih sesuai kondisi pemeriksaan.</p>
+
+            <h3>F. Surat Pemberitahuan Hasil Pemeriksaan (SPHP)</h3>
+            <p>Setelah pemeriksaan selesai, Pemeriksa menerbitkan <strong>SPHP</strong>.</p>
+            <p>Dalam SPHP tersebut ditemukan bahwa penghasilan kena pajak perusahaan harus dikoreksi sebagai berikut:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Uraian</th>
+                        <th>Koreksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Koreksi omzet</td><td>Rp2.000.000.000</td></tr>
+                    <tr><td>Biaya representasi</td><td>Rp100.000.000</td></tr>
+                    <tr><td>Pembayaran pribadi pemegang saham</td><td>Rp150.000.000</td></tr>
+                    <tr><td><strong>Total koreksi positif</strong></td><td><strong>Rp2.250.000.000</strong></td></tr>
+                </tbody>
+            </table>
+            <p>PKP menurut SPT: <strong>Rp3.800.000.000</strong></p>
+            <p>PKP setelah pemeriksaan: <strong>Rp3.800.000.000 + Rp2.250.000.000 = Rp6.050.000.000</strong></p>
+            <p>Untuk tujuan latihan, digunakan tarif PPh Badan <strong>22%</strong>.</p>
+            <div class="formula">
+                PPh Badan setelah pemeriksaan = 22% × Rp6.050.000.000 = <strong>Rp1.331.000.000</strong>
+            </div>
+            <p>PPh Badan menurut SPT: <strong>Rp836.000.000</strong></p>
+            <p>Tambahan PPh Badan: <strong>Rp1.331.000.000 − Rp836.000.000 = Rp495.000.000</strong></p>
+            <p><em>Angka tersebut belum memperhitungkan secara rinci kredit pajak tambahan, sanksi administrasi, atau koreksi PPN.</em></p>
+
+            <h3>G. Tanggapan Wajib Pajak</h3>
+            <p>Setelah menerima SPHP, PT Arunika diberikan kesempatan untuk memberikan tanggapan tertulis.</p>
+            <p><strong>Perusahaan:</strong></p>
+            <ul>
+                <li>menyetujui koreksi omzet Rp2.000.000.000;</li>
+                <li>menyetujui koreksi biaya representasi Rp100.000.000;</li>
+                <li>tidak menyetujui koreksi pembayaran pemegang saham Rp150.000.000.</li>
+            </ul>
+            <p>PT Arunika menjelaskan bahwa pembayaran tersebut sebenarnya merupakan <strong>bonus direksi</strong>, bukan pembayaran pribadi.</p>
+            <p><strong>Perusahaan menyerahkan:</strong></p>
+            <ul>
+                <li>keputusan pemberian bonus;</li>
+                <li>bukti transfer;</li>
+                <li>notulen rapat;</li>
+                <li>dan dokumen pendukung lainnya.</li>
+            </ul>
+            <p>Pemeriksa kemudian melakukan pembahasan akhir untuk menentukan apakah koreksi tersebut tetap dipertahankan atau disesuaikan.</p>
+
+            <h3>H. Pembahasan Akhir</h3>
+            <p>Dalam pembahasan akhir, Pemeriksa dan PT Arunika sepakat bahwa:</p>
+            <ul>
+                <li>koreksi omzet Rp2.000.000.000 tetap dipertahankan;</li>
+                <li>koreksi biaya representasi Rp100.000.000 tetap dipertahankan;</li>
+                <li>koreksi pembayaran pemegang saham Rp150.000.000 dibatalkan karena perusahaan berhasil memberikan bukti bahwa pembayaran tersebut merupakan bonus yang memiliki hubungan dengan kegiatan perusahaan.</li>
+            </ul>
+            <p>Dengan demikian, total koreksi final: <strong>Rp2.000.000.000 + Rp100.000.000 = Rp2.100.000.000</strong></p>
+            <p>PKP setelah pemeriksaan: <strong>Rp3.800.000.000 + Rp2.100.000.000 = Rp5.900.000.000</strong></p>
+            <div class="formula">
+                PPh Badan = 22% × Rp5.900.000.000 = <strong>Rp1.298.000.000</strong>
+            </div>
+            <p>PPh Badan menurut SPT: <strong>Rp836.000.000</strong></p>
+            <p>Tambahan pokok PPh: <strong>Rp1.298.000.000 − Rp836.000.000 = Rp462.000.000</strong></p>
+            <p>Jika setelah proses pemeriksaan diterbitkan ketetapan kurang bayar, maka ketetapan tersebut dapat berupa <strong>SKPKB</strong>, dengan jumlah yang harus dibayar mengikuti ketetapan dan ketentuan sanksi administrasi yang berlaku.</p>
+
+            <h3>I. Munculnya Indikasi Tindak Pidana Perpajakan</h3>
+            <p>Beberapa bulan kemudian, DJP memperoleh informasi tambahan dari salah satu pemasok.</p>
+            <p>Ditemukan bahwa salah satu faktur Pajak Masukan senilai <strong>Rp300.000.000</strong> yang sebelumnya dikreditkan PT Arunika ternyata <strong>tidak pernah disertai transaksi barang yang sebenarnya</strong>.</p>
+            <p><strong>Lebih lanjut, ditemukan indikasi bahwa:</strong></p>
+            <ul>
+                <li>faktur dibuat tanpa transaksi yang sebenarnya;</li>
+                <li>terdapat komunikasi internal mengenai penggunaan faktur tersebut;</li>
+                <li>perusahaan mengetahui bahwa transaksi tersebut tidak benar;</li>
+                <li>faktur digunakan untuk mengurangi kewajiban PPN.</li>
+            </ul>
+            <p>Karena terdapat indikasi tindak pidana perpajakan, DJP melakukan <strong>pemeriksaan bukti permulaan</strong>.</p>
+
+            <h3>J. Pemeriksaan Bukti Permulaan</h3>
+            <p>Dalam pemeriksaan bukti permulaan, DJP mengumpulkan:</p>
+            <ol>
+                <li>faktur pajak;</li>
+                <li>rekening koran;</li>
+                <li>kontrak pembelian;</li>
+                <li>dokumen pengiriman barang;</li>
+                <li>data elektronik perusahaan;</li>
+                <li>keterangan pegawai;</li>
+                <li>keterangan pemasok;</li>
+                <li>komunikasi elektronik yang relevan;</li>
+                <li>dokumen pembukuan.</li>
+            </ol>
+            <p>Dari bukti tersebut ditemukan indikasi kuat bahwa transaksi dalam faktur tersebut tidak benar.</p>
+            <p>Apabila bukti permulaan menunjukkan adanya dugaan tindak pidana perpajakan dan memenuhi ketentuan yang berlaku, proses dapat dilanjutkan ke tahap <strong>penyidikan</strong> oleh PPNS tertentu di lingkungan DJP.</p>
+
+            <h3>K. Proses Penyidikan</h3>
+            <p>Dalam tahap penyidikan, PPNS Pajak melakukan tindakan untuk mencari dan mengumpulkan bukti serta menemukan pihak yang diduga bertanggung jawab.</p>
+            <p><strong>PPNS dapat:</strong></p>
+            <ul>
+                <li>meminta keterangan;</li>
+                <li>memeriksa dokumen;</li>
+                <li>memeriksa buku dan catatan;</li>
+                <li>meminta bantuan ahli;</li>
+                <li>melakukan penggeledahan sesuai ketentuan hukum;</li>
+                <li>memanggil saksi;</li>
+                <li>memanggil pihak yang diperiksa;</li>
+                <li>melakukan tindakan lain yang diperlukan sesuai kewenangannya.</li>
+            </ul>
+            <p>Direktur keuangan PT Arunika kemudian dipanggil untuk memberikan keterangan sebagai saksi.</p>
+            <p>Dari pemeriksaan ditemukan bahwa direktur keuangan mengetahui bahwa faktur tersebut tidak didukung transaksi yang sebenarnya, tetapi tetap memerintahkan staf untuk menggunakannya dalam pelaporan pajak.</p>
+
+            <h3>L. Kemungkinan Penghentian Penyidikan</h3>
+            <p>Dalam proses penyidikan, penghentian dapat terjadi apabila memenuhi alasan yang ditentukan oleh UU KUP:</p>
+            <ol>
+                <li>tidak terdapat cukup bukti;</li>
+                <li>peristiwa tersebut bukan merupakan tindak pidana perpajakan;</li>
+                <li>terdapat alasan hukum tertentu yang menyebabkan perkara harus dihentikan;</li>
+                <li>atau terdapat mekanisme pengungkapan ketidakbenaran perbuatan yang memenuhi persyaratan hukum yang berlaku.</li>
+            </ol>
+            <div class="warning-box">
+                <h4>⚠️ Catatan Penting:</h4>
+                <p><strong>Pemeriksaan pajak tidak otomatis berarti terjadi tindak pidana.</strong> Pemeriksaan pada dasarnya bertujuan menguji kepatuhan perpajakan, sedangkan penyidikan berkaitan dengan dugaan tindak pidana perpajakan yang telah didukung bukti sesuai ketentuan.</p>
+            </div>
+        </section>
+
+        <!-- Pertanyaan -->
+        <section id="pertanyaan">
+            <h2>❓ Pertanyaan Studi Kasus</h2>
+            <p>Berdasarkan kasus PT Arunika Digital Indonesia, jawab pertanyaan berikut:</p>
+            <ol>
+                <li>Mengapa PT Arunika dapat menjadi objek pemeriksaan pajak?</li>
+                <li>Apa perbedaan antara pemeriksaan pajak dan penyidikan pajak?</li>
+                <li>Berapa total koreksi positif yang disepakati dalam pembahasan akhir?</li>
+                <li>Berapa PKP PT Arunika setelah pemeriksaan?</li>
+                <li>Berapa PPh Badan setelah pemeriksaan jika digunakan tarif 22%?</li>
+                <li>Berapa tambahan pokok PPh Badan berdasarkan hasil pemeriksaan?</li>
+                <li>Sebutkan minimal lima dokumen yang dapat diminta oleh Pemeriksa Pajak.</li>
+                <li>Metode pemeriksaan apa yang digunakan ketika Pemeriksa membandingkan SPT dengan pembukuan dan dokumen transaksi?</li>
+                <li>Apa fungsi SPHP dalam proses pemeriksaan?</li>
+                <li>Apakah setiap koreksi pajak otomatis menyebabkan Wajib Pajak masuk ke tahap penyidikan? Jelaskan.</li>
+                <li>Apa yang menjadi dasar dilakukannya pemeriksaan bukti permulaan dalam kasus PT Arunika?</li>
+                <li>Siapa pihak yang berwenang melakukan penyidikan tindak pidana perpajakan?</li>
+            </ol>
+        </section>
+
+        <!-- Kunci Jawaban -->
+        <section id="kunci-jawaban">
+            <h2>🔑 Kunci Jawaban</h2>
+            
+            <h3>1. Alasan pemeriksaan</h3>
+            <div class="answer-box">
+                <p>PT Arunika dipilih karena terdapat perbedaan antara data yang dilaporkan dalam SPT dengan data yang diperoleh DJP, sehingga terdapat risiko ketidakpatuhan yang perlu diuji melalui pemeriksaan.</p>
+            </div>
+
+            <h3>2. Perbedaan pemeriksaan dan penyidikan</h3>
+            <div class="answer-box">
+                <p><strong>Pemeriksaan</strong> bertujuan menguji kepatuhan pemenuhan kewajiban perpajakan dan/atau tujuan lain berdasarkan ketentuan perpajakan.</p>
+                <p><strong>Penyidikan</strong> dilakukan untuk mengumpulkan bukti mengenai dugaan tindak pidana perpajakan dan menemukan tersangkanya.</p>
+            </div>
+
+            <h3>3. Total koreksi</h3>
+            <div class="answer-box">
+                <p>Koreksi yang disepakati:</p>
+                <ul>
+                    <li>Koreksi omzet = Rp2.000.000.000</li>
+                    <li>Koreksi biaya representasi = Rp100.000.000</li>
+                </ul>
+                <p><strong>Total: Rp2.100.000.000</strong></p>
+            </div>
+
+            <h3>4. PKP setelah pemeriksaan</h3>
+            <div class="answer-box">
+                <p>Rp3.800.000.000 + Rp2.100.000.000 = <strong>Rp5.900.000.000</strong></p>
+            </div>
+
+            <h3>5. PPh Badan</h3>
+            <div class="answer-box">
+                <p>22% × Rp5.900.000.000 = <strong>Rp1.298.000.000</strong></p>
+            </div>
+
+            <h3>6. Tambahan PPh</h3>
+            <div class="answer-box">
+                <p>Rp1.298.000.000 − Rp836.000.000 = <strong>Rp462.000.000</strong></p>
+            </div>
+
+            <h3>7. Dokumen yang dapat diminta</h3>
+            <div class="answer-box">
+                <p>Contohnya:</p>
+                <ul>
+                    <li>buku besar;</li>
+                    <li>jurnal;</li>
+                    <li>laporan keuangan;</li>
+                    <li>rekening koran;</li>
+                    <li>faktur pajak;</li>
+                    <li>kontrak;</li>
+                    <li>bukti pembayaran;</li>
+                    <li>data elektronik;</li>
+                    <li>dokumen pembelian;</li>
+                    <li>dokumen penjualan.</li>
+                </ul>
+            </div>
+
+            <h3>8. Metode pemeriksaan</h3>
+            <div class="answer-box">
+                <p><strong>Metode langsung</strong>, karena Pemeriksa menguji pos dalam SPT secara langsung dengan buku, catatan, dan dokumen terkait.</p>
+            </div>
+
+            <h3>9. Fungsi SPHP</h3>
+            <div class="answer-box">
+                <p>SPHP menyampaikan hasil sementara pemeriksaan kepada Wajib Pajak, termasuk koreksi, dasar koreksi, perhitungan pajak, dan sanksi administrasi sesuai hasil pemeriksaan.</p>
+                <p>Wajib Pajak kemudian dapat memberikan tanggapan tertulis.</p>
+            </div>
+
+            <h3>10. Apakah koreksi otomatis menjadi tindak pidana?</h3>
+            <div class="answer-box">
+                <p><strong>Tidak.</strong> Koreksi pajak dapat terjadi karena perbedaan interpretasi, kesalahan administrasi, atau ketidaklengkapan dokumen. Penyidikan membutuhkan adanya dugaan tindak pidana dan bukti yang memenuhi ketentuan.</p>
+            </div>
+
+            <h3>11. Dasar pemeriksaan bukti permulaan</h3>
+            <div class="answer-box">
+                <p>Adanya informasi, data, laporan, atau pengaduan yang memberikan indikasi adanya tindak pidana perpajakan.</p>
+            </div>
+
+            <h3>12. Pihak yang melakukan penyidikan</h3>
+            <div class="answer-box">
+                <p><strong>Penyidikan tindak pidana perpajakan dilakukan oleh PPNS tertentu di lingkungan DJP</strong> yang diberikan kewenangan sebagai penyidik berdasarkan ketentuan peraturan perundang-undangan.</p>
+            </div>
+        </section>
+
+        <!-- Alur Kasus -->
+        <section id="alur">
+            <h2>📋 Alur Singkat Kasus</h2>
+            <div class="flow-chart">
+                <p><strong>Analisis Risiko DJP</strong></p>
+                <div class="flow-step">Pemeriksaan Pajak</div>
+                <div class="flow-step">Pengumpulan Dokumen & Data</div>
+                <div class="flow-step">Pengujian Pembukuan dan SPT</div>
+                <div class="flow-step">Temuan/Koreksi Pajak</div>
+                <div class="flow-step">SPHP</div>
+                <div class="flow-step">Tanggapan Wajib Pajak</div>
+                <div class="flow-step">Pembahasan Akhir</div>
+                <div class="flow-step">Laporan Hasil Pemeriksaan</div>
+                <div class="flow-step">SKP (jika terdapat dasar penerbitan)</div>
+                <div class="flow-step">Ditemukan Indikasi Tindak Pidana</div>
+                <div class="flow-step">Pemeriksaan Bukti Permulaan</div>
+                <div class="flow-step">Penyidikan oleh PPNS Pajak</div>
+                <div class="flow-step">Penuntutan sesuai ketentuan hukum acara pidana</div>
+            </div>
+        </section>
+
+        <!-- Kesimpulan -->
+        <section id="kesimpulan">
+            <h2>🎯 Kesimpulan</h2>
+            <p>Kasus PT Arunika Digital Indonesia menunjukkan bahwa <strong>pemeriksaan pajak dan penyidikan pajak merupakan dua proses yang berbeda</strong>.</p>
+            <p>Pemeriksaan dilakukan untuk menguji apakah kewajiban perpajakan Wajib Pajak telah dipenuhi dengan benar. Dalam pemeriksaan, DJP dapat menguji SPT, pembukuan, dokumen transaksi, data elektronik, serta melakukan konfirmasi kepada pihak ketiga.</p>
+            <p>Dalam kasus ini, pemeriksaan menghasilkan koreksi terhadap omzet dan biaya sehingga PKP meningkat dari <strong>Rp3,8 miliar menjadi Rp5,9 miliar</strong> dan PPh Badan berdasarkan asumsi latihan meningkat menjadi <strong>Rp1,298 miliar</strong>.</p>
+            <p>Sementara itu, ketika ditemukan indikasi penggunaan faktur pajak yang tidak didukung transaksi sebenarnya, persoalan dapat berkembang dari <strong>administratif/perhitungan pajak</strong> menjadi dugaan <strong>tindak pidana perpajakan</strong>. Tahap selanjutnya dapat berupa pemeriksaan bukti permulaan dan, apabila memenuhi persyaratan, penyidikan oleh PPNS Pajak.</p>
+            <div class="answer-box">
+                <h4>📌 Hal terpenting bagi Wajib Pajak:</h4>
+                <ol>
+                    <li>Menyelenggarakan pembukuan yang benar</li>
+                    <li>Menyimpan dokumen pendukung</li>
+                    <li>Memenuhi permintaan pemeriksa</li>
+                    <li>Memberikan keterangan secara benar</li>
+                    <li>Menggunakan hak-haknya selama proses pemeriksaan sesuai ketentuan perpajakan</li>
+                </ol>
+            </div>
+            <div class="warning-box">
+                <h4>⚠️ Catatan:</h4>
+                <p>Angka tarif dan perhitungan dalam studi kasus ini dibuat sebagai <strong>simulasi pembelajaran</strong>, bukan dasar untuk menentukan kewajiban pajak aktual. Untuk praktik perpajakan tahun berjalan, ketentuan UU KUP, PPN, PPh, PMK, serta prosedur administrasi/Coretax yang berlaku perlu diperiksa kembali.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Pemeriksaan dan Penyidikan Pajak</strong></p>
+        <p>Corporate Tax Series - MySkill.id | Accounting, Finance and Tax Path</p>
+        <p>© 2024 MySkill.id</p>
+    </footer>
+
+    <div class="scroll-top no-print" id="scrollTop">↑</div>
+
+    <script>
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active nav link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Highlight nav link when section is in view
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

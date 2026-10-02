@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structure &amp; Written Expression TOEFL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ai-generator.css">
+<style>
+  :root{
+    --paper:#E9E6DC;
+    --paper-line:#DBD6C7;
+    --card:#F5F3EA;
+    --ink:#23283B;
+    --ink-soft:#565C71;
+    --ink-faint:#8B8D7E;
+    --rule:#C9C2AC;
+    --margin-red:#B8433A;
+    --highlight:#E7B23A;
+    --highlight-soft:#F4E2B8;
+    --correct:#3F7D58;
+    --correct-bg:#E1EAE1;
+    --wrong:#B8433A;
+    --wrong-bg:#F1E1DC;
+    --chip-s:#23283B;
+    --chip-s-text:#F5F3EA;
+    --chip-aux:#8B5E34;
+    --chip-aux-text:#F8EFE3;
+    --chip-v:#3F6B52;
+    --chip-v-text:#F1F5EF;
+    --chip-c:#6A4E7C;
+    --chip-c-text:#F4EFF6;
+    --serif: "Source Serif 4", Georgia, serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+    --sidebar-w: 272px;
+    --margin: 34px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 34px,
+        var(--paper-line) 35px
+      ),
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.65;
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    top:0; bottom:0;
+    left:calc(var(--sidebar-w) + var(--margin));
+    width:1px;
+    background:var(--margin-red);
+    opacity:.55;
+    z-index:1;
+  }
+  @media (max-width:880px){
+    body::before{ left:22px; }
+  }
+
+  .ai-generator{
+    max-width:none;
+    margin:34px 0 10px;
+    padding:24px;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    box-shadow:0 3px 12px rgba(35,40,59,.08);
+    font-family:var(--serif);
+  }
+  .ai-generator h2{color:var(--ink); font-family:var(--serif); font-size:26px;}
+  .ai-generator > p{color:var(--ink-soft); line-height:1.6;}
+  .ai-controls input{background:var(--paper); color:var(--ink); border-color:var(--rule); border-radius:3px; font-family:var(--serif);}
+  .ai-controls button,.ai-check-btn{background:var(--ink); color:var(--card); border-radius:3px; font-family:var(--serif);}
+  .ai-controls button:hover,.ai-check-btn:hover{background:var(--margin-red);}
+  .ai-question{background:var(--paper); border-color:var(--rule); border-radius:3px;}
+  .ai-question p,.ai-question label{color:var(--ink);}
+  .ai-question label{background:var(--card); border-color:var(--paper-line); border-radius:3px;}
+  .ai-answer{color:var(--correct);}
+  .ai-explanation{color:var(--ink-soft);}
+
+  a{color:inherit;}
+
+  /* ---------- layout ---------- */
+  .app{
+    display:flex;
+    max-width:1180px;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+  }
+  .sidebar{
+    width:var(--sidebar-w);
+    flex:0 0 var(--sidebar-w);
+    position:sticky;
+    top:0;
+    align-self:flex-start;
+    height:100vh;
+    overflow-y:auto;
+    padding:28px 18px 40px 28px;
+    border-right:1px dashed var(--rule);
+  }
+  .sidebar::-webkit-scrollbar{width:6px;}
+  .sidebar::-webkit-scrollbar-thumb{background:var(--rule); border-radius:3px;}
+
+  .brand{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.03em;
+    color:var(--ink-faint);
+    margin-bottom:4px;
+  }
+  .brand strong{color:var(--margin-red);}
+  .sidebar h1{
+    font-size:22px;
+    line-height:1.25;
+    margin:2px 0 18px;
+    font-weight:600;
+  }
+
+  .filter-wrap{margin-bottom:18px;}
+  .filter-wrap input{
+    width:100%;
+    font-family:var(--serif);
+    font-size:14px;
+    padding:8px 10px;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    color:var(--ink);
+  }
+  .filter-wrap input:focus{outline:2px solid var(--highlight); outline-offset:1px;}
+
+  .navgroup{margin-bottom:16px;}
+  .navgroup-label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.06em;
+    color:var(--ink-faint);
+    margin:0 0 6px 2px;
+  }
+  .navlist{list-style:none; margin:0; padding:0;}
+  .navlist li a{
+    display:flex;
+    gap:9px;
+    align-items:baseline;
+    text-decoration:none;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    padding:5px 8px 5px 6px;
+    border-radius:3px;
+    border-left:2px solid transparent;
+  }
+  .navlist li a .n{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-faint);
+    min-width:16px;
+  }
+  .navlist li a:hover{background:rgba(0,0,0,.035); color:var(--ink);}
+  .navlist li a.active{
+    color:var(--ink);
+    font-weight:600;
+    border-left-color:var(--margin-red);
+    background:var(--highlight-soft);
+  }
+  .navlist li.hidden{display:none;}
+
+  /* ---------- main ---------- */
+  main{
+    flex:1;
+    min-width:0;
+    padding:52px var(--margin) 120px calc(var(--margin) + 26px);
+  }
+  header.hero{
+    margin-bottom:46px;
+    max-width:640px;
+  }
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow-line .dash{
+    width:34px; height:1px; background:var(--margin-red);
+  }
+  .eyebrow-line span{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--margin-red);
+  }
+  header.hero h1{
+    font-size:clamp(32px,4.6vw,46px);
+    line-height:1.08;
+    margin:0 0 16px;
+    font-weight:600;
+  }
+  header.hero p{
+    color:var(--ink-soft);
+    font-size:16.5px;
+    max-width:52ch;
+  }
+
+  section.topic{
+    max-width:700px;
+    padding-top:64px;
+    margin-top:-30px;
+    scroll-margin-top:20px;
+  }
+  section.topic:first-of-type{padding-top:0;}
+
+  .topic-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:14px;
+  }
+  .topic-num{
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--margin-red);
+    white-space:nowrap;
+  }
+  .topic h2{
+    font-size:25px;
+    margin:0;
+    font-weight:600;
+  }
+
+  .topic .lede{
+    color:var(--ink-soft);
+    margin:0 0 20px;
+  }
+
+  .formula-block{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 18px;
+    margin:0 0 20px;
+  }
+  .chip{
+    font-family:var(--mono);
+    font-size:13.5px;
+    font-weight:600;
+    padding:5px 10px;
+    border-radius:3px;
+    white-space:nowrap;
+    line-height:1.3;
+  }
+  .chip-s{background:var(--chip-s); color:var(--chip-s-text);}
+  .chip-aux{background:var(--chip-aux); color:var(--chip-aux-text);}
+  .chip-v{background:var(--chip-v); color:var(--chip-v-text);}
+  .chip-c{background:var(--chip-c); color:var(--chip-c-text);}
+  .plus{
+    font-family:var(--mono);
+    color:var(--ink-faint);
+    font-size:13px;
+    padding:0 1px;
+  }
+
+  .rule-line{
+    font-family:var(--mono);
+    font-size:14px;
+    background:var(--card);
+    border-left:3px solid var(--chip-c);
+    padding:10px 14px;
+    margin:0 0 20px;
+    border-radius:0 4px 4px 0;
+  }
+
+  .examples{list-style:none; margin:0 0 20px; padding:0;}
+  .examples li{
+    padding:8px 0 8px 20px;
+    border-bottom:1px dashed var(--rule);
+    position:relative;
+    font-size:16px;
+  }
+  .examples li:last-child{border-bottom:none;}
+  .examples li::before{
+    content:"—";
+    position:absolute; left:0; top:8px;
+    color:var(--ink-faint);
+  }
+  .examples li .id-note{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink-faint);
+    margin-top:2px;
+    font-family:var(--mono);
+  }
+
+  .wr-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin:0 0 8px;
+  }
+  @media (max-width:560px){ .wr-grid{grid-template-columns:1fr;} }
+  .wr-box{
+    border-radius:4px;
+    padding:12px 14px;
+  }
+  .wr-box.wrong{background:var(--wrong-bg);}
+  .wr-box.right{background:var(--correct-bg);}
+  .wr-box .wr-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.04em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .wr-box.wrong .wr-label{color:var(--wrong);}
+  .wr-box.right .wr-label{color:var(--correct);}
+  .wr-box ul{margin:0; padding:0; list-style:none;}
+  .wr-box li{
+    font-family:var(--mono);
+    font-size:14px;
+    padding:3px 0;
+  }
+  .wr-box.wrong li::before{content:"✗  "; color:var(--wrong);}
+  .wr-box.right li::before{content:"✓  "; color:var(--correct);}
+
+  .note{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    background:var(--highlight-soft);
+    border-radius:4px;
+    padding:10px 14px;
+    margin:0 0 20px;
+  }
+  .note strong{color:var(--ink);}
+
+  .trigger-words{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin:0 0 20px;
+  }
+  .trigger-words span{
+    font-family:var(--mono);
+    font-size:13px;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:20px;
+    padding:4px 12px;
+    color:var(--ink-soft);
+  }
+
+  .mini-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:0 0 20px;
+    font-size:14.5px;
+  }
+  .mini-table th, .mini-table td{
+    text-align:left;
+    padding:8px 12px;
+    border-bottom:1px solid var(--rule);
+  }
+  .mini-table th{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.04em;
+    color:var(--ink-faint);
+    font-weight:600;
+  }
+  .mini-table td:first-child{font-family:var(--mono); font-weight:600;}
+
+  /* ---------- summary section ---------- */
+  .summary-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:0 0 34px;
+    font-size:14.5px;
+  }
+  .summary-table th, .summary-table td{
+    padding:9px 12px;
+    border-bottom:1px solid var(--rule);
+    text-align:left;
+  }
+  .summary-table th{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.04em;
+    color:var(--ink-faint);
+  }
+  .summary-table td:last-child{font-family:var(--mono); font-size:13.5px;}
+
+  .keyfact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:10px;
+  }
+  @media (max-width:560px){ .keyfact-grid{grid-template-columns:1fr;} }
+  .keyfact{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:14px 16px;
+  }
+  .keyfact h3{
+    font-size:13px;
+    font-family:var(--mono);
+    letter-spacing:.03em;
+    margin:0 0 8px;
+    color:var(--margin-red);
+  }
+
+  footer{
+    max-width:700px;
+    padding-top:40px;
+    margin-top:40px;
+    border-top:1px dashed var(--rule);
+    color:var(--ink-faint);
+    font-size:13.5px;
+  }
+
+  /* mobile nav */
+  .mobile-toc{
+    display:none;
+  }
+  @media (max-width:880px){
+    .app{display:block;}
+    .sidebar{
+      display:none;
+    }
+    body::before{display:none;}
+    main{padding:24px 20px 100px 20px;}
+    .mobile-toc{
+      display:block;
+      position:sticky;
+      top:0;
+      z-index:5;
+      background:var(--paper);
+      border-bottom:1px solid var(--rule);
+      padding:12px 0 10px;
+      margin:-24px -20px 30px;
+    }
+    .mobile-toc .row{
+      display:flex;
+      gap:14px;
+      padding:0 20px 10px;
+      align-items:center;
+    }
+    .mobile-toc .brand{margin:0;}
+    .mobile-toc select{
+      width:100%;
+      font-family:var(--mono);
+      font-size:13px;
+      padding:9px 10px;
+      background:var(--card);
+      border:1px solid var(--rule);
+      border-radius:4px;
+      color:var(--ink);
+      margin:0 20px;
+      width:calc(100% - 40px);
+    }
+  }
+
+  .backtop{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    font-family:var(--mono);
+    font-size:12px;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:20px;
+    padding:9px 14px;
+    cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:6;
+  }
+  .backtop.show{opacity:.9; pointer-events:auto;}
+  .backtop:hover{opacity:1;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .backtop{transition:none;}
+  }
+</style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body data-ai-topic="Structure dan Written Expression TOEFL: modal, passive voice, perfect tense, subject-verb agreement, gerund, infinitive, parallel structure, reduced clause, noun clause, inversion, dan pola kata kerja" data-ai-title="Structure dan Written Expression TOEFL">
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><strong>§</strong> Structure &amp; Written Expression</div>
+    <h1>Catatan TOEFL</h1>
+
+    <div class="filter-wrap">
+      <input type="text" id="filterInput" placeholder="Cari topik… (mis. gerund)">
+    </div>
+
+    <nav id="navContainer"></nav>
+  </aside>
+
+  <main>
+    <div class="mobile-toc">
+      <div class="row">
+        <div class="brand"><strong>§</strong> Catatan TOEFL</div>
+      </div>
+      <select id="mobileSelect"></select>
+    </div>
+
+    <header class="hero">
+      <div class="eyebrow-line"><span>24 pola · 1 rangkuman</span></div>
+      <h1>Structure &amp; Written Expression</h1>
+      <p>Rangkuman rumus tata bahasa yang paling sering keluar di bagian Structure TOEFL — modal, tenses perfect, gerund vs. infinitive, sampai inversion. Tiap kotak abu-abu di bawah adalah rumus: warnanya menandai peran tiap kata dalam kalimat.</p>
+      <div class="trigger-words" style="margin-top:18px;">
+        <span class="chip chip-s" style="border-radius:3px;">subjek</span>
+        <span class="chip chip-aux" style="border-radius:3px;">auxiliary / to be</span>
+        <span class="chip chip-v" style="border-radius:3px;">bentuk kata kerja</span>
+        <span class="chip chip-c" style="border-radius:3px;">connector / lainnya</span>
+      </div>
+    </header>
+
+    <div id="topicsContainer"></div>
+
+    <footer>
+      Disusun dari catatan latihan Structure TOEFL. Gunakan kotak pencarian di sidebar untuk lompat ke pola tertentu, lalu buat soal tambahan dengan pembuat soal AI.
+    </footer>
+  </main>
+</div>
+
+<button class="backtop" id="backtop">↑ atas</button>
+
+<script>
+/* ---------------- DATA ---------------- */
+const groups = [
+  {key:'A', label:'Modal & Passive'},
+  {key:'B', label:'Perfect Tenses'},
+  {key:'C', label:'Agreement & Pola Kata Kerja'},
+  {key:'D', label:'Struktur Lanjutan'},
+  {key:'R', label:'Rangkuman'}
+];
+
+const topics = [
+{num:1, group:'A', id:'modal-verb', title:'Modal + Verb',
+ lede:'Modal menyatakan kemampuan, izin, kemungkinan, atau keharusan. Setelah modal, kata kerja selalu dalam bentuk dasar.',
+ formula:'S + modal + V1',
+ modalList:['can','could','may','might','should','must','will','would'],
+ examples:[
+   {en:'Students can improve their English.'},
+   {en:'Researchers might find better results.'}
+ ],
+ wrong:['can improving','might having','could reached'],
+ right:['can improve','might have','could reach']
+},
+{num:2, group:'A', id:'modal-passive', title:'Modal + Passive Voice',
+ lede:'Dipakai ketika subjek menerima tindakan, bukan melakukannya.',
+ formula:'S + modal + be + V3',
+ examples:[
+   {en:'The problem can be solved easily.'},
+   {en:'The documents could be reviewed tomorrow.'}
+ ],
+ table:{
+   headers:['Modal','Active','Passive'],
+   rows:[
+     ['can','can + V1','can + be + V3'],
+     ['could','could + V1','could + be + V3'],
+     ['should','should + V1','should + be + V3'],
+     ['must','must + V1','must + be + V3']
+   ]
+ },
+ note:'<strong>Active → Passive:</strong> "The manager can review the documents." menjadi "The documents can be reviewed by the manager."'
+},
+{num:3, group:'A', id:'modal-perfect', title:'Modal Perfect',
+ lede:'Menyatakan kemungkinan atau kemampuan yang berkaitan dengan masa lalu.',
+ formula:'S + could/might/should + have + V3',
+ examples:[
+   {en:'She could have finished the report.'},
+   {en:'They might have forgotten the meeting.'}
+ ],
+ extraFormula:{label:'Bentuk pasif', formula:'S + modal + have + been + V3',
+   examples:[{en:'The mistake could have been avoided.'},{en:'The report should have been completed earlier.'}]},
+ note:'Urutan yang wajib diingat: <strong>could → have → been → V3</strong>.'
+},
+{num:4, group:'B', id:'have-has-had', title:'Have, Has, dan Had',
+ lede:'Tiga bentuk auxiliary yang penggunaannya tergantung subjek dan waktu.',
+ table:{
+   headers:['Bentuk','Dipakai untuk','Contoh'],
+   rows:[
+     ['have','I, You, We, They, plural noun','They have a new project.'],
+     ['has','He, She, It, singular noun','She has a new computer.'],
+     ['had','semua subjek (bentuk past)','I / She / They had a car.']
+   ]
+ }
+},
+{num:5, group:'B', id:'present-perfect', title:'Present Perfect',
+ lede:'Untuk tindakan yang sudah terjadi dan masih berhubungan dengan kondisi sekarang.',
+ formula:'S + have/has + V3',
+ examples:[
+   {en:'She has finished her assignment.'},
+   {en:'They have completed the project.'}
+ ]
+},
+{num:6, group:'B', id:'past-perfect', title:'Past Perfect',
+ lede:'Untuk kejadian yang terjadi lebih dahulu sebelum kejadian lain di masa lalu.',
+ formula:'S + had + V3',
+ examples:[{en:'The train had left before we arrived.'}],
+ note:'Urutan kejadian: <strong>kejadian pertama</strong> → had + V3, <strong>kejadian kedua</strong> → V2 (past simple).'
+},
+{num:7, group:'B', id:'past-perfect-passive', title:'Past Perfect Passive',
+ lede:'Versi pasif dari past perfect.',
+ formula:'S + had + been + V3',
+ examples:[
+   {en:'The documents had been reviewed before the meeting.'},
+   {en:'The project had been completed before the deadline.'}
+ ],
+ note:'Perhatikan urutannya: <strong>had + been + V3</strong>.'
+},
+{num:8, group:'B', id:'past-perfect-continuous', title:'Past Perfect Continuous',
+ lede:'Menunjukkan aktivitas yang sudah berlangsung selama periode tertentu sebelum kejadian lain di masa lalu.',
+ formula:'S + had + been + V-ing',
+ examples:[{en:'They had been working for several months before the project ended.'}]
+},
+{num:9, group:'C', id:'sv-agreement', title:'Subject–Verb Agreement',
+ lede:'Bentuk kata kerja harus sesuai dengan subjeknya.',
+ table:{
+   headers:['Subjek','Pola','Contoh'],
+   rows:[
+     ['He / She / It','V-s/es','She works every day.'],
+     ['They / We / People','V1','They work every day.']
+   ]
+ },
+ note:'<strong>Jebakan klasik TOEFL:</strong> "One of the students <em>has</em> a question." — subjeknya adalah "One", bukan "students".'
+},
+{num:10, group:'C', id:'have-to-has-to', title:'Have to / Has to',
+ lede:'Menyatakan keharusan, mengikuti aturan agreement seperti have/has biasa.',
+ table:{
+   headers:['Bentuk','Dipakai untuk','Contoh'],
+   rows:[
+     ['have to','I, You, We, They','Employees have to follow the rules.'],
+     ['has to','He, She, It, singular noun','Every employee has to follow the rules.']
+   ]
+ },
+ wrong:['All employees has to'],
+ right:['All employees have to']
+},
+{num:11, group:'C', id:'gerund', title:'Gerund',
+ lede:'Gerund adalah V-ing yang berfungsi sebagai kata benda (noun).',
+ formula:'Verb + V-ing',
+ examples:[
+   {en:'Reading is important.'},
+   {en:'They enjoy watching movies.'},
+   {en:'She suggested changing the schedule.'}
+ ],
+ note:'Kata kerja yang biasanya diikuti gerund: <strong>enjoy, avoid, suggest, finish, consider, practice, mind</strong>.'
+},
+{num:12, group:'C', id:'infinitive', title:'Infinitive',
+ lede:'Bentuk to + V1.',
+ formula:'to + V1',
+ examples:[
+   {en:'They decided to postpone the meeting.'},
+   {en:'The teacher encouraged students to participate.'}
+ ],
+ note:'Kata kerja yang biasanya diikuti infinitive: <strong>want, need, decide, plan, hope, expect, agree, encourage + object</strong>.'
+},
+{num:13, group:'C', id:'suggest-gerund', title:'Suggest + Gerund',
+ lede:'Pola penting yang sering muncul di soal TOEFL.',
+ formula:'suggest + V-ing',
+ examples:[
+   {en:'The teacher suggested reviewing the material.'},
+   {en:'She suggested taking a short break.'}
+ ],
+ wrong:['suggest to review','suggest to take'],
+ right:['suggest reviewing','suggest taking']
+},
+{num:14, group:'C', id:'avoid-gerund', title:'Avoid + Gerund',
+ formula:'avoid + V-ing',
+ examples:[
+   {en:'Students should avoid making the same mistake.'},
+   {en:'People should avoid using too much plastic.'}
+ ],
+ wrong:['avoid to make'],
+ right:['avoid making']
+},
+{num:15, group:'C', id:'enjoy-gerund', title:'Enjoy + Gerund',
+ formula:'enjoy + V-ing',
+ examples:[
+   {en:'Many people enjoy reading books.'},
+   {en:'She enjoys learning English.'}
+ ],
+ wrong:['enjoy to read'],
+ right:['enjoy reading']
+},
+{num:16, group:'C', id:'decide-infinitive', title:'Decide + Infinitive',
+ formula:'decide + to + V1',
+ examples:[
+   {en:'They decided to leave early.'},
+   {en:'The company decided to expand its business.'}
+ ],
+ wrong:['decided leaving'],
+ right:['decided to leave']
+},
+{num:17, group:'C', id:'need-infinitive', title:'Need + Infinitive',
+ formula:'need + to + V1',
+ examples:[
+   {en:'Students need to practice regularly.'},
+   {en:'The company needs to improve its services.'}
+ ]
+},
+{num:18, group:'D', id:'parallel', title:'Parallel Structure',
+ lede:'Unsur yang dihubungkan harus memiliki bentuk grammar yang sama.',
+ examples:[{en:'She likes reading, writing, and speaking English.', note:'ketiganya memakai V-ing'}],
+ wrong:['reading, writing, and to speak'],
+ right:['reading, writing, and speaking'],
+ note:'Kata petunjuk yang sering memicu: <strong>and, or, but, both...and, either...or, neither...nor, not only...but also</strong>.'
+},
+{num:19, group:'D', id:'reduced-clause', title:'Reduced Adjective Clause',
+ lede:'Adjective clause dapat dipersingkat dengan menghilangkan who/which dan (be).',
+ ruleLines:[
+   'Active — who/which + V  →  V-ing',
+   'Passive — who/which + be + V3  →  V3'
+ ],
+ examples:[
+   {en:'The students who study regularly get better results.', note:'lengkap'},
+   {en:'The students studying regularly get better results.', note:'reduced'},
+   {en:'The books which are written in English are popular.', note:'lengkap'},
+   {en:'The books written in English are popular.', note:'reduced'}
+ ]
+},
+{num:20, group:'D', id:'noun-clause', title:'Noun Clause',
+ lede:'Noun clause berfungsi sebagai kata benda dalam kalimat.',
+ formula:'connector + subject + verb',
+ trigger:['what','where','when','why','how','whether','if','that'],
+ examples:[
+   {en:'I know where he lives.'},
+   {en:'She explained why the meeting was canceled.'}
+ ],
+ wrong:['I know where does he live.'],
+ right:['I know where he lives.'],
+ note:'Noun clause memakai urutan <strong>subject + verb</strong> biasa, bukan susunan pertanyaan.'
+},
+{num:21, group:'D', id:'inversion', title:'Inversion',
+ lede:'Perubahan posisi auxiliary/modal dan subjek, biasanya dipicu kata negatif di awal kalimat.',
+ formula:'negative expression + auxiliary + S + V',
+ trigger:['never','rarely','seldom','hardly','scarcely','barely','not only','under no circumstances'],
+ examples:[
+   {en:'I have never seen such a place.', note:'kalimat normal'},
+   {en:'Never have I seen such a place.', note:'dengan inversion'},
+   {en:'Rarely does he visit the city.'},
+   {en:'Never have they experienced such a problem.'}
+ ]
+},
+{num:22, group:'D', id:'participial', title:'Participial Phrase',
+ lede:'Memberikan informasi tambahan mengenai subjek di awal kalimat.',
+ table:{
+   headers:['Bentuk','Pola','Contoh'],
+   rows:[
+     ['Present participle','V-ing','Walking along the street, she saw an old friend.'],
+     ['Past participle','V3','Located near the airport, the hotel is convenient for travelers.']
+   ]
+ },
+ note:'Subjek pada participial phrase harus sesuai dengan subjek kalimat utama.'
+},
+{num:23, group:'D', id:'so-that', title:'So…that',
+ lede:'Menunjukkan hubungan sebab dan akibat, diikuti adjective atau adverb.',
+ formula:'so + adjective/adverb + that',
+ examples:[
+   {en:'The exam was so difficult that many students needed more time.'},
+   {en:'He ran so quickly that nobody could catch him.'}
+ ]
+},
+{num:24, group:'D', id:'such-that', title:'Such…that',
+ lede:'Versi "so...that" yang diikuti kata benda (noun phrase).',
+ formula:'such + noun phrase + that',
+ examples:[
+   {en:'It was such an interesting book that I read it twice.'},
+   {en:'It was so interesting that I read it twice.', note:'perbandingan dengan so...that'}
+ ],
+ note:'Cara cepat membedakan: <strong>so</strong> + adjective/adverb + that, sedangkan <strong>such</strong> + noun + that.'
+}
+];
+
+const summaryRows = [
+ ['Modal aktif','S + modal + V1'],
+ ['Modal passive','S + modal + be + V3'],
+ ['Modal perfect','S + modal + have + V3'],
+ ['Modal perfect passive','S + modal + have + been + V3'],
+ ['Present perfect','S + have/has + V3'],
+ ['Past perfect','S + had + V3'],
+ ['Past perfect passive','S + had + been + V3'],
+ ['Past perfect continuous','S + had + been + V-ing'],
+ ['Gerund','V-ing'],
+ ['Infinitive','to + V1'],
+ ['Suggest','suggest + V-ing'],
+ ['Avoid','avoid + V-ing'],
+ ['Enjoy','enjoy + V-ing'],
+ ['Decide','decide + to + V1'],
+ ['Need','need + to + V1'],
+ ['Reduced active clause','V-ing'],
+ ['Reduced passive clause','V3'],
+ ['Noun clause','connector + S + V'],
+ ['Inversion','negative expression + auxiliary + S + V'],
+ ['So...that','so + adj/adv + that'],
+ ['Such...that','such + noun + that']
+];
+
+const keyfacts = [
+ {h:'Modal', f:'can/could/might/should + V1'},
+ {h:'Passive', f:'modal + be + V3'},
+ {h:'Perfect', f:'have/has/had + V3'},
+ {h:'Perfect passive', f:'have/has/had + been + V3'},
+ {h:'Gerund', f:'suggest / avoid / enjoy + V-ing'},
+ {h:'Infinitive', f:'decide / need / want + to + V1'},
+ {h:'Noun clause', f:'connector + subject + verb'}
+];
+
+/* ---------------- CHIP CLASSIFIER ---------------- */
+function classify(tokenRaw){
+  const t = tokenRaw.trim();
+  const low = t.toLowerCase();
+  if(/^(s|subject)$/.test(low)) return 'chip-s';
+  if(/^(v1|v2|v3|v-ing|v-s\/es)$/.test(low)) return 'chip-v';
+  if(/^(be|been|have|has|had)$/.test(low)) return 'chip-aux';
+  if(/^to$/.test(low)) return 'chip-c';
+  if(/modal|can|could|may|might|should|must|will|would|auxiliary|negative expression/.test(low)) return 'chip-aux';
+  if(/connector|subject \+ verb|noun phrase|adjective|adverb|verb$/.test(low)) return 'chip-c';
+  return 'chip-c';
+}
+
+function formulaHTML(str){
+  const parts = str.split('+');
+  return '<div class="formula-block">' + parts.map((p,i)=>{
+    const cls = classify(p);
+    const chip = '<span class="chip '+cls+'">'+p.trim()+'</span>';
+    return i < parts.length-1 ? chip + '<span class="plus">+</span>' : chip;
+  }).join('') + '</div>';
+}
+
+/* ---------------- RENDER TOPICS ---------------- */
+const container = document.getElementById('topicsContainer');
+let html = '';
+
+topics.forEach(t=>{
+  html += '<section class="topic" id="'+t.id+'" data-title="'+t.title.toLowerCase()+'">';
+  html += '<div class="topic-head"><span class="topic-num">'+String(t.num).padStart(2,'0')+'</span><h2>'+t.title+'</h2></div>';
+  if(t.lede) html += '<p class="lede">'+t.lede+'</p>';
+  if(t.formula) html += formulaHTML(t.formula);
+  if(t.ruleLines){
+    t.ruleLines.forEach(r=>{ html += '<div class="rule-line">'+r+'</div>'; });
+  }
+  if(t.table){
+    html += '<table class="mini-table"><thead><tr>';
+    t.table.headers.forEach(h=> html += '<th>'+h+'</th>');
+    html += '</tr></thead><tbody>';
+    t.table.rows.forEach(row=>{
+      html += '<tr>'; row.forEach(c=> html += '<td>'+c+'</td>'); html += '</tr>';
+    });
+    html += '</tbody></table>';
+  }
+  if(t.trigger){
+    html += '<div class="trigger-words">'+t.trigger.map(w=>'<span>'+w+'</span>').join('')+'</div>';
+  }
+  if(t.examples){
+    html += '<ul class="examples">';
+    t.examples.forEach(ex=>{
+      html += '<li>'+ex.en+(ex.note?'<span class="id-note">'+ex.note+'</span>':'')+'</li>';
+    });
+    html += '</ul>';
+  }
+  if(t.extraFormula){
+    html += '<p class="lede" style="margin-top:-6px;">'+t.extraFormula.label+'</p>';
+    html += formulaHTML(t.extraFormula.formula);
+    if(t.extraFormula.examples){
+      html += '<ul class="examples">';
+      t.extraFormula.examples.forEach(ex=> html += '<li>'+ex.en+'</li>');
+      html += '</ul>';
+    }
+  }
+  if(t.wrong || t.right){
+    html += '<div class="wr-grid">';
+    if(t.wrong){
+      html += '<div class="wr-box wrong"><span class="wr-label">SALAH</span><ul>';
+      t.wrong.forEach(w=> html += '<li>'+w+'</li>');
+      html += '</ul></div>';
+    }
+    if(t.right){
+      html += '<div class="wr-box right"><span class="wr-label">BENAR</span><ul>';
+      t.right.forEach(w=> html += '<li>'+w+'</li>');
+      html += '</ul></div>';
+    }
+    html += '</div>';
+  }
+  if(t.note) html += '<p class="note">'+t.note+'</p>';
+  html += '</section>';
+});
+
+/* ---- summary section ---- */
+html += '<section class="topic" id="ringkasan" data-title="ringkasan rumus utama">';
+html += '<div class="topic-head"><span class="topic-num">—</span><h2>Ringkasan Rumus Utama</h2></div>';
+html += '<p class="lede">Semua rumus di atas, dalam satu tabel untuk direview cepat sebelum tes.</p>';
+html += '<table class="summary-table"><thead><tr><th>Materi</th><th>Rumus</th></tr></thead><tbody>';
+summaryRows.forEach(r=>{ html += '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'; });
+html += '</tbody></table>';
+html += '</section>';
+
+html += '<section class="topic" id="wajib-diingat" data-title="rumus paling wajib diingat">';
+html += '<div class="topic-head"><span class="topic-num">—</span><h2>Rumus Paling Wajib Diingat</h2></div>';
+html += '<div class="keyfact-grid">';
+keyfacts.forEach(k=>{
+  html += '<div class="keyfact"><h3>'+k.h+'</h3>'+formulaHTML(k.f)+'</div>';
+});
+html += '</div>';
+html += '</section>';
+
+container.innerHTML = html;
+
+/* ---------------- RENDER NAV ---------------- */
+const navContainer = document.getElementById('navContainer');
+const mobileSelect = document.getElementById('mobileSelect');
+let navHTML = '';
+let selectHTML = '';
+
+groups.forEach(g=>{
+  const items = g.key === 'R'
+    ? [{id:'ringkasan', num:'—', title:'Ringkasan Rumus Utama'}, {id:'wajib-diingat', num:'—', title:'Rumus Paling Wajib Diingat'}]
+    : topics.filter(t=>t.group===g.key).map(t=>({id:t.id, num:String(t.num).padStart(2,'0'), title:t.title}));
+
+  navHTML += '<div class="navgroup" data-navgroup>';
+  navHTML += '<p class="navgroup-label">'+g.label+'</p>';
+  navHTML += '<ul class="navlist">';
+  items.forEach(it=>{
+    navHTML += '<li data-search="'+it.title.toLowerCase()+'"><a href="#'+it.id+'"><span class="n">'+it.num+'</span>'+it.title+'</a></li>';
+  });
+  navHTML += '</ul></div>';
+
+  selectHTML += '<optgroup label="'+g.label+'">';
+  items.forEach(it=>{
+    selectHTML += '<option value="'+it.id+'">'+it.num+' · '+it.title+'</option>';
+  });
+  selectHTML += '</optgroup>';
+});
+
+navContainer.innerHTML = navHTML;
+mobileSelect.innerHTML = selectHTML;
+
+/* ---------------- INTERACTIONS ---------------- */
+// filter
+const filterInput = document.getElementById('filterInput');
+filterInput.addEventListener('input', ()=>{
+  const q = filterInput.value.trim().toLowerCase();
+  document.querySelectorAll('#navContainer li').forEach(li=>{
+    const match = li.getAttribute('data-search').includes(q);
+    li.classList.toggle('hidden', !match);
+  });
+  document.querySelectorAll('[data-navgroup]').forEach(g=>{
+    const visible = g.querySelectorAll('li:not(.hidden)').length;
+    g.style.display = visible ? '' : 'none';
+  });
+});
+
+// mobile select navigation
+mobileSelect.addEventListener('change', ()=>{
+  const el = document.getElementById(mobileSelect.value);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+// scroll-spy
+const navLinks = Array.from(document.querySelectorAll('#navContainer a'));
+const sections = Array.from(document.querySelectorAll('section.topic'));
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id = entry.target.id;
+      navLinks.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+      if(mobileSelect.value !== id) mobileSelect.value = id;
+    }
+  });
+}, {rootMargin:'-15% 0px -70% 0px', threshold:0});
+sections.forEach(s=> io.observe(s));
+
+// back to top
+const backtop = document.getElementById('backtop');
+window.addEventListener('scroll', ()=>{
+  backtop.classList.toggle('show', window.scrollY > 500);
+});
+backtop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+<script src="ai-generator.js"></script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

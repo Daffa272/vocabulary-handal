@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPh 23 — Konsep & Studi Kasus</title>
+<style>
+  :root{
+    --bg:#0f1720;
+    --panel:#151f2b;
+    --panel2:#1b2733;
+    --accent:#3fb6a8;
+    --accent2:#e8b923;
+    --text:#eef3f5;
+    --muted:#9fb0ba;
+    --danger:#e06666;
+    --ok:#5fbf78;
+    --border:#26333f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background:linear-gradient(180deg,#0c141c,#0f1720 40%);
+    color:var(--text);
+    line-height:1.6;
+    padding-bottom:60px;
+  }
+  header{
+    padding:40px 20px 30px;
+    text-align:center;
+    background:radial-gradient(circle at top, rgba(63,182,168,0.15), transparent 60%);
+    border-bottom:1px solid var(--border);
+  }
+  header h1{
+    margin:0 0 8px;
+    font-size:2em;
+    color:var(--accent);
+    letter-spacing:0.5px;
+  }
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.95em;
+  }
+  .container{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .formula-box{
+    background:var(--panel);
+    border:1px solid var(--accent);
+    border-radius:12px;
+    padding:20px 24px;
+    margin:28px 0;
+    text-align:center;
+  }
+  .formula-box .big{
+    font-size:1.3em;
+    color:var(--accent2);
+    font-weight:600;
+    margin:6px 0;
+  }
+  nav.toc{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px 20px;
+    margin:24px 0;
+  }
+  nav.toc h3{margin-top:0;color:var(--accent);font-size:1em;}
+  nav.toc ul{columns:2;list-style:none;padding:0;margin:0;}
+  nav.toc li{margin:4px 0;}
+  nav.toc a{color:var(--text);text-decoration:none;font-size:0.92em;}
+  nav.toc a:hover{color:var(--accent2);text-decoration:underline;}
+
+  section.case{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin:18px 0;
+    overflow:hidden;
+  }
+  .case-header{
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--panel2);
+    user-select:none;
+  }
+  .case-header h2{
+    margin:0;
+    font-size:1.05em;
+    color:var(--accent);
+  }
+  .case-header .toggle{
+    font-size:1.2em;
+    color:var(--muted);
+    transition:transform 0.2s;
+  }
+  .case-header.open .toggle{transform:rotate(45deg);}
+  .case-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+    padding:0 20px;
+  }
+  .case-body.open{
+    max-height:2000px;
+    padding:4px 20px 20px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:0.92em;
+  }
+  th, td{
+    border:1px solid var(--border);
+    padding:8px 10px;
+    text-align:left;
+  }
+  th{
+    background:#20303c;
+    color:var(--accent2);
+  }
+  td.num, th.num{text-align:right;}
+  .tag-yes{color:var(--ok); font-weight:600;}
+  .tag-no{color:var(--danger); font-weight:600;}
+  .result{
+    background:#16261f;
+    border-left:4px solid var(--ok);
+    padding:10px 14px;
+    margin:14px 0;
+    border-radius:6px;
+    font-weight:600;
+    color:var(--ok);
+  }
+  .note{
+    background:#2a2415;
+    border-left:4px solid var(--accent2);
+    padding:10px 14px;
+    margin:14px 0;
+    border-radius:6px;
+    color:var(--accent2);
+    font-size:0.92em;
+  }
+  .flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    margin:20px 0;
+  }
+  .flow .step{
+    background:var(--panel2);
+    border:1px solid var(--accent);
+    border-radius:8px;
+    padding:10px 16px;
+    font-weight:600;
+    color:var(--accent);
+    font-size:0.9em;
+    text-align:center;
+  }
+  .flow .arrow{color:var(--muted); font-size:1.2em;}
+  .recap-total{
+    text-align:center;
+    font-size:1.4em;
+    color:var(--accent2);
+    font-weight:700;
+    margin:20px 0;
+  }
+  .disclaimer{
+    margin-top:36px;
+    padding:16px 20px;
+    background:var(--panel);
+    border:1px dashed var(--muted);
+    border-radius:10px;
+    color:var(--muted);
+    font-size:0.85em;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.8em;
+    margin-top:40px;
+  }
+  @media (max-width:600px){
+    nav.toc ul{columns:1;}
+    header h1{font-size:1.5em;}
+  }
+</style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Pajak Penghasilan (PPh) 23</h1>
+  <p>Konsep Dasar Pengenaan &amp; Kumpulan Studi Kasus Bertahap</p>
+</header>
+
+<div class="container">
+
+  <div class="formula-box">
+    <div>Rumus Utama</div>
+    <div class="big">PPh 23 = DPP × Tarif PPh 23</div>
+    <div>DPP (Dasar Pengenaan Pajak) = Jumlah Bruto <strong>tanpa PPN</strong></div>
+  </div>
+
+  <nav class="toc">
+    <h3>Daftar Isi</h3>
+    <ul>
+      <li><a href="#k1">Kasus 1 — Jasa Konsultan</a></li>
+      <li><a href="#k2">Kasus 2 — Jasa Catering</a></li>
+      <li><a href="#k3">Kasus 3 — Service Printer + Material</a></li>
+      <li><a href="#k4">Kasus 4 — Pembayaran ke Bank</a></li>
+      <li><a href="#k5">Kasus 5 — Sewa Guna Usaha Hak Opsi</a></li>
+      <li><a href="#k6">Kasus 6 — Jasa + Pembelian Material</a></li>
+      <li><a href="#k7">Kasus 7 — Penerima Berbeda-beda</a></li>
+      <li><a href="#k8">Kasus 8 — Catering Multi-komponen</a></li>
+      <li><a href="#k9">Kasus Komprehensif</a></li>
+      <li><a href="#cepat">Cara Cepat Mengerjakan Soal</a></li>
+    </ul>
+  </nav>
+
+  <!-- KASUS 1 -->
+  <section class="case" id="k1">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🧾 Kasus 1 — Jasa Konsultan</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <p>PT Maju Jaya menggunakan jasa konsultan dari PT Konsulindo. Jasa konsultan Rp20.000.000, PPN Rp2.200.000. Asumsi tarif latihan 2%.</p>
+      <table>
+        <tr><th>Komponen</th><th class="num">Nilai</th></tr>
+        <tr><td>Jasa</td><td class="num">Rp20.000.000</td></tr>
+        <tr><td>PPN</td><td class="num">Rp2.200.000</td></tr>
+        <tr><td>DPP PPh 23</td><td class="num">Rp20.000.000</td></tr>
+        <tr><td>PPh 23</td><td class="num">Rp400.000</td></tr>
+        <tr><td>Dibayar setelah PPh 23 + PPN</td><td class="num">Rp21.800.000</td></tr>
+      </table>
+      <div class="result">Hasil: PPh 23 = Rp400.000</div>
+      <div class="note">Ingat: PPh 23 dihitung dari Rp20.000.000, bukan dari total tagihan Rp22.200.000 — PPN dikeluarkan dari DPP.</div>
+    </div>
+  </section>
+
+  <!-- KASUS 2 -->
+  <section class="case" id="k2">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🍱 Kasus 2 — Jasa Catering</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <p>Tagihan: Makanan &amp; minuman Rp30.000.000, biaya pengiriman Rp2.000.000, biaya pelayanan Rp3.000.000, PPN Rp3.850.000.</p>
+      <table>
+        <tr><th>Komponen</th><th class="num">Nilai</th><th>Masuk Bruto?</th></tr>
+        <tr><td>Makanan &amp; Minuman</td><td class="num">Rp30.000.000</td><td class="tag-yes">Ya</td></tr>
+        <tr><td>Biaya pengiriman</td><td class="num">Rp2.000.000</td><td class="tag-yes">Ya</td></tr>
+        <tr><td>Biaya pelayanan</td><td class="num">Rp3.000.000</td><td class="tag-yes">Ya</td></tr>
+        <tr><td>PPN</td><td class="num">Rp3.850.000</td><td class="tag-no">Tidak</td></tr>
+      </table>
+      <div class="result">DPP = Rp35.000.000 → PPh 23 (2%) = Rp700.000</div>
+      <div class="note">Poin penting: untuk jasa catering, seluruh penerimaan terkait jasa (termasuk pengiriman &amp; pelayanan) masuk jumlah bruto — tidak otomatis dikeluarkan.</div>
+    </div>
+  </section>
+
+  <!-- KASUS 3 -->
+  <section class="case" id="k3">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🖨️ Kasus 3 — Service Printer + Material</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <p>Invoice: Jasa service Rp4.000.000, penggantian spare part/material Rp1.500.000, PPN Rp605.000.</p>
+      <table>
+        <tr><th>Komponen</th><th>Masuk DPP PPh 23?</th></tr>
+        <tr><td>Jasa service Rp4.000.000</td><td class="tag-yes">✅ Ya</td></tr>
+        <tr><td>Material Rp1.500.000</td><td class="tag-no">❌ Tidak</td></tr>
+        <tr><td>PPN Rp605.000</td><td class="tag-no">❌ Tidak</td></tr>
+      </table>
+      <div class="result">DPP = Rp4.000.000 → PPh 23 (2%) = Rp80.000</div>
+    </div>
+  </section>
+
+  <!-- KASUS 4 -->
+  <section class="case" id="k4">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🏦 Kasus 4 — Pembayaran kepada Bank</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <p>PT Maju Jaya membayar bunga pinjaman kepada Bank ABC sebesar Rp50.000.000.</p>
+      <div class="note">Penghasilan yang dibayar/terutang kepada bank dikecualikan dari PPh 23.</div>
+      <div class="result">PPh 23 = Rp0</div>
+      <p><strong>Shortcut:</strong> jika penerima penghasilan = Bank → cek pengecualian → tidak dipotong PPh 23.</p>
+    </div>
+  </section>
+
+  <!-- KASUS 5 -->
+  <section class="case" id="k5">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🚗 Kasus 5 — Sewa Guna Usaha dengan Hak Opsi</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <p>Pembayaran sewa guna usaha dengan hak opsi sebesar Rp100.000.000.</p>
+      <div class="note">Sewa guna usaha dengan hak opsi termasuk pengecualian PPh 23.</div>
+      <div class="result">PPh 23 = Rp0</div>
+    </div>
+  </section>
+
+  <!-- KASUS 6 -->
+  <section class="case" id="k6">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🏢 Kasus 6 — Jasa + Pembelian Material (Perbaikan AC)</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <p>Invoice: Jasa teknisi Rp8.000.000, material Rp5.000.000, PPN Rp1.430.000.</p>
+      <table>
+        <tr><th>Komponen</th><th class="num">Nilai</th><th>Status</th></tr>
+        <tr><td>Jasa teknisi</td><td class="num">Rp8.000.000</td><td class="tag-yes">Masuk DPP</td></tr>
+        <tr><td>Material</td><td class="num">Rp5.000.000</td><td class="tag-no">Dikecualikan</td></tr>
+        <tr><td>PPN</td><td class="num">Rp1.430.000</td><td class="tag-no">Dikecualikan</td></tr>
+      </table>
+      <div class="result">DPP = Rp8.000.000 → PPh 23 (2%) = Rp160.000</div>
+    </div>
+  </section>
+
+  <!-- KASUS 7 -->
+  <section class="case" id="k7">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🧮 Kasus 7 — Penerima Penghasilan Berbeda</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <table>
+        <tr><th>Transaksi</th><th class="num">DPP</th><th class="num">PPh 23</th></tr>
+        <tr><td>Konsultan</td><td class="num">Rp50 juta</td><td class="num">Rp1 juta</td></tr>
+        <tr><td>Bank</td><td class="num">-</td><td class="num">Rp0</td></tr>
+        <tr><td>Service komputer</td><td class="num">Rp10 juta</td><td class="num">Rp200 ribu</td></tr>
+        <tr><td>Sewa guna usaha hak opsi</td><td class="num">-</td><td class="num">Rp0</td></tr>
+      </table>
+      <div class="result">Total PPh 23 = Rp1.000.000 + Rp200.000 = Rp1.200.000</div>
+    </div>
+  </section>
+
+  <!-- KASUS 8 -->
+  <section class="case" id="k8">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🍽️ Kasus 8 — Catering dengan Banyak Komponen</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <table>
+        <tr><th>Komponen</th><th class="num">Nilai</th></tr>
+        <tr><td>Makanan</td><td class="num">Rp40.000.000</td></tr>
+        <tr><td>Minuman</td><td class="num">Rp10.000.000</td></tr>
+        <tr><td>Pengiriman</td><td class="num">Rp3.000.000</td></tr>
+        <tr><td>Service/pelayanan</td><td class="num">Rp2.000.000</td></tr>
+        <tr><td>PPN</td><td class="num">Rp6.050.000</td></tr>
+      </table>
+      <div class="result">DPP = Rp55.000.000 → PPh 23 (2%) = Rp1.100.000</div>
+    </div>
+  </section>
+
+  <!-- KASUS KOMPREHENSIF -->
+  <section class="case" id="k9">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🔥 Kasus Komprehensif — PT Maju Jaya Indonesia (Bulan September)</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <ol>
+        <li>Jasa konsultan: Rp100.000.000 + PPN Rp11.000.000</li>
+        <li>Jasa catering: Rp80.000.000 + biaya pengiriman Rp5.000.000 + PPN</li>
+        <li>Jasa maintenance komputer: Jasa Rp20.000.000 + Spare part Rp10.000.000</li>
+        <li>Bunga pinjaman bank: Rp40.000.000</li>
+        <li>Sewa guna usaha dengan hak opsi: Rp50.000.000</li>
+      </ol>
+      <table>
+        <tr><th>No</th><th>Transaksi</th><th class="num">DPP</th><th class="num">PPh 23</th></tr>
+        <tr><td>1</td><td>Konsultan</td><td class="num">Rp100 jt</td><td class="num">Rp2 jt</td></tr>
+        <tr><td>2</td><td>Catering</td><td class="num">Rp85 jt</td><td class="num">Rp1,7 jt</td></tr>
+        <tr><td>3</td><td>Maintenance</td><td class="num">Rp20 jt</td><td class="num">Rp400 rb</td></tr>
+        <tr><td>4</td><td>Bank</td><td class="num">-</td><td class="num">Rp0</td></tr>
+        <tr><td>5</td><td>Sewa guna usaha hak opsi</td><td class="num">-</td><td class="num">Rp0</td></tr>
+      </table>
+      <div class="recap-total">TOTAL PPh 23 = Rp4.100.000</div>
+    </div>
+  </section>
+
+  <!-- CARA CEPAT -->
+  <section class="case" id="cepat">
+    <div class="case-header" onclick="toggleCase(this)">
+      <h2>🧠 Cara Cepat Mengerjakan Soal PPh 23</h2>
+      <span class="toggle">+</span>
+    </div>
+    <div class="case-body">
+      <div class="flow">
+        <div class="step">1️⃣ Siapa Penerimanya?</div>
+        <span class="arrow">→</span>
+        <div class="step">2️⃣ Apa Transaksinya?</div>
+        <span class="arrow">→</span>
+        <div class="step">3️⃣ Cek Pengecualian</div>
+        <span class="arrow">→</span>
+        <div class="step">4️⃣ Tentukan DPP</div>
+        <span class="arrow">→</span>
+        <div class="step">5️⃣ Kalikan Tarif</div>
+      </div>
+      <table>
+        <tr><th>Pengecualian</th><th>Status</th></tr>
+        <tr><td>Bank</td><td class="tag-no">❌ Dikecualikan</td></tr>
+        <tr><td>Sewa guna usaha hak opsi</td><td class="tag-no">❌ Dikecualikan</td></tr>
+        <tr><td>Material/barang dalam jasa</td><td class="tag-no">❌ Dikecualikan dari bruto</td></tr>
+        <tr><td>PPN</td><td class="tag-no">❌ Dikecualikan dari DPP</td></tr>
+      </table>
+      <div class="note">
+        <strong>Pola paling penting:</strong><br>
+        PPh 23 = SIAPA → TRANSAKSI → PENGECUALIAN → BRUTO → TARIF<br>
+        Singkatan: <strong>S → T → P → B → T</strong>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    ⚠️ Catatan: Materi sumber adalah materi pembelajaran umum (2024) dan tidak mencantumkan tarif resmi secara lengkap. Angka <strong>2%</strong> pada seluruh studi kasus di atas digunakan sebagai <strong>asumsi latihan</strong>, bukan tarif resmi yang berlaku untuk semua jenis jasa PPh 23. Untuk kebutuhan pelaporan pajak yang sesungguhnya, selalu rujuk peraturan perpajakan terbaru atau konsultasikan dengan konsultan pajak.
+  </div>
+
+</div>
+
+<footer>Rangkuman &amp; Studi Kasus PPh 23 — dibuat untuk keperluan belajar</footer>
+
+<script>
+  function toggleCase(header){
+    header.classList.toggle('open');
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+    const toggle = header.querySelector('.toggle');
+    toggle.textContent = body.classList.contains('open') ? '−' : '+';
+  }
+  // buka kasus pertama secara default
+  document.addEventListener('DOMContentLoaded', () => {
+    const first = document.querySelector('.case-header');
+    if(first) toggleCase(first);
+  });
+</script>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

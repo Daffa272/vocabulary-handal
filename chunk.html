@@ -1,0 +1,3739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ChunkSpeak — AI English Speaking</title>
+
+<style>
+:root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --text:#171923;
+    --muted:#737784;
+    --border:#e6e7ed;
+    --primary:#635bff;
+    --primary-soft:#eeecff;
+    --success:#16845b;
+    --danger:#d04454;
+    --shadow:0 12px 35px rgba(20,20,40,.07);
+}
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.app{
+    min-height:100vh;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:245px;
+    background:white;
+    border-right:1px solid var(--border);
+    padding:25px 16px;
+    z-index:20;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+    padding:0 12px 30px;
+}
+
+.logo span{
+    color:var(--primary);
+}
+
+.nav button{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#5e6370;
+    padding:13px 14px;
+    border-radius:12px;
+    text-align:left;
+    margin:3px 0;
+}
+
+.nav button:hover,
+.nav button.active{
+    background:var(--primary-soft);
+    color:var(--primary);
+    font-weight:700;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:245px;
+    width:calc(100% - 245px);
+    max-width:1250px;
+    padding:32px;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+h1{
+    margin:0 0 6px;
+    font-size:30px;
+}
+
+h2{
+    margin-top:0;
+}
+
+h3{
+    margin:10px 0;
+}
+
+.subtitle{
+    color:var(--muted);
+    margin:0;
+}
+
+.avatar{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:var(--primary-soft);
+    color:var(--primary);
+    font-weight:800;
+}
+
+/* CARDS */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:var(--shadow);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.stat small{
+    color:var(--muted);
+}
+
+.stat strong{
+    display:block;
+    font-size:29px;
+    margin-top:7px;
+}
+
+.hero{
+    margin-bottom:20px;
+}
+
+.hero-title{
+    font-size:26px;
+    font-weight:800;
+}
+
+.progress{
+    width:100%;
+    height:9px;
+    border-radius:50px;
+    overflow:hidden;
+    background:#ececf2;
+    margin:17px 0;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    width:42%;
+    background:var(--primary);
+    border-radius:50px;
+}
+
+/* BUTTONS */
+
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:11px 16px;
+    font-weight:700;
+}
+
+.primary{
+    background:var(--primary);
+    color:white;
+}
+
+.secondary{
+    background:var(--primary-soft);
+    color:var(--primary);
+}
+
+.ghost{
+    background:#f2f3f6;
+    color:#555b67;
+}
+
+.danger{
+    background:#fff0f2;
+    color:var(--danger);
+}
+
+.btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+/* LESSON */
+
+.lesson{
+    max-width:850px;
+    margin:auto;
+}
+
+.back{
+    border:0;
+    background:transparent;
+    color:var(--muted);
+    margin-bottom:15px;
+    padding:0;
+}
+
+.label{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.09em;
+    color:var(--muted);
+    text-transform:uppercase;
+}
+
+.question{
+    font-size:30px;
+    line-height:1.35;
+    margin:12px 0;
+}
+
+.translation{
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.answer{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.divider{
+    border:0;
+    border-top:1px solid var(--border);
+    margin:28px 0;
+}
+
+/* CHUNKS */
+
+.chunk{
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:18px;
+    margin:13px 0;
+    background:white;
+}
+
+.chunk-title{
+    font-size:19px;
+    font-weight:800;
+    line-height:1.5;
+}
+
+.slot{
+    color:var(--primary);
+}
+
+.chunk-description{
+    color:var(--muted);
+    line-height:1.5;
+}
+
+.examples{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:13px 0;
+}
+
+.alternative-form{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:8px;
+    margin-top:16px;
+}
+
+.alternative-result{
+    display:none;
+    margin-top:10px;
+    padding:12px;
+    border-radius:10px;
+    background:#f7f7ff;
+    border:1px solid #e4e1ff;
+    color:#555b67;
+    line-height:1.5;
+}
+
+.alternative-result.show{
+    display:block;
+}
+
+.pill{
+    background:#f3f4f7;
+    padding:8px 10px;
+    border-radius:10px;
+    font-size:14px;
+    color:#555b67;
+    cursor:pointer;
+}
+
+.chunk-title,
+.chunk-list h3{
+    cursor:pointer;
+}
+
+/* PRACTICE */
+
+.practice-box{
+    margin-top:20px;
+    background:#fafaff;
+    border:1px solid #e4e1ff;
+    border-radius:18px;
+    padding:20px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:13px;
+    outline:none;
+    background:white;
+}
+
+textarea{
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:var(--primary);
+}
+
+.record{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    border:0;
+    background:var(--primary);
+    color:white;
+    display:block;
+    margin:20px auto 10px;
+    font-size:26px;
+}
+
+.record.recording{
+    background:var(--danger);
+}
+
+.feedback{
+    display:none;
+    margin-top:14px;
+    padding:15px;
+    border-radius:13px;
+    background:white;
+    border:1px solid var(--border);
+}
+
+.feedback.show{
+    display:block;
+}
+
+/* AI GENERATOR */
+
+.ai-panel{
+    margin-bottom:22px;
+}
+
+.ai-row{
+    display:grid;
+    grid-template-columns:1fr 170px;
+    gap:10px;
+}
+
+.ai-options{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    gap:10px;
+    margin-top:10px;
+}
+
+.history-item{
+    cursor:pointer;
+}
+
+.history-item:hover{
+    border-color:var(--primary);
+}
+
+.ai-status{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:9px;
+}
+
+.generated{
+    margin-top:18px;
+}
+
+/* CHUNK BANK */
+
+.search{
+    margin-bottom:16px;
+}
+
+.chunk-list{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
+}
+
+/* SPEAK */
+
+.challenge{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.timer{
+    font-size:68px;
+    font-weight:800;
+    margin:25px;
+}
+
+.prompt-box{
+    font-size:22px;
+    line-height:1.5;
+    padding:25px;
+    background:var(--primary-soft);
+    border-radius:18px;
+    margin:20px 0;
+}
+
+.score-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:18px 0;
+}
+
+.score-item{
+    padding:14px;
+    background:#fafaff;
+    border:1px solid #e4e1ff;
+    border-radius:12px;
+}
+
+.score-item strong{
+    display:block;
+    color:var(--primary);
+    font-size:25px;
+    margin-top:5px;
+}
+
+/* CHAT */
+
+.chat{
+    max-width:850px;
+    margin:auto;
+}
+
+.messages{
+    height:440px;
+    overflow:auto;
+    padding:10px;
+}
+
+.msg{
+    max-width:78%;
+    padding:13px 15px;
+    border-radius:16px;
+    margin:9px 0;
+    line-height:1.5;
+}
+
+.msg.ai{
+    background:white;
+    border:1px solid var(--border);
+}
+
+.msg.user{
+    margin-left:auto;
+    background:var(--primary);
+    color:white;
+}
+
+.chatbar{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.chatbar input{
+    flex:1;
+}
+
+.chatbar button{
+    white-space:nowrap;
+}
+
+/* PROGRESS */
+
+.progress-big{
+    height:15px;
+    background:#ededf2;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.progress-big span{
+    display:block;
+    height:100%;
+    background:var(--primary);
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    background:#20222b;
+    color:white;
+    padding:12px 16px;
+    border-radius:12px;
+    display:none;
+    z-index:100;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(10,10,20,.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+    width:min(600px,100%);
+    background:white;
+    border-radius:20px;
+    padding:25px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:100%;
+        height:auto;
+        bottom:auto;
+        padding:9px;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .nav{
+        display:flex;
+        overflow:auto;
+    }
+
+    .nav button{
+        width:auto;
+        white-space:nowrap;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:78px 16px 30px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .chunk-list{
+        grid-template-columns:1fr;
+    }
+
+    .ai-row{
+        grid-template-columns:1fr;
+    }
+
+    .ai-options{
+        grid-template-columns:1fr;
+    }
+
+    .alternative-form{
+        grid-template-columns:1fr;
+    }
+
+    .question{
+        font-size:24px;
+    }
+
+    .chatbar{
+        flex-direction:column;
+    }
+
+    .score-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+<script defer src="tracker-menu.js"></script>
+</head>
+
+<body>
+
+<div class="global-nav" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;box-shadow:0 8px 18px rgba(15,23,42,0.04);">
+    <a href="index.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Vocabulary</a>
+    <a href="publicspeaking.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Public Speaking</a>
+    <a href="chunk.html" style="padding:8px 12px;border-radius:10px;background:#e0f2fe;color:#075985;text-decoration:none;font-weight:700;font-size:0.82rem;">ChunkSpeak</a>
+    <a href="material.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Material</a>
+    <a href="kbbi.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">KBBI</a>
+    <a href="transcript.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Transcript</a>
+    <a href="pranikah.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Pranikah</a>
+    <a href="psikotest.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Psikotest</a>
+</div>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <div class="logo">
+        Chunk<span>Speak</span>
+    </div>
+
+    <nav class="nav">
+
+        <button class="active" data-page="home">
+            🏠 Home
+        </button>
+
+        <button data-page="practice">
+            🎯 Practice
+        </button>
+
+        <button data-page="chunks">
+            🧩 Chunks
+        </button>
+
+        <button data-page="speak">
+            🎙 Speak
+        </button>
+
+        <button data-page="conversation">
+            💬 Conversation
+        </button>
+
+        <button data-page="progress">
+            📈 Progress
+        </button>
+
+        <button data-page="history">
+            🕘 History
+        </button>
+
+        <button
+            type="button"
+            onclick="openSettings()"
+        >
+            ⚙ AI Settings
+        </button>
+
+        <button type="button" onclick="window.location.href='index.html'">📚 Vocabulary</button>
+        <button type="button" onclick="window.location.href='publicspeaking.html'">🗣 Public Speaking</button>
+        <button type="button" onclick="window.location.href='kbbi.html'">📖 KBBI</button>
+        <button type="button" onclick="window.location.href='transcript.html'">📝 Transcript</button>
+        <button type="button" onclick="window.location.href='pranikah.html'">💍 Pranikah</button>
+        <button type="button" onclick="window.location.href='psikotest.html'">🧠 Psikotest</button>
+
+    </nav>
+
+</aside>
+
+
+<main class="main">
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="section active">
+
+    <div class="top">
+
+        <div>
+            <h1>Good evening 👋</h1>
+
+            <p class="subtitle">
+                Build speaking fluency one chunk at a time.
+            </p>
+        </div>
+
+        <div class="avatar">
+            U
+        </div>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card stat">
+            <small>Chunks learned</small>
+            <strong id="statChunks">0</strong>
+        </div>
+
+        <div class="card stat">
+            <small>Automatic chunks</small>
+            <strong id="statAuto">0</strong>
+        </div>
+
+        <div class="card stat">
+            <small>Speaking streak</small>
+            <strong>🔥 1 day</strong>
+        </div>
+
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+        <div class="actions" style="justify-content:space-between;align-items:center;">
+            <div>
+                <span class="label">Backup progress</span>
+                <p class="subtitle">Simpan atau pulihkan chunks, statistik, dan riwayat belajar.</p>
+            </div>
+            <div class="actions">
+                <button class="btn secondary" type="button" onclick="exportChunkData()">⬇ Export JSON</button>
+                <button class="btn secondary" type="button" onclick="document.getElementById('importChunkInput').click()">⬆ Import JSON</button>
+                <input id="importChunkInput" type="file" accept="application/json,.json" style="display:none" onchange="importChunkData(event)">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card hero">
+
+        <span class="label">
+            Daily Practice
+        </span>
+
+        <div class="hero-title">
+            Free Time
+        </div>
+
+        <p class="subtitle">
+            Practice useful chunks for everyday conversation.
+        </p>
+
+        <div class="progress">
+            <span id="homeProgress"></span>
+        </div>
+
+        <button
+            class="btn primary"
+            onclick="showPage('practice')"
+        >
+            Start Practice →
+        </button>
+
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+        <div class="actions" style="justify-content:space-between;align-items:center;">
+            <span class="label">Daily goal</span>
+            <span id="dailyGoalLabel" class="label"></span>
+        </div>
+        <div class="progress" style="margin-bottom:10px;">
+            <span id="dailyGoalBar"></span>
+        </div>
+        <p class="subtitle" id="dailyGoalText">0 / 5 chunks today</p>
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <span class="label">
+                Review
+            </span>
+
+            <h3>
+                Review your chunks
+            </h3>
+
+            <p class="subtitle">
+                Turn familiar patterns into automatic speech.
+            </p>
+
+            <button
+                class="btn secondary"
+                onclick="showPage('chunks')"
+            >
+                Review
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="label">
+                Challenge
+            </span>
+
+            <h3>
+                30-second speaking
+            </h3>
+
+            <p class="subtitle">
+                Speak without reading a script.
+            </p>
+
+            <button
+                class="btn secondary"
+                onclick="showPage('speak')"
+            >
+                Start
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <span class="label">
+                Learning principle
+            </span>
+
+            <h3>
+                Memorize patterns, not scripts.
+            </h3>
+
+            <p class="subtitle">
+                Learn → Modify → Personalize → Speak.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRACTICE ================= -->
+
+<section id="practice" class="section">
+
+    <div class="lesson">
+
+        <button
+            class="back"
+            onclick="showPage('home')"
+        >
+            ← Dashboard
+        </button>
+
+
+        <!-- AI GENERATOR -->
+
+        <div class="card ai-panel">
+
+            <span class="label">
+                AI Lesson Generator
+            </span>
+
+            <h2>
+                Generate a speaking lesson
+            </h2>
+
+            <p class="subtitle">
+                Enter any topic and AI will create a question,
+                answer, chunks, and alternative expressions.
+            </p>
+
+            <br>
+
+            <div class="ai-row">
+
+                <input
+                    id="topicInput"
+                    placeholder="e.g. hobbies, job interview, travel, food"
+                    value="free time"
+                >
+
+                <button
+                    class="btn primary"
+                    onclick="generateLesson()"
+                    id="generateBtn"
+                >
+                    ✨ Generate AI
+                </button>
+
+            </div>
+
+            <div class="ai-options">
+
+                <select id="learnerLevel" aria-label="Learner level">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate" selected>Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+
+                <select id="lessonTarget" aria-label="Learning target">
+                    <option value="daily conversation" selected>Daily conversation</option>
+                    <option value="job interview">Job interview</option>
+                    <option value="travel">Travel</option>
+                    <option value="study">Study</option>
+                    <option value="general speaking">General speaking</option>
+                </select>
+
+                <select id="modelSelect" aria-label="OpenRouter model">
+                    <option value="gemini-3.5-flash-lite" selected>Gemini 3.5 Flash Lite</option>
+                </select>
+
+                <button
+                    class="btn ghost"
+                    type="button"
+                    onclick="openSettings()"
+                    title="Open AI settings"
+                >
+                    ⚙ Settings
+                </button>
+
+            </div>
+
+            <div
+                class="ai-status"
+                id="aiStatus"
+            >
+                AI generator ready.
+            </div>
+
+        </div>
+
+
+        <!-- LESSON -->
+
+        <div class="card">
+
+            <span class="label">
+                Step 1 · Understand
+            </span>
+
+            <div
+                class="question"
+                id="lessonQuestion"
+            >
+                What do you do in your free time?
+            </div>
+
+            <div
+                class="translation"
+                id="lessonTranslation"
+            >
+                Apa yang kamu lakukan di waktu luang?
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="btn secondary"
+                    onclick="listenQuestion()"
+                >
+                    🔊 Listen
+                </button>
+
+                <button
+                    class="btn ghost"
+                    onclick="listenQuestion(.65)"
+                >
+                    🐢 Slow
+                </button>
+
+            </div>
+
+
+            <hr class="divider">
+
+
+            <span class="label">
+                Model Answer
+            </span>
+
+            <div
+                class="answer"
+                id="lessonAnswer"
+            >
+                In my free time, I usually read books.
+            </div>
+
+            <button
+                class="btn secondary"
+                onclick="speakText(document.getElementById('lessonAnswer').innerText)"
+            >
+                🔊 Listen
+            </button>
+
+
+            <hr class="divider">
+
+
+            <span class="label">
+                Step 2 · Learn the chunks
+            </span>
+
+            <div id="chunkContainer">
+
+                <div class="chunk">
+
+                    <div class="chunk-title">
+                        What do you do +
+                        <span class="slot">
+                            [time/situation]
+                        </span>?
+                    </div>
+
+                    <p class="chunk-description">
+                        Ask what someone normally does
+                        in a particular time or situation.
+                    </p>
+
+                    <div class="examples">
+
+                        <span class="pill">
+                            What do you do on weekends?
+                        </span>
+
+                        <span class="pill">
+                            What do you do after work?
+                        </span>
+
+                        <span class="pill">
+                            What do you do when you're bored?
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chunk">
+
+                    <div class="chunk-title">
+                        In my free time, I usually +
+                        <span class="slot">
+                            [V1]
+                        </span>.
+                    </div>
+
+                    <p class="chunk-description">
+                        A useful pattern for talking
+                        about your routine.
+                    </p>
+
+                    <div class="examples">
+
+                        <span class="pill">
+                            In my free time, I usually read books.
+                        </span>
+
+                        <span class="pill">
+                            In my free time, I usually play games.
+                        </span>
+
+                        <span class="pill">
+                            In my free time, I usually watch movies.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chunk">
+
+                    <div class="chunk-title">
+                        I enjoy +
+                        <span class="slot">
+                            [V-ing]
+                        </span>.
+                    </div>
+
+                    <p class="chunk-description">
+                        Use this pattern to express activities
+                        you enjoy.
+                    </p>
+
+                    <div class="examples">
+
+                        <span class="pill">
+                            I enjoy reading books.
+                        </span>
+
+                        <span class="pill">
+                            I enjoy playing games.
+                        </span>
+
+                        <span class="pill">
+                            I enjoy watching movies.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <span class="label">
+                    Step 3 · Recall
+                </span>
+
+                <h3>
+                    Say the answer without looking.
+                </h3>
+
+                <p id="recallPrompt">
+                    In my free time, I usually ______.
+                </p>
+
+                <textarea
+                    id="recallText"
+                    rows="3"
+                    placeholder="Type your answer..."
+                ></textarea>
+
+
+                <button
+                    class="record"
+                    id="recordBtn"
+                    onclick="toggleRecording()"
+                >
+                    🎙
+                </button>
+
+                <p
+                    style="text-align:center;color:var(--muted);font-size:14px"
+                >
+                    Tap to start/stop recording.
+                </p>
+
+
+                <div
+                    class="feedback"
+                    id="recallFeedback"
+                ></div>
+
+                <button
+                    class="btn secondary"
+                    type="button"
+                    onclick="getAdaptiveFeedback('recall')"
+                >
+                    ✨ Get AI feedback
+                </button>
+
+            </div>
+
+
+            <div class="practice-box">
+
+                <span class="label">
+                    Step 4 · Modify
+                </span>
+
+                <h3>
+                    Make your own variation.
+                </h3>
+
+                <p
+                    class="subtitle"
+                    id="variationHint"
+                >
+                    Change the activity and make the sentence personal.
+                </p>
+
+                <br>
+
+                <input
+                    id="variationInput"
+                    placeholder="Write a personal variation using the chunk..."
+                >
+
+                <br><br>
+
+                <button
+                    class="btn primary"
+                    onclick="checkVariation()"
+                >
+                    Check variation
+                </button>
+
+                <div
+                    class="feedback"
+                    id="variationFeedback"
+                ></div>
+
+                <button
+                    class="btn secondary"
+                    type="button"
+                    onclick="getAdaptiveFeedback('variation')"
+                >
+                    ✨ Get AI feedback
+                </button>
+
+            </div>
+
+            <div class="practice-box">
+
+                <span class="label">
+                    Step 5 · Pronunciation
+                </span>
+
+                <h3>
+                    Repeat this sentence clearly.
+                </h3>
+
+                <p
+                    class="subtitle"
+                    id="pronunciationTarget"
+                >
+                    In my free time, I usually read books.
+                </p>
+
+                <div class="actions">
+                    <button
+                        class="btn secondary"
+                        type="button"
+                        onclick="speakText(document.getElementById('pronunciationTarget').innerText)"
+                    >
+                        🔊 Listen
+                    </button>
+
+                    <button
+                        class="btn ghost"
+                        type="button"
+                        onclick="recordPronunciation()"
+                    >
+                        🎙 Record
+                    </button>
+                </div>
+
+                <div
+                    class="feedback"
+                    id="pronunciationFeedback"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CHUNKS ================= -->
+
+<section id="chunks" class="section">
+
+    <div class="top">
+
+        <div>
+            <h1>Chunk Bank</h1>
+
+            <p class="subtitle">
+                Reusable English patterns.
+            </p>
+        </div>
+
+    </div>
+
+
+    <input
+        class="search"
+        id="chunkSearch"
+        placeholder="Search chunks..."
+        oninput="renderChunkBank()"
+    >
+
+    <div class="card" style="margin-bottom:16px;">
+        <div class="actions" style="gap:10px;flex-wrap:wrap;">
+            <select id="chunkTypeFilter" aria-label="Chunk type filter" onchange="renderChunkBank()">
+                <option value="all">All chunks</option>
+                <option value="question">Question</option>
+                <option value="answer">Answer</option>
+                <option value="favorite">Favorites</option>
+                <option value="automatic">Automatic</option>
+            </select>
+
+            <select id="chunkSort" aria-label="Chunk sort" onchange="renderChunkBank()">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="topic">Topic</option>
+                <option value="automatic">Automatic first</option>
+            </select>
+
+            <button class="btn ghost" type="button" onclick="resetChunkFilters()">Reset</button>
+        </div>
+    </div>
+
+    <div
+        class="chunk-list"
+        id="chunkBank"
+    ></div>
+
+</section>
+
+
+<!-- ================= SPEAK ================= -->
+
+<section id="speak" class="section">
+
+    <div class="challenge">
+
+        <div class="card">
+
+            <span class="label">
+                30-second speaking challenge
+            </span>
+
+            <h1>
+                Speak without a script.
+            </h1>
+
+            <div
+                class="prompt-box"
+                id="challengePrompt"
+            >
+                Tell me what you usually do in your free time.
+            </div>
+
+
+            <div
+                class="timer"
+                id="timer"
+            >
+                30
+            </div>
+
+
+            <button
+                class="btn primary"
+                onclick="startChallenge()"
+                id="challengeBtn"
+            >
+                🎙 Start 30 Seconds
+            </button>
+
+
+            <br><br>
+
+            <button
+                class="btn secondary"
+                onclick="speakText(document.getElementById('challengePrompt').innerText)"
+            >
+                🔊 Hear Prompt
+            </button>
+
+
+            <div
+                class="feedback"
+                id="challengeFeedback"
+            ></div>
+
+            <div
+                class="score-grid"
+                id="challengeScores"
+                style="display:none"
+            >
+                <div class="score-item">
+                    <span class="label">Clarity</span>
+                    <strong id="clarityScore">-</strong>
+                </div>
+                <div class="score-item">
+                    <span class="label">Fluency</span>
+                    <strong id="fluencyScore">-</strong>
+                </div>
+                <div class="score-item">
+                    <span class="label">Pauses</span>
+                    <strong id="pauseScore">-</strong>
+                </div>
+            </div>
+
+            <p class="subtitle" id="challengeTranscript"></p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONVERSATION ================= -->
+
+<section id="conversation" class="section">
+
+    <div class="chat">
+
+        <button class="back" onclick="showPage('practice')">
+            ← Back to Practice
+        </button>
+
+        <div class="card">
+            <span class="label">AI Conversation</span>
+            <h2 id="conversationTitle">Practice your active lesson</h2>
+            <p class="subtitle" id="conversationContext">Generate a lesson first, then practice it here.</p>
+
+            <div class="messages" id="conversationMessages"></div>
+
+            <div class="chatbar">
+                <input id="conversationInput" placeholder="Write your English response...">
+                <button class="btn primary" type="button" onclick="sendConversationMessage()">
+                    Send
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HISTORY ================= -->
+
+<section id="history" class="section">
+
+    <div class="top">
+        <div>
+            <h1>Lesson History</h1>
+            <p class="subtitle">Return to lessons you generated before.</p>
+        </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;align-items:end;">
+            <label>
+                <span class="label">From date</span>
+                <input type="date" id="historyFromDate">
+            </label>
+            <label>
+                <span class="label">To date</span>
+                <input type="date" id="historyToDate">
+            </label>
+            <div class="actions" style="margin-top:18px;">
+                <button class="btn secondary" type="button" onclick="renderHistory()">Apply filter</button>
+                <button class="btn ghost" type="button" onclick="clearHistoryFilter()">Reset</button>
+                <button class="btn danger" type="button" onclick="deleteDuplicateHistory()">Delete duplicates</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="historyList"></div>
+
+</section>
+
+
+<!-- ================= PROGRESS ================= -->
+
+<section id="progress" class="section">
+
+    <div class="top">
+
+        <div>
+            <h1>Your Progress</h1>
+
+            <p class="subtitle">
+                Track your journey toward automatic speaking.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card stat">
+            <small>Total chunks</small>
+            <strong id="progressChunks">0</strong>
+        </div>
+
+        <div class="card stat">
+            <small>Automatic</small>
+            <strong id="progressAuto">0</strong>
+        </div>
+
+        <div class="card stat">
+            <small>Speaking minutes</small>
+            <strong id="progressMinutes">0</strong>
+        </div>
+
+        <div class="card stat">
+            <small>Lessons generated</small>
+            <strong id="progressLessons">0</strong>
+        </div>
+
+        <div class="card stat">
+            <small>AI feedback requests</small>
+            <strong id="progressFeedback">0</strong>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <span class="label">
+            Chunk mastery
+        </span>
+
+        <h3>
+            Automatic speaking
+        </h3>
+
+        <div class="progress-big">
+            <span
+                id="masteryBar"
+                style="width:0%"
+            ></span>
+        </div>
+
+        <p
+            class="subtitle"
+            id="masteryText"
+        >
+            0% of your chunks are automatic.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- SETTINGS MODAL -->
+
+<div
+    class="modal"
+    id="settingsModal"
+>
+
+    <div class="modal-card">
+
+        <h2>
+            AI Settings
+        </h2>
+
+        <p class="subtitle">
+            For local testing only. Do not publish a real API key
+            inside this HTML file.
+        </p>
+
+        <br>
+
+        <label>
+            AI Provider
+        </label>
+
+        <select id="settingsProvider" onchange="updateProviderSettings()">
+            <option value="gemini">Google Gemini</option>
+        </select>
+
+        <br><br>
+
+        <label>
+            API Endpoint
+        </label>
+
+        <input
+            id="apiEndpoint"
+            value="https://generativelanguage.googleapis.com/v1beta/models/"
+        >
+
+        <br><br>
+
+        <label>
+            API Key
+        </label>
+
+        <input
+            id="apiKey"
+            type="password"
+            placeholder="API key..."
+        >
+
+        <br><br>
+
+        <label>
+            Default Gemini Model
+        </label>
+
+        <select id="settingsModel">
+            <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash Lite</option>
+        </select>
+
+        <br><br>
+
+        <div class="actions">
+
+            <button
+                class="btn primary"
+                onclick="saveAISettings()"
+            >
+                Save
+            </button>
+
+            <button
+                class="btn ghost"
+                onclick="closeSettings()"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   DATA
+========================================================= */
+
+let chunks = JSON.parse(
+    localStorage.getItem("chunkspeak_chunks") || "[]"
+);
+
+let stats = JSON.parse(
+    localStorage.getItem("chunkspeak_stats") ||
+    '{"learned":0,"automatic":0,"minutes":0}'
+);
+
+let lessonHistory = JSON.parse(
+    localStorage.getItem("chunkspeak_history") || "[]"
+);
+
+function downloadChunkJSON(filename, data) {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+function exportChunkData() {
+    downloadChunkJSON("chunkspeak-backup.json", {
+        app: "chunkspeak",
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        chunks,
+        stats,
+        history: lessonHistory
+    });
+    showToast("Backup ChunkSpeak berhasil diekspor.");
+}
+
+function importChunkData(event) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+        try {
+            const data = JSON.parse(reader.result);
+            if (!Array.isArray(data.chunks) || !Array.isArray(data.history) || !data.stats || typeof data.stats !== "object") {
+                throw new Error("Format backup ChunkSpeak tidak valid.");
+            }
+            localStorage.setItem("chunkspeak_chunks", JSON.stringify(data.chunks));
+            localStorage.setItem("chunkspeak_stats", JSON.stringify(data.stats));
+            localStorage.setItem("chunkspeak_history", JSON.stringify(data.history));
+            chunks = data.chunks;
+            stats = data.stats;
+            lessonHistory = data.history;
+            renderChunkBank();
+            renderHistory();
+            updateStats();
+            updateDailyGoalUI();
+            showToast("Data ChunkSpeak berhasil diimpor.");
+        } catch (error) { showToast(error.message || "File JSON tidak dapat diimpor."); }
+    };
+    reader.readAsText(file);
+}
+
+let mediaRecorder = null;
+let audioChunks = [];
+let recording = false;
+let speechRecognition = null;
+let challengeRecognition = null;
+let challengeTranscript = "";
+let challengePauseCount = 0;
+let lastSpeechAt = 0;
+let recallLastFinalIndex = -1;
+let activeLesson = {
+    topic:"free time",
+    question:"What do you do in your free time?",
+    answer:"In my free time, I usually read books."
+};
+let conversationMessages = [];
+
+let timerInterval = null;
+let secondsLeft = 30;
+
+const DAILY_GOAL = {
+    chunks:5,
+    minutes:10
+};
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+document.querySelectorAll(".nav button").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        showPage(button.dataset.page);
+
+    });
+
+});
+
+document.addEventListener("click", event => {
+
+    const target = event.target.closest(
+        ".pill, .chunk-title, .chunk-list h3"
+    );
+
+    if(!target || target.closest("button, input, textarea")) return;
+
+    speakText(target.innerText.trim());
+});
+
+
+function showPage(page){
+
+    document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active");
+    });
+
+    const target = document.getElementById(page);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav button").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.page === page
+        );
+    });
+
+    updateStats();
+    updateDailyGoalUI();
+
+    if(page === "chunks"){
+        renderChunkBank();
+    }
+
+    if(page === "history"){
+        renderHistory();
+    }
+
+    if(page === "conversation"){
+        renderConversation();
+    }
+}
+
+
+/* =========================================================
+   SPEECH SYNTHESIS
+========================================================= */
+
+function speakText(text, rate = 1){
+
+    if(!("speechSynthesis" in window)){
+        showToast("Text-to-speech is not supported.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+    utterance.lang = "en-US";
+    utterance.rate = rate;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+}
+
+
+function listenQuestion(rate = 1){
+
+    const question =
+        document.getElementById("lessonQuestion").innerText;
+
+    speakText(question, rate);
+}
+
+
+function updateRecallPrompt(answer){
+
+    const prompt = document.getElementById("recallPrompt");
+    if(!prompt) return;
+
+    prompt.innerText = answer
+        ? "Try saying: " + answer
+        : "Say the answer without looking.";
+}
+
+
+function updateVariationPrompt(lesson){
+
+    const hint = document.getElementById("variationHint");
+    const input = document.getElementById("variationInput");
+    const chunk = lesson.chunks?.[0];
+
+    if(!hint || !input || !chunk) return;
+
+    hint.innerText = "Create your own sentence using: " + chunk.pattern;
+    input.placeholder = chunk.examples?.[0]
+        || "Write a personal variation using the chunk...";
+}
+
+function updatePronunciationTarget(){
+    const target = document.getElementById("pronunciationTarget");
+    if(!target) return;
+    const text = activeLesson.answer || activeLesson.question || "In my free time, I usually read books.";
+    target.innerText = text;
+}
+
+function recordPronunciation(){
+    const target = document.getElementById("pronunciationTarget")?.innerText.trim();
+    const feedback = document.getElementById("pronunciationFeedback");
+    if(!target || !feedback) return;
+
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(!Recognition){
+        feedback.classList.add("show");
+        feedback.innerHTML = "Speech recognition is not supported in this browser.";
+        return;
+    }
+
+    let transcript = "";
+    const recognition = new Recognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    feedback.classList.add("show");
+    feedback.innerHTML = "Listening... please repeat clearly.";
+
+    recognition.onresult = event => {
+        transcript = Array.from(event.results)
+            .map(result => result[0].transcript)
+            .join(" ");
+    };
+
+    recognition.onend = () => {
+        const targetWords = target.toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/).filter(Boolean);
+        const spokenWords = transcript.toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/).filter(Boolean);
+        const matched = targetWords.filter(word => spokenWords.includes(word)).length;
+        const accuracy = targetWords.length ? Math.round((matched / targetWords.length) * 100) : 0;
+
+        feedback.innerHTML = `
+            <b>Pronunciation check</b>
+            <p>You said: ${escapeHTML(transcript || "No clear speech detected.")}</p>
+            <p>Word match: ${accuracy}%</p>
+            <p>Try to slow down and emphasize the key words.</p>
+        `;
+    };
+
+    recognition.start();
+}
+
+/* =========================================================
+   RECORDING
+========================================================= */
+
+async function toggleRecording(){
+
+    const button =
+        document.getElementById("recordBtn");
+
+    if(!navigator.mediaDevices ||
+       !navigator.mediaDevices.getUserMedia){
+
+        showToast(
+            "Microphone is not supported in this browser."
+        );
+
+        return;
+    }
+
+    if(recording){
+
+        mediaRecorder.stop();
+
+        if(speechRecognition){
+            speechRecognition.stop();
+        }
+
+        recording = false;
+
+        button.classList.remove("recording");
+
+        button.innerText = "🎙";
+
+        return;
+    }
+
+    try{
+
+        const stream =
+            await navigator.mediaDevices.getUserMedia({
+                audio:true
+            });
+
+        audioChunks = [];
+
+        mediaRecorder =
+            new MediaRecorder(stream);
+
+        const Recognition =
+            window.SpeechRecognition ||
+            window.webkitSpeechRecognition;
+
+        if(Recognition){
+            speechRecognition = new Recognition();
+            speechRecognition.lang = "en-US";
+            speechRecognition.continuous = true;
+            speechRecognition.interimResults = true;
+            recallLastFinalIndex = -1;
+            
+            const textArea = document.getElementById("recallText");
+            textArea.placeholder = "Type your answer...";
+            
+            speechRecognition.onresult = event => {
+                let interimTranscript = "";
+                
+                // Hanya process final results yang belum pernah diproses
+                for(let i = recallLastFinalIndex + 1; i < event.results.length; i++){
+                    if(event.results[i].isFinal){
+                        const transcript = event.results[i][0].transcript;
+                        document.getElementById("recallText").value += transcript + " ";
+                        recallLastFinalIndex = i;
+                    }
+                }
+                
+                // Tampilkan interim result sebagai preview
+                for(let i = event.resultIndex; i < event.results.length; i++){
+                    if(!event.results[i].isFinal){
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                
+                // Update placeholder dengan interim preview
+                if(interimTranscript){
+                    textArea.placeholder = "Listening: " + interimTranscript;
+                }
+            };
+            speechRecognition.start();
+        }
+
+        mediaRecorder.ondataavailable = event => {
+
+            if(event.data.size > 0){
+                audioChunks.push(event.data);
+            }
+
+        };
+
+        mediaRecorder.onstop = () => {
+
+            stream.getTracks().forEach(
+                track => track.stop()
+            );
+
+            const blob =
+                new Blob(audioChunks,{
+                    type:"audio/webm"
+                });
+
+            const url =
+                URL.createObjectURL(blob);
+
+            const feedback =
+                document.getElementById("recallFeedback");
+
+            feedback.classList.add("show");
+
+            feedback.innerHTML = `
+                <b>Recording completed 🎉</b>
+                <br><br>
+                <audio controls src="${url}" style="width:100%"></audio>
+                <p>
+                    Tip: listen to yourself and compare
+                    your rhythm with the model answer.
+                </p>
+            `;
+
+            if(!Recognition){
+                feedback.innerHTML +=
+                    "<p>Speech transcription is not supported in this browser.</p>";
+            }
+
+            stats.minutes += 1;
+            stats.recordings = (stats.recordings || 0) + 1;
+
+            saveStats();
+
+        };
+
+        mediaRecorder.start();
+
+        recording = true;
+
+        button.classList.add("recording");
+
+        button.innerText = "■";
+
+        showToast("Recording...");
+
+    }catch(error){
+
+        showToast(
+            "Microphone permission was denied."
+        );
+
+    }
+}
+
+
+/* =========================================================
+   VARIATION CHECK
+========================================================= */
+
+function checkVariation(){
+
+    const value =
+        document
+        .getElementById("variationInput")
+        .value
+        .trim();
+
+    const feedback =
+        document.getElementById("variationFeedback");
+
+    feedback.classList.add("show");
+
+    if(!value){
+
+        feedback.innerHTML =
+            "Write your own sentence first.";
+
+        return;
+    }
+
+    const lower = value.toLowerCase();
+    const activeChunks = activeLesson.chunks || [];
+    const hasActivePattern = activeChunks.some(chunk => {
+        const patternWords = String(chunk.pattern || "")
+            .toLowerCase()
+            .replace(/\[[^\]]+\]/g, "")
+            .replace(/[^a-z\s]/g, " ")
+            .split(/\s+/)
+            .filter(word => word.length > 2);
+        const matches = patternWords.filter(word => lower.includes(word));
+        return matches.length >= Math.min(2,patternWords.length);
+    });
+
+    const hasLegacyPattern =
+        lower.includes("free time") ||
+        lower.includes("weekend") ||
+        lower.includes("usually") ||
+        lower.includes("enjoy");
+
+    if(hasActivePattern || (!activeChunks.length && hasLegacyPattern)){
+
+        feedback.innerHTML = `
+            <b>Looks good! 🎉</b>
+            <p>
+                Your sentence uses a useful speaking pattern.
+                Now say it aloud without reading.
+            </p>
+        `;
+
+        stats.learned += 1;
+
+    }else{
+
+        feedback.innerHTML = `
+            <b>Good attempt.</b>
+            <p>
+                Try using this chunk:
+                <br>
+                <b>${escapeHTML(activeChunks[0]?.pattern || "your active chunk")}</b>
+            </p>
+        `;
+
+    }
+
+    saveStats();
+
+}
+
+
+/* =========================================================
+   CHUNK BANK
+========================================================= */
+
+function addChunk(chunk){
+
+    const exists =
+        chunks.some(
+            item => item.pattern === chunk.pattern
+        );
+
+    if(!exists){
+        const normalizedChunk = {
+            ...chunk,
+            id:Date.now(),
+            automatic:false,
+            type: normalizeChunkType(chunk.type || classifyChunkText(chunk.pattern, chunk.meaning, chunk.topic)),
+            source: chunk.source || chunk.topic || "General"
+        };
+
+        chunks.push(normalizedChunk);
+
+        stats.learned += 1;
+
+        saveStats();
+
+        showToast("Chunk added to your Chunk Bank.");
+
+        renderChunkBank();
+        return true;
+
+    }
+
+    showToast("This item is already saved in your Chunk Bank.");
+    renderChunkBank();
+    return false;
+
+}
+
+
+function normalizeChunkType(type){
+    const value = String(type || "").toLowerCase();
+    if(value.includes("question")) return "question";
+    if(value.includes("answer")) return "answer";
+    return "question";
+}
+
+function classifyChunkText(pattern, meaning, topic = "General"){
+    const text = `${pattern || ""} ${meaning || ""} ${topic || ""}`.toLowerCase();
+    const questionWords = ["what","when","where","why","how","do you","are you","can you","would you","what do","how often","which"];
+    const answerWords = ["i usually","i like","i enjoy","in my","i often","i think","i prefer","i always","i want","i feel"];
+
+    if(questionWords.some(word => text.includes(word))) return "question";
+    if(answerWords.some(word => text.includes(word))) return "answer";
+    return /\?/.test(String(pattern || "")) ? "question" : "answer";
+}
+
+async function classifyChunkAI(chunk, topic, fallbackType){
+    const apiKey = getApiKey();
+    if(!apiKey) return fallbackType;
+
+    try{
+        const prompt = `Klasifikasikan chunk ini ke salah satu: question atau answer. Fokus pada satu topik yang sama, misalnya topik "${topic || "General"}". Return only one word: question or answer. Pattern: "${chunk.pattern || ""}". Meaning: "${chunk.meaning || ""}".`;
+        const text = (await requestGemini(prompt, apiKey, "Return only one word: question or answer.", .2)).toLowerCase();
+        if(text.includes("question")) return "question";
+        if(text.includes("answer")) return "answer";
+        return fallbackType;
+    }catch(error){
+        console.warn("Chunk classification failed.",error);
+        return fallbackType;
+    }
+}
+
+function resetChunkFilters(){
+    const search = document.getElementById("chunkSearch");
+    const type = document.getElementById("chunkTypeFilter");
+    const sort = document.getElementById("chunkSort");
+    if(search) search.value = "";
+    if(type) type.value = "all";
+    if(sort) sort.value = "newest";
+    renderChunkBank();
+}
+
+function groupChunksByTopicQA(filtered){
+    const grouped = new Map();
+    
+    filtered.forEach(chunk => {
+        const topic = chunk.topic || "General";
+        if(!grouped.has(topic)){
+            grouped.set(topic, {questions: [], answers: []});
+        }
+        
+        const chunkType = normalizeChunkType(chunk.type || classifyChunkText(chunk.pattern, chunk.meaning, chunk.topic));
+        if(chunkType === "question"){
+            grouped.get(topic).questions.push(chunk);
+        } else {
+            grouped.get(topic).answers.push(chunk);
+        }
+    });
+    
+    return grouped;
+}
+
+function renderChunkBank(){
+
+    const container =
+        document.getElementById("chunkBank");
+
+    if(!container) return;
+
+    const search =
+        (
+            document.getElementById("chunkSearch")?.value
+            || ""
+        ).toLowerCase();
+
+    const typeFilter = document.getElementById("chunkTypeFilter")?.value || "all";
+    const sortValue = document.getElementById("chunkSort")?.value || "newest";
+
+    let filtered = chunks.filter(chunk => {
+        const chunkType = normalizeChunkType(chunk.type || classifyChunkText(chunk.pattern, chunk.meaning, chunk.topic));
+        const haystack = (
+            chunk.pattern +
+            " " +
+            chunk.meaning +
+            " " +
+            (chunk.topic || "") +
+            " " +
+            chunkType
+        )
+        .toLowerCase();
+
+        const matchesSearch = haystack.includes(search);
+        const matchesType =
+            typeFilter === "all" ? true :
+            typeFilter === "favorite" ? Boolean(chunk.favorite) :
+            typeFilter === "automatic" ? Boolean(chunk.automatic) :
+            chunkType === typeFilter;
+
+        return matchesSearch && matchesType;
+    });
+
+    filtered.sort((a,b) => {
+        if(sortValue === "oldest") return (a.id || 0) - (b.id || 0);
+        if(sortValue === "topic") return String(a.topic || "").localeCompare(String(b.topic || ""));
+        if(sortValue === "automatic") return Number(Boolean(b.automatic)) - Number(Boolean(a.automatic));
+        return (b.id || 0) - (a.id || 0);
+    });
+
+    if(filtered.length === 0){
+
+        container.innerHTML = `
+            <div class="card">
+                <h3>No chunks yet.</h3>
+                <p class="subtitle">
+                    Generate an AI lesson and save useful chunks here.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const grouped = groupChunksByTopicQA(filtered);
+    let html = "";
+
+    grouped.forEach((group, topic) => {
+        html += `
+            <div class="card">
+                <div class="actions" style="justify-content:space-between;align-items:center;margin-bottom:16px;">
+                    <span class="tag">${escapeHTML(topic)}</span>
+                </div>
+        `;
+        
+        // Render all questions
+        if(group.questions.length > 0){
+            group.questions.forEach((question, idx) => {
+                const favMark = question.favorite ? "★" : "☆";
+                const divider = idx < group.questions.length - 1 ? "border-bottom:1px solid var(--border);" : "";
+                html += `
+                    <div style="margin-bottom:16px;padding-bottom:16px;${divider}">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                            <span class="tag" style="background:#eef2ff;color:#4338ca;">❓ Question</span>
+                        </div>
+                        <h3 style="margin:8px 0;">
+                            ${escapeHTML(question.pattern)}
+                        </h3>
+                        <p class="subtitle">
+                            ${escapeHTML(question.meaning || "")}
+                        </p>
+                        <div class="examples">
+                            ${(question.examples || []).slice(0,2).map(example => `<span class="pill">${escapeHTML(example)}</span>`).join("")}
+                        </div>
+                        <div class="actions" style="gap:6px;margin-top:10px;">
+                            <button class="btn secondary" onclick="speakText(${JSON.stringify(question.pattern)})" style="padding:8px 12px;font-size:13px;">🔊 Listen</button>
+                            <button class="btn ghost" type="button" onclick="toggleFavorite(${question.id})" style="padding:8px 12px;font-size:13px;">${favMark} Fav</button>
+                            <button class="btn ghost" onclick="toggleAutomatic(${question.id})" style="padding:8px 12px;font-size:13px;">${question.automatic ? "✓" : "○"} Auto</button>
+                            <button class="btn danger" type="button" onclick="deleteChunk(${question.id})" style="padding:8px 12px;font-size:13px;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        
+        // Render all answers
+        if(group.answers.length > 0){
+            const addBorderTop = group.questions.length > 0 ? "border-top:1px solid var(--border);padding-top:16px;" : "";
+            group.answers.forEach((answer, idx) => {
+                const favMark = answer.favorite ? "★" : "☆";
+                const divider = idx < group.answers.length - 1 ? "border-bottom:1px solid var(--border);" : "";
+                html += `
+                    <div style="margin-bottom:16px;padding-bottom:16px;${divider}${idx === 0 ? addBorderTop : ''}">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                            <span class="tag" style="background:#ecfdf5;color:#166534;">✓ Answer</span>
+                        </div>
+                        <h3 style="margin:8px 0;">
+                            ${escapeHTML(answer.pattern)}
+                        </h3>
+                        <p class="subtitle">
+                            ${escapeHTML(answer.meaning || "")}
+                        </p>
+                        <div class="examples">
+                            ${(answer.examples || []).slice(0,2).map(example => `<span class="pill">${escapeHTML(example)}</span>`).join("")}
+                        </div>
+                        <div class="actions" style="gap:6px;margin-top:10px;">
+                            <button class="btn secondary" onclick="speakText(${JSON.stringify(answer.pattern)})" style="padding:8px 12px;font-size:13px;">🔊 Listen</button>
+                            <button class="btn ghost" type="button" onclick="toggleFavorite(${answer.id})" style="padding:8px 12px;font-size:13px;">${favMark} Fav</button>
+                            <button class="btn ghost" onclick="toggleAutomatic(${answer.id})" style="padding:8px 12px;font-size:13px;">${answer.automatic ? "✓" : "○"} Auto</button>
+                            <button class="btn danger" type="button" onclick="deleteChunk(${answer.id})" style="padding:8px 12px;font-size:13px;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        
+        html += `</div>`;
+    });
+
+    container.innerHTML = html;
+
+}
+
+
+function toggleAutomatic(id){
+
+    const item =
+        chunks.find(chunk => chunk.id === id);
+
+    if(!item) return;
+
+    const wasAutomatic =
+        item.automatic;
+
+    item.automatic =
+        !item.automatic;
+
+    if(item.automatic){
+        stats.automatic += 1;
+    }else if(wasAutomatic){
+        stats.automatic =
+            Math.max(0,stats.automatic - 1);
+    }
+
+    saveStats();
+
+    renderChunkBank();
+
+    showToast(
+        item.automatic
+        ? "Chunk mastered! 🎉"
+        : "Chunk moved back to practice."
+    );
+
+}
+
+function toggleFavorite(id){
+    const item = chunks.find(chunk => chunk.id === id);
+    if(!item) return;
+
+    item.favorite = !Boolean(item.favorite);
+    saveStats();
+    renderChunkBank();
+    showToast(item.favorite ? "Added to favorites." : "Removed from favorites.");
+}
+
+function deleteChunk(id){
+    const removed = chunks.filter(chunk => chunk.id !== id);
+    if(removed.length === chunks.length) return;
+
+    chunks = removed;
+    stats.learned = Math.max(0, stats.learned - 1);
+    saveStats();
+    renderChunkBank();
+    updateDailyGoalUI();
+    showToast("Chunk deleted.");
+}
+
+
+/* =========================================================
+   AI GENERATOR
+========================================================= */
+
+function updateConversationContext(){
+
+    const title = document.getElementById("conversationTitle");
+    const context = document.getElementById("conversationContext");
+    if(!title || !context) return;
+
+    title.innerText = "Practice: " + (activeLesson.topic || "your lesson");
+    context.innerText = activeLesson.question || "Continue the speaking practice.";
+}
+
+
+function renderConversation(){
+
+    updateConversationContext();
+    const container = document.getElementById("conversationMessages");
+    if(!container) return;
+
+    container.innerHTML = conversationMessages.map(message => `
+        <div class="msg ${message.role === "user" ? "user" : "ai"}">
+            ${escapeHTML(message.content)}
+        </div>
+    `).join("");
+    container.scrollTop = container.scrollHeight;
+}
+
+function getApiKey(){
+    return localStorage.getItem("gemini_api_key")
+        || "";
+}
+
+function getApiEndpoint(){
+    return "https://generativelanguage.googleapis.com/v1beta/models/";
+}
+
+function getModel(){
+    return "gemini-3.5-flash-lite";
+}
+
+async function requestGemini(prompt, apiKey = getApiKey(), systemPrompt = "", temperature = .7, json = false){
+    const response = await fetch(`${getApiEndpoint()}${encodeURIComponent(getModel())}:generateContent?key=${encodeURIComponent(apiKey)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            ...(systemPrompt ? { systemInstruction: { parts: [{ text: systemPrompt }] } } : {}),
+            contents: [{ role: "user", parts: [{ text: prompt }] }],
+            generationConfig: { temperature, ...(json ? { responseMimeType: "application/json" } : {}) }
+        })
+    });
+    if(!response.ok) throw new Error(await response.text());
+    const data = await response.json();
+    const content = data?.candidates?.[0]?.content?.parts?.map(part => part.text || "").join("").trim() || "";
+    if(!content) throw new Error("Gemini tidak mengembalikan respons.");
+    return content;
+}
+
+document.addEventListener("DOMContentLoaded",() => {
+    const modelSelect = document.getElementById("modelSelect");
+    if(modelSelect && [...modelSelect.options].some(option => option.value === getModel())){
+        modelSelect.value = getModel();
+    }
+});
+
+
+async function sendConversationMessage(){
+
+    const input = document.getElementById("conversationInput");
+    const message = input.value.trim();
+    const apiKey = getApiKey();
+    if(!message) return;
+    if(!apiKey){
+        openSettings();
+        return;
+    }
+
+    conversationMessages.push({role:"user",content:message});
+    input.value = "";
+    const assistantMessage = {role:"assistant",content:"Thinking..."};
+    conversationMessages.push(assistantMessage);
+    renderConversation();
+
+    try{
+        const conversationPrompt = `You are an English speaking partner. Practice the active lesson topic "${activeLesson.topic || "general conversation"}". Ask one natural follow-up question at a time. Correct only important errors briefly in Indonesian, then continue in English. Lesson question: ${activeLesson.question || ""}. Model answer: ${activeLesson.answer || ""}.
+
+Conversation so far:
+${conversationMessages.slice(0, -1).map(item => `${item.role}: ${item.content}`).join("\n")}`;
+        assistantMessage.content = await requestGemini(conversationPrompt, apiKey, "You are a helpful English speaking partner.", .7);
+        renderConversation();
+    }catch(error){
+        console.error(error);
+        assistantMessage.content = "Conversation failed. Check your API settings.";
+        renderConversation();
+    }
+}
+
+function validateLesson(lesson){
+
+    if(!lesson || typeof lesson !== "object") return false;
+    if(typeof lesson.question !== "string" || !lesson.question.trim()) return false;
+    if(typeof lesson.translation !== "string") return false;
+    if(typeof lesson.answer !== "string" || !lesson.answer.trim()) return false;
+    if(!Array.isArray(lesson.chunks) || lesson.chunks.length < 3) return false;
+
+    return lesson.chunks.every(chunk =>
+        chunk &&
+        typeof chunk.pattern === "string" &&
+        typeof chunk.meaning === "string" &&
+        Array.isArray(chunk.examples) &&
+        chunk.examples.length > 0
+    );
+}
+
+
+async function readStreamingContent(response,status){
+
+    if(!response.body) return "";
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let content = "";
+
+    while(true){
+        const result = await reader.read();
+        if(result.done) break;
+
+        buffer += decoder.decode(result.value,{stream:true});
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        lines.forEach(line => {
+            if(!line.startsWith("data:")) return;
+            const payload = line.slice(5).trim();
+            if(!payload || payload === "[DONE]") return;
+
+            try{
+                const delta = JSON.parse(payload)
+                    ?.choices?.[0]?.delta?.content || "";
+                content += delta;
+                status.innerText = "AI is writing the lesson... " +
+                    content.length + " characters";
+            }catch(error){
+                console.warn("Could not parse streaming event.",error);
+            }
+        });
+    }
+
+    return content;
+}
+
+
+async function requestLesson(endpoint,apiKey,model,prompt,status){
+    status.innerText = "AI is creating your speaking lesson...";
+    let content = await requestGemini(prompt, apiKey, "You are a helpful English speaking teacher. Return only valid JSON.", .7, true);
+
+    content = content
+        .replace(/```json/gi,"")
+        .replace(/```/g,"")
+        .trim();
+
+    const lesson = JSON.parse(content);
+    if(!validateLesson(lesson)){
+        throw new Error("AI returned an invalid lesson structure.");
+    }
+
+    return lesson;
+}
+
+async function generateLesson(){
+
+    const topic =
+        document
+        .getElementById("topicInput")
+        .value
+        .trim();
+
+    if(!topic){
+
+        showToast("Enter a topic first.");
+
+        return;
+    }
+
+    const apiKey = getApiKey();
+    const endpoint = getApiEndpoint();
+
+    if(!apiKey){
+
+        openSettings();
+
+        showToast(
+            "Add your AI API key to generate content."
+        );
+
+        return;
+    }
+
+    const button =
+        document.getElementById("generateBtn");
+
+    const status =
+        document.getElementById("aiStatus");
+
+    const level =
+        document.getElementById("learnerLevel").value;
+
+    const target =
+        document.getElementById("lessonTarget").value;
+
+    const model =
+        document.getElementById("modelSelect").value;
+
+    button.disabled = true;
+
+    button.innerText = "Generating...";
+
+    status.innerText =
+        "AI is creating your speaking lesson...";
+
+    const prompt = `
+You are an expert English speaking teacher.
+
+Create a practical English speaking lesson for:
+"${topic}"
+
+The learner's level is ${level}. Adjust vocabulary, grammar, and difficulty accordingly.
+
+The speaking goal is: ${target}.
+The learner wants to speak naturally and improve through
+CHUNKS, not memorizing long scripts.
+
+Return ONLY valid JSON.
+
+Required structure:
+
+{
+  "topic": "...",
+  "question": "...",
+  "translation": "...",
+  "answer": "...",
+  "chunks": [
+    {
+      "pattern": "...",
+      "meaning": "...",
+      "examples": ["...", "...", "..."]
+    }
+  ],
+  "alternatives": ["...", "...", "..."],
+  "challenge": "..."
+}
+
+Rules:
+
+1. Question must sound natural in everyday English.
+2. Answer should be 1-2 natural sentences.
+3. Create 3-5 reusable chunks.
+4. Chunks should contain replaceable slots such as
+   [V1], [V-ing], [time], [reason], [place], etc.
+5. Examples must demonstrate how the chunk can be reused.
+6. Avoid overly formal textbook English.
+7. Alternatives should be natural alternatives to the question.
+8. The learner is Indonesian, so the translation should be Indonesian.
+9. Focus on speaking patterns that can be reused in many situations.
+10. Do not create impossible or unnatural grammar.
+`;
+
+    try{
+
+        let lesson;
+
+        for(let attempt = 0; attempt < 2; attempt++){
+            status.innerText = attempt
+                ? "Retrying with stricter JSON instructions..."
+                : "AI is creating your speaking lesson...";
+            lesson = await requestLesson(
+                endpoint,
+                apiKey,
+                model,
+                attempt
+                    ? prompt + "\nReturn valid JSON with every required field."
+                    : prompt,
+                status
+            );
+            if(lesson) break;
+        }
+
+        displayGeneratedLesson(lesson);
+        saveLessonHistory(lesson,topic,level,model);
+
+        status.innerText =
+            "AI lesson generated successfully.";
+
+        showToast("Lesson generated ✨");
+    updateDailyGoalUI();
+
+    }catch(error){
+
+        console.error(error);
+
+        status.innerText =
+            "Could not generate the lesson.";
+
+        showToast(
+            "AI generation failed. Check API settings."
+        );
+
+    }finally{
+
+        button.disabled = false;
+
+        button.innerText =
+            "✨ Generate AI";
+
+    }
+
+}
+
+
+/* =========================================================
+   DISPLAY AI LESSON
+========================================================= */
+
+function displayGeneratedLesson(lesson){
+    activeLesson = lesson;
+
+    document.getElementById("lessonQuestion").innerText = lesson.question || "";
+    document.getElementById("lessonTranslation").innerText = lesson.translation || "";
+    document.getElementById("lessonAnswer").innerText = lesson.answer || "";
+
+    updateRecallPrompt(lesson.answer || "");
+    updateVariationPrompt(lesson);
+    updatePronunciationTarget();
+
+    const container = document.getElementById("chunkContainer");
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    (lesson.chunks || []).forEach((chunk,index) => {
+        const div = document.createElement("div");
+        div.className = "chunk";
+        div.innerHTML = `
+            <div class="chunk-title">${formatChunk(chunk.pattern)}</div>
+            <p class="chunk-description">${escapeHTML(chunk.meaning || "")}</p>
+            <div class="examples">
+                ${(chunk.examples || []).map(example => `<span class="pill">${escapeHTML(example)}</span>`).join("")}
+            </div>
+            <div class="alternative-form">
+                <input id="chunkAlternative${index}" placeholder="Write your own alternative..." aria-label="Your alternative for ${escapeHTML(chunk.pattern)}">
+                <button class="btn secondary" type="button" onclick="improveChunkAlternative(${index})">✨ Check with AI</button>
+            </div>
+            <div class="alternative-result" id="chunkAlternativeResult${index}" aria-live="polite"></div>
+            <div class="actions">
+                <button class="btn secondary" onclick="speakText(${JSON.stringify(chunk.pattern)})">🔊 Listen</button>
+                <button class="btn ghost" onclick='saveGeneratedChunk(${JSON.stringify(chunk).replace(/'/g,"&#39;")}, ${JSON.stringify(lesson.topic || "General")}, this)'>+ Save Chunk</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+
+    const existingAlternative = document.getElementById("generatedAlternatives");
+    if(existingAlternative) existingAlternative.remove();
+
+    const alternativeHTML = `
+        <div id="generatedAlternatives" class="practice-box">
+            <span class="label">AI Alternatives</span>
+            <h3>Other natural ways to ask this</h3>
+            <div class="examples">
+                ${(lesson.alternatives || []).map(item => `<span class="pill">${escapeHTML(item)}</span>`).join("")}
+            </div>
+            <div class="actions" style="margin-top:15px;">
+                <button class="btn secondary" type="button" onclick='saveQuestionAsChunk(${JSON.stringify(lesson.question || "").replace(/'/g,"&#39;")}, ${JSON.stringify(lesson.topic || "General")}, this)'>+ Save Question</button>
+                <button class="btn secondary" type="button" onclick='saveAnswerAsChunk(${JSON.stringify(lesson.answer || "").replace(/'/g,"&#39;")}, ${JSON.stringify(lesson.topic || "General")}, this)'>+ Save Answer</button>
+            </div>
+        </div>
+    `;
+
+    container.insertAdjacentHTML("afterend", alternativeHTML);
+
+    document.getElementById("challengePrompt").innerText = lesson.challenge || "Tell me about " + lesson.topic + ".";
+    document.getElementById("statChunks").innerText = stats.learned;
+
+    updateConversationContext();
+}
+
+async function improveChunkAlternative(index){
+    const input = document.getElementById("chunkAlternative" + index);
+    const result = document.getElementById("chunkAlternativeResult" + index);
+    const chunk = activeLesson.chunks?.[index];
+    const apiKey = getApiKey();
+
+    if(!input || !result || !chunk) return;
+
+    const alternative = input.value.trim();
+    if(!alternative){
+        result.classList.add("show");
+        result.textContent = "Write your alternative sentence first.";
+        return;
+    }
+
+    if(!apiKey){
+        openSettings();
+        return;
+    }
+
+    result.classList.add("show");
+    result.textContent = "AI is checking your sentence...";
+
+    const prompt = `
+You are an English speaking teacher.
+Chunk pattern: "${chunk.pattern}"
+Chunk meaning: "${chunk.meaning}"
+Learner sentence: "${alternative}"
+
+Check whether the learner sentence uses the chunk naturally. Return concise feedback in Indonesian with exactly this format:
+Corrected: [corrected sentence]
+Note: [short grammar or naturalness explanation]
+Alternative: [one additional natural example using the same chunk]
+`;
+
+    try{
+        result.textContent = await requestGemini(prompt, apiKey, "You are an English speaking teacher.", .3);
+        stats.feedbackRequests = (stats.feedbackRequests || 0) + 1;
+        saveStats();
+    }catch(error){
+        console.error(error);
+        result.textContent = "AI correction failed. Check your API settings.";
+    }
+}
+
+async function improveSavedChunkAlternative(id){
+
+    const chunk = chunks.find(item => item.id === id);
+    const input = document.getElementById("savedChunkAlternative" + id);
+    const result = document.getElementById("savedChunkAlternativeResult" + id);
+    const apiKey = getApiKey();
+
+    if(!chunk || !input || !result) return;
+
+    const alternative = input.value.trim();
+    if(!alternative){
+        result.classList.add("show");
+        result.textContent = "Write your alternative sentence first.";
+        return;
+    }
+
+    if(!apiKey){
+        openSettings();
+        return;
+    }
+
+    result.classList.add("show");
+    result.textContent = "AI is checking your sentence...";
+
+    const prompt = `Check this English sentence using the chunk "${chunk.pattern}". Sentence: "${alternative}". Return concise Indonesian feedback with exactly these lines: Corrected: [corrected sentence]\nNote: [short explanation]\nAlternative: [one natural example].`;
+
+    try{
+        result.textContent = await requestGemini(prompt, apiKey, "You are an English speaking teacher.", .3);
+        stats.feedbackRequests = (stats.feedbackRequests || 0) + 1;
+        saveStats();
+    }catch(error){
+        console.error(error);
+        result.textContent = "AI correction failed. Check your API settings.";
+    }
+}
+
+
+function getLessonHistoryKey(item){
+    const topic = (item?.topic || "").trim().toLowerCase();
+    const question = (item?.lesson?.question || "").trim().toLowerCase();
+    const answer = (item?.lesson?.answer || "").trim().toLowerCase();
+    return `${topic}|${question}|${answer}`;
+}
+
+function deduplicateLessonHistory(items = lessonHistory){
+    const seen = new Map();
+    const unique = [];
+
+    items.forEach(item => {
+        const key = getLessonHistoryKey(item);
+        if(!seen.has(key)){
+            seen.set(key, true);
+            unique.push(item);
+        }
+    });
+
+    return unique;
+}
+
+function saveLessonHistory(lesson,topic,level,model,target = "daily conversation"){
+    const createdAt = new Date();
+
+    lessonHistory.unshift({
+        id:Date.now(),
+        topic,
+        level,
+        model,
+        target,
+        createdAt:createdAt.toLocaleString(),
+        createdAtISO:createdAt.toISOString(),
+        lesson
+    });
+
+    lessonHistory = deduplicateLessonHistory(lessonHistory);
+    lessonHistory = lessonHistory.slice(0,20);
+    localStorage.setItem("chunkspeak_history",JSON.stringify(lessonHistory));
+    stats.lessonsGenerated = (stats.lessonsGenerated || 0) + 1;
+    saveStats();
+    renderHistory();
+}
+
+function deleteHistoryItem(id){
+    lessonHistory = lessonHistory.filter(item => item.id !== id);
+    localStorage.setItem("chunkspeak_history",JSON.stringify(lessonHistory));
+    renderHistory();
+    showToast("Lesson deleted.");
+}
+
+function deleteDuplicateHistory(){
+    const before = lessonHistory.length;
+    lessonHistory = deduplicateLessonHistory(lessonHistory);
+    localStorage.setItem("chunkspeak_history",JSON.stringify(lessonHistory));
+    renderHistory();
+
+    if(before === lessonHistory.length){
+        showToast("No duplicate history found.");
+    }else{
+        showToast("Duplicate lessons removed.");
+    }
+}
+
+function clearHistoryFilter(){
+    document.getElementById("historyFromDate").value = "";
+    document.getElementById("historyToDate").value = "";
+    renderHistory();
+}
+
+function renderHistory(){
+
+    const container = document.getElementById("historyList");
+    if(!container) return;
+
+    const fromDate = document.getElementById("historyFromDate")?.value || "";
+    const toDate = document.getElementById("historyToDate")?.value || "";
+
+    const filteredHistory = lessonHistory.filter(item => {
+        const iso = item.createdAtISO || new Date(item.createdAt).toISOString();
+        const dateKey = iso.slice(0,10);
+
+        if(fromDate && dateKey < fromDate) return false;
+        if(toDate && dateKey > toDate) return false;
+        return true;
+    });
+
+    if(!filteredHistory.length){
+        container.innerHTML = '<div class="card"><h3>No lessons found.</h3><p class="subtitle">Try another date range or generate a new lesson.</p></div>';
+        return;
+    }
+
+    container.innerHTML = filteredHistory.map(item => `
+        <div class="card history-item" onclick="loadHistoryLesson(${item.id})" style="position:relative;">
+            <div style="position:absolute;top:12px;right:12px;">
+                <button class="btn danger" type="button" onclick="event.stopPropagation(); deleteHistoryItem(${item.id});">Delete</button>
+            </div>
+            <span class="label">${escapeHTML(item.level || "intermediate")} · ${escapeHTML(item.target || "daily conversation")} · ${escapeHTML(item.createdAt)}</span>
+            <h3>${escapeHTML(item.topic)}</h3>
+            <p class="subtitle">${escapeHTML(item.lesson.question || "")}</p>
+        </div>
+    `).join("");
+}
+
+
+function loadHistoryLesson(id){
+
+    const item = lessonHistory.find(entry => entry.id === id);
+    if(!item) return;
+
+    displayGeneratedLesson(item.lesson);
+    document.getElementById("topicInput").value = item.topic;
+    document.getElementById("learnerLevel").value = item.level || "intermediate";
+    document.getElementById("modelSelect").value = getModel();
+    showPage("practice");
+    showToast("Previous lesson loaded.");
+}
+
+
+async function getAdaptiveFeedback(type){
+
+    const inputId = type === "recall" ? "recallText" : "variationInput";
+    const feedbackId = type === "recall" ? "recallFeedback" : "variationFeedback";
+    const text = document.getElementById(inputId).value.trim();
+    const feedback = document.getElementById(feedbackId);
+    const apiKey = getApiKey();
+
+    if(!text){
+        feedback.classList.add("show");
+        feedback.innerText = "Write or say an answer first.";
+        return;
+    }
+
+    if(!apiKey){
+        openSettings();
+        return;
+    }
+
+    feedback.classList.add("show");
+    feedback.innerText = "AI is reviewing your answer...";
+
+    const prompt = `Review this English learner answer: "${text}".
+Give concise feedback in Indonesian with: 1) corrected version, 2) one grammar note, 3) one naturalness tip. Do not be harsh.`;
+
+    try{
+        feedback.innerText = await requestGemini(prompt, apiKey, "You are a supportive English teacher.", .4);
+        stats.feedbackRequests = (stats.feedbackRequests || 0) + 1;
+        saveStats();
+    }catch(error){
+        console.error(error);
+        feedback.innerText = "AI feedback failed. Check your API settings.";
+    }
+}
+
+
+/* =========================================================
+   SAVE GENERATED CHUNK
+========================================================= */
+
+function markSavedButton(button, saved){
+    if(!button) return;
+    button.innerText = saved ? "✓ Saved" : "✓ Already Saved";
+    button.disabled = true;
+}
+
+async function saveGeneratedChunk(chunk,topic,button){
+    try{
+        const saved = addChunk({
+            pattern:chunk.pattern,
+            meaning:chunk.meaning,
+            examples:chunk.examples || [],
+            topic:topic,
+            type:classifyChunkText(chunk.pattern, chunk.meaning, topic),
+            source:topic || "General"
+        });
+        markSavedButton(button, saved);
+    }catch(error){
+        console.error(error);
+        showToast("Chunk gagal disimpan.");
+    }
+
+}
+
+
+async function saveQuestionAsChunk(question,topic,button){
+    if(!question || !question.trim()){ showToast("Question is empty."); return; }
+    try{
+        const saved = addChunk({
+            pattern:question.trim(),
+            meaning:"Question to ask in conversation",
+            examples:[],
+            topic:topic,
+            type:"question",
+            source:topic || "General"
+        });
+        markSavedButton(button, saved);
+    }catch(error){
+        console.error(error);
+        showToast("Question gagal disimpan.");
+    }
+}
+
+
+async function saveAnswerAsChunk(answer,topic,button){
+    if(!answer || !answer.trim()){ showToast("Answer is empty."); return; }
+    try{
+        const saved = addChunk({
+            pattern:answer.trim(),
+            meaning:"Answer or response pattern",
+            examples:[],
+            topic:topic,
+            type:"answer",
+            source:topic || "General"
+        });
+        markSavedButton(button, saved);
+    }catch(error){
+        console.error(error);
+        showToast("Answer gagal disimpan.");
+    }
+}
+
+
+function saveAlternativeExample(chunk,alternative,topic){
+
+    chunk.examples = chunk.examples || [];
+    if(!chunk.examples.includes(alternative)){
+        chunk.examples.push(alternative);
+    }
+
+    const existing = chunks.find(item => item.pattern === chunk.pattern);
+
+    if(existing){
+        existing.examples = existing.examples || [];
+        if(!existing.examples.includes(alternative)){
+            existing.examples.push(alternative);
+            saveStats();
+            showToast("Alternative saved to your Chunk Bank.");
+        }else{
+            saveStats();
+            showToast("This alternative is already saved.");
+        }
+        refreshActiveLessonChunk(chunk);
+        return;
+    }
+
+    addChunk({
+        pattern:chunk.pattern,
+        meaning:chunk.meaning || "",
+        examples:[...(chunk.examples || []),alternative],
+        topic:topic || "General"
+    });
+    refreshActiveLessonChunk(chunk);
+}
+
+
+function refreshActiveLessonChunk(chunk){
+
+    const activeChunk = activeLesson.chunks?.find(
+        item => item.pattern === chunk.pattern
+    );
+
+    if(activeChunk){
+        const latestExample = chunk.examples.at(-1);
+        activeChunk.examples = activeChunk.examples || [];
+        if(!activeChunk.examples.includes(latestExample)){
+            activeChunk.examples.push(latestExample);
+        }
+        displayGeneratedLesson(activeLesson);
+    }
+}
+
+
+async function requestChunkAlternativeCorrection(chunk,alternative,result,saveCallback){
+
+    const apiKey = getApiKey();
+
+    if(!apiKey){
+        openSettings();
+        return;
+    }
+
+    result.classList.add("show");
+    result.textContent = "AI is checking your sentence...";
+
+    const prompt = `Check this English sentence using the chunk "${chunk.pattern}". Sentence: "${alternative}". Return concise Indonesian feedback with exactly these lines: Corrected: [corrected sentence]\nNote: [short explanation]\nAlternative: [one natural example].`;
+
+    try{
+        const feedback = await requestGemini(prompt, apiKey, "You are an English speaking teacher.", .3);
+        result.textContent = "";
+        const feedbackText = document.createElement("span");
+        feedbackText.textContent = feedback;
+        const saveButton = document.createElement("button");
+        saveButton.className = "btn secondary";
+        saveButton.type = "button";
+        saveButton.innerText = "💾 Save this alternative";
+        saveButton.addEventListener("click",saveCallback);
+        result.append(feedbackText,document.createElement("br"),saveButton);
+        stats.feedbackRequests = (stats.feedbackRequests || 0) + 1;
+        saveStats();
+    }catch(error){
+        console.error(error);
+        result.textContent = "AI correction failed. Check your API settings.";
+    }
+}
+
+
+async function improveChunkAlternative(index){
+
+    const input = document.getElementById("chunkAlternative" + index);
+    const result = document.getElementById("chunkAlternativeResult" + index);
+    const chunk = activeLesson.chunks?.[index];
+
+    if(!input || !result || !chunk) return;
+
+    const alternative = input.value.trim();
+    if(!alternative){
+        result.classList.add("show");
+        result.textContent = "Write your alternative sentence first.";
+        return;
+    }
+
+    await requestChunkAlternativeCorrection(
+        chunk,
+        alternative,
+        result,
+        () => saveAlternativeExample(chunk,alternative,activeLesson.topic)
+    );
+}
+
+
+async function improveSavedChunkAlternative(id){
+
+    const chunk = chunks.find(item => item.id === id);
+    const input = document.getElementById("savedChunkAlternative" + id);
+    const result = document.getElementById("savedChunkAlternativeResult" + id);
+
+    if(!chunk || !input || !result) return;
+
+    const alternative = input.value.trim();
+    if(!alternative){
+        result.classList.add("show");
+        result.textContent = "Write your alternative sentence first.";
+        return;
+    }
+
+    await requestChunkAlternativeCorrection(
+        chunk,
+        alternative,
+        result,
+        () => saveAlternativeExample(chunk,alternative,chunk.topic)
+    );
+}
+
+
+/* =========================================================
+   AI SETTINGS
+========================================================= */
+
+function openSettings(){
+
+    document
+        .getElementById("settingsModal")
+        .classList.add("show");
+
+    const provider = "gemini";
+    document.getElementById("settingsProvider").value = provider;
+    document.getElementById("apiKey").value = getApiKey();
+
+    document
+        .getElementById("apiEndpoint")
+        .value =
+        "https://generativelanguage.googleapis.com/v1beta/models/";
+
+    document.getElementById("settingsModel").value = getModel();
+
+    updateProviderSettings();
+
+}
+
+function updateProviderSettings(){
+    const provider = "gemini";
+    const endpoint = document.getElementById("apiEndpoint");
+    const model = document.getElementById("settingsModel");
+    endpoint.value = "https://generativelanguage.googleapis.com/v1beta/models/";
+    model.value = "gemini-3.5-flash-lite";
+}
+
+
+function closeSettings(){
+
+    document
+        .getElementById("settingsModal")
+        .classList.remove("show");
+
+}
+
+
+function saveAISettings(){
+
+    const provider = document.getElementById("settingsProvider").value;
+
+    const key =
+        document
+        .getElementById("apiKey")
+        .value
+        .trim();
+
+    const endpoint =
+        document
+        .getElementById("apiEndpoint")
+        .value
+        .trim();
+
+    if(key){
+        localStorage.setItem("gemini_api_key",key);
+        localStorage.setItem("chunkspeak_api_key",key);
+
+    }
+
+    localStorage.setItem("chunkspeak_provider","gemini");
+
+    if(endpoint){
+
+        localStorage.setItem(
+            "chunkspeak_endpoint",
+            endpoint
+        );
+
+    }
+
+    const model = "gemini-3.5-flash-lite";
+    localStorage.setItem("chunkspeak_model",model);
+    document.getElementById("modelSelect").value = model;
+
+    closeSettings();
+
+    showToast(
+        "AI settings saved."
+    );
+
+}
+
+
+/* =========================================================
+   30 SECOND CHALLENGE
+========================================================= */
+
+function startChallengeRecognition(){
+
+    const Recognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if(!Recognition) return false;
+
+    challengeTranscript = "";
+    challengePauseCount = 0;
+    lastSpeechAt = 0;
+    challengeRecognition = new Recognition();
+    challengeRecognition.lang = "en-US";
+    challengeRecognition.continuous = true;
+    challengeRecognition.interimResults = false;
+
+    challengeRecognition.onresult = event => {
+        for(let index = event.resultIndex; index < event.results.length; index++){
+            if(!event.results[index].isFinal) continue;
+            const now = Date.now();
+            if(lastSpeechAt && now - lastSpeechAt > 1800){
+                challengePauseCount += 1;
+            }
+            lastSpeechAt = now;
+            challengeTranscript += " " + event.results[index][0].transcript;
+        }
+        document.getElementById("challengeTranscript").innerText =
+            challengeTranscript.trim();
+    };
+
+    challengeRecognition.start();
+    return true;
+}
+
+
+function finishChallengeRecognition(){
+
+    if(challengeRecognition){
+        challengeRecognition.onend = showChallengeScores;
+        challengeRecognition.stop();
+        challengeRecognition = null;
+    }
+}
+
+
+function showChallengeScores(){
+
+    const words = challengeTranscript.trim()
+        ? challengeTranscript.trim().split(/\s+/)
+        : [];
+    const targetWords = (activeLesson.answer || "").toLowerCase()
+        .replace(/[^a-z\s]/g, "")
+        .split(/\s+/)
+        .filter(Boolean);
+    const spokenWords = words.map(word => word.toLowerCase().replace(/[^a-z]/g,""));
+    const matched = targetWords.filter(word => spokenWords.includes(word)).length;
+    const clarity = targetWords.length
+        ? Math.min(100,Math.round(matched / targetWords.length * 100))
+        : Math.min(100,words.length * 5);
+    const fluency = Math.min(100,Math.round(words.length / 45 * 100));
+    const pauseScore = Math.max(0,100 - challengePauseCount * 15);
+
+    document.getElementById("clarityScore").innerText = clarity + "%";
+    document.getElementById("fluencyScore").innerText = fluency + "%";
+    document.getElementById("pauseScore").innerText = pauseScore + "%";
+    document.getElementById("challengeScores").style.display = "grid";
+}
+
+function startChallenge(){
+
+    if(timerInterval){
+        return;
+    }
+
+    secondsLeft = 30;
+
+    document.getElementById(
+        "timer"
+    ).innerText = secondsLeft;
+
+    const button =
+        document.getElementById(
+            "challengeBtn"
+        );
+
+    button.disabled = true;
+
+    button.innerText =
+        "🎙 Speaking...";
+
+    const feedback =
+        document.getElementById(
+            "challengeFeedback"
+        );
+
+    feedback.classList.remove("show");
+
+    document.getElementById("challengeScores").style.display = "none";
+    document.getElementById("challengeTranscript").innerText = "Listening...";
+    if(!startChallengeRecognition()){
+        document.getElementById("challengeTranscript").innerText =
+            "Speech recognition is not supported in this browser.";
+        showToast("Use a browser with speech recognition for scoring.");
+        button.disabled = false;
+        button.innerText = "🎙 Start 30 Seconds";
+        return;
+    }
+
+    timerInterval =
+        setInterval(() => {
+
+            secondsLeft--;
+
+            document.getElementById(
+                "timer"
+            ).innerText =
+                secondsLeft;
+
+            if(secondsLeft <= 0){
+
+                clearInterval(timerInterval);
+
+                timerInterval = null;
+
+                finishChallengeRecognition();
+
+                button.disabled = false;
+
+                button.innerText =
+                    "🎙 Start Again";
+
+                feedback.classList.add(
+                    "show"
+                );
+
+                feedback.innerHTML = `
+                    <b>Challenge completed! 🎉</b>
+
+                    <p>
+                        Great job. Don't worry about perfect
+                        grammar. Your goal is to keep speaking.
+                    </p>
+
+                    <p>
+                        Next time, try to use at least
+                        <b>2 chunks</b> from your Chunk Bank.
+                    </p>
+                `;
+
+                stats.minutes += 1;
+
+                saveStats();
+
+            }
+
+        },1000);
+
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+function saveStats(){
+
+    localStorage.setItem(
+        "chunkspeak_stats",
+        JSON.stringify(stats)
+    );
+
+    localStorage.setItem(
+        "chunkspeak_chunks",
+        JSON.stringify(chunks)
+    );
+
+    updateStats();
+
+}
+
+
+function updateDailyGoalUI(){
+    const goalBar = document.getElementById("dailyGoalBar");
+    const goalText = document.getElementById("dailyGoalText");
+    const goalLabel = document.getElementById("dailyGoalLabel");
+    const completed = Math.min(stats.learned || 0, DAILY_GOAL.chunks);
+    const percent = Math.min(100, Math.round((completed / DAILY_GOAL.chunks) * 100));
+
+    if(goalBar) goalBar.style.width = percent + "%";
+    if(goalText) goalText.innerText = completed + " / " + DAILY_GOAL.chunks + " chunks today";
+    if(goalLabel) goalLabel.innerText = percent + "%";
+
+    const homeProgress = document.getElementById("homeProgress");
+    if(homeProgress){
+        homeProgress.style.width = percent + "%";
+    }
+}
+
+function updateStats(){
+
+    document.getElementById(
+        "statChunks"
+    ).innerText =
+        stats.learned;
+
+    document.getElementById(
+        "statAuto"
+    ).innerText =
+        stats.automatic;
+
+    document.getElementById(
+        "progressChunks"
+    ).innerText =
+        stats.learned;
+
+    document.getElementById(
+        "progressAuto"
+    ).innerText =
+        stats.automatic;
+
+    document.getElementById(
+        "progressMinutes"
+    ).innerText =
+        stats.minutes;
+
+    document.getElementById(
+        "progressLessons"
+    ).innerText =
+        stats.lessonsGenerated || 0;
+
+    document.getElementById(
+        "progressFeedback"
+    ).innerText =
+        stats.feedbackRequests || 0;
+
+    const percentage =
+        stats.learned
+        ? Math.round(
+            stats.automatic /
+            stats.learned *
+            100
+        )
+        : 0;
+
+    document.getElementById(
+        "masteryBar"
+    ).style.width =
+        percentage + "%";
+
+    document.getElementById(
+        "masteryText"
+    ).innerText =
+        percentage +
+        "% of your chunks are automatic.";
+
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function formatChunk(text){
+
+    return escapeHTML(text)
+        .replace(
+            /\[([^\]]+)\]/g,
+            '<span class="slot">[$1]</span>'
+        );
+
+}
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.style.display = "block";
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+    window.toastTimer =
+        setTimeout(() => {
+
+            toast.style.display =
+                "none";
+
+        },2500);
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+updateStats();
+updateDailyGoalUI();
+
+renderChunkBank();
+
+renderHistory();
+
+</script>
+
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

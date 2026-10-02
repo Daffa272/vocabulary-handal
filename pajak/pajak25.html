@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brevet Pajak A & B - Studi Kasus PT Nusantara Maju Bersama</title>
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --bg: #f7fafc;
+            --card: #fff;
+            --text: #2d3748;
+            --border: #e2e8f0;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --danger: #f56565;
+            --info: #3182ce;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: var(--card);
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 15px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        main {
+            margin-bottom: 40px;
+        }
+
+        section {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent);
+        }
+
+        section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        section h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(49, 130, 206, 0.1);
+        }
+
+        .highlight-row {
+            background: rgba(72, 187, 120, 0.1) !important;
+        }
+
+        .total-row {
+            background: rgba(49, 130, 206, 0.2) !important;
+            font-weight: bold;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .calculation {
+            background: #f0f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 3px solid var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .answer {
+            background: #e6fffa;
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .answer h3 {
+            color: var(--success);
+        }
+
+        .question {
+            background: #fffaf0;
+            border: 2px solid var(--warning);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .question h3 {
+            color: var(--warning);
+        }
+
+        .important {
+            background: #ffe6e6;
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .important strong {
+            color: var(--danger);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .summary-card h2, .summary-card h3 {
+            color: white;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .badge-primary {
+            background: rgba(26, 95, 122, 0.2);
+            color: var(--primary);
+        }
+
+        .badge-success {
+            background: rgba(72, 187, 120, 0.2);
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background: rgba(237, 137, 54, 0.2);
+            color: var(--warning);
+        }
+
+        .badge-danger {
+            background: rgba(245, 101, 101, 0.2);
+            color: var(--danger);
+        }
+
+        .step-list {
+            list-style-type: none;
+            counter-reset: step-counter;
+            padding-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            background: var(--accent);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media print {
+            nav, footer {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            section {
+                box-shadow: none;
+                border-left: none;
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            section {
+                padding: 20px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav li {
+                margin: 5px 0;
+            }
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .comparison-table th, .comparison-table td {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#pengantar" class="active">Pengantar</a></li>
+                <li><a href="#dasar-hukum">Dasar Hukum</a></li>
+                <li><a href="#sistem-pemungutan">Sistem Pemungutan</a></li>
+                <li><a href="#struktur-tarif">Struktur Tarif</a></li>
+                <li><a href="#kup">KUP & UU HPP</a></li>
+                <li><a href="#pph">PPh</a></li>
+                <li><a href="#ppn">PPN</a></li>
+                <li><a href="#pbb">PBB</a></li>
+                <li><a href="#bea-materai">Bea Meterai</a></li>
+                <li><a href="#bphtb">BPHTB</a></li>
+                <li><a href="#studi-kasus">Studi Kasus</a></li>
+                <li><a href="#simulasi">Simulasi</a></li>
+                <li><a href="#kesimpulan">Kesimpulan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Mengenal Brevet A dan B</h1>
+            <p>Panduan Lengkap dengan Studi Kasus PT Nusantara Maju Bersama</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- PENGANTAR -->
+        <section id="pengantar">
+            <h2>📚 Pengantar Brevet Pajak</h2>
+            <p><strong>Brevet Pajak</strong> adalah sertifikat keahlian yang diberikan kepada seseorang yang telah lulus ujian sertifikasi perpajakan. Brevet Pajak terdiri dari dua tingkat:</p>
+            <div class="two-columns">
+                <div>
+                    <h3>📌 Brevet A</h3>
+                    <p>Sertifikasi dasar perpajakan yang mencakup:</p>
+                    <ul>
+                        <li>Ketentuan Umum dan Tata Cara Perpajakan (KUP)</li>
+                        <li>Pajak Penghasilan (PPh)</li>
+                        <li>Pajak Pertambahan Nilai (PPN)</li>
+                        <li>Pajak Bumi dan Bangunan (PBB)</li>
+                        <li>Bea Meterai</li>
+                        <li>Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>📌 Brevet B</h3>
+                    <p>Sertifikasi lanjutan perpajakan yang mencakup:</p>
+                    <ul>
+                        <li>Penerapan praktis dari materi Brevet A</li>
+                        <li>Studi kasus terpadu</li>
+                        <li>Analisis perpajakan yang lebih mendalam</li>
+                        <li>Perencanaan pajak (Tax Planning)</li>
+                        <li>Pemeriksaan pajak</li>
+                        <li>Sengketa pajak</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <strong>Tujuan:</strong> Memberikan pemahaman komprehensif tentang sistem perpajakan Indonesia, dari teori hingga penerapan praktis.
+            </div>
+        </section>
+
+        <!-- DASAR HUKUM -->
+        <section id="dasar-hukum">
+            <h2>⚖️ Dasar Hukum Pajak</h2>
+
+            <h3>📜 Pengertian Pajak</h3>
+            <p><strong>Pajak</strong> adalah iuran dari rakyat yang kembali ke rakyat (pemanfaatannya digunakan untuk kepentingan umum seperti perbaikan jalan), dibayarkan melalui kas negara dan bersifat <strong>memaksa</strong>.</p>
+            <p>Dalam rangka kesejahteraan rakyat, pajak memiliki dua fungsi:</p>
+            <div class="two-columns">
+                <div>
+                    <h4>💰 Fungsi Budgeter</h4>
+                    <p>Fungsi pajak sebagai sumber pendapatan negara untuk membiayai pengeluaran negara.</p>
+                </div>
+                <div>
+                    <h4>📊 Fungsi Regulerend</h4>
+                    <p>Fungsi pajak sebagai alat untuk mengatur kebijakan ekonomi negara.</p>
+                </div>
+            </div>
+
+            <h3>📚 Penggolongan Pajak</h3>
+
+            <h4>1. Berdasarkan Golongan</h4>
+            <div class="two-columns">
+                <div>
+                    <h4>🎯 Pajak Langsung</h4>
+                    <p>Pajak yang bebannya <strong>tidak dapat dibebankan</strong> kepada orang lain.</p>
+                    <p><strong>Contoh:</strong> Pajak Penghasilan (PPh)</p>
+                </div>
+                <div>
+                    <h4>🔄 Pajak Tidak Langsung</h4>
+                    <p>Pajak yang bebannya <strong>dapat dibebankan</strong> kepada orang lain.</p>
+                    <p><strong>Contoh:</strong> Pajak Pertambahan Nilai (PPN)</p>
+                </div>
+            </div>
+
+            <h4>2. Berdasarkan Sifat</h4>
+            <div class="two-columns">
+                <div>
+                    <h4>👤 Pajak Subjektif</h4>
+                    <p>Pajak yang didasari oleh <strong>subjeknya</strong>, mencerminkan keadaan wajib pajak.</p>
+                    <p><strong>Contoh:</strong> Pajak Penghasilan (PPh)</p>
+                </div>
+                <div>
+                    <h4>📦 Pajak Objektif</h4>
+                    <p>Pajak yang didasari oleh <strong>objeknya</strong>, tanpa mencerminkan keadaan wajib pajak.</p>
+                    <p><strong>Contoh:</strong> Pajak Pertambahan Nilai (PPN)</p>
+                </div>
+            </div>
+
+            <h4>3. Berdasarkan Lembaga Pemungut</h4>
+            <div class="two-columns">
+                <div>
+                    <h4>🏛️ Pajak Pusat</h4>
+                    <p>Pajak yang dipungut oleh <strong>pemerintah pusat</strong>.</p>
+                    <p><strong>Contoh:</strong> PPh, PPN, PBB-P3</p>
+                </div>
+                <div>
+                    <h4>🏙️ Pajak Daerah</h4>
+                    <p>Pajak yang dipungut oleh <strong>pemerintah daerah</strong> untuk memenuhi belanja daerah.</p>
+                    <p><strong>Contoh:</strong> Pajak Hotel, Pajak Hiburan</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SISTEM PEMUNGUTAN -->
+        <section id="sistem-pemungutan">
+            <h2>📋 Sistem Pemungutan Pajak</h2>
+
+            <h3>🎯 Tata Cara Pemungutan</h3>
+            <p>Ada tiga asas yang berkaitan dengan tata cara pemungutan pajak:</p>
+
+            <div class="two-columns">
+                <div>
+                    <h4>🏠 Asas Domisili</h4>
+                    <p>Negara berhak mengenakan pajak atas <strong>seluruh penghasilan</strong> wajib pajak yang bertempat tinggal di wilayahnya.</p>
+                    <p><strong>Berlaku untuk:</strong> Wajib Pajak Dalam Negeri</p>
+                </div>
+                <div>
+                    <h4>🌍 Asas Sumber</h4>
+                    <p>Negara berhak mengenakan pajak atas <strong>penghasilan yang bersumber</strong> di wilayahnya, tanpa melihat tempat tinggal wajib pajak.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h4>🇮🇩 Asas Kebangsaan</h4>
+                <p>Dasar pengenaan pajak memiliki hubungan dengan <strong>kebangsaan</strong> wajib pajak.</p>
+            </div>
+
+            <h3>📊 Sistem Pemungutan Pajak</h3>
+
+            <div class="two-columns">
+                <div>
+                    <h4>📝 Official Assessment System</h4>
+                    <p>Pemerintah memiliki wewenang untuk <strong>menentukan besarnya pajak</strong> yang ditanggung wajib pajak.</p>
+                    <p>Wajib pajak bersifat <strong>pasif</strong> (hanya menunggu surat ketetapan).</p>
+                    <p><strong>Contoh:</strong> Pajak Bumi dan Bangunan (PBB)</p>
+                </div>
+                <div>
+                    <h4>🤝 Withholding System</h4>
+                    <p>Diperlukan <strong>pihak ketiga</strong> (selain pemerintah dan wajib pajak) untuk menentukan besarnya pajak yang terutang.</p>
+                    <p><strong>Contoh:</strong> PPh Pasal 21, PPh Pasal 23</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h4>👤 Self Assessment System</h4>
+                <p>Pemerintah memberikan wewenang kepada wajib pajak untuk <strong>menentukan sendiri pajak terutangnya</strong>.</p>
+                <p>Wajib pajak wajib:</p>
+                <ol>
+                    <li>Menghitung pajak terutang</li>
+                    <li>Membayar/menyetor pajak</li>
+                    <li>Melaporkan pajak</li>
+                </ol>
+                <p><strong>Contoh:</strong> PPN, PPh Badan</p>
+                <p><strong>Peran pemerintah:</strong> Hanya mengawasi</p>
+            </div>
+        </section>
+
+        <!-- STRUKTUR TARIF -->
+        <section id="struktur-tarif">
+            <h2>💰 Struktur Tarif Pajak</h2>
+
+            <div class="two-columns">
+                <div>
+                    <h3>📈 Tarif Proporsional</h3>
+                    <p>Persentase <strong>tetap</strong> terhadap jumlah dasar pengenaan pajak.</p>
+                    <p><strong>Contoh:</strong> PPN (11%)</p>
+                </div>
+                <div>
+                    <h3>📊 Tarif Progresif</h3>
+                    <p>Semakin tinggi dasar pengenaan pajak, semakin tinggi pula persentase tarif pajaknya.</p>
+                    <p><strong>Contoh:</strong> PPh Pasal 21</p>
+                </div>
+            </div>
+
+            <div class="two-columns" style="margin-top: 20px;">
+                <div>
+                    <h3>📉 Tarif Degresif</h3>
+                    <p>Tarif pajak yang persentasenya <strong>semakin kecil</strong> apabila dasar pengenaan pajaknya semakin besar.</p>
+                </div>
+                <div>
+                    <h3>💹 Tarif Tetap</h3>
+                    <p>Tarif pajak yang <strong>tetap</strong> jumlahnya.</p>
+                    <p><strong>Contoh:</strong> Bea Materai (Rp10.000)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KUP & UU HPP -->
+        <section id="kup">
+            <h2>📜 Ketentuan Umum dan Tata Cara Perpajakan (KUP)</h2>
+
+            <h3>📚 UU HPP (Harmonisasi Peraturan Perpajakan)</h3>
+            <p><strong>UU No. 7 Tahun 2021</strong> tentang Harmonisasi Peraturan Perpajakan.</p>
+            <p><strong>Asas:</strong> Keadilan, kesederhanaan, efisiensi, kepastian hukum, kemanfaatan, dan kepentingan nasional.</p>
+            <p><strong>Tujuan:</strong></p>
+            <ul>
+                <li>Meningkatkan pertumbuhan ekonomi secara berkelanjutan</li>
+                <li>Mendukung pemulihan ekonomi</li>
+                <li>Mengoptimalkan penerimaan negara</li>
+                <li>Mewujudkan sistem pajak yang lebih adil</li>
+                <li>Melaksanakan reformasi administrasi perpajakan</li>
+                <li>Melakukan perluasan pajak</li>
+                <li>Meningkatkan kepatuhan wajib pajak</li>
+            </ul>
+
+            <h3>📌 Aspek Perubahan dalam UU HPP</h3>
+            <p>Secara garis besar, ada enam bab cakupan:</p>
+            <ol>
+                <li>Ketentuan Umum & Tata Cara Perpajakan</li>
+                <li>Pajak Penghasilan</li>
+                <li>Pajak Pertambahan Nilai</li>
+                <li>Program Pengungkapan Sukarela</li>
+                <li>Pajak Karbon</li>
+                <li>Cukai</li>
+            </ol>
+
+            <h3>🔍 Ketentuan Umum dan Tata Cara Perpajakan (KUP)</h3>
+            <p><strong>Perubahan:</strong> Integrasi NIK menjadi NPWP.</p>
+            <p><strong>Tujuan:</strong> Mempermudah pemerintah dalam memantau administrasi wajib pajak orang pribadi.</p>
+            <div class="important">
+                <strong>Catatan:</strong>
+                <p>Bukan berarti semua orang dikenakan pajak penghasilan. Peraturan yang dikenakan pajak penghasilan:</p>
+                <ul>
+                    <li>Jika penghasilan di atas PTKP → dikenakan pajak</li>
+                    <li>Jika penghasilan di bawah PTKP → tidak dikenakan pajak</li>
+                    <li>Jika peredaran bruto di atas Rp500.000.000</li>
+                    <li>Bagi pengusaha membayar PPh Final 0,5%</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PPh -->
+        <section id="pph">
+            <h2>💳 Pajak Penghasilan (PPh)</h2>
+
+            <h3>📊 Tarif PPh Orang Pribadi</h3>
+            <p>Penambahan lapisan tarif PPh Orang Pribadi dalam UU HPP:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lapisan PKP</th>
+                        <th class="text-center">Tarif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0 - Rp60.000.000</td>
+                        <td class="text-center">5%</td>
+                    </tr>
+                    <tr>
+                        <td>Rp60.000.001 - Rp250.000.000</td>
+                        <td class="text-center">15%</td>
+                    </tr>
+                    <tr>
+                        <td>Rp250.000.001 - Rp500.000.000</td>
+                        <td class="text-center">25%</td>
+                    </tr>
+                    <tr>
+                        <td>Rp500.000.001 - Rp5.000.000.000</td>
+                        <td class="text-center">30%</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>Lebih dari Rp5.000.000.000</td>
+                        <td class="text-center">35%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>💼 Pajak atas Natura dan/atau Kenikmatan</h3>
+            <p>Sebelumnya, natura/kenikmatan <strong>bukan</strong> objek pajak.</p>
+            <p>Dalam UU HPP, natura/kenikmatan <strong>merupakan objek PPh</strong> bagi karyawan, <strong>kecuali</strong>:</p>
+            <ol>
+                <li>Makanan, bahan makanan, minuman, bahan minuman bagi seluruh pegawai</li>
+                <li>Natura/kenikmatan yang disediakan di daerah tertentu</li>
+                <li>Natura/kenikmatan yang harus disediakan di daerah tertentu</li>
+                <li>Natura/kenikmatan yang disediakan dalam rangka pelaksanaan pekerjaan</li>
+                <li>Natura/kenikmatan yang didanai APBN/APBD/Dana Desa</li>
+                <li>Natura/kenikmatan dengan jenis dan batasan tertentu</li>
+            </ol>
+
+            <h3>🏢 Pajak Penghasilan Badan</h3>
+            <p>Tarif PPh Badan: <strong>22%</strong> (berlaku mulai 2022).</p>
+            <p><strong>Insentif:</strong> Bagi pelaku UMKM diberikan insentif penurunan tarif sebesar 50% (Pasal 31E).</p>
+            <p>Bagi wajib pajak orang pribadi dengan peredaran bruto tertentu, diberikan pengecualian pengenaan pajak terhadap penerimaan penghasilan bruto sampai dengan <strong>Rp500 juta</strong>.</p>
+
+            <h3>📋 Objek PPh Final Pasal 4(2)</h3>
+            <p>Penghasilan yang dikenakan PPh Final:</p>
+            <ul>
+                <li>Peredaran bruto di bawah Rp4,8M dalam satu tahun pajak</li>
+                <li>Bunga dari deposito dan jenis-jenis tabungan, obligasi</li>
+                <li>Hadiah berupa undian</li>
+                <li>Transaksi saham dan surat berharga</li>
+                <li>Transaksi pengalihan aset atau sewa tanah/bangunan</li>
+                <li>Usaha dalam lingkup konstruksi</li>
+            </ul>
+            <p><strong>Perubahan UU HPP:</strong> Bunga dan diskonto jangka pendek kini menjadi objek pajak.</p>
+        </section>
+
+        <!-- PPN -->
+        <section id="ppn">
+            <h2>🧾 Pajak Pertambahan Nilai (PPN)</h2>
+
+            <h3>📌 Objek PPN</h3>
+            <p>Objek PPN sebagaimana diatur dalam UU PPN:</p>
+            <ol>
+                <li>Penyerahan BKP di dalam daerah pabean</li>
+                <li>Impor BKP</li>
+                <li>Penyerahan JKP di dalam daerah pabean</li>
+                <li>Pemanfaatan BKP tidak berwujud dari luar daerah pabean</li>
+                <li>Pemanfaatan JKP dari luar di dalam daerah pabean</li>
+                <li>Ekspor BKP dan JKP oleh PKP</li>
+                <li>Ekspor BKP tidak berwujud oleh PKP</li>
+            </ol>
+
+            <h3>❌ Barang/Jasa Tidak Dikenakan PPN</h3>
+            <div class="two-columns">
+                <div>
+                    <ul>
+                        <li>Makanan dan minuman di hotel, restoran</li>
+                        <li>Uang, emas batangan untuk devisa</li>
+                        <li>Jasa keagamaan</li>
+                        <li>Jasa kesenian dan hiburan</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>Jasa hotel</li>
+                        <li>Jasa yang difasilitasi pemerintah</li>
+                        <li>Jasa penyedia tempat parkir</li>
+                        <li>Jasa catering</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>💰 Tarif PPN</h3>
+            <p>Tarif PPN: <strong>11%</strong> (berlaku mulai 1 April 2022, semula 10%).</p>
+            <p>Tarif PPN akan naik menjadi <strong>12%</strong> paling lambat 1 Januari 2025.</p>
+            <p><strong>Pengecualian:</strong> PPN 0% untuk ekspor.</p>
+
+            <h3>📄 Faktur Pajak</h3>
+            <p><strong>Faktur Pajak</strong> adalah dokumen yang diperlukan PKP untuk melaporkan transaksi penjualan/pembelian BKP/JKP.</p>
+            <h4>Jenis Faktur Pajak:</h4>
+            <ol>
+                <li><strong>Faktur Pajak Keluaran:</strong> Dibuat PKP saat penjualan BKP/JKP. Digunakan untuk melaporkan transaksi penjualan dan menghitung pajak.</li>
+                <li><strong>Faktur Pajak Masukan:</strong> Diterima PKP saat pembelian BKP/JKP. Digunakan untuk melaporkan transaksi pembelian dan menghitung pajak.</li>
+                <li><strong>Faktur Pajak Pengganti:</strong> Diterbitkan untuk memperbaiki Faktur Pajak yang salah.</li>
+                <li><strong>Faktur Pajak Gabungan:</strong> Dibuat untuk keseluruhan penyerahan kepada satu pembeli selama satu bulan.</li>
+                <li><strong>Faktur Pajak Digunggung:</strong> Tidak memuat identitas pembeli, untuk PKP pedagang eceran.</li>
+                <li><strong>Faktur Pajak Cacat:</strong> Tidak diisi secara lengkap dan benar.</li>
+                <li><strong>Faktur Pajak Batal:</strong> Dibatalkan karena pembatalan transaksi.</li>
+            </ol>
+        </section>
+
+        <!-- PBB -->
+        <section id="pbb">
+            <h2>🏠 Pajak Bumi dan Bangunan (PBB)</h2>
+
+            <h3>📌 Objek dan Subjek Pajak</h3>
+            <div class="two-columns">
+                <div>
+                    <h4>🏞️ Objek PBB</h4>
+                    <p>Bumi dan bangunan.</p>
+                    <p><strong>"Bumi":</strong> Permukaan bumi meliputi tanah, perairan, laut.</p>
+                    <p><strong>"Bangunan":</strong> Konstruksi di atas tanah/laut.</p>
+                </div>
+                <div>
+                    <h4>👤 Subjek PBB</h4>
+                    <p>Orang pribadi atau badan yang mempunyai hak atas bumi/bangunan atau memperoleh manfaatnya.</p>
+                </div>
+            </div>
+
+            <h3>❌ Objek yang Dikecualikan</h3>
+            <ol>
+                <li>Tanah dan bangunan untuk kepentingan umum (tempat ibadah, kesehatan, pendidikan)</li>
+                <li>Tanah dan bangunan untuk TPU, peninggalan purbakala, museum</li>
+                <li>Tanah dan bangunan yang digunakan perwakilan diplomatik</li>
+                <li>Tanah yang merupakan hutan lindung, hutan suaka alam</li>
+                <li>Bangunan yang digunakan perwakilan organisasi internasional</li>
+            </ol>
+
+            <h3>📊 Tata Cara Penghitungan PBB</h3>
+            <h4>Dasar Pengenaan PBB:</h4>
+            <p><strong>NJOP (Nilai Jual Objek Pajak):</strong> Nilai yang digunakan sebagai dasar pengenaan PBB.</p>
+            <p>NJOP ditetapkan berdasarkan harga rata-rata transaksi jual beli secara wajar.</p>
+            <p><strong>Cara menentukan NJOP:</strong></p>
+            <ol>
+                <li>Membandingkan harga dengan objek lain yang sejenis</li>
+                <li>Menghitung nilai perolehan baru dengan biaya pengadaan</li>
+                <li>Menghitung nilai jual objek pengganti</li>
+            </ol>
+
+            <h4>NJOPTKP (Nilai Jual Objek Tidak Kena Pajak):</h4>
+            <p>Bagian dari NJOP yang <strong>tidak dikenakan PBB</strong>.</p>
+            <p>Besarnya NJOPTKP ditetapkan oleh Kepala Kanwil DJP setempat untuk masing-masing Kabupaten/Kota.</p>
+
+            <h4>NJKP (Nilai Jual Kena Pajak):</h4>
+            <p><strong>NJKP = NJOP - NJOPTKP</strong></p>
+
+            <h4>💰 Tarif PBB:</h4>
+            <p>Objek pajak PBB-P3: <strong>40% dari NJOP</strong></p>
+            <p>Objek pajak lainnya (perdesaan/perkotaan):</p>
+            <ul>
+                <li>40% dari NJOP apabila NJOP > Rp1M</li>
+                <li>20% dari NJOP apabila NJOP ≤ Rp1M</li>
+            </ul>
+            <p>Objek pajak PBB daerah: <strong>0,3%</strong> atau ditetapkan dengan peraturan daerah.</p>
+            <div class="important">
+                <strong>Catatan:</strong> Perhitungan PBB aktual harus memperhatikan peraturan daerah masing-masing.
+            </div>
+        </section>
+
+        <!-- BEA MATERAI -->
+        <section id="bea-materai">
+            <h2>📜 Bea Meterai</h2>
+
+            <h3>📌 Pengertian Bea Meterai</h3>
+            <p><strong>Bea Meterai</strong> adalah pajak yang dikenakan atas dokumen (secarik kertas) yang mengandung maksud tentang keadaan/kenyataan seseorang/pihak yang berkepentingan khusus.</p>
+            <p><strong>Pelunasan:</strong> Cukup dilakukan dengan menggunakan materai.</p>
+
+            <h3>📄 Objek Bea Meterai</h3>
+            <p>Berkas yang dikenakan Bea Meterai:</p>
+            <ol>
+                <li>Surat perjanjian dan surat lainnya untuk alat pembuktian perbuatan perdata</li>
+                <li>Akta notaris</li>
+                <li>Akta yang dibuat oleh PPAT</li>
+                <li>Surat yang memuat sejumlah uang</li>
+                <li>Surat berharga (wesel)</li>
+                <li>Dokumen yang digunakan sebagai alat pembuktian di pengadilan</li>
+            </ol>
+
+            <h3>❌ Bukan Objek Bea Meterai</h3>
+            <div class="two-columns">
+                <div>
+                    <ul>
+                        <li>Dokumen surat penyimpanan barang</li>
+                        <li>Segala bentuk ijazah</li>
+                        <li>Tanda terima gaji</li>
+                        <li>Tanda bukti penerimaan uang negara</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>Kwitansi untuk semua jenis pajak</li>
+                        <li>Tanda terima uang untuk keperluan internal organisasi</li>
+                        <li>Dokumen yang menyebutkan tabungan</li>
+                        <li>Surat gadai</li>
+                        <li>Tanda pembagian keuntungan dari BEI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>💰 Tarif & Saat Terutang Bea Meterai</h3>
+            <p><strong>Tarif:</strong> <strong>Rp10.000</strong> (tarif tunggal) untuk dokumen yang memuat tentang uang dengan batasan nilai transaksi <strong>Rp5.000.000</strong>.</p>
+            <h4>Saat terutang:</h4>
+            <ol>
+                <li>Dokumen yang dibuat oleh satu pihak: <strong>pada saat dokumen diserahkan</strong></li>
+                <li>Dokumen yang dibuat oleh lebih dari satu pihak: <strong>pada saat selesainya dokumen dibuat</strong></li>
+                <li>Dokumen yang dibuat di luar negeri: <strong>pada saat digunakan di Indonesia</strong></li>
+            </ol>
+
+            <h3>👤 Pihak yang Terutang Bea Meterai</h3>
+            <p>Bea Meterai terutang oleh <strong>pihak yang menerima manfaat</strong> dari dokumen.</p>
+            <p><strong>Contoh:</strong></p>
+            <ul>
+                <li>Penerima kwitansi (jika dokumen dibuat oleh dua pihak atau lebih)</li>
+                <li>Pihak yang bersangkutan (jika surat perjanjian dibuat dengan akta notaris)</li>
+            </ul>
+        </section>
+
+        <!-- BPHTB -->
+        <section id="bphtb">
+            <h2>🏗️ Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB)</h2>
+
+            <h3>📌 Pengertian BPHTB</h3>
+            <p><strong>BPHTB</strong> adalah pajak atas perolehan hak atas tanah dan/atau bangunan.</p>
+            <p>Pejabat yang berwenang (notaris/PPAT) <strong>hanya dapat menandatangani akta</strong> setelah BPHTB terlunasi.</p>
+
+            <h3>📌 Objek BPHTB</h3>
+            <p>Perolehan hak atas tanah dan/atau bangunan melalui transaksi atau peristiwa hukum yang termasuk objek BPHTB.</p>
+
+            <h3>💰 Dasar Pengenaan Pajak</h3>
+            <p><strong>Nilai Perolehan Objek Pajak (NPOP):</strong></p>
+            <ul>
+                <li>Jual beli: <strong>harga transaksi</strong></li>
+                <li>Tukar menukar: <strong>nilai pasar</strong></li>
+                <li>Hibah: <strong>nilai pasar</strong></li>
+                <li>Waris: <strong>nilai pasar</strong></li>
+                <li>Pemasukan dalam perseroan: <strong>nilai pasar</strong></li>
+                <li>Pemberian hak baru: <strong>nilai pasar</strong></li>
+                <li>Penggabungan/peleburan/pemekaran usaha: <strong>nilai pasar</strong></li>
+                <li>Hadiah: <strong>nilai pasar</strong></li>
+            </ul>
+
+            <h3>📊 Perhitungan BPHTB</h3>
+            <h4>Rumus:</h4>
+            <div class="calculation">
+                BPHTB = 5% × (NPOP - NPOPTKP)<br><br>
+                <strong>NPOP:</strong> Nilai Perolehan Objek Pajak<br>
+                <strong>NPOPTKP:</strong> Nilai Perolehan Objek Tidak Kena Pajak
+            </div>
+            <p><strong>NPOPTKP:</strong> Paling rendah <strong>Rp60.000.000</strong> (setiap daerah/wilayah dapat berbeda).</p>
+            <p><strong>Untuk waris/hibah wasiat:</strong> NPOPTKP paling rendah <strong>Rp300.000.000</strong>.</p>
+        </section>
+
+        <!-- STUDI KASUS -->
+        <section id="studi-kasus">
+            <div class="summary-card">
+                <h2>📋 STUDI KASUS TERPADU BREVET PAJAK A DAN B</h2>
+                <h3>PT NUSANTARA MAJU BERSAMA</h3>
+                <p><strong>Bidang Usaha:</strong> Perdagangan perangkat elektronik dan jasa teknologi informasi</p>
+                <p><strong>Status:</strong> PKP (Pengusaha Kena Pajak) | Sistem Pembukuan</p>
+            </div>
+
+            <h2>📌 Profil Wajib Pajak</h2>
+            <p>PT Nusantara Maju Bersama melakukan berbagai transaksi:</p>
+            <ul>
+                <li>Penjualan laptop dan komputer</li>
+                <li>Pembelian barang dari pemasok dalam negeri</li>
+                <li>Impor perangkat elektronik</li>
+                <li>Pembayaran jasa kepada perusahaan dalam negeri</li>
+                <li>Pembayaran jasa kepada perusahaan luar negeri</li>
+                <li>Pembayaran gaji karyawan</li>
+                <li>Kepemilikan tanah dan bangunan</li>
+                <li>Pembelian gedung baru</li>
+                <li>Transaksi perjanjian dengan pelanggan</li>
+            </ul>
+            <p>Direktur utama, <strong>Bapak Andi</strong>, juga melakukan transaksi pribadi (pembelian rumah, penerimaan penghasilan sebagai direktur).</p>
+
+            <!-- BAGIAN 1 -->
+            <div class="answer">
+                <h2>📌 BAGIAN 1 — KETENTUAN UMUM PERPAJAKAN</h2>
+                <p>PT Nusantara Maju Bersama menerapkan <strong>self assessment system</strong> dalam memenuhi kewajiban perpajakannya.</p>
+                <p><strong>Kewajiban perusahaan:</strong></p>
+                <ol>
+                    <li>Menghitung pajak yang terutang</li>
+                    <li>Membayar/menyetor pajak</li>
+                    <li>Melaporkan pajak</li>
+                    <li>Menyimpan dokumen perpajakan</li>
+                    <li>Memberikan data apabila dilakukan pemeriksaan oleh DJP</li>
+                </ol>
+                <p>Perusahaan menggunakan NPWP yang terintegrasi dengan identitas perpajakan.</p>
+
+                <h3>❓ Pertanyaan</h3>
+                <ol>
+                    <li>Sistem pemungutan pajak apa yang digunakan dalam kasus PT Nusantara Maju Bersama?</li>
+                    <li>Apa yang dimaksud dengan self assessment system?</li>
+                    <li>Mengapa PPN termasuk pajak tidak langsung?</li>
+                    <li>Sebutkan perbedaan pajak langsung dan pajak tidak langsung.</li>
+                    <li>Berdasarkan lembaga pemungutnya, PPh termasuk pajak pusat atau pajak daerah?</li>
+                </ol>
+
+                <h3>🔑 Kunci Jawaban</h3>
+                <ol>
+                    <li><strong>Self assessment system.</strong></li>
+                    <li>Sistem yang memberikan kewenangan kepada Wajib Pajak untuk menghitung, membayar, dan melaporkan sendiri pajak terutangnya.</li>
+                    <li>Karena beban ekonomis PPN pada akhirnya ditanggung konsumen, sedangkan PKP memungut dan menyetorkannya kepada negara.</li>
+                    <li><strong>Pajak langsung:</strong> Ditanggung sendiri oleh Wajib Pajak dan tidak mudah dialihkan kepada pihak lain.
+                        <br><strong>Pajak tidak langsung:</strong> Dapat dialihkan bebannya kepada pihak lain.</li>
+                    <li><strong>Pajak pusat.</strong></li>
+                </ol>
+            </div>
+
+            <!-- BAGIAN 2 -->
+            <div class="answer">
+                <h2>📌 BAGIAN 2 — PPh PASAL 21</h2>
+                <p>PT Nusantara Maju Bersama memiliki manajer bernama <strong>Bapak Budi</strong>.</p>
+
+                <h3>📊 Data Penghasilan (September 2024)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th class="text-right">Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gaji bulanan</td>
+                            <td class="text-right">Rp25.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Tunjangan transportasi</td>
+                            <td class="text-right">Rp2.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Tunjangan makan</td>
+                            <td class="text-right">Rp1.500.000</td>
+                        </tr>
+                        <tr>
+                            <td>Bonus</td>
+                            <td class="text-right">Rp5.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Iuran pensiun (dibayar pegawai)</td>
+                            <td class="text-right">Rp500.000</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Total</strong></td>
+                            <td class="text-right"><strong>Rp34.000.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Status:</strong> K/1 (Kawin, 1 tanggungan)</p>
+                <p>Perusahaan wajib melakukan pemotongan PPh Pasal 21.</p>
+
+                <h3>❓ Pertanyaan</h3>
+                <ol>
+                    <li>Penghasilan apa saja yang menjadi objek PPh Pasal 21?</li>
+                    <li>Siapa yang melakukan pemotongan PPh Pasal 21 dalam kasus ini?</li>
+                    <li>Apakah bonus termasuk penghasilan yang diperhitungkan dalam PPh Pasal 21?</li>
+                    <li>Mengapa status PTKP perlu diperhatikan dalam penghitungan PPh orang pribadi?</li>
+                    <li>Jelaskan perbedaan mekanisme tarif progresif dengan tarif efektif rata-rata (TER).</li>
+                </ol>
+
+                <h3>🔑 Kunci Jawaban</h3>
+                <ol>
+                    <li>Gaji, upah, tunjangan, bonus, honorarium, dan penghasilan lain sehubungan dengan pekerjaan/jasa.</li>
+                    <li><strong>PT Nusantara Maju Bersama sebagai pemberi kerja.</strong></li>
+                    <li>Ya, bonus merupakan penghasilan yang berkaitan dengan pekerjaan.</li>
+                    <li>Karena PTKP memengaruhi besarnya penghasilan kena pajak bagi Wajib Pajak orang pribadi.</li>
+                    <li><strong>Tarif progresif:</strong> Diterapkan berdasarkan lapisan PKP.
+                        <br><strong>TER:</strong> Digunakan dalam mekanisme pemotongan PPh 21 bulanan, kemudian diperhitungkan dalam penghitungan tahunan.</li>
+                </ol>
+            </div>
+
+            <!-- BAGIAN 3 -->
+            <div class="answer">
+                <h2>📌 BAGIAN 3 — PPh PASAL 22 ATAS IMPOR</h2>
+                <p>PT Nusantara Maju Bersama melakukan impor laptop dari Jepang.</p>
+
+                <h3>📊 Data Impor</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th class="text-right">Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cost, Insurance, Freight (CIF)</td>
+                            <td class="text-right">Rp2.000.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Bea Masuk</td>
+                            <td class="text-right">Rp200.000.000</td>
+                        </tr>
+                        <tr>
+                            <td>Pungutan kepabeanan lainnya</td>
+                            <td class="text-right">Rp50.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Status:</strong> Memiliki Angka Pengenal Impor (API)</p>
+                <p><strong>Tarif PPh Pasal 22:</strong> 2,5% dari nilai impor (untuk latihan)</p>
+
+                <h3>❓ Pertanyaan</h3>
+                <ol>
+                    <li>Berapa nilai impor?</li>
+                    <li>Berapa PPh Pasal 22 yang harus dipungut?</li>
+                    <li>Apakah PPh Pasal 22 tersebut bersifat final secara umum?</li>
+                    <li>Apa fungsi PPh Pasal 22 dalam transaksi impor?</li>
+                </ol>
+
+                <h3>🔑 Kunci Jawaban</h3>
+                <h4>1. Nilai Impor</h4>
+                <div class="calculation">
+                    CIF: Rp2.000.000.000<br>
+                    Bea Masuk: + Rp200.000.000<br>
+                    Pungutan lainnya: + Rp50.000.000<br><br>
+                    <strong>Nilai Impor = Rp2.000.000.000 + Rp200.000.000 + Rp50.000.000 = Rp2.250.000.000</strong>
+                </div>
+
+                <h4>2. PPh Pasal 22</h4>
+                <div class="calculation">
+                    2,5% × Rp2.250.000.000<br><br>
+                    <strong>PPh Pasal 22 = Rp56.250.000</strong>
+                </div>
+
+                <h4>3. Sifat PPh Pasal 22</h4>
+                <p>Pada umumnya PPh Pasal 22 merupakan <strong>pajak penghasilan yang dapat menjadi kredit pajak</strong>, sepanjang memenuhi persyaratan pengkreditan.</p>
+
+                <h4>4. Fungsi PPh Pasal 22</h4>
+                <p>PPh Pasal 22 merupakan mekanisme pemungutan PPh pada transaksi tertentu (termasuk impor) sebagai bagian dari <strong>pengamanan penerimaan pajak</strong>.</p>
+            </div>
+
+            <!-- BAGIAN 4 -->
+            <div class="answer">
+                <h2>📌 BAGIAN 4 — PPh PASAL 23</h2>
+                <p>PT Nusantara Maju Bersama menggunakan jasa konsultan teknologi dari PT Solusi Digital Indonesia.</p>
+                <p><strong>Nilai jasa:</strong> Rp200.000.000</p>
+                <p><strong>Tarif PPh Pasal 23:</strong> 2% (untuk latihan)</p>
+
+                <h3>❓ Pertanyaan</h3>
+                <ol>
+                    <li>Berapa PPh Pasal 23 yang dipotong?</li>
+                    <li>Siapa yang melakukan pemotongan?</li>
+                    <li>Siapa yang menerima bukti potong?</li>
+                    <li>Apa fungsi bukti potong?</li>
+                </ol>
+
+                <h3>🔑 Kunci Jawaban</h3>
+                <div class="calculation">
+                    2% × Rp200.000.000<br><br>
+                    <strong>PPh Pasal 23 = Rp4.000.000</strong>
+                </div>
+                <ol start="2">
+                    <li><strong>PT Nusantara Maju Bersama</strong> sebagai pihak yang melakukan pembayaran (pemotong).</li>
+                    <li><strong>PT Solusi Digital Indonesia</strong> (penerima penghasilan) menerima bukti potong.</li>
+                    <li>Bukti potong dapat digunakan sebagai <strong>kredit pajak</strong> sesuai ketentuan.</li>
+                </ol>
+            </div>
+
+            <!-- BAGIAN 5 -->
+            <div class="answer">
+                <h2>📌 BAGIAN 5 — PPh PASAL 26</h2>
+                <p>PT Nusantara Maju Bersama menggunakan jasa konsultasi teknologi dari perusahaan di Singapura.</p>
+                <p><strong>Nilai pembayaran:</strong> Rp500.000.000</p>
+                <p><strong>Asumsi:</strong> Tidak dapat menggunakan tarif berdasarkan P3B (Persetujuan Penghindaran Pajak Berganda)</p>
+                <p><strong>Tarif PPh Pasal 26:</strong> 20% (untuk latihan)</p>
+
+                <h3>❓ Pertanyaan</h3>
+                <ol>
+                    <li>Berapa PPh Pasal 26 yang harus dipotong?</li>
+                    <li>Siapa yang menjadi pihak yang menerima penghasilan?</li>
+                    <li>Mengapa PPh Pasal 26 berbeda dengan PPh Pasal 23?</li>
+                    <li>Kapan tarif P3B dapat menjadi relevan?</li>
+                </ol>
+
+                <h3>🔑 Kunci Jawaban</h3>
+                <div class="calculation">
+                    20% × Rp500.000.000<br><br>
+                    <strong>PPh Pasal 26 = Rp100.000.000</strong>
+                </div>
+                <ol start="2">
+                    <li>Perusahaan di Singapura (Wajib Pajak luar negeri selain BUT).</li>
+                    <li>PPh Pasal 23 dikenakan atas penghasilan dari <strong>dalam negeri</strong>, sedangkan PPh Pasal 26 dikenakan atas penghasilan dari <strong>luar negeri</strong> (selain BUT).</li>
+                    <li>Apabila syarat P3B terpenuhi, tarif atau hak pemajakan dapat mengikuti ketentuan treaty yang berlaku.</li>
+                </ol>
+            </div>
+
+            <!-- BAGIAN 6 -->
+            <div class="answer">
+                <h2>📌 BAGIAN 6 — PPh FINAL PASAL 4 AYAT (2)</h2>
+                <p>PT Nusantara Maju Bersama menyewa gedung untuk kantor.</p>
+                <p><strong>Nilai sewa selama satu tahun:</strong> Rp600.000.000</p>
+                <p><strong>Tarif PPh Final:</strong> 10% (untuk latihan)</p>
+
+                <h3>❓ Pertanyaan</h3>
+                <ol>
+                    <li>Berapa PPh Final yang harus dipotong?</li>
+                    <li>Apakah pajak tersebut dapat dikreditkan terhadap PPh Badan?</li>
+                    <li>Mengapa disebut pajak final?</li>
+                </ol>
+
+                <h3>🔑 Kunci Jawaban</h3>
+                <div class="calculation">
+                    10% × Rp600.000.000<br><br>
+                    <strong>PPh Final = Rp60.000.000</strong>
+                </div>
+                <ol start="2">
+                    <li><strong>Tidak</strong>, PPh yang bersifat final pada prinsipnya <strong>tidak dikreditkan</strong> sebagai kredit pajak terhadap PPh Badan.</li>
+                    <li>Disebut final karena kewajiban PPh atas penghasilan tersebut <strong>diselesaikan melalui mekanisme pajak final</strong
+<script src="../pomodoro-widget.js"></script>

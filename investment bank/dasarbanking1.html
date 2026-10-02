@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fundamental of Banking – Sesi 1: Konsep Dasar Banking</title>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+<style>
+:root{--bg:#f2f4f0;--panel:#fff;--ink:#16211d;--mut:#5b6a64;--line:#d5dcd6;--acc:#0f6b5c;--acc2:#c8871a;--bad:#b23a2e;--ok:#1f7a4d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101815;--panel:#18231f;--ink:#e6ede9;--mut:#93a49c;--line:#2b3a34;--acc:#4fc4ac;--acc2:#e3a94a;--bad:#e5806f;--ok:#63c790}}
+:root[data-theme="dark"]{--bg:#101815;--panel:#18231f;--ink:#e6ede9;--mut:#93a49c;--line:#2b3a34;--acc:#4fc4ac;--acc2:#e3a94a;--bad:#e5806f;--ok:#63c790}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding:28px 0;font-size:14px}
+nav a{display:block;color:var(--mut);text-decoration:none;padding:5px 0 5px 12px;border-left:2px solid var(--line)}
+nav a:hover,nav a.on{color:var(--acc);border-color:var(--acc)}
+header{grid-column:1/-1;padding:56px 0 8px;max-width:760px}
+h1{font:700 clamp(32px,6vw,52px)/1.1 Georgia,"Times New Roman",serif;margin:0 0 14px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:18px;margin:0}
+main{padding:20px 0 80px;min-width:0}
+section{padding:34px 0;border-top:1px solid var(--line)}
+section:first-child{border-top:0}
+h2{font:700 27px/1.25 Georgia,serif;margin:0 0 14px}
+h3{font-size:17px;margin:22px 0 6px}
+p{margin:0 0 12px;max-width:68ch}
+ul{padding-left:20px;margin:0 0 12px}li{margin:3px 0}
+.lo{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0}
+.flow b{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 14px;font-weight:600}
+.flow b.hl{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+.flow i{color:var(--mut);font-style:normal}
+.note{border-left:3px solid var(--acc2);padding:6px 14px;margin:14px 0;background:var(--panel);max-width:68ch}
+.eq{font:600 18px Georgia,serif;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:12px 0;overflow-x:auto;white-space:nowrap}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:420px;background:var(--panel);border:1px solid var(--line)}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.card h3{margin-top:0}
+.risk{border-top:3px solid var(--acc2)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+/* waterfall */
+.lab{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
+.sl{display:grid;grid-template-columns:150px 1fr 64px;gap:10px;align-items:center;font-size:14px;margin:6px 0}
+.sl output{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.wf{display:flex;align-items:flex-end;gap:6px;height:220px;margin:22px 0 6px;border-bottom:1px solid var(--line)}
+.wf div{flex:1;position:relative;min-width:0}
+.wf span{position:absolute;left:0;right:0;text-align:center;font-size:11px;font-weight:600;transform:translateY(-100%);padding-bottom:2px}
+.wl{display:flex;gap:6px;font-size:11px;color:var(--mut);text-align:center}.wl div{flex:1;min-width:0}
+.res{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.res div{flex:1;min-width:120px;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.res small{display:block;color:var(--mut);font-size:12px}.res b{font:700 20px Georgia,serif}
+/* quiz */
+.q{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+.q p{margin-bottom:8px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin:5px 0;cursor:pointer}
+.opt:hover{border-color:var(--acc)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.opt.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent)}
+.fb{font-size:14px;color:var(--mut);margin-top:6px;min-height:1px}
+.score{font:700 20px Georgia,serif;margin:14px 0}
+.core{background:var(--acc);color:var(--bg);border-radius:12px;padding:22px 24px}
+.core .eq{color:var(--ink)}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--acc2);outline-offset:2px}
+@media(max-width:820px){.wrap{grid-template-columns:1fr;gap:0}nav{display:none}.two{grid-template-columns:1fr}.sl{grid-template-columns:1fr 1fr 56px}.sl label{grid-column:1/-1}.sl{grid-template-columns:1fr 56px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Fundamental of Banking</h1>
+<p class="sub">Sesi 1 – Konsep dasar banking: dari deposit sampai profit, dan kenapa risiko selalu ikut.</p>
+</header>
+
+<nav aria-label="Daftar bagian">
+<a href="#tujuan">Tujuan belajar</a><a href="#intermediasi">Apa itu bank</a><a href="#fungsi">Fungsi bank</a><a href="#model">Model bisnis</a><a href="#neraca">Neraca bank</a><a href="#jenis">Jenis &amp; produk</a><a href="#risiko">Risiko &amp; regulasi</a><a href="#lab">Simulasi profit</a><a href="#framework">Framework</a><a href="#quiz">Concept check</a><a href="#core">Core knowledge</a>
+</nav>
+
+<main>
+<section id="tujuan">
+<h2>Tujuan belajar</h2>
+<div class="lo"><p>Setelah sesi ini, lu harus bisa:</p>
+<ul>
+<li>Menjelaskan apa itu bank dan fungsi utamanya.</li>
+<li>Memahami cara bank menghasilkan pendapatan.</li>
+<li>Membedakan bank dari perusahaan non-keuangan.</li>
+<li>Memahami funding, lending, dan intermediation.</li>
+<li>Mengenal jenis bank dan produk perbankan.</li>
+<li>Membaca struktur sederhana neraca bank.</li>
+<li>Menjelaskan hubungan deposit, loan, interest, dan profit.</li>
+<li>Memahami kenapa risiko begitu penting di bisnis bank.</li>
+</ul></div>
+</section>
+
+<section id="intermediasi">
+<h2>Apa itu bank?</h2>
+<p>Bank adalah lembaga keuangan yang menghimpun dana dari masyarakat, menyalurkannya kembali dalam bentuk pembiayaan/kredit, dan menyediakan berbagai layanan keuangan. Posisinya selalu di tengah, itulah yang disebut <b>financial intermediation</b>.</p>
+<div class="flow"><b>Pihak yang punya dana</b><i>→</i><b class="hl">BANK</b><i>→</i><b>Pihak yang butuh dana</b></div>
+<h3>Contoh</h3>
+<p>Orang A punya Rp100 juta yang belum dipakai. Orang B butuh Rp100 juta untuk modal usaha. Daripada saling mencari, keduanya lewat bank. Bank mendapat dana dari deposan, menyalurkannya ke borrower, lalu memperoleh pendapatan dari aktivitas itu.</p>
+<div class="flow"><b>A</b><i>deposit →</i><b class="hl">BANK</b><i>loan →</i><b>B</b></div>
+<h3>Dari mana bank dapat uang?</h3>
+<div class="two">
+<div class="card"><h3>Funding (sumber dana)</h3><ul><li>Giro, tabungan, deposito</li><li>Pinjaman antarbank</li><li>Obligasi</li><li>Modal sendiri</li></ul></div>
+<div class="card"><h3>Lending / investment (penggunaan dana)</h3><ul><li>Kredit</li><li>Surat berharga</li><li>Penempatan di bank lain</li><li>Aset produktif lainnya</li></ul></div>
+</div>
+<p style="margin-top:12px">Bank raises funds → bank allocates funds → bank earns return.</p>
+</section>
+
+<section id="fungsi">
+<h2>Bank bukan sekadar tempat menyimpan uang</h2>
+<div class="two">
+<div class="card"><h3>Financial intermediation</h3><p>Menghubungkan pihak surplus dana dengan pihak defisit dana.</p></div>
+<div class="card"><h3>Payment system</h3><p>Menyediakan layanan pembayaran dan transfer.</p></div>
+<div class="card"><h3>Credit creation</h3><p>Lewat intermediasi dan penciptaan kredit, bank memperluas ketersediaan pembiayaan di ekonomi.</p></div>
+<div class="card"><h3>Savings mobilization</h3><p>Mengumpulkan dana masyarakat.</p></div>
+<div class="card"><h3>Risk transformation</h3><p>Mentransformasi dan mengelola risiko antara sumber dan penggunaan dana.</p></div>
+<div class="card"><h3>Maturity transformation</h3><p>Menerima dana dengan jatuh tempo tertentu, menyalurkannya ke aset dengan jatuh tempo berbeda.</p></div>
+</div>
+</section>
+
+<section id="model">
+<h2>Model bisnis bank</h2>
+<p>Bank membayar bunga deposito 4% per tahun, lalu menyalurkan kredit dengan bunga 10% per tahun.</p>
+<div class="eq">10% − 4% = 6% (spread)</div>
+<div class="note">6% itu bukan laba bersih. Bank masih punya biaya operasional, biaya pencadangan, pajak, dan biaya/risiko lain.</div>
+
+<h3>Net interest income (NII)</h3>
+<p><b>Interest income</b> berasal dari kredit, surat berharga, dan penempatan dana. <b>Interest expense</b> adalah beban bunga untuk deposito, tabungan/giro berbunga, pinjaman, dan sumber dana lain.</p>
+<div class="eq">NII = Interest income − Interest expense</div>
+<p>Contoh: Rp500 M − Rp200 M = <b>Rp300 M</b>.</p>
+
+<h3>Non-interest income</h3>
+<p>Bank juga dapat uang dari fee: transfer, administrasi, kartu, transaksi, bancassurance, wealth management, trade finance, custody, dan jasa lain. Contoh: NII Rp300 M + fee Rp80 M = Rp380 M sebelum komponen biaya lainnya.</p>
+
+<h3>Net interest margin (NIM)</h3>
+<div class="eq">NIM = NII ÷ Average earning assets</div>
+<p>Contoh: Rp100 M ÷ Rp2.000 M = <b>5%</b>. Artinya bank menghasilkan NII sekitar 5% dari rata-rata aset produktifnya. Dalam praktik, definisi denominator mengikuti standar pelaporan/regulasi yang dipakai.</p>
+</section>
+
+<section id="neraca">
+<h2>Struktur sederhana neraca bank</h2>
+<div class="eq">Assets = Liabilities + Equity</div>
+<div class="two">
+<div><h3>Aset bank</h3><ul><li><b>Loans:</b> kredit ke individu, perusahaan, pemerintah/sektor tertentu. Aset utama bank.</li><li><b>Securities:</b> surat berharga.</li><li><b>Cash &amp; equivalents:</b> likuiditas.</li><li><b>Placement:</b> penempatan di bank/lembaga keuangan lain.</li></ul></div>
+<div><h3>Liabilitas &amp; ekuitas</h3><ul><li><b>Customer deposits:</b> giro, tabungan, deposito. Bagi nasabah itu aset, bagi bank itu liability, karena bank wajib memenuhi penarikan sesuai ketentuan rekening.</li><li><b>Equity:</b> hak residual pemilik = Assets − Liabilities.</li></ul></div>
+</div>
+<div class="scroll"><table>
+<tr><th>Assets</th><th class="n">Rp M</th><th>Liabilities &amp; equity</th><th class="n">Rp M</th></tr>
+<tr><td>Cash</td><td class="n">100</td><td>Deposits</td><td class="n">850</td></tr>
+<tr><td>Securities</td><td class="n">200</td><td>Other liabilities</td><td class="n">150</td></tr>
+<tr><td>Loans</td><td class="n">700</td><td>Equity</td><td class="n">100</td></tr>
+<tr><td>Other assets</td><td class="n">100</td><td></td><td></td></tr>
+<tr class="tot"><td>Total assets</td><td class="n">1.100</td><td>Total</td><td class="n">1.100</td></tr>
+</table></div>
+<h3>Kenapa leverage bank tinggi?</h3>
+<p>Perusahaan manufaktur punya equity besar, debt, dan operating assets. Bank secara alami didanai deposit dan liabilitas lain, dengan equity yang relatif kecil dibanding total aset. Akibatnya leverage tinggi, dan kalau sebagian aset kredit bermasalah besar, modal bank ikut terdampak. Itu sebabnya risk management krusial.</p>
+</section>
+
+<section id="jenis">
+<h2>Jenis bank dan produk</h2>
+<div class="two">
+<div class="card"><h3>Commercial bank</h3><p>Simpanan, kredit, pembayaran, transfer, dan layanan keuangan umum.</p></div>
+<div class="card"><h3>Investment bank</h3><p>Capital markets, underwriting, advisory, M&amp;A, aktivitas sekuritas. Struktur dan regulasinya berbeda dari commercial bank di banyak yurisdiksi.</p></div>
+<div class="card"><h3>Central bank</h3><p>Di Indonesia: Bank Indonesia, dengan mandat kebijakan moneter, sistem pembayaran, dan stabilitas sistem keuangan.</p></div>
+<div class="card"><h3>Islamic bank</h3><p>Perbankan berdasarkan prinsip syariah.</p></div>
+</div>
+<div class="two" style="margin-top:16px">
+<div><h3>Produk funding (sumber dana)</h3><ul><li><b>Giro:</b> transaksi dan pembayaran.</li><li><b>Tabungan:</b> simpanan dengan akses transaksi sesuai fitur.</li><li><b>Deposito:</b> dana ditempatkan untuk jangka waktu tertentu.</li></ul></div>
+<div><h3>Produk lending</h3><ul><li><b>Consumer loan:</b> KPR, kredit kendaraan, personal loan.</li><li><b>Commercial loan:</b> kebutuhan bisnis.</li><li><b>Corporate loan:</b> perusahaan besar.</li><li><b>Working capital loan:</b> modal kerja.</li><li><b>Investment loan:</b> pembiayaan investasi.</li></ul></div>
+</div>
+</section>
+
+<section id="risiko">
+<h2>Risiko dan regulasi</h2>
+<p>Lending bukan cuma memberi uang. Kalau debitur gagal bayar Rp1 miliar, bank berpotensi rugi. Karena itu bank melakukan credit assessment, monitoring, risk management, provisioning sesuai kerangka yang berlaku, dan recovery.</p>
+<div class="two">
+<div class="card risk"><h3>Credit risk</h3><p>Debitur gagal memenuhi kewajiban.</p></div>
+<div class="card risk"><h3>Market risk</h3><p>Perubahan suku bunga, kurs, dan harga instrumen keuangan.</p></div>
+<div class="card risk"><h3>Liquidity risk</h3><p>Bank tidak punya likuiditas cukup untuk memenuhi kewajiban saat jatuh tempo.</p></div>
+<div class="card risk"><h3>Operational risk</h3><p>Human error, kegagalan sistem, fraud, kegagalan proses, kejadian eksternal.</p></div>
+</div>
+<div class="flow"><b>Deposits</b><i>→</i><b class="hl">BANK</b><i>→</i><b>Loans</b><i>→</i><b>Credit risk</b></div>
+<div class="flow"><b>Deposits</b><i>→</i><b>Penarikan</b><i>→</i><b>Liquidity risk</b></div>
+<div class="flow"><b>Perubahan suku bunga</b><i>→</i><b>Funding cost / asset yield</b><i>→</i><b>Profitabilitas</b></div>
+<p>Banking = menyeimbangkan return, liquidity, capital, dan risk. Bank mengelola dana masyarakat dan bagian penting dari sistem keuangan, jadi diatur dan diawasi ketat. Di Indonesia, Otoritas Jasa Keuangan mengatur dan mengawasi sektor jasa keuangan sesuai kewenangannya, sementara Bank Indonesia berperan di sistem pembayaran dan kebijakan moneter. Detail risiko dibahas di Sesi 3.</p>
+</section>
+
+<section id="lab">
+<h2>Simulasi: dari pendapatan ke profit</h2>
+<p>Geser angka untuk melihat bagaimana profit sebelum pajak terbentuk. Default-nya contoh di materi (Rp M), hasilnya Rp200 M.</p>
+<div class="lab">
+<div class="sl"><label for="ii">Interest income</label><input id="ii" type="range" min="100" max="800" step="10" value="500"><output></output></div>
+<div class="sl"><label for="ie">Interest expense</label><input id="ie" type="range" min="0" max="500" step="10" value="200"><output></output></div>
+<div class="sl"><label for="fi">Fee income</label><input id="fi" type="range" min="0" max="300" step="10" value="100"><output></output></div>
+<div class="sl"><label for="oe">Operating expense</label><input id="oe" type="range" min="0" max="400" step="10" value="150"><output></output></div>
+<div class="sl"><label for="pv">Credit loss / provision</label><input id="pv" type="range" min="0" max="300" step="10" value="50"><output></output></div>
+<div class="wf" id="wf" role="img" aria-label="Grafik waterfall dari interest income sampai profit sebelum pajak"></div>
+<div class="wl" id="wl"></div>
+<div class="res">
+<div><small>Net interest income</small><b id="rn"></b></div>
+<div><small>Setelah fee</small><b id="rf"></b></div>
+<div><small>Setelah opex</small><b id="ro"></b></div>
+<div><small>Profit sebelum pajak</small><b id="rp"></b></div>
+</div>
+<p style="margin:12px 0 0;font-size:14px;color:var(--mut)">Ini ilustrasi sederhana; laporan bank sebenarnya punya lebih banyak komponen dan perlakuan akuntansi/regulasi.</p>
+</div>
+</section>
+
+<section id="framework">
+<h2>Framework membaca sebuah bank</h2>
+<p>Kalau diberi laporan sebuah bank, jalani urutan ini:</p>
+<div class="scroll"><table>
+<tr><th>Tahap</th><th>Pertanyaan</th><th>Isinya</th></tr>
+<tr><td>Funding</td><td>Dananya dari mana?</td><td>Deposits, borrowings, other funding</td></tr>
+<tr><td>Asset allocation</td><td>Dipakai untuk apa?</td><td>Loans, securities, cash, other earning assets</td></tr>
+<tr><td>Income</td><td>Pendapatan dari mana?</td><td>Interest, fees, other income</td></tr>
+<tr><td>Cost</td><td>Biaya utamanya apa?</td><td>Interest expense, operating expense, credit cost</td></tr>
+<tr><td>Risk</td><td>Risiko apa yang dihadapi?</td><td>Credit, market, liquidity, operational</td></tr>
+<tr><td>Capital</td><td>Modal cukup menyerap risiko?</td><td>Equity dan kecukupan modal</td></tr>
+<tr><td>Profitability</td><td>Return memadai?</td><td>Profit relatif terhadap aset dan modal</td></tr>
+</table></div>
+</section>
+
+<section id="quiz">
+<h2>Concept check</h2>
+<p>Jawab dulu tanpa melihat materi. Klik pilihan untuk cek jawaban.</p>
+<div id="quizbox"></div>
+<div class="score" id="score"></div>
+<h3>Soal esai</h3>
+<details><summary>Soal 7. Mengapa deposito nasabah menjadi liability bagi bank?</summary><p style="margin-top:8px">Karena bank punya kewajiban kepada nasabah untuk memenuhi penarikan sesuai ketentuan rekening. Bagi nasabah itu aset, bagi bank itu kewajiban.</p></details>
+<details><summary>Soal 8. Jelaskan dengan bahasa lu sendiri: bagaimana bank menghasilkan profit dari aktivitas intermediasi?</summary><p style="margin-top:8px">Bank menghimpun deposit dan membayar bunga (interest expense), lalu menyalurkannya sebagai kredit dan aset produktif lain yang menghasilkan interest income. Selisihnya adalah NII. Ditambah fee income, lalu dikurangi biaya operasional dan credit cost, sisanya jadi profit, dengan syarat risiko, likuiditas, dan modal tetap terkelola.</p></details>
+</section>
+
+<section id="core">
+<h2>Core knowledge yang wajib dikuasai</h2>
+<div class="core">
+<p>BANK = FUNDING + ASSET ALLOCATION + INCOME + COST + RISK + CAPITAL</p>
+<div class="eq">Deposits → Bank → Loans</div>
+<div class="eq">Loans → Interest income &nbsp;|&nbsp; Deposits → Interest expense</div>
+<div class="eq">Interest income − Interest expense = NII</div>
+<div class="eq">NII + Non-interest income − Opex − Credit costs = Profit</div>
+<p style="margin:0">Semua itu dijalankan dengan mempertimbangkan risk, liquidity, capital, dan regulation.</p>
+</div>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var ids=['ii','ie','fi','oe','pv'];
+function fmt(n){return n.toLocaleString('id-ID')}
+function calc(){
+ var v={};ids.forEach(function(i){v[i]=+$(i).value;$(i).nextElementSibling.textContent=fmt(v[i])});
+ var nii=v.ii-v.ie,af=nii+v.fi,ao=af-v.oe,pr=ao-v.pv;
+ $('rn').textContent=fmt(nii);$('rf').textContent=fmt(af);$('ro').textContent=fmt(ao);$('rp').textContent=fmt(pr);
+ $('rp').style.color=pr<0?'var(--bad)':'var(--ok)';
+ var steps=[['Interest income',0,v.ii,1],['Interest expense',nii,v.ii,0],['Fee income',nii,af,1],['Opex',ao,af,0],['Provision',pr,ao,0],['Profit',Math.min(0,pr),Math.max(0,pr),pr>=0?2:3]];
+ var max=Math.max(v.ii,af,10),H=190,wf=$('wf'),wl=$('wl');wf.innerHTML='';wl.innerHTML='';
+ steps.forEach(function(s){
+  var lo=Math.max(0,s[1]),hi=s[2],col=s[3]==1?'var(--acc)':s[3]==2?'var(--ok)':'var(--bad)';
+  if(s[3]==0)col='var(--acc2)';
+  if(s[0]=='Profit'){lo=0;hi=Math.abs(pr)}
+  var h=Math.max(2,(hi-lo)/max*H),b=lo/max*H;
+  var d=document.createElement('div');d.style.height='100%';
+  var bar=document.createElement('div');bar.style.cssText='position:absolute;left:8%;right:8%;bottom:'+b+'px;height:'+h+'px;background:'+col+';border-radius:3px 3px 0 0';
+  var t=document.createElement('span');t.style.cssText='bottom:'+(b+h)+'px';t.textContent=(s[0]=='Profit'?fmt(pr):fmt(hi-lo));
+  d.appendChild(bar);d.appendChild(t);wf.appendChild(d);
+  var l=document.createElement('div');l.textContent=s[0];wl.appendChild(l);
+ });
+}
+ids.forEach(function(i){$(i).addEventListener('input',calc)});calc();
+
+var Q=[
+['Nasabah menyimpan deposito Rp100 juta. Dari perspektif bank, deposito itu termasuk:',['Asset','Liability','Equity','Revenue'],1,'Deposito adalah kewajiban bank kepada nasabah.'],
+['Bank memberikan kredit Rp500 juta ke perusahaan. Dari perspektif bank, kredit itu pada dasarnya:',['Asset','Liability','Equity','Expense'],0,'Kredit adalah klaim bank atas debitur, jadi aset.'],
+['Bank dapat bunga Rp100 M dari kredit dan membayar Rp40 M ke deposan. Net interest income?',['Rp40 M','Rp60 M','Rp100 M','Rp140 M'],1,'100 − 40 = 60.'],
+['Banyak debitur gagal bayar. Risiko utama yang muncul:',['Liquidity risk','Credit risk','Operational risk','Market risk'],1,'Gagal bayar debitur adalah credit risk.'],
+['Assets Rp10 T dan Liabilities Rp9 T. Equity adalah:',['Rp100 M','Rp500 M','Rp1 T','Rp19 T'],2,'10 T − 9 T = 1 T.'],
+['Pendapatan dari biaya transfer, administrasi, dan layanan keuangan secara umum termasuk:',['Interest income','Fee-based income','Interest expense','Provision'],1,'Itu pendapatan non-bunga (fee-based income).']
+];
+var box=$('quizbox'),done=0,correct=0;
+Q.forEach(function(q,qi){
+ var w=document.createElement('div');w.className='q';
+ var p=document.createElement('p');p.textContent='Soal '+(qi+1)+'. '+q[0];w.appendChild(p);
+ var fb=document.createElement('div');fb.className='fb';
+ var locked=false;
+ q[1].forEach(function(o,oi){
+  var b=document.createElement('button');b.className='opt';b.type='button';b.textContent=String.fromCharCode(65+oi)+'. '+o;
+  b.addEventListener('click',function(){
+   if(locked)return;locked=true;done++;
+   var bs=w.querySelectorAll('.opt');
+   if(oi==q[2]){b.classList.add('ok');correct++;fb.textContent='Benar. '+q[3]}
+   else{b.classList.add('no');bs[q[2]].classList.add('ok');fb.textContent='Belum tepat. '+q[3]}
+   if(done==Q.length)$('score').textContent='Skor lu: '+correct+' dari '+Q.length;
+  });
+  w.appendChild(b);
+ });
+ w.appendChild(fb);box.appendChild(w);
+});
+
+var links=document.querySelectorAll('nav a');
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')=='#'+e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});
+ document.querySelectorAll('section').forEach(function(s){io.observe(s)});
+}
+})();
+</script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

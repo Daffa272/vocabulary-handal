@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Pembelajaran Bank Indonesia</title>
+    <style>
+        :root {
+            --bi-blue: #003d7a;
+            --bi-light-blue: #0056b3;
+            --bi-lighter-blue: #0077b6;
+            --bi-bg: #f5f7fa;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-color: #bdc3c7;
+            --highlight-bg: #fffde7;
+            --highlight-border: #ffc107;
+            --code-bg: #2d3436;
+            --code-text: #f8f9fa;
+            --table-header: #003d7a;
+            --table-row-odd: #ffffff;
+            --table-row-even: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bi-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--bi-blue);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--bi-blue);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: var(--bi-light-blue);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--bi-light-blue);
+        }
+
+        h3 {
+            color: var(--bi-lighter-blue);
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+
+        h4 {
+            color: var(--bi-blue);
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        /* Code blocks styling */
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin: 20px 0;
+            border-left: 4px solid var(--bi-blue);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--table-row-even);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--table-row-odd);
+        }
+
+        /* List styling */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 40px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        /* Horizontal rule */
+        hr {
+            border: none;
+            height: 2px;
+            background-color: var(--border-color);
+            margin: 30px 0;
+        }
+
+        /* Special boxes */
+        .important-box {
+            background-color: var(--highlight-bg);
+            border-left: 5px solid var(--highlight-border);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .important-box strong {
+            color: var(--bi-blue);
+        }
+
+        .cheat-sheet {
+            background-color: #e3f2fd;
+            border-left: 5px solid var(--bi-blue);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .cheat-sheet h3 {
+            margin-top: 0;
+            color: var(--bi-blue);
+        }
+
+        /* Blockquote styling */
+        blockquote {
+            border-left: 4px solid var(--bi-light-blue);
+            padding: 15px;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Section navigation */
+        .section-nav {
+            background-color: #e3f2fd;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: var(--bi-blue);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white;
+                max-width: none;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+
+            pre {
+                background-color: #f0f0f0;
+                color: #333;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>MODUL PEMBELAJARAN BANK INDONESIA</h1>
+        <h2 style="text-align: center; border-bottom: none; margin-bottom: 5px;">Struktur Organisasi, Tata Kelola, Sejarah, dan Transformasi Bank Indonesia</h2>
+        <p style="text-align: center; color: var(--text-light); margin-top: 0;">Modul belajar yang sistematis, mudah dihafal, dan berorientasi soal ujian</p>
+
+        <hr>
+
+        <!-- BAGIAN I -->
+        <h2>BAGIAN I — STRUKTUR ORGANISASI BANK INDONESIA</h2>
+
+        <h3>1. Gambaran Umum</h3>
+        <p>Struktur organisasi Bank Indonesia dirancang untuk mendukung pelaksanaan mandat BI melalui beberapa kelompok fungsi utama.</p>
+
+        <p>Secara sederhana:</p>
+        <pre>                    DEWAN GUBERNUR BI
+                           │
+       ┌───────────────────┼───────────────────┐
+       │                   │                   │
+     Komite          Staf Ahli/Penasihat   Fungsi Utama
+                                               │
+     ┌───────────────┬───────────────┬─────────┴──────────┐
+     │               │               │                    │
+  MONETER      MAKROPRUDENSIAL   SISTEM PEMBAYARAN   PENDUKUNG
+                                  & PENGELOLAAN       KEBIJAKAN
+                                  UANG RUPIAH</pre>
+
+        <p>Selain fungsi kebijakan tersebut, terdapat <strong>pendukung organisasi</strong> dan <strong>jaringan kantor</strong>.</p>
+
+        <h3>2. Dewan Gubernur Bank Indonesia</h3>
+        <p>Pada struktur yang diberikan, <strong>Dewan Gubernur Bank Indonesia</strong> terdiri atas:</p>
+        <ol>
+            <li><strong>Gubernur</strong></li>
+            <li><strong>Deputi Gubernur Senior</strong></li>
+            <li><strong>4 sampai dengan 7 Deputi Gubernur</strong></li>
+        </ol>
+        <p>Dewan Gubernur menjadi pusat pengambilan keputusan strategis dalam pelaksanaan tugas dan wewenang BI.</p>
+
+        <div class="important-box">
+            <p><strong>Ingatan cepat</strong></p>
+            <p><strong>G – DGS – DG</strong></p>
+            <p><strong>Gubernur → Deputi Gubernur Senior → Deputi Gubernur</strong></p>
+        </div>
+
+        <h3>3. Kelompok Fungsi Utama BI</h3>
+        <p>Berdasarkan struktur pada bahan, terdapat <strong>6 kelompok utama</strong>:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Kelompok</th>
+                    <th>Fokus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Moneter</strong></td>
+                    <td>Kebijakan moneter, moneter & aset sekuritas, devisa, pasar keuangan, ekonomi syariah</td>
+                </tr>
+                <tr>
+                    <td><strong>Makroprudensial</strong></td>
+                    <td>Kebijakan dan surveilans makroprudensial serta ekonomi-keuangan inklusif</td>
+                </tr>
+                <tr>
+                    <td><strong>Sistem Pembayaran & Pengelolaan Uang Rupiah</strong></td>
+                    <td>Kebijakan dan penyelenggaraan sistem pembayaran serta pengelolaan uang Rupiah</td>
+                </tr>
+                <tr>
+                    <td><strong>Pendukung Kebijakan</strong></td>
+                    <td>Internasional, statistik, jasa perbankan/perizinan/operasional tresuri, risiko, komunikasi, dll.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pendukung Organisasi</strong></td>
+                    <td>SDM, hukum, keuangan, audit, teknologi, aset, pengadaan, dll.</td>
+                </tr>
+                <tr>
+                    <td><strong>Jaringan Kantor</strong></td>
+                    <td>Kantor pusat, kantor regional, kantor perwakilan dalam dan luar negeri</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>3.1 Fungsi Moneter</h4>
+        <p>Dalam struktur yang diberikan, bidang moneter terdiri atas:</p>
+        <ol>
+            <li>Departemen Kebijakan Ekonomi dan Moneter</li>
+            <li>Departemen Pengelolaan Moneter dan Aset Sekuritas</li>
+            <li>Departemen Pengelolaan Devisa</li>
+            <li>Departemen Pengembangan Pasar Keuangan</li>
+            <li>Departemen Ekonomi dan Keuangan Syariah</li>
+        </ol>
+
+        <div class="important-box">
+            <p><strong>Intinya</strong></p>
+            <p><strong>Moneter = kebijakan + operasi moneter + devisa + pasar keuangan + syariah</strong></p>
+        </div>
+
+        <h4>3.2 Fungsi Makroprudensial</h4>
+        <p>Terdiri atas:</p>
+        <ol>
+            <li>Departemen Kebijakan Makroprudensial</li>
+            <li>Departemen Surveilans Makroprudensial, Moneter dan Market</li>
+            <li>Departemen Surveilans Sistem Pembayaran dan Pelindungan Konsumen</li>
+            <li>Departemen Ekonomi-Keuangan Inklusif dan Hijau</li>
+        </ol>
+
+        <div class="important-box">
+            <p><strong>Intinya</strong></p>
+            <p><strong>Makroprudensial = menjaga stabilitas sistem keuangan secara keseluruhan.</strong></p>
+            <p>Ini berbeda dengan pengawasan mikroprudensial yang dalam materi sejarah BI disebut telah beralih kepada OJK.</p>
+        </div>
+
+        <h4>3.3 Sistem Pembayaran dan Pengelolaan Uang Rupiah</h4>
+        <p>Terdiri atas:</p>
+        <ol>
+            <li>Departemen Kebijakan Sistem Pembayaran</li>
+            <li>Departemen Penyelenggaraan Sistem Pembayaran</li>
+            <li>Departemen Pengelolaan Uang</li>
+            <li>Unit Khusus Pembangunan Sentra Pengelolaan Uang, Data Center, dan <em>Business Resumption Site</em></li>
+        </ol>
+
+        <div class="important-box">
+            <p><strong>Cara mengingat</strong></p>
+            <p><strong>Kebijakan → Penyelenggaraan → Uang → Infrastruktur khusus</strong></p>
+        </div>
+
+        <h4>3.4 Pendukung Kebijakan</h4>
+        <p>Dalam bahan diberikan:</p>
+        <ol>
+            <li>Departemen Internasional</li>
+            <li>Departemen Statistik</li>
+            <li>Departemen Jasa Perbankan, Perizinan, dan Operasional Tresuri</li>
+            <li>Departemen Pengelolaan dan Kepatuhan Laporan</li>
+            <li>Departemen Manajemen Risiko</li>
+            <li>Departemen Komunikasi</li>
+        </ol>
+        <p>Fungsi ini mendukung agar kebijakan BI dapat dibuat, dijalankan, dianalisis, dikomunikasikan, dan dikelola risikonya.</p>
+
+        <h4>3.5 Pendukung Organisasi</h4>
+        <p>Meliputi antara lain:</p>
+        <ul>
+            <li>Manajemen strategis dan tata kelola</li>
+            <li>Hukum</li>
+            <li>Sumber daya manusia</li>
+            <li>Pengembangan inovasi dan inovasi digital</li>
+            <li>Inovasi dan digitalisasi data</li>
+            <li>Layanan digital dan keamanan siber</li>
+            <li>Keuangan</li>
+            <li>Manajemen dan advisory pengadaan</li>
+            <li>Audit intern</li>
+            <li>Pengelolaan aset perkantoran</li>
+            <li>Pengelolaan aset perumahan & non-perkantoran</li>
+            <li>Layanan aset umum dan fasilitas</li>
+            <li>Institut Bank Indonesia</li>
+        </ul>
+
+        <div class="important-box">
+            <p><strong>Konsep penting</strong></p>
+            <p>Fungsi pendukung organisasi memastikan BI dapat bekerja secara:</p>
+            <p><strong>Efektif + Efisien + Bertata Kelola</strong></p>
+            <p>atau <strong>2EG</strong>.</p>
+        </div>
+
+        <h4>3.6 Jaringan Kantor</h4>
+        <h5>Dalam negeri</h5>
+        <p>Materi menunjukkan:</p>
+        <ul>
+            <li>Departemen Regional yang berkedudukan di Kantor Pusat</li>
+            <li>Kantor Koordinator dan Kantor Perwakilan BI Provinsi sebanyak 5</li>
+            <li>Kantor Perwakilan BI Provinsi sebanyak 29</li>
+            <li>Kantor Perwakilan BI Kota/Kabupaten sebanyak 12</li>
+        </ul>
+
+        <h5>Luar negeri</h5>
+        <p>Materi mencantumkan kantor perwakilan di:</p>
+        <ol>
+            <li>New York</li>
+            <li>London</li>
+            <li>Tokyo</li>
+            <li>Singapura</li>
+            <li>Beijing</li>
+        </ol>
+
+        <hr>
+
+        <!-- BAGIAN II -->
+        <h2>BAGIAN II — TATA KELOLA BANK INDONESIA</h2>
+
+        <h3>4. Mengapa Tata Kelola BI Diperkuat?</h3>
+        <p><strong>UU No. 4 Tahun 2023 tentang Pengembangan dan Penguatan Sektor Keuangan (UU P2SK)</strong> memberikan dasar hukum yang lebih kuat bagi mandat, kebijakan, dan kelembagaan BI.</p>
+        <p>UU P2SK juga mendorong penguatan:</p>
+        <ul>
+            <li>tata kelola,</li>
+            <li>akuntabilitas,</li>
+            <li>pelaporan kinerja kelembagaan.</li>
+        </ul>
+        <p>Dalam materi, <strong>Pasal 58 UU P2SK</strong> dikaitkan dengan penguatan akuntabilitas melalui peningkatan kualitas pelaporan kinerja kelembagaan BI.</p>
+
+        <h3>5. Sistem Tata Kelola Bank Indonesia</h3>
+        <h4>Definisi</h4>
+        <p>Sistem Tata Kelola BI merupakan sistem yang terdiri atas:</p>
+        <blockquote><strong>norma + aturan (<em>rules</em>) + peraturan + prosedur</strong></blockquote>
+        <p>yang digunakan Dewan Gubernur untuk mengatur dan mengendalikan lembaga.</p>
+        <p>Tujuannya agar mandat BI tercapai:</p>
+        <ul>
+            <li>efektif,</li>
+            <li>efisien,</li>
+            <li>taat asas,</li>
+            <li>dapat dipertanggungjawabkan kepada publik.</li>
+        </ul>
+
+        <h3>6. Tujuan Sistem Tata Kelola BI</h3>
+        <p>Tujuan tata kelola harus sejalan dengan tujuan BI.</p>
+        <p>Dalam bahan:</p>
+        <blockquote><strong>Mencapai stabilitas nilai Rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan dalam rangka mendukung pertumbuhan ekonomi yang berkelanjutan.</strong></blockquote>
+
+        <div class="important-box">
+            <p><strong>Rumus hafalan</strong></p>
+            <p><strong>Rupiah + SP + SSK → Pertumbuhan Berkelanjutan</strong></p>
+            <ul>
+                <li>Stabilitas nilai Rupiah</li>
+                <li>Stabilitas sistem pembayaran</li>
+                <li>Stabilitas sistem keuangan</li>
+                <li>Mendukung pertumbuhan ekonomi berkelanjutan</li>
+            </ul>
+        </div>
+
+        <h3>7. Sasaran Sistem Tata Kelola</h3>
+        <p>Sasaran akhirnya adalah:</p>
+        <blockquote><strong>Kredibilitas BI dalam melaksanakan tugas dan wewenangnya berdasarkan prinsip tata kelola yang baik dan profesional.</strong></blockquote>
+        <p>Kredibilitas tersebut tercermin dalam:</p>
+        <blockquote><strong>kinerja kelembagaan yang dapat dipertanggungjawabkan.</strong></blockquote>
+
+        <h3>8. Dua Area Tata Kelola BI</h3>
+        <p>Ini merupakan bagian yang <strong>sangat penting untuk ujian</strong>.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Area</th>
+                    <th>Fokus</th>
+                    <th>Tujuan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Policy Governance</strong></td>
+                    <td>Perumusan dan penetapan kebijakan</td>
+                    <td>Memastikan kebijakan sesuai mandat, aturan, prosedur, dan kepentingan masyarakat</td>
+                </tr>
+                <tr>
+                    <td><strong>Institutional Governance</strong></td>
+                    <td>Pengelolaan kelembagaan</td>
+                    <td>Memastikan BI dikelola efektif, efisien, taat asas dan akuntabel</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-box">
+            <p><strong>Mnemonic</strong></p>
+            <p><strong>P = Policy</strong><br>
+            <strong>I = Institution</strong></p>
+            <p>Jadi:</p>
+            <p><strong>Tata kelola BI = Policy Governance + Institutional Governance</strong></p>
+        </div>
+
+        <h3>9. Prinsip Tata Kelola BI — IKKAT</h3>
+        <p>Prinsip utama Sistem Tata Kelola BI adalah:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Huruf</th>
+                    <th>Prinsip</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>I</strong></td>
+                    <td>Independensi</td>
+                </tr>
+                <tr>
+                    <td><strong>K</strong></td>
+                    <td>Konsistensi</td>
+                </tr>
+                <tr>
+                    <td><strong>K</strong></td>
+                    <td>Koordinasi</td>
+                </tr>
+                <tr>
+                    <td><strong>A</strong></td>
+                    <td>Akuntabilitas</td>
+                </tr>
+                <tr>
+                    <td><strong>T</strong></td>
+                    <td>Transparansi</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-box">
+            <p><strong>Cara menghafal:</strong></p>
+            <p><strong>IKKAT = Independen, Konsisten, Koordinatif, Akuntabel, Transparan.</strong></p>
+        </div>
+
+        <h3>10. Elemen Sistem Tata Kelola</h3>
+        <p>Elemen sistem tata kelola merupakan aspek pokok yang harus dilaksanakan agar prinsip <strong>IKKAT</strong> benar-benar diterapkan dalam tugas sehari-hari BI.</p>
+        <p>Dengan kata lain:</p>
+        <pre>PRINSIP IKKAT
+      ↓
+   ELEMEN
+      ↓
+ PELAKSANAAN
+      ↓
+ KINERJA BI
+      ↓
+ KREDIBILITAS</pre>
+
+        <h3>11. Strategi Penerapan Tata Kelola</h3>
+        <p>Terdapat <strong>3 strategi</strong>:</p>
+        <ol>
+            <li><strong>Perumusan</strong></li>
+            <li><strong>Pelaksanaan</strong></li>
+            <li><strong>Pemantauan dan evaluasi</strong></li>
+        </ol>
+
+        <div class="important-box">
+            <p><strong>Diagram</strong></p>
+            <pre>PERUMUSAN
+    ↓
+PELAKSANAAN
+    ↓
+PEMANTAUAN & EVALUASI
+    ↓
+UMPAN BALIK
+    ↓
+PENYEMPURNAAN
+    ↺</pre>
+            <p>Tujuannya adalah menciptakan <strong>perbaikan berkesinambungan</strong>.</p>
+        </div>
+
+        <hr>
+
+        <!-- BAGIAN III -->
+        <h2>BAGIAN III — TRANSFORMASI BANK INDONESIA</h2>
+
+        <h3>12. Mengapa BI Melakukan Transformasi?</h3>
+        <p>Bahan menunjukkan adanya tantangan global dan kelembagaan.</p>
+
+        <h4>5 tantangan ke depan</h4>
+        <ol>
+            <li><strong>Normalisasi kebijakan negara maju dan ketidakpastian pasar keuangan global</strong></li>
+            <li><strong>Scarring effect pandemi</strong> terhadap pemulihan ekonomi dan stabilitas sistem keuangan</li>
+            <li><strong>Akselerasi digitalisasi ekonomi-keuangan</strong>, <em>cross-border payment</em>, dominasi BigTech, serta peningkatan risiko aset kripto</li>
+            <li><strong>Perubahan iklim</strong> dan dampaknya terhadap perekonomian global/domestik serta pelaksanaan mandat bank sentral</li>
+            <li><strong>Kesenjangan ekonomi</strong>, baik antarnegara, antarwilayah, antarkelompok masyarakat maupun antargenerasi</li>
+        </ol>
+
+        <h4>Tantangan kelembagaan</h4>
+        <ol>
+            <li>Peningkatan tantangan eksternal membutuhkan penguatan:
+                <ul>
+                    <li>kapabilitas organisasi,</li>
+                    <li>proses kerja,</li>
+                    <li>SDM,</li>
+                    <li>sistem informasi,</li>
+                    <li>sarana dan prasarana.</li>
+                </ul>
+            </li>
+            <li>Tantangan yang semakin berat membutuhkan penguatan:
+                <ul>
+                    <li>kredibilitas,</li>
+                    <li>akuntabilitas,</li>
+                    <li><em>sustainability</em> keuangan BI.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>13. Dua Jalur Transformasi BI</h3>
+        <pre>             TRANSFORMASI BI
+                    │
+          ┌─────────┴─────────┐
+          ↓                   ↓
+ TRANSFORMASI KEBIJAKAN   TRANSFORMASI KELEMBAGAAN
+          │                   │
+     Policy Mix              2EG</pre>
+
+        <h3>14. Transformasi Kebijakan</h3>
+        <p>Transformasi kebijakan diarahkan untuk memperkuat:</p>
+        <blockquote><strong>BI Policy Mix / BIPOLMIX</strong></blockquote>
+        <p>sebagai kerangka kebijakan yang terintegrasi penuh (<em>full-fledged integrated policy framework</em>).</p>
+        <p>Model BIPOLMIX mempertimbangkan:</p>
+        <ol>
+            <li>Siklus ekonomi dan keuangan terintegrasi</li>
+            <li><em>Macro-financial–external linkages</em></li>
+            <li>Sektor riil dan reformasi struktural</li>
+        </ol>
+        <p>Kemudian digunakan instrumen:</p>
+        <ul>
+            <li>suku bunga kebijakan dan likuiditas,</li>
+            <li>makroprudensial,</li>
+            <li>kebijakan nilai tukar.</li>
+        </ul>
+
+        <div class="important-box">
+            <p><strong>Tujuan akhirnya</strong></p>
+            <pre>Suku bunga & likuiditas
+          ↓
+   Stabilitas harga
+
+Makroprudensial
+          ↓
+Stabilitas sistem keuangan
+
+Kebijakan nilai tukar
+          ↓
+Mengendalikan spillover global
+dan external shock</pre>
+        </div>
+
+        <h3>15. Tiga Pilar Transformasi Kebijakan</h3>
+        <h4>A. Transformasi Kebijakan Moneter</h4>
+        <p><strong>Fokus:</strong></p>
+        <ul>
+            <li>peningkatan kualitas kebijakan;</li>
+            <li>efektivitas operasi moneter;</li>
+            <li>pengelolaan cadangan devisa;</li>
+            <li>digitalisasi;</li>
+            <li>pengembangan pasar keuangan;</li>
+            <li>proses bisnis <em>streamlined</em>.</li>
+        </ul>
+
+        <p>Materi menekankan:</p>
+        <h5>Kebijakan Moneter</h5>
+        <p>Penguatan kerangka Kebijakan Ekonomi Moneter dan Kebijakan Ekonomi Keuangan Daerah.</p>
+
+        <h5>Pengelolaan Moneter 4.0</h5>
+        <ul>
+            <li>digitalisasi operasi moneter;</li>
+            <li>penajaman kebijakan;</li>
+            <li>integrasi pengelolaan moneter dengan pengembangan pasar uang.</li>
+        </ul>
+
+        <h5>Pengelolaan Cadangan Devisa 4.0</h5>
+        <ul>
+            <li>perluasan dan diversifikasi aset;</li>
+            <li>digitalisasi;</li>
+            <li><em>end-to-end integrated data</em>;</li>
+            <li><em>strategic analysis</em>.</li>
+        </ul>
+
+        <h5>Sinergi</h5>
+        <p>Bauran kebijakan BI dengan kebijakan fiskal dan reformasi struktural Pemerintah.</p>
+
+        <h4>B. Transformasi Kebijakan Makroprudensial</h4>
+        <p><strong>Fokus:</strong></p>
+        <blockquote><strong>Penguatan intermediasi, <em>safeguarding</em> stabilitas sistem keuangan, dan penyiapan menghadapi perubahan lanskap industri keuangan.</strong></blockquote>
+        <p>Materi mencakup:</p>
+        <ol>
+            <li>Penguatan kerangka, inovasi, dan instrumen kebijakan makroprudensial</li>
+            <li>Pemanfaatan teknologi digital</li>
+            <li>Kebijakan keuangan hijau</li>
+            <li>Pengawasan sistem keuangan terintegrasi</li>
+            <li>Inklusi keuangan dan perlindungan konsumen</li>
+            <li>Sinergi makro-mikroprudensial, protokol manajemen krisis, dan koordinasi internasional</li>
+        </ol>
+
+        <h4>C. Transformasi Sistem Pembayaran</h4>
+        <p><strong>Tujuannya:</strong></p>
+        <blockquote><strong>Mempercepat integrasi ekosistem ekonomi dan keuangan digital, termasuk mendorong ekonomi-keuangan inklusif, sentralisasi, digitalisasi, dan efisiensi pengelolaan uang Rupiah.</strong></blockquote>
+
+        <p>Materi menekankan:</p>
+        <h5>1. Industri SP yang sehat, kompetitif, inovatif</h5>
+        <ul>
+            <li><em>regulatory reform</em>;</li>
+            <li>transformasi perizinan;</li>
+            <li>pengawasan;</li>
+            <li>keamanan siber.</li>
+        </ul>
+
+        <h5>2. Infrastruktur SP terintegrasi</h5>
+        <p><strong>Prinsip:</strong></p>
+        <blockquote><strong>Interconnected – Interoperable – Integrated</strong></blockquote>
+
+        <h5>3. Praktik pasar yang sehat</h5>
+        <p>Meliputi:</p>
+        <ul>
+            <li>transparansi,</li>
+            <li>perlindungan konsumen,</li>
+            <li>pengembangan kapasitas industri.</li>
+        </ul>
+
+        <h5>4. Digital Rupiah</h5>
+        <p>Akselerasi platform digital Rupiah untuk:</p>
+        <ul>
+            <li><em>wholesale</em>,</li>
+            <li><em>retail</em>.</li>
+        </ul>
+
+        <h5>5. Pengelolaan Uang Rupiah</h5>
+        <ul>
+            <li><em>regulatory reform</em>;</li>
+            <li>digitalisasi;</li>
+            <li>otomasi;</li>
+            <li>efisiensi;</li>
+            <li>sentralisasi distribusi.</li>
+        </ul>
+
+        <h5>6. Sinergi</h5>
+        <p>Elektronifikasi transaksi dan integrasi dengan perbankan.</p>
+
+        <h3>16. Transformasi Pendukung Kebijakan</h3>
+        <p>Ada tiga kelompok besar:</p>
+
+        <h4>A. Transformasi Pengembangan Pasar Uang</h4>
+        <p><strong>Fokus:</strong></p>
+        <blockquote><strong>Pengembangan pasar uang modern dan berstandar internasional.</strong></blockquote>
+        <p>Mencakup:</p>
+        <ul>
+            <li>digitalisasi dan infrastruktur pasar keuangan;</li>
+            <li>transmisi kebijakan moneter;</li>
+            <li>repo;</li>
+            <li>instrumen lindung nilai suku bunga;</li>
+            <li>OIS/IRS;</li>
+            <li>OTC derivative reform;</li>
+            <li>instrumen pasar uang;</li>
+            <li>DNDF;</li>
+            <li>LCS;</li>
+            <li>pembiayaan ekonomi dan pengelolaan risiko.</li>
+        </ul>
+
+        <h4>B. Transformasi Pengembangan Ekonomi Syariah</h4>
+        <p>Mencakup:</p>
+        <ul>
+            <li>pasar keuangan syariah;</li>
+            <li>pengembangan regulasi;</li>
+            <li>instrumen;</li>
+            <li>infrastruktur;</li>
+            <li>kelembagaan;</li>
+            <li>investor;</li>
+            <li><em>dynamic halal value chain</em>;</li>
+            <li>pemberdayaan pesantren;</li>
+            <li>riset dan asesmen;</li>
+            <li>edukasi ekonomi dan keuangan syariah.</li>
+        </ul>
+
+        <h4>C. Transformasi Kebijakan Internasional</h4>
+        <p>Mencakup:</p>
+        <ol>
+            <li>Kerja sama <strong>JPKI, LCS, bilateral</strong></li>
+            <li>Penguatan persepsi positif lembaga internasional dan investor global</li>
+            <li>Promosi investasi dan perdagangan internasional</li>
+            <li>Penguatan representasi BI</li>
+            <li>Presidensi G20 2022 dan keketuaan ASEAN 2023</li>
+        </ol>
+
+        <hr>
+
+        <!-- BAGIAN IV -->
+        <h2>BAGIAN IV — TRANSFORMASI KELEMBAGAAN</h2>
+
+        <h3>19. Konsep 2EG</h3>
+        <p>Transformasi kelembagaan BI menggunakan konsep:</p>
+        <blockquote><strong>2EG = Efektif + Efisien + Governed</strong></blockquote>
+        <p>Dalam bahasa materi:</p>
+        <ul>
+            <li><strong>Kinerja Efektif</strong></li>
+            <li><strong>Kinerja Efisien</strong></li>
+            <li><strong>Kinerja Bertata-Kelola</strong></li>
+        </ul>
+        <p>Ketiganya menghasilkan:</p>
+        <blockquote><strong>Optimalitas bauran kebijakan kelembagaan</strong></blockquote>
+
+        <h3>20. Kinerja Efektif</h3>
+        <h4>Pengertian</h4>
+        <p>Memastikan pencapaian tujuan BI sebagaimana tertuang dalam mandat dan/atau kontribusi BI terhadap tujuan nasional.</p>
+
+        <h4>Fokus</h4>
+        <ol>
+            <li>Membangun kerangka Bauran Kebijakan Kelembagaan berbasis kinerja 2EG</li>
+            <li>Memperkuat integrasi:
+                <ul>
+                    <li>manajemen strategis,</li>
+                    <li>keuangan,</li>
+                    <li>risiko,</li>
+                    <li>audit</li>
+                </ul>
+            </li>
+            <li>Memperkuat pengelolaan <em>Major Project</em></li>
+            <li>Mempertajam asesmen kinerja efektif berbasis 2EG</li>
+        </ol>
+
+        <h3>21. Kinerja Efisien</h3>
+        <h4>Pengertian</h4>
+        <p>Memastikan pelaksanaan tugas menghasilkan output dengan penggunaan sumber daya secara terukur.</p>
+
+        <h4>Fokus</h4>
+        <ol>
+            <li><strong>Streamlining proses bisnis</strong></li>
+            <li>Memperkuat manajemen keuangan BI</li>
+            <li>Memperkuat asesmen efisiensi penggunaan:
+                <ul>
+                    <li>SDM,</li>
+                    <li>keuangan,</li>
+                    <li>sistem informasi,</li>
+                    <li>sarana,</li>
+                    <li>prasarana,</li>
+                    <li>fasilitas kerja.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>22. Kinerja Bertata-Kelola</h3>
+        <h4>Pengertian</h4>
+        <p>Memastikan pelaksanaan tugas:</p>
+        <ul>
+            <li>sesuai peraturan perundang-undangan;</li>
+            <li>dapat dipertanggungjawabkan;</li>
+            <li>transparan;</li>
+            <li>mendukung independensi;</li>
+            <li>memperkuat kredibilitas lembaga.</li>
+        </ul>
+
+        <h4>Fokus</h4>
+        <ol>
+            <li><em>Alignment</em> manajemen risiko dan <em>risk-based internal audit</em></li>
+            <li>Penguatan audit strategis</li>
+            <li>Asesmen kinerja dari sisi:
+                <ul>
+                    <li>risiko,</li>
+                    <li>audit,</li>
+                    <li>legal,</li>
+                    <li>komunikasi.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>23. Hubungan 2EG</h3>
+        <pre>              KINERJA EFEKTIF
+                    ↕
+                    ↕
+KINERJA EFISIEN ↔ OPTIMALITAS ↔ KINERJA
+                  BAURAN        BERTATA-KELOLA
+               KELEMBAGAAN</pre>
+
+        <div class="important-box">
+            <p><strong>Inti konsep</strong></p>
+            <p><strong>Efektif saja tidak cukup.</strong></p>
+            <p>BI juga harus:</p>
+            <ul>
+                <li>menggunakan sumber daya secara efisien;</li>
+                <li>bertindak sesuai tata kelola.</li>
+            </ul>
+            <p>Sehingga:</p>
+            <p><strong>Efektif + Efisien + Bertata-Kelola = Kinerja kelembagaan yang kredibel</strong></p>
+        </div>
+
+        <hr>
+
+        <!-- BAGIAN V -->
+        <h2>BAGIAN V — SEJARAH BANK INDONESIA</h2>
+
+        <h3>24. Timeline Sejarah BI</h3>
+        <p>Untuk ujian, jangan hanya menghafal tahun. Pahami <strong>perubahan fungsi BI dari waktu ke waktu</strong>.</p>
+
+        <h3>1600 — Awal Peredaran Uang di Nusantara</h3>
+        <p>Bangsa Eropa datang ke Asia Tenggara dengan misi perdagangan rempah-rempah.</p>
+        <p>Di Nusantara:</p>
+        <ul>
+            <li>kerajaan memiliki mata uang sendiri;</li>
+            <li>beredar pula mata uang asing;</li>
+            <li><strong>Picis dari Tiongkok</strong> disebut mendominasi peredaran uang.</li>
+        </ul>
+
+        <h3>25. 1602 — VOC</h3>
+        <p>Didirikan:</p>
+        <blockquote><strong>Vereenigde Oost-Indische Compagnie (VOC)</strong></blockquote>
+        <p>VOC merupakan maskapai dagang Belanda yang beroperasi di Nusantara.</p>
+        <p>Mata uang <strong>Real Spanyol</strong> juga masuk ke Nusantara.</p>
+
+        <h3>26. 1746 — Bank van Courant</h3>
+        <p>Bank pertama di Nusantara yang disebut dalam materi adalah:</p>
+        <blockquote><strong>Bank van Courant</strong></blockquote>
+        <p>Fungsinya memberikan pinjaman dengan jaminan:</p>
+        <ul>
+            <li>emas,</li>
+            <li>perak,</li>
+            <li>perhiasan,</li>
+            <li>barang berharga lainnya.</li>
+        </ul>
+        <p>Pada 1752 disempurnakan menjadi:</p>
+        <blockquote><strong>De Bank van Courant en Bank van Leening</strong></blockquote>
+
+        <h3>27. 1818 — Penutupan Bank Courant</h3>
+        <p>Bank van Courant en Bank van Leening ditutup karena:</p>
+        <blockquote><strong>krisis keuangan</strong></blockquote>
+
+        <h3>28. 1828 — De Javasche Bank</h3>
+        <p>Ini adalah salah satu tanggal <strong>paling penting</strong>.</p>
+        <p>Pemerintah Kerajaan Belanda memberikan <strong><em>octrooi</em></strong> kepada:</p>
+        <blockquote><strong>De Javasche Bank (DJB)</strong></blockquote>
+        <p>untuk bertindak sebagai bank sirkulasi.</p>
+        <p><strong>Fungsinya:</strong></p>
+        <blockquote><strong>mencetak dan mengedarkan uang Gulden di Hindia Belanda.</strong></blockquote>
+        <p>DJB disebut sebagai:</p>
+        <blockquote><strong>cikal bakal Bank Indonesia.</strong></blockquote>
+
+        <div class="important-box">
+            <p><strong>Hafalan</strong></p>
+            <p><strong>1828 = DJB + bank sirkulasi</strong></p>
+        </div>
+
+        <h3>29. 1830 — Cultuurstelsel</h3>
+        <p>Belanda memberlakukan:</p>
+        <blockquote><strong>Sistem Tanam Paksa (<em>Cultuurstelsel</em>)</strong></blockquote>
+        <p>untuk mengisi kas negara setelah Perang Jawa.</p>
+        <p>Dalam materi, DJB digunakan pemerintah kolonial untuk mendukung kebijakan finansial Sistem Tanam Paksa.</p>
+
+        <h3>30. 1870 — Liberalisasi Ekonomi</h3>
+        <p>Pemerintah mengeluarkan:</p>
+        <blockquote><strong>Agrarische Wet</strong></blockquote>
+        <p>yang membuka peluang modal swasta masuk ke sektor bisnis di Hindia Belanda.</p>
+        <p><strong>Dampaknya:</strong></p>
+        <ul>
+            <li>perkebunan berkembang;</li>
+            <li>perdagangan internasional meningkat;</li>
+            <li>perbankan rakyat berkembang.</li>
+        </ul>
+        <p>DJB juga membuka sejumlah kantor cabang.</p>
+
+        <h3>31. Masa Pendudukan Jepang — 1942</h3>
+        <p>Pada masa pemerintahan militer Jepang:</p>
+        <blockquote><strong>DJB dilikuidasi.</strong></blockquote>
+        <p>Tugas DJB sebagai bank sirkulasi digantikan:</p>
+        <blockquote><strong>Nanpo Kaihatsu Ginko (NKG)</strong></blockquote>
+
+        <h3>32. 1945 — Dua Bank Sirkulasi</h3>
+        <p>Pasca-Proklamasi, terjadi dualisme.</p>
+
+        <h4>Republik Indonesia</h4>
+        <p>Membentuk:</p>
+        <blockquote><strong>Bank Negara Indonesia (BNI)</strong></blockquote>
+        <p>BNI menerbitkan:</p>
+        <blockquote><strong>Oeang Republik Indonesia (ORI)</strong></blockquote>
+
+        <h4>NICA</h4>
+        <p>Belanda berusaha kembali menguasai Indonesia dan mendirikan kembali DJB.</p>
+        <p>Akibatnya muncul:</p>
+        <blockquote><strong>dualisme bank sirkulasi</strong></blockquote>
+        <p>dan <em>currency war</em>.</p>
+
+        <div class="important-box">
+            <p><strong>Hafalan</strong></p>
+            <p><strong>ORI = "uang putih"</strong><br>
+            <strong>DJB/NICA = "uang merah"</strong></p>
+        </div>
+
+        <h3>33. 1949 — Republik Indonesia Serikat</h3>
+        <p>Konferensi Meja Bundar menghasilkan pengakuan kedaulatan RIS oleh Belanda.</p>
+        <p>Salah satu kesepakatannya:</p>
+        <blockquote><strong>DJB menjadi bank sirkulasi Republik Indonesia Serikat.</strong></blockquote>
+
+        <h3>34. 1953 — Berdirinya Bank Indonesia</h3>
+        <p><strong>Tanggal penting:</strong></p>
+        <blockquote><strong>1 Juli 1953</strong></blockquote>
+        <p>Pemerintah menerbitkan:</p>
+        <blockquote><strong>UU No. 11 Tahun 1953 tentang Pokok Bank Indonesia</strong></blockquote>
+        <p>UU tersebut menggantikan DJB Wet 1922.</p>
+        <p>Sejak saat itu:</p>
+        <blockquote><strong>Bank Indonesia resmi berdiri sebagai Bank Sentral Republik Indonesia.</strong></blockquote>
+        <p>Namun pada masa ini BI tidak hanya menjadi bank sirkulasi, tetapi juga memiliki fungsi komersial melalui pemberian kredit.</p>
+
+        <h3>35. Dewan Moneter</h3>
+        <p>Pada periode awal BI, terdapat:</p>
+        <blockquote><strong>Dewan Moneter (DM)</strong></blockquote>
+        <p>yang menetapkan kebijakan moneter.</p>
+        <p><strong>Komposisinya:</strong></p>
+        <ul>
+            <li>Menteri Keuangan sebagai ketua;</li>
+            <li>Gubernur BI;</li>
+            <li>Menteri Perdagangan.</li>
+        </ul>
+        <p>Sedangkan BI menjalankan kebijakan moneter yang telah ditetapkan DM.</p>
+
+        <div class="important-box">
+            <p><strong>Ini penting!</strong></p>
+            <p>Pada masa tersebut:</p>
+            <p><strong>DM menetapkan kebijakan → BI menyelenggarakan kebijakan.</strong></p>
+        </div>
+
+        <h3>36. Masa Ekonomi Terpimpin</h3>
+        <p>Pada masa Demokrasi Terpimpin:</p>
+        <ul>
+            <li>Gubernur BI menjadi anggota kabinet;</li>
+            <li>sebutannya <strong>Menteri Urusan Bank Sentral</strong>;</li>
+            <li>Dewan Moneter tidak lagi berfungsi.</li>
+        </ul>
+        <p>Muncul doktrin:</p>
+        <blockquote><strong>"Bank Berdjoang"</strong></blockquote>
+        <p>yang mengarah pada penyatuan bank-bank negara.</p>
+        <p>Pada 1965, BI berubah menjadi:</p>
+        <blockquote><strong>BNI Unit I</strong></blockquote>
+        <p>sedangkan bank pemerintah lainnya menjadi BNI Unit II–V.</p>
+
+        <h3>37. 1968 — BI Kembali sebagai Bank Sentral</h3>
+        <p>Pemerintah menerbitkan:</p>
+        <blockquote><strong>UU No. 13 Tahun 1968 tentang Bank Indonesia</strong></blockquote>
+        <p>BI kembali menjadi Bank Sentral dan tidak lagi berstatus BNI Unit I.</p>
+        <p><strong>Salah satu perubahan penting:</strong></p>
+        <blockquote><strong>BI tidak lagi menyalurkan kredit komersial.</strong></blockquote>
+        <p>BI berperan sebagai:</p>
+        <ul>
+            <li>bank sentral,</li>
+            <li>agen pembangunan,</li>
+            <li>pemegang kas negara.</li>
+        </ul>
+
+        <div class="important-box">
+            <p><strong>Hafalan</strong></p>
+            <p><strong>1968 = kembali Bank Sentral</strong></p>
+        </div>
+
+        <h3>38. 1988 — Pakto 88</h3>
+        <p>BI mengeluarkan:</p>
+        <blockquote><strong>Paket Kebijaksanaan 27 Oktober 1988 (Pakto 88/Pakto 27)</strong></blockquote>
+        <p><strong>Tujuannya:</strong></p>
+        <blockquote><strong>mendorong pertumbuhan industri perbankan.</strong></blockquote>
+        <p>Salah satu caranya dengan:</p>
+        <blockquote><strong>mempermudah perizinan pendirian bank baru.</strong></blockquote>
+
+        <h3>39. 1997 — Krisis Moneter Asia</h3>
+        <p>Krisis moneter Asia mendorong BI melakukan kebijakan penanggulangan krisis, antara lain:</p>
+        <ul>
+            <li>penerapan <em>floating exchange rate</em>;</li>
+            <li>penutupan bank bermasalah;</li>
+            <li>restrukturisasi bank tidak sehat.</li>
+        </ul>
+
+        <div class="important-box">
+            <p><strong>Hafalan</strong></p>
+            <p><strong>1997 = Krisis → Stabilitas & Restrukturisasi</strong></p>
+        </div>
+
+        <h3>40. 1999 — Independensi BI</h3>
+        <p>Terbit:</p>
+        <blockquote><strong>UU No. 23 Tahun 1999 tentang Bank Indonesia</strong></blockquote>
+        <p>Ini merupakan <strong>titik balik besar</strong>.</p>
+        <p>BI ditetapkan sebagai:</p>
+        <blockquote><strong>Bank Sentral yang independen.</strong></blockquote>
+        <p><strong>Tujuan tunggal:</strong></p>
+        <blockquote><strong>mencapai dan memelihara kestabilan nilai Rupiah.</strong></blockquote>
+        <p>Status sebagai:</p>
+        <blockquote><strong>agen pembangunan</strong></blockquote>
+        <p>dihapus.</p>
+        <p>BI juga mulai menerapkan:</p>
+        <blockquote><strong>Inflation Targeting Framework (ITF)</strong></blockquote>
+        <p>Kredibilitas BI dinilai dari kemampuannya mencapai sasaran inflasi yang ditetapkan Pemerintah.</p>
+
+        <h3>41. 2004 — Penguatan Independensi</h3>
+        <p>Terbit:</p>
+        <blockquote><strong>UU No. 3 Tahun 2004</strong></blockquote>
+        <p>yang memperkuat:</p>
+        <ul>
+            <li>kedudukan BI sebagai bank sentral independen;</li>
+            <li>tugas dan wewenang BI;</li>
+            <li>penataan fungsi pengawasan BI.</li>
+        </ul>
+
+        <h3>42. 2009 — Lender of the Last Resort</h3>
+        <p>Terbit:</p>
+        <blockquote><strong>UU No. 6 Tahun 2009</strong></blockquote>
+        <p>yang memperjelas dan mempertegas fungsi BI sebagai:</p>
+        <blockquote><strong>Lender of the Last Resort (LOLR)</strong></blockquote>
+        <p>Artinya BI memiliki peran menyediakan dukungan likuiditas dalam kondisi tertentu sesuai ketentuan yang berlaku.</p>
+
+        <h3>43. 2011 — Fungsi Pengawasan Perbankan Berpindah ke OJK</h3>
+        <p>Terbit:</p>
+        <blockquote><strong>UU No. 21 Tahun 2011 tentang OJK</strong></blockquote>
+        <p>Terjadi pembagian penting:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>BI</th>
+                    <th>OJK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Makroprudensial</td>
+                    <td>Mikroprudensial</td>
+                </tr>
+                <tr>
+                    <td>Stabilitas sistem keuangan</td>
+                    <td>Pengaturan/pengawasan sektor jasa keuangan sesuai mandat OJK</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-box">
+            <p><strong>Hafalan super penting</strong></p>
+            <p><strong>BI = Makroprudensial</strong><br>
+            <strong>OJK = Mikroprudensial</strong></p>
+        </div>
+
+        <h3>44. 2023 — UU P2SK</h3>
+        <p>Terbit:</p>
+        <blockquote><strong>UU No. 4 Tahun 2023 tentang Pengembangan dan Penguatan Sektor Keuangan</strong></blockquote>
+        <p>UU P2SK memberikan mandat dan landasan baru bagi BI serta mendorong:</p>
+        <ul>
+            <li>penguatan kebijakan;</li>
+            <li>kelembagaan;</li>
+            <li>tata kelola;</li>
+            <li>akuntabilitas;</li>
+            <li>transformasi BI.</li>
+        </ul>
+
+        <hr>
+
+        <!-- BAGIAN VI -->
+        <h2>BAGIAN VI — HUBUNGAN SEJARAH BI DENGAN TRANSFORMASI</h2>
+        <p>Jika seluruh sejarah diringkas:</p>
+        <pre>DJB
+│
+↓
+Bank Sirkulasi
+│
+↓
+Bank Indonesia 1953
+│
+↓
+Bank Sentral
+│
+↓
+BI Independen 1999
+│
+↓
+Penguatan Independensi 2004
+│
+↓
+LOLR diperjelas 2009
+│
+↓
+Makroprudensial BI
+Mikroprudensial OJK 2011
+│
+↓
+UU P2SK 2023
+│
+↓
+Transformasi Kebijakan
++ Transformasi Kelembagaan</pre>
+
+        <hr>
+
+        <!-- BAGIAN VII -->
+        <h2>BAGIAN VII — HUBUNGAN BI DENGAN PEMERINTAH</h2>
+
+        <h3>45. Hubungan Keuangan dengan Pemerintah</h3>
+        <p>Dalam materi, BI:</p>
+
+        <h4>1. Membantu penerbitan dan penempatan surat utang negara</h4>
+        <p><strong>Tujuannya:</strong></p>
+        <blockquote><strong>membantu pembiayaan APBN.</strong></blockquote>
+        <p>Tetapi terdapat batasan:</p>
+        <blockquote><strong>BI tidak diperbolehkan membeli sendiri surat utang negara tersebut</strong> dalam konteks yang dijelaskan pada bagian hubungan keuangan dengan Pemerintah.</p>
+
+        <h4>2. Sebagai kasir Pemerintah</h4>
+        <p>BI:</p>
+        <blockquote><strong>menatausahakan rekening Pemerintah di Bank Indonesia.</strong></blockquote>
+
+        <h4>3. Pinjaman luar negeri</h4>
+        <p>Atas permintaan Pemerintah, BI dapat:</p>
+        <blockquote><strong>menerima pinjaman luar negeri untuk dan atas nama Pemerintah Indonesia.</strong></blockquote>
+
+        <hr>
+
+        <!-- BAGIAN VIII -->
+        <h2>BAGIAN VIII — KEUANGAN INKLUSIF</h2>
+        <p>Materi gambar pertama juga penting karena berhubungan langsung dengan transformasi makroprudensial dan ekonomi inklusif.</p>
+
+        <h3>46. Apa Itu Keuangan Inklusif?</h3>
+        <p>Tidak ada satu definisi baku yang universal.</p>
+        <p><strong>Inti dari berbagai definisi adalah:</strong></p>
+        <blockquote><strong>masyarakat, termasuk kelompok rentan dan berpenghasilan rendah, memiliki akses yang efektif terhadap layanan keuangan formal yang sesuai, aman, terjangkau, dan bertanggung jawab.</strong></blockquote>
+        <p>Layanan tersebut antara lain:</p>
+        <ul>
+            <li>kredit;</li>
+            <li>tabungan;</li>
+            <li>pembayaran;</li>
+            <li>asuransi.</li>
+        </ul>
+
+        <h3>47. Latar Belakang Keuangan Inklusif</h3>
+        <p>Keuangan inklusif menjadi semakin penting pascakrisis 2008.</p>
+        <p>Kelompok yang banyak mengalami keterbatasan akses antara lain:</p>
+        <ul>
+            <li>masyarakat berpendapatan rendah;</li>
+            <li>pendapatan tidak teratur;</li>
+            <li>tinggal di daerah terpencil;</li>
+            <li>penyandang disabilitas;</li>
+            <li>pekerja yang tidak memiliki dokumen identitas legal;</li>
+            <li>masyarakat marginal.</li>
+        </ul>
+        <p>Kelompok tersebut banyak yang:</p>
+        <blockquote><strong>unbanked</strong></blockquote>
+
+        <h3>48. G20 dan Keuangan Inklusif</h3>
+        <p>Pada:</p>
+        <blockquote><strong>G20 Pittsburgh Summit 2009</strong></blockquote>
+        <p>anggota G20 menyepakati pentingnya peningkatan akses keuangan bagi kelompok tersebut.</p>
+        <p>Kemudian pada:</p>
+        <blockquote><strong>Toronto Summit 2010</strong></blockquote>
+        <p>dikeluarkan:</p>
+        <blockquote><strong>9 Principles for Innovative Financial Inclusion</strong></blockquote>
+        <p><strong>Yaitu:</strong></p>
+        <ol>
+            <li><strong>Leadership</strong></li>
+            <li><strong>Diversity</strong></li>
+            <li><strong>Innovation</strong></li>
+            <li><strong>Protection</strong></li>
+            <li><strong>Empowerment</strong></li>
+            <li><strong>Cooperation</strong></li>
+            <li><strong>Knowledge</strong></li>
+            <li><strong>Proportionality</strong></li>
+            <li><strong>Framework</strong></li>
+        </ol>
+
+        <div class="important-box">
+            <p><strong>Hafalan</strong></p>
+            <p><strong>L-D-I-P-E-C-K-P-F</strong></p>
+        </div>
+
+        <h3>49. Hambatan Keuangan Inklusif</h3>
+        <p>Ada empat <em>barrier</em> utama:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Barrier</th>
+                    <th>Makna</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Price barrier</strong></td>
+                    <td>Biaya terlalu mahal</td>
+                </tr>
+                <tr>
+                    <td><strong>Information barrier</strong></td>
+                    <td>Tidak mengetahui/memahami layanan</td>
+                </tr>
+                <tr>
+                    <td><strong>Product design barrier</strong></td>
+                    <td>Produk tidak sesuai kebutuhan</td>
+                </tr>
+                <tr>
+                    <td><strong>Channel barrier</strong></td>
+                    <td>Sarana/cara akses tidak sesuai</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-box">
+            <p><strong>Mnemonic</strong></p>
+            <p><strong>P-I-P-C</strong></p>
+            <p><strong>Price – Information – Product – Channel</strong></p>
+        </div>
+
+        <h3>50. Manfaat Keuangan Inklusif</h3>
+        <p>Keuangan inklusif dapat:</p>
+        <ol>
+            <li>meningkatkan efisiensi ekonomi;</li>
+            <li>mendukung stabilitas sistem keuangan;</li>
+            <li>mengurangi <em>shadow banking/irresponsible finance</em>;</li>
+            <li>mendukung pendalaman pasar keuangan;</li>
+            <li>menciptakan potensi pasar baru bagi perbankan;</li>
+            <li>mendukung peningkatan HDI;</li>
+            <li>mendukung pertumbuhan ekonomi lokal dan nasional yang berkelanjutan;</li>
+            <li>mengurangi ketimpangan;</li>
+            <li>mengurangi <em>low income trap</em>;</li>
+            <li>meningkatkan kesejahteraan dan membantu menurunkan kemiskinan.</li>
+        </ol>
+
+        <h3>51. Bagaimana Keuangan Inklusif Diterapkan?</h3>
+        <p>Ada dua pendekatan:</p>
+
+        <h4>Pendekatan 1 — Strategi Nasional</h4>
+        <p>Contoh dalam materi:</p>
+        <ul>
+            <li>Indonesia</li>
+            <li>Nigeria</li>
+            <li>Tanzania</li>
+        </ul>
+
+        <h4>Pendekatan 2 — Program Terpisah</h4>
+        <p>Contohnya edukasi keuangan seperti yang disebut dilakukan pemerintah Amerika Serikat pascakrisis 2008.</p>
+
+        <h3>52. Tiga Aspek Utama Strategi Nasional</h3>
+        <p>Strategi nasional umumnya mencakup:</p>
+
+        <h4>1. Sarana layanan yang sesuai</h4>
+        <p>Masyarakat harus mempunyai saluran yang dapat digunakan.</p>
+
+        <h4>2. Produk yang cocok</h4>
+        <p>Produk harus sesuai kebutuhan masyarakat.</p>
+
+        <h4>3. <em>Responsible Finance</em></h4>
+        <p>Meliputi:</p>
+        <ul>
+            <li>edukasi keuangan;</li>
+            <li>perlindungan konsumen.</li>
+        </ul>
+
+        <div class="important-box">
+            <p><strong>Rumus</strong></p>
+            <p><strong>SARANA + PRODUK + EDUKASI/PROTEKSI</strong></p>
+        </div>
+
+        <h3>53. Siapa Saja yang Menerapkan Keuangan Inklusif?</h3>
+        <p>Keuangan inklusif bukan hanya tugas BI.</p>
+        <p>Diperlukan kolaborasi:</p>
+        <pre>                  KEUANGAN INKLUSIF
+                         │
+      ┌──────────────────┼──────────────────┐
+      ↓                  ↓                  ↓
+ Pemerintah             BI               Regulator
+      │                                     │
+      ├── Kementerian                      OJK
+      ├── Pemda                            PPATK
+      └── Lembaga lain                     │
+                         │                  │
+                         └──────┬───────────┘
+                                ↓
+                         PIHAK SWASTA
+                         ├── Perbankan
+                         ├── Telco
+                         └── Asosiasi
+                                +
+                         Akademisi</pre>
+
+        <h3>54. Aktor Keuangan Inklusif Berdasarkan Gambar</h3>
+
+        <h4>Kementerian terkait</h4>
+        <p>Materi mencantumkan antara lain:</p>
+        <ul>
+            <li>Kemenko Perekonomian</li>
+            <li>Kemenko Kesejahteraan Rakyat</li>
+            <li>Kementerian Keuangan</li>
+            <li>Kementerian PPN/Bappenas</li>
+            <li>Kementerian BUMN</li>
+            <li>Kementerian Dalam Negeri</li>
+            <li>Kementerian Koperasi & UMKM</li>
+            <li>Kementerian Pertanian</li>
+            <li>Kementerian Komunikasi dan Informatika</li>
+            <li>Kementerian Tenaga Kerja dan Transmigrasi</li>
+            <li>Kementerian Kelautan dan Perikanan</li>
+            <li>Kementerian Perindustrian</li>
+            <li>Kementerian Perdagangan</li>
+            <li>Kementerian Kesehatan</li>
+            <li>Kementerian Agama</li>
+            <li>Kementerian Pekerjaan Umum</li>
+        </ul>
+
+        <h4>Otoritas terkait</h4>
+        <ul>
+            <li>OJK</li>
+            <li>PPATK</li>
+        </ul>
+
+        <h4>Pihak swasta</h4>
+        <ul>
+            <li>Perbankan</li>
+            <li>Telco</li>
+            <li>Asosiasi dan lainnya</li>
+        </ul>
+
+        <h4>BI</h4>
+        <ul>
+            <li>Kantor Pusat</li>
+            <li>Kantor Perwakilan</li>
+        </ul>
+
+        <h4>Kantor Sekretariat Wakil Presiden</h4>
+        <ul>
+            <li>TNP2K</li>
+        </ul>
+
+        <p>Selain itu:</p>
+        <ul>
+            <li>akademisi;</li>
+            <li>pemerintah daerah.</li>
+        </ul>
+
+        <hr>
+
+        <!-- BAGIAN IX -->
+        <h2>BAGIAN IX — PETA BESAR SELURUH MATERI</h2>
+        <p>Untuk memahami seluruh materi, gunakan kerangka berikut:</p>
+        <pre>                    BANK INDONESIA
+                          │
+       ┌──────────────────┴──────────────────┐
+       ↓                                     ↓
+  MANDAT BI                             KELEMBAGAAN
+       │                                     │
+       ↓                                     ↓
+ Stabilitas Rupiah                    Tata Kelola
+ Stabilitas SP                        Organisasi
+ Stabilitas SSK                       SDM
+ Pertumbuhan berkelanjutan            Digitalisasi
+       │                                     │
+       ↓                                     ↓
+  BAURAN KEBIJAKAN                       2EG
+       │                           ┌─────────┼─────────┐
+       ├── Moneter                 ↓         ↓         ↓
+       ├── Makroprudensial      Efektif  Efisien  Governed
+       ├── Sistem Pembayaran
+       └── Pendukung</pre>
+
+        <hr>
+
+        <!-- BAGIAN X -->
+        <h2>BAGIAN X — KATA KUNCI UJIAN</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Topik</th>
+                    <th>Kata kunci</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dewan Gubernur</td>
+                    <td>Gubernur – DGS – Deputi Gubernur</td>
+                </tr>
+                <tr>
+                    <td>Fungsi BI</td>
+                    <td>Moneter – Makroprudensial – SP & Rupiah</td>
+                </tr>
+                <tr>
+                    <td>Tata kelola</td>
+                    <td><strong>IKKAT</strong></td>
+                </tr>
+                <tr>
+                    <td>Area governance</td>
+                    <td><strong>Policy + Institutional</strong></td>
+                </tr>
+                <tr>
+                    <td>Strategi governance</td>
+                    <td><strong>Perumusan – Pelaksanaan – Monev</strong></td>
+                </tr>
+                <tr>
+                    <td>Transformasi kelembagaan</td>
+                    <td><strong>2EG</strong></td>
+                </tr>
+                <tr>
+                    <td>Kinerja efektif</td>
+                    <td>Pencapaian tujuan</td>
+                </tr>
+                <tr>
+                    <td>Kinerja efisien</td>
+                    <td>Optimalisasi sumber daya</td>
+                </tr>
+                <tr>
+                    <td>Bertata-kelola</td>
+                    <td>Akuntabel, transparan, taat aturan</td>
+                </tr>
+                <tr>
+                    <td>Policy Mix</td>
+                    <td>BIPOLMIX</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 1828</td>
+                    <td>DJB</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 1953</td>
+                    <td>BI resmi berdiri</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 1968</td>
+                    <td>Kembali sebagai bank sentral</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 1999</td>
+                    <td>BI independen</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 2009</td>
+                    <td>LOLR diperjelas</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 2011</td>
+                    <td>Mikroprudensial → OJK</td>
+                </tr>
+                <tr>
+                    <td>Sejarah 2023</td>
+                    <td>UU P2SK</td>
+                </tr>
+                <tr>
+                    <td>Keuangan inklusif</td>
+                    <td>Akses layanan keuangan formal</td>
+                </tr>
+                <tr>
+                    <td>Hambatan inklusi</td>
+                    <td><strong>PIPC</strong></td>
+                </tr>
+                <tr>
+                    <td>G20</td>
+                    <td>Pittsburgh 2009 → Toronto 2010</td>
+                </tr>
+                <tr>
+                    <td>Prinsip inklusi</td>
+                    <td>9 Principles</td>
+                </tr>
+                <tr>
+                    <td>Strategi inklusi</td>
+                    <td>Sarana + Produk + Responsible Finance</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <!-- BAGIAN XI -->
+        <h2>BAGIAN XI — PERBANDINGAN YANG SERING KELUAR DI SOAL</h2>
+
+        <h3>1. Policy Governance vs Institutional Governance</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Policy Governance</th>
+                    <th>Institutional Governance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Berkaitan dengan kebijakan</td>
+                    <td>Berkaitan dengan lembaga</td>
+                </tr>
+                <tr>
+                    <td>Perumusan kebijakan</td>
+                    <td>Pengelolaan organisasi</td>
+                </tr>
+                <tr>
+                    <td>Policy maker</td>
+                    <td>Public institution</td>
+                </tr>
+                <tr>
+                    <td>Memastikan kebijakan sesuai mandat</td>
+                    <td>Memastikan organisasi efektif & efisien</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2. Kinerja Efektif vs Efisien vs Bertata-Kelola</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Konsep</th>
+                    <th>Pertanyaan utama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Efektif</strong></td>
+                    <td>Apakah tujuan tercapai?</td>
+                </tr>
+                <tr>
+                    <td><strong>Efisien</strong></td>
+                    <td>Apakah sumber daya digunakan secara optimal?</td>
+                </tr>
+                <tr>
+                    <td><strong>Governed</strong></td>
+                    <td>Apakah prosesnya sesuai aturan dan dapat dipertanggungjawabkan?</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Contoh</strong></p>
+        <p>Sebuah unit BI mencapai target kebijakan.</p>
+        <ul>
+            <li>Target tercapai → <strong>Efektif</strong></li>
+            <li>Dengan biaya/sumber daya optimal → <strong>Efisien</strong></li>
+            <li>Proses sesuai aturan dan transparan → <strong>Bertata-kelola</strong></li>
+        </ul>
+
+        <hr>
+
+        <!-- BAGIAN XII -->
+        <h2>BAGIAN XII — SOAL LATIHAN</h2>
+
+        <h3>A. Pilihan Ganda</h3>
+
+        <h4>1. Prinsip Sistem Tata Kelola Bank Indonesia yang benar adalah...</h4>
+        <p>A. IKKAT<br>
+        B. 2EG<br>
+        C. BIPOLMIX<br>
+        D. PIPC</p>
+        <div class="important-box">
+            <p><strong>Jawaban: A</strong><br>
+            IKKAT = Independensi, Konsistensi, Koordinasi, Akuntabilitas, Transparansi.</p>
+        </div>
+
+        <h4>2. Yang termasuk area tata kelola BI adalah...</h4>
+        <p>A. Policy governance dan institutional governance<br>
+        B. Moneter dan fiskal<br>
+        C. Mikroprudensial dan fiskal<br>
+        D. Politik dan ekonomi</p>
+        <div class="important-box">
+            <p><strong>Jawaban: A</strong></p>
+        </div>
+
+        <h4>3. Tujuan kinerja efektif adalah...</h4>
+        <p>A. Mengurangi seluruh biaya operasional<br>
+        B. Memastikan pencapaian tujuan BI<br>
+        C. Meningkatkan jumlah pegawai<br>
+        D. Meningkatkan aset BI</p>
+        <div class="important-box">
+            <p><strong>Jawaban: B</strong></p>
+        </div>
+
+        <h4>4. Kinerja efisien terutama berkaitan dengan...</h4>
+        <p>A. Kepatuhan hukum<br>
+        B. Pencapaian sasaran inflasi<br>
+        C. Penggunaan sumber daya secara optimal<br>
+        D. Independensi BI</p>
+        <div class="important-box">
+            <p><strong>Jawaban: C</strong></p>
+        </div>
+
+        <h4>5. UU yang menetapkan BI sebagai bank sentral independen adalah...</h4>
+        <p>A. UU No. 11 Tahun 1953<br>
+        B. UU No. 13 Tahun 1968<br>
+        C. UU No. 23 Tahun 1999<br>
+        D. UU No. 21 Tahun 2011</p>
+        <div class="important-box">
+            <p><strong>Jawaban: C</strong></p>
+        </div>
+
+        <h4>6. Fungsi pengaturan dan pengawasan mikroprudensial perbankan berpindah kepada...</h4>
+        <p>A. Kemenkeu<br>
+        B. OJK<br>
+        C. LPS<br>
+        D. Bappenas</p>
+        <div class="important-box">
+            <p><strong>Jawaban: B</strong></p>
+        </div>
+
+        <h4>7. BI mulai resmi berdiri sebagai Bank Sentral Republik Indonesia pada...</h4>
+        <p>A. 1828<br>
+        B. 1945<br>
+        C. 1953<br>
+        D. 1968</p>
+        <div class="important-box">
+            <p><strong>Jawaban: C</strong></p>
+        </div>
+
+        <h4>8. De Javasche Bank memperoleh hak istimewa (<em>octrooi</em>) sebagai bank sirkulasi pada...</h4>
+        <p>A. 1746<br>
+        B. 1818<br>
+        C. 1828<br>
+        D. 1953</p>
+        <div class="important-box">
+            <p><strong>Jawaban: C</strong></p>
+        </div>
+
+        <h4>9. Salah satu hambatan keuangan inklusif adalah...</h4>
+        <p>A. Price barrier<br>
+        B. Inflation targeting<br>
+        C. Capital buffer<br>
+        D. Monetary transmission</p>
+        <div class="important-box">
+            <p><strong>Jawaban: A</strong></p>
+        </div>
+
+        <h4>10. Berikut yang <strong>bukan</strong> termasuk prinsip Innovative Financial Inclusion adalah...</h4>
+        <p>A. Leadership<br>
+        B. Innovation<br>
+        C. Protection<br>
+        D. Inflation</p>
+        <div class="important-box">
+            <p><strong>Jawaban: D</strong></p>
+        </div>
+
+        <hr>
+
+        <!-- BAGIAN XIII -->
+        <h2>BAGIAN XIII — SOAL ANALISIS</h2>
+
+        <h3>Soal 1</h3>
+        <p><strong>Mengapa Bank Indonesia membutuhkan <em>policy governance</em> sekaligus <em>institutional governance</em>?</strong></p>
+        <div class="important-box">
+            <p><strong>Jawaban</strong></p>
+            <p>Karena BI mempunyai dua karakter sekaligus.</p>
+            <p>Pertama, BI adalah <strong>policy maker</strong> yang kebijakannya berdampak luas terhadap perekonomian dan masyarakat. Karena itu diperlukan <em>policy governance</em>.</p>
+            <p>Kedua, BI adalah <strong>lembaga publik</strong> yang harus dikelola secara efektif, efisien, taat asas dan akuntabel. Karena itu diperlukan <em>institutional governance</em>.</p>
+        </div>
+
+        <h3>Soal 2</h3>
+        <p><strong>Apa hubungan antara 2EG dengan kredibilitas BI?</strong></p>
+        <div class="important-box">
+            <p><strong>Jawaban</strong></p>
+            <p>2EG terdiri atas:</p>
+            <blockquote><strong>Efektif + Efisien + Bertata-Kelola</strong></blockquote>
+            <p>Jika BI mampu mencapai tujuan, menggunakan sumber daya secara optimal, serta melaksanakan tugas sesuai aturan dan dapat dipertanggungjawabkan, maka kinerja kelembagaan menjadi lebih kredibel.</p>
+        </div>
+
+        <h3>Soal 3</h3>
+        <p><strong>Mengapa sejarah BI menunjukkan adanya perubahan mandat?</strong></p>
+        <div class="important-box">
+            <p><strong>Jawaban</strong></p>
+            <p>Karena fungsi BI berkembang mengikuti perubahan kondisi ekonomi, sistem keuangan, dan kebutuhan negara.</p>
+            <p>Perubahan tersebut terlihat dari:</p>
+            <blockquote><strong>bank sirkulasi → bank sentral → bank sentral independen → penguatan makroprudensial → transformasi kelembagaan dan kebijakan.</strong></blockquote>
+        </div>
+
+        <hr>
+
+        <!-- BAGIAN XIV -->
+        <div class="cheat-sheet">
+            <h3>BAGIAN XIV — CHEAT SHEET 1 MENIT</h3>
+            <p>Kalau waktu belajar sangat singkat, hafalkan ini:</p>
+
+            <h4>STRUKTUR</h4>
+            <p><strong>Dewan Gubernur → Moneter → Makroprudensial → SP/Rupiah → Pendukung Kebijakan → Pendukung Organisasi → Jaringan Kantor</strong></p>
+
+            <h4>GOVERNANCE</h4>
+            <p><strong>IKKAT</strong></p>
+            <ul>
+                <li><strong>I</strong>ndependensi</li>
+                <li><strong>K</strong>onsistensi</li>
+                <li><strong>K</strong>oordinasi</li>
+                <li><strong>A</strong>kuntabilitas</li>
+                <li><strong>T</strong>ransparansi</li>
+            </ul>
+
+            <h4>AREA</h4>
+            <p><strong>Policy Governance + Institutional Governance</strong></p>
+
+            <h4>STRATEGI</h4>
+            <p><strong>Perumusan → Pelaksanaan → Pemantauan & Evaluasi</strong></p>
+
+            <h4>TRANSFORMASI</h4>
+            <p><strong>Policy Transformation + Institutional Transformation</strong></p>
+
+            <h4>2EG</h4>
+            <p><strong>Efektif + Efisien + Bertata-Kelola</strong></p>
+
+            <h4>SEJARAH</h4>
+            <ul>
+                <li><strong>1828 = DJB</strong></li>
+                <li><strong>1953 = BI berdiri</strong></li>
+                <li><strong>1968 = BI kembali sebagai bank sentral</strong></li>
+                <li><strong>1999 = BI independen</strong></li>
+                <li><strong>2009 = LOLR diperjelas</strong></li>
+                <li><strong>2011 = mikroprudensial → OJK</strong></li>
+                <li><strong>2023 = UU P2SK</strong></li>
+            </ul>
+
+            <h4>INKLUSI</h4>
+            <p><strong>Akses + Produk sesuai + Responsible Finance</strong></p>
+            <p><strong>Hambatan: PIPC = Price – Information – Product – Channel</strong></p>
+        </div>
+
+        <hr>
+
+        <h2>⚠️ Catatan terhadap bahan sumber</h2>
+        <p>Saya mempertahankan isi sesuai materi yang Anda berikan. Ada beberapa bagian kronologi yang tampak <strong>tidak sepenuhnya konsisten secara penempatan tahun</strong>, misalnya bagian berlabel <strong>1942 "Masa Hindia Belanda"</strong> tetapi isinya menjelaskan sejarah DJB sejak 1828, serta bagian <strong>1953</strong> yang kemudian memasukkan uraian masa Demokrasi Terpimpin. Untuk keperluan belajar, sebaiknya memahami <strong>urutan peristiwa dan perubahan fungsi BI</strong>, bukan hanya menghafalkan posisi label pada halaman sumber.</p>
+
+        <div class="cheat-sheet">
+            <h3>Inti terbesar dari seluruh materi ini adalah:</h3>
+            <p><strong>Sejarah menjelaskan bagaimana BI berkembang → UU membentuk mandat → struktur organisasi menjalankan mandat → governance memastikan mandat dijalankan secara kredibel → transformasi membuat BI mampu menghadapi tantangan baru.</strong></p>
+        </div>
+    </div>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

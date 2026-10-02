@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f2e9">
+    <title>Object English - Belajar dari Benda</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink: #19251f; --muted: #68746c; --paper: #f4f2e9; --surface: #fffefa; --line: #dddcd1; --green: #28664d; --green-dark: #194b38; --coral: #bd593e; --shadow: 0 16px 42px rgba(32,50,39,.09); }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; color: var(--ink); background: radial-gradient(ellipse at 92% 14%,rgba(217,229,210,.74),transparent 31%),var(--paper); font-family: 'DM Sans',sans-serif; }
+        .global-nav { position: sticky; top: 0; z-index: 5; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 12px 18px; background: rgba(255,254,250,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+        .page { width: min(1180px,100%); margin: auto; padding: 36px 24px 56px; }
+        .masthead { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 27px; }
+        .eyebrow { color: var(--coral); font-size: .75rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+        h1,h2,h3,p { margin-top: 0; } h1,h2 { font-family: 'Playfair Display',serif; }
+        h1 { margin: 5px 0 8px; font-size: clamp(2.1rem,5vw,3.25rem); line-height: 1.08; }
+        .intro { max-width: 590px; margin: 0; color: var(--muted); line-height: 1.65; }
+        .storage-note { flex: 0 0 auto; color: var(--green-dark); font-size: .8rem; font-weight: 700; }
+        .workspace { display: grid; grid-template-columns: minmax(290px,350px) minmax(0,1fr); align-items: start; gap: 22px; }
+        .panel { min-width: 0; padding: 23px; background: rgba(255,254,250,.94); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+        .panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+        h2 { margin: 0; font-size: 1.35rem; }
+        .count { padding: 5px 9px; color: var(--green-dark); background: #e7efe5; border-radius: 99px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+        .field { display: grid; gap: 7px; margin-bottom: 14px; }
+        label { color: var(--muted); font-size: .84rem; font-weight: 700; }
+        input { width: 100%; min-width: 0; padding: 11px 12px; color: var(--ink); background: #fffefa; border: 1px solid var(--line); border-radius: 7px; font: inherit; outline: none; }
+        input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(40,102,77,.13); }
+        .category-entry { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 7px; }
+        .category-entry button { width: 42px; padding: 0; font-size: 1.2rem; }
+        button { min-height: 42px; padding: 10px 14px; color: white; background: var(--green); border: 0; border-radius: 7px; font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; transition: background .18s,transform .18s; }
+        button:hover:not(:disabled) { background: var(--green-dark); transform: translateY(-1px); }
+        button:disabled { opacity: .58; cursor: default; }
+        .secondary { color: var(--ink); background: #eeece3; } .secondary:hover:not(:disabled) { background: #e5e1d5; }
+        .danger { min-height: 34px; padding: 6px 9px; color: #984430; background: #f8e9e3; font-size: .76rem; } .danger:hover:not(:disabled) { color: white; background: #a94335; }
+        .upload-zone { position: relative; display: grid; aspect-ratio: 2/3; place-content: center; justify-items: center; gap: 10px; margin-bottom: 14px; padding: 18px; overflow: hidden; color: var(--muted); background: repeating-linear-gradient(135deg,#f5f4ed 0,#f5f4ed 12px,#efeee6 12px,#efeee6 24px); border: 1px dashed #b7b9aa; border-radius: 9px; text-align: center; cursor: pointer; }
+        .upload-zone:hover { border-color: var(--green); } .upload-zone input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+        .upload-icon { display: grid; width: 44px; aspect-ratio: 1; place-items: center; color: white; background: var(--green); border-radius: 50%; font-size: 1.25rem; }
+        .upload-zone strong { color: var(--ink); font-size: .94rem; } .upload-zone small { max-width: 210px; font-size: .76rem; line-height: 1.5; }
+        .upload-zone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .upload-zone.has-image .upload-icon,.upload-zone.has-image strong,.upload-zone.has-image small { display: none; }
+        .hint { margin: -5px 0 15px; color: var(--muted); font-size: .77rem; line-height: 1.5; }
+        .form-status { min-height: 20px; margin: 9px 0 0; color: var(--green); font-size: .8rem; font-weight: 600; } .form-status.error { color: #a94335; }
+        .folder-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+        .folder-actions button { min-height: 37px; padding: 8px 10px; font-size: .78rem; }
+        .collection-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px; } .collection-toolbar input { flex: 1 1 170px; }
+        .category-filters { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+        .filter-button { min-height: 34px; padding: 6px 10px; color: var(--muted); background: transparent; border: 1px solid var(--line); font-size: .77rem; }
+        .filter-button:hover:not(:disabled),.filter-button.active { color: white; background: var(--green); border-color: var(--green); }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 14px; }
+        .object-card { min-width: 0; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; animation: arrive .28s ease both; }
+        .object-image-wrap { position: relative; aspect-ratio: 2/3; overflow: hidden; background: #eeece3; cursor: zoom-in; }
+        .object-image-wrap:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+        .object-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .object-image-missing { display: grid; place-items: center; padding: 20px; color: var(--muted); font-size: .82rem; text-align: center; }
+        .card-category { position: absolute; top: 8px; left: 8px; max-width: calc(100% - 16px); padding: 5px 8px; overflow: hidden; color: #fff; background: rgba(25,45,34,.82); border-radius: 5px; font-size: .68rem; text-overflow: ellipsis; white-space: nowrap; }
+        .object-info { padding: 11px; } .object-info h3 { margin: 0 0 2px; overflow-wrap: anywhere; font-size: 1rem; } .object-info p { margin: 0; color: var(--muted); font-size: .82rem; }
+        .object-actions { display: flex; gap: 6px; margin-top: 10px; } .object-actions button { flex: 1; min-height: 34px; padding: 6px; font-size: .75rem; }
+        .object-actions .listen { color: var(--green-dark); background: #e7efe5; } .object-actions .listen:hover:not(:disabled) { background: #d7e7d6; }
+        .empty { grid-column: 1/-1; padding: 36px 18px; color: var(--muted); background: #faf9f3; border: 1px dashed var(--line); border-radius: 9px; text-align: center; line-height: 1.6; }
+        .toast { position: fixed; right: 20px; bottom: 20px; z-index: 10; max-width: min(420px,calc(100vw - 40px)); padding: 12px 16px; color: white; background: var(--green-dark); border-radius: 7px; box-shadow: var(--shadow); opacity: 0; transform: translateY(8px); transition: .2s; pointer-events: none; }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .image-viewer { width: min(96vw,1000px); height: min(94dvh,1500px); max-width: none; max-height: none; padding: 0; overflow: hidden; color: white; background: rgba(18,25,21,.97); border: 0; border-radius: 10px; }
+        .image-viewer::backdrop { background: rgba(13,20,16,.88); backdrop-filter: blur(4px); }
+        .image-viewer-content { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,340px); grid-template-rows: auto minmax(0,1fr); gap: 12px; height: 100%; padding: 14px; }
+        .image-viewer-close { justify-self: end; width: 42px; min-height: 42px; padding: 0; color: var(--ink); background: #f4f2e9; font-size: 1.4rem; }
+        .image-viewer-close { grid-column: 1/-1; grid-row: 1; }
+        .image-viewer img { grid-column: 1; grid-row: 2; display: block; width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+        .image-viewer-vocabulary { grid-column: 2; grid-row: 2; display: flex; min-height: 0; flex-direction: column; gap: 12px; padding: 16px; overflow: auto; color: var(--ink); background: var(--surface); border-radius: 8px; }
+        .image-viewer-vocabulary h2 { font: 700 1.12rem 'DM Sans',sans-serif; }
+        .viewer-word-form { display: grid; gap: 8px; }
+        .viewer-word-form input { background: white; }
+        .viewer-word-form .pronunciation-input { color: var(--green-dark); background: #f3f7f0; }
+        .viewer-word-form button { width: 100%; }
+        .viewer-word-list { display: grid; align-content: start; gap: 8px; margin: 0; padding: 0; list-style: none; }
+        .viewer-word-item { display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 7px; padding: 9px; background: #f3f2e9; border-radius: 7px; }
+        .viewer-word-item strong { display: block; overflow-wrap: anywhere; font-size: .9rem; }
+        .viewer-word-item span { display: block; margin-top: 2px; color: var(--muted); font-size: .77rem; }
+        .viewer-word-item button { min-height: 34px; padding: 6px 8px; font-size: .75rem; }
+        .viewer-word-item .viewer-delete-word { color: #984430; background: #f8e9e3; }
+        .viewer-empty { margin: auto 0; color: var(--muted); font-size: .85rem; line-height: 1.5; }
+        @keyframes arrive { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 780px) { .page { padding: 25px 16px 40px; } .masthead { align-items: start; flex-direction: column; gap: 10px; } .workspace { grid-template-columns: 1fr; } .upload-zone { width: min(100%,340px); margin-inline: auto; } }
+        @media (max-width: 440px) { .panel { padding: 17px; } .gallery { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; } .object-info { padding: 9px; } .object-actions { flex-direction: column; } }
+        @media (max-width: 700px) { .image-viewer { width: 100vw; height: 100dvh; border-radius: 0; } .image-viewer-content { grid-template-columns: minmax(0,1fr); grid-template-rows: auto minmax(180px,42dvh) minmax(0,1fr); gap: 8px; padding: 10px; } .image-viewer-close { grid-column: 1; grid-row: 1; } .image-viewer img { grid-column: 1; grid-row: 2; } .image-viewer-vocabulary { grid-column: 1; grid-row: 3; padding: 12px; } }
+        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    </style>
+    <script defer src="tracker-menu.js"></script>
+</head>
+<body>
+    <nav class="global-nav" aria-label="Navigasi utama"></nav>
+    <main class="page">
+        <header class="masthead">
+            <div><div class="eyebrow">Picture vocabulary · English</div><h1>Belajar dari benda.</h1><p class="intro">Buat koleksi benda dalam bahasa Inggris dari gambar pilihanmu. Susun seperti folder, lalu dengarkan cara pengucapannya.</p></div>
+            <div class="storage-note" id="storageNote" aria-live="polite">Memeriksa penyimpanan...</div>
+        </header>
+        <div class="workspace">
+            <section class="panel" aria-labelledby="formTitle">
+                <div class="panel-heading"><h2 id="formTitle">Tambah benda</h2><span class="count" id="cardCount">0 benda</span></div>
+                <form id="objectForm">
+                    <label class="upload-zone" id="uploadZone" for="imageInput">
+                        <input id="imageInput" type="file" accept="image/*" required aria-label="Pilih gambar berasio 2 banding 3">
+                        <span class="upload-icon" aria-hidden="true">+</span><strong>Pilih gambar benda</strong><small>Rasio gambar harus 2:3. Resolusi akan disimpan sebagai 1024 × 1536.</small>
+                    </label>
+                    <p class="hint">Gambar lain yang tidak berasio 2:3 perlu dipotong terlebih dahulu.</p>
+                    <div class="field"><label for="englishName">Nama dalam bahasa Inggris</label><input id="englishName" name="englishName" required maxlength="80" placeholder="Contoh: watering can"></div>
+                    <div class="field"><label for="indonesianName">Artinya dalam bahasa Indonesia</label><input id="indonesianName" name="indonesianName" required maxlength="100" placeholder="Contoh: penyiram tanaman"></div>
+                    <div class="field"><label for="categoryInput">Folder kategori</label><div class="category-entry"><input id="categoryInput" list="categoryOptions" required maxlength="40" placeholder="Contoh: Garden" autocomplete="off"><datalist id="categoryOptions"></datalist><button class="secondary" id="addCategoryButton" type="button" aria-label="Buat folder kategori baru" title="Buat folder kategori baru">+</button></div></div>
+                    <button id="saveButton" type="submit" style="width:100%">Simpan ke koleksi</button>
+                    <p class="form-status" id="formStatus" aria-live="polite"></p>
+                </form>
+                <div class="folder-actions"><button class="secondary" id="exportFolderButton" type="button" title="Simpan satu kategori sebagai folder di komputer">Ekspor folder kategori</button><button class="secondary" id="backupButton" type="button">Unduh backup</button><button class="secondary" id="importButton" type="button">Import backup</button><input id="importInput" type="file" accept="application/json" hidden></div>
+            </section>
+            <section class="panel" aria-labelledby="collectionTitle">
+                <div class="panel-heading"><h2 id="collectionTitle">Koleksi benda</h2><span class="count" id="folderCount">0 folder</span></div>
+                <div class="collection-toolbar"><input id="searchInput" type="search" placeholder="Cari nama atau arti..." aria-label="Cari benda"><button id="learnToggle" class="secondary" type="button" aria-pressed="false">Sembunyikan English</button></div>
+                <div class="category-filters" id="categoryFilters" aria-label="Filter folder kategori"></div>
+                <div class="gallery" id="gallery" aria-live="polite"></div>
+            </section>
+        </div>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="image-viewer" id="imageViewer" aria-label="Tampilan gambar penuh">
+        <div class="image-viewer-content">
+            <form method="dialog" style="display:contents"><button class="image-viewer-close" type="submit" aria-label="Tutup gambar">×</button></form>
+            <img id="viewerImage" alt="">
+            <section class="image-viewer-vocabulary" aria-labelledby="viewerVocabularyTitle">
+                <h2 id="viewerVocabularyTitle">Nama benda dalam gambar</h2>
+                <form class="viewer-word-form" id="viewerWordForm">
+                    <input id="viewerEnglishInput" required maxlength="80" placeholder="Nama dalam bahasa Inggris" aria-label="Nama benda dalam bahasa Inggris">
+                    <input id="viewerIndonesianInput" maxlength="100" placeholder="Arti bahasa Indonesia (opsional)" aria-label="Arti bahasa Indonesia">
+                    <input id="viewerPronunciationInput" class="pronunciation-input" maxlength="120" placeholder="Cara baca akan terisi otomatis" aria-label="Cara baca dalam teks">
+                    <button type="submit">Tambah nama benda</button>
+                </form>
+                <ul class="viewer-word-list" id="viewerWordList" aria-live="polite"></ul>
+            </section>
+        </div>
+    </dialog>
+    <script>
+        (() => {
+            const DB_NAME = 'object_english_library';
+            const DB_VERSION = 2;
+            const CLOUD_CARD_IDS_KEY = 'object_english_cloud_card_ids_v1';
+            const CLOUD_CATEGORIES_KEY = 'object_english_cloud_categories_v1';
+            const RATIO = 2 / 3;
+            const TARGET_WIDTH = 1024;
+            const TARGET_HEIGHT = 1536;
+            const $ = id => document.getElementById(id);
+            const state = { db: null, imageBlob: null, imageUrl: '', cards: [], categories: [], filter: '', hideEnglish: false, activeCardId: null };
+            let databasePromise;
+
+            function ensureDatabase() {
+                if (!databasePromise) databasePromise = openDatabase().then(database => { state.db = database; return database; });
+                return databasePromise;
+            }
+
+            function openDatabase() {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(DB_NAME, DB_VERSION);
+                    request.onupgradeneeded = () => {
+                        const database = request.result;
+                        if (!database.objectStoreNames.contains('cards')) database.createObjectStore('cards', { keyPath: 'id' });
+                        if (!database.objectStoreNames.contains('categories')) database.createObjectStore('categories', { keyPath: 'name' });
+                        if (!database.objectStoreNames.contains('accountMetadata')) database.createObjectStore('accountMetadata', { keyPath: 'key' });
+                    };
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            function storeRequest(storeName, mode, action) {
+                return new Promise((resolve, reject) => {
+                    const transaction = state.db.transaction(storeName, mode);
+                    const request = action(transaction.objectStore(storeName));
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                    transaction.onabort = () => reject(transaction.error || new Error('Penyimpanan gagal.'));
+                });
+            }
+            const allCards = () => storeRequest('cards', 'readonly', store => store.getAll());
+            const allCategories = () => storeRequest('categories', 'readonly', store => store.getAll());
+            const saveCard = card => storeRequest('cards', 'readwrite', store => store.put(card));
+            const deleteCard = id => storeRequest('cards', 'readwrite', store => store.delete(id));
+            const saveCategory = name => storeRequest('categories', 'readwrite', store => store.put({ name }));
+            const clearStore = storeName => storeRequest(storeName, 'readwrite', store => store.clear());
+            const getLocalOwnerUid = async () => (await storeRequest('accountMetadata', 'readonly', store => store.get('ownerUid')))?.uid || '';
+            const setLocalOwnerUid = uid => storeRequest('accountMetadata', 'readwrite', store => store.put({ key: 'ownerUid', uid }));
+            const cloudCardKey = id => `object_english_cloud_card_${id}`;
+
+            async function writeCloudValue(key, value) {
+                const saved = await window.__accountStorageBridge.writeAccountValue(key, JSON.stringify(value));
+                if (!saved) throw new Error('Metadata gagal disimpan ke akun Firebase.');
+            }
+
+            async function syncObjectLibraryToAccount() {
+                const [cards, categories] = await Promise.all([allCards(), allCategories()]);
+                const previousIds = JSON.parse(localStorage.getItem(CLOUD_CARD_IDS_KEY) || '[]');
+                const cardIds = [];
+
+                for (const card of cards) {
+                    const key = cloudCardKey(card.id);
+                    const { image, cloudImageHash, cloudUpdatedAt, imagePath, imageHash, ...fields } = card;
+                    const metadata = { ...fields, updatedAt: new Date().toISOString() };
+                    await writeCloudValue(key, metadata);
+                    cardIds.push(card.id);
+                }
+
+                for (const staleId of previousIds.filter(id => !cardIds.includes(id))) {
+                    await window.__accountStorageRemote.remove(cloudCardKey(staleId));
+                }
+
+                await Promise.all([
+                    writeCloudValue(CLOUD_CARD_IDS_KEY, cardIds),
+                    writeCloudValue(CLOUD_CATEGORIES_KEY, categories.map(category => category.name))
+                ]);
+            }
+
+            async function syncObjectLibraryFromAccount({ uid }) {
+                await ensureDatabase();
+                const ownerUid = await getLocalOwnerUid();
+                const ids = JSON.parse(localStorage.getItem(CLOUD_CARD_IDS_KEY) || 'null');
+                if (!Array.isArray(ids)) {
+                    if (ownerUid && ownerUid !== uid) {
+                        await clearStore('cards');
+                        await clearStore('categories');
+                    }
+                    await syncObjectLibraryToAccount();
+                    await setLocalOwnerUid(uid);
+                    return;
+                }
+
+                if (ownerUid && ownerUid !== uid) {
+                    await clearStore('cards');
+                    await clearStore('categories');
+                }
+                const localCards = new Map((await allCards()).map(card => [card.id, card]));
+                const cloudCards = [];
+                for (const id of ids) {
+                    const metadata = JSON.parse(localStorage.getItem(cloudCardKey(id)) || 'null');
+                    if (!metadata?.id) continue;
+                    const localCard = localCards.get(id);
+                    cloudCards.push({ ...metadata, image: localCard?.image instanceof Blob ? localCard.image : null });
+                }
+                const categories = JSON.parse(localStorage.getItem(CLOUD_CATEGORIES_KEY) || '[]').map(name => ({ name }));
+                await clearStore('cards');
+                await clearStore('categories');
+                await Promise.all(categories.map(saveCategory));
+                await Promise.all(cloudCards.map(saveCard));
+                await setLocalOwnerUid(uid);
+            }
+
+            function setStatus(message, error = false) {
+                $('formStatus').textContent = message;
+                $('formStatus').classList.toggle('error', error);
+            }
+            function toast(message) {
+                const element = $('toast');
+                element.textContent = message;
+                element.classList.add('show');
+                clearTimeout(toast.timer);
+                toast.timer = setTimeout(() => element.classList.remove('show'), 2600);
+            }
+            function openImageViewer(card) {
+                if (!(card.image instanceof Blob)) return toast('Gambar hanya tersedia di perangkat tempat gambar disimpan.');
+                const image = $('viewerImage');
+                image.src = URL.createObjectURL(card.image);
+                image.alt = card.hideEnglish ? 'Gambar benda' : card.english;
+                state.activeCardId = card.id;
+                renderViewerWords(card);
+                $('imageViewer').showModal();
+            }
+
+            function renderViewerWords(card) {
+                const words = Array.isArray(card.words) ? card.words : [];
+                const list = $('viewerWordList');
+                if (!words.length) {
+                    const empty = document.createElement('li');
+                    empty.className = 'viewer-empty';
+                    empty.textContent = 'Belum ada nama tambahan. Masukkan nama benda yang terlihat pada gambar.';
+                    list.replaceChildren(empty);
+                    return;
+                }
+                list.replaceChildren(...words.map((word, index) => {
+                    const item = document.createElement('li');
+                    item.className = 'viewer-word-item';
+                    const label = document.createElement('div');
+                    const english = document.createElement('strong');
+                    english.textContent = word.english;
+                    label.append(english);
+                    if (word.indonesian) {
+                        const translation = document.createElement('span');
+                        translation.textContent = word.indonesian;
+                        label.append(translation);
+                    }
+                    if (word.pronunciation) {
+                        const pronunciation = document.createElement('span');
+                        pronunciation.textContent = `Cara baca: ${word.pronunciation}`;
+                        label.append(pronunciation);
+                    }
+                    const speak = document.createElement('button');
+                    speak.type = 'button';
+                    speak.className = 'secondary';
+                    speak.textContent = 'Dengarkan';
+                    speak.setAttribute('aria-label', `Dengarkan ${word.english}`);
+                    speak.addEventListener('click', () => speakEnglish(word.english));
+                    const remove = document.createElement('button');
+                    remove.type = 'button';
+                    remove.className = 'viewer-delete-word';
+                    remove.textContent = 'Hapus';
+                    remove.setAttribute('aria-label', `Hapus ${word.english}`);
+                    remove.addEventListener('click', () => updateViewerWords(words.filter((_, wordIndex) => wordIndex !== index)));
+                    item.append(label, speak, remove);
+                    return item;
+                }));
+            }
+
+            async function updateViewerWords(words) {
+                const card = state.cards.find(item => item.id === state.activeCardId);
+                if (!card) return;
+                card.words = words;
+                try {
+                    await saveCard(card);
+                    await syncObjectLibraryToAccount();
+                    renderViewerWords(card);
+                    toast('Daftar nama benda tersimpan.');
+                } catch { toast('Daftar nama benda gagal disimpan.'); }
+            }
+
+            async function addViewerWord(event) {
+                event.preventDefault();
+                const english = $('viewerEnglishInput').value.trim();
+                const indonesian = $('viewerIndonesianInput').value.trim();
+                const pronunciation = $('viewerPronunciationInput').value.trim();
+                const card = state.cards.find(item => item.id === state.activeCardId);
+                if (!card || !english) return;
+                const words = Array.isArray(card.words) ? card.words : [];
+                await updateViewerWords([...words, { english, indonesian, pronunciation }]);
+                $('viewerWordForm').reset();
+                $('viewerEnglishInput').focus();
+            }
+
+            async function loadPronunciation() {
+                const input = $('viewerEnglishInput');
+                const pronunciationInput = $('viewerPronunciationInput');
+                const word = input.value.trim();
+                pronunciationInput.value = '';
+                if (!word) return;
+                const apiKey = localStorage.getItem('gemini_api_key') || '';
+                if (!apiKey) {
+                    pronunciationInput.placeholder = 'Isi API key Gemini terlebih dahulu';
+                    return;
+                }
+                pronunciationInput.placeholder = 'AI sedang membuat cara baca...';
+                try {
+                    const model = localStorage.getItem('english_ai_model_gemini') || 'gemini-3.5-flash-lite';
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            systemInstruction: { parts: [{ text: 'Anda membantu pelajar Indonesia membaca kata Bahasa Inggris. Berikan hanya ejaan bunyi yang mudah dibaca orang Indonesia, tanpa tanda kutip, tanpa IPA, tanpa penjelasan. Contoh: watering can -> wotering ken.' }] },
+                            contents: [{ role: 'user', parts: [{ text: `Buat cara baca Bahasa Indonesia untuk kata atau frasa Inggris ini: ${word}` }] }],
+                            generationConfig: { temperature: 0.1, maxOutputTokens: 40 }
+                        })
+                    });
+                    if (!response.ok) throw new Error('Gemini pronunciation request failed');
+                    const data = await response.json();
+                    const pronunciation = String(data.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('') || '')
+                        .replace(/["'`]/g, '').replace(/\s+/g, ' ').trim();
+                    if (!pronunciation) throw new Error('Gemini tidak mengembalikan cara baca');
+                    if (input.value.trim() === word) {
+                        pronunciationInput.value = pronunciation;
+                        pronunciationInput.placeholder = 'Cara baca dari AI';
+                    }
+                } catch {
+                    pronunciationInput.placeholder = 'AI gagal membuat cara baca, bisa diisi manual';
+                }
+            }
+
+            function speakEnglish(text) {
+                if (!('speechSynthesis' in window)) return toast('Browser ini belum mendukung pembaca suara.');
+                speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                speechSynthesis.speak(utterance);
+            }
+
+            async function prepareImage(file) {
+                if (!file || !file.type.startsWith('image/')) throw new Error('Pilih file gambar yang valid.');
+                const bitmap = await createImageBitmap(file);
+                const width = bitmap.width;
+                const height = bitmap.height;
+                if (Math.abs(width / height - RATIO) > .003) {
+                    bitmap.close();
+                    throw new Error(`Rasio gambar saat ini ${width} × ${height}, bukan 2:3.`);
+                }
+                const canvas = document.createElement('canvas');
+                canvas.width = TARGET_WIDTH;
+                canvas.height = TARGET_HEIGHT;
+                canvas.getContext('2d').drawImage(bitmap, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
+                bitmap.close();
+                return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Gambar tidak dapat diproses.')), 'image/jpeg', .9));
+            }
+
+            function clearPreview() {
+                if (state.imageUrl) URL.revokeObjectURL(state.imageUrl);
+                state.imageUrl = '';
+                $('uploadZone').classList.remove('has-image');
+                $('uploadZone').querySelector('img')?.remove();
+            }
+            async function handleImageInput() {
+                const file = $('imageInput').files?.[0];
+                state.imageBlob = null;
+                clearPreview();
+                if (!file) return;
+                setStatus('Memeriksa rasio dan menyiapkan gambar...');
+                try {
+                    state.imageBlob = await prepareImage(file);
+                    state.imageUrl = URL.createObjectURL(state.imageBlob);
+                    const preview = document.createElement('img');
+                    preview.src = state.imageUrl;
+                    preview.alt = 'Pratinjau gambar yang akan disimpan';
+                    $('uploadZone').appendChild(preview);
+                    $('uploadZone').classList.add('has-image');
+                    setStatus('Siap disimpan sebagai 1024 × 1536 px.');
+                } catch (error) {
+                    $('imageInput').value = '';
+                    setStatus(error.message, true);
+                }
+            }
+
+            async function handleSubmit(event) {
+                event.preventDefault();
+                const english = $('englishName').value.trim();
+                const indonesian = $('indonesianName').value.trim();
+                const category = $('categoryInput').value.trim();
+                if (!state.imageBlob) return setStatus('Pilih gambar dengan rasio 2:3 terlebih dahulu.', true);
+                if (!english || !indonesian || !category) return setStatus('Lengkapi nama benda dan folder kategorinya.', true);
+                $('saveButton').disabled = true;
+                try {
+                    await saveCategory(category);
+                    await saveCard({ id: crypto.randomUUID(), english, indonesian, category, image: state.imageBlob, createdAt: Date.now() });
+                    await syncObjectLibraryToAccount();
+                    $('objectForm').reset();
+                    state.imageBlob = null;
+                    clearPreview();
+                    setStatus('Benda berhasil disimpan ke folder kategori.');
+                    await refresh();
+                } catch (error) {
+                    setStatus(error.name === 'QuotaExceededError' ? 'Penyimpanan browser penuh. Ekspor koleksi sebelum menambah gambar.' : 'Gagal menyimpan. Coba gunakan gambar yang lebih kecil.', true);
+                } finally { $('saveButton').disabled = false; }
+            }
+
+            async function addCategory() {
+                const name = $('categoryInput').value.trim();
+                if (!name) return setStatus('Tulis nama folder baru terlebih dahulu.', true);
+                try {
+                    await saveCategory(name);
+                    await syncObjectLibraryToAccount();
+                    await refresh();
+                    toast(`Folder "${name}" dibuat.`);
+                } catch { setStatus('Folder tidak dapat dibuat.', true); }
+            }
+
+            function renderFilters() {
+                const counts = new Map(state.categories.map(category => [category.name, state.cards.filter(card => card.category === category.name).length]));
+                $('folderCount').textContent = `${state.categories.length} folder`;
+                $('categoryOptions').replaceChildren(...state.categories.map(category => {
+                    const option = document.createElement('option');
+                    option.value = category.name;
+                    return option;
+                }));
+                const filters = [{ name: '', label: `Semua · ${state.cards.length}` }, ...state.categories.map(category => ({ name: category.name, label: `${category.name} · ${counts.get(category.name) || 0}` }))];
+                $('categoryFilters').replaceChildren(...filters.map(filter => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = `filter-button${state.filter === filter.name ? ' active' : ''}`;
+                    button.textContent = filter.label;
+                    button.setAttribute('aria-pressed', String(state.filter === filter.name));
+                    button.addEventListener('click', () => { state.filter = filter.name; renderFilters(); renderGallery(); });
+                    return button;
+                }));
+            }
+
+            function cardElement(card) {
+                const article = document.createElement('article');
+                article.className = 'object-card';
+                const imageWrap = document.createElement('div');
+                imageWrap.className = 'object-image-wrap';
+                if (card.image instanceof Blob) {
+                    imageWrap.setAttribute('role', 'button');
+                    imageWrap.tabIndex = 0;
+                    imageWrap.setAttribute('aria-label', card.hideEnglish ? `Lihat gambar ${card.indonesian} dalam ukuran penuh` : `Lihat gambar ${card.english} dalam ukuran penuh`);
+                    imageWrap.addEventListener('click', () => openImageViewer(card));
+                    imageWrap.addEventListener('keydown', event => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            openImageViewer(card);
+                        }
+                    });
+                    const image = document.createElement('img');
+                    image.className = 'object-image';
+                    const imageUrl = URL.createObjectURL(card.image);
+                    image.src = imageUrl;
+                    image.alt = card.hideEnglish ? 'Benda untuk ditebak' : card.english;
+                    image.loading = 'lazy';
+                    image.addEventListener('load', () => URL.revokeObjectURL(imageUrl), { once: true });
+                    image.addEventListener('error', () => URL.revokeObjectURL(imageUrl), { once: true });
+                    imageWrap.appendChild(image);
+                } else {
+                    imageWrap.classList.add('object-image-missing');
+                    imageWrap.textContent = 'Gambar hanya tersimpan di perangkat asal';
+                }
+                const category = document.createElement('span');
+                category.className = 'card-category';
+                category.textContent = card.category;
+                imageWrap.appendChild(category);
+                const info = document.createElement('div');
+                info.className = 'object-info';
+                const title = document.createElement('h3');
+                title.textContent = card.hideEnglish ? '•••••' : card.english;
+                const translation = document.createElement('p');
+                translation.textContent = card.indonesian;
+                const actions = document.createElement('div');
+                actions.className = 'object-actions';
+                const listen = document.createElement('button');
+                listen.type = 'button';
+                listen.className = 'listen';
+                listen.textContent = 'Dengarkan';
+                listen.setAttribute('aria-label', `Dengarkan ${card.english}`);
+                listen.disabled = card.hideEnglish;
+                listen.addEventListener('click', () => speakEnglish(card.english));
+                const remove = document.createElement('button');
+                remove.type = 'button';
+                remove.className = 'danger';
+                remove.textContent = 'Hapus';
+                remove.setAttribute('aria-label', `Hapus ${card.english}`);
+                remove.addEventListener('click', async () => {
+                    if (!confirm(`Hapus "${card.english}" dari koleksi?`)) return;
+                    await deleteCard(card.id);
+                    await syncObjectLibraryToAccount();
+                    await refresh();
+                });
+                actions.append(listen, remove);
+                info.append(title, translation, actions);
+                article.append(imageWrap, info);
+                return article;
+            }
+
+            function renderGallery() {
+                const query = $('searchInput').value.trim().toLocaleLowerCase();
+                const visibleCards = state.cards.filter(card => (!state.filter || card.category === state.filter) && `${card.english} ${card.indonesian} ${card.category}`.toLocaleLowerCase().includes(query));
+                $('cardCount').textContent = `${state.cards.length} benda`;
+                if (!visibleCards.length) {
+                    const empty = document.createElement('div');
+                    empty.className = 'empty';
+                    empty.textContent = state.cards.length ? 'Tidak ada benda yang cocok dengan pencarian ini.' : 'Koleksi masih kosong. Unggah gambar pertama untuk mulai membuat folder benda bahasa Inggrismu.';
+                    $('gallery').replaceChildren(empty);
+                    return;
+                }
+                $('gallery').replaceChildren(...visibleCards.map(card => cardElement({ ...card, hideEnglish: state.hideEnglish })));
+            }
+            async function refresh() {
+                [state.cards, state.categories] = await Promise.all([allCards(), allCategories()]);
+                renderFilters();
+                renderGallery();
+            }
+            function safeFilename(value) {
+                return value.normalize('NFKD').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 70) || 'object';
+            }
+
+            async function exportFolder() {
+                if (typeof window.showDirectoryPicker !== 'function') return toast('Ekspor folder perlu Chrome atau Edge terbaru. Gunakan Unduh backup sebagai alternatif.');
+                const category = $('categoryInput').value.trim() || state.filter;
+                if (!category) return toast('Pilih atau tulis kategori yang ingin diekspor.');
+                const categoryCards = state.cards.filter(card => card.category === category);
+                const cards = categoryCards.filter(card => card.image instanceof Blob);
+                if (!cards.length) return toast(categoryCards.length ? 'Gambar folder ini tidak tersimpan di perangkat ini.' : 'Folder kategori ini belum berisi benda.');
+                try {
+                    const root = await window.showDirectoryPicker({ mode: 'readwrite' });
+                    const folder = await root.getDirectoryHandle(safeFilename(category), { create: true });
+                    const manifest = [];
+                    for (const card of cards) {
+                        const filename = `${safeFilename(card.english)}.jpg`;
+                        const handle = await folder.getFileHandle(filename, { create: true });
+                        const writable = await handle.createWritable();
+                        await writable.write(card.image);
+                        await writable.close();
+                        manifest.push({ image: filename, english: card.english, indonesian: card.indonesian, category: card.category, width: TARGET_WIDTH, height: TARGET_HEIGHT });
+                    }
+                    const manifestHandle = await folder.getFileHandle('vocabulary.json', { create: true });
+                    const manifestFile = await manifestHandle.createWritable();
+                    await manifestFile.write(JSON.stringify({ category, cards: manifest }, null, 2));
+                    await manifestFile.close();
+                    toast(`${cards.length} gambar diekspor ke folder "${category}".`);
+                } catch (error) {
+                    if (error.name !== 'AbortError') toast(error.message || 'Folder tidak dapat diekspor.');
+                }
+            }
+            async function blobToDataUrl(blob) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = () => reject(reader.error);
+                    reader.readAsDataURL(blob);
+                });
+            }
+            async function downloadBackup() {
+                try {
+                    if (state.cards.some(card => !(card.image instanceof Blob))) throw new Error('Sebagian gambar hanya tersedia di perangkat asal.');
+                    const cards = await Promise.all(state.cards.map(async card => ({ ...card, image: await blobToDataUrl(card.image) })));
+                    const backup = new Blob([JSON.stringify({ app: 'object-english', version: 1, categories: state.categories, cards }, null, 2)], { type: 'application/json' });
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(backup);
+                    link.href = url;
+                    link.download = 'object-english-backup.json';
+                    link.click();
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                    toast('Backup koleksi berhasil diunduh.');
+                } catch { toast('Backup gagal dibuat. Coba kurangi ukuran koleksi.'); }
+            }
+
+            function dataUrlToBlob(dataUrl) {
+                const [header, encoded] = String(dataUrl).split(',');
+                if (!header || !encoded || !header.startsWith('data:')) throw new Error('Format gambar backup tidak valid.');
+                const binary = atob(encoded);
+                const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+                return new Blob([bytes], { type: header.match(/data:([^;]+)/)?.[1] || 'image/jpeg' });
+            }
+
+            async function importBackup(event) {
+                const file = event.target.files?.[0];
+                event.target.value = '';
+                if (!file) return;
+                try {
+                    const backup = JSON.parse(await file.text());
+                    if (backup?.app !== 'object-english' || !Array.isArray(backup.cards) || !Array.isArray(backup.categories)) {
+                        throw new Error('File bukan backup Object English yang valid.');
+                    }
+                    if (!confirm(`Import akan mengganti ${state.cards.length} kartu dengan ${backup.cards.length} kartu dari backup. Lanjutkan?`)) return;
+
+                    const cards = await Promise.all(backup.cards.map(async card => {
+                        const image = typeof card.image === 'string' ? dataUrlToBlob(card.image) : card.image;
+                        if (!(image instanceof Blob)) throw new Error('Ada gambar yang tidak valid di backup.');
+                        return { ...card, image };
+                    }));
+                    await clearStore('cards');
+                    await clearStore('categories');
+                    const categories = backup.categories
+                        .map(category => String(category.name || category).trim())
+                        .filter(Boolean);
+                    await Promise.all(categories.map(saveCategory));
+                    await Promise.all(cards.map(saveCard));
+                    await syncObjectLibraryToAccount();
+                    await refresh();
+                    toast(`Import berhasil: ${cards.length} kartu dipulihkan.`);
+                } catch (error) {
+                    toast(error.message || 'Import backup gagal.');
+                }
+            }
+            function checkStorageSupport() {
+                const supported = 'indexedDB' in window && 'createImageBitmap' in window;
+                $('storageNote').textContent = supported ? 'Data tersinkron ke akun; gambar tersimpan di perangkat ini' : 'Browser tidak mendukung penyimpanan gambar';
+                if (!supported) $('storageNote').style.color = '#a94335';
+                return supported;
+            }
+            async function init() {
+                if (!checkStorageSupport()) return;
+                try {
+                    await ensureDatabase();
+                    await window.__accountStorageReady;
+                    await refresh();
+                } catch {
+                    $('storageNote').textContent = 'Penyimpanan tidak tersedia';
+                    $('storageNote').style.color = '#a94335';
+                    $('gallery').textContent = 'Browser tidak dapat membuka penyimpanan lokal untuk gambar.';
+                }
+                $('imageInput').addEventListener('change', handleImageInput);
+                $('objectForm').addEventListener('submit', handleSubmit);
+                $('addCategoryButton').addEventListener('click', addCategory);
+                $('exportFolderButton').addEventListener('click', exportFolder);
+                $('backupButton').addEventListener('click', downloadBackup);
+                $('importButton').addEventListener('click', () => $('importInput').click());
+                $('importInput').addEventListener('change', importBackup);
+                $('searchInput').addEventListener('input', renderGallery);
+                $('viewerWordForm').addEventListener('submit', addViewerWord);
+                let pronunciationTimer;
+                $('viewerEnglishInput').addEventListener('input', () => {
+                    clearTimeout(pronunciationTimer);
+                    pronunciationTimer = setTimeout(loadPronunciation, 450);
+                });
+                $('learnToggle').addEventListener('click', event => {
+                    state.hideEnglish = !state.hideEnglish;
+                    event.currentTarget.textContent = state.hideEnglish ? 'Tampilkan English' : 'Sembunyikan English';
+                    event.currentTarget.setAttribute('aria-pressed', String(state.hideEnglish));
+                    renderGallery();
+                });
+                $('imageViewer').addEventListener('close', () => {
+                    const image = $('viewerImage');
+                    if (image.src.startsWith('blob:')) URL.revokeObjectURL(image.src);
+                    image.removeAttribute('src');
+                });
+                $('imageViewer').addEventListener('click', event => {
+                    if (event.target === $('imageViewer')) $('imageViewer').close();
+                });
+                window.addEventListener('beforeunload', clearPreview);
+            }
+            window.registerAccountStorageTask?.(syncObjectLibraryFromAccount);
+            init();
+        })();
+    </script>
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

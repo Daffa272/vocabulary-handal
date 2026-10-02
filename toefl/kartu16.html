@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conjunctions &amp; Connectors — Panduan TOEFL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f3ec;
+    --paper-raised: #fcfaf5;
+    --ink: #1c2230;
+    --ink-soft: #4a5063;
+    --rule: #d9d2c1;
+    --rule-strong: #b9ae95;
+    --blue: #2c4a72;
+    --blue-soft: #eaf0f7;
+    --gold: #a8791f;
+    --gold-soft: #f6ecd8;
+    --card-shadow: rgba(28, 34, 48, 0.08);
+    --radius: 3px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14161d;
+      --paper-raised: #1b1e28;
+      --ink: #eceaea;
+      --ink-soft: #b3b3c6;
+      --rule: #33374a;
+      --rule-strong: #454a63;
+      --blue: #8fb0dd;
+      --blue-soft: #1d2a3d;
+      --gold: #d9b45f;
+      --gold-soft: #2a2415;
+      --card-shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14161d;
+    --paper-raised: #1b1e28;
+    --ink: #eceaea;
+    --ink-soft: #b3b3c6;
+    --rule: #33374a;
+    --rule-strong: #454a63;
+    --blue: #8fb0dd;
+    --blue-soft: #1d2a3d;
+    --gold: #d9b45f;
+    --gold-soft: #2a2415;
+    --card-shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-padding-top: calc(24px + env(safe-area-inset-top, 0px));
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    line-height: 1.65;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  /* ---------- layout shell ---------- */
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- sidebar ---------- */
+  .toc {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 36px 20px 36px 28px;
+    border-right: 1px solid var(--rule);
+  }
+
+  @media (max-width: 880px) {
+    .toc {
+      position: relative;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 20px 20px 16px;
+      overflow-x: auto;
+      overflow-y: visible;
+    }
+  }
+
+  .toc-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  @media (max-width: 880px) {
+    .toc-list {
+      flex-direction: row;
+      gap: 6px;
+      white-space: nowrap;
+      padding-bottom: 4px;
+    }
+  }
+
+  .toc-list a {
+    display: block;
+    padding: 7px 10px;
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-left: 2px solid transparent;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  @media (max-width: 880px) {
+    .toc-list a {
+      border-left: none;
+      border-bottom: 2px solid transparent;
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+    }
+  }
+
+  .toc-list a:hover {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-left-color: var(--blue);
+  }
+
+  .toc-num {
+    display: inline-block;
+    width: 1.4em;
+    color: var(--rule-strong);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- main ---------- */
+  main {
+    padding: 48px 44px 90px;
+    min-width: 0;
+  }
+
+  @media (max-width: 620px) {
+    main { padding: 32px 20px 70px; }
+  }
+
+  .masthead {
+    margin-bottom: 48px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .kicker {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+
+  .masthead h1 {
+    font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+    margin: 0 0 12px;
+    max-width: 20ch;
+  }
+
+  .masthead p {
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0;
+    font-size: 1.02rem;
+  }
+
+  section.block {
+    margin-bottom: 52px;
+    scroll-margin-top: 24px;
+  }
+
+  section.block h2 {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 6px;
+  }
+
+  section.block h2 .n {
+    font-size: 1rem;
+    color: var(--gold);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+  }
+
+  .lede {
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+    max-width: 66ch;
+  }
+
+  h3.sub {
+    font-size: 1.05rem;
+    margin: 24px 0 10px;
+    color: var(--ink);
+  }
+
+  p { max-width: 68ch; }
+
+  /* ---------- example card ---------- */
+  .ex {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--blue);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 14px 0;
+    max-width: 66ch;
+    box-shadow: 0 1px 2px var(--card-shadow);
+  }
+
+  .ex .en {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+  }
+
+  .ex .id {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin-top: 4px;
+  }
+
+  .ex .id::before {
+    content: "— ";
+    color: var(--rule-strong);
+  }
+
+  mark {
+    background: var(--gold-soft);
+    color: var(--ink);
+    padding: 0.05em 0.3em;
+    border-radius: 2px;
+  }
+
+  /* ---------- pattern strip ---------- */
+  .pattern {
+    display: inline-block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.02rem;
+    background: var(--blue-soft);
+    color: var(--blue);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    margin: 10px 0 4px;
+  }
+
+  /* ---------- key box ---------- */
+  .key {
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 16px 0;
+    max-width: 66ch;
+    background: linear-gradient(180deg, var(--gold-soft), transparent 140%);
+  }
+
+  .key .label {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* ---------- checklist for section 13 ---------- */
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 68ch;
+    counter-reset: q;
+  }
+
+  .checklist li {
+    counter-increment: q;
+    display: grid;
+    grid-template-columns: 2em 1fr;
+    gap: 10px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .checklist li:first-child { border-top: none; }
+
+  .checklist li::before {
+    content: counter(q);
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .checklist .q { font-weight: 500; }
+  .checklist .a {
+    display: block;
+    color: var(--blue);
+    font-family: 'Source Serif 4', serif;
+    margin-top: 3px;
+  }
+
+  /* ---------- summary table ---------- */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    margin: 16px 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 0.94rem;
+  }
+
+  thead th {
+    text-align: left;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+
+  tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody td:first-child {
+    font-family: 'Source Serif 4', serif;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+
+  /* ---------- final trick section ---------- */
+  .finale {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 34px 36px;
+    margin-top: 8px;
+  }
+
+  :root[data-theme="dark"] .finale {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule-strong);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .finale {
+      background: var(--paper-raised);
+      border: 1px solid var(--rule-strong);
+    }
+  }
+
+  .finale h2 {
+    color: var(--paper);
+    font-size: 1.3rem;
+    margin: 0 0 6px;
+  }
+
+  .finale .lede { color: rgba(246, 243, 236, 0.72); }
+
+  .finale-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px 24px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(246, 243, 236, 0.18);
+  }
+
+  .finale-grid div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px dashed rgba(246, 243, 236, 0.15);
+    font-size: 0.94rem;
+  }
+
+  .finale-grid .term {
+    font-family: 'Source Serif 4', serif;
+    color: #e9c77b;
+  }
+
+  .finale-grid .mean { color: rgba(246, 243, 236, 0.78); text-align: right; }
+
+  footer {
+    max-width: 68ch;
+    margin: 60px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  a { color: var(--blue); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="toc" aria-label="Daftar isi">
+    <p class="toc-title">Daftar isi</p>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">1</span>Apa itu Conjunction</a></li>
+      <li><a href="#s2"><span class="toc-num">2</span>Coordinating</a></li>
+      <li><a href="#s3"><span class="toc-num">3</span>Subordinating</a></li>
+      <li><a href="#s4"><span class="toc-num">4</span>Although</a></li>
+      <li><a href="#s5"><span class="toc-num">5</span>If</a></li>
+      <li><a href="#s6"><span class="toc-num">6</span>Unless</a></li>
+      <li><a href="#s7"><span class="toc-num">7</span>Before</a></li>
+      <li><a href="#s8"><span class="toc-num">8</span>After</a></li>
+      <li><a href="#s9"><span class="toc-num">9</span>While</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span>So that</a></li>
+      <li><a href="#s11"><span class="toc-num">11</span>That (Noun Clause)</a></li>
+      <li><a href="#s12"><span class="toc-num">12</span>Paired Conjunctions</a></li>
+      <li><a href="#s13"><span class="toc-num">13</span>Cara Cepat Menentukan</a></li>
+      <li><a href="#s14"><span class="toc-num">14</span>Tabel Ringkasan</a></li>
+      <li><a href="#s15"><span class="toc-num">★</span>Pola Terpenting</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="masthead">
+      <p class="kicker">Rangkuman Materi TOEFL — Structure</p>
+      <h1>Conjunctions &amp; Connectors</h1>
+      <p>Panduan lengkap tentang kata penghubung dalam bahasa Inggris — coordinating, subordinating, dan paired conjunctions — lengkap dengan pola kalimat dan trik cepat untuk soal TOEFL Structure.</p>
+    </header>
+
+    <section class="block" id="s1">
+      <h2><span class="n">01</span>Apa itu Conjunction?</h2>
+      <p><strong>Conjunction</strong> adalah kata yang menghubungkan kata, frasa, atau klausa. Dalam soal TOEFL Structure, conjunction biasanya digunakan untuk menghubungkan <strong>dua klausa</strong> dan menunjukkan hubungan makna di antara keduanya.</p>
+      <div class="ex">
+        <div class="en">I work <mark>and</mark> study.</div>
+      </div>
+      <div class="ex">
+        <div class="en">She stayed home <mark>because</mark> she was sick.</div>
+      </div>
+    </section>
+
+    <section class="block" id="s2">
+      <h2><span class="n">02</span>Coordinating Conjunctions</h2>
+      <p class="lede">Pola utama: <em>Independent Clause + conjunction + Independent Clause</em></p>
+
+      <h3 class="sub">AND — dan <span style="color:var(--ink-soft); font-weight:400;">(penambahan)</span></h3>
+      <div class="ex">
+        <div class="en">The manager explained the procedure <mark>and</mark> the employees followed it.</div>
+        <div class="id">Manajer menjelaskan prosedurnya dan para karyawan mengikutinya.</div>
+      </div>
+
+      <h3 class="sub">BUT — tetapi <span style="color:var(--ink-soft); font-weight:400;">(pertentangan)</span></h3>
+      <div class="ex">
+        <div class="en">The task was difficult, <mark>but</mark> the employees completed it.</div>
+      </div>
+      <div class="ex">
+        <div class="en">The company is small, <mark>but</mark> it has many customers.</div>
+      </div>
+
+      <h3 class="sub">OR — atau <span style="color:var(--ink-soft); font-weight:400;">(pilihan / konsekuensi)</span></h3>
+      <div class="ex">
+        <div class="en">You can call me <mark>or</mark> send me an email.</div>
+      </div>
+      <div class="ex">
+        <div class="en">Submit the report today, <mark>or</mark> you may miss the deadline.</div>
+      </div>
+      <div class="key">
+        <div class="label">Ingat</div>
+        A, or B → lakukan A, <strong>atau</strong> B akan terjadi.
+      </div>
+
+      <h3 class="sub">SO — sehingga / jadi <span style="color:var(--ink-soft); font-weight:400;">(hasil / akibat)</span></h3>
+      <div class="ex">
+        <div class="en">The road was crowded, <mark>so</mark> we arrived late.</div>
+      </div>
+      <span class="pattern">Sebab → SO → akibat</span>
+      <div class="ex">
+        <div class="en">The system was slow → <mark>so</mark> → the process took longer.</div>
+      </div>
+    </section>
+
+    <section class="block" id="s3">
+      <h2><span class="n">03</span>Subordinating Conjunctions</h2>
+      <p class="lede">Conjunction ini menghubungkan <strong>dependent clause</strong> dengan <strong>independent clause</strong>.</p>
+
+      <h3 class="sub">BECAUSE — karena <span style="color:var(--ink-soft); font-weight:400;">(sebab / alasan)</span></h3>
+      <div class="ex">
+        <div class="en">The researcher conducted another experiment <mark>because</mark> the first results were inconclusive.</div>
+      </div>
+      <span class="pattern">Effect + because + Cause</span>
+      <p style="margin: 6px 0 0; color: var(--ink-soft);">atau</p>
+      <span class="pattern">Because + Cause, + Effect</span>
+      <div class="ex">
+        <div class="en"><mark>Because</mark> the results were unclear, the researcher conducted another experiment.</div>
+      </div>
+      <div class="key">
+        <div class="label">Kata kunci</div>
+        because → <strong>WHY?</strong>
+      </div>
+    </section>
+
+    <section class="block" id="s4">
+      <h2><span class="n">04</span>ALTHOUGH — meskipun</h2>
+      <p class="lede">Menunjukkan pertentangan.</p>
+      <div class="ex">
+        <div class="en"><mark>Although</mark> the project was difficult, the team completed it.</div>
+        <div class="id">Meskipun proyeknya sulit, tim menyelesaikannya.</div>
+      </div>
+      <span class="pattern">Although + contrasting idea, + main clause</span>
+      <div class="ex">
+        <div class="en"><mark>Although</mark> the company is small, it has many customers.</div>
+      </div>
+    </section>
+
+    <section class="block" id="s5">
+      <h2><span class="n">05</span>IF — jika</h2>
+      <p class="lede">Digunakan untuk menunjukkan kondisi.</p>
+      <div class="ex">
+        <div class="en"><mark>If</mark> you follow the instructions, you can complete the task easily.</div>
+      </div>
+      <span class="pattern">If + condition, + result</span>
+      <div class="ex">
+        <div class="en"><mark>If</mark> the data are accurate, the results will be reliable.</div>
+      </div>
+      <div class="key">
+        <div class="label">Ingat</div>
+        IF = jika kondisi tersebut terjadi
+      </div>
+    </section>
+
+    <section class="block" id="s6">
+      <h2><span class="n">06</span>UNLESS — kecuali jika / jika tidak</h2>
+      <p class="lede"><strong>Unless</strong> memiliki makna yang mirip dengan <em>if&nbsp;...&nbsp;not</em>.</p>
+      <div class="ex">
+        <div class="en">You will fail <mark>unless</mark> you study.</div>
+      </div>
+      <p style="color:var(--ink-soft); max-width: 66ch;">≈ You will fail if you do not study.</p>
+      <span class="pattern">Unless + condition</span>
+      <div class="ex">
+        <div class="en"><mark>Unless</mark> you submit the form, your application cannot be processed.</div>
+      </div>
+    </section>
+
+    <section class="block" id="s7">
+      <h2><span class="n">07</span>BEFORE — sebelum</h2>
+      <p class="lede">Menunjukkan urutan waktu.</p>
+      <div class="ex">
+        <div class="en">Check the information <mark>before</mark> you submit the report.</div>
+        <div class="id">Periksa informasinya sebelum mengirim laporan.</div>
+      </div>
+      <span class="pattern">Before + event 1, event 2</span>
+    </section>
+
+    <section class="block" id="s8">
+      <h2><span class="n">08</span>AFTER — setelah</h2>
+      <p class="lede">Menunjukkan sesuatu yang terjadi setelah kejadian lain.</p>
+      <div class="ex">
+        <div class="en"><mark>After</mark> the employees received training, their productivity increased.</div>
+      </div>
+      <span class="pattern">Training → Productivity increased</span>
+    </section>
+
+    <section class="block" id="s9">
+      <h2><span class="n">09</span>WHILE — ketika / sementara</h2>
+      <p class="lede">Dapat menunjukkan dua hal — perhatikan konteks kalimat.</p>
+      <h3 class="sub">A. Dua aktivitas berlangsung bersamaan</h3>
+      <div class="ex">
+        <div class="en">She studied <mark>while</mark> her brother watched television.</div>
+      </div>
+      <h3 class="sub">B. Pertentangan</h3>
+      <div class="ex">
+        <div class="en">Some people prefer working independently, <mark>while</mark> others prefer teamwork.</div>
+      </div>
+    </section>
+
+    <section class="block" id="s10">
+      <h2><span class="n">10</span>SO THAT — sehingga / agar</h2>
+      <p class="lede">Menunjukkan tujuan atau hasil yang diharapkan.</p>
+      <div class="ex">
+        <div class="en">The manager explained the procedure clearly <mark>so that</mark> everyone could understand it.</div>
+        <div class="id">Manajer menjelaskan prosedurnya dengan jelas agar semua orang dapat memahaminya.</div>
+      </div>
+      <div class="key">
+        <div class="label">Bedakan</div>
+        <strong>SO</strong> → hasil/akibat: <em>It was raining, so we stayed home.</em><br>
+        <strong>SO THAT</strong> → tujuan: <em>He spoke loudly so that everyone could hear him.</em>
+      </div>
+    </section>
+
+    <section class="block" id="s11">
+      <h2><span class="n">11</span>THAT sebagai Noun Clause</h2>
+      <p class="lede"><strong>That</strong> dapat memperkenalkan klausa yang berfungsi sebagai objek atau pelengkap.</p>
+      <div class="ex">
+        <div class="en">I believe <mark>that</mark> practical experience is important.</div>
+      </div>
+      <span class="pattern">Subject + Verb + that + Subject + Verb</span>
+      <div class="ex">
+        <div class="en">I know <mark>that</mark> the company needs new employees.</div>
+      </div>
+      <div class="ex">
+        <div class="en">She explained <mark>that</mark> the results were accurate.</div>
+      </div>
+      <div class="key">
+        <div class="label">Perhatikan</div>
+        I believe <strong>that</strong> practical experience is essential. — bukan <em>I believe although practical experience...</em><br>
+        Setelah <em>believe / know / think / consider</em>, sering diperlukan noun clause.
+      </div>
+    </section>
+
+    <section class="block" id="s12">
+      <h2><span class="n">12</span>Paired Conjunctions</h2>
+      <p class="lede">Conjunction yang digunakan berpasangan.</p>
+
+      <h3 class="sub">EITHER ... OR — salah satu ... atau ...</h3>
+      <div class="ex">
+        <div class="en">You can <mark>either</mark> work from home <mark>or</mark> work at the office.</div>
+      </div>
+      <span class="pattern">Either + A + or + B</span>
+
+      <h3 class="sub">NEITHER ... NOR — tidak ... dan tidak juga ...</h3>
+      <div class="ex">
+        <div class="en"><mark>Neither</mark> the manager <mark>nor</mark> the employees were prepared.</div>
+        <div class="id">Baik manajer maupun karyawan tidak siap.</div>
+      </div>
+      <div class="key">
+        <div class="label">Ingat</div>
+        Neither A nor B = A dan B sama-sama tidak
+      </div>
+
+      <h3 class="sub">BOTH ... AND — keduanya ... dan ...</h3>
+      <div class="ex">
+        <div class="en"><mark>Both</mark> the manager <mark>and</mark> the employees attended the meeting.</div>
+      </div>
+
+      <h3 class="sub">NOT ONLY ... BUT ALSO — tidak hanya ... tetapi juga ...</h3>
+      <div class="ex">
+        <div class="en">The program provides <mark>not only</mark> theoretical knowledge <mark>but also</mark> practical experience.</div>
+      </div>
+      <span class="pattern">Not only + A + but also + B</span>
+
+      <h3 class="sub">WHETHER ... OR — apakah ... atau ...</h3>
+      <p style="color:var(--ink-soft); max-width:66ch;">Digunakan ketika terdapat dua kemungkinan.</p>
+      <div class="ex">
+        <div class="en">I am not sure <mark>whether</mark> the company will accept my application <mark>or</mark> ask for additional documents.</div>
+      </div>
+      <span class="pattern">Whether + A + or + B</span>
+
+      <div class="key">
+        <div class="label">Bedakan Either...Or dengan Whether...Or</div>
+        <strong>Either...or</strong> → pilihan: <em>You can either stay here or leave.</em><br>
+        <strong>Whether...or</strong> → ketidakpastian dua kemungkinan: <em>I don't know whether he will stay or leave.</em>
+      </div>
+    </section>
+
+    <section class="block" id="s13">
+      <h2><span class="n">13</span>Cara Menentukan Conjunction dengan Cepat</h2>
+      <p class="lede">Saat mengerjakan TOEFL, jangan langsung menerjemahkan semua kalimat. Cari <strong>hubungan logis</strong> terlebih dahulu, lalu tanyakan pada diri sendiri:</p>
+
+      <ol class="checklist">
+        <li><div class="q">Apakah menunjukkan sebab?</div><span class="a">because — "Why did it happen? → Because..."</span></li>
+        <li><div class="q">Apakah menunjukkan pertentangan?</div><span class="a">although / but / while</span></li>
+        <li><div class="q">Apakah menunjukkan pilihan?</div><span class="a">or / either...or</span></li>
+        <li><div class="q">Apakah menunjukkan dua kemungkinan yang belum pasti?</div><span class="a">whether...or</span></li>
+        <li><div class="q">Apakah keduanya sama-sama tidak?</div><span class="a">neither...nor</span></li>
+        <li><div class="q">Apakah menunjukkan kondisi?</div><span class="a">if</span></li>
+        <li><div class="q">Apakah menunjukkan pengecualian kondisi?</div><span class="a">unless</span></li>
+        <li><div class="q">Apakah menunjukkan urutan waktu?</div><span class="a">before / after / while</span></li>
+        <li><div class="q">Apakah menunjukkan tujuan?</div><span class="a">so that</span></li>
+        <li><div class="q">Apakah setelah kata kerja seperti believe, know, think, consider?</div><span class="a">that + clause</span></li>
+      </ol>
+    </section>
+
+    <section class="block" id="s14">
+      <h2><span class="n">14</span>Tabel Ringkasan Cepat</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Conjunction</th><th>Arti / Fungsi</th><th>Contoh</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>and</td><td>dan</td><td>A and B</td></tr>
+            <tr><td>but</td><td>tetapi</td><td>A but B</td></tr>
+            <tr><td>or</td><td>atau / konsekuensi</td><td>A or B</td></tr>
+            <tr><td>so</td><td>sehingga</td><td>A, so B</td></tr>
+            <tr><td>because</td><td>karena</td><td>A because B</td></tr>
+            <tr><td>although</td><td>meskipun</td><td>Although A, B</td></tr>
+            <tr><td>if</td><td>jika</td><td>If A, B</td></tr>
+            <tr><td>unless</td><td>kecuali jika</td><td>Unless A, B</td></tr>
+            <tr><td>before</td><td>sebelum</td><td>Before A, B</td></tr>
+            <tr><td>after</td><td>setelah</td><td>After A, B</td></tr>
+            <tr><td>while</td><td>ketika / sementara</td><td>A while B</td></tr>
+            <tr><td>so that</td><td>agar / sehingga</td><td>A so that B</td></tr>
+            <tr><td>that</td><td>bahwa</td><td>I know that...</td></tr>
+            <tr><td>either...or</td><td>salah satu...atau</td><td>Either A or B</td></tr>
+            <tr><td>neither...nor</td><td>tidak keduanya</td><td>Neither A nor B</td></tr>
+            <tr><td>both...and</td><td>keduanya</td><td>Both A and B</td></tr>
+            <tr><td>not only...but also</td><td>tidak hanya...tetapi juga</td><td>Not only A but also B</td></tr>
+            <tr><td>whether...or</td><td>apakah...atau</td><td>Whether A or B</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block finale" id="s15">
+      <h2>Pola yang Paling Penting untuk TOEFL</h2>
+      <p class="lede">Trik utama: jangan hanya menghafal arti kata. Dalam soal TOEFL, tanyakan — <em>"Hubungan antara klausa pertama dan klausa kedua apa?"</em></p>
+      <div class="finale-grid">
+        <div><span class="term">because</span><span class="mean">sebab</span></div>
+        <div><span class="term">although / but</span><span class="mean">pertentangan</span></div>
+        <div><span class="term">if</span><span class="mean">kondisi</span></div>
+        <div><span class="term">unless</span><span class="mean">if not / pengecualian</span></div>
+        <div><span class="term">before / after</span><span class="mean">waktu</span></div>
+        <div><span class="term">so</span><span class="mean">akibat</span></div>
+        <div><span class="term">so that</span><span class="mean">tujuan</span></div>
+        <div><span class="term">either...or</span><span class="mean">pilihan</span></div>
+        <div><span class="term">neither...nor</span><span class="mean">keduanya tidak</span></div>
+        <div><span class="term">both...and</span><span class="mean">penambahan</span></div>
+        <div><span class="term">not only...but also</span><span class="mean">penambahan</span></div>
+        <div><span class="term">whether...or</span><span class="mean">dua kemungkinan</span></div>
+        <div><span class="term">that</span><span class="mean">noun clause</span></div>
+      </div>
+    </section>
+
+    <footer>
+      Rangkuman materi TOEFL Structure — Conjunctions &amp; Connectors.
+    </footer>
+  </main>
+</div>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Kartu Materi TOEFL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --card-soft: #f8fafc;
+      --text: #0f172a;
+      --muted: #52607a;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-2: #6366f1;
+      --primary-soft: #eef2ff;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #eef2ff 0%, #f5f7fb 20%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(226,232,240,0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 16px 20px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .nav a.active {
+      background: var(--primary-soft);
+      border-color: #c7d2fe;
+      color: var(--primary);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #312e81 48%, #4f46e5 100%);
+      color: white;
+      padding: 32px 28px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      right: -40px;
+      top: -70px;
+    }
+
+    .hero .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.06em;
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 12px 0 0;
+      max-width: 760px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 0 0 22px;
+      padding: 6px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .tab-button {
+      flex: 1;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 12px 16px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      background: var(--primary-soft);
+      border-color: #c7d2fe;
+      color: var(--primary);
+    }
+
+    .schedule-todo {
+      margin-bottom: 24px;
+      padding: 22px;
+      background: linear-gradient(135deg, #fff7ed 0%, #ffffff 62%);
+      border: 1px solid #fed7aa;
+      border-radius: 20px;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.04);
+    }
+
+    .schedule-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .schedule-header h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+    }
+
+    .schedule-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .schedule-count {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #ffedd5;
+      color: #9a3412;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .schedule-form {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) 150px 125px auto;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .schedule-form input {
+      width: 100%;
+      min-width: 0;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: white;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .schedule-form input:focus {
+      border-color: #f97316;
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+    }
+
+    .schedule-form button {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 16px;
+      background: #ea580c;
+      color: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .schedule-form button:hover {
+      background: #c2410c;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .schedule-empty {
+      padding: 16px;
+      border: 1px dashed #fdba74;
+      border-radius: 12px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+    }
+
+    .schedule-item.is-done .schedule-task {
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .schedule-check {
+      width: 19px;
+      height: 19px;
+      accent-color: #ea580c;
+      cursor: pointer;
+    }
+
+    .schedule-task {
+      display: block;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .schedule-time {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .schedule-delete {
+      border: 0;
+      padding: 6px 8px;
+      border-radius: 8px;
+      background: transparent;
+      color: #b45309;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .schedule-delete:hover {
+      background: #ffedd5;
+    }
+
+    .tab-panel[hidden] {
+      display: none;
+    }
+
+    .tab-panel h2 {
+      margin: 0 0 16px;
+      font-size: 1.3rem;
+      letter-spacing: -0.04em;
+    }
+
+    .card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px 20px;
+      min-height: 220px;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(79, 70, 229, 0.12);
+      border-color: rgba(79, 70, 229, 0.28);
+    }
+
+    .card-link .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      font-weight: 800;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .card-link h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      letter-spacing: -0.03em;
+      line-height: 1.35;
+    }
+
+    .card-link p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .card-link .link-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .card-link .link-label::after {
+      content: "→";
+      font-size: 1.1rem;
+    }
+
+    .info-box {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #ecfeff 0%, #f8fafc 100%);
+      border: 1px solid #ccfbf1;
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 26px 20px;
+      }
+
+      .schedule-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .schedule-form input[type="text"],
+      .schedule-form button {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+<script defer src="tracker-menu.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-badge">📘</div>
+        <span>English Material</span>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Vocabulary</a>
+        <a href="publicspeaking.html">Public Speaking</a>
+        <a href="chunk.html">ChunkSpeak</a>
+        <a href="kbbi.html">KBBI</a>
+        <a href="transcript.html">Transcript</a>
+        <a href="pranikah.html">Pranikah</a>
+        <a href="psikotest.html">Psikotest</a>
+        <a href="material.html" class="active">Material</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="tag">Kumpulan Kartu</div>
+      <h1>Daftar Materi TOEFL</h1>
+      <p>
+        Pilih kartu untuk membuka pembahasan materi secara terpisah. Setiap kartu akan dibuka di halaman sendiri untuk memudahkan belajar dan revisi.
+      </p>
+    </header>
+
+    <section class="schedule-todo" aria-labelledby="schedule-title">
+      <div class="schedule-header">
+        <div>
+          <h2 id="schedule-title">To-do Jadwal Belajar</h2>
+          <p>Atur agenda belajar dan tandai tugas yang sudah selesai.</p>
+        </div>
+        <span class="schedule-count" id="schedule-count">0 agenda</span>
+      </div>
+      <form class="schedule-form" id="schedule-form">
+        <input id="schedule-task" type="text" placeholder="Contoh: Latihan listening" aria-label="Nama kegiatan" required maxlength="120" />
+        <input id="schedule-date" type="date" aria-label="Tanggal kegiatan" required />
+        <input id="schedule-time" type="time" aria-label="Waktu kegiatan" required />
+        <button type="submit">+ Tambah agenda</button>
+      </form>
+      <div class="schedule-list" id="schedule-list" aria-live="polite"></div>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Kategori materi">
+      <button class="tab-button active" type="button" role="tab" aria-selected="true" aria-controls="english-panel" data-tab="english-panel">Bahasa Inggris</button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="finance-panel" data-tab="finance-panel">Keuangan</button>
+    </div>
+
+    <section id="english-panel" class="tab-panel" role="tabpanel">
+      <h2>Materi Bahasa Inggris</h2>
+      <main class="cards">
+      <a href="toefl/kartu1.html" class="card-link">
+        <div class="number">01</div>
+        <h3>Pronouns, Nouns &amp; Subject–Verb Agreement</h3>
+        <p>Materi dasar TOEFL Structure: subject pronoun, object pronoun, singular-plural, noun phrase, dan head noun.</p>
+        <span class="link-label">Buka kartu 1</span>
+      </a>
+
+      <a href="toefl/kartu2.html" class="card-link">
+        <div class="number">02</div>
+        <h3>Pronouns &amp; Subject-Verb Agreement Lanjutan</h3>
+        <p>Pembahasan lanjutan tentang pronoun, dummy subject, there + be, agreement, infinitive, gerund, dan jebakan TOEFL.</p>
+        <span class="link-label">Buka kartu 2</span>
+      </a>
+
+      <a href="toefl/kartu3.html" class="card-link">
+        <div class="number">03</div>
+        <h3>Object dalam Kalimat Bahasa Inggris</h3>
+        <p>Memahami direct object, indirect object, object pronoun, dan cara menemukan object setelah verb.</p>
+        <span class="link-label">Buka kartu 3</span>
+      </a>
+
+      <a href="toefl/kartu4.html" class="card-link">
+        <div class="number">04</div>
+        <h3>TOEFL Structure: 25 Materi &amp; Latihan Soal</h3>
+        <p>Ringkasan comparative, agreement, relative clause, gerund, infinitive, noun clause, passive, dan pola TOEFL lainnya.</p>
+        <span class="link-label">Buka kartu 4</span>
+      </a>
+
+      <a href="toefl/kartu5.html" class="card-link">
+        <div class="number">05</div>
+        <h3>TOEFL Structure: 25 Materi &amp; Latihan Final</h3>
+        <p>Materi gabungan TOEFL Structure dengan 25 soal latihan, pembahasan, dan fitur pembuat soal AI.</p>
+        <span class="link-label">Buka kartu 5</span>
+      </a>
+
+      <a href="toefl/kartu6.html" class="card-link">
+        <div class="number">06</div>
+        <h3>Adverbs &amp; Related Grammar</h3>
+        <p>Mempelajari jenis adverb, posisi dalam kalimat, pembentukan adverb, serta perbedaannya dengan adjective.</p>
+        <span class="link-label">Buka kartu 6</span>
+      </a>
+
+      <a href="toefl/kartu7.html" class="card-link">
+        <div class="number">07</div>
+        <h3>Subject-Verb Agreement</h3>
+        <p>Memahami kesesuaian subject dan verb, termasuk aturan khusus serta pola jebakan yang sering muncul dalam TOEFL.</p>
+        <span class="link-label">Buka kartu 7</span>
+      </a>
+
+      <a href="toefl/kartu8.html" class="card-link">
+        <div class="number">08</div>
+        <h3>Verb &amp; Tenses</h3>
+        <p>Menguasai jenis verb, penggunaan tenses, serta pola perubahan waktu untuk menjawab soal Structure TOEFL.</p>
+        <span class="link-label">Buka kartu 8</span>
+      </a>
+
+      <a href="toefl/kartu9.html" class="card-link">
+        <div class="number">09</div>
+        <h3>Rangkuman TOEFL Structure</h3>
+        <p>Ringkasan pola subject-verb agreement, infinitive, tenses, passive voice, dan sequence of tenses.</p>
+        <span class="link-label">Buka kartu 9</span>
+      </a>
+
+      <a href="toefl/kartu10.html" class="card-link">
+        <div class="number">10</div>
+        <h3>Will &amp; Would dalam TOEFL</h3>
+        <p>Mempelajari future tense, future perfect, conditional, reported speech, dan penggunaan would.</p>
+        <span class="link-label">Buka kartu 10</span>
+      </a>
+
+      <a href="toefl/kartu11.html" class="card-link">
+        <div class="number">11</div>
+        <h3>TOEFL Structure: 15 Pola Inti</h3>
+        <p>Rangkuman modal, passive, agreement, gerund, clause, inversion, perfect tense, so that, dan such that.</p>
+        <span class="link-label">Buka kartu 11</span>
+      </a>
+
+      <a href="toefl/kartu12.html" class="card-link">
+        <div class="number">12</div>
+        <h3>Structure &amp; Written Expression TOEFL</h3>
+        <p>Catatan lengkap 24 pola grammar TOEFL, termasuk modal, passive, perfect tense, gerund, clause, dan inversion.</p>
+        <span class="link-label">Buka kartu 12</span>
+      </a>
+
+      <a href="toefl/kartu13.html" class="card-link">
+        <div class="number">13</div>
+        <h3>Rangkuman TOEFL Structure</h3>
+        <p>Rangkuman materi Structure untuk memperkuat pemahaman pola grammar yang sering muncul dalam TOEFL.</p>
+        <span class="link-label">Buka kartu 13</span>
+      </a>
+
+      <a href="toefl/kartu14.html" class="card-link">
+        <div class="number">14</div>
+        <h3>TOEFL Structure &amp; Written Expression</h3>
+        <p>Buku catatan pola Structure dan Written Expression untuk latihan dan review grammar TOEFL.</p>
+        <span class="link-label">Buka kartu 14</span>
+      </a>
+
+      <a href="toefl/kartu15.html" class="card-link">
+        <div class="number">15</div>
+        <h3>Adverbs &amp; Adverbial Expressions</h3>
+        <p>Memahami adverb dan adverbial expressions, termasuk fungsi, posisi, serta penggunaannya dalam kalimat.</p>
+        <span class="link-label">Buka kartu 15</span>
+      </a>
+
+      <a href="toefl/kartu16.html" class="card-link">
+        <div class="number">16</div>
+        <h3>Conjunctions &amp; Connectors</h3>
+        <p>Mempelajari coordinating, subordinating, dan paired conjunctions beserta pola penggunaannya.</p>
+        <span class="link-label">Buka kartu 16</span>
+      </a>
+
+      <a href="toefl/kartu17.html" class="card-link">
+        <div class="number">17</div>
+        <h3>Preposition &amp; Collocation</h3>
+        <p>Memahami pasangan kata dan preposition yang umum digunakan dalam soal TOEFL Structure.</p>
+        <span class="link-label">Buka kartu 17</span>
+      </a>
+
+      <a href="toefl/kartu18.html" class="card-link">
+        <div class="number">18</div>
+        <h3>TOEFL Structure: Articles</h3>
+        <p>Mempelajari penggunaan a, an, the, dan zero article, termasuk uncountable nouns dan jebakan bunyi.</p>
+        <span class="link-label">Buka kartu 18</span>
+      </a>
+
+      <a href="toefl/listening.html" class="card-link">
+        <div class="number">19</div>
+        <h3>TOEFL Listening Comprehension</h3>
+        <p>Generate passage listening dengan AI, dengarkan melalui suara bawaan browser, lalu jawab soal pilihan ganda.</p>
+        <span class="link-label">Mulai latihan listening</span>
+      </a>
+      </main>
+    </section>
+
+    <section id="finance-panel" class="tab-panel" role="tabpanel" hidden>
+      <h2>Materi Keuangan</h2>
+      <main class="cards">
+        <a href="pajak.html" class="card-link">
+          <div class="number">01</div>
+          <h3>Pajak</h3>
+          <p>Kumpulan 25 materi perpajakan, mulai dari ketentuan umum, PPh, PPN, hingga brevet pajak.</p>
+          <span class="link-label">Buka materi pajak</span>
+        </a>
+
+        <a href="ekonomi/ikhtisar.html" class="card-link">
+          <div class="number">02</div>
+          <h3>Ekonomi</h3>
+          <p>Kumpulan materi ekonomi tentang inflasi, moneter, pasar keuangan, dan indikator ekonomi.</p>
+          <span class="link-label">Buka materi ekonomi</span>
+        </a>
+
+        <a href="investment%20bank/dasarbanking1.html" class="card-link">
+          <div class="number">03</div>
+          <h3>Investment Banking: Konsep Dasar</h3>
+          <p>Memahami fungsi bank, model bisnis, intermediasi, dan struktur neraca bank.</p>
+          <span class="link-label">Buka sesi 1</span>
+        </a>
+
+        <a href="investment%20bank/akuntansiperbankan2.html" class="card-link">
+          <div class="number">04</div>
+          <h3>Investment Banking: Akuntansi Perbankan</h3>
+          <p>Mempelajari pencatatan aktivitas bisnis bank dalam laporan keuangan.</p>
+          <span class="link-label">Buka sesi 2</span>
+        </a>
+
+        <a href="investment%20bank/risikoperbankan3.html" class="card-link">
+          <div class="number">05</div>
+          <h3>Investment Banking: Risiko Perbankan</h3>
+          <p>Mengenali jenis risiko utama dan cara pengelolaannya di perbankan.</p>
+          <span class="link-label">Buka sesi 3</span>
+        </a>
+
+        <a href="investment%20bank/rasiokeuangan4.html" class="card-link">
+          <div class="number">06</div>
+          <h3>Investment Banking: Rasio Keuangan</h3>
+          <p>Menggunakan rasio untuk membaca kondisi dan kinerja keuangan bank.</p>
+          <span class="link-label">Buka sesi 4</span>
+        </a>
+
+        <a href="https://daffa-finance.vercel.app/" class="card-link" target="_blank" rel="noopener noreferrer">
+          <div class="number">07</div>
+          <h3>Analisis Keuangan</h3>
+          <p>Gunakan aplikasi analisis keuangan untuk membantu membaca dan mengevaluasi kondisi finansial.</p>
+          <span class="link-label">Buka analisis keuangan</span>
+        </a>
+      </main>
+    </section>
+
+    <div class="info-box">
+      Catatan: halaman ini berfungsi sebagai halaman depan materi. Setiap kartu akan dibuka di file terpisah seperti kartu1.html, kartu2.html, dst untuk memudahkan revisi dan pengembangan materi selanjutnya.
+    </div>
+  </div>
+  <script>
+    const scheduleStorageKey = 'english-material-schedule';
+    const scheduleForm = document.getElementById('schedule-form');
+    const scheduleTask = document.getElementById('schedule-task');
+    const scheduleDate = document.getElementById('schedule-date');
+    const scheduleTime = document.getElementById('schedule-time');
+    const scheduleList = document.getElementById('schedule-list');
+    const scheduleCount = document.getElementById('schedule-count');
+    let schedules = JSON.parse(localStorage.getItem(scheduleStorageKey) || '[]');
+
+    const saveSchedules = () => {
+      localStorage.setItem(scheduleStorageKey, JSON.stringify(schedules));
+    };
+
+    const formatScheduleDate = (date, time) => {
+      const dateTime = new Date(`${date}T${time}`);
+      return dateTime.toLocaleString('id-ID', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    };
+
+    const renderSchedules = () => {
+      const pendingCount = schedules.filter((schedule) => !schedule.done).length;
+      scheduleCount.textContent = `${pendingCount} agenda`;
+      scheduleList.innerHTML = '';
+
+      if (!schedules.length) {
+        scheduleList.innerHTML = '<div class="schedule-empty">Belum ada agenda. Tambahkan jadwal belajar pertamamu.</div>';
+        return;
+      }
+
+      [...schedules]
+        .sort((first, second) => `${first.date}T${first.time}`.localeCompare(`${second.date}T${second.time}`))
+        .forEach((schedule) => {
+          const item = document.createElement('div');
+          item.className = `schedule-item${schedule.done ? ' is-done' : ''}`;
+          item.innerHTML = `
+            <input class="schedule-check" type="checkbox" aria-label="Tandai selesai: ${schedule.task.replace(/"/g, '&quot;')}" ${schedule.done ? 'checked' : ''}>
+            <div>
+              <span class="schedule-task"></span>
+              <span class="schedule-time">${formatScheduleDate(schedule.date, schedule.time)}</span>
+            </div>
+            <button class="schedule-delete" type="button">Hapus</button>
+          `;
+          item.querySelector('.schedule-task').textContent = schedule.task;
+          item.querySelector('.schedule-check').addEventListener('change', (event) => {
+            schedule.done = event.target.checked;
+            saveSchedules();
+            renderSchedules();
+          });
+          item.querySelector('.schedule-delete').addEventListener('click', () => {
+            schedules = schedules.filter((entry) => entry.id !== schedule.id);
+            saveSchedules();
+            renderSchedules();
+          });
+          scheduleList.appendChild(item);
+        });
+    };
+
+    scheduleForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      schedules.push({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        task: scheduleTask.value.trim(),
+        date: scheduleDate.value,
+        time: scheduleTime.value,
+        done: false
+      });
+      saveSchedules();
+      renderSchedules();
+      scheduleForm.reset();
+      scheduleTask.focus();
+    });
+
+    renderSchedules();
+
+    document.querySelectorAll('.tab-button').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach((tab) => {
+          const selected = tab === button;
+          tab.classList.toggle('active', selected);
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+
+        document.querySelectorAll('.tab-panel').forEach((panel) => {
+          panel.hidden = panel.id !== button.dataset.tab;
+        });
+      });
+    });
+  </script>
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

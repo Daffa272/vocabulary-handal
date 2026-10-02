@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran: BI-Rate dan BI 7-Day Reverse Repo Rate (BI7DRR)</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #303f9f;
+            --accent-color: #ff9800;
+            --success-color: #4caf50;
+            --warning-color: #ffc107;
+            --danger-color: #f44336;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --code-bg: #f8f9fa;
+            --highlight-bg: #fff3e0;
+            --table-header: #263238;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 0;
+            border-bottom: 4px solid var(--primary-color);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.9em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        .bab {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .formula {
+            background-color: var(--code-bg);
+            padding: 18px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+
+        .important {
+            background-color: #f8bbd0;
+            padding: 20px;
+            border-left: 5px solid var(--danger-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background-color: #c8e6c9;
+            padding: 20px;
+            border-left: 5px solid var(--success-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .diagram {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .soal {
+            background-color: #e3f2fd;
+            padding: 22px;
+            border-radius: 8px;
+            margin: 22px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .jawaban {
+            background-color: #e8f5e9;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 5px solid var(--success-color);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            columns: 2;
+            column-gap: 25px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 35px 0;
+        }
+
+        .kunci {
+            color: var(--danger-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .hafal {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+
+            .diagram {
+                font-size: 0.85em;
+            }
+        }
+
+        .annotation-toolbar {
+            position: fixed;
+            top: 14px;
+            right: 14px;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid #d6dbe4;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+            font-size: 13px;
+        }
+
+        .annotation-toolbar button,
+        .annotation-toolbar input {
+            height: 34px;
+        }
+
+        .annotation-toolbar button {
+            padding: 6px 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            background: #fff;
+            color: #1e293b;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .annotation-toolbar button:hover,
+        .annotation-toolbar button.active {
+            background: #e8eaf6;
+            border-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .annotation-toolbar input[type="color"] {
+            width: 34px;
+            padding: 2px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .annotation-toolbar input[type="range"] {
+            width: 82px;
+            accent-color: var(--secondary-color);
+            cursor: pointer;
+        }
+
+        #annotationLayer {
+            position: absolute;
+            inset: 0 auto auto 0;
+            z-index: 1000;
+            width: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        #annotationLayer.is-active {
+            pointer-events: auto;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        #annotationTextLayer {
+            position: absolute;
+            inset: 0 auto auto 0;
+            z-index: 1002;
+            width: 100%;
+            min-height: 100%;
+            pointer-events: none;
+        }
+
+        .annotation-text {
+            position: absolute;
+            width: 240px;
+            min-height: 76px;
+            border: 1px solid #94a3b8;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+            color: #e53935;
+            font: 600 16px/1.35 Arial, sans-serif;
+            pointer-events: auto;
+            resize: both;
+            overflow: hidden;
+        }
+
+        .annotation-text:focus {
+            outline: 2px solid #3949ab;
+        }
+
+        .annotation-text-handle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 18px;
+            padding: 0 6px;
+            background: #e8eaf6;
+            border-bottom: 1px solid #cbd5e1;
+            color: #3949ab;
+            cursor: move;
+            font: 700 11px/18px Arial, sans-serif;
+            user-select: none;
+        }
+
+        .annotation-text-delete {
+            width: 18px;
+            height: 18px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #b91c1c;
+            cursor: pointer;
+            font: bold 14px/16px Arial, sans-serif;
+        }
+
+        .annotation-text-content {
+            min-height: 56px;
+            padding: 7px;
+            outline: none;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 600px) {
+            .annotation-toolbar {
+                top: auto;
+                right: 10px;
+                bottom: 10px;
+                left: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📚 MATERI PEMBELAJARAN LENGKAP</h1>
+        <h2>BI-RATE DAN BI 7-DAY REVERSE REPO RATE (BI7DRR)</h2>
+        <p><em>Pola: Pengertian → Latar Belakang → Fungsi → Mekanisme → Tujuan → Perubahan BI7DRR → BI-Rate → Contoh → Perbedaan → Rangkuman → Latihan Soal</em></p>
+    </header>
+
+    <nav class="toc">
+        <h2>Daftar Isi</h2>
+        <ul>
+            <li><a href="#pengertian">1. Pengertian BI-Rate</a></li>
+            <li><a href="#sejarah">2. Sejarah BI-Rate</a></li>
+            <li><a href="#alasan">3. Mengapa BI7DRR Diperkenalkan?</a></li>
+            <li><a href="#reverse">4. Apa Itu Reverse Repo?</a></li>
+            <li><a href="#tenor">5. Mengapa Tenor 7 Hari Penting?</a></li>
+            <li><a href="#dampak1">6. Dampak 1: Sinyal Kebijakan</a></li>
+            <li><a href="#dampak2">7. Dampak 2: Transmisi Kebijakan</a></li>
+            <li><a href="#dampak3">8. Dampak 3: Pendalaman Pasar</a></li>
+            <li><a href="#tigadampak">9. Tiga Dampak Utama</a></li>
+            <li><a href="#hubungan">10. Hubungan BI-Rate dengan Pasar Keuangan</a></li>
+            <li><a href="#bi7drr-bank">11. BI7DRR dan Suku Bunga Perbankan</a></li>
+            <li><a href="#sektor">12. BI7DRR dan Sektor Riil</a></li>
+            <li><a href="#inflasi">13. Hubungan BI-Rate dengan Inflasi</a></li>
+            <li><a href="#perubahan">14. Perubahan Nama: BI7DRR → BI-Rate</a></li>
+            <li><a href="#tidakubah">15. Apakah Penggantian Nama Mengubah Kebijakan?</a></li>
+            <li><a href="#tenorhilang">16. Apakah Tenor 7 Hari Hilang?</a></li>
+            <li><a href="#memahami">17. Cara Memahami Perubahan</a></li>
+            <li><a href="#alasanubah">18. Mengapa Nama Diubah?</a></li>
+            <li><a href="#timeline">19. Timeline BI-Rate</a></li>
+            <li><a href="#acuan">20. Mengapa BI7DRR Disebut Suku Bunga Acuan?</a></li>
+            <li><a href="#stance">21. Konsep "Stance" Kebijakan Moneter</a></li>
+            <li><a href="#repo">22. Hubungan BI-Rate dan Repo</a></li>
+            <li><a href="#efektif">23. Mengapa BI7DRR Dianggap Lebih Efektif?</a></li>
+            <li><a href="#pendalaman">24. Hubungan dengan Pendalaman Pasar Keuangan</a></li>
+            <li><a href="#petakonsep">25. Peta Konsep BI-Rate</a></li>
+            <li><a href="#transmisi">26. Hubungan dengan Transmisi Kebijakan Moneter</a></li>
+            <li><a href="#tigakunci">27. Tiga Kata Kunci BI7DRR</a></li>
+            <li><a href="#perbedaan">28. Perbedaan BI-Rate dan BI7DRR</a></li>
+            <li><a href="#salah">29. Hal yang Sering Salah Dipahami</a></li>
+            <li><a href="#kasus1">30. Contoh Kasus 1: BI-Rate Naik</a></li>
+            <li><a href="#kasus2">31. Contoh Kasus 2: BI-Rate Turun</a></li>
+            <li><a href="#soalanalisis">32. Contoh Soal Analisis</a></li>
+            <li><a href="#soalkonsep">33. Contoh Soal Konsep</a></li>
+            <li><a href="#rangkuman">34. Rangkuman Utama</a></li>
+            <li><a href="#hafal30">35. Hafalan 30 Detik</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Pengertian BI-Rate -->
+    <section id="pengertian" class="bab">
+        <h2>1. Pengertian BI-Rate</h2>
+
+        <p><strong>BI-Rate</strong> adalah <strong>suku bunga kebijakan Bank Indonesia</strong> yang digunakan sebagai salah satu instrumen utama dalam pelaksanaan kebijakan moneter.</p>
+
+        <p>BI-Rate menjadi bagian penting dalam upaya Bank Indonesia untuk memengaruhi:</p>
+        <ul>
+            <li>pasar uang,</li>
+            <li>suku bunga perbankan,</li>
+            <li>sektor riil,</li>
+            <li>dan pada akhirnya pencapaian target inflasi.</li>
+        </ul>
+
+        <div class="highlight">
+            <p><strong>Intinya:</strong></p>
+            <blockquote>
+                <strong>BI-Rate = suku bunga kebijakan Bank Indonesia yang menjadi sinyal arah kebijakan moneter.</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- 2. Sejarah BI-Rate -->
+    <section id="sejarah" class="bab">
+        <h2>2. Sejarah BI-Rate</h2>
+
+        <p>Untuk memahami BI-Rate, kita perlu melihat perubahan kebijakan suku bunga Bank Indonesia.</p>
+
+        <p>Pada:</p>
+        <div class="formula">
+> <strong>19 Agustus 2016</strong>
+        </div>
+
+        <p>Bank Indonesia memperkuat kerangka operasi moneter dengan memperkenalkan suku bunga acuan baru yang disebut:</p>
+        <div class="formula">
+> <strong>BI-7 Day Reverse Repo Rate (BI7DRR)</strong>
+        </div>
+
+        <p>Instrumen ini kemudian menjadi suku bunga kebijakan Bank Indonesia.</p>
+    </section>
+
+    <!-- 3. Mengapa BI7DRR Diperkenalkan? -->
+    <section id="alasan" class="bab">
+        <h2>3. Mengapa BI7DRR Diperkenalkan?</h2>
+
+        <p>Bank Indonesia melakukan penguatan kerangka operasi moneter karena ingin meningkatkan <strong>efektivitas kebijakan moneter</strong>.</p>
+
+        <p>BI7DRR mempunyai karakteristik yang membuatnya lebih kuat dalam memengaruhi pasar.</p>
+
+        <p>Menurut materi, BI7DRR:</p>
+        <ol>
+            <li>mempunyai hubungan yang lebih kuat dengan suku bunga pasar uang;</li>
+            <li>bersifat transaksional atau diperdagangkan di pasar;</li>
+            <li>mendorong pendalaman pasar keuangan;</li>
+            <li>khususnya mendorong penggunaan instrumen <strong>repo</strong>.</li>
+        </ol>
+    </section>
+
+    <!-- 4. Apa Itu Reverse Repo? -->
+    <section id="reverse" class="bab">
+        <h2>4. Apa Itu Reverse Repo?</h2>
+
+        <p>Dalam materi, BI7DRR tetap berkaitan dengan transaksi:</p>
+        <div class="formula">
+> <strong>reverse repo Bank Indonesia tenor 7 hari.</strong>
+        </div>
+
+        <p>Secara sederhana, <strong>reverse repo</strong> dapat dipahami sebagai transaksi surat berharga dengan mekanisme pembelian dan penjualan kembali sesuai kesepakatan.</p>
+
+        <p>Dalam konteks BI7DRR, yang sangat penting untuk diingat adalah:</p>
+        <div class="formula">
+> <strong>7 Day → tenor transaksi reverse repo = 7 hari.</strong>
+        </div>
+
+        <p>Jadi angka <strong>7</strong> pada BI7DRR berkaitan dengan tenor <strong>7 hari</strong>.</p>
+    </section>
+
+    <!-- 5. Mengapa Tenor 7 Hari Penting? -->
+    <section id="tenor" class="bab">
+        <h2>5. Mengapa Tenor 7 Hari Penting?</h2>
+
+        <p>Penggunaan tenor 7 hari membuat suku bunga kebijakan mempunyai hubungan yang lebih dekat dengan kondisi pasar uang.</p>
+
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+BI7DRR
+   ↓
+Suku bunga pasar uang
+   ↓
+Suku bunga perbankan
+   ↓
+Aktivitas konsumsi & investasi
+   ↓
+Sektor riil
+   ↓
+Inflasi & perekonomian
+        </div>
+
+        <p>Dengan demikian, perubahan suku bunga kebijakan diharapkan dapat ditransmisikan lebih efektif ke perekonomian.</p>
+    </section>
+
+    <!-- 6. Tiga Dampak Utama yang Diharapkan -->
+    <section id="dampak1" class="bab">
+        <h2>6. Tiga Dampak Utama yang Diharapkan</h2>
+
+        <p>Menurut materi, penggunaan BI7DRR sebagai suku bunga kebijakan diharapkan menghasilkan <strong>tiga dampak utama</strong>.</p>
+
+        <h3>1. Memperkuat sinyal kebijakan moneter</h3>
+        <p>BI7DRR menjadi:</p>
+        <blockquote>
+            <strong>acuan utama di pasar keuangan.</strong>
+        </blockquote>
+
+        <p>Artinya, perubahan BI7DRR memberikan sinyal mengenai arah kebijakan moneter Bank Indonesia.</p>
+
+        <p><strong>Misalnya:</strong></p>
+        <p><strong>BI7DRR naik</strong></p>
+        <p>dapat memberikan sinyal bahwa kebijakan moneter menjadi lebih ketat.</p>
+
+        <p>Sebaliknya:</p>
+        <p><strong>BI7DRR turun</strong></p>
+        <p>dapat memberikan sinyal bahwa kebijakan moneter menjadi lebih longgar.</p>
+    </section>
+
+    <!-- 7. Dampak Kedua: Memperkuat Transmisi Kebijakan Moneter -->
+    <section id="dampak2" class="bab">
+        <h2>7. Dampak Kedua: Memperkuat Transmisi Kebijakan Moneter</h2>
+
+        <p>Dampak kedua adalah:</p>
+        <blockquote>
+            <strong>Meningkatnya efektivitas transmisi kebijakan moneter.</strong>
+        </blockquote>
+
+        <p>Caranya melalui pengaruh BI7DRR terhadap:</p>
+        <ul>
+            <li>suku bunga pasar uang,</li>
+            <li>suku bunga perbankan.</li>
+        </ul>
+
+        <h3>Alur sederhananya:</h3>
+        <div class="diagram">
+BI7DRR
+  ↓
+Suku bunga pasar uang
+  ↓
+Suku bunga perbankan
+  ↓
+Kredit & aktivitas ekonomi
+  ↓
+Permintaan agregat
+  ↓
+Inflasi
+        </div>
+
+        <p>Jadi, BI7DRR tidak berhenti pada pasar uang, tetapi diharapkan dapat memengaruhi kegiatan ekonomi yang lebih luas.</p>
+    </section>
+
+    <!-- 8. Dampak Ketiga: Pendalaman Pasar Keuangan -->
+    <section id="dampak3" class="bab">
+        <h2>8. Dampak Ketiga: Pendalaman Pasar Keuangan</h2>
+
+        <p>Dampak ketiga adalah:</p>
+        <blockquote>
+            <strong>Terbentuknya pasar keuangan yang lebih dalam.</strong>
+        </blockquote>
+
+        <p>Khususnya melalui:</p>
+        <blockquote>
+            <strong>transaksi dan pembentukan struktur suku bunga di Pasar Uang Antar Bank (PUAB) untuk tenor 3–12 bulan.</strong>
+        </blockquote>
+
+        <h3>Apa yang dimaksud pendalaman pasar keuangan?</h3>
+        <p>Secara sederhana, pasar keuangan yang semakin dalam berarti pasar memiliki aktivitas transaksi dan pembentukan harga yang semakin berkembang.</p>
+
+        <p>Dalam materi, salah satu fokusnya adalah:</p>
+        <blockquote>
+            <strong>PUAB tenor 3–12 bulan.</strong>
+        </blockquote>
+    </section>
+
+    <!-- 9. Tiga Dampak Utama -->
+    <section id="tigadampak" class="bab">
+        <h2>9. Tiga Dampak Utama BI7DRR</h2>
+
+        <p>Agar mudah dihafalkan:</p>
+
+        <h3>BI7DRR memiliki 3 dampak utama:</h3>
+        <ol>
+            <li><strong>Sinyal</strong><br>→ Memperkuat sinyal kebijakan moneter.</li>
+            <li><strong>Transmisi</strong><br>→ Memperkuat transmisi kebijakan moneter.</li>
+            <li><strong>Pendalaman</strong><br>→ Mendorong pendalaman pasar keuangan.</li>
+        </ol>
+
+        <div class="hafal">
+            <p><strong>Rumus hafalan:</strong></p>
+            <blockquote>
+                <strong>SINYAL → TRANSMISI → PASAR</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- 10. Hubungan BI-Rate dengan Pasar Keuangan -->
+    <section id="hubungan" class="bab">
+        <h2>10. Hubungan BI-Rate dengan Pasar Keuangan</h2>
+
+        <p>BI-Rate digunakan untuk memberikan sinyal kepada pasar mengenai arah kebijakan moneter.</p>
+
+        <p><strong>Misalnya:</strong></p>
+
+        <h3>BI-Rate meningkat</h3>
+        <div class="diagram">
+BI-Rate ↑
+   ↓
+Suku bunga pasar uang cenderung ↑
+   ↓
+Suku bunga perbankan dapat ↑
+   ↓
+Biaya pinjaman ↑
+   ↓
+Permintaan kredit dapat ↓
+   ↓
+Aktivitas ekonomi dapat melambat
+   ↓
+Tekanan inflasi dapat berkurang
+        </div>
+
+        <p>Sebaliknya:</p>
+
+        <h3>BI-Rate menurun</h3>
+        <div class="diagram">
+BI-Rate ↓
+   ↓
+Suku bunga pasar uang cenderung ↓
+   ↓
+Suku bunga perbankan dapat ↓
+   ↓
+Biaya pinjaman ↓
+   ↓
+Permintaan kredit dapat ↑
+   ↓
+Konsumsi & investasi dapat meningkat
+   ↓
+Aktivitas ekonomi meningkat
+        </div>
+
+        <div class="note">
+            ⚠️ <strong>Catatan:</strong> alur tersebut menggambarkan mekanisme transmisi secara sederhana; respons aktual dapat berbeda tergantung kondisi ekonomi dan sektor keuangan.
+        </div>
+    </section>
+
+    <!-- 11. BI7DRR dan Suku Bunga Perbankan -->
+    <section id="bi7drr-bank" class="bab">
+        <h2>11. BI7DRR dan Suku Bunga Perbankan</h2>
+
+        <p>Salah satu alasan BI7DRR diperkenalkan adalah kemampuannya untuk memengaruhi:</p>
+        <blockquote>
+            <strong>suku bunga pasar uang dan suku bunga perbankan.</strong>
+        </blockquote>
+
+        <p>Misalnya Bank Indonesia menaikkan suku bunga kebijakan.</p>
+
+        <p>Bank dapat merespons dengan menyesuaikan suku bunga:</p>
+        <ul>
+            <li>deposito,</li>
+            <li>kredit,</li>
+            <li>dan instrumen perbankan lainnya.</li>
+        </ul>
+
+        <p>Kemudian perubahan tersebut dapat memengaruhi keputusan:</p>
+        <ul>
+            <li>rumah tangga,</li>
+            <li>perusahaan,</li>
+            <li>investor,</li>
+            <li>dan pelaku ekonomi lainnya.</li>
+        </ul>
+    </section>
+
+    <!-- 12. BI7DRR dan Sektor Riil -->
+    <section id="sektor" class="bab">
+        <h2>12. BI7DRR dan Sektor Riil</h2>
+
+        <p>Mengapa Bank Indonesia ingin suku bunga kebijakan cepat memengaruhi sektor riil?</p>
+
+        <p>Karena sektor riil berkaitan dengan aktivitas ekonomi seperti:</p>
+        <ul>
+            <li>konsumsi,</li>
+            <li>investasi,</li>
+            <li>produksi,</li>
+            <li>dan kegiatan usaha.</li>
+        </ul>
+
+        <p><strong>Contohnya:</strong></p>
+        <div class="diagram">
+<strong>BI-Rate turun</strong>
+↓
+
+Suku bunga kredit dapat turun
+↓
+
+Biaya pinjaman perusahaan dapat menurun
+↓
+
+Perusahaan lebih terdorong melakukan investasi
+↓
+
+Produksi dan aktivitas ekonomi dapat meningkat.
+        </div>
+    </section>
+
+    <!-- 13. Hubungan BI-Rate dengan Inflasi -->
+    <section id="inflasi" class="bab">
+        <h2>13. Hubungan BI-Rate dengan Inflasi</h2>
+
+        <p>Tujuan akhir kebijakan moneter dalam kerangka yang dijelaskan sebelumnya adalah menjaga stabilitas harga.</p>
+
+        <p>BI-Rate merupakan instrumen untuk memengaruhi kondisi perekonomian sehingga membantu pencapaian sasaran inflasi.</p>
+
+        <h3>Jika tekanan inflasi tinggi:</h3>
+        <p>Bank Indonesia dapat menggunakan kebijakan moneter yang lebih ketat, salah satunya melalui kenaikan suku bunga kebijakan.</p>
+
+        <h3>Jika perekonomian membutuhkan stimulus:</h3>
+        <p>Bank Indonesia dapat menurunkan suku bunga kebijakan apabila kondisi dan pertimbangan kebijakan mendukung.</p>
+    </section>
+
+    <!-- 14. Perubahan Nama: BI7DRR Menjadi BI-Rate -->
+    <section id="perubahan" class="bab">
+        <h2>14. Perubahan Nama: BI7DRR Menjadi BI-Rate</h2>
+
+        <p>Ini merupakan <strong>poin yang sangat penting untuk ujian</strong>.</p>
+
+        <p>Mulai:</p>
+        <div class="formula">
+> <strong>21 Desember 2023</strong>
+        </div>
+
+        <p>Bank Indonesia menggunakan nama:</p>
+        <div class="formula">
+> <strong>BI-Rate</strong>
+        </div>
+
+        <p>untuk menggantikan nama:</p>
+        <div class="formula">
+> <strong>BI7DRR</strong>
+        </div>
+
+        <p>Namun, perubahan nama ini <strong>tidak mengubah makna dan tujuan</strong> BI-Rate sebagai:</p>
+        <blockquote>
+            <strong>stance kebijakan moneter Bank Indonesia.</strong>
+        </blockquote>
+    </section>
+
+    <!-- 15. Apakah Penggantian Nama Mengubah Kebijakan? -->
+    <section id="tidakubah" class="bab">
+        <h2>15. Apakah Penggantian Nama Mengubah Kebijakan?</h2>
+
+        <div class="important">
+            <p><strong>Tidak.</strong></p>
+        </div>
+
+        <p>Berdasarkan materi:</p>
+        <blockquote>
+            Penggantian nama dari BI7DRR menjadi BI-Rate <strong>tidak mengubah makna dan tujuan</strong> sebagai stance kebijakan moneter Bank Indonesia.
+        </blockquote>
+
+        <p>Jadi jangan memahami perubahan ini sebagai pergantian total instrumen atau perubahan kerangka kebijakan moneter.</p>
+
+        <p>Yang berubah terutama adalah:</p>
+        <blockquote>
+            <strong>nama untuk memperkuat komunikasi kebijakan moneter.</strong>
+        </blockquote>
+    </section>
+
+    <!-- 16. Apakah Tenor 7 Hari Hilang? -->
+    <section id="tenorhilang" class="bab">
+        <h2>16. Apakah Tenor 7 Hari Hilang?</h2>
+
+        <div class="important">
+            <p><strong>Tidak.</strong></p>
+        </div>
+
+        <p>Walaupun sekarang disebut:</p>
+        <div class="formula">
+> <strong>BI-Rate</strong>
+        </div>
+
+        <p>operasionalisasinya tetap mengacu pada:</p>
+        <div class="formula">
+> <strong>transaksi reverse repo Bank Indonesia tenor 7 hari.</strong>
+        </div>
+
+        <p>Ini merupakan poin yang sering membingungkan.</p>
+
+        <h3>Jadi:</h3>
+        <div class="diagram">
+<strong>BI7DRR → BI-Rate</strong>
+
+tetapi:
+
+<strong>Reverse Repo 7 hari → tetap menjadi dasar operasionalisasi.</strong>
+        </div>
+    </section>
+
+    <!-- 17. Cara Memahami Perubahan BI7DRR → BI-Rate -->
+    <section id="memahami" class="bab">
+        <h2>17. Cara Memahami Perubahan BI7DRR → BI-Rate</h2>
+
+        <p>Gunakan tabel berikut:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Sebelum</th>
+                    <th>Setelah</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BI7DRR</td>
+                    <td><strong>BI-Rate</strong></td>
+                </tr>
+                <tr>
+                    <td>Mulai digunakan 19 Agustus 2016</td>
+                    <td>Nama BI-Rate mulai digunakan 21 Desember 2023</td>
+                </tr>
+                <tr>
+                    <td>Suku bunga kebijakan</td>
+                    <td>Suku bunga kebijakan</td>
+                </tr>
+                <tr>
+                    <td>Stance kebijakan moneter</td>
+                    <td>Stance kebijakan moneter</td>
+                </tr>
+                <tr>
+                    <td>Reverse repo 7 hari</td>
+                    <td>Reverse repo 7 hari</td>
+                </tr>
+                <tr>
+                    <td>Memperkuat transmisi</td>
+                    <td>Tetap bertujuan memperkuat transmisi</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success">
+            <p><strong>Kesimpulan:</strong></p>
+            <blockquote>
+                <strong>Nama berubah, makna dan tujuan tidak berubah.</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- 18. Mengapa Nama Diubah? -->
+    <section id="alasanubah" class="bab">
+        <h2>18. Mengapa Nama Diubah?</h2>
+
+        <p>Menurut materi:</p>
+        <blockquote>
+            Penggunaan nama <strong>BI-Rate</strong> mulai 21 Desember 2023 dilakukan untuk <strong>memperkuat komunikasi kebijakan moneter</strong>.
+        </blockquote>
+
+        <p>Dengan nama yang lebih sederhana, Bank Indonesia ingin memperjelas komunikasi mengenai stance kebijakan moneternya.</p>
+    </section>
+
+    <!-- 19. Timeline BI-Rate -->
+    <section id="timeline" class="bab">
+        <h2>19. Timeline BI-Rate</h2>
+
+        <h3>19 Agustus 2016</h3>
+        <p>Bank Indonesia memperkuat kerangka operasi moneter dan menerapkan:</p>
+        <div class="formula">
+> <strong>BI7DRR</strong>
+        </div>
+
+        <p>↓</p>
+
+        <h3>2016–2023</h3>
+        <p>BI7DRR digunakan sebagai suku bunga kebijakan.</p>
+
+        <p>↓</p>
+
+        <h3>21 Desember 2023</h3>
+        <p>Nama BI7DRR diganti menjadi:</p>
+        <div class="formula">
+> <strong>BI-Rate</strong>
+        </div>
+
+        <p>↓</p>
+
+        <h3>Saat ini</h3>
+        <p>BI-Rate digunakan sebagai:</p>
+        <div class="formula">
+> <strong>suku bunga kebijakan Bank Indonesia</strong>
+        </div>
+
+        <p>dan operasionalisasinya tetap mengacu pada:</p>
+        <div class="formula">
+> <strong>reverse repo Bank Indonesia tenor 7 hari.</strong>
+        </div>
+    </section>
+
+    <!-- 20. Mengapa BI7DRR Disebut Suku Bunga Acuan? -->
+    <section id="acuan" class="bab">
+        <h2>20. Mengapa BI7DRR Disebut Suku Bunga Acuan?</h2>
+
+        <p>Karena BI7DRR digunakan sebagai salah satu referensi penting bagi kondisi suku bunga di pasar keuangan.</p>
+
+        <p>Ketika Bank Indonesia mengubah suku bunga kebijakan, perubahan tersebut diharapkan memengaruhi:</p>
+        <div class="diagram">
+BI-Rate
+   ↓
+Pasar Uang
+   ↓
+Perbankan
+   ↓
+Kredit & Deposito
+   ↓
+Konsumsi & Investasi
+   ↓
+Sektor Riil
+   ↓
+Inflasi
+        </div>
+    </section>
+
+    <!-- 21. Konsep "Stance" Kebijakan Moneter -->
+    <section id="stance" class="bab">
+        <h2>21. Konsep "Stance" Kebijakan Moneter</h2>
+
+        <p>Istilah:</p>
+        <div class="formula">
+> <strong>stance kebijakan moneter</strong>
+        </div>
+
+        <p>mengacu pada arah atau sikap kebijakan moneter yang ditempuh bank sentral.</p>
+
+        <p><strong>Secara sederhana:</strong></p>
+
+        <h3>Stance lebih ketat</h3>
+        <p>Bank sentral menaikkan atau mempertahankan suku bunga pada tingkat yang lebih tinggi untuk mengendalikan tekanan ekonomi/inflasi.</p>
+
+        <h3>Stance lebih longgar</h3>
+        <p>Bank sentral menurunkan atau mempertahankan suku bunga pada tingkat yang lebih rendah untuk mendukung aktivitas ekonomi ketika kondisi memungkinkan.</p>
+
+        <p>Dalam materi, BI-Rate merupakan representasi:</p>
+        <blockquote>
+            <strong>stance kebijakan moneter Bank Indonesia.</strong>
+        </blockquote>
+    </section>
+
+    <!-- 22. Hubungan BI-Rate dan Repo -->
+    <section id="repo" class="bab">
+        <h2>22. Hubungan BI-Rate dan Repo</h2>
+
+        <p><strong>Poin penting:</strong></p>
+        <blockquote>
+            <strong>BI-Rate tidak berdiri terpisah dari operasi moneter.</strong>
+        </blockquote>
+
+        <p>Operasionalisasinya tetap mengacu pada:</p>
+        <div class="formula">
+> <strong>transaksi reverse repo Bank Indonesia tenor 7 hari.</strong>
+        </div>
+
+        <p>Sehingga:</p>
+        <div class="diagram">
+BI-Rate
+   ↓
+Operasionalisasi
+   ↓
+Reverse Repo BI
+   ↓
+Tenor 7 Hari
+        </div>
+    </section>
+
+    <!-- 23. Mengapa BI7DRR Dianggap Lebih Efektif? -->
+    <section id="efektif" class="bab">
+        <h2>23. Mengapa BI7DRR Dianggap Lebih Efektif?</h2>
+
+        <p>Menurut materi, BI7DRR mempunyai kemampuan untuk secara cepat memengaruhi:</p>
+        <blockquote>
+            <strong>pasar uang → perbankan → sektor riil</strong>
+        </blockquote>
+
+        <p>Hal ini menjadi alasan penting Bank Indonesia menggunakan BI7DRR dalam memperkuat kerangka operasi moneternya.</p>
+    </section>
+
+    <!-- 24. Hubungan dengan Pendalaman Pasar Keuangan -->
+    <section id="pendalaman" class="bab">
+        <h2>24. Hubungan dengan Pendalaman Pasar Keuangan</h2>
+
+        <p>BI7DRR juga diharapkan mendorong:</p>
+        <blockquote>
+            <strong>pendalaman pasar keuangan</strong>
+        </blockquote>
+
+        <p>terutama penggunaan instrumen:</p>
+        <div class="formula">
+> <strong>repo</strong>
+        </div>
+
+        <p>dan pembentukan struktur suku bunga pada:</p>
+        <div class="formula">
+> <strong>PUAB tenor 3–12 bulan.</strong>
+        </div>
+
+        <p>Jadi BI7DRR bukan hanya berkaitan dengan inflasi, tetapi juga memiliki kaitan dengan perkembangan pasar keuangan.</p>
+    </section>
+
+    <!-- 25. Peta Konsep BI-Rate -->
+    <section id="petakonsep" class="bab">
+        <h2>25. Peta Konsep BI-Rate</h2>
+
+        <div class="diagram">
+                    BI-RATE
+                       │
+                       ▼
+             Suku Bunga Kebijakan
+                       │
+          ┌────────────┼────────────┐
+          │            │            │
+          ▼            ▼            ▼
+       Sinyal       Transmisi    Pendalaman
+       Kebijakan    Kebijakan     Pasar Keuangan
+          │            │            │
+          │            ▼            ▼
+          │       Pasar Uang      Repo
+          │            ↓          PUAB
+          │       Perbankan       3–12 bulan
+          │            ↓
+          │      Sektor Riil
+          │            ↓
+          └────────→ Inflasi
+        </div>
+    </section>
+
+    <!-- 26. Hubungan BI-Rate dengan Materi Transmisi Kebijakan Moneter -->
+    <section id="transmisi" class="bab">
+        <h2>26. Hubungan BI-Rate dengan Materi Transmisi Kebijakan Moneter</h2>
+
+        <p>BI-Rate merupakan <strong>titik awal penting</strong> dalam transmisi kebijakan moneter.</p>
+
+        <p>Ketika BI-Rate berubah, pengaruhnya dapat diteruskan melalui beberapa jalur.</p>
+
+        <h3>Jalur suku bunga</h3>
+        <div class="diagram">
+BI-Rate
+↓
+Suku bunga pasar uang
+↓
+Suku bunga deposito & kredit
+↓
+Konsumsi & investasi
+↓
+Permintaan agregat
+↓
+Inflasi
+        </div>
+
+        <h3>Jalur nilai tukar</h3>
+        <div class="diagram">
+BI-Rate
+↓
+Perbedaan suku bunga
+↓
+Aliran modal
+↓
+Nilai tukar Rupiah
+↓
+Harga barang impor
+↓
+Inflasi
+        </div>
+
+        <h3>Jalur harga aset</h3>
+        <div class="diagram">
+BI-Rate
+↓
+Harga aset
+↓
+Kekayaan & keputusan investasi
+↓
+Permintaan agregat
+↓
+Inflasi
+        </div>
+
+        <h3>Jalur ekspektasi</h3>
+        <div class="diagram">
+BI-Rate
+↓
+Ekspektasi masyarakat
+↓
+Konsumsi, produksi & investasi
+↓
+Pembentukan harga
+↓
+Inflasi
+        </div>
+    </section>
+
+    <!-- 27. Tiga Kata Kunci BI7DRR -->
+    <section id="tigakunci" class="bab">
+        <h2>27. Tiga Kata Kunci BI7DRR</h2>
+
+        <p>Kalau keluar soal mengenai <strong>tujuan/dampak BI7DRR</strong>, ingat:</p>
+        <div class="formula">
+> ### <strong>S – T – P</strong>
+        </div>
+
+        <h3><strong>S = Sinyal</strong></h3>
+        <p>Memperkuat sinyal kebijakan moneter.</p>
+
+        <h3><strong>T = Transmisi</strong></h3>
+        <p>Memperkuat efektivitas transmisi kebijakan moneter.</p>
+
+        <h3><strong>P = Pendalaman</strong></h3>
+        <p>Mendorong pendalaman pasar keuangan.</p>
+    </section>
+
+    <!-- 28. Perbedaan BI-Rate dan BI7DRR -->
+    <section id="perbedaan" class="bab">
+        <h2>28. Perbedaan BI-Rate dan BI7DRR</h2>
+
+        <p>Sebenarnya keduanya sangat berkaitan.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>BI7DRR</th>
+                    <th>BI-Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nama yang digunakan sejak 19 Agustus 2016</td>
+                    <td>Nama yang digunakan sejak 21 Desember 2023</td>
+                </tr>
+                <tr>
+                    <td>Suku bunga kebijakan</td>
+                    <td>Suku bunga kebijakan</td>
+                </tr>
+                <tr>
+                    <td>Menjadi stance kebijakan moneter</td>
+                    <td>Menjadi stance kebijakan moneter</td>
+                </tr>
+                <tr>
+                    <td>Mengacu pada reverse repo 7 hari</td>
+                    <td>Tetap mengacu pada reverse repo 7 hari</td>
+                </tr>
+                <tr>
+                    <td>Penggunaan nama diperkenalkan untuk memperkuat operasi moneter</td>
+                    <td>Penggunaan nama diperkuat untuk komunikasi kebijakan</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="success">
+            <p><strong>Kesimpulan:</strong></p>
+            <blockquote>
+                <strong>BI7DRR dan BI-Rate bukan dua kebijakan yang sepenuhnya berbeda. BI-Rate merupakan nama yang digunakan Bank Indonesia sejak 21 Desember 2023 untuk suku bunga kebijakan yang sebelumnya disebut BI7DRR.</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- 29. Hal yang Sering Salah Dipahami -->
+    <section id="salah" class="bab">
+        <h2>29. Hal yang Sering Salah Dipahami</h2>
+
+        <h3>❌ Salah:</h3>
+        <p>"BI-Rate menggantikan sistem reverse repo 7 hari."</p>
+
+        <h3>✅ Benar:</h3>
+        <p>BI-Rate menggantikan <strong>nama BI7DRR</strong>, sedangkan operasionalisasinya tetap mengacu pada <strong>transaksi reverse repo BI tenor 7 hari</strong>.</p>
+
+        <hr>
+
+        <h3>❌ Salah:</h3>
+        <p>"BI7DRR hanya bertujuan mengatur bunga bank."</p>
+
+        <h3>✅ Benar:</h3>
+        <p>BI7DRR digunakan untuk memperkuat:</p>
+        <ul>
+            <li>sinyal kebijakan,</li>
+            <li>transmisi kebijakan moneter,</li>
+            <li>dan pendalaman pasar keuangan.</li>
+        </ul>
+
+        <hr>
+
+        <h3>❌ Salah:</h3>
+        <p>"BI7DRR hanya berpengaruh terhadap pasar uang."</p>
+
+        <h3>✅ Benar:</h3>
+        <p>Menurut materi, BI7DRR diharapkan dapat memengaruhi:</p>
+        <blockquote>
+            <strong>pasar uang → perbankan → sektor riil.</strong>
+        </blockquote>
+    </section>
+
+    <!-- 30. Contoh Kasus 1 — BI-Rate Naik -->
+    <section id="kasus1" class="bab">
+        <h2>30. Contoh Kasus 1 — BI-Rate Naik</h2>
+
+        <p>Misalnya Bank Indonesia menaikkan BI-Rate.</p>
+
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+BI-Rate naik
+     ↓
+Sinyal kebijakan lebih ketat
+     ↓
+Suku bunga pasar uang meningkat
+     ↓
+Suku bunga perbankan dapat meningkat
+     ↓
+Kredit menjadi lebih mahal
+     ↓
+Permintaan kredit dapat menurun
+     ↓
+Konsumsi/investasi dapat melambat
+     ↓
+Tekanan permintaan terhadap inflasi dapat berkurang
+        </div>
+    </section>
+
+    <!-- 31. Contoh Kasus 2 — BI-Rate Turun -->
+    <section id="kasus2" class="bab">
+        <h2>31. Contoh Kasus 2 — BI-Rate Turun</h2>
+
+        <p>Misalnya BI-Rate diturunkan.</p>
+
+        <div class="diagram">
+BI-Rate turun
+     ↓
+Sinyal kebijakan lebih longgar
+     ↓
+Suku bunga pasar uang dapat turun
+     ↓
+Suku bunga kredit dapat turun
+     ↓
+Biaya pinjaman lebih rendah
+     ↓
+Permintaan kredit dapat meningkat
+     ↓
+Konsumsi & investasi dapat meningkat
+     ↓
+Aktivitas ekonomi dapat meningkat
+        </div>
+    </section>
+
+    <!-- 32. Contoh Soal Analisis -->
+    <section id="soalanalisis" class="bab">
+        <h2>32. Contoh Soal Analisis</h2>
+
+        <div class="soal">
+            <h3>Soal:</h3>
+            <p>Bank Indonesia menurunkan BI-Rate. Apa dampak yang diharapkan terhadap pasar keuangan?</p>
+
+            <h3>Jawaban:</h3>
+            <p>Penurunan BI-Rate diharapkan dapat memengaruhi penurunan suku bunga pasar uang dan suku bunga perbankan. Selanjutnya, biaya kredit dapat menurun sehingga aktivitas konsumsi dan investasi dapat meningkat.</p>
+        </div>
+    </section>
+
+    <!-- 33. Contoh Soal Konsep -->
+    <section id="soalkonsep" class="bab">
+        <h2>33. Contoh Soal Konsep</h2>
+
+        <div class="soal">
+            <h3>Soal:</h3>
+            <p>Mengapa BI7DRR dapat memperkuat transmisi kebijakan moneter?</p>
+
+            <h3>Jawaban:</h3>
+            <p>Karena BI7DRR memiliki hubungan yang lebih kuat dengan suku bunga pasar uang, bersifat transaksional atau diperdagangkan di pasar, serta diharapkan dapat memengaruhi suku bunga pasar uang dan suku bunga perbankan secara lebih efektif.</p>
+        </div>
+    </section>
+
+    <!-- 34. Rangkuman Utama -->
+    <section id="rangkuman" class="bab">
+        <h2>34. Rangkuman Utama</h2>
+
+        <h3>BI7DRR</h3>
+        <p>Diperkenalkan:</p>
+        <div class="formula">
+> <strong>19 Agustus 2016</strong>
+        </div>
+
+        <p>Tujuan utamanya dalam penguatan operasi moneter adalah meningkatkan efektivitas kebijakan moneter.</p>
+
+        <p><strong>Tiga dampak utama:</strong></p>
+        <ol>
+            <li><strong>Memperkuat sinyal kebijakan moneter</strong></li>
+            <li><strong>Memperkuat transmisi kebijakan moneter</strong></li>
+            <li><strong>Mendorong pendalaman pasar keuangan</strong></li>
+        </ol>
+
+        <hr>
+
+        <h3>BI-Rate</h3>
+        <p>Mulai digunakan sebagai nama suku bunga kebijakan:</p>
+        <div class="formula">
+> <strong>21 Desember 2023</strong>
+        </div>
+
+        <p><strong>Penggantian nama:</strong></p>
+        <div class="formula">
+> <strong>BI7DRR → BI-Rate</strong>
+        </div>
+
+        <p><strong>Tujuannya:</strong></p>
+        <div class="formula">
+> <strong>Memperkuat komunikasi kebijakan moneter.</strong>
+        </div>
+
+        <p><strong>Yang tidak berubah:</strong></p>
+        <div class="formula">
+> <strong>Makna dan tujuan sebagai stance kebijakan moneter Bank Indonesia.</strong>
+        </div>
+
+        <p><strong>Operasionalisasi:</strong></p>
+        <div class="formula">
+> <strong>Tetap mengacu pada transaksi reverse repo BI tenor 7 hari.</strong>
+        </div>
+    </section>
+
+    <!-- 35. Hafalan 30 Detik -->
+    <section id="hafal30" class="bab">
+        <h2>🧠 35. Hafalan 30 Detik</h2>
+
+        <p>Kalau mau menghafal materi ini dengan cepat, gunakan kalimat berikut:</p>
+
+        <div class="hafal">
+            <p><strong>Pada 19 Agustus 2016, Bank Indonesia memperkenalkan BI7DRR sebagai suku bunga kebijakan untuk memperkuat operasi moneter. BI7DRR diharapkan memperkuat sinyal kebijakan, memperkuat transmisi kebijakan moneter, dan mendorong pendalaman pasar keuangan. Sejak 21 Desember 2023, BI7DRR menggunakan nama BI-Rate untuk memperkuat komunikasi kebijakan moneter. Perubahan nama tersebut tidak mengubah makna dan tujuan BI-Rate sebagai stance kebijakan moneter, serta operasionalisasinya tetap mengacu pada transaksi reverse repo BI tenor 7 hari.</strong></p>
+        </div>
+
+        <h3>🔑 Rumus super singkat:</h3>
+        <div class="summary">
+            <p><strong>19 AGUSTUS 2016</strong><br>→ <strong>BI7DRR</strong></p>
+            <p><strong>BI7DRR</strong><br>→ <strong>Sinyal + Transmisi + Pendalaman</strong></p>
+            <p><strong>21 DESEMBER 2023</strong><br>→ <strong>BI-Rate</strong></p>
+            <p><strong>BI-Rate</strong><br>→ <strong>Nama berubah, makna & tujuan tetap</strong></p>
+            <p><strong>Operasionalisasi</strong><br>→ <strong>Reverse Repo 7 hari</strong></p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 3px solid var(--primary-color); background-color: white; border-radius: 10px;">
+        <p><strong>📚 Materi Pembelajaran: BI-Rate dan BI 7-Day Reverse Repo Rate (BI7DRR)</strong></p>
+        <p>© 2024 | Modul Pembelajaran Sistematik untuk Ujian, Kuliah, dan Presentasi</p>
+        <p><em>Pola: Pengertian → Latar Belakang → Fungsi → Mekanisme → Tujuan → Perubahan → Contoh → Rangkuman</em></p>
+    </footer>
+
+    <div class="annotation-toolbar" aria-label="Alat coretan">
+        <button id="annotationToggle" type="button" title="Aktifkan atau matikan mode coretan">✎ Coretan</button>
+        <button id="annotationEraser" type="button" title="Hapus bagian coretan" aria-label="Hapus bagian coretan"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 21 9-9"/><path d="M14.5 5.5 18 2l4 4-3.5 3.5"/><path d="m3 17 4 4h5l9-9-4-4-9 9H3Z"/></svg></button>
+        <button id="annotationText" type="button" title="Tambahkan kotak teks">Teks</button>
+        <input id="annotationColor" type="color" value="#e53935" title="Warna pen" aria-label="Warna pen">
+        <label for="annotationSize">Ukuran</label>
+        <input id="annotationSize" type="range" min="1" max="12" value="3" title="Ukuran pen" aria-label="Ukuran pen">
+        <button id="annotationUndo" type="button" title="Batalkan coretan terakhir">↶</button>
+        <button id="annotationRedo" type="button" title="Ulangi perubahan terakhir">↷</button>
+        <button id="annotationClear" type="button" title="Hapus semua coretan">Hapus semua</button>
+    </div>
+    <svg id="annotationLayer" aria-hidden="true"></svg>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script>
+    (() => {
+        const layer = document.getElementById('annotationLayer');
+        const toggle = document.getElementById('annotationToggle');
+        const colorInput = document.getElementById('annotationColor');
+        const sizeInput = document.getElementById('annotationSize');
+        const eraser = document.getElementById('annotationEraser');
+        const textButton = document.getElementById('annotationText');
+        const undo = document.getElementById('annotationUndo');
+        const redo = document.getElementById('annotationRedo');
+        const clear = document.getElementById('annotationClear');
+        const storageKey = 'page_annotations_v2:' + location.pathname;
+        const textStorageKey = storageKey + ':texts';
+        const textLayer = document.createElement('div');
+        textLayer.id = 'annotationTextLayer';
+        document.body.appendChild(textLayer);
+        let strokes = loadStrokes();
+        let texts = loadTexts();
+        const undoHistory = [];
+        const redoHistory = [];
+        let historySuspended = false;
+
+        function snapshot() {
+            return JSON.parse(JSON.stringify({ strokes, texts }));
+        }
+
+        function recordHistory() {
+            if (historySuspended) return;
+            undoHistory.push(snapshot());
+            if (undoHistory.length > 100) undoHistory.shift();
+            redoHistory.length = 0;
+        }
+
+        function restoreState(state) {
+            historySuspended = true;
+            strokes = state.strokes || [];
+            texts = state.texts || [];
+            saveStrokes();
+            saveTexts();
+            renderStrokes();
+            renderTexts();
+            requestAnimationFrame(() => { historySuspended = false; });
+        }
+        let drawing = false;
+        let activeStroke = null;
+        let isActive = false;
+        let isEraser = false;
+        let erasing = false;
+        let isTextMode = false;
+        let erasingRecorded = false;
+
+        function documentHeight() {
+            return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, window.innerHeight);
+        }
+
+        function updateLayerSize() {
+            layer.setAttribute('viewBox', `0 0 ${window.innerWidth} ${documentHeight()}`);
+            layer.setAttribute('width', window.innerWidth);
+            layer.setAttribute('height', documentHeight());
+        }
+
+        function loadStrokes() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                return Array.isArray(saved) ? saved : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveStrokes() {
+            localStorage.setItem(storageKey, JSON.stringify(strokes));
+        }
+
+        function loadTexts() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(textStorageKey) || '[]');
+                return Array.isArray(saved) ? saved : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveTexts() {
+            localStorage.setItem(textStorageKey, JSON.stringify(texts));
+        }
+
+        function renderTexts() {
+            textLayer.replaceChildren();
+            texts.forEach((item, index) => {
+                const text = document.createElement('div');
+                text.className = 'annotation-text';
+                text.style.left = `${item.x}px`;
+                text.style.top = `${item.y}px`;
+                text.style.color = item.color;
+                text.style.fontSize = `${item.size}px`;
+                if (item.width) text.style.width = `${item.width}px`;
+                if (item.height) text.style.height = `${item.height}px`;
+                const handle = document.createElement('div');
+                handle.className = 'annotation-text-handle';
+                const handleLabel = document.createElement('span');
+                handleLabel.textContent = 'Kotak teks - geser untuk memindahkan';
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'annotation-text-delete';
+                deleteButton.type = 'button';
+                deleteButton.title = 'Hapus kotak teks';
+                deleteButton.textContent = '×';
+                deleteButton.addEventListener('pointerdown', event => event.stopPropagation());
+                deleteButton.addEventListener('click', event => {
+                    event.stopPropagation();
+                    recordHistory();
+                    texts.splice(index, 1);
+                    saveTexts();
+                    renderTexts();
+                });
+                handle.append(handleLabel, deleteButton);
+                const content = document.createElement('div');
+                content.className = 'annotation-text-content';
+                content.contentEditable = 'true';
+                content.textContent = item.value;
+                let editingRecorded = false;
+                content.addEventListener('focus', () => { editingRecorded = false; });
+                content.addEventListener('input', () => {
+                    if (!editingRecorded) {
+                        recordHistory();
+                        editingRecorded = true;
+                    }
+                    item.value = content.textContent;
+                    saveTexts();
+                });
+                handle.addEventListener('pointerdown', event => {
+                    event.preventDefault();
+                    const startX = event.clientX;
+                    const startY = event.clientY;
+                    const originX = item.x;
+                    const originY = item.y;
+                    recordHistory();
+                    const move = moveEvent => {
+                        item.x = originX + moveEvent.clientX - startX;
+                        item.y = originY + moveEvent.clientY - startY;
+                        text.style.left = `${item.x}px`;
+                        text.style.top = `${item.y}px`;
+                    };
+                    const stop = () => {
+                        document.removeEventListener('pointermove', move);
+                        document.removeEventListener('pointerup', stop);
+                        saveTexts();
+                    };
+                    document.addEventListener('pointermove', move);
+                    document.addEventListener('pointerup', stop, { once: true });
+                });
+                text.append(handle, content);
+                textLayer.appendChild(text);
+                text.addEventListener('pointerdown', event => {
+                    const nearRight = event.offsetX >= text.offsetWidth - 18;
+                    const nearBottom = event.offsetY >= text.offsetHeight - 18;
+                    if (nearRight && nearBottom) recordHistory();
+                });
+                if (window.ResizeObserver) {
+                    new ResizeObserver(() => {
+                        item.width = text.offsetWidth;
+                        item.height = text.offsetHeight;
+                        saveTexts();
+                    }).observe(text);
+                }
+            });
+        }
+
+        function addText(event) {
+            const point = pointFromEvent(event);
+            recordHistory();
+            texts.push({ x: point.x, y: point.y, value: '', color: colorInput.value, size: Math.max(12, Number(sizeInput.value) * 4 + 4) });
+            saveTexts();
+            renderTexts();
+            const content = textLayer.lastElementChild?.querySelector('.annotation-text-content');
+            if (content) content.focus();
+        }
+
+        function pointFromEvent(event) {
+            const screenPoint = layer.createSVGPoint();
+            screenPoint.x = event.clientX;
+            screenPoint.y = event.clientY;
+            const screenMatrix = layer.getScreenCTM();
+            if (!screenMatrix) return { x: event.clientX, y: event.clientY + window.scrollY };
+            const pagePoint = screenPoint.matrixTransform(screenMatrix.inverse());
+            return { x: pagePoint.x, y: pagePoint.y };
+        }
+
+        function renderStrokes() {
+            layer.replaceChildren();
+            strokes.forEach(stroke => {
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const points = stroke.points.map(point => `${point.x},${point.y}`).join(' ');
+                path.setAttribute('d', `M ${points.replace(/ /g, ' L ')}`);
+                path.setAttribute('fill', 'none');
+                path.setAttribute('stroke', stroke.color);
+                path.setAttribute('stroke-width', stroke.size);
+                path.setAttribute('stroke-linecap', 'round');
+                path.setAttribute('stroke-linejoin', 'round');
+                path.dataset.strokeId = stroke.id;
+                layer.appendChild(path);
+            });
+        }
+
+        function beginStroke(event) {
+            if (!isActive) return;
+            event.preventDefault();
+            drawing = true;
+            activeStroke = {
+                id: Date.now() + Math.random(),
+                color: colorInput.value,
+                size: Number(sizeInput.value),
+                points: [pointFromEvent(event)]
+            };
+            layer.setPointerCapture(event.pointerId);
+        }
+
+        function continueStroke(event) {
+            if (!drawing || !activeStroke) return;
+            event.preventDefault();
+            activeStroke.points.push(pointFromEvent(event));
+            renderStrokesWithActive();
+        }
+
+        function finishStroke() {
+            if (!drawing || !activeStroke) return;
+            drawing = false;
+            if (activeStroke.points.length > 1) {
+                recordHistory();
+                strokes.push(activeStroke);
+                saveStrokes();
+            }
+            activeStroke = null;
+            renderStrokes();
+        }
+
+        function renderStrokesWithActive() {
+            const savedStrokes = strokes;
+            if (activeStroke) strokes = savedStrokes.concat(activeStroke);
+            renderStrokes();
+            strokes = savedStrokes;
+        }
+
+        function eraseAt(event) {
+            const point = pointFromEvent(event);
+            const threshold = Math.max(12, Number(sizeInput.value) * 3);
+            const nextStrokes = [];
+            let changed = false;
+
+            strokes.forEach(stroke => {
+                let remainingPoints = [];
+                const keepSegment = () => {
+                    if (remainingPoints.length > 1) {
+                        nextStrokes.push({ ...stroke, points: remainingPoints });
+                    }
+                    remainingPoints = [];
+                };
+
+                stroke.points.forEach(item => {
+                    const isErased = Math.hypot(item.x - point.x, item.y - point.y) <= threshold + (stroke.size / 2);
+                    if (isErased) {
+                        changed = true;
+                        keepSegment();
+                    } else {
+                        remainingPoints.push(item);
+                    }
+                });
+                keepSegment();
+            });
+
+            if (changed) {
+                if (!erasingRecorded) {
+                    recordHistory();
+                    erasingRecorded = true;
+                }
+                strokes = nextStrokes;
+                saveStrokes();
+                renderStrokes();
+            }
+        }
+
+        function beginErase(event) {
+            if (!isActive || !isEraser) return;
+            event.preventDefault();
+            erasing = true;
+            erasingRecorded = false;
+            layer.setPointerCapture(event.pointerId);
+            eraseAt(event);
+        }
+
+        toggle.addEventListener('click', () => {
+            isActive = !isActive;
+            isTextMode = false;
+            textButton.classList.remove('active');
+            layer.classList.toggle('is-active', isActive);
+            toggle.classList.toggle('active', isActive);
+            toggle.textContent = isActive ? '✓ Selesai' : '✎ Coretan';
+        });
+
+        textButton.addEventListener('click', () => {
+            isTextMode = !isTextMode;
+            isActive = isTextMode;
+            layer.classList.toggle('is-active', isActive);
+            textButton.classList.toggle('active', isTextMode);
+            toggle.classList.remove('active');
+        });
+
+        eraser.addEventListener('click', () => {
+            isEraser = !isEraser;
+            eraser.classList.toggle('active', isEraser);
+            eraser.innerHTML = isEraser
+                ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 21 9-9"/><path d="M14.5 5.5 18 2l4 4-3.5 3.5"/><path d="m3 17 4 4h5l9-9-4-4-9 9H3Z"/></svg> Aktif'
+                : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 21 9-9"/><path d="M14.5 5.5 18 2l4 4-3.5 3.5"/><path d="m3 17 4 4h5l9-9-4-4-9 9H3Z"/></svg>';
+        });
+
+        undo.addEventListener('click', () => {
+            if (!undoHistory.length) return;
+            redoHistory.push(snapshot());
+            restoreState(undoHistory.pop());
+        });
+
+        redo.addEventListener('click', () => {
+            if (!redoHistory.length) return;
+            undoHistory.push(snapshot());
+            restoreState(redoHistory.pop());
+        });
+
+        document.addEventListener('keydown', event => {
+            if (!(event.ctrlKey || event.metaKey)) return;
+            const isUndo = event.key.toLowerCase() === 'z' && !event.shiftKey;
+            const isRedo = event.key.toLowerCase() === 'y' || (event.key.toLowerCase() === 'z' && event.shiftKey);
+            if (!isUndo && !isRedo) return;
+            event.preventDefault();
+            (isUndo ? undo : redo).click();
+        });
+
+        clear.addEventListener('click', () => {
+            if ((!strokes.length && !texts.length) || !confirm('Hapus semua anotasi pada halaman ini?')) return;
+            recordHistory();
+            strokes = [];
+            texts = [];
+            saveStrokes();
+            saveTexts();
+            renderStrokes();
+            renderTexts();
+        });
+
+        layer.addEventListener('pointerdown', event => isTextMode ? addText(event) : (isEraser ? beginErase(event) : beginStroke(event)));
+        layer.addEventListener('pointermove', event => {
+            if (isEraser && erasing) eraseAt(event);
+            else continueStroke(event);
+        });
+        layer.addEventListener('pointerup', finishStroke);
+        layer.addEventListener('pointercancel', finishStroke);
+        layer.addEventListener('pointerup', () => { erasing = false; erasingRecorded = false; });
+        layer.addEventListener('pointercancel', () => { erasing = false; erasingRecorded = false; });
+        window.addEventListener('resize', () => { updateLayerSize(); renderStrokes(); });
+        window.addEventListener('load', () => { updateLayerSize(); renderStrokes(); renderTexts(); });
+        updateLayerSize();
+        renderStrokes();
+        renderTexts();
+    })();
+</script>
+</html>

@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran: Kebijakan Moneter, Transmisi Kebijakan Moneter, dan Pengendalian Inflasi</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #ddd;
+            --code-bg: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 3px solid var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .bab {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .important {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-left: 4px solid var(--warning-color);
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid var(--success-color);
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .diagram {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 20px 0;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .soal {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .jawaban {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .formula {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid var(--warning-color);
+            font-family: 'Courier New', monospace;
+        }
+
+        .summary {
+            background-color: #fce4ec;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .toc {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+        }
+
+        .toc ul {
+            columns: 2;
+            column-gap: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 5px;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 30px 0;
+        }
+
+        .kunci {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>MATERI PEMBELAJARAN LENGKAP</h1>
+        <h2>KEBIJAKAN MONETER, TRANSMISI KEBIJAKAN MONETER, DAN PENGENDALIAN INFLASI</h2>
+        <p><em>Modul pembelajaran sistematis untuk belajar mandiri, presentasi, dan persiapan ujian</em></p>
+    </header>
+
+    <nav>
+        <strong>Daftar Isi:</strong>
+        <a href="#bab1">BAB 1</a>
+        <a href="#bab2">BAB 2</a>
+        <a href="#bab3">BAB 3</a>
+        <a href="#bab4">BAB 4</a>
+        <a href="#bab5">BAB 5</a>
+        <a href="#bab6">BAB 6</a>
+        <a href="#bab7">BAB 7</a>
+        <a href="#bab50">BAB 50+</a>
+    </nav>
+
+    <div class="toc">
+        <h2>Daftar Isi Lengkap</h2>
+        <ul>
+            <li><a href="#bab1">BAB 1 - Pengantar Kebijakan Moneter</a></li>
+            <li><a href="#bab2">BAB 2 - Tujuan Kebijakan Moneter</a></li>
+            <li><a href="#bab3">BAB 3 - Pentingnya Stabilitas Rupiah</a></li>
+            <li><a href="#bab4">BAB 4 - Inflation Targeting Framework (ITF)</a></li>
+            <li><a href="#bab5">BAB 5 - Perkembangan ITF ke Flexible ITF</a></li>
+            <li><a href="#bab6">BAB 6 - Flexible ITF</a></li>
+            <li><a href="#bab7">BAB 7 - Lima Elemen Flexible ITF</a></li>
+            <li><a href="#bab8">BAB 8 - Penerapan Flexible ITF</a></li>
+            <li><a href="#bab9">BAB 9 - Sasaran Inflasi dan Time Lag</a></li>
+            <li><a href="#bab10">BAB 10 - Perkiraan Inflasi</a></li>
+            <li><a href="#bab11">BAB 11 - BI-RATE</a></li>
+            <li><a href="#bab12">BAB 12 - Fungsi BI-RATE</a></li>
+            <li><a href="#bab13">BAB 13 - Reformulasi Kebijakan Moneter</a></li>
+            <li><a href="#bab14">BAB 14 - Prinsip Reformulasi</a></li>
+            <li><a href="#bab15">BAB 15 - Transmisi Kebijakan Moneter</a></li>
+            <li><a href="#bab16">BAB 16 - Jalur Transmisi</a></li>
+            <li><a href="#bab17">BAB 17 - Jalur Suku Bunga</a></li>
+            <li><a href="#bab18">BAB 18 - Jalur Nilai Tukar</a></li>
+            <li><a href="#bab19">BAB 19 - Jalur Harga Aset</a></li>
+            <li><a href="#bab20">BAB 20 - Jalur Ekspektasi</a></li>
+            <li><a href="#bab21">BAB 21 - Jalur Kredit</a></li>
+            <li><a href="#bab22">BAB 22 - Kendala Transmisi</a></li>
+            <li><a href="#bab23">BAB 23 - Model Sederhana</a></li>
+            <li><a href="#bab24">BAB 24 - Determinan Inflasi</a></li>
+            <li><a href="#bab25">BAB 25 - Jenis Inflasi</a></li>
+            <li><a href="#bab26">BAB 26 - Output Gap</a></li>
+            <li><a href="#bab27">BAB 27 - Sisi Permintaan & Penawaran</a></li>
+            <li><a href="#bab28">BAB 28 - Peran BI vs Pemerintah</a></li>
+            <li><a href="#bab29">BAB 29 - Koordinasi Pengendalian Inflasi</a></li>
+            <li><a href="#bab30">BAB 30 - TPIN, TPIP, TPID</a></li>
+            <li><a href="#bab31">BAB 31 - Stakeholder</a></li>
+            <li><a href="#bab32">BAB 32 - Konsep 4K</a></li>
+            <li><a href="#bab33">BAB 33 - Contoh 4K</a></li>
+            <li><a href="#bab34">BAB 34 - GNPIP</a></li>
+            <li><a href="#bab35">BAB 35 - Koordinasi Kebijakan</a></li>
+            <li><a href="#bab36">BAB 36 - Shocks</a></li>
+            <li><a href="#bab37">BAB 37 - Diagram Transmisi</a></li>
+            <li><a href="#bab38">BAB 38 - Indikator</a></li>
+            <li><a href="#bab39">BAB 39 - Neraca Keuangan</a></li>
+            <li><a href="#bab40">BAB 40 - Transmisi Ideal vs Realitas</a></li>
+            <li><a href="#bab41">BAB 41 - Transparansi</a></li>
+            <li><a href="#bab42">BAB 42 - Definisi Transparansi</a></li>
+            <li><a href="#bab43">BAB 43 - Akuntabilitas</a></li>
+            <li><a href="#bab44">BAB 44 - Komunikasi Kebijakan</a></li>
+            <li><a href="#bab45">BAB 45 - Pentingnya Komunikasi</a></li>
+            <li><a href="#bab46">BAB 46 - Media Komunikasi BI</a></li>
+            <li><a href="#bab47">BAB 47 - Hubungan Semua Konsep</a></li>
+            <li><a href="#bab48">BAB 48 - Kasus 1: Inflasi Tinggi</a></li>
+            <li><a href="#bab49">BAB 49 - Kasus 2: Ekonomi Melemah</a></li>
+            <li><a href="#bab50">BAB 50 - Kasus 3: Rupiah Melemah</a></li>
+            <li><a href="#bab51">BAB 51 - Kasus 4: Harga Cabai Naik</a></li>
+            <li><a href="#bab52">BAB 52 - Perbedaan Moneter & Fiskal</a></li>
+            <li><a href="#bab53">BAB 53 - Istilah Penting</a></li>
+            <li><a href="#bab54">BAB 54 - Ringkasan 1 Menit</a></li>
+            <li><a href="#bab55">BAB 55 - Peta Konsep</a></li>
+            <li><a href="#bab56">BAB 56 - Latihan Soal</a></li>
+            <li><a href="#bab57">BAB 57 - Soal Analisis</a></li>
+            <li><a href="#bab58">BAB 58 - Pertanyaan Essay</a></li>
+            <li><a href="#bab59">BAB 59 - Cara Mudah Menghafal</a></li>
+            <li><a href="#bab60">BAB 60 - Kesimpulan</a></li>
+        </ul>
+    </div>
+
+    <!-- BAB 1 -->
+    <section id="bab1" class="bab">
+        <h2>BAB 1 — PENGANTAR KEBIJAKAN MONETER</h2>
+
+        <h3>1.1 Apa Itu Kebijakan Moneter?</h3>
+        <p><strong>Kebijakan moneter</strong> adalah kebijakan yang dilakukan oleh <strong>Bank Indonesia (BI)</strong> untuk memengaruhi kondisi moneter dan perekonomian melalui berbagai instrumen, terutama <strong>suku bunga kebijakan</strong>, dengan tujuan utama menjaga <strong>stabilitas nilai Rupiah</strong>.</p>
+
+        <div class="highlight">
+            <p><strong>Secara sederhana:</strong></p>
+            <blockquote>
+                <strong>Bank Indonesia → menetapkan kebijakan moneter → memengaruhi suku bunga, nilai tukar, kredit, konsumsi, investasi, dan ekspektasi → memengaruhi inflasi dan perekonomian.</strong>
+            </blockquote>
+        </div>
+
+        <p>Kebijakan moneter <strong>tidak langsung mengubah harga barang</strong>. Ada proses yang disebut <strong>transmisi kebijakan moneter</strong> dan membutuhkan waktu.</p>
+    </section>
+
+    <!-- BAB 2 -->
+    <section id="bab2" class="bab">
+        <h2>BAB 2 — TUJUAN KEBIJAKAN MONETER</h2>
+
+        <h3>2.1 Tujuan Utama</h3>
+        <p>Tujuan utama kebijakan moneter Bank Indonesia adalah:</p>
+        <ol>
+            <li><strong>Mencapai dan memelihara stabilitas nilai Rupiah</strong></li>
+            <li><strong>Memelihara stabilitas sistem pembayaran</strong></li>
+            <li><strong>Turut menjaga stabilitas sistem keuangan</strong></li>
+            <li>Mendukung <strong>pertumbuhan ekonomi yang berkelanjutan</strong></li>
+        </ol>
+
+        <h3>Stabilitas nilai Rupiah memiliki dua aspek penting:</h3>
+
+        <h4>A. Stabilitas harga</h4>
+        <p>Diukur melalui:</p>
+        <div class="formula">
+            <p><strong>Inflasi yang rendah dan stabil</strong></p>
+        </div>
+        <p><strong>Contoh:</strong></p>
+        <p>Jika inflasi terlalu tinggi, harga makanan, transportasi, perumahan, dan kebutuhan lainnya meningkat dengan cepat sehingga daya beli masyarakat menurun.</p>
+
+        <h4>B. Stabilitas nilai tukar</h4>
+        <p>Diukur melalui:</p>
+        <div class="formula">
+            <p><strong>Kestabilan nilai Rupiah terhadap mata uang negara lain.</strong></p>
+        </div>
+        <p>Contohnya adalah nilai Rupiah terhadap dolar AS.</p>
+        <p>Jika Rupiah mengalami depresiasi terlalu tajam, harga barang impor dapat meningkat dan kemudian menimbulkan <strong>imported inflation</strong>.</p>
+    </section>
+
+    <!-- BAB 3 -->
+    <section id="bab3" class="bab">
+        <h2>BAB 3 — MENGAPA STABILITAS RUPIAH PENTING?</h2>
+
+        <p>Stabilitas Rupiah penting karena berhubungan erat dengan:</p>
+        <div class="formula">
+            <p><strong>Inflasi → daya beli → konsumsi → investasi → produksi → pertumbuhan ekonomi</strong></p>
+        </div>
+
+        <p><strong>Jika inflasi terlalu tinggi dan tidak stabil:</strong></p>
+        <ul>
+            <li>daya beli masyarakat menurun;</li>
+            <li>biaya produksi meningkat;</li>
+            <li>ketidakpastian usaha meningkat;</li>
+            <li>investasi dapat tertunda;</li>
+            <li>masyarakat kesulitan membuat perencanaan keuangan;</li>
+            <li>pertumbuhan ekonomi dapat terganggu.</li>
+        </ul>
+
+        <p>Sebaliknya, inflasi yang rendah dan stabil memberikan lingkungan yang lebih kondusif bagi:</p>
+        <ul>
+            <li>konsumsi;</li>
+            <li>investasi;</li>
+            <li>produksi;</li>
+            <li>perdagangan;</li>
+            <li>penciptaan lapangan kerja;</li>
+            <li>pertumbuhan ekonomi berkelanjutan.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 4 -->
+    <section id="bab4" class="bab">
+        <h2>BAB 4 — INFLATION TARGETING FRAMEWORK (ITF)</h2>
+
+        <h3>4.1 Pengertian ITF</h3>
+        <p>Bank Indonesia menerapkan <strong>Inflation Targeting Framework (ITF)</strong> sejak <strong>1 Juli 2005</strong>.</p>
+        <p>ITF merupakan kerangka kebijakan moneter yang menjadikan <strong>target inflasi</strong> sebagai sasaran utama kebijakan.</p>
+
+        <div class="highlight">
+            <p><strong>Secara sederhana:</strong></p>
+            <blockquote>
+                <strong>BI menetapkan arah kebijakan berdasarkan perkiraan inflasi ke depan agar inflasi aktual dapat berada di sekitar sasaran.</strong>
+            </blockquote>
+        </div>
+
+        <p>Target inflasi diumumkan kepada publik.</p>
+        <p>Hal ini penting karena masyarakat dan pelaku ekonomi dapat mengetahui komitmen Bank Indonesia terhadap stabilitas harga.</p>
+    </section>
+
+    <!-- BAB 5 -->
+    <section id="bab5" class="bab">
+        <h2>BAB 5 — MENGAPA ITF BERKEMBANG MENJADI FLEXIBLE ITF?</h2>
+
+        <p>Krisis keuangan global <strong>2008/2009</strong> memberikan pelajaran penting.</p>
+        <p>Sebelumnya, perhatian utama dalam ITF adalah:</p>
+        <div class="formula">
+            <p><strong>Menjaga inflasi agar sesuai target.</strong></p>
+        </div>
+
+        <p>Namun, krisis menunjukkan bahwa <strong>inflasi yang stabil saja belum cukup</strong>.</p>
+        <p><strong>Mengapa?</strong></p>
+        <p>Karena sistem keuangan juga dapat mengalami ketidakstabilan.</p>
+
+        <p><strong>Misalnya:</strong></p>
+        <blockquote>
+            Kredit meningkat terlalu cepat → harga aset meningkat berlebihan → risiko keuangan meningkat → terjadi krisis → aktivitas ekonomi turun.
+        </blockquote>
+
+        <p>Dengan demikian, bank sentral perlu memperhatikan:</p>
+        <ul>
+            <li>stabilitas harga;</li>
+            <li>stabilitas nilai tukar;</li>
+            <li>stabilitas sistem keuangan;</li>
+            <li>kondisi sektor keuangan;</li>
+            <li>kondisi makroekonomi.</li>
+        </ul>
+
+        <p>Karena itu, kerangka ITF diperkuat menjadi:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">FLEXIBLE ITF</h1>
+    </section>
+
+    <!-- BAB 6 -->
+    <section id="bab6" class="bab">
+        <h2>BAB 6 — FLEXIBLE ITF</h2>
+
+        <h3>6.1 Pengertian</h3>
+        <p><strong>Flexible ITF</strong> adalah pengembangan ITF yang tetap menjadikan stabilitas harga sebagai tujuan utama, tetapi memberikan fleksibilitas yang lebih besar untuk memperhatikan:</p>
+        <ul>
+            <li>stabilitas sistem keuangan;</li>
+            <li>nilai tukar;</li>
+            <li>arus modal;</li>
+            <li>kondisi makroekonomi;</li>
+            <li>koordinasi kebijakan.</li>
+        </ul>
+
+        <div class="highlight">
+            <p><strong>Dengan kata lain:</strong></p>
+            <blockquote>
+                <strong>Flexible ITF = Inflation Targeting + fleksibilitas untuk menjaga stabilitas ekonomi dan sistem keuangan secara lebih luas.</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- BAB 7 -->
+    <section id="bab7" class="bab">
+        <h2>BAB 7 — LIMA ELEMEN FLEXIBLE ITF</h2>
+
+        <p>Flexible ITF dibangun berdasarkan <strong>5 elemen pokok</strong>.</p>
+
+        <h3>1. Inflation Targeting</h3>
+        <p>Strategi penargetan inflasi tetap menjadi dasar kebijakan moneter.</p>
+        <p><strong>Tujuannya:</strong></p>
+        <blockquote>
+            Menjaga inflasi tetap berada pada sasaran yang telah ditetapkan.
+        </blockquote>
+
+        <h3>2. Integrasi Kebijakan Moneter dan Makroprudensial</h3>
+        <p>Kebijakan moneter dan makroprudensial perlu terintegrasi.</p>
+
+        <h4>Kebijakan moneter</h4>
+        <p>Fokus terutama pada kondisi moneter dan inflasi.</p>
+
+        <h4>Kebijakan makroprudensial</h4>
+        <p>Fokus pada stabilitas sistem keuangan secara keseluruhan.</p>
+
+        <p><strong>Contohnya:</strong></p>
+        <blockquote>
+            Kredit tumbuh terlalu cepat → risiko sistem keuangan meningkat → kebijakan makroprudensial dapat digunakan untuk mengurangi risiko tersebut.
+        </blockquote>
+
+        <h3>3. Kebijakan Nilai Tukar dan Arus Modal</h3>
+        <p>Nilai tukar dan arus modal dapat memengaruhi:</p>
+        <ul>
+            <li>inflasi;</li>
+            <li>perdagangan;</li>
+            <li>investasi;</li>
+            <li>stabilitas keuangan.</li>
+        </ul>
+        <p>Karena itu, keduanya menjadi bagian penting dalam Flexible ITF.</p>
+
+        <h3>4. Koordinasi dengan Pemerintah</h3>
+        <p>Inflasi tidak hanya disebabkan oleh kebijakan moneter.</p>
+        <p>Inflasi juga dapat berasal dari:</p>
+        <ul>
+            <li>produksi;</li>
+            <li>distribusi;</li>
+            <li>harga pangan;</li>
+            <li>energi;</li>
+            <li>kebijakan pemerintah;</li>
+            <li>gangguan pasokan.</li>
+        </ul>
+        <p>Karena itu, BI perlu berkoordinasi dengan Pemerintah.</p>
+
+        <h3>5. Komunikasi Kebijakan</h3>
+        <p>Bank Indonesia perlu menjelaskan:</p>
+        <ul>
+            <li>kondisi ekonomi;</li>
+            <li>kebijakan yang diambil;</li>
+            <li>alasan kebijakan;</li>
+            <li>prospek ekonomi;</li>
+            <li>arah kebijakan ke depan.</li>
+        </ul>
+        <p><strong>Tujuannya</strong> adalah mengelola <strong>ekspektasi masyarakat dan pelaku ekonomi</strong>.</p>
+    </section>
+
+    <!-- BAB 8 -->
+    <section id="bab8" class="bab">
+        <h2>BAB 8 — BAGAIMANA FLEXIBLE ITF DITERAPKAN?</h2>
+
+        <p>Flexible ITF diterapkan melalui <strong>bauran kebijakan (policy mix)</strong>.</p>
+        <p>Bauran kebijakan mencakup:</p>
+        <ol>
+            <li>Kebijakan moneter</li>
+            <li>Kebijakan makroprudensial</li>
+            <li>Kebijakan nilai tukar</li>
+            <li>Kebijakan terkait arus modal</li>
+            <li>Penguatan koordinasi</li>
+            <li>Penguatan komunikasi</li>
+        </ol>
+
+        <div class="highlight">
+            <p><strong>Tujuannya</strong> adalah mengoptimalkan stabilitas:</p>
+            <blockquote>
+                <strong>Moneter + makroekonomi + sistem keuangan</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- BAB 9 -->
+    <section id="bab9" class="bab">
+        <h2>BAB 9 — SASARAN INFLASI DAN TIME LAG</h2>
+
+        <h3>9.1 Mengapa BI Tidak Langsung Mengubah Inflasi?</h3>
+        <p>Salah satu konsep paling penting dalam kebijakan moneter adalah:</p>
+        <h1 style="text-align: center; color: var(--accent-color);">TIME LAG</h1>
+
+        <p><strong>Time lag</strong> adalah jeda waktu antara saat kebijakan moneter dilakukan dan saat dampaknya dirasakan dalam perekonomian.</p>
+
+        <p><strong>Contohnya:</strong></p>
+        <pre>BI menaikkan BI-Rate
+↓
+suku bunga pasar berubah
+↓
+suku bunga kredit berubah
+↓
+permintaan kredit berubah
+↓
+konsumsi dan investasi berubah
+↓
+permintaan agregat berubah
+↓
+tekanan harga berubah
+↓
+inflasi berubah</pre>
+        <p>Proses tersebut tidak terjadi secara instan.</p>
+    </section>
+
+    <!-- BAB 10 -->
+    <section id="bab10" class="bab">
+        <h2>BAB 10 — MENGAPA BI MENGGUNAKAN PERKIRAAN INFLASI?</h2>
+
+        <p>Karena terdapat <strong>time lag</strong>, Bank Indonesia tidak hanya melihat inflasi saat ini.</p>
+        <p>BI juga memperhatikan:</p>
+        <div class="formula">
+            <p><strong>Inflasi ke depan / forecast inflation</strong></p>
+        </div>
+
+        <p>Jika diperkirakan inflasi akan meningkat secara signifikan, BI dapat mengambil kebijakan sebelum tekanan inflasi benar-benar terjadi.</p>
+        <p>Inilah sebabnya kebijakan moneter bersifat <strong>forward looking</strong>.</p>
+    </section>
+
+    <!-- BAB 11 -->
+    <section id="bab11" class="bab">
+        <h2>BAB 11 — BI-RATE</h2>
+
+        <h3>11.1 Perkembangan Suku Bunga Kebijakan</h3>
+        <p>Bank Indonesia sebelumnya menggunakan:</p>
+        <div class="formula">
+            <p><strong>BI Rate</strong></p>
+        </div>
+
+        <p>Kemudian pada <strong>19 Agustus 2016</strong>, Bank Indonesia menetapkan:</p>
+        <div class="formula">
+            <p><strong>BI 7-Day Reverse Repo Rate (BI7DRR)</strong></p>
+        </div>
+
+        <p>sebagai suku bunga kebijakan.</p>
+
+        <p>Selanjutnya, mulai <strong>21 Desember 2023</strong>, Bank Indonesia menggunakan nama:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">BI-RATE</h1>
+
+        <p>Nama tersebut digunakan untuk memperkuat komunikasi kebijakan moneter.</p>
+
+        <div class="important">
+            <p><strong>Hal penting:</strong></p>
+            <blockquote>
+                Pergantian nama menjadi BI-Rate tidak mengubah makna dan tujuan suku bunga kebijakan sebagai stance kebijakan moneter BI.
+            </blockquote>
+            <p>Operasionalisasinya tetap mengacu pada transaksi <strong>reverse repo Bank Indonesia tenor 7 hari</strong>.</p>
+        </div>
+    </section>
+
+    <!-- BAB 12 -->
+    <section id="bab12" class="bab">
+        <h2>BAB 12 — FUNGSI BI-RATE</h2>
+
+        <p>BI-Rate merupakan salah satu instrumen utama untuk memberikan <strong>sinyal arah kebijakan moneter</strong>.</p>
+
+        <h3>Ketika BI menaikkan suku bunga:</h3>
+        <pre>BI-Rate ↑
+→ suku bunga pasar cenderung ↑
+→ suku bunga kredit/deposito ↑
+→ kredit dan permintaan agregat cenderung ↓
+→ tekanan inflasi ↓</pre>
+
+        <h3>Sebaliknya:</h3>
+        <pre>BI-Rate ↓
+→ suku bunga pasar cenderung ↓
+→ kredit lebih murah
+→ konsumsi dan investasi ↑
+→ aktivitas ekonomi ↑</pre>
+    </section>
+
+    <!-- BAB 13 -->
+    <section id="bab13" class="bab">
+        <h2>BAB 13 — TIGA TUJUAN REFORMULASI KEBIJAKAN MONETER</h2>
+
+        <p>Penggunaan BI7DRR sebagai suku bunga kebijakan pada 2016 memiliki tiga tujuan utama:</p>
+
+        <h3>1. Memperkuat sinyal arah kebijakan moneter</h3>
+        <p>Pasar lebih mudah menangkap stance kebijakan BI.</p>
+
+        <h3>2. Memperkuat transmisi kebijakan moneter</h3>
+        <p>Kebijakan diharapkan lebih cepat memengaruhi:</p>
+        <ul>
+            <li>suku bunga pasar uang;</li>
+            <li>suku bunga perbankan;</li>
+            <li>kredit;</li>
+            <li>aktivitas ekonomi.</li>
+        </ul>
+
+        <h3>3. Mendorong pendalaman pasar keuangan</h3>
+        <p>Terutama dalam:</p>
+        <ul>
+            <li>transaksi pasar uang;</li>
+            <li>pembentukan struktur suku bunga;</li>
+            <li>transaksi tenor 3-12 bulan.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 14 -->
+    <section id="bab14" class="bab">
+        <h2>BAB 14 — PRINSIP REFORMULASI</h2>
+
+        <p>Reformulasi memiliki empat prinsip:</p>
+
+        <h3>Prinsip 1</h3>
+        <p>Tidak mengubah kerangka kebijakan moneter.</p>
+        <p>BI tetap menggunakan:</p>
+        <div class="formula">
+            <p><strong>Flexible ITF</strong></p>
+        </div>
+
+        <h3>Prinsip 2</h3>
+        <p>Tidak dimaksudkan untuk mengubah stance kebijakan moneter yang sedang berjalan.</p>
+
+        <h3>Prinsip 3</h3>
+        <p>Suku bunga kebijakan harus dapat terefleksikan dalam instrumen moneter dan ditransaksikan dengan BI.</p>
+
+        <h3>Prinsip 4</h3>
+        <p>Sasaran operasional ditentukan berdasarkan pertimbangan bahwa suku bunga tersebut dapat dipengaruhi oleh suku bunga kebijakan.</p>
+    </section>
+
+    <!-- BAB 15 -->
+    <section id="bab15" class="bab">
+        <h2>BAB 15 — TRANSMISI KEBIJAKAN MONETER</h2>
+
+        <h3>15.1 Pengertian</h3>
+        <p><strong>Transmisi kebijakan moneter</strong> adalah proses bagaimana kebijakan Bank Indonesia memengaruhi kegiatan ekonomi dan pada akhirnya memengaruhi inflasi.</p>
+
+        <p><strong>Skema sederhananya:</strong></p>
+        <div class="diagram">
+BI-Rate
+↓
+Pasar keuangan
+↓
+Perbankan / nilai tukar / harga aset / ekspektasi
+↓
+Konsumsi + investasi + ekspor-impor
+↓
+Permintaan agregat
+↓
+Inflasi
+        </div>
+    </section>
+
+    <!-- BAB 16 -->
+    <section id="bab16" class="bab">
+        <h2>BAB 16 — JALUR TRANSMISI KEBIJAKAN MONETER</h2>
+
+        <p>Berdasarkan materi, terdapat beberapa jalur penting.</p>
+
+        <h3>A. Jalur Suku Bunga</h3>
+        <h3>B. Jalur Nilai Tukar</h3>
+        <h3>C. Jalur Harga Aset</h3>
+        <h3>D. Jalur Ekspektasi</h3>
+
+        <p>Selain itu, dalam gambaran mekanisme transmisi terdapat pengaruh melalui:</p>
+        <ul>
+            <li>kredit;</li>
+            <li>likuiditas;</li>
+            <li>kondisi neraca;</li>
+            <li>permintaan dan penawaran;</li>
+            <li>kondisi eksternal.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 17 -->
+    <section id="bab17" class="bab">
+        <h2>BAB 17 — JALUR SUKU BUNGA</h2>
+
+        <p>Ini merupakan salah satu jalur paling penting.</p>
+
+        <h3>Ketika BI-Rate naik:</h3>
+        <div class="diagram">
+<strong>BI-Rate ↑</strong>
+
+↓
+Suku bunga pasar uang ↑
+↓
+Suku bunga deposito/kredit ↑
+↓
+Biaya pinjaman ↑
+↓
+Permintaan kredit ↓
+↓
+Konsumsi dan investasi ↓
+↓
+Permintaan agregat ↓
+↓
+Tekanan inflasi ↓
+        </div>
+
+        <h3>Sebaliknya:</h3>
+        <div class="diagram">
+<strong>BI-Rate ↓</strong>
+
+↓
+Suku bunga kredit ↓
+↓
+Biaya pinjaman ↓
+↓
+Permintaan kredit ↑
+↓
+Konsumsi dan investasi ↑
+↓
+Aktivitas ekonomi ↑
+↓
+Pertumbuhan ekonomi ↑
+        </div>
+    </section>
+
+    <!-- BAB 18 -->
+    <section id="bab18" class="bab">
+        <h2>BAB 18 — JALUR NILAI TUKAR</h2>
+
+        <p>Perubahan BI-Rate juga dapat memengaruhi nilai tukar Rupiah.</p>
+
+        <p><strong>Misalnya:</strong></p>
+        <div class="diagram">
+<strong>BI-Rate naik</strong>
+
+↓
+Selisih suku bunga Indonesia dengan luar negeri meningkat
+↓
+Aset keuangan Indonesia menjadi relatif lebih menarik
+↓
+Aliran modal dapat meningkat
+↓
+Permintaan terhadap Rupiah meningkat
+↓
+Rupiah cenderung mengalami apresiasi
+↓
+Harga barang impor dalam Rupiah menjadi relatif lebih murah
+↓
+Tekanan inflasi dari barang impor dapat menurun
+        </div>
+
+        <h3>Apresiasi vs Depresiasi</h3>
+
+        <h4>Apresiasi Rupiah</h4>
+        <p>Nilai Rupiah menguat terhadap mata uang asing.</p>
+        <p><strong>Contoh sederhana:</strong></p>
+        <p>Sebelumnya:</p>
+        <blockquote>US$1 = Rp16.000</blockquote>
+        <p>Kemudian:</p>
+        <blockquote>US$1 = Rp15.000</blockquote>
+        <p>Rupiah mengalami <strong>apresiasi</strong>.</p>
+
+        <h4>Depresiasi Rupiah</h4>
+        <p>Nilai Rupiah melemah.</p>
+        <p><strong>Contoh:</strong></p>
+        <blockquote>US$1 = Rp16.000 → Rp17.000</blockquote>
+        <p>Rupiah mengalami <strong>depresiasi</strong>.</p>
+        <p><strong>Dampaknya:</strong></p>
+        <blockquote>Harga barang impor dalam Rupiah dapat meningkat.</blockquote>
+    </section>
+
+    <!-- BAB 19 -->
+    <section id="bab19" class="bab">
+        <h2>BAB 19 — JALUR HARGA ASET</h2>
+
+        <p>Perubahan suku bunga dapat memengaruhi harga berbagai aset seperti:</p>
+        <ul>
+            <li>saham;</li>
+            <li>obligasi;</li>
+            <li>properti;</li>
+            <li>aset keuangan lainnya.</li>
+        </ul>
+
+        <p><strong>Misalnya:</strong></p>
+        <div class="diagram">
+Suku bunga ↑
+↓
+Harga aset tertentu dapat ↓
+↓
+Kekayaan individu/perusahaan ↓
+↓
+Kemampuan melakukan konsumsi/investasi ↓
+↓
+Permintaan agregat ↓
+↓
+Tekanan inflasi ↓
+        </div>
+    </section>
+
+    <!-- BAB 20 -->
+    <section id="bab20" class="bab">
+        <h2>BAB 20 — JALUR EKSPEKTASI</h2>
+
+        <p><strong>Ekspektasi inflasi</strong> adalah perkiraan masyarakat mengenai inflasi di masa depan.</p>
+        <p>Ekspektasi sangat penting.</p>
+
+        <p><strong>Misalnya masyarakat memperkirakan:</strong></p>
+        <blockquote>"Harga akan naik tinggi tahun depan."</blockquote>
+
+        <p>Maka pekerja mungkin meminta kenaikan upah.</p>
+        <p>Perusahaan kemudian menghadapi biaya produksi yang lebih tinggi.</p>
+        <p>Produsen dapat menaikkan harga.</p>
+
+        <p><strong>Akibatnya:</strong></p>
+        <div class="diagram">
+Ekspektasi inflasi ↑
+→ tuntutan upah ↑
+→ biaya produksi ↑
+→ harga jual ↑
+→ inflasi ↑
+        </div>
+
+        <p>Karena itu, komunikasi Bank Indonesia sangat penting dalam mengelola ekspektasi.</p>
+    </section>
+
+    <!-- BAB 21 -->
+    <section id="bab21" class="bab">
+        <h2>BAB 21 — JALUR KREDIT</h2>
+
+        <p>Kebijakan suku bunga juga memengaruhi kredit.</p>
+
+        <h3>BI-Rate turun</h3>
+        <div class="diagram">
+<strong>BI-Rate ↓</strong>
+
+↓
+Suku bunga kredit dapat turun
+↓
+Biaya pinjaman turun
+↓
+Perusahaan lebih tertarik meminjam
+↓
+Investasi meningkat
+↓
+Produksi dan aktivitas ekonomi meningkat.
+        </div>
+
+        <p>Rumah tangga juga dapat meningkatkan:</p>
+        <ul>
+            <li>pembelian rumah;</li>
+            <li>kendaraan;</li>
+            <li>barang konsumsi;</li>
+            <li>kegiatan usaha.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 22 -->
+    <section id="bab22" class="bab">
+        <h2>BAB 22 — MENGAPA TRANSMISI TIDAK SELALU BERJALAN SEMPURNA?</h2>
+
+        <p>Efektivitas transmisi dipengaruhi oleh banyak faktor.</p>
+
+        <h3>1. Risiko ekonomi</h3>
+        <p>Jika risiko ekonomi tinggi, bank mungkin tidak langsung menurunkan bunga kredit walaupun BI-Rate turun.</p>
+
+        <h3>2. Kondisi perbankan</h3>
+        <p>Bank mungkin sedang memperkuat permodalan.</p>
+
+        <h3>3. Permintaan kredit</h3>
+        <p>Walaupun bunga kredit turun, masyarakat belum tentu ingin meminjam.</p>
+
+        <h3>4. Prospek ekonomi</h3>
+        <p>Jika ekonomi sedang lesu, perusahaan dapat menunda investasi meskipun bunga rendah.</p>
+
+        <h3>5. Kondisi eksternal</h3>
+        <p>Misalnya:</p>
+        <ul>
+            <li>suku bunga global;</li>
+            <li>harga komoditas;</li>
+            <li>kondisi ekonomi dunia;</li>
+            <li>arus modal global.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 23 -->
+    <section id="bab23" class="bab">
+        <h2>BAB 23 — MODEL SEDERHANA TRANSMISI</h2>
+
+        <p>Gunakan rumus logika berikut untuk mengingat:</p>
+
+        <h3>Kebijakan ketat</h3>
+        <div class="formula">
+<strong>BI-Rate ↑</strong>
+→ kredit mahal
+→ konsumsi ↓
+→ investasi ↓
+→ permintaan agregat ↓
+→ inflasi ↓
+        </div>
+
+        <h3>Kebijakan longgar</h3>
+        <div class="formula">
+<strong>BI-Rate ↓</strong>
+→ kredit murah
+→ konsumsi ↑
+→ investasi ↑
+→ permintaan agregat ↑
+→ aktivitas ekonomi ↑
+        </div>
+    </section>
+
+    <!-- BAB 24 -->
+    <section id="bab24" class="bab">
+        <h2>BAB 24 — DETERMINAN INFLASI</h2>
+
+        <p>Inflasi tidak hanya ditentukan oleh suku bunga.</p>
+        <p>Berdasarkan diagram yang diberikan, faktor-faktor penting antara lain:</p>
+
+        <h3>1. Output Gap</h3>
+        <p>Output gap menggambarkan perbedaan antara kapasitas ekonomi yang tersedia dengan tingkat output aktual.</p>
+        <p>Jika permintaan jauh lebih tinggi daripada kemampuan produksi:</p>
+        <blockquote>Output gap positif → tekanan inflasi dapat meningkat.</blockquote>
+
+        <h3>2. Nilai Tukar Rupiah</h3>
+        <p>Depresiasi Rupiah dapat membuat barang impor lebih mahal.</p>
+        <blockquote>Rupiah melemah → harga impor naik → imported inflation ↑</blockquote>
+
+        <h3>3. Harga Global / Imported Inflation</h3>
+        <p>Harga komoditas dunia dapat memengaruhi harga domestik.</p>
+        <p><strong>Contoh:</strong></p>
+        <ul>
+            <li>minyak;</li>
+            <li>pangan;</li>
+            <li>bahan baku;</li>
+            <li>komoditas energi.</li>
+        </ul>
+
+        <h3>4. Ekspektasi Inflasi</h3>
+        <p>Jika masyarakat memperkirakan inflasi tinggi, perilaku mereka dapat menyebabkan tekanan harga semakin besar.</p>
+
+        <h3>5. Penyesuaian Harga Pemerintah</h3>
+        <p>Harga yang ditetapkan atau diatur pemerintah disebut:</p>
+        <div class="formula">
+            <p><strong>Administered Prices</strong></p>
+        </div>
+        <p>Contoh dapat mencakup harga energi atau barang tertentu yang dipengaruhi kebijakan pemerintah.</p>
+
+        <h3>6. Produksi Dalam Negeri</h3>
+        <p>Gangguan produksi dapat mengurangi pasokan.</p>
+        <p>Jika:</p>
+        <blockquote>Produksi ↓ + permintaan tetap</blockquote>
+        <p>maka:</p>
+        <blockquote>Harga cenderung ↑</blockquote>
+
+        <h3>7. Impor</h3>
+        <p>Ketergantungan pada barang impor menyebabkan kondisi eksternal dapat memengaruhi inflasi domestik.</p>
+
+        <h3>8. Permintaan</h3>
+        <p>Jika permintaan masyarakat meningkat lebih cepat daripada kemampuan produksi, tekanan inflasi dapat meningkat.</p>
+    </section>
+
+    <!-- BAB 25 -->
+    <section id="bab25" class="bab">
+        <h2>BAB 25 — JENIS INFLASI DALAM DIAGRAM</h2>
+
+        <p>Materi menunjukkan beberapa kelompok inflasi:</p>
+
+        <h3>1. Inflasi Inti</h3>
+        <p>Inflasi inti mencerminkan perkembangan harga yang cenderung lebih mendasar dan relatif persisten.</p>
+        <p>Dipengaruhi antara lain oleh:</p>
+        <ul>
+            <li>permintaan;</li>
+            <li>ekspektasi;</li>
+            <li>nilai tukar;</li>
+            <li>harga global;</li>
+            <li>output gap.</li>
+        </ul>
+
+        <h3>2. Inflasi Volatile Food</h3>
+        <p><strong>Volatile Food</strong> adalah kelompok harga pangan yang cenderung mudah berfluktuasi.</p>
+        <p><strong>Contoh:</strong></p>
+        <ul>
+            <li>beras;</li>
+            <li>cabai;</li>
+            <li>bawang;</li>
+            <li>bahan pangan lainnya.</li>
+        </ul>
+        <p><strong>Faktor penyebab:</strong></p>
+        <ul>
+            <li>cuaca;</li>
+            <li>panen;</li>
+            <li>gangguan distribusi;</li>
+            <li>pasokan;</li>
+            <li>harga komoditas.</li>
+        </ul>
+
+        <h3>3. Administered Prices</h3>
+        <p>Merupakan kelompok harga yang dipengaruhi atau diatur pemerintah.</p>
+        <p>Perubahannya dapat memengaruhi inflasi secara langsung.</p>
+
+        <h3>4. Inflasi IHK</h3>
+        <p><strong>IHK = Indeks Harga Konsumen.</strong></p>
+        <p>Inflasi IHK merupakan ukuran perubahan harga barang dan jasa yang dikonsumsi masyarakat.</p>
+        <p>Secara konseptual:</p>
+        <blockquote><strong>Inflasi IHK = perubahan tingkat harga konsumen dari waktu ke waktu.</strong></blockquote>
+    </section>
+
+    <!-- BAB 26 -->
+    <section id="bab26" class="bab">
+        <h2>BAB 26 — INFLASI DAN OUTPUT GAP</h2>
+
+        <p>Salah satu konsep penting:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">Output Gap</h1>
+
+        <p>Output gap dapat dipahami sebagai selisih antara output aktual dengan output potensial.</p>
+        <p>Secara sederhana:</p>
+        <div class="formula">
+            <p><strong>Output Gap = Output Aktual − Output Potensial</strong></p>
+        </div>
+
+        <h3>Jika output aktual > output potensial</h3>
+        <p>Output gap positif.</p>
+        <p>Permintaan dapat terlalu kuat sehingga:</p>
+        <blockquote>tekanan inflasi ↑</blockquote>
+
+        <h3>Jika output aktual < output potensial</h3>
+        <p>Output gap negatif.</p>
+        <p>Permintaan relatif lemah sehingga:</p>
+        <blockquote>tekanan inflasi cenderung ↓</blockquote>
+    </section>
+
+    <!-- BAB 27 -->
+    <section id="bab27" class="bab">
+        <h2>BAB 27 — SISI PERMINTAAN DAN SISI PENAWARAN</h2>
+
+        <p>Inflasi dapat berasal dari dua sumber besar:</p>
+
+        <h3>A. Demand Side</h3>
+        <p>Tekanan dari <strong>sisi permintaan</strong>.</p>
+        <p><strong>Contoh:</strong></p>
+        <p>Masyarakat memiliki pendapatan meningkat → konsumsi meningkat → permintaan barang meningkat → jika produksi tidak mampu mengimbangi → harga meningkat.</p>
+
+        <h3>B. Supply Side</h3>
+        <p>Tekanan dari <strong>sisi penawaran</strong>.</p>
+        <p><strong>Contoh:</strong></p>
+        <p>Panen gagal → pasokan cabai turun → harga cabai meningkat.</p>
+        <p>Atau:</p>
+        <p>Harga minyak dunia naik → biaya transportasi/produksi naik → harga berbagai barang meningkat.</p>
+    </section>
+
+    <!-- BAB 28 -->
+    <section id="bab28" class="bab">
+        <h2>BAB 28 — PERAN BANK INDONESIA VS PEMERINTAH</h2>
+
+        <p>Ini merupakan bagian yang sangat penting.</p>
+        <p><strong>Tidak semua inflasi dapat diselesaikan dengan menaikkan suku bunga.</strong></p>
+
+        <h3>Bank Indonesia lebih berperan pada:</h3>
+        <ul>
+            <li>kebijakan moneter;</li>
+            <li>suku bunga;</li>
+            <li>likuiditas;</li>
+            <li>nilai tukar;</li>
+            <li>ekspektasi;</li>
+            <li>stabilitas moneter.</li>
+        </ul>
+
+        <h3>Pemerintah lebih berperan pada:</h3>
+        <ul>
+            <li>pasokan;</li>
+            <li>produksi;</li>
+            <li>distribusi;</li>
+            <li>konektivitas;</li>
+            <li>subsidi;</li>
+            <li>harga yang diatur pemerintah;</li>
+            <li>kebijakan fiskal;</li>
+            <li>stabilisasi pangan.</li>
+        </ul>
+
+        <p>Karena itu diperlukan:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">KOORDINASI</h1>
+    </section>
+
+    <!-- BAB 29 -->
+    <section id="bab29" class="bab">
+        <h2>BAB 29 — KOORDINASI PENGENDALIAN INFLASI</h2>
+
+        <p>Bank Indonesia dan Pemerintah bekerja sama melalui:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">Tim Pengendalian Inflasi (TPI)</h1>
+
+        <p>TPI dibentuk di tingkat pusat dan daerah.</p>
+        <p><strong>Tujuannya</strong> adalah:</p>
+        <blockquote>Mengendalikan inflasi secara nasional dan daerah melalui koordinasi berbagai kebijakan.</blockquote>
+    </section>
+
+    <!-- BAB 30 -->
+    <section id="bab30" class="bab">
+        <h2>BAB 30 — TPIN, TPIP, DAN TPID</h2>
+
+        <p>Struktur koordinasi pengendalian inflasi terdiri dari:</p>
+
+        <h3>1. TPIN</h3>
+        <p><strong>Tim Pengendalian Inflasi Nasional</strong></p>
+
+        <h3>2. TPIP</h3>
+        <p><strong>Tim Pengendalian Inflasi Pusat</strong></p>
+
+        <h3>3. TPID Provinsi</h3>
+        <p>Tim Pengendalian Inflasi Daerah tingkat provinsi.</p>
+
+        <h3>4. TPID Kabupaten/Kota</h3>
+        <p>Tim Pengendalian Inflasi Daerah tingkat kabupaten/kota.</p>
+    </section>
+
+    <!-- BAB 31 -->
+    <section id="bab31" class="bab">
+        <h2>BAB 31 — STAKEHOLDER PENGENDALIAN INFLASI</h2>
+
+        <p>Berdasarkan diagram yang diberikan, stakeholder utama meliputi:</p>
+
+        <h3>1. Bank Indonesia</h3>
+        <p>Menjalankan kebijakan moneter.</p>
+
+        <h3>2. Pemerintah Pusat</h3>
+        <p>Menjalankan kebijakan fiskal dan kebijakan lainnya.</p>
+
+        <h3>3. Pemerintah Daerah</h3>
+        <p>Mengatasi permasalahan inflasi di daerah.</p>
+
+        <h3>4. Kementerian dan Lembaga</h3>
+        <p>Menangani sektor masing-masing.</p>
+        <p><strong>Misalnya sektor:</strong></p>
+        <ul>
+            <li>pangan;</li>
+            <li>energi;</li>
+            <li>transportasi;</li>
+            <li>perdagangan;</li>
+            <li>pertanian.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 32 -->
+    <section id="bab32" class="bab">
+        <h2>BAB 32 — KONSEP 4K PENGENDALIAN INFLASI</h2>
+
+        <p>Program pengendalian inflasi difokuskan pada:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">4K</h1>
+
+        <h3>1. Keterjangkauan Harga</h3>
+        <p>Harga barang harus tetap terjangkau masyarakat.</p>
+
+        <h3>2. Ketersediaan Pasokan</h3>
+        <p>Barang yang dibutuhkan masyarakat harus tersedia.</p>
+
+        <h3>3. Kelancaran Distribusi</h3>
+        <p>Barang harus dapat bergerak dari:</p>
+        <blockquote>produsen → distributor → pasar → konsumen</blockquote>
+        <p>Jika distribusi terganggu, harga dapat meningkat meskipun produksi cukup.</p>
+
+        <h3>4. Komunikasi Efektif</h3>
+        <p>Masyarakat harus memperoleh informasi yang jelas.</p>
+        <p>Komunikasi dapat membantu:</p>
+        <ul>
+            <li>mengurangi kepanikan;</li>
+            <li>mencegah pembelian berlebihan;</li>
+            <li>membentuk ekspektasi yang stabil;</li>
+            <li>meningkatkan kepercayaan masyarakat.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 33 -->
+    <section id="bab33" class="bab">
+        <h2>BAB 33 — CONTOH PENERAPAN 4K</h2>
+
+        <p><strong>Misalnya harga cabai meningkat tajam.</strong></p>
+
+        <h3>Keterjangkauan harga</h3>
+        <p>Pemerintah mengambil langkah agar harga tidak terlalu membebani konsumen.</p>
+
+        <h3>Ketersediaan pasokan</h3>
+        <p>Memastikan pasokan cabai mencukupi.</p>
+
+        <h3>Kelancaran distribusi</h3>
+        <p>Mengurangi hambatan pengiriman cabai dari daerah surplus ke daerah yang kekurangan.</p>
+
+        <h3>Komunikasi efektif</h3>
+        <p>Memberikan informasi mengenai stok, harga, dan kondisi pasokan.</p>
+    </section>
+
+    <!-- BAB 34 -->
+    <section id="bab34" class="bab">
+        <h2>BAB 34 — GNPIP</h2>
+
+        <p>Salah satu program yang disebut dalam materi adalah:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">Gerakan Nasional Pengendalian Inflasi Pangan (GNPIP)</h1>
+
+        <p>Fokus utamanya adalah membantu menjaga stabilitas harga pangan.</p>
+        <p>Hal ini penting karena pangan merupakan komponen yang dapat mengalami perubahan harga cukup besar.</p>
+
+        <p><strong>Upaya dapat diarahkan pada:</strong></p>
+        <ul>
+            <li>peningkatan produksi;</li>
+            <li>penguatan pasokan;</li>
+            <li>distribusi;</li>
+            <li>kerja sama antardaerah;</li>
+            <li>stabilisasi harga;</li>
+            <li>komunikasi.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 35 -->
+    <section id="bab35" class="bab">
+        <h2>BAB 35 — KOORDINASI KEBIJAKAN</h2>
+
+        <p>Pengendalian inflasi membutuhkan kombinasi beberapa kebijakan.</p>
+
+        <h3>Kebijakan Moneter</h3>
+        <p>Dilakukan terutama oleh Bank Indonesia.</p>
+        <p><strong>Contoh:</strong></p>
+        <blockquote>perubahan BI-Rate.</blockquote>
+
+        <h3>Kebijakan Fiskal</h3>
+        <p>Dilakukan oleh Pemerintah.</p>
+        <p><strong>Contoh:</strong></p>
+        <ul>
+            <li>belanja pemerintah;</li>
+            <li>pajak;</li>
+            <li>subsidi;</li>
+            <li>program perlindungan sosial.</li>
+        </ul>
+
+        <h3>Kebijakan Sektoral</h3>
+        <p>Menangani masalah pada sektor tertentu.</p>
+        <p><strong>Contoh:</strong></p>
+        <ul>
+            <li>pertanian;</li>
+            <li>pangan;</li>
+            <li>energi;</li>
+            <li>transportasi;</li>
+            <li>perdagangan.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 36 -->
+    <section id="bab36" class="bab">
+        <h2>BAB 36 — SHOCKS</h2>
+
+        <p>Inflasi juga dapat dipengaruhi oleh <strong>shocks</strong> atau guncangan.</p>
+        <p><strong>Contoh:</strong></p>
+
+        <h3>Supply shock</h3>
+        <p>Gangguan produksi atau distribusi.</p>
+        <p><strong>Contoh:</strong></p>
+        <blockquote>Banjir → produksi pangan turun → pasokan turun → harga naik.</blockquote>
+
+        <h3>External shock</h3>
+        <p>Perubahan kondisi dunia.</p>
+        <p><strong>Contoh:</strong></p>
+        <blockquote>Harga minyak dunia naik → biaya energi meningkat → biaya produksi dan transportasi naik.</blockquote>
+
+        <h3>Exchange rate shock</h3>
+        <p>Rupiah melemah tajam.</p>
+        <blockquote>Rupiah ↓ → barang impor menjadi lebih mahal → tekanan inflasi ↑</blockquote>
+    </section>
+
+    <!-- BAB 37 -->
+    <section id="bab37" class="bab">
+        <h2>BAB 37 — TRANSMISI KEBIJAKAN MONETER DALAM DIAGRAM</h2>
+
+        <p>Diagram pertama dapat dipahami seperti berikut:</p>
+        <div class="diagram">
+                 BANK INDONESIA
+                       │
+              Kebijakan Moneter
+                       │
+        ┌──────────────┴──────────────┐
+        │                             │
+ Operasi Pasar                  Standing
+ Terbuka                       Facilities
+        │                             │
+        └──────────────┬──────────────┘
+                       │
+               Likuiditas Pasar
+              Uang & Pasar Valas
+                       │
+          ┌────────────┼────────────┐
+          ↓            ↓            ↓
+      Suku Bunga    Kredit      Nilai Tukar
+          │            │            │
+          └────────────┼────────────┘
+                       ↓
+                 Harga Aset
+                       ↓
+                  Ekspektasi
+                       ↓
+                 Permintaan
+                       ↓
+                 Output Gap
+                       ↓
+                    Inflasi
+        </div>
+
+        <p>Ini adalah gambaran konseptual. Dalam kenyataan, berbagai jalur tersebut bekerja <strong>secara bersamaan</strong> dan saling memengaruhi.</p>
+    </section>
+
+    <!-- BAB 38 -->
+    <section id="bab38" class="bab">
+        <h2>BAB 38 — INDIKATOR YANG DIPANTAU</h2>
+
+        <p>Dari diagram yang diberikan, beberapa indikator yang digunakan untuk melihat kondisi ekonomi antara lain:</p>
+
+        <h3>Indikator moneter/keuangan</h3>
+        <ul>
+            <li>Aktiva Dalam Negeri Bersih</li>
+            <li>Fasilitas Pendanaan</li>
+            <li>Pinjaman Bank</li>
+            <li>Suku bunga PUAB</li>
+            <li>Deposito</li>
+            <li>Pinjaman</li>
+            <li>Likuiditas</li>
+            <li>IHSG</li>
+            <li>Nilai tukar</li>
+        </ul>
+
+        <h3>Indikator harga</h3>
+        <ul>
+            <li>Indeks Harga Impor</li>
+            <li>IHK</li>
+            <li>Inflasi inti</li>
+            <li>Volatile Food</li>
+            <li>Administered Prices</li>
+            <li>Harga aset</li>
+        </ul>
+
+        <h3>Indikator ekspektasi</h3>
+        <ul>
+            <li>Survey</li>
+            <li>Leading indicators</li>
+            <li>Output Gap</li>
+            <li>Policy response</li>
+        </ul>
+    </section>
+
+    <!-- BAB 39 -->
+    <section id="bab39" class="bab">
+        <h2>BAB 39 — NERACA DAN KONDISI KEUANGAN</h2>
+
+        <p>Dalam transmisi kebijakan moneter, kondisi <strong>balance sheet</strong> juga penting.</p>
+        <p>Misalnya perusahaan memiliki neraca yang sehat.</p>
+        <p>Ketika bunga turun:</p>
+        <blockquote>biaya pembiayaan ↓ → investasi lebih mudah dilakukan.</blockquote>
+
+        <p>Tetapi jika neraca perusahaan buruk atau utangnya tinggi:</p>
+        <blockquote>bunga turun belum tentu langsung menghasilkan peningkatan investasi.</blockquote>
+
+        <p>Karena itu kondisi sektor keuangan ikut menentukan efektivitas transmisi.</p>
+    </section>
+
+    <!-- BAB 40 -->
+    <section id="bab40" class="bab">
+        <h2>BAB 40 — TRANSMISI YANG IDEAL VS REALITAS</h2>
+
+        <h3>Secara teori:</h3>
+        <blockquote>BI-Rate turun → kredit turun → kredit meningkat → investasi meningkat.</blockquote>
+
+        <h3>Namun kenyataannya:</h3>
+        <blockquote>BI-Rate turun → bank belum tentu langsung menurunkan bunga kredit → masyarakat belum tentu mengambil kredit → investasi belum tentu meningkat.</blockquote>
+
+        <p><strong>Mengapa?</strong></p>
+        <p>Karena terdapat:</p>
+        <ul>
+            <li>risiko;</li>
+            <li>ketidakpastian;</li>
+            <li>kondisi modal bank;</li>
+            <li>prospek ekonomi;</li>
+            <li>permintaan kredit;</li>
+            <li>kondisi global.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 41 -->
+    <section id="bab41" class="bab">
+        <h2>BAB 41 — TRANSPARANSI KEBIJAKAN MONETER</h2>
+
+        <p>Bank Indonesia memiliki independensi dalam menjalankan tugas dan wewenangnya sesuai kerangka hukum yang berlaku.</p>
+        <p>Namun:</p>
+        <div class="formula">
+            <p><strong>Independensi ≠ tidak perlu mempertanggungjawabkan kebijakan.</strong></p>
+        </div>
+
+        <p>Independensi harus disertai:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">TRANSPARANSI + AKUNTABILITAS</h1>
+    </section>
+
+    <!-- BAB 42 -->
+    <section id="bab42" class="bab">
+        <h2>BAB 42 — APA ITU TRANSPARANSI?</h2>
+
+        <p><strong>Transparansi</strong> berarti keterbukaan Bank Indonesia dalam menyampaikan informasi mengenai:</p>
+        <ul>
+            <li>kondisi ekonomi;</li>
+            <li>kebijakan;</li>
+            <li>alasan kebijakan;</li>
+            <li>evaluasi;</li>
+            <li>arah kebijakan;</li>
+            <li>sasaran.</li>
+        </ul>
+        <p><strong>Tujuannya</strong> agar masyarakat memahami tindakan bank sentral.</p>
+    </section>
+
+    <!-- BAB 43 -->
+    <section id="bab43" class="bab">
+        <h2>BAB 43 — APA ITU AKUNTABILITAS?</h2>
+
+        <p><strong>Akuntabilitas</strong> berarti Bank Indonesia harus dapat menjelaskan dan mempertanggungjawabkan pelaksanaan tugas dan kebijakannya.</p>
+
+        <p><strong>Bentuknya antara lain:</strong></p>
+        <ul>
+            <li>laporan kinerja;</li>
+            <li>laporan tahunan;</li>
+            <li>laporan keuangan;</li>
+            <li>penyampaian informasi kepada lembaga negara;</li>
+            <li>publikasi kepada masyarakat.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 44 -->
+    <section id="bab44" class="bab">
+        <h2>BAB 44 — KOMUNIKASI KEBIJAKAN MONETER</h2>
+
+        <p>Komunikasi kebijakan moneter adalah cara Bank Indonesia menjelaskan kepada masyarakat mengenai:</p>
+        <ol>
+            <li>kondisi ekonomi saat ini;</li>
+            <li>kebijakan yang diterapkan;</li>
+            <li>alasan kebijakan;</li>
+            <li>proyeksi ekonomi;</li>
+            <li>arah kebijakan ke depan.</li>
+        </ol>
+    </section>
+
+    <!-- BAB 45 -->
+    <section id="bab45" class="bab">
+        <h2>BAB 45 — MENGAPA KOMUNIKASI PENTING?</h2>
+
+        <p>Karena komunikasi dapat memengaruhi:</p>
+        <div class="formula">
+            <p><strong>Ekspektasi → perilaku → kegiatan ekonomi → harga</strong></p>
+        </div>
+
+        <p><strong>Contoh:</strong></p>
+        <p>Jika masyarakat percaya inflasi akan terkendali:</p>
+        <ul>
+            <li>pekerja tidak terlalu agresif meminta kenaikan upah;</li>
+            <li>perusahaan dapat menyusun harga dengan lebih stabil;</li>
+            <li>konsumen tidak perlu melakukan panic buying;</li>
+            <li>investor memiliki kepastian lebih baik.</li>
+        </ul>
+
+        <div class="highlight">
+            <p>Dengan demikian:</p>
+            <blockquote><strong>Komunikasi merupakan bagian penting dari toolkit kebijakan moneter.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- BAB 46 -->
+    <section id="bab46" class="bab">
+        <h2>BAB 46 — MEDIA KOMUNIKASI BANK INDONESIA</h2>
+
+        <p>Bank Indonesia dapat berkomunikasi melalui:</p>
+
+        <h3>1. Siaran pers</h3>
+        <p>Memberikan informasi resmi.</p>
+
+        <h3>2. Konferensi pers</h3>
+        <p>Menjelaskan kebijakan secara langsung.</p>
+
+        <h3>3. Publikasi</h3>
+        <p><strong>Contohnya:</strong></p>
+        <ul>
+            <li>Laporan Perekonomian Indonesia;</li>
+            <li>Laporan Kebijakan Moneter;</li>
+            <li>Tinjauan Kebijakan Moneter.</li>
+        </ul>
+
+        <h3>4. Website</h3>
+        <p>Sebagai sumber informasi publik.</p>
+
+        <h3>5. Talkshow</h3>
+        <p>Melalui radio dan televisi.</p>
+
+        <h3>6. Seminar dan diskusi</h3>
+        <p>Melibatkan stakeholders.</p>
+
+        <h3>7. Diseminasi daerah</h3>
+        <p>Menyampaikan informasi kepada masyarakat di daerah.</p>
+    </section>
+
+    <!-- BAB 47 -->
+    <section id="bab47" class="bab">
+        <h2>BAB 47 — HUBUNGAN SEMUA KONSEP</h2>
+
+        <p>Sekarang kita satukan seluruh materi.</p>
+        <div class="diagram">
+              TUJUAN BANK INDONESIA
+                       │
+                       ↓
+             STABILITAS NILAI RUPIAH
+                       │
+              ┌────────┴────────┐
+              ↓                 ↓
+         STABILITAS          STABILITAS
+           HARGA              NILAI TUKAR
+              │
+              ↓
+            INFLASI
+              │
+              ↓
+       INFLATION TARGETING
+              │
+              ↓
+         FLEXIBLE ITF
+              │
+              ↓
+       KEBIJAKAN MONETER
+              │
+              ↓
+           BI-RATE
+              │
+              ↓
+    TRANSMISI KEBIJAKAN MONETER
+              │
+    ┌─────────┼─────────┬──────────┐
+    ↓         ↓         ↓          ↓
+ Suku Bunga Nilai Tukar Harga Aset Ekspektasi
+    │         │         │          │
+    └─────────┴─────────┴──────────┘
+              ↓
+        KREDIT / KONSUMSI
+        / INVESTASI / EKSPOR
+              ↓
+         PERMINTAAN AGREGAT
+              ↓
+           OUTPUT GAP
+              ↓
+             INFLASI
+        </div>
+
+        <p>Namun inflasi juga dipengaruhi oleh:</p>
+        <div class="diagram">
+      SHOCKS
+        │
+ ┌──────┼────────┐
+ ↓      ↓        ↓
+Pangan  Energi  Eksternal
+ │       │        │
+ └───────┼────────┘
+         ↓
+       INFLASI
+        </div>
+
+        <p>Karena faktor tersebut tidak semuanya dapat dikendalikan oleh BI, diperlukan:</p>
+        <blockquote><strong>KOORDINASI BI + PEMERINTAH</strong></blockquote>
+    </section>
+
+    <!-- BAB 48 -->
+    <section id="bab48" class="bab">
+        <h2>BAB 48 — CONTOH KASUS 1: INFLASI TERLALU TINGGI</h2>
+
+        <p><strong>Misalnya inflasi meningkat karena permintaan masyarakat terlalu kuat.</strong></p>
+
+        <h3>Tahap 1</h3>
+        <p>BI melihat tekanan inflasi meningkat.</p>
+
+        <h3>Tahap 2</h3>
+        <p>BI memperkirakan inflasi ke depan akan tetap tinggi.</p>
+
+        <h3>Tahap 3</h3>
+        <p>BI mengambil kebijakan moneter lebih ketat.</p>
+        <p><strong>Misalnya:</strong></p>
+        <div class="formula">
+            <p><strong>BI-Rate ↑</strong></p>
+        </div>
+
+        <h3>Tahap 4</h3>
+        <p>Suku bunga pasar meningkat.</p>
+
+        <h3>Tahap 5</h3>
+        <p>Suku bunga kredit meningkat.</p>
+
+        <h3>Tahap 6</h3>
+        <p>Permintaan kredit dan konsumsi dapat melambat.</p>
+
+        <h3>Tahap 7</h3>
+        <p>Investasi dapat berkurang.</p>
+
+        <h3>Tahap 8</h3>
+        <p>Permintaan agregat menurun.</p>
+
+        <h3>Tahap 9</h3>
+        <p>Tekanan inflasi berkurang.</p>
+    </section>
+
+    <!-- BAB 49 -->
+    <section id="bab49" class="bab">
+        <h2>BAB 49 — CONTOH KASUS 2: EKONOMI MELEMAH</h2>
+
+        <p><strong>Misalnya pertumbuhan ekonomi melemah dan inflasi berada dalam kondisi rendah.</strong></p>
+        <p>BI dapat mempertimbangkan kebijakan moneter yang lebih akomodatif.</p>
+
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+BI-Rate ↓
+↓
+suku bunga ↓
+↓
+kredit lebih murah
+↓
+konsumsi & investasi ↑
+↓
+permintaan agregat ↑
+↓
+aktivitas ekonomi ↑
+        </div>
+
+        <p>Tetapi efeknya tidak otomatis karena tergantung:</p>
+        <ul>
+            <li>kondisi perbankan;</li>
+            <li>risiko;</li>
+            <li>permintaan kredit;</li>
+            <li>prospek ekonomi.</li>
+        </ul>
+    </section>
+
+    <!-- BAB 50 -->
+    <section id="bab50" class="bab">
+        <h2>BAB 50 — CONTOH KASUS 3: RUPIAH MELEMAH</h2>
+
+        <p><strong>Misalnya Rupiah mengalami depresiasi.</strong></p>
+
+        <p><strong>Dampak:</strong></p>
+        <div class="diagram">
+Rupiah melemah
+↓
+barang impor lebih mahal
+↓
+biaya bahan baku impor meningkat
+↓
+biaya produksi meningkat
+↓
+harga barang dapat meningkat
+↓
+inflasi meningkat
+        </div>
+
+        <p>Ini disebut:</p>
+        <h1 style="text-align: center; color: var(--accent-color);">Imported Inflation</h1>
+
+        <p>Dalam kondisi tertentu, kebijakan moneter dapat digunakan untuk membantu menjaga stabilitas nilai tukar dan mengendalikan dampak inflasi.</p>
+    </section>
+
+    <!-- BAB 51 -->
+    <section id="bab51" class="bab">
+        <h2>BAB 51 — CONTOH KASUS 4: HARGA CABAI NAIK</h2>
+
+        <p><strong>Misalnya terjadi gagal panen.</strong></p>
+        <div class="diagram">
+Gagal panen
+↓
+produksi cabai ↓
+↓
+pasokan ↓
+↓
+harga cabai ↑
+↓
+inflasi pangan ↑
+        </div>
+
+        <p><strong>Apakah menaikkan BI-Rate otomatis menyelesaikan masalah?</strong></p>
+        <div class="important">
+            <p><strong>Tidak.</strong></p>
+        </div>
+
+        <p>Karena sumber masalahnya adalah <strong>sisi penawaran</strong>.</p>
+        <p><strong>Solusi membutuhkan koordinasi:</strong></p>
+        <blockquote>BI + Pemerintah + Pemda + kementerian/lembaga</blockquote>
+
+        <p>Misalnya melalui 4K:</p>
+        <div class="formula">
+            <p><strong>Keterjangkauan harga + Ketersediaan pasokan + Kelancaran distribusi + Komunikasi efektif</strong></p>
+        </div>
+    </section>
+
+    <!-- BAB 52 -->
+    <section id="bab52" class="bab">
+        <h2>BAB 52 — PERBEDAAN MONETER DAN FISKAL</h2>
+
+        <table>
+            <tr>
+                <th>Aspek</th>
+                <th>Kebijakan Moneter</th>
+                <th>Kebijakan Fiskal</th>
+            </tr>
+            <tr>
+                <td>Pelaksana utama</td>
+                <td>Bank Indonesia</td>
+                <td>Pemerintah</td>
+            </tr>
+            <tr>
+                <td>Fokus utama</td>
+                <td>Kondisi moneter & stabilitas harga</td>
+                <td>Penerimaan dan pengeluaran negara</td>
+            </tr>
+            <tr>
+                <td>Instrumen utama</td>
+                <td>Suku bunga, likuiditas, dll.</td>
+                <td>Pajak, belanja, subsidi</td>
+            </tr>
+            <tr>
+                <td>Contoh</td>
+                <td>BI-Rate</td>
+                <td>Belanja pemerintah</td>
+            </tr>
+            <tr>
+                <td>Dampak</td>
+                <td>Kredit, suku bunga, nilai tukar, permintaan</td>
+                <td>Pendapatan, permintaan, produksi</td>
+            </tr>
+            <tr>
+                <td>Tujuan</td>
+                <td>Stabilitas Rupiah & ekonomi</td>
+                <td>Stabilitas dan tujuan fiskal/ekonomi</td>
+            </tr>
+        </table>
+
+        <p>Keduanya dapat saling melengkapi.</p>
+    </section>
+
+    <!-- BAB 53 -->
+    <section id="bab53" class="bab">
+        <h2>BAB 53 — ISTILAH-ISTILAH PENTING</h2>
+
+        <h3>BI-Rate</h3>
+        <p>Suku bunga kebijakan Bank Indonesia.</p>
+
+        <h3>Inflation Targeting Framework</h3>
+        <p>Kerangka kebijakan moneter yang menjadikan sasaran inflasi sebagai fokus utama.</p>
+
+        <h3>Flexible ITF</h3>
+        <p>Pengembangan ITF yang mengintegrasikan stabilitas harga dengan perhatian lebih kuat terhadap stabilitas sistem keuangan dan faktor makroekonomi lainnya.</p>
+
+        <h3>Inflasi</h3>
+        <p>Kenaikan harga barang dan jasa secara umum dalam perekonomian.</p>
+
+        <h3>Inflasi inti</h3>
+        <p>Komponen inflasi yang mencerminkan tekanan harga yang lebih mendasar/persisten.</p>
+
+        <h3>Volatile Food</h3>
+        <p>Kelompok harga pangan yang cenderung mengalami fluktuasi.</p>
+
+        <h3>Administered Prices</h3>
+        <p>Harga yang dipengaruhi atau diatur pemerintah.</p>
+
+        <h3>IHK</h3>
+        <p>Indeks Harga Konsumen.</p>
+
+        <h3>Output Gap</h3>
+        <p>Perbedaan antara output aktual dan output potensial.</p>
+
+        <h3>Imported Inflation</h3>
+        <p>Inflasi yang berasal dari kenaikan harga barang/jasa dari luar negeri atau pengaruh kondisi eksternal.</p>
+
+        <h3>Time Lag</h3>
+        <p>Jeda waktu antara kebijakan dan dampaknya terhadap perekonomian.</p>
+
+        <h3>Ekspektasi Inflasi</h3>
+        <p>Perkiraan masyarakat mengenai inflasi masa depan.</p>
+
+        <h3>Apresiasi</h3>
+        <p>Penguatan nilai mata uang.</p>
+
+        <h3>Depresiasi</h3>
+        <p>Pelemahan nilai mata uang.</p>
+
+        <h3>Policy Mix</h3>
+        <p>Bauran berbagai kebijakan untuk mencapai tujuan ekonomi.</p>
+
+        <h3>Makroprudensial</h3>
+        <p>Kebijakan untuk menjaga stabilitas sistem keuangan secara keseluruhan.</p>
+
+        <h3>Shock</h3>
+        <p>Guncangan yang memengaruhi perekonomian.</p>
+    </section>
+
+    <!-- BAB 54 -->
+    <section id="bab54" class="bab">
+        <h2>BAB 54 — RINGKASAN 1 MENIT</h2>
+
+        <p>Jika harus menghafalkan materi ini dengan cepat, ingat alur berikut:</p>
+
+        <div class="summary">
+            <h3><strong>TUJUAN</strong></h3>
+            <p>Stabilitas Nilai Rupiah</p>
+            <p>↓</p>
+            <p>Inflasi rendah & stabil + nilai tukar stabil</p>
+            <p>↓</p>
+
+            <h3><strong>KERANGKA</strong></h3>
+            <p>Inflation Targeting Framework</p>
+            <p>↓</p>
+            <p>Flexible ITF</p>
+            <p>↓</p>
+
+            <h3><strong>INSTRUMEN</strong></h3>
+            <p>BI-Rate</p>
+            <p>↓</p>
+
+            <h3><strong>TRANSMISI</strong></h3>
+            <p>Suku bunga</p>
+            <ul>
+                <li>Nilai tukar</li>
+                <li>Harga aset</li>
+                <li>Kredit</li>
+                <li>Ekspektasi</li>
+            </ul>
+            <p>↓</p>
+            <p>Konsumsi + Investasi + Permintaan</p>
+            <p>↓</p>
+            <p>Output Gap</p>
+            <p>↓</p>
+            <p><strong>INFLASI</strong></p>
+
+            <p>Namun inflasi juga dipengaruhi supply shock, pangan, energi, harga global, dll.</p>
+            <p>↓</p>
+
+            <h3><strong>KOORDINASI</strong></h3>
+            <p>BI + Pemerintah + Pemda + Kementerian/Lembaga</p>
+            <p>↓</p>
+
+            <h3><strong>4K</strong></h3>
+            <p>Keterjangkauan Harga</p>
+            <p>Ketersediaan Pasokan</p>
+            <p>Kelancaran Distribusi</p>
+            <p>Komunikasi Efektif</p>
+        </div>
+    </section>
+
+    <!-- BAB 55 -->
+    <section id="bab55" class="bab">
+        <h2>BAB 55 — PETA KONSEP BESAR</h2>
+
+        <div class="diagram">
+                         KEBIJAKAN MONETER
+                                │
+                                ↓
+                      BANK INDONESIA
+                                │
+                                ↓
+                   STABILITAS NILAI RUPIAH
+                                │
+               ┌────────────────┴────────────────┐
+               ↓                                 ↓
+        Stabilitas Harga                   Nilai Tukar
+               │
+               ↓
+             Inflasi
+               │
+               ↓
+      Inflation Targeting Framework
+               │
+               ↓
+          Flexible ITF
+               │
+     ┌─────────┼─────────┬──────────┐
+     ↓         ↓         ↓          ↓
+ Moneter  Makroprudensial Nilai   Komunikasi
+                          Tukar
+               │
+               ↓
+             BI-Rate
+               │
+               ↓
+      TRANSMISI MONETER
+               │
+   ┌───────────┼───────────┬───────────┐
+   ↓           ↓           ↓           ↓
+Suku Bunga Nilai Tukar Harga Aset Ekspektasi
+   │           │           │           │
+   └───────────┴───────────┴───────────┘
+                       ↓
+             Konsumsi & Investasi
+                       ↓
+                Permintaan Agregat
+                       ↓
+                    Output Gap
+                       ↓
+                     INFLASI
+                       ↑
+        ┌──────────────┼───────────────┐
+        │              │               │
+   Imported        Volatile Food   Administered
+   Inflation                         Prices
+        │              │               │
+        └──────────────┼───────────────┘
+                       ↓
+                    SHOCKS
+                       │
+                       ↓
+              KOORDINASI KEBIJAKAN
+                       │
+             ┌─────────┴─────────┐
+             ↓                   ↓
+       Bank Indonesia         Pemerintah
+                                   │
+                           Pemda & K/L
+                                   │
+                                   ↓
+                                  4K
+        </div>
+    </section>
+
+    <!-- BAB 56 -->
+    <section id="bab56" class="bab">
+        <h2>BAB 56 — LATIHAN SOAL</h2>
+
+        <h3>A. Pilihan Ganda</h3>
+
+        <div class="soal">
+            <h4>1. Tujuan utama kebijakan moneter Bank Indonesia adalah...</h4>
+            <ol type="A">
+                <li>Memaksimalkan keuntungan bank</li>
+                <li>Menjaga stabilitas nilai Rupiah</li>
+                <li>Meningkatkan ekspor sebanyak-banyaknya</li>
+                <li>Mengurangi seluruh impor</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>2. Stabilitas harga secara umum tercermin dari...</h4>
+            <ol type="A">
+                <li>Inflasi tinggi</li>
+                <li>Inflasi rendah dan stabil</li>
+                <li>Nilai ekspor tinggi</li>
+                <li>Suku bunga tinggi</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>3. ITF mulai diterapkan secara resmi oleh Bank Indonesia pada...</h4>
+            <ol type="A">
+                <li>1998</li>
+                <li>2000</li>
+                <li>2005</li>
+                <li>2016</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>4. Flexible ITF diperkuat karena pengalaman...</h4>
+            <ol type="A">
+                <li>Krisis minyak 1970-an</li>
+                <li>Krisis keuangan global 2008/2009</li>
+                <li>Krisis pangan 1990</li>
+                <li>Krisis perdagangan 2019</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>5. Suku bunga kebijakan yang digunakan Bank Indonesia saat ini disebut...</h4>
+            <ol type="A">
+                <li>BI Rate lama</li>
+                <li>BI7DRR</li>
+                <li>BI-Rate</li>
+                <li>PUAB Rate</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>6. Jika BI menaikkan suku bunga, secara umum dampak yang diharapkan adalah...</h4>
+            <ol type="A">
+                <li>Permintaan agregat meningkat</li>
+                <li>Tekanan inflasi meningkat</li>
+                <li>Permintaan agregat menurun</li>
+                <li>Kredit menjadi lebih murah</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>7. Jalur transmisi yang melalui perubahan nilai Rupiah disebut...</h4>
+            <ol type="A">
+                <li>Jalur kredit</li>
+                <li>Jalur nilai tukar</li>
+                <li>Jalur fiskal</li>
+                <li>Jalur produksi</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>8. Kenaikan harga barang impor akibat pelemahan Rupiah dapat menimbulkan...</h4>
+            <ol type="A">
+                <li>Imported inflation</li>
+                <li>Deflasi</li>
+                <li>Output gap negatif</li>
+                <li>Surplus fiskal</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: A</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>9. Empat K dalam pengendalian inflasi adalah...</h4>
+            <ol type="A">
+                <li>Kredit, Konsumsi, Kurs, Komunikasi</li>
+                <li>Kenaikan, Kredit, Kurs, Konsumsi</li>
+                <li>Keterjangkauan harga, Ketersediaan pasokan, Kelancaran distribusi, Komunikasi efektif</li>
+                <li>Konsumsi, Kurs, Kredit, Kapital</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>10. Inflasi yang berkaitan dengan kelompok pangan yang mudah berfluktuasi disebut...</h4>
+            <ol type="A">
+                <li>Core Inflation</li>
+                <li>Volatile Food</li>
+                <li>Imported Inflation</li>
+                <li>Administered Prices</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAB 57 -->
+    <section id="bab57" class="bab">
+        <h2>BAB 57 — SOAL ANALISIS</h2>
+
+        <div class="soal">
+            <h4>Soal 1</h4>
+            <p>Bank Indonesia menurunkan BI-Rate. Jelaskan bagaimana kebijakan tersebut dapat memengaruhi pertumbuhan ekonomi.</p>
+            <div class="jawaban">
+                <h4>Jawaban</h4>
+                <p>BI-Rate turun → suku bunga pasar cenderung turun → suku bunga kredit turun → biaya pinjaman turun → permintaan kredit meningkat → konsumsi dan investasi dapat meningkat → aktivitas ekonomi meningkat → pertumbuhan ekonomi terdorong.</p>
+                <p>Namun dampaknya bergantung pada kondisi perbankan, risiko ekonomi, dan permintaan kredit.</p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 2</h4>
+            <p>Mengapa kenaikan BI-Rate tidak selalu langsung menurunkan inflasi?</p>
+            <div class="jawaban">
+                <h4>Jawaban</h4>
+                <p>Karena kebijakan moneter memiliki <strong>time lag</strong>. Selain itu, inflasi dapat berasal dari faktor yang tidak langsung dipengaruhi oleh suku bunga, seperti:</p>
+                <ul>
+                    <li>gangguan pasokan pangan;</li>
+                    <li>harga energi;</li>
+                    <li>nilai tukar;</li>
+                    <li>harga komoditas global;</li>
+                    <li>administered prices.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 3</h4>
+            <p>Mengapa pengendalian inflasi membutuhkan kerja sama antara BI dan Pemerintah?</p>
+            <div class="jawaban">
+                <h4>Jawaban</h4>
+                <p>Karena sumber inflasi berasal dari sisi permintaan maupun penawaran.</p>
+                <p>BI lebih kuat dalam menangani aspek moneter dan permintaan, sedangkan Pemerintah memiliki peran besar dalam:</p>
+                <ul>
+                    <li>produksi;</li>
+                    <li>pasokan;</li>
+                    <li>distribusi;</li>
+                    <li>subsidi;</li>
+                    <li>harga yang diatur pemerintah.</li>
+                </ul>
+                <p>Karena itu diperlukan koordinasi kebijakan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAB 58 -->
+    <section id="bab58" class="bab">
+        <h2>BAB 58 — PERTANYAAN ESSAY UNTUK UJIAN</h2>
+
+        <ol>
+            <li>Jelaskan tujuan utama kebijakan moneter Bank Indonesia.</li>
+            <li>Jelaskan pengertian Inflation Targeting Framework.</li>
+            <li>Mengapa ITF berkembang menjadi Flexible ITF?</li>
+            <li>Sebutkan dan jelaskan lima elemen Flexible ITF.</li>
+            <li>Jelaskan pengertian time lag dalam kebijakan moneter.</li>
+            <li>Jelaskan mekanisme transmisi melalui jalur suku bunga.</li>
+            <li>Jelaskan mekanisme transmisi melalui jalur nilai tukar.</li>
+            <li>Jelaskan jalur harga aset.</li>
+            <li>Jelaskan pentingnya ekspektasi inflasi.</li>
+            <li>Mengapa kondisi perbankan memengaruhi efektivitas transmisi?</li>
+            <li>Jelaskan perbedaan inflasi inti, volatile food, dan administered prices.</li>
+            <li>Jelaskan hubungan output gap dengan inflasi.</li>
+            <li>Jelaskan mengapa depresiasi Rupiah dapat menyebabkan imported inflation.</li>
+            <li>Jelaskan peran Bank Indonesia dalam pengendalian inflasi.</li>
+            <li>Jelaskan peran Pemerintah dalam pengendalian inflasi.</li>
+            <li>Apa yang dimaksud dengan 4K?</li>
+            <li>Jelaskan pentingnya komunikasi kebijakan moneter.</li>
+            <li>Jelaskan hubungan antara transparansi dan akuntabilitas.</li>
+            <li>Jelaskan fungsi TPI, TPIP, dan TPID.</li>
+            <li>Buatlah contoh kasus inflasi akibat supply shock dan jelaskan cara mengatasinya.</li>
+        </ol>
+    </section>
+
+    <!-- BAB 59 -->
+    <section id="bab59" class="bab">
+        <h2>BAB 59 — CARA MUDAH MENGHAFAL</h2>
+
+        <p>Gunakan formula:</p>
+        <h1 style="text-align: center; color: var(--secondary-color);">"T-F-B-T-I-K-4K"</h1>
+
+        <h3>T = Tujuan</h3>
+        <div class="formula">
+            <p><strong>Stabilitas nilai Rupiah</strong></p>
+        </div>
+
+        <h3>F = Framework</h3>
+        <div class="formula">
+            <p><strong>Flexible ITF</strong></p>
+        </div>
+
+        <h3>B = BI-Rate</h3>
+        <div class="formula">
+            <p><strong>Sinyal kebijakan moneter</strong></p>
+        </div>
+
+        <h3>T = Transmisi</h3>
+        <div class="formula">
+            <p><strong>Suku bunga, nilai tukar, harga aset, ekspektasi, kredit</strong></p>
+        </div>
+
+        <h3>I = Inflasi</h3>
+        <div class="formula">
+            <p><strong>IHK, inti, volatile food, administered prices</strong></p>
+        </div>
+
+        <h3>K = Koordinasi</h3>
+        <div class="formula">
+            <p><strong>BI + Pemerintah + Pemda + K/L</strong></p>
+        </div>
+
+        <h3>4K</h3>
+        <div class="formula">
+            <p><strong>Keterjangkauan harga<br>
+            Ketersediaan pasokan<br>
+            Kelancaran distribusi<br>
+            Komunikasi efektif</strong></p>
+        </div>
+    </section>
+
+    <!-- BAB 60 -->
+    <section id="bab60" class="bab">
+        <h2>BAB 60 — KESIMPULAN</h2>
+
+        <p>Inti dari keseluruhan materi dapat dirangkum sebagai berikut:</p>
+
+        <div class="summary">
+            <blockquote>
+                <strong>Bank Indonesia menjalankan kebijakan moneter untuk menjaga stabilitas nilai Rupiah.</strong>
+            </blockquote>
+
+            <p>Stabilitas nilai Rupiah tercermin terutama melalui:</p>
+            <blockquote>
+                <strong>Inflasi yang rendah dan stabil + nilai tukar yang stabil.</strong>
+            </blockquote>
+
+            <p>Untuk mencapai tujuan tersebut, Bank Indonesia menggunakan:</p>
+            <blockquote>
+                <strong>Flexible Inflation Targeting Framework</strong>
+            </blockquote>
+
+            <p>dengan <strong>BI-Rate</strong> sebagai suku bunga kebijakan.</p>
+
+            <p>BI-Rate kemudian ditransmisikan melalui berbagai jalur:</p>
+            <blockquote>
+                <strong>Suku bunga → nilai tukar → harga aset → kredit → ekspektasi</strong>
+            </blockquote>
+
+            <p>yang akhirnya memengaruhi:</p>
+            <blockquote>
+                <strong>konsumsi + investasi + permintaan agregat + output gap → inflasi.</strong>
+            </blockquote>
+
+            <p>Namun inflasi tidak hanya berasal dari kebijakan moneter. Inflasi juga dipengaruhi oleh:</p>
+            <blockquote>
+                <strong>pangan + energi + produksi + distribusi + harga global + nilai tukar + administered prices + ekspektasi + shocks.</strong>
+            </blockquote>
+
+            <p>Oleh sebab itu, pengendalian inflasi membutuhkan:</p>
+            <blockquote>
+                <strong>koordinasi Bank Indonesia dan Pemerintah</strong>
+            </blockquote>
+
+            <p>melalui strategi <strong>4K</strong>:</p>
+            <ul>
+                <li>🟦 <strong>Keterjangkauan Harga</strong></li>
+                <li>🟦 <strong>Ketersediaan Pasokan</strong></li>
+                <li>🟦 <strong>Kelancaran Distribusi</strong></li>
+                <li>🟦 <strong>Komunikasi Efektif</strong></li>
+            </ul>
+
+            <p>Dan agar kebijakan moneter dipercaya masyarakat, independensi Bank Indonesia harus berjalan bersama:</p>
+            <blockquote>
+                <strong>Transparansi + Akuntabilitas + Komunikasi yang efektif.</strong>
+            </blockquote>
+        </div>
+
+        <h3>Rumus paling penting untuk dipahami:</h3>
+        <div class="formula">
+            <p><strong>BI-Rate ↑ → suku bunga ↑ → kredit/konsumsi/investasi ↓ → permintaan agregat ↓ → tekanan inflasi ↓</strong></p>
+        </div>
+
+        <div class="formula">
+            <p><strong>BI-Rate ↓ → suku bunga ↓ → kredit/konsumsi/investasi ↑ → permintaan agregat ↑ → aktivitas ekonomi ↑</strong></p>
+        </div>
+
+        <p>Sedangkan:</p>
+        <div class="formula">
+            <p><strong>Rupiah melemah → impor lebih mahal → imported inflation ↑</strong></p>
+        </div>
+
+        <div class="formula">
+            <p><strong>Pasokan pangan ↓ → harga pangan ↑ → volatile food inflation ↑</strong></p>
+        </div>
+
+        <div class="highlight">
+            <p>Sehingga kebijakan moneter pada dasarnya adalah proses <strong>mengelola keseimbangan antara stabilitas harga, stabilitas nilai tukar, stabilitas sistem keuangan, dan pertumbuhan ekonomi berkelanjutan</strong>.</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 2px solid var(--secondary-color);">
+        <p><strong>Materi Pembelajaran Kebijakan Moneter, Transmisi Kebijakan Moneter, dan Pengendalian Inflasi</strong></p>
+        <p>© 2024 | Modul Pembelajaran Sistematik</p>
+        <p><em>Untuk keperluan belajar mandiri, presentasi, dan persiapan ujian</em></p>
+    </footer>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

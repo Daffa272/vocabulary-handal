@@ -1,0 +1,2862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran Lengkap: Pasar Uang dan Pasar Valuta Asing (PUVA)</title>
+    <style>
+        :root {
+            --primary: #1565c0;
+            --primary-dark: #0d47a1;
+            --primary-light: #5e92f3;
+            --secondary: #00897b;
+            --secondary-light: #4db6ac;
+            --accent: #ff9800;
+            --accent-light: #ffc947;
+            --success: #4caf50;
+            --warning: #ffc107;
+            --danger: #f44336;
+            --light: #f5f5f5;
+            --light2: #e8f5e8;
+            --dark: #263238;
+            --text: #333;
+            --text-light: #555;
+            --border: #b2dfdb;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-lg: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px var(--shadow-lg);
+        }
+
+        header h1 {
+            font-size: 2.1em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        nav h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            text-align: center;
+            position: relative;
+        }
+
+        nav h2:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            column-gap: 15px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 10px 12px;
+            background: var(--light2);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--secondary);
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        .toc a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(6px);
+            box-shadow: 0 3px 8px rgba(0, 137, 123, 0.3);
+        }
+
+        main {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        section::before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            position: absolute;
+            left: -15px;
+            top: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        h2 .icon {
+            font-size: 0.8em;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        h2 .number {
+            font-size: 0.85em;
+            background: var(--accent);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.4em;
+            margin: 22px 0 15px 0;
+        }
+
+        h4 {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin: 18px 0 12px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        blockquote {
+            background: linear-gradient(135deg, var(--light2), #fff);
+            border-left: 5px solid var(--secondary);
+            padding: 18px;
+            margin: 18px 0;
+            font-style: italic;
+            color: var(--dark);
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        blockquote p {
+            margin: 0;
+            text-align: left;
+            font-style: normal;
+        }
+
+        .definition {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 5px solid var(--accent);
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 3px 8px rgba(255, 152, 0, 0.2);
+        }
+
+        .definition p {
+            margin: 0;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .definition p + p {
+            margin-top: 10px;
+        }
+
+        .important {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid var(--danger);
+            box-shadow: 0 2px 6px rgba(244, 67, 54, 0.15);
+        }
+
+        .important p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .important p + p {
+            margin-top: 8px;
+        }
+
+        .diagram, .flow-chart {
+            background: #f8f9fa;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.5;
+            font-size: 0.9em;
+            color: var(--dark);
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .math {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border: 1px dashed var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            background: white;
+            box-shadow: 0 3px 10px var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0, 137, 123, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(0, 137, 123, 0.1);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 22px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(0, 137, 123, 0.2);
+        }
+
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .summary ul {
+            margin-left: 20px;
+            padding-bottom: 8px;
+        }
+
+        .summary li {
+            margin-bottom: 6px;
+        }
+
+        .summary p {
+            margin-bottom: 10px;
+        }
+
+        .exercise {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            padding: 18px;
+            border-radius: 6px;
+            margin: 18px 0;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 3px 8px rgba(255, 152, 0, 0.15);
+        }
+
+        .exercise h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+
+        .answer {
+            background: white;
+            padding: 14px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .answer strong {
+            color: var(--primary);
+        }
+
+        .keywords {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 18px;
+            border-radius: 6px;
+            margin: 18px 0;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .contoh {
+            background: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .contoh p:first-child {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .formula {
+            background: #f0f8ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            border: 1px dashed var(--secondary);
+        }
+
+        .section-group {
+            background: rgba(255, 248, 225, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+        }
+
+        .mnemonik {
+            background: linear-gradient(135deg, #fff9c4, #fff59d);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .mnemonik p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .wrong, .correct {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .wrong {
+            background: #ffebee;
+            border-left: 4px solid var(--danger);
+        }
+
+        .correct {
+            background: #e8f5e8;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong p:first-child, .correct p:first-child {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .time-info {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .time-info p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .list-custom {
+            margin-left: 20px;
+            padding-bottom: 8px;
+        }
+
+        .list-custom li {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 137, 123, 0.3);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 137, 123, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+
+            .toc {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header .subtitle {
+                font-size: 1em;
+            }
+
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h2 .icon, h2 .number {
+                font-size: 0.75em;
+                padding: 4px 8px;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .diagram, .flow-chart, .code-block {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h2 .icon, h2 .number {
+                display: none;
+            }
+
+            .toc a {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+        }
+
+        /* Print */
+        @media print {
+            nav, .back-to-top, .toc {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .diagram, .flow-chart, .code-block {
+                white-space: pre-wrap;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Animation */
+        @keyframes highlight {
+            0% { background-color: #fffde7; }
+            50% { background-color: #fff9c4; }
+            100% { background-color: #fffde7; }
+        }
+
+        .important {
+            animation: highlight 3s infinite;
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Materi Pembelajaran Lengkap</h1>
+            <p class="subtitle">Pasar Uang dan Pasar Valuta Asing (PUVA)</p>
+            <p>Sistematis, Mudah Dipahami, dan Berorientasi Ujian</p>
+        </header>
+
+        <nav>
+            <h2>📚 Daftar Isi</h2>
+            <div class="toc">
+                <a href="#tujuan">1. Tujuan Pembelajaran</a>
+                <a href="#apa-itu-puva">2. Apa Itu PUVA?</a>
+                <a href="#pentingnya-puva">3. Mengapa PUVA Penting?</a>
+                <a href="#pasar-uang">4. Pengertian Pasar Uang</a>
+                <a href="#unsur-pasar-uang">5. Unsur Pasar Uang</a>
+                <a href="#pasar-valas">6. Pengertian Pasar Valas</a>
+                <a href="#perbedaan">7. Perbedaan Pasar Uang & Valas</a>
+                <a href="#tujuan-pengembangan">8. Tujuan Pengembangan PUVA</a>
+                <a href="#strategi">9. 3 Strategi Pengembangan</a>
+                <a href="#cakupan">10. Cakupan Pengaturan</a>
+                <a href="#prinsip-3i">11. Prinsip Dasar 3I</a>
+                <a href="#aspek-lain">12. Aspek Lain</a>
+                <a href="#sn-pppk">13. SN-PPPK</a>
+                <a href="#penyusun-sn">14. Penyusun SN-PPPK</a>
+                <a href="#pilar-sn">15. 3 Pilar SN-PPPK</a>
+                <a href="#tujuh-pasar">16. Tujuh Pasar Keuangan</a>
+                <a href="#tahapan">17. Tahapan SN-PPPK</a>
+                <a href="#bppu-2030">18. BPPU 2030</a>
+                <a href="#posisi-bppu">19. Posisi BPPU 2030</a>
+                <a href="#manfaat-puva">20. Manfaat PUVA</a>
+                <a href="#strategi-bppu">21. Strategi BPPU 2030</a>
+                <a href="#sasaran-bppu">22. Sasaran BPPU 2030</a>
+                <a href="#dealer-utama">23. Dealer Utama PUVA</a>
+                <a href="#penting-dealer">24. Mengapa Dealer Utama Diperlukan?</a>
+                <a href="#kriteria-umum">25. Kriteria Dealer Utama</a>
+                <a href="#kriteria-umum-detail">26. Kriteria Umum</a>
+                <a href="#kriteria-khusus">27. Kriteria Khusus</a>
+                <a href="#penjelasan-kriteria">28. Penjelasan Kriteria Khusus</a>
+                <a href="#kewajiban-dealer">29. Kewajiban Dealer Utama</a>
+                <a href="#market-maker">30. Market Maker</a>
+                <a href="#kuotasi-repo">31. Kuotasi Repo</a>
+                <a href="#hittable">32. Apa Itu Hittable?</a>
+                <a href="#kuotasi-srbi">33. Kuotasi SRBI</a>
+                <a href="#kuotasi-ois">34. Kuotasi OIS</a>
+                <a href="#kewajiban-opt">35. Kewajiban Aktif OPT</a>
+                <a href="#target-win">36. Target Win SRBI</a>
+                <a href="#counterparty-line">37. Counterparty Line</a>
+                <a href="#apa-counterparty">38. Apa Itu Counterparty Line?</a>
+                <a href="#srbi-pasar-sekunder">39. Kewajiban SRBI Pasar Sekunder</a>
+                <a href="#transaksi-pasar-sekunder">40. Kewajiban Transaksi Pasar Sekunder</a>
+                <a href="#kewajiban-ois">41. Kewajiban OIS</a>
+                <a href="#waktu-ois">42. Kapan Kewajiban OIS Berlaku?</a>
+                <a href="#aktivitas-dealer">43. Aktivitas Dealer Utama</a>
+                <a href="#fasilitas-repo">44. Fasilitas Repo</a>
+                <a href="#fasilitas-dndf">45. Fasilitas DNDF</a>
+                <a href="#fasilitas-ndf">46. Fasilitas NDF Luar Negeri</a>
+                <a href="#komitmen-ndf">47. Komitmen Penerima Fasilitas NDF</a>
+                <a href="#alasan-komitmen">48. Alasan Komitmen</a>
+                <a href="#transaksi-opt">49. Transaksi OPT</a>
+                <a href="#pelaporan">50. Pelaporan</a>
+                <a href="#jenis-pelaporan">51. Jenis Pelaporan</a>
+                <a href="#rencana-kerja">52. Rencana Kerja</a>
+                <a href="#konsultasi">53. Konsultasi & Perizinan</a>
+                <a href="#dokumen">54. Dokumen Permohonan</a>
+                <a href="#pengawasan">55. Pengawasan</a>
+                <a href="#evaluasi-kewajiban">56. Periode Evaluasi Kewajiban</a>
+                <a href="#evaluasi-kinerja">57. Periode Evaluasi Kinerja</a>
+                <a href="#sertifikasi">58. Sertifikasi Tresuri</a>
+                <a href="#apa-tresuri">59. Apa Itu Tresuri?</a>
+                <a href="#kode-etik">60. Kode Etik Pasar</a>
+                <a href="#penting-etik">61. Mengapa Kode Etik Penting?</a>
+                <a href="#market-code">62. Market Code of Conduct</a>
+                <a href="#surat-komitmen">63. Surat Pernyataan Komitmen</a>
+                <a href="#manfaat-etik">64. Manfaat Adopsi</a>
+                <a href="#hubungan-puva-dealer">65. Hubungan PUVA & Dealer Utama</a>
+                <a href="#hubungan-bppu-dealer">66. Hubungan BPPU & Dealer Utama</a>
+                <a href="#contoh-kasus-1">67. Contoh Kasus 1</a>
+                <a href="#contoh-kasus-2">68. Contoh Kasus 2</a>
+                <a href="#contoh-kasus-3">69. Contoh Kasus 3</a>
+                <a href="#perbandingan-sn-bppu">70. Perbandingan SN-PPPK & BPPU</a>
+                <a href="#perbandingan-pasar">71. Perbandingan Pasar Uang & PUVA</a>
+                <a href="#rangkuman">72. Rangkuman Wajib Hafal</a>
+                <a href="#rumus-hafalan">73. Rumus Hafalan</a>
+                <a href="#angka-penting">74. Angka Penting</a>
+                <a href="#soal-pilihan">75. Soal Pilihan Ganda</a>
+                <a href="#soal-benar-salah">76. Soal Benar/Salah</a>
+                <a href="#soal-analisis">77. Soal Analisis</a>
+                <a href="#soal-essay">78. Soal Essay</a>
+                <a href="#kesimpulan">79. Kesimpulan Besar</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Section 1 -->
+            <section id="tujuan">
+                <h2><span class="icon">🎯</span><span class="number">1</span> TUJUAN PEMBELAJARAN</h2>
+                <p>Setelah mempelajari materi ini, kamu diharapkan mampu:</p>
+                <ol class="list-custom">
+                    <li>Menjelaskan pengertian <strong>Pasar Uang dan Pasar Valuta Asing (PUVA)</strong>.</li>
+                    <li>Membedakan Pasar Uang dengan Pasar Valuta Asing.</li>
+                    <li>Menjelaskan tujuan pengembangan dan pendalaman PUVA.</li>
+                    <li>Memahami <strong>SN-PPPK</strong> dan <strong>BPPU 2030</strong>.</li>
+                    <li>Menjelaskan pengertian dan peran <strong>Dealer Utama PUVA</strong>.</li>
+                    <li>Menjelaskan kriteria dan kewajiban Dealer Utama PUVA.</li>
+                    <li>Memahami fasilitas yang diberikan kepada Dealer Utama PUVA.</li>
+                    <li>Memahami mekanisme transaksi OPT dengan Dealer Utama PUVA.</li>
+                    <li>Menjelaskan pelaporan dan evaluasi Dealer Utama PUVA.</li>
+                    <li>Memahami pentingnya <strong>sertifikasi tresuri dan kode etik pasar</strong>.</li>
+                </ol>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="apa-itu-puva">
+                <h2><span class="icon">💱</span><span class="number">2</span> APA ITU PUVA?</h2>
+                <div class="definition">
+                    <p><strong>PUVA</strong> merupakan singkatan dari:</p>
+                    <p style="margin-top: 15px; font-size: 1.2em; text-align: center;">Pasar Uang dan Pasar Valuta Asing</p>
+                </div>
+                <p>Pengaturan, pengembangan, dan pengawasan PUVA menjadi bagian penting dari kebijakan Bank Indonesia dalam membangun pasar keuangan yang modern dan maju.</p>
+                <p>Kerangka ini diperkuat melalui:</p>
+                <blockquote>
+                    UU No. 4 Tahun 2023 tentang Pengembangan dan Penguatan Sektor Keuangan (UU PPSK).
+                </blockquote>
+                <p>Kemudian Bank Indonesia menerbitkan regulasi mengenai PUVA.</p>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="pentingnya-puva">
+                <h2><span class="icon">⭐</span><span class="number">3</span> MENGAPA PUVA PENTING?</h2>
+                <p>PUVA bukan sekadar tempat transaksi uang atau valuta asing.</p>
+                <p>PUVA mempunyai hubungan erat dengan:</p>
+                <ul class="list-custom">
+                    <li>kebijakan moneter;</li>
+                    <li>stabilitas sistem keuangan;</li>
+                    <li>pembiayaan ekonomi;</li>
+                    <li>likuiditas;</li>
+                    <li>pengelolaan risiko;</li>
+                    <li>nilai tukar;</li>
+                    <li>suku bunga;</li>
+                    <li>pasar surat berharga.</li>
+                </ul>
+
+                <p>Secara sederhana:</p>
+                <div class="diagram">
+              PUVA
+               │
+      ┌────────┼────────┐
+      │        │        │
+      ▼        ▼        ▼
+ Kebijakan  Stabilitas  Pembiayaan
+ Moneter    Keuangan    Ekonomi
+      │        │        │
+      └────────┼────────┘
+               ▼
+       Perekonomian yang
+          lebih efisien
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="pasar-uang">
+                <h2><span class="icon">💵</span><span class="number">4</span> PENGERTIAN PASAR UANG</h2>
+                <p>Menurut materi, <strong>Pasar Uang</strong> adalah bagian dari Sistem Keuangan yang berkaitan dengan:</p>
+
+                <h3>1. Penerbitan dan perdagangan</h3>
+                <p>Instrumen keuangan atau efek bersifat utang dengan jangka waktu:</p>
+                <div class="formula">
+tidak lebih dari 1 tahun.
+                </div>
+
+                <h3>2. Transaksi pinjam-meminjam uang</h3>
+                <p>Misalnya pelaku pasar membutuhkan atau memiliki kelebihan likuiditas.</p>
+
+                <h3>3. Transaksi derivatif suku bunga</h3>
+                <p>Yaitu transaksi yang berkaitan dengan perubahan/pergerakan suku bunga.</p>
+
+                <h3>4. Transaksi lainnya</h3>
+                <p>Transaksi yang memiliki karakteristik pasar uang, baik dalam:</p>
+                <ul class="list-custom">
+                    <li>rupiah;</li>
+                    <li>valuta asing.</li>
+                </ul>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="unsur-pasar-uang">
+                <h2><span class="icon">🔍</span><span class="number">5</span> UNSUR PASAR UANG</h2>
+                <p>Agar mudah diingat:</p>
+                <div class="formula">
+Pasar Uang = Utang + Pinjam-Meminjam + Derivatif Suku Bunga
+                </div>
+                <div class="diagram">
+                PASAR UANG
+                    │
+       ┌────────────┼────────────┐
+       ▼            ▼            ▼
+   Instrumen     Pinjam-      Derivatif
+    ≤ 1 tahun    meminjam     Suku Bunga
+                </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="pasar-valas">
+                <h2><span class="icon">🌍</span><span class="number">6</span> PENGERTIAN PASAR VALUTA ASING</h2>
+                <div class="definition">
+                    <p><strong>Pasar Valuta Asing (Pasar Valas)</strong> adalah bagian dari Sistem Keuangan yang berkaitan dengan:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;">transaksi yang melibatkan pertukaran mata uang dari <strong>dua negara berbeda</strong> beserta derivatifnya.</p>
+                </div>
+                <p>Namun terdapat pengecualian.</p>
+                <p>Pasar Valuta Asing <strong>tidak termasuk</strong>:</p>
+                <blockquote>
+                    penukaran bank notes yang diselenggarakan oleh kegiatan usaha penukaran valuta asing.
+                </blockquote>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="perbedaan">
+                <h2><span class="icon">⚖️</span><span class="number">7</span> PERBEDAAN PASAR UANG DAN PASAR VALAS</h2>
+                <table>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Pasar Uang</th>
+                        <th>Pasar Valuta Asing</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Fokus</strong></td>
+                        <td>Uang/instrumen keuangan jangka pendek</td>
+                        <td>Pertukaran mata uang</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jangka instrumen utang</strong></td>
+                        <td>≤ 1 tahun</td>
+                        <td>Tidak menjadi definisi utama</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transaksi</strong></td>
+                        <td>Pinjam-meminjam, instrumen utang, derivatif suku bunga</td>
+                        <td>Pertukaran 2 mata uang dan derivatif</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risiko utama</strong></td>
+                        <td>Likuiditas & suku bunga</td>
+                        <td>Nilai tukar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mata uang</strong></td>
+                        <td>Rupiah atau valas</td>
+                        <td>Dua mata uang berbeda</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contoh konsep</strong></td>
+                        <td>Repo, instrumen pasar uang, derivatif suku bunga</td>
+                        <td>Spot, forward, swap, derivatif valas</td>
+                    </tr>
+                </table>
+
+                <h3>Hafalan:</h3>
+                <div class="mnemonik">
+                    <p><strong>Pasar Uang → fokus pada likuiditas dan suku bunga.</strong></p>
+                    <p><strong>Pasar Valas → fokus pada pertukaran mata uang dan risiko nilai tukar.</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="tujuan-pengembangan">
+                <h2><span class="icon">🎯</span><span class="number">8</span> TUJUAN PENGEMBANGAN PUVA</h2>
+                <div class="definition">
+                    <p>Pengaturan, pengembangan, dan pengawasan PUVA diarahkan untuk membangun:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;"><strong>Pasar Uang dan Pasar Valuta Asing yang modern dan maju.</strong></p>
+                </div>
+                <p>Tujuannya mendukung:</p>
+
+                <h3>1. Efektivitas kebijakan moneter</h3>
+                <p>Pasar uang yang dalam dan likuid membuat kebijakan moneter lebih mudah ditransmisikan.</p>
+
+                <h3>2. Stabilitas sistem keuangan</h3>
+                <p>Pasar yang baik membantu pengelolaan likuiditas dan risiko.</p>
+
+                <h3>3. Sinergi pembiayaan ekonomi</h3>
+                <p>PUVA membantu mempertemukan kebutuhan dan sumber dana dalam perekonomian.</p>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="strategi">
+                <h2><span class="icon">📈</span><span class="number">9</span> TIGA STRATEGI PENGEMBANGAN PUVA</h2>
+                <p>Materi menyebut tiga strategi utama:</p>
+
+                <h3>Strategi 1</h3>
+                <p><strong>Perumusan kebijakan pengembangan PUVA</strong>, termasuk:</p>
+                <blockquote>
+                    Infrastruktur Pasar Keuangan.
+                </blockquote>
+
+                <h3>Strategi 2</h3>
+                <p>Pengembangan PUVA yang:</p>
+                <ul class="list-custom">
+                    <li>inklusif;</li>
+                    <li>modern;</li>
+                    <li>terintegrasi dengan pengelolaan moneter.</li>
+                </ul>
+
+                <h3>Strategi 3</h3>
+                <p><strong>Sinergi kebijakan</strong> untuk:</p>
+                <ul class="list-custom">
+                    <li>mengembangkan sumber pembiayaan ekonomi;</li>
+                    <li>mengelola risiko.</li>
+                </ul>
+            </section>
+
+            <!-- Section 10 -->
+            <section id="cakupan">
+                <h2><span class="icon">📋</span><span class="number">10</span> CAKUPAN PENGATURAN PUVA</h2>
+                <p>Pengaturan, pengembangan, dan pengawasan mencakup:</p>
+                <div class="diagram">
+                 PUVA
+                  │
+       ┌──────────┼──────────┐
+       ▼          ▼          ▼
+     Produk     Pricing    Participants
+       │          │          │
+       └──────────┼──────────┘
+                  ▼
+        Infrastruktur Pasar
+             Keuangan
+                </div>
+                <p>Jadi bukan hanya produknya.</p>
+                <p>BI juga memperhatikan:</p>
+                <ul class="list-custom">
+                    <li><strong>produk;</strong></li>
+                    <li><strong>harga/pricing;</strong></li>
+                    <li><strong>pelaku/participants;</strong></li>
+                    <li><strong>infrastruktur pasar keuangan.</strong></li>
+                </ul>
+            </section>
+
+            <!-- Section 11 -->
+            <section id="prinsip-3i">
+                <h2><span class="icon">🔗</span><span class="number">11</span> PRINSIP DASAR 3I</h2>
+                <p>Salah satu konsep penting dalam pengembangan PUVA adalah:</p>
+                <div class="formula">
+3I = Interkoneksi + Interoperabilitas + Integrasi
+                </div>
+
+                <h3>A. Interkoneksi</h3>
+                <p>Pelaku dan sistem pasar saling terhubung.</p>
+
+                <h3>B. Interoperabilitas</h3>
+                <p>Sistem yang berbeda dapat bekerja dan berinteraksi satu sama lain.</p>
+
+                <h3>C. Integrasi</h3>
+                <p>Berbagai bagian pasar dapat berjalan secara terintegrasi.</p>
+
+                <h3>Hafalan:</h3>
+                <div class="mnemonik">
+                    <p><strong>3I = Terhubung – Bisa Berinteraksi – Terintegrasi</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 12 -->
+            <section id="aspek-lain">
+                <h2><span class="icon">✨</span><span class="number">12</span> ASPEK LAIN PENGEMBANGAN PUVA</h2>
+                <p>Pengembangan PUVA juga memperhatikan:</p>
+                <ul class="list-custom">
+                    <li>kaidah internasional;</li>
+                    <li>digitalisasi data dan informasi;</li>
+                    <li>inklusivitas;</li>
+                    <li>keuangan berkelanjutan;</li>
+                    <li>efektivitas;</li>
+                    <li>efisiensi;</li>
+                    <li>tata kelola yang baik;</li>
+                    <li>sinergi;</li>
+                    <li>inovasi.</li>
+                </ul>
+            </section>
+
+            <!-- Section 13 -->
+            <section id="sn-pppk">
+                <h2><span class="icon">📄</span><span class="number">13</span> SN-PPPK</h2>
+                <h3>Apa itu SN-PPPK?</h3>
+                <div class="definition">
+                    <p><strong>SN-PPPK</strong> adalah:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;">Strategi Nasional Pengembangan dan Pendalaman Pasar Keuangan</p>
+                </div>
+                <p>Strategi ini merupakan:</p>
+                <blockquote>
+                    single policy framework
+                </blockquote>
+                <p>yang komprehensif dan terukur.</p>
+                <p>Visinya adalah menciptakan pasar keuangan yang:</p>
+                <div class="formula">
+dalam, likuid, efisien, inklusif, dan aman.
+                </div>
+            </section>
+
+            <!-- Section 14 -->
+            <section id="penyusun-sn">
+                <h2><span class="icon">👥</span><span class="number">14</span> SIAPA YANG MENYUSUN SN-PPPK?</h2>
+                <p>Salah satu mandat yang diberikan kepada:</p>
+                <div class="formula">
+FK-PPPK
+                </div>
+                <p>adalah menyusun SN-PPPK.</p>
+            </section>
+
+            <!-- Section 15 -->
+            <section id="pilar-sn">
+                <h2><span class="icon">🏛️</span><span class="number">15</span> TIGA PILAR SN-PPPK</h2>
+                <p>Ini sangat penting untuk dihafalkan.</p>
+
+                <h3>Pilar 1</h3>
+                <div class="definition">
+                    <p><strong>Sumber pembiayaan ekonomi dan pengelolaan risiko</strong></p>
+                </div>
+
+                <h3>Pilar 2</h3>
+                <div class="definition">
+                    <p><strong>Pengembangan infrastruktur pasar</strong></p>
+                </div>
+
+                <h3>Pilar 3</h3>
+                <div class="definition">
+                    <p><strong>Koordinasi kebijakan, harmonisasi ketentuan, dan edukasi</strong></p>
+                </div>
+
+                <h3>Mnemonik:</h3>
+                <div class="mnemonik">
+                    <p><strong>Dana – Infrastruktur – Koordinasi</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 16 -->
+            <section id="tujuh-pasar">
+                <h2><span class="icon">🔢</span><span class="number">16</span> TUJUH PASAR KEUANGAN</h2>
+                <p>Ketiga pilar tersebut diterapkan melalui tujuh elemen pengembangan pada tujuh pasar:</p>
+                <ol class="list-custom">
+                    <li>Pasar obligasi pemerintah</li>
+                    <li>Pasar obligasi korporasi</li>
+                    <li>Pasar uang</li>
+                    <li>Pasar valas</li>
+                    <li>Pasar saham</li>
+                    <li>Pasar structured product</li>
+                    <li>Pasar keuangan syariah</li>
+                </ol>
+            </section>
+
+            <!-- Section 17 -->
+            <section id="tahapan">
+                <h2><span class="icon">📅</span><span class="number">17</span> TAHAPAN SN-PPPK</h2>
+                <p>Awalnya terdapat tiga fase:</p>
+                <table>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Periode</th>
+                    </tr>
+                    <tr>
+                        <td>Penguatan fondasi</td>
+                        <td>2018–2019</td>
+                    </tr>
+                    <tr>
+                        <td>Percepatan</td>
+                        <td>2020–2022</td>
+                    </tr>
+                    <tr>
+                        <td>Pendalaman</td>
+                        <td>2023–2024</td>
+                    </tr>
+                </table>
+
+                <p>Namun berdasarkan penyesuaian pada pertemuan Tim Pengarah FK-PPPK Maret 2021:</p>
+                <table>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Periode setelah penyesuaian</th>
+                    </tr>
+                    <tr>
+                        <td>Penguatan fondasi</td>
+                        <td>2018–2019</td>
+                    </tr>
+                    <tr>
+                        <td>Percepatan</td>
+                        <td>2020–2023</td>
+                    </tr>
+                    <tr>
+                        <td>Pendalaman</td>
+                        <td>2024–2025</td>
+                    </tr>
+                </table>
+                <p>Penyesuaian tersebut mempertimbangkan perubahan kondisi lingkungan strategis pasar keuangan, termasuk dampak pandemi COVID-19.</p>
+            </section>
+
+            <!-- Section 18 -->
+            <section id="bppu-2030">
+                <h2><span class="icon">📅</span><span class="number">18</span> BPPU 2030</h2>
+                <h3>Pengertian</h3>
+                <div class="definition">
+                    <p><strong>BPPU 2030</strong> adalah:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;">Blueprint Pendalaman Pasar Uang dan Pasar Valuta Asing 2030.</p>
+                </div>
+                <p>BPPU 2030 merupakan peta jalan untuk mengarahkan pendalaman PUVA yang modern dan maju dalam periode:</p>
+                <div class="formula">
+2025–2030
+                </div>
+            </section>
+
+            <!-- Section 19 -->
+            <section id="posisi-bppu">
+                <h2><span class="icon">📊</span><span class="number">19</span> POSISI BPPU 2030</h2>
+                <p>BPPU 2030 merupakan penguatan dari:</p>
+                <blockquote>
+                    BPPU 2025
+                </blockquote>
+                <p>dan menjadi bagian dari pelaksanaan mandat serta kewenangan BI di PUVA berdasarkan UU PPSK.</p>
+            </section>
+
+            <!-- Section 20 -->
+            <section id="manfaat-puva">
+                <h2><span class="icon">✅</span><span class="number">20</span> MANFAAT PUVA YANG BERKEMBANG</h2>
+                <p>PUVA yang berkembang dan efisien dapat mendukung:</p>
+
+                <h3>1. Pasar SBN</h3>
+                <p>Pengembangan pasar uang dan valas mendukung pengembangan pasar Surat Berharga Negara.</p>
+
+                <h3>2. Manajemen likuiditas</h3>
+                <p>Pelaku ekonomi dapat mengelola kebutuhan dan kelebihan likuiditas.</p>
+
+                <h3>3. Hedging risiko suku bunga</h3>
+                <p>Pelaku usaha dapat mengelola risiko akibat perubahan suku bunga.</p>
+
+                <h3>4. Hedging risiko nilai tukar</h3>
+                <p>Pelaku usaha dapat melindungi diri dari perubahan nilai tukar.</p>
+            </section>
+
+            <!-- Section 21 -->
+            <section id="strategi-bppu">
+                <h2><span class="icon">🎯</span><span class="number">21</span> STRATEGI BPPU 2030</h2>
+                <p>Ada <strong>3 strategi utama</strong>:</p>
+
+                <h3>1. Pengembangan produk dan pricing</h3>
+                <p>Mengembangkan produk pasar dan pembentukan harga yang semakin baik.</p>
+
+                <h3>2. Pengembangan pelaku dan infrastruktur</h3>
+                <p>Dengan prinsip:</p>
+                <div class="formula">
+3I: interkoneksi, interoperabilitas, integrasi.
+                </div>
+
+                <h3>3. Sinergi dan koordinasi</h3>
+                <p>Termasuk:</p>
+                <ul class="list-custom">
+                    <li>digitalisasi data;</li>
+                    <li>penguatan pengaturan;</li>
+                    <li>pengawasan;</li>
+                    <li>penerapan kaidah dan praktik terbaik.</li>
+                </ul>
+            </section>
+
+            <!-- Section 22 -->
+            <section id="sasaran-bppu">
+                <h2><span class="icon">🎯</span><span class="number">22</span> SASARAN STRATEGIS BPPU 2030</h2>
+                <p>Terdapat tiga sasaran:</p>
+
+                <h3>Sasaran 1</h3>
+                <div class="formula">
+Peningkatan likuiditas transaksi PUVA
+                </div>
+
+                <h3>Sasaran 2</h3>
+                <div class="formula">
+Stabilitas pasar dan infrastruktur yang 3I
+                </div>
+
+                <h3>Sasaran 3</h3>
+                <div class="formula">
+Pembentukan harga yang efisien sesuai market conduct
+                </div>
+
+                <h3>Hafalan:</h3>
+                <div class="mnemonik">
+                    <p><strong>Likuid – Stabil – Efisien</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 23 -->
+            <section id="dealer-utama">
+                <h2><span class="icon">🏆</span><span class="number">23</span> DEALER UTAMA PUVA</h2>
+                <h3>Pengertian</h3>
+                <div class="definition">
+                    <p><strong>Dealer Utama PUVA</strong> adalah:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;">bank dan/atau pihak lain yang memperoleh persetujuan dari Bank Indonesia untuk melaksanakan kewajiban dan melakukan aktivitas tertentu di Pasar Uang dan Pasar Valuta Asing.</p>
+                </div>
+                <p>Dealer Utama mempunyai posisi strategis dalam:</p>
+                <ul class="list-custom">
+                    <li>operasi moneter;</li>
+                    <li>pasar uang;</li>
+                    <li>pasar valas;</li>
+                    <li>pembentukan harga;</li>
+                    <li>likuiditas pasar.</li>
+                </ul>
+            </section>
+
+            <!-- Section 24 -->
+            <section id="penting-dealer">
+                <h2><span class="icon">⭐</span><span class="number">24</span> MENGAPA DEALER UTAMA DIPERLUKAN?</h2>
+                <p>Dealer utama membantu menghubungkan:</p>
+                <div class="diagram">
+                 BANK INDONESIA
+                      │
+                      ▼
+              Dealer Utama PUVA
+                      │
+          ┌───────────┼───────────┐
+          ▼           ▼           ▼
+       Pasar       Pasar        Pasar
+       Uang        Valas        Riil
+          │           │           │
+          └───────────┼───────────┘
+                      ▼
+               Transmisi Moneter
+                </div>
+                <p>Perannya penting untuk:</p>
+                <ul class="list-custom">
+                    <li>menjaga likuiditas;</li>
+                    <li>membantu price discovery;</li>
+                    <li>memperdalam pasar;</li>
+                    <li>meningkatkan aktivitas transaksi;</li>
+                    <li>mendukung transmisi kebijakan moneter.</li>
+                </ul>
+            </section>
+
+            <!-- Section 25 -->
+            <section id="kriteria-umum">
+                <h2><span class="icon">📋</span><span class="number">25</span> KRITERIA DEALER UTAMA PUVA</h2>
+                <p>Kriteria dibagi menjadi:</p>
+                <div class="formula">
+Kriteria umum + kriteria khusus
+                </div>
+            </section>
+
+            <!-- Section 26 -->
+            <section id="kriteria-umum-detail">
+                <h2><span class="icon">📊</span><span class="number">26</span> KRITERIA UMUM</h2>
+                <p>Ada tiga:</p>
+
+                <h3>1. Size</h3>
+                <p>Mengukur ukuran jasa keuangan dealer utama terhadap:</p>
+                <ul class="list-custom">
+                    <li>sistem keuangan;</li>
+                    <li>sektor riil.</li>
+                </ul>
+
+                <h3>2. Interconnectedness</h3>
+                <p>Mengukur keterkaitan dealer utama dengan sistem keuangan.</p>
+
+                <h3>3. Complexity</h3>
+                <p>Mengukur kompleksitas, termasuk:</p>
+                <blockquote>
+                    substitutability
+                </blockquote>
+                <p>atau kemungkinan dealer tersebut dapat digantikan.</p>
+
+                <h3>Hafalan:</h3>
+                <div class="mnemonik">
+                    <p><strong>S-I-C = Size – Interconnectedness – Complexity</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 27 -->
+            <section id="kriteria-khusus">
+                <h2><span class="icon">✅</span><span class="number">27</span> KRITERIA KHUSUS</h2>
+                <p>Ada lima:</p>
+                <ol class="list-custom">
+                    <li><strong>Transaksi</strong></li>
+                    <li><strong>Interkoneksi</strong></li>
+                    <li><strong>Kompetensi</strong></li>
+                    <li><strong>Manajemen risiko</strong></li>
+                    <li><strong>Infrastruktur</strong></li>
+                </ol>
+
+                <h3>Mnemonik:</h3>
+                <div class="mnemonik">
+                    <p><strong>T-I-K-R-I</strong></p>
+                    <p><strong>T</strong>ransaksi</p>
+                    <p><strong>I</strong>nterkoneksi</p>
+                    <p><strong>K</strong>ompetensi</p>
+                    <p><strong>R</strong>isiko</p>
+                    <p><strong>I</strong>nfrastruktur</p>
+                </div>
+            </section>
+
+            <!-- Section 28 -->
+            <section id="penjelasan-kriteria">
+                <h2><span class="icon">📝</span><span class="number">28</span> PENJELASAN KRITERIA KHUSUS</h2>
+
+                <h3>A. Transaksi</h3>
+                <p>Diukur melalui transaksi:</p>
+                <ul class="list-custom">
+                    <li>dengan BI;</li>
+                    <li>dengan sektor riil;</li>
+                    <li>cross-border.</li>
+                </ul>
+
+                <h3>B. Interkoneksi</h3>
+                <p>Diukur melalui keterkaitan:</p>
+                <ul class="list-custom">
+                    <li>dengan BI;</li>
+                    <li>dengan sektor riil;</li>
+                    <li>lintas batas.</li>
+                </ul>
+
+                <h3>C. Kompetensi</h3>
+                <p>Melihat pemenuhan persyaratan kompetensi sumber daya manusia.</p>
+
+                <h3>D. Manajemen risiko</h3>
+                <p>Meliputi:</p>
+                <ul class="list-custom">
+                    <li>risiko pasar;</li>
+                    <li>risiko likuiditas;</li>
+                    <li>risiko operasional.</li>
+                </ul>
+
+                <h3>E. Infrastruktur</h3>
+                <p>Melihat:</p>
+                <ul class="list-custom">
+                    <li>kesiapan teknologi;</li>
+                    <li>tata kelola infrastruktur;</li>
+                    <li>ketahanan siber;</li>
+                    <li>keamanan siber.</li>
+                </ul>
+            </section>
+
+            <!-- Section 29 -->
+            <section id="kewajiban-dealer">
+                <h2><span class="icon">✅</span><span class="number">29</span> KEWAJIBAN DEALER UTAMA PUVA</h2>
+                <p>Dealer Utama PUVA wajib:</p>
+
+                <h3>1.</h3>
+                <p>Menjadi:</p>
+                <blockquote>
+                    market maker
+                </blockquote>
+
+                <h3>2.</h3>
+                <p>Aktif dalam:</p>
+                <blockquote>
+                    OPT Bank Indonesia
+                </blockquote>
+
+                <h3>3.</h3>
+                <p>Aktif dalam:</p>
+                <blockquote>
+                    transaksi Pasar Uang dan Pasar Valuta Asing.
+                </blockquote>
+
+                <h3>4.</h3>
+                <p>Memenuhi kewajiban lain yang ditetapkan BI.</p>
+            </section>
+
+            <!-- Section 30 -->
+            <section id="market-maker">
+                <h2><span class="icon">💰</span><span class="number">30</span> MARKET MAKER</h2>
+                <h3>Apa artinya menjadi market maker?</h3>
+                <p>Dealer utama memberikan:</p>
+                <blockquote>
+                    kuotasi dua arah (bid/ask)
+                </blockquote>
+                <p>sehingga pelaku pasar memiliki referensi harga dan dapat melakukan transaksi.</p>
+                <div class="diagram">
+           DEALER UTAMA
+                 │
+        ┌────────┴────────┐
+        ▼                 ▼
+       BID               ASK
+        │                 │
+   harga beli        harga jual
+        └────────┬────────┘
+                 ▼
+           Price Discovery
+                </div>
+            </section>
+
+            <!-- Section 31 -->
+            <section id="kuotasi-repo">
+                <h2><span class="icon">📊</span><span class="number">31</span> KUOTASI REPO</h2>
+                <p>Dealer Utama PUVA wajib memberikan kuotasi Repo setiap hari kerja:</p>
+                <div class="formula">
+09.00–14.00 WIB
+                </div>
+
+                <p><strong>Tenor:</strong></p>
+                <ul class="list-custom">
+                    <li>Overnight</li>
+                    <li>1 minggu</li>
+                    <li>1 bulan</li>
+                </ul>
+
+                <p><strong>Maksimum spread:</strong></p>
+                <table>
+                    <tr>
+                        <th>Tenor</th>
+                        <th>Maks. Spread</th>
+                    </tr>
+                    <tr>
+                        <td>Overnight</td>
+                        <td style="text-align: center;">5 bps</td>
+                    </tr>
+                    <tr>
+                        <td>1 minggu</td>
+                        <td style="text-align: center;">10 bps</td>
+                    </tr>
+                    <tr>
+                        <td>1 bulan</td>
+                        <td style="text-align: center;">20 bps</td>
+                    </tr>
+                </table>
+
+                <p>Kuotasi bersifat:</p>
+                <blockquote>
+                    hittable
+                </blockquote>
+                <p>dengan tetap memenuhi market conduct masing-masing dealer utama.</p>
+            </section>
+
+            <!-- Section 32 -->
+            <section id="hittable">
+                <h2><span class="icon">❓</span><span class="number">32</span> APA ITU HITTABLE?</h2>
+                <p>Secara sederhana, <strong>hittable</strong> berarti kuotasi yang ditampilkan bukan sekadar informasi pasif, tetapi dapat menjadi dasar untuk dilakukan transaksi ketika pihak lain menerima/mengambil kuotasi tersebut, sesuai ketentuan dan market conduct.</p>
+            </section>
+
+            <!-- Section 33 -->
+            <section id="kuotasi-srbi">
+                <h2><span class="icon">📄</span><span class="number">33</span> KUOTASI SRBI</h2>
+                <p>Dealer Utama PUVA juga wajib memberikan kuotasi SRBI di pasar sekunder.</p>
+
+                <p><strong>Ketentuannya:</strong></p>
+                <ul class="list-custom">
+                    <li>setiap hari kerja;</li>
+                    <li>09.00–14.00 WIB;</li>
+                    <li>minimal memiliki 1 seri SRBI yang dapat ditransaksikan;</li>
+                    <li>maksimum spread:</li>
+                </ul>
+                <div class="formula">
+20 bps
+                </div>
+                <p>Kuotasi disampaikan melalui:</p>
+                <blockquote>
+                    Penyedia Platform Informasi Harga di Pasar Uang.
+                </blockquote>
+            </section>
+
+            <!-- Section 34 -->
+            <section id="kuotasi-ois">
+                <h2><span class="icon">📊</span><span class="number">34</span> KUOTASI OIS</h2>
+                <p>Dealer Utama PUVA juga mempunyai kewajiban memberikan kuotasi OIS di pasar sekunder.</p>
+
+                <p><strong>Tenor:</strong></p>
+                <ul class="list-custom">
+                    <li><strong>3 bulan</strong></li>
+                    <li><strong>12 bulan</strong></li>
+                </ul>
+
+                <p><strong>Maksimum spread:</strong></p>
+                <div class="formula">
+20 bps
+                </div>
+
+                <p>Kuotasi dapat bersifat:</p>
+                <blockquote>
+                    indikasi
+                </blockquote>
+                <p>dengan tetap memenuhi market conduct.</p>
+            </section>
+
+            <!-- Section 35 -->
+            <section id="kewajiban-opt">
+                <h2><span class="icon">🔄</span><span class="number">35</span> KEWAJIBAN AKTIF DALAM OPT</h2>
+                <p>Dealer utama wajib aktif dalam OPT.</p>
+
+                <p><strong>Untuk lelang:</strong></p>
+
+                <h3>SRBI</h3>
+                <p>Wajib menyampaikan:</p>
+                <blockquote>
+                    minimal <strong>1 penawaran</strong> pada setiap hari lelang SRBI.
+                </blockquote>
+
+                <h3>BI-FRN</h3>
+                <p>Wajib menyampaikan:</p>
+                <blockquote>
+                    minimal <strong>1 penawaran</strong> pada setiap hari lelang BI-FRN.
+                </blockquote>
+            </section>
+
+            <!-- Section 36 -->
+            <section id="target-win">
+                <h2><span class="icon">🎯</span><span class="number">36</span> TARGET WIN SRBI</h2>
+                <p>Selain mengajukan penawaran, terdapat kewajiban jumlah minimal transaksi <strong>win</strong> SRBI.</p>
+
+                <h3>Dealer Utama dengan KBMI 4</h3>
+                <p>Minimal:</p>
+                <div class="formula">
+3% win
+                </div>
+                <p>dari total penerbitan SRBI dalam 3 bulan.</p>
+
+                <h3>KBMI lainnya</h3>
+                <p>Minimal:</p>
+                <div class="formula">
+1% win
+                </div>
+                <p>dari total penerbitan SRBI dalam 3 bulan.</p>
+            </section>
+
+            <!-- Section 37 -->
+            <section id="counterparty-line">
+                <h2><span class="icon">🔗</span><span class="number">37</span> KEWAJIBAN AKTIF DI PASAR UANG DAN VALAS</h2>
+                <p>Dealer utama harus mempunyai:</p>
+
+                <h3>Counterparty line repo</h3>
+                <p>Minimal:</p>
+                <ul class="list-custom">
+                    <li>10 bank sesama Dealer Utama PUVA;</li>
+                    <li>10 bank non-Dealer Utama PUVA.</li>
+                </ul>
+                <p>Pada setiap akhir periode.</p>
+            </section>
+
+            <!-- Section 38 -->
+            <section id="apa-counterparty">
+                <h2><span class="icon">❓</span><span class="number">38</span> APA ITU COUNTERPARTY LINE?</h2>
+                <p>Secara sederhana:</p>
+                <div class="formula">
+Counterparty line adalah batas/limit transaksi yang<br>
+tersedia untuk melakukan transaksi dengan pihak<br>
+lawan tertentu.
+                </div>
+                <p><strong>Contoh:</strong></p>
+                <p>Bank A memberikan counterparty line kepada Bank B.</p>
+                <p>Artinya Bank A menetapkan kapasitas transaksi dengan Bank B sesuai kebijakan risiko.</p>
+            </section>
+
+            <!-- Section 39 -->
+            <section id="srbi-pasar-sekunder">
+                <h2><span class="icon">📈</span><span class="number">39</span> KEWAJIBAN SRBI PASAR SEKUNDER</h2>
+                <p><strong>Rasio:</strong></p>
+                <blockquote>
+                    Penjualan SRBI di pasar sekunder dibandingkan perolehan (volume win) di pasar perdana
+                </blockquote>
+                <p>minimal:</p>
+                <div class="formula">
+30% setiap periode.
+                </div>
+                <p>Artinya Dealer Utama tidak cukup hanya membeli SRBI di pasar perdana.</p>
+                <p>Dealer utama juga harus aktif memperdagangkannya di pasar sekunder.</p>
+            </section>
+
+            <!-- Section 40 -->
+            <section id="transaksi-pasar-sekunder">
+                <h2><span class="icon">🔄</span><span class="number">40</span> KEWAJIBAN TRANSAKSI PASAR SEKUNDER</h2>
+
+                <h3>Repo</h3>
+                <p>Dealer utama wajib melakukan transaksi repo dengan tenor:</p>
+                <blockquote>
+                    minimal 2 minggu
+                </blockquote>
+                <p>selama:</p>
+                <div class="formula">
+60% hari kerja setiap periode.
+                </div>
+
+                <h3>SRBI</h3>
+                <p>Dealer utama wajib melakukan transaksi SRBI pasar sekunder dengan tenor:</p>
+                <blockquote>
+                    3 bulan
+                </blockquote>
+                <p>selama:</p>
+                <div class="formula">
+60% hari kerja setiap periode.
+                </div>
+            </section>
+
+            <!-- Section 41 -->
+            <section id="kewajiban-ois">
+                <h2><span class="icon">📊</span><span class="number">41</span> KEWAJIBAN OIS</h2>
+                <p>Dealer utama wajib mempunyai:</p>
+                <blockquote>
+                    Counterparty line OIS dengan sesama Dealer Utama PUVA minimal <strong>10 bank</strong>.
+                </blockquote>
+                <p>Selain itu:</p>
+                <blockquote>
+                    wajib berpartisipasi dalam <strong>Matchmaking OIS tenor 1 bulan dan 3 bulan</strong> sesuai Rule of The Game BI.
+                </blockquote>
+            </section>
+
+            <!-- Section 42 -->
+            <section id="waktu-ois">
+                <h2><span class="icon">⏰</span><span class="number">42</span> KAPAN KEWAJIBAN OIS BERLAKU?</h2>
+                <p>Berdasarkan materi:</p>
+                <p>Kewajiban:</p>
+                <ul class="list-custom">
+                    <li>kuotasi OIS pasar sekunder;</li>
+                    <li>penawaran setiap hari lelang BI-FRN;</li>
+                    <li>partisipasi Matchmaking OIS;</li>
+                </ul>
+                <p>berlaku sejak:</p>
+                <div class="formula">
+2 Januari 2026
+                </div>
+                <p>Sedangkan evaluasi counterparty line OIS dimulai dari posisi:</p>
+                <div class="formula">
+31 Maret 2026
+                </div>
+            </section>
+
+            <!-- Section 43 -->
+            <section id="aktivitas-dealer">
+                <h2><span class="icon">🎯</span><span class="number">43</span> AKTIVITAS YANG DAPAT DILAKUKAN DEALER UTAMA</h2>
+                <p>Dealer utama dapat:</p>
+                <ol class="list-custom">
+                    <li>mengakses fasilitas khusus Dealer Utama PUVA;</li>
+                    <li>mengikuti OPT BI dengan peserta Dealer Utama PUVA;</li>
+                    <li>memperoleh informasi terkait perannya;</li>
+                    <li>melakukan aktivitas lain yang ditetapkan BI.</li>
+                </ol>
+            </section>
+
+            <!-- Section 44 -->
+            <section id="fasilitas-repo">
+                <h2><span class="icon">💳</span><span class="number">44</span> FASILITAS REPO DEALER UTAMA</h2>
+                <p>Dealer Utama dapat mengakses:</p>
+                <blockquote>
+                    Fasilitas Repo Dealer Utama PUVA
+                </blockquote>
+                <p>dengan syarat memenuhi kewajiban pasar sekunder yang ditetapkan BI.</p>
+                <p><strong>Contohnya:</strong></p>
+                <ul class="list-custom">
+                    <li>rasio penjualan SRBI;</li>
+                    <li>transaksi repo;</li>
+                    <li>transaksi SRBI pasar sekunder.</li>
+                </ul>
+
+                <h3>Mekanisme periode</h3>
+                <p>Jika kewajiban dipenuhi dalam periode tertentu:</p>
+                <blockquote>
+                    akses fasilitas diberikan pada bulan berikutnya.
+                </blockquote>
+                <p><strong>Contoh dari materi:</strong></p>
+                <div class="diagram">
+16 Apr – 15 Mei 2025
+          │
+          ▼
+Pemenuhan kewajiban
+          │
+          ▼
+Akses Repo Dealer Utama
+          │
+          ▼
+Juni 2025
+                </div>
+            </section>
+
+            <!-- Section 45 -->
+            <section id="fasilitas-dndf">
+                <h2><span class="icon">🔀</span><span class="number">45</span> FASILITAS DNDF DEALER PUVA</h2>
+                <p>Dealer Utama PUVA juga dapat mengakses:</p>
+                <blockquote>
+                    Fasilitas DNDF Dealer Utama PUVA.
+                </blockquote>
+                <p>DNDF merupakan salah satu instrumen yang berkaitan dengan pengelolaan risiko nilai tukar.</p>
+            </section>
+
+            <!-- Section 46 -->
+            <section id="fasilitas-ndf">
+                <h2><span class="icon">🌍</span><span class="number">46</span> FASILITAS PENGECUALIAN NDF LUAR NEGERI</h2>
+                <p>Dealer utama tertentu yang memenuhi persyaratan BI dapat memperoleh pengecualian atas larangan:</p>
+                <blockquote>
+                    transaksi <strong>NDF jual valuta asing terhadap Rupiah di pasar luar negeri</strong>.
+                </blockquote>
+                <p><strong>Tujuan fasilitas:</strong></p>
+                <ul class="list-custom">
+                    <li>mendukung stabilitas nilai tukar;</li>
+                    <li>mendukung pendalaman pasar.</li>
+                </ul>
+                <p>Namun fasilitas ini disertai komitmen dan monitoring BI.</p>
+            </section>
+
+            <!-- Section 47 -->
+            <section id="komitmen-ndf">
+                <h2><span class="icon">✅</span><span class="number">47</span> KOMITMEN DEALER PENERIMA FASILITAS NDF</h2>
+                <p>Dealer utama yang memperoleh fasilitas harus:</p>
+
+                <h3>1.</h3>
+                <p>Tidak melakukan NDF jual valas terhadap rupiah kepada:</p>
+                <blockquote>
+                    bank afiliasi di luar negeri.
+                </blockquote>
+
+                <h3>2.</h3>
+                <p>Menggunakan:</p>
+                <blockquote>
+                    DNDF
+                </blockquote>
+                <p>untuk kebutuhan covering transaksi NDF jual valas terhadap rupiah.</p>
+
+                <h3>3.</h3>
+                <p>Memiliki:</p>
+                <blockquote>
+                    Credit Support Annex (CSA)
+                </blockquote>
+                <p>atau perjanjian pendukung margin dengan minimal:</p>
+                <blockquote>
+                    6 bank domestik
+                </blockquote>
+                <p>atau menjadi anggota:</p>
+                <blockquote>
+                    Central Counterparty (CCP).
+                </blockquote>
+
+                <h3>4.</h3>
+                <p>Menyampaikan laporan kepada BI.</p>
+            </section>
+
+            <!-- Section 48 -->
+            <section id="alasan-komitmen">
+                <h2><span class="icon">❓</span><span class="number">48</span> MENGAPA ADA KOMITMEN TERSEBUT?</h2>
+                <p>Secara konsep, persyaratan tersebut bertujuan memastikan fasilitas digunakan secara:</p>
+                <ul class="list-custom">
+                    <li>terukur;</li>
+                    <li>aman;</li>
+                    <li>transparan;</li>
+                    <li>mendukung stabilitas;</li>
+                    <li>sesuai tata kelola pasar.</li>
+                </ul>
+                <p>BI juga dapat menghentikan fasilitas tersebut sesuai kewenangannya.</p>
+            </section>
+
+            <!-- Section 49 -->
+            <section id="transaksi-opt">
+                <h2><span class="icon">🔄</span><span class="number">49</span> TRANSAKSI OPT DENGAN DEALER UTAMA PUVA</h2>
+                <p>Dealer Utama PUVA dapat mengikuti:</p>
+
+                <h3>1. Lelang SRBI</h3>
+
+                <h3>2. Lelang BI-FRN</h3>
+
+                <h3>3. Lelang repo konvensional rupiah</h3>
+                <p><strong>Underlying:</strong></p>
+                <blockquote>
+                    obligasi dan sukuk korporasi.
+                </blockquote>
+
+                <h3>4. Lelang repo valuta asing</h3>
+                <p><strong>Underlying:</strong></p>
+                <blockquote>
+                    SVBI/SUVBI
+                </blockquote>
+            </section>
+
+            <!-- Section 50 -->
+            <section id="pelaporan">
+                <h2><span class="icon">📝</span><span class="number">50</span> PELAPORAN DEALER UTAMA</h2>
+                <p>Dealer utama wajib memberikan:</p>
+                <ul class="list-custom">
+                    <li>data;</li>
+                    <li>informasi;</li>
+                    <li>laporan;</li>
+                    <li>keterangan;</li>
+                    <li>penjelasan;</li>
+                </ul>
+                <p>terkait aktivitas PUVA dan kegiatan yang berkaitan dengan BI.</p>
+            </section>
+
+            <!-- Section 51 -->
+            <section id="jenis-pelaporan">
+                <h2><span class="icon">📊</span><span class="number">51</span> JENIS PELAPORAN</h2>
+
+                <h3>A. Laporan transaksi</h3>
+                <p>Pelaporan transaksi pasar uang dan pasar valas melalui:</p>
+                <blockquote>
+                    LBUT ANTASENA
+                </blockquote>
+                <p>Pelaporan ini menjadi salah satu bahan evaluasi dealer utama.</p>
+
+                <h3>B. Laporan sesuai permintaan BI</h3>
+                <p><strong>Misalnya:</strong></p>
+                <ul class="list-custom">
+                    <li>rencana kerja;</li>
+                    <li>laporan tahunan;</li>
+                    <li>monitoring pemenuhan kriteria;</li>
+                    <li>rencana tindak atas hasil evaluasi.</li>
+                </ul>
+            </section>
+
+            <!-- Section 52 -->
+            <section id="rencana-kerja">
+                <h2><span class="icon">📅</span><span class="number">52</span> RENCANA KERJA DEALER UTAMA</h2>
+                <p>Untuk tahun 2026, materi menyebut:</p>
+                <div class="formula">
+Rencana Kerja disampaikan paling lambat<br>
+31 Januari 2026.
+                </div>
+            </section>
+
+            <!-- Section 53 -->
+            <section id="konsultasi">
+                <h2><span class="icon">💬</span><span class="number">53</span> KONSULTASI DAN PERIZINAN</h2>
+                <p>Bank Indonesia dapat menyelenggarakan konsultasi perizinan dealer utama.</p>
+                <p>Materi menyebut periode konsultasi:</p>
+                <div class="formula">
+22–24 Juni 2026
+                </div>
+                <p>dan periode perizinan:</p>
+                <div class="formula">
+22–24 Juni 2026
+                </div>
+            </section>
+
+            <!-- Section 54 -->
+            <section id="dokumen">
+                <h2><span class="icon">📄</span><span class="number">54</span> DOKUMEN PERMOHONAN</h2>
+                <p>Untuk ditetapkan sebagai Dealer Utama PUVA, bank menyampaikan permohonan kepada BI.</p>
+                <p><strong>Dokumen pendukung antara lain:</strong></p>
+
+                <h3>1.</h3>
+                <p>Bukti/pernyataan telah menjadi anggota:</p>
+                <blockquote>
+                    Self Regulatory Organization (SRO)
+                </blockquote>
+                <p>di bidang PUVA yang terdaftar di BI.</p>
+
+                <h3>2.</h3>
+                <p>Surat pernyataan:</p>
+                <blockquote>
+                    tidak sedang dikenai sanksi oleh otoritas terkait.
+                </blockquote>
+                <p>Pengajuan dilakukan dalam bentuk softcopy melalui aplikasi perizinan BI.</p>
+            </section>
+
+            <!-- Section 55 -->
+            <section id="pengawasan">
+                <h2><span class="icon">👁️</span><span class="number">55</span> PENGAWASAN DEALER UTAMA</h2>
+                <p>BI melakukan:</p>
+                <blockquote>
+                    pengawasan dan evaluasi secara berkala.
+                </blockquote>
+                <p>Terdapat dua jenis evaluasi:</p>
+
+                <h3>A. Evaluasi pemenuhan kewajiban</h3>
+                <p>Dilakukan:</p>
+                <div class="formula">
+triwulanan
+                </div>
+
+                <h3>B. Evaluasi kinerja</h3>
+                <p>Dilakukan:</p>
+                <div class="formula">
+semesteran
+                </div>
+            </section>
+
+            <!-- Section 56 -->
+            <section id="evaluasi-kewajiban">
+                <h2><span class="icon">📅</span><span class="number">56</span> PERIODE EVALUASI KEWAJIBAN</h2>
+                <table>
+                    <tr>
+                        <th>Periode</th>
+                        <th>Bulan</th>
+                    </tr>
+                    <tr>
+                        <td>Periode 1</td>
+                        <td>Januari–Maret</td>
+                    </tr>
+                    <tr>
+                        <td>Periode 2</td>
+                        <td>April–Juni</td>
+                    </tr>
+                    <tr>
+                        <td>Periode 3</td>
+                        <td>Juli–September</td>
+                    </tr>
+                    <tr>
+                        <td>Periode 4</td>
+                        <td>Oktober–Desember</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 57 -->
+            <section id="evaluasi-kinerja">
+                <h2><span class="icon">📈</span><span class="number">57</span> PERIODE EVALUASI KINERJA</h2>
+                <table>
+                    <tr>
+                        <th>Periode</th>
+                        <th>Bulan</th>
+                    </tr>
+                    <tr>
+                        <td>Periode 1</td>
+                        <td>Januari–Juni</td>
+                    </tr>
+                    <tr>
+                        <td>Periode 2</td>
+                        <td>Juli–Desember</td>
+                    </tr>
+                </table>
+
+                <h3>Hafalan:</h3>
+                <div class="mnemonik">
+                    <p><strong>Kewajiban = 3 bulanan</strong></p>
+                    <p><strong>Kinerja = 6 bulanan</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 58 -->
+            <section id="sertifikasi">
+                <h2><span class="icon">🎓</span><span class="number">58</span> SERTIFIKASI TRESURI</h2>
+                <p>Pengembangan pasar keuangan tidak cukup hanya dengan:</p>
+                <ul class="list-custom">
+                    <li>infrastruktur;</li>
+                    <li>produk;</li>
+                    <li>regulasi.</li>
+                </ul>
+                <p>Diperlukan juga:</p>
+                <blockquote>
+                    kompetensi dan integritas pelaku pasar.
+                </blockquote>
+                <p>Karena itu pelaku pasar diwajibkan memastikan Direksi dan pegawainya memiliki:</p>
+                <blockquote>
+                    Sertifikat Tresuri
+                </blockquote>
+                <p>yang sesuai dengan:</p>
+                <ul class="list-custom">
+                    <li>bentuk pelaku pasar;</li>
+                    <li>jenjang jabatan.</li>
+                </ul>
+            </section>
+
+            <!-- Section 59 -->
+            <section id="apa-tresuri">
+                <h2><span class="icon">❓</span><span class="number">59</span> APA ITU TRESURI?</h2>
+                <p>Secara sederhana, fungsi tresuri berkaitan dengan pengelolaan:</p>
+                <ul class="list-custom">
+                    <li>likuiditas;</li>
+                    <li>pasar uang;</li>
+                    <li>pasar valas;</li>
+                    <li>investasi;</li>
+                    <li>risiko pasar;</li>
+                    <li>transaksi keuangan.</li>
+                </ul>
+                <p>Karena aktivitasnya memiliki risiko tinggi, kompetensi pelakunya menjadi penting.</p>
+            </section>
+
+            <!-- Section 60 -->
+            <section id="kode-etik">
+                <h2><span class="icon">📜</span><span class="number">60</span> KODE ETIK PASAR</h2>
+                <div class="definition">
+                    <p><strong>Kode Etik Pasar</strong> adalah:</p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 1.1em;">norma moral profesional mengenai perbuatan yang harus dilakukan dan yang harus dihindari yang menjadi pedoman perilaku di Pasar Uang dan Pasar Valuta Asing beserta derivatifnya.</p>
+                </div>
+                <p>Jadi kode etik bukan sekadar aturan teknis transaksi.</p>
+                <p>Kode etik mengatur:</p>
+                <blockquote>
+                    bagaimana pelaku pasar harus berperilaku secara profesional.
+                </blockquote>
+            </section>
+
+            <!-- Section 61 -->
+            <section id="penting-etik">
+                <h2><span class="icon">⭐</span><span class="number">61</span> MENGAPA KODE ETIK PENTING?</h2>
+                <p>Karena pasar keuangan membutuhkan:</p>
+                <ul class="list-custom">
+                    <li>kepercayaan;</li>
+                    <li>integritas;</li>
+                    <li>transparansi;</li>
+                    <li>perilaku profesional;</li>
+                    <li>kredibilitas.</li>
+                </ul>
+                <p>Tanpa integritas, pasar yang secara teknis maju tetap dapat mengalami masalah.</p>
+            </section>
+
+            <!-- Section 62 -->
+            <section id="market-code">
+                <h2><span class="icon">📜</span><span class="number">62</span> MARKET CODE OF CONDUCT</h2>
+                <p>Untuk menjadi acuan, terdapat:</p>
+
+                <h3>Prinsip konvensional</h3>
+                <blockquote>
+                    Market Code of Conduct Edisi Keempat
+                </blockquote>
+                <p>yang diterbitkan oleh:</p>
+                <blockquote>
+                    Indonesia Foreign Exchange Market Committee (IFEMC)
+                </blockquote>
+
+                <h3>Prinsip syariah</h3>
+                <blockquote>
+                    Islamic Financial Market Code of Conduct
+                </blockquote>
+                <p>yang diterbitkan oleh:</p>
+                <blockquote>
+                    Indonesia Islamic Global Market Association (IIGMA)
+                </blockquote>
+            </section>
+
+            <!-- Section 63 -->
+            <section id="surat-komitmen">
+                <h2><span class="icon">📝</span><span class="number">63</span> SURAT PERNYATAAN KOMITMEN</h2>
+                <p>Pelaku pasar dapat menyampaikan:</p>
+                <blockquote>
+                    Surat Pernyataan Komitmen terhadap Kode Etik Pasar
+                </blockquote>
+                <p>kepada BI berdasarkan hasil:</p>
+                <blockquote>
+                    self-assessment internal.
+                </blockquote>
+                <p>Surat tersebut dapat dipublikasikan kepada publik.</p>
+                <p>Fungsinya menunjukkan bahwa lembaga memiliki komitmen untuk menerapkan Market Code of Conduct secara konsisten dalam aktivitas tresuri.</p>
+            </section>
+
+            <!-- Section 64 -->
+            <section id="manfaat-etik">
+                <h2><span class="icon">✅</span><span class="number">64</span> MANFAAT ADOPSI MARKET CODE OF CONDUCT</h2>
+                <p>Menurut materi, manfaatnya antara lain:</p>
+
+                <h3>1.</h3>
+                <p>Meningkatkan penerapan kode etik sesuai:</p>
+                <blockquote>
+                    international best market practice.
+                </blockquote>
+
+                <h3>2.</h3>
+                <p>Memberikan informasi kepada:</p>
+                <ul class="list-custom">
+                    <li>stakeholder;</li>
+                    <li>investor domestik;</li>
+                    <li>investor asing.</li>
+                </ul>
+                <p>bahwa lembaga memiliki komitmen terhadap kode etik.</p>
+
+                <h3>3.</h3>
+                <p>Memberikan:</p>
+                <blockquote>
+                    keunggulan kompetitif.
+                </blockquote>
+
+                <h3>4.</h3>
+                <p>Mendukung pasar keuangan yang:</p>
+                <ul class="list-custom">
+                    <li>transparan;</li>
+                    <li>efektif;</li>
+                    <li>resilien.</li>
+                </ul>
+            </section>
+
+            <!-- Section 65 -->
+            <section id="hubungan-puva-dealer">
+                <h2><span class="icon">🔗</span><span class="number">65</span> HUBUNGAN ANTARA PUVA DAN DEALER UTAMA</h2>
+                <p>Pahami hubungan ini:</p>
+                <div class="flow-chart">
+              BANK INDONESIA
+                    │
+                    ▼
+          Pengaturan PUVA
+                    │
+        ┌───────────┴───────────┐
+        ▼                       ▼
+    Pasar Uang              Pasar Valas
+        │                       │
+        └───────────┬───────────┘
+                    ▼
+             Dealer Utama
+                 PUVA
+                    │
+       ┌────────────┼────────────┐
+       ▼            ▼            ▼
+   Market Maker     OPT       Transaksi
+                               PUVA
+       │            │            │
+       └────────────┼────────────┘
+                    ▼
+             Likuiditas &
+            Price Discovery
+                    │
+                    ▼
+        Transmisi Kebijakan Moneter
+                </div>
+            </section>
+
+            <!-- Section 66 -->
+            <section id="hubungan-bppu-dealer">
+                <h2><span class="icon">📊</span><span class="number">66</span> HUBUNGAN BPPU 2030 DENGAN DEALER UTAMA</h2>
+                <p>BPPU 2030 menginginkan PUVA yang:</p>
+                <blockquote>
+                    modern, maju, likuid, stabil, dan efisien.
+                </blockquote>
+                <p>Dealer utama menjadi salah satu elemen penting untuk mewujudkannya karena dealer utama harus:</p>
+                <ul class="list-custom">
+                    <li>aktif bertransaksi;</li>
+                    <li>menjadi market maker;</li>
+                    <li>memberikan kuotasi;</li>
+                    <li>aktif di OPT;</li>
+                    <li>aktif di pasar sekunder;</li>
+                    <li>berpartisipasi dalam OIS;</li>
+                    <li>menjaga hubungan dengan berbagai counterparty.</li>
+                </ul>
+            </section>
+
+            <!-- Section 67 -->
+            <section id="contoh-kasus-1">
+                <h2><span class="icon">📝</span><span class="number">67</span> CONTOH KASUS DEALER UTAMA</h2>
+                <p>Misalnya Dealer Utama A harus memberikan kuotasi Repo.</p>
+                <p>Dealer memberikan:</p>
+                <div class="code-block">
+Bid = 6,00%
+Ask = 6,04%
+                </div>
+                <p><strong>Spread:</strong></p>
+                <div class="math">
+6,04% - 6,00% = 0,04%
+0,04% = 4 bps
+                </div>
+                <p>Karena:</p>
+                <p>Jika tenor overnight, maksimum spread adalah 5 bps.</p>
+                <p>Maka:</p>
+                <div class="correct">
+                    <p>✅ Kuotasi memenuhi batas spread.</p>
+                </div>
+            </section>
+
+            <!-- Section 68 -->
+            <section id="contoh-kasus-2">
+                <h2><span class="icon">📝</span><span class="number">68</span> CONTOH KASUS 2 — REPO 1 MINGGU</h2>
+                <p>Dealer memberikan:</p>
+                <div class="code-block">
+Bid = 6,00%
+Ask = 6,12%
+                </div>
+                <p><strong>Spread:</strong></p>
+                <div class="math">
+6,12% - 6,00% = 0,12%
+0,12% = 12 bps
+                </div>
+                <p>Untuk repo 1 minggu maksimum:</p>
+                <div class="formula">
+10 bps
+                </div>
+                <p>Jadi:</p>
+                <div class="wrong">
+                    <p>❌ Tidak memenuhi ketentuan spread maksimum.</p>
+                </div>
+            </section>
+
+            <!-- Section 69 -->
+            <section id="contoh-kasus-3">
+                <h2><span class="icon">📝</span><span class="number">69</span> CONTOH KASUS 3 — REPO 1 BULAN</h2>
+                <p><strong>Bid:</strong></p>
+                <div class="code-block">
+6,00%
+                </div>
+                <p><strong>Ask:</strong></p>
+                <div class="code-block">
+6,18%
+                </div>
+                <p><strong>Spread:</strong></p>
+                <div class="math">
+6,18% - 6,00% = 0,18%
+= 18 bps
+                </div>
+                <p><strong>Maksimum:</strong></p>
+                <div class="formula">
+20 bps.
+                </div>
+                <p>Jadi:</p>
+                <div class="correct">
+                    <p>✅ Memenuhi batas maksimum spread.</p>
+                </div>
+            </section>
+
+            <!-- Section 70 -->
+            <section id="perbandingan-sn-bppu">
+                <h2><span class="icon">⚖️</span><span class="number">70</span> PERBANDINGAN SN-PPPK DAN BPPU 2030</h2>
+                <table>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>SN-PPPK</th>
+                        <th>BPPU 2030</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Fokus</strong></td>
+                        <td>Pasar keuangan secara nasional</td>
+                        <td>PUVA</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sifat</strong></td>
+                        <td>Single policy framework</td>
+                        <td>Blueprint/roadmap</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visi</strong></td>
+                        <td>Pasar keuangan dalam, likuid, efisien, inklusif, aman</td>
+                        <td>PUVA modern dan maju</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cakupan</strong></td>
+                        <td>7 pasar keuangan</td>
+                        <td>Pasar uang & valas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pilar/strategi</strong></td>
+                        <td>3 pilar</td>
+                        <td>3 strategi utama</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Horizon</strong></td>
+                        <td>Fase implementasi SN-PPPK</td>
+                        <td>2025–2030</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 71 -->
+            <section id="perbandingan-pasar">
+                <h2><span class="icon">⚖️</span><span class="number">71</span> PERBANDINGAN PASAR UANG DAN PUVA</h2>
+                <p>Jangan menganggap PUVA hanya berarti Pasar Uang.</p>
+                <div class="diagram">
+                 PUVA
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+        ▼                   ▼
+    PASAR UANG          PASAR VALAS
+        │                   │
+   Suku bunga          Nilai tukar
+   Likuiditas          Mata uang
+   Instrumen           Derivatif valas
+   ≤ 1 tahun
+                </div>
+            </section>
+
+            <!-- Section 72 -->
+            <section id="rangkuman">
+                <h2><span class="icon">📌</span><span class="number">72</span> RANGKUMAN WAJIB HAFAL</h2>
+                <div class="summary">
+                    <h3>PUVA</h3>
+                    <p>Pasar Uang + Pasar Valuta Asing.</p>
+
+                    <h3>Pasar Uang</h3>
+                    <p>Instrumen/utang ≤ 1 tahun, pinjam-meminjam, derivatif suku bunga, dan transaksi lain berkarakteristik pasar uang.</p>
+
+                    <h3>Pasar Valas</h3>
+                    <p>Pertukaran dua mata uang berbeda beserta derivatifnya, tidak termasuk penukaran bank notes oleh kegiatan usaha penukaran valas.</p>
+
+                    <h3>3I</h3>
+                    <p><strong>Interkoneksi – Interoperabilitas – Integrasi</strong></p>
+
+                    <h3>SN-PPPK</h3>
+                    <p><strong>Pembiayaan & risiko – Infrastruktur – Koordinasi/harmonisasi/edukasi</strong></p>
+
+                    <h3>BPPU 2030</h3>
+                    <p><strong>Produk & pricing – Pelaku & infrastruktur – Sinergi & koordinasi</strong></p>
+
+                    <h3>Sasaran BPPU 2030</h3>
+                    <p><strong>Likuiditas – Stabilitas – Efisiensi harga</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 73 -->
+            <section id="rumus-hafalan">
+                <h2><span class="icon">🔑</span><span class="number">73</span> DEALER UTAMA: RUMUS HAFALAN</h2>
+
+                <h3>Kriteria umum</h3>
+                <div class="formula">
+SIC
+                </div>
+                <ul class="list-custom">
+                    <li><strong>S</strong>ize</li>
+                    <li><strong>I</strong>nterconnectedness</li>
+                    <li><strong>C</strong>omplexity</li>
+                </ul>
+
+                <h3>Kriteria khusus</h3>
+                <div class="formula">
+TIKRI
+                </div>
+                <ul class="list-custom">
+                    <li><strong>T</strong>ransaksi</li>
+                    <li><strong>I</strong>nterkoneksi</li>
+                    <li><strong>K</strong>ompetensi</li>
+                    <li><strong>R</strong>isiko</li>
+                    <li><strong>I</strong>nfrastruktur</li>
+                </ul>
+
+                <h3>Kewajiban</h3>
+                <div class="formula">
+M-O-P
+                </div>
+                <ul class="list-custom">
+                    <li><strong>M</strong>arket maker</li>
+                    <li><strong>O</strong>PT aktif</li>
+                    <li><strong>P</strong>asar Uang & Valas aktif</li>
+                </ul>
+            </section>
+
+            <!-- Section 74 -->
+            <section id="angka-penting">
+                <h2><span class="icon">🔢</span><span class="number">74</span> ANGKA-ANGKA PENTING UNTUK UJIAN</h2>
+                <div class="keywords">
+                    <table>
+                        <tr>
+                            <th>Ketentuan</th>
+                            <th>Angka</th>
+                        </tr>
+                        <tr>
+                            <td>Repo O/N max spread</td>
+                            <td style="text-align: center;">5 bps</td>
+                        </tr>
+                        <tr>
+                            <td>Repo 1 minggu max spread</td>
+                            <td style="text-align: center;">10 bps</td>
+                        </tr>
+                        <tr>
+                            <td>Repo 1 bulan max spread</td>
+                            <td style="text-align: center;">20 bps</td>
+                        </tr>
+                        <tr>
+                            <td>SRBI max spread</td>
+                            <td style="text-align: center;">20 bps</td>
+                        </tr>
+                        <tr>
+                            <td>OIS max spread</td>
+                            <td style="text-align: center;">20 bps</td>
+                        </tr>
+                        <tr>
+                            <td>Minimal penawaran SRBI</td>
+                            <td style="text-align: center;">1 penawaran/hari lelang</td>
+                        </tr>
+                        <tr>
+                            <td>Minimal penawaran BI-FRN</td>
+                            <td style="text-align: center;">1 penawaran/hari lelang</td>
+                        </tr>
+                        <tr>
+                            <td>Win SRBI KBMI 4</td>
+                            <td style="text-align: center;">3%</td>
+                        </tr>
+                        <tr>
+                            <td>Win SRBI KBMI lainnya</td>
+                            <td style="text-align: center;">1%</td>
+                        </tr>
+                        <tr>
+                            <td>Counterparty line sesama DU Repo</td>
+                            <td style="text-align: center;">10 bank</td>
+                        </tr>
+                        <tr>
+                            <td>Counterparty line non-DU Repo</td>
+                            <td style="text-align: center;">10 bank</td>
+                        </tr>
+                        <tr>
+                            <td>Penjualan SRBI/volume win</td>
+                            <td style="text-align: center;">30%</td>
+                        </tr>
+                        <tr>
+                            <td>Transaksi repo ≥2 minggu</td>
+                            <td style="text-align: center;">60% hari kerja</td>
+                        </tr>
+                        <tr>
+                            <td>Transaksi SRBI 3 bulan</td>
+                            <td style="text-align: center;">60% hari kerja</td>
+                        </tr>
+                        <tr>
+                            <td>Counterparty line OIS</td>
+                            <td style="text-align: center;">10 bank</td>
+                        </tr>
+                        <tr>
+                            <td>CSA domestik jika bukan CCP</td>
+                            <td style="text-align: center;">minimal 6 bank</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 75 -->
+            <section id="soal-pilihan">
+                <h2><span class="icon">🎯</span><span class="number">75</span> SOAL PILIHAN GANDA</h2>
+
+                <div class="exercise">
+                    <h3>1. Pasar Uang mencakup instrumen utang dengan jangka waktu...</h3>
+                    <ol type="A">
+                        <li>Maksimal 30 hari</li>
+                        <li>Maksimal 6 bulan</li>
+                        <li>Tidak lebih dari 1 tahun</li>
+                        <li>Minimal 1 tahun</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. Pasar Valuta Asing berkaitan dengan...</h3>
+                    <ol type="A">
+                        <li>Perdagangan saham</li>
+                        <li>Pertukaran dua mata uang berbeda</li>
+                        <li>Penerbitan obligasi pemerintah</li>
+                        <li>Penempatan deposito saja</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>3. Prinsip 3I terdiri atas...</h3>
+                    <ol type="A">
+                        <li>Interest, Inflation, Investment</li>
+                        <li>Interkoneksi, Interoperabilitas, Integrasi</li>
+                        <li>Investment, Infrastructure, Inflation</li>
+                        <li>Integration, Interest, Investment</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>4. Salah satu tujuan pengembangan PUVA adalah...</h3>
+                    <ol type="A">
+                        <li>Menghapus pasar keuangan</li>
+                        <li>Mendukung efektivitas kebijakan moneter</li>
+                        <li>Mengurangi seluruh transaksi valas</li>
+                        <li>Menghilangkan risiko pasar</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>5. Dealer Utama PUVA wajib menjadi...</h3>
+                    <ol type="A">
+                        <li>Investor ritel</li>
+                        <li>Market maker</li>
+                        <li>Pemerintah</li>
+                        <li>Penjamin emisi saham</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>6. Kriteria umum Dealer Utama PUVA adalah...</h3>
+                    <ol type="A">
+                        <li>Size, Interconnectedness, Complexity</li>
+                        <li>Size, Inflation, Currency</li>
+                        <li>Liquidity, Interest, Risk</li>
+                        <li>Pricing, Settlement, Margin</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: A</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>7. Yang bukan kriteria khusus Dealer Utama adalah...</h3>
+                    <ol type="A">
+                        <li>Transaksi</li>
+                        <li>Kompetensi</li>
+                        <li>Manajemen risiko</li>
+                        <li>Inflasi</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: D</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>8. Maksimum spread Repo overnight adalah...</h3>
+                    <ol type="A">
+                        <li>5 bps</li>
+                        <li>10 bps</li>
+                        <li>15 bps</li>
+                        <li>20 bps</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: A</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>9. Maksimum spread Repo 1 minggu adalah...</h3>
+                    <ol type="A">
+                        <li>5 bps</li>
+                        <li>10 bps</li>
+                        <li>15 bps</li>
+                        <li>20 bps</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>10. Maksimum spread Repo 1 bulan adalah...</h3>
+                    <ol type="A">
+                        <li>5 bps</li>
+                        <li>10 bps</li>
+                        <li>15 bps</li>
+                        <li>20 bps</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: D</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>11. Dealer Utama KBMI 4 wajib memperoleh minimal win SRBI sebesar...</h3>
+                    <ol type="A">
+                        <li>1%</li>
+                        <li>2%</li>
+                        <li>3%</li>
+                        <li>5%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>12. Dealer Utama selain KBMI 4 wajib memperoleh minimal win SRBI sebesar...</h3>
+                    <ol type="A">
+                        <li>0,5%</li>
+                        <li>1%</li>
+                        <li>2%</li>
+                        <li>3%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>13. Rasio penjualan SRBI di pasar sekunder dibandingkan volume win minimal...</h3>
+                    <ol type="A">
+                        <li>10%</li>
+                        <li>20%</li>
+                        <li>30%</li>
+                        <li>50%</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>14. Counterparty line OIS dengan sesama Dealer Utama minimal...</h3>
+                    <ol type="A">
+                        <li>5 bank</li>
+                        <li>10 bank</li>
+                        <li>15 bank</li>
+                        <li>20 bank</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>15. Evaluasi pemenuhan kewajiban Dealer Utama dilakukan secara...</h3>
+                    <ol type="A">
+                        <li>Harian</li>
+                        <li>Bulanan</li>
+                        <li>Triwulanan</li>
+                        <li>Lima tahunan</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>16. Evaluasi kinerja dilakukan secara...</h3>
+                    <ol type="A">
+                        <li>Mingguan</li>
+                        <li>Bulanan</li>
+                        <li>Triwulanan</li>
+                        <li>Semesteran</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: D</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 76 -->
+            <section id="soal-benar-salah">
+                <h2><span class="icon">✅❌</span><span class="number">76</span> SOAL BENAR / SALAH</h2>
+
+                <div class="exercise">
+                    <h3>1.</h3>
+                    <p><strong>Pasar Uang hanya menggunakan rupiah.</strong></p>
+                    <div class="answer">
+                        <strong>Salah.</strong> Menurut materi, transaksi Pasar Uang dapat menggunakan rupiah atau valuta asing.
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>2.</h3>
+                    <p><strong>Pasar Valas mencakup derivatif.</strong></p>
+                    <div class="answer">
+                        <strong>Benar.</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>3.</h3>
+                    <p><strong>Dealer Utama PUVA tidak wajib menjadi market maker.</strong></p>
+                    <div class="answer">
+                        <strong>Salah.</strong> Menjadi market maker merupakan salah satu kewajibannya.
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>4.</h3>
+                    <p><strong>BPPU 2030 berlaku untuk periode 2025–2030.</strong></p>
+                    <div class="answer">
+                        <strong>Benar.</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>5.</h3>
+                    <p><strong>Prinsip 3I adalah Interkoneksi, Interoperabilitas, dan Integrasi.</strong></p>
+                    <div class="answer">
+                        <strong>Benar.</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>6.</h3>
+                    <p><strong>Dealer Utama hanya bertransaksi dengan Bank Indonesia.</strong></p>
+                    <div class="answer">
+                        <strong>Salah.</strong> Dealer utama juga harus aktif di Pasar Uang dan Pasar Valuta Asing.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 77 -->
+            <section id="soal-analisis">
+                <h2><span class="icon">🔍</span><span class="number">77</span> SOAL ANALISIS</h2>
+
+                <div class="exercise">
+                    <h3>Kasus</h3>
+                    <p><strong>Dealer Utama A memberikan kuotasi Repo overnight:</strong></p>
+                    <div class="code-block">
+Bid = 5,80%
+Ask = 5,90%
+                    </div>
+                    <p><strong>Apakah memenuhi batas spread?</strong></p>
+                    <p><strong>Selisih:</strong></p>
+                    <div class="math">
+5,90% - 5,80% = 0,10%
+0,10% = 10 bps
+                    </div>
+                    <p><strong>Batas Repo overnight:</strong></p>
+                    <div class="formula">
+5 bps
+                    </div>
+                    <p><strong>Maka:</strong></p>
+                    <div class="answer">
+                        <strong>❌ Tidak memenuhi ketentuan.</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 78 -->
+            <section id="soal-essay">
+                <h2><span class="icon">📝</span><span class="number">78</span> SOAL ESSAY</h2>
+
+                <h3>Pertanyaan</h3>
+                <p><strong>Mengapa Dealer Utama PUVA penting dalam pendalaman pasar keuangan?</strong></p>
+
+                <h3>Jawaban</h3>
+                <p>Dealer Utama PUVA penting karena memiliki kewajiban menjadi market maker, aktif dalam OPT BI, serta aktif melakukan transaksi Pasar Uang dan Pasar Valuta Asing. Melalui penyediaan kuotasi bid/ask dan aktivitas transaksi, Dealer Utama membantu price discovery, meningkatkan likuiditas, memperkuat interkoneksi pasar, dan mendukung transmisi kebijakan moneter.</p>
+            </section>
+
+            <!-- Section 79 -->
+            <section id="kesimpulan">
+                <h2><span class="icon">🌟</span><span class="number">79</span> KESIMPULAN BESAR</h2>
+                <p>Seluruh materi dapat dirangkai menjadi satu alur:</p>
+                <div class="flow-chart">
+              UU PPSK
+           UU No. 4/2023
+                  │
+                  ▼
+        Penguatan kewenangan BI
+                  │
+                  ▼
+                 PUVA
+          ┌───────┴───────┐
+          ▼               ▼
+     Pasar Uang        Pasar Valas
+          │               │
+          └───────┬───────┘
+                  ▼
+       BPPU 2030 / Pendalaman
+                  │
+                  ▼
+       Produk + Pricing
+       Pelaku + Infrastruktur
+       Sinergi + Koordinasi
+                  │
+                  ▼
+          Dealer Utama PUVA
+                  │
+       ┌──────────┼──────────┐
+       ▼          ▼          ▼
+   Market Maker    OPT      PUVA aktif
+       │          │          │
+       └──────────┼──────────┘
+                  ▼
+       Likuiditas + Price Discovery
+                  │
+                  ▼
+        Pasar semakin dalam,
+       likuid, stabil, efisien
+                  │
+                  ▼
+    Transmisi Kebijakan Moneter
+                  │
+                  ▼
+      Stabilitas & Pembiayaan
+             Perekonomian
+                </div>
+
+                <div class="summary">
+                    <h3>⭐ KUNCI UTAMA UNTUK DIINGAT</h3>
+                    <ul class="list-custom">
+                        <li><strong>PUVA = Pasar Uang + Pasar Valas.</strong></li>
+                        <li><strong>Pasar Uang = instrumen jangka pendek, pinjam-meminjam, dan derivatif suku bunga.</strong></li>
+                        <li><strong>Pasar Valas = pertukaran dua mata uang beserta derivatifnya.</strong></li>
+                        <li><strong>3I = Interkoneksi + Interoperabilitas + Integrasi.</strong></li>
+                        <li><strong>BPPU 2030 = Produk/Pricing + Pelaku/Infrastruktur + Sinergi/Koordinasi.</strong></li>
+                        <li><strong>Dealer Utama = Market Maker + Aktif OPT + Aktif PUVA.</strong></li>
+                        <li><strong>Kriteria umum = SIC.</strong></li>
+                        <li><strong>Kriteria khusus = TIKRI.</strong></li>
+                        <li><strong>Target akhir = pasar yang lebih likuid, stabil, efisien, dan mampu mendukung transmisi kebijakan moneter serta pembiayaan ekonomi.</strong></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>📚 Materi Pembelajaran Lengkap</strong></p>
+            <p>Pasar Uang dan Pasar Valuta Asing (PUVA)</p>
+            <p>© 2024 - Hak Cipta Dilindungi | Bank Indonesia</p>
+            <a href="#" class="back-to-top">🔝 Kembali ke Atas</a>
+        </footer>
+    </div>
+
+    <script>
+        // Back to top
+        document.querySelector('.back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Table hover effect
+        document.querySelectorAll('table tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(0, 137, 123, 0.15)';
+            });
+
+            row.addEventListener('mouseleave', function() {
+                if (this.rowIndex % 2 === 0) {
+                    this.style.backgroundColor = 'rgba(0, 137, 123, 0.05)';
+                } else {
+                    this.style.backgroundColor = '';
+                }
+            });
+        });
+
+        // Copy to clipboard for code blocks
+        document.querySelectorAll('.code-block, .diagram, .flow-chart, .math').forEach(block => {
+            block.addEventListener('click', function() {
+                const range = document.createRange();
+                range.selectNode(this);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                try {
+                    document.execCommand('copy');
+                    this.style.backgroundColor = '#e8f5e8';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 1000);
+                } catch (e) {
+                    console.log('Copy failed');
+                }
+                window.getSelection().removeAllRanges();
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

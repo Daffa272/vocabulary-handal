@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran: Pengendalian Moneter & Operasi Moneter Bank Indonesia</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #303f9f;
+            --accent-color: #ff9800;
+            --success-color: #4caf50;
+            --warning-color: #ffc107;
+            --danger-color: #f44336;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --code-bg: #f8f9fa;
+            --highlight-bg: #fff3e0;
+            --table-header: #263238;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 0;
+            border-bottom: 4px solid var(--primary-color);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.9em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        .bab {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .formula {
+            background-color: var(--code-bg);
+            padding: 18px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+
+        .important {
+            background-color: #f8bbd0;
+            padding: 20px;
+            border-left: 5px solid var(--danger-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background-color: #c8e6c9;
+            padding: 20px;
+            border-left: 5px solid var(--success-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .diagram {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .soal {
+            background-color: #e3f2fd;
+            padding: 22px;
+            border-radius: 8px;
+            margin: 22px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .jawaban {
+            background-color: #e8f5e9;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 5px solid var(--success-color);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 35px 0;
+        }
+
+        .kunci {
+            color: var(--danger-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .hafal {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .data-table {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+
+            .diagram {
+                font-size: 0.85em;
+            }
+
+            .toc li {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📚 MATERI PEMBELAJARAN LENGKAP</h1>
+        <h2>PENGENDALIAN MONETER & OPERASI MONETER BANK INDONESIA</h2>
+        <p><em>Pola: Pengertian → Tujuan → Mekanisme → Instrumen → Contoh → Perbandingan → Rangkuman → Latihan Soal</em></p>
+    </header>
+
+    <nav class="toc">
+        <h2>Daftar Isi</h2>
+        <ul>
+            <li><a href="#pengertian">1. Pengertian Pengendalian Moneter</a></li>
+            <li><a href="#hubungan">2. Hubungan BI-Rate dengan Pengendalian Moneter</a></li>
+            <li><a href="#operasi">3. Operasi Moneter</a></li>
+            <li><a href="#pelaksanaan">4. Cara Pelaksanaan OM</a></li>
+            <li><a href="#proyeksi">5. Proyeksi Likuiditas Harian</a></li>
+            <li><a href="#omrupiah">6. Operasi Moneter Rupiah</a></li>
+            <li><a href="#opt">7. OPT Rupiah</a></li>
+            <li><a href="#instrumen-opt">8. Instrumen OPT Rupiah</a></li>
+            <li><a href="#repo">9. Apa Itu Repo?</a></li>
+            <li><a href="#reverse">10. Apa Itu Reverse Repo?</a></li>
+            <li><a href="#reguler">11. OPT Reguler vs Non-Reguler</a></li>
+            <li><a href="#reissuance">12. Reissuance SRBI</a></li>
+            <li><a href="#standing">13. Standing Facilities</a></li>
+            <li><a href="#df">14. Deposit Facility</a></li>
+            <li><a href="#lf">15. Lending/Financing Facility</a></li>
+            <li><a href="#opt-vs-sf">16. OPT vs Standing Facilities</a></li>
+            <li><a href="#omvalas">17. OM Valas</a></li>
+            <li><a href="#hub-om">18. Hubungan OM Rupiah & Valas</a></li>
+            <li><a href="#dealer">19. Dealer Utama PUVA</a></li>
+            <li><a href="#perkembangan">20. Perkembangan Dealer Utama</a></li>
+            <li><a href="#surat">21. Instrumen Surat Berharga</a></li>
+            <li><a href="#haircut">22. Apa Itu Haircut?</a></li>
+            <li><a href="#dhe">23. DHE SDA</a></li>
+            <li><a href="#appointed">24. Appointed Bank TD Valas DHE</a></li>
+            <li><a href="#insentif">25. Insentif TD Valas DHE</a></li>
+            <li><a href="#svbi">26. SVBI & SUVBI</a></li>
+            <li><a href="#underlying">27. Underlying</a></li>
+            <li><a href="#swap">28. Swap Lindung Nilai</a></li>
+            <li><a href="#swap-ip">29. Swap Beli IP</a></li>
+            <li><a href="#swap-rmb">30. Swap Jual RMB</a></li>
+            <li><a href="#accd">31. Apa Itu ACCD?</a></li>
+            <li><a href="#dndf">32. DNDF</a></li>
+            <li><a href="#dndf-ip">33. DNDF IP</a></li>
+            <li><a href="#kurs">34. Kurs DNDF IP</a></li>
+            <li><a href="#dndf-pi">35. DNDF PI</a></li>
+            <li><a href="#perbedaan-swap">36. Perbedaan Swap & DNDF</a></li>
+            <li><a href="#rollover">37. Rollover, Early Terminate, Unwind</a></li>
+            <li><a href="#infrastruktur">38. Infrastruktur Transaksi</a></li>
+            <li><a href="#peta">39. Peta Besar</a></li>
+            <li><a href="#alur-likuiditas">40. Alur Pengendalian Likuiditas</a></li>
+            <li><a href="#alur-valas">41. Alur Pengendalian Nilai Tukar</a></li>
+            <li><a href="#mengapa">42. Mengapa PUVA Dikembangkan?</a></li>
+            <li><a href="#istilah">43. Istilah Penting</a></li>
+            <li><a href="#mnemonik">44. Mnemonik</a></li>
+            <li><a href="#absorpsi">45. Absorpsi vs Injeksi</a></li>
+            <li><a href="#perbedaan-instrumen">46. Perbedaan Repo, Reverse Repo, Outright</a></li>
+            <li><a href="#kasus1">47-52. Contoh Kasus</a></li>
+            <li><a href="#pertanyaan">53. Pertanyaan Ujian</a></li>
+            <li><a href="#pilihan">54. Latihan Pilihan Ganda</a></li>
+            <li><a href="#analisis">55. Soal Analisis</a></li>
+            <li><a href="#ringkasan">56. Ringkasan Super Singkat</a></li>
+            <li><a href="#petaakhir">57. Peta Hafalan Akhir</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Pengertian Pengendalian Moneter -->
+    <section id="pengertian" class="bab">
+        <h2>1. Pengertian Pengendalian Moneter</h2>
+
+        <p><strong>Pengendalian Moneter</strong> adalah upaya Bank Indonesia untuk mendukung tercapainya sasaran kebijakan moneter.</p>
+
+        <p>Pengendalian moneter dilakukan melalui:</p>
+        <ol>
+            <li><strong>Operasi Moneter (OM)</strong></li>
+            <li>Pengembangan <strong>pasar uang</strong></li>
+            <li>Pengembangan <strong>pasar valuta asing</strong></li>
+            <li>Pengaturan <strong>Giro Wajib Minimum (GWM)</strong></li>
+        </ol>
+
+        <div class="highlight">
+            <p><strong>Secara sederhana:</strong></p>
+            <blockquote>
+                <strong>Pengendalian Moneter = cara BI mengelola likuiditas, suku bunga, dan nilai tukar agar sasaran kebijakan moneter tercapai.</strong>
+            </blockquote>
+        </div>
+
+        <h3>Sasaran utama</h3>
+        <p>Pengendalian moneter diarahkan agar:</p>
+        <ul>
+            <li>suku bunga <strong>PUAB Overnight</strong> bergerak di sekitar <strong>BI-Rate</strong>;</li>
+            <li>struktur suku bunga pasar uang bergerak sesuai arah kebijakan moneter;</li>
+            <li>nilai tukar Rupiah bergerak secara stabil.</li>
+        </ul>
+    </section>
+
+    <!-- 2. Hubungan BI-Rate dengan Pengendalian Moneter -->
+    <section id="hubungan" class="bab">
+        <h2>2. Hubungan BI-Rate dengan Pengendalian Moneter</h2>
+
+        <p><strong>BI-Rate</strong> merupakan <strong>suku bunga kebijakan Bank Indonesia</strong>.</p>
+
+        <p>Pengendalian moneter berusaha membuat suku bunga pasar uang, terutama <strong>PUAB Overnight</strong>, bergerak di sekitar BI-Rate.</p>
+
+        <h3>Alur sederhananya</h3>
+        <div class="diagram">
+<strong>BI menetapkan BI-Rate</strong>
+
+⬇️
+
+<strong>BI mengendalikan likuiditas</strong>
+
+⬇️
+
+<strong>Suku bunga PUAB Overnight bergerak</strong>
+
+⬇️
+
+<strong>Suku bunga pasar uang dan perbankan menyesuaikan</strong>
+
+⬇️
+
+<strong>Kebijakan moneter ditransmisikan ke perekonomian</strong>
+        </div>
+
+        <div class="important">
+            <p>Jadi, <strong>BI-Rate merupakan sinyal kebijakan</strong>, sedangkan <strong>operasi moneter merupakan salah satu sarana untuk membuat kondisi pasar uang bergerak sesuai arah kebijakan tersebut.</strong></p>
+        </div>
+    </section>
+
+    <!-- 3. Operasi Moneter -->
+    <section id="operasi" class="bab">
+        <h2>3. Operasi Moneter</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>Operasi Moneter (OM)</strong> adalah transaksi yang dilakukan untuk mendukung pencapaian sasaran kebijakan moneter melalui pengelolaan likuiditas, suku bunga, dan nilai tukar.</p>
+
+        <p>Operasi Moneter terdiri atas:</p>
+
+        <h4>1. Operasi Moneter Rupiah (OM Rupiah)</h4>
+        <p>Berhubungan dengan pengelolaan likuiditas dalam <strong>Rupiah</strong>.</p>
+
+        <h4>2. Operasi Moneter Valuta Asing (OM Valas)</h4>
+        <p>Berhubungan dengan pengelolaan likuiditas valuta asing dan stabilitas nilai tukar Rupiah.</p>
+
+        <div class="hafal">
+            <p><strong>Rumus hafalan:</strong></p>
+            <blockquote><strong>OM = OM Rupiah + OM Valas</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 4. Cara Pelaksanaan Operasi Moneter -->
+    <section id="pelaksanaan" class="bab">
+        <h2>4. Cara Pelaksanaan Operasi Moneter</h2>
+
+        <p>Operasi Moneter dilaksanakan melalui dua cara.</p>
+
+        <h3>A. OM melalui Bank Indonesia</h3>
+        <p>Merupakan transaksi antara:</p>
+        <div class="formula">
+<strong>Bank Indonesia ↔ Bank/pihak lain yang disetujui BI</strong>
+        </div>
+        <p>Pihak tersebut harus merupakan <strong>Peserta Operasi Moneter</strong>.</p>
+
+        <hr>
+
+        <h3>B. OM melalui Market</h3>
+        <p>Transaksi dilakukan melalui pihak yang ditetapkan atau ditunjuk BI.</p>
+
+        <p><strong>Contohnya antara lain:</strong></p>
+        <ul>
+            <li><strong>Dealer Utama (Primary Dealer)</strong></li>
+            <li><strong>Agent Bank</strong></li>
+            <li><strong>Bank Appointed Cross Currency Dealer</strong></li>
+            <li>pihak pendukung lainnya.</li>
+        </ul>
+
+        <h3>Tujuan OM melalui market</h3>
+        <p>OM melalui market bertujuan untuk:</p>
+        <ol>
+            <li>mendorong pembentukan harga;</li>
+            <li>meningkatkan transaksi;</li>
+            <li>meningkatkan likuiditas;</li>
+            <li>memperluas interkoneksi antarpelaku pasar.</li>
+        </ol>
+
+        <p>Pasar yang menjadi perhatian:</p>
+        <blockquote><strong>Pasar Uang + Pasar Valuta Asing</strong></blockquote>
+    </section>
+
+    <!-- 5. Proyeksi Likuiditas Harian -->
+    <section id="proyeksi" class="bab">
+        <h2>5. Proyeksi Likuiditas Harian</h2>
+
+        <p>Proyeksi likuiditas digunakan untuk melihat kondisi likuiditas perbankan dan membantu BI menentukan kebutuhan operasi moneter.</p>
+
+        <p><strong>Secara konsep:</strong></p>
+        <blockquote>
+            <strong>BI perlu mengetahui apakah likuiditas di sistem perbankan berlebih atau kurang.</strong>
+        </blockquote>
+
+        <p>Salah satu informasi penting adalah <strong>Excess Reserve</strong>.</p>
+
+        <h3>Excess Reserve</h3>
+        <p>Excess Reserve dapat dipahami sebagai kelebihan likuiditas/cadangan yang dimiliki bank setelah memenuhi kebutuhan tertentu.</p>
+
+        <p>Dalam data yang diberikan, Excess Reserve dibedakan menjadi:</p>
+        <ul>
+            <li>Perbankan Konvensional</li>
+            <li>Perbankan Syariah</li>
+        </ul>
+
+        <p>Data juga menunjukkan instrumen OPT yang jatuh waktu, baik:</p>
+        <ul>
+            <li>konvensional;</li>
+            <li>syariah.</li>
+        </ul>
+
+        <div class="success">
+            <p><strong>Inti yang harus dipahami</strong></p>
+            <p><strong>Likuiditas berlebih → BI dapat melakukan absorpsi likuiditas.</strong></p>
+            <p><strong>Likuiditas kurang → BI dapat melakukan injeksi likuiditas.</strong></p>
+        </div>
+    </section>
+
+    <!-- 6. Operasi Moneter Rupiah -->
+    <section id="omrupiah" class="bab">
+        <h2>6. Operasi Moneter Rupiah</h2>
+
+        <p>OM Rupiah terdiri atas:</p>
+
+        <h3>1. Operasi Pasar Terbuka (OPT) Rupiah</h3>
+
+        <h3>2. Standing Facilities</h3>
+
+        <div class="hafal">
+            <p><strong>Jadi:</strong></p>
+            <blockquote><strong>OM Rupiah = OPT Rupiah + Standing Facilities</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 7. Operasi Pasar Terbuka (OPT) Rupiah -->
+    <section id="opt" class="bab">
+        <h2>7. Operasi Pasar Terbuka (OPT) Rupiah</h2>
+
+        <h3>Pengertian</h3>
+        <p>OPT Rupiah dilakukan untuk mengelola likuiditas di pasar uang Rupiah.</p>
+
+        <p>OPT dapat dilakukan dengan dua arah:</p>
+
+        <h4>Absorpsi likuiditas</h4>
+        <p>BI <strong>menyerap kelebihan likuiditas</strong> dari pasar.</p>
+
+        <h4>Injeksi likuiditas</h4>
+        <p>BI <strong>menambah likuiditas</strong> ke pasar.</p>
+
+        <div class="hafal">
+            <p><strong>Hafalan:</strong></p>
+            <blockquote><strong>Absorpsi = menyerap uang</strong><br><strong>Injeksi = menambah uang</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 8. Instrumen OPT Rupiah -->
+    <section id="instrumen-opt" class="bab">
+        <h2>8. Instrumen OPT Rupiah</h2>
+
+        <p>Berdasarkan materi yang diberikan, OPT Rupiah dapat menggunakan berbagai instrumen, antara lain:</p>
+        <ul>
+            <li>penerbitan surat berharga BI;</li>
+            <li>pembelian surat berharga secara <strong>outright</strong>;</li>
+            <li>penjualan surat berharga secara <strong>outright</strong>;</li>
+            <li>transaksi <strong>repo</strong>;</li>
+            <li>transaksi <strong>reverse repo</strong>;</li>
+            <li><strong>term deposit</strong> di BI;</li>
+            <li>transaksi lain di pasar uang.</li>
+        </ul>
+
+        <h3>Jangka waktu</h3>
+        <p>OPT Rupiah:</p>
+        <div class="formula">
+> <strong>Paling singkat = 1 hari</strong>
+> <strong>Paling lama = 12 bulan</strong>
+        </div>
+    </section>
+
+    <!-- 9. Apa Itu Repo? -->
+    <section id="repo" class="bab">
+        <h2>9. Apa Itu Repo?</h2>
+
+        <p><strong>Repo (Repurchase Agreement)</strong> adalah transaksi yang melibatkan surat berharga dengan mekanisme penjualan dan pembelian kembali sesuai kesepakatan.</p>
+
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+<strong>Bank membutuhkan likuiditas</strong>
+
+⬇️
+
+<strong>Bank melakukan repo dengan surat berharga sebagai dasar transaksi</strong>
+
+⬇️
+
+<strong>Bank memperoleh likuiditas</strong>
+
+⬇️
+
+<strong>Pada waktu yang disepakati dilakukan transaksi kembali</strong>
+        </div>
+    </section>
+
+    <!-- 10. Apa Itu Reverse Repo? -->
+    <section id="reverse" class="bab">
+        <h2>10. Apa Itu Reverse Repo?</h2>
+
+        <p>Reverse repo merupakan transaksi yang secara konsep merupakan sisi kebalikan dari repo.</p>
+
+        <p>Dalam konteks operasi moneter, transaksi ini dapat digunakan untuk <strong>mengelola likuiditas</strong>.</p>
+
+        <div class="hafal">
+            <p><strong>Untuk mengingatnya:</strong></p>
+            <blockquote><strong>Repo → berkaitan dengan memperoleh likuiditas</strong><br><strong>Reverse repo → dapat digunakan BI untuk pengelolaan/penyerapan likuiditas</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 11. OPT Reguler dan OPT Non-Reguler -->
+    <section id="reguler" class="bab">
+        <h2>11. OPT Reguler dan OPT Non-Reguler</h2>
+
+        <p>OPT Rupiah dibedakan menjadi:</p>
+
+        <h3>A. OPT Reguler</h3>
+        <p>OPT yang:</p>
+        <ul>
+            <li>dilakukan secara <strong>terjadwal</strong>;</li>
+            <li>dilakukan melalui <strong>lelang</strong>.</li>
+        </ul>
+        <p>Tujuannya sebagai bagian dari operasi moneter rutin.</p>
+
+        <hr>
+
+        <h3>B. OPT Non-Reguler</h3>
+        <p>OPT yang:</p>
+        <ul>
+            <li>dapat dilakukan <strong>sewaktu-waktu</strong>;</li>
+            <li>bersifat <strong>fine-tune operation</strong>.</li>
+        </ul>
+        <p>Tujuannya:</p>
+        <blockquote>memperkuat pencapaian sasaran Operasi Moneter yang dilakukan melalui OPT reguler.</blockquote>
+
+        <h3>Perbandingan</h3>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>OPT Reguler</th>
+                        <th>OPT Non-Reguler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pelaksanaan</td>
+                        <td>Terjadwal</td>
+                        <td>Sewaktu-waktu</td>
+                    </tr>
+                    <tr>
+                        <td>Mekanisme</td>
+                        <td>Lelang</td>
+                        <td>Fine-tune operation</td>
+                    </tr>
+                    <tr>
+                        <td>Fungsi</td>
+                        <td>Operasi rutin</td>
+                        <td>Penyesuaian/penguatan</td>
+                    </tr>
+                    <tr>
+                        <td>Tujuan</td>
+                        <td>Sasaran OM</td>
+                        <td>Memperkuat sasaran OM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Kata kunci:</strong></p>
+            <blockquote><strong>Reguler = rutin & terjadwal</strong><br><strong>Non-reguler = penyesuaian sewaktu-waktu</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 12. Reissuance SRBI -->
+    <section id="reissuance" class="bab">
+        <h2>12. Reissuance SRBI</h2>
+
+        <p>BI juga melakukan <strong>reissuance</strong> atau penerbitan kembali SRBI untuk tenor:</p>
+        <ul>
+            <li>6 bulan;</li>
+            <li>9 bulan;</li>
+            <li>12 bulan.</li>
+        </ul>
+
+        <p>Pelaksanaan lelang SRBI dengan seri reissuance dimulai <strong>3 Januari 2025</strong>.</p>
+
+        <h3>Tujuannya</h3>
+        <p>Reissuance SRBI ditujukan untuk:</p>
+        <ol>
+            <li>mendorong pembentukan harga SRBI yang lebih efisien;</li>
+            <li>meningkatkan likuiditas transaksi SRBI;</li>
+            <li>memfasilitasi pembentukan kurva suku bunga pasar uang.</li>
+        </ol>
+
+        <div class="success">
+            <p><strong>Inti:</strong></p>
+            <blockquote><strong>Reissuance SRBI → harga lebih efisien + transaksi lebih likuid + kurva suku bunga lebih terbentuk</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 13. Standing Facilities -->
+    <section id="standing" class="bab">
+        <h2>13. Standing Facilities</h2>
+
+        <h3>Pengertian</h3>
+        <p><strong>Standing Facilities</strong> adalah fasilitas yang disediakan pada akhir hari untuk menjaga kecukupan likuiditas Peserta Operasi Moneter.</p>
+
+        <p>Standing Facilities dapat dilakukan:</p>
+        <ul>
+            <li>secara konvensional;</li>
+            <li>berdasarkan prinsip syariah.</li>
+        </ul>
+
+        <p>Terdapat dua kelompok utama:</p>
+        <ol>
+            <li><strong>Deposit Facility</strong></li>
+            <li><strong>Lending Facility / Financing Facility</strong></li>
+        </ol>
+    </section>
+
+    <!-- 14. Deposit Facility (DF) -->
+    <section id="df" class="bab">
+        <h2>14. Deposit Facility (DF)</h2>
+
+        <p><strong>Deposit Facility</strong> adalah fasilitas penempatan dana Rupiah oleh peserta di Bank Indonesia.</p>
+
+        <p><strong>Sederhananya:</strong></p>
+        <blockquote><strong>Bank memiliki kelebihan dana → ditempatkan di BI.</strong></blockquote>
+
+        <p>Untuk operasi moneter syariah, Deposit Facility dilakukan dalam bentuk:</p>
+
+        <h3>FASBIS</h3>
+        <p><strong>FASBIS = Fasilitas Simpanan Bank Indonesia Syariah</strong></p>
+    </section>
+
+    <!-- 15. Lending Facility dan Financing Facility -->
+    <section id="lf" class="bab">
+        <h2>15. Lending Facility dan Financing Facility</h2>
+
+        <h3>Lending Facility (LF)</h3>
+        <p>Untuk peserta konvensional.</p>
+        <p>Merupakan:</p>
+        <blockquote>penyediaan dana Rupiah dari BI kepada peserta Standing Facility konvensional.</blockquote>
+
+        <h3>Financing Facility (FF)</h3>
+        <p>Untuk peserta syariah.</p>
+        <p>Merupakan:</p>
+        <blockquote>penyediaan dana Rupiah dari BI kepada peserta Standing Facility syariah berdasarkan prinsip syariah.</blockquote>
+
+        <h3>Cara mengingat</h3>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fasilitas</th>
+                        <th>Sistem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Deposit Facility</td>
+                        <td>Konvensional</td>
+                    </tr>
+                    <tr>
+                        <td>FASBIS</td>
+                        <td>Syariah</td>
+                    </tr>
+                    <tr>
+                        <td>Lending Facility</td>
+                        <td>Konvensional</td>
+                    </tr>
+                    <tr>
+                        <td>Financing Facility</td>
+                        <td>Syariah</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 16. OPT vs Standing Facilities -->
+    <section id="opt-vs-sf" class="bab">
+        <h2>16. OPT vs Standing Facilities</h2>
+
+        <p>Ini merupakan bagian penting untuk ujian.</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>OPT</th>
+                        <th>Standing Facilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fokus</td>
+                        <td>Mengelola likuiditas pasar</td>
+                        <td>Menjaga kecukupan likuiditas akhir hari</td>
+                    </tr>
+                    <tr>
+                        <td>Pelaksanaan</td>
+                        <td>Reguler/non-reguler</td>
+                        <td>Tersedia setiap akhir hari</td>
+                    </tr>
+                    <tr>
+                        <td>Contoh</td>
+                        <td>Repo, reverse repo, outright, TD</td>
+                        <td>DF, LF, FF</td>
+                    </tr>
+                    <tr>
+                        <td>Fungsi</td>
+                        <td>Absorpsi/injeksi</td>
+                        <td>Menyediakan/menempatkan dana</td>
+                    </tr>
+                    <tr>
+                        <td>Konvensional & syariah</td>
+                        <td>Ya</td>
+                        <td>Ya</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Hafalan:</strong></p>
+            <blockquote><strong>OPT = mengatur likuiditas pasar</strong><br><strong>Standing Facilities = menjaga likuiditas akhir hari</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 17. Operasi Moneter Valuta Asing (OM Valas) -->
+    <section id="omvalas" class="bab">
+        <h2>17. Operasi Moneter Valuta Asing (OM Valas)</h2>
+
+        <p>OM Valas digunakan untuk:</p>
+        <ol>
+            <li>mengelola likuiditas valuta asing;</li>
+            <li>menjaga stabilitas nilai tukar Rupiah.</li>
+        </ol>
+
+        <h3>Instrumen OM Valas</h3>
+        <p><strong>Antara lain:</strong></p>
+        <ul>
+            <li>penerbitan surat berharga BI;</li>
+            <li>repo;</li>
+            <li>reverse repo;</li>
+            <li>term deposit;</li>
+            <li>pembelian valuta asing;</li>
+            <li>penjualan valuta asing;</li>
+            <li>transaksi lainnya di pasar uang dan pasar valuta asing.</li>
+        </ul>
+
+        <h3>Jangka waktu</h3>
+        <div class="formula">
+> <strong>1 hari sampai dengan 12 bulan</strong>
+        </div>
+    </section>
+
+    <!-- 18. Hubungan OM Rupiah dan OM Valas -->
+    <section id="hub-om" class="bab">
+        <h2>18. Hubungan OM Rupiah dan OM Valas</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>OM Rupiah</th>
+                        <th>OM Valas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mengelola likuiditas Rupiah</td>
+                        <td>Mengelola likuiditas valuta asing</td>
+                    </tr>
+                    <tr>
+                        <td>Fokus pasar uang Rupiah</td>
+                        <td>Fokus pasar valas dan likuiditas valas</td>
+                    </tr>
+                    <tr>
+                        <td>Mendukung sasaran moneter</td>
+                        <td>Mendukung sasaran moneter & stabilitas Rupiah</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Namun keduanya merupakan bagian dari satu kerangka:</p>
+        <div class="formula">
+> <strong>OPERASI MONETER BANK INDONESIA</strong>
+        </div>
+    </section>
+
+    <!-- 19. Dealer Utama PUVA -->
+    <section id="dealer" class="bab">
+        <h2>19. Dealer Utama PUVA</h2>
+
+        <p>BI mengintegrasikan strategi Operasi Moneter dengan pengembangan:</p>
+        <blockquote><strong>Pasar Uang dan Pasar Valuta Asing (PUVA)</strong></blockquote>
+
+        <p>Dalam kerangka tersebut terdapat <strong>Dealer Utama (Primary Dealer)</strong>.</p>
+
+        <p>Dealer utama berperan membantu meningkatkan:</p>
+        <ul>
+            <li>transaksi pasar;</li>
+            <li>likuiditas;</li>
+            <li>pembentukan harga;</li>
+            <li>interkoneksi antarpelaku.</li>
+        </ul>
+    </section>
+
+    <!-- 20. Perkembangan Dealer Utama -->
+    <section id="perkembangan" class="bab">
+        <h2>20. Perkembangan Dealer Utama</h2>
+
+        <p>Implementasinya dilakukan secara bertahap.</p>
+
+        <h3>17 Mei 2024</h3>
+        <p>Peran dealer utama mulai diterapkan dalam:</p>
+        <div class="formula">
+> <strong>lelang SRBI</strong>
+        </div>
+
+        <h3>10 November 2025</h3>
+        <p>Diperluas untuk:</p>
+        <div class="formula">
+> <strong>Transaksi Repo Konvensional Rupiah menggunakan surat berharga berkualitas tinggi lainnya</strong>
+        </div>
+
+        <h3>17 November 2025</h3>
+        <p>Diperluas lagi untuk:</p>
+        <div class="formula">
+> <strong>lelang BI-FRN</strong>
+        </div>
+
+        <p>Dealer utama juga dapat mengakses:</p>
+        <ul>
+            <li>repo konvensional Rupiah nonlelang;</li>
+            <li>DNDF nonlelang;</li>
+            <li>transaksi repo konvensional valuta asing.</li>
+        </ul>
+
+        <div class="hafal">
+            <p><strong>Inti hafalan</strong></p>
+            <blockquote><strong>2024 → SRBI</strong><br><strong>2025 → Repo + BI-FRN</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 21. Instrumen Surat Berharga dalam Operasi Moneter -->
+    <section id="surat" class="bab">
+        <h2>21. Instrumen Surat Berharga dalam Operasi Moneter</h2>
+
+        <p>Beberapa istilah yang perlu dikuasai:</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Singkatan</th>
+                        <th>Kepanjangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SBI</td>
+                        <td>Sertifikat Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>SBIS</td>
+                        <td>Sertifikat Bank Indonesia Syariah</td>
+                    </tr>
+                    <tr>
+                        <td>SDBI</td>
+                        <td>Sertifikat Deposito Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>SRBI</td>
+                        <td>Sekuritas Rupiah Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>BI-FRN</td>
+                        <td>Bank Indonesia Floating Rate Note</td>
+                    </tr>
+                    <tr>
+                        <td>SUKBI</td>
+                        <td>Sukuk Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>SBBI</td>
+                        <td>Surat Berharga Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>TD</td>
+                        <td>Term Deposit</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 22. Apa Itu Haircut? -->
+    <section id="haircut" class="bab">
+        <h2>22. Apa Itu Haircut?</h2>
+
+        <p><strong>Haircut</strong> adalah faktor pengurang terhadap harga surat berharga yang digunakan sebagai <strong>collateral</strong> dalam operasi moneter.</p>
+
+        <p><strong>Tujuan utamanya:</strong></p>
+        <blockquote>memitigasi risiko, termasuk risiko pasar surat berharga.</blockquote>
+
+        <h3>Contoh sederhana</h3>
+        <p>Misalnya nilai surat berharga:</p>
+        <div class="formula">
+> <strong>Rp100 miliar</strong>
+        </div>
+
+        <p>Jika haircut ditetapkan <strong>10%</strong>, maka nilai yang diperhitungkan sebagai collateral menjadi:</p>
+        <div class="formula">
+> <strong>Rp100 miliar × (1 − 10%) = Rp90 miliar</strong>
+        </div>
+
+        <div class="success">
+            <p><strong>Jadi:</strong></p>
+            <blockquote><strong>Haircut membuat nilai collateral yang diperhitungkan lebih rendah daripada nilai pasarnya.</strong></blockquote>
+        </div>
+
+        <p>Besaran haircut dievaluasi secara berkala sesuai kondisi pasar dan operasi moneter.</p>
+        <p>Materi yang diberikan menyebut ketentuan haircut tersebut berlaku sejak <strong>17 Maret 2026</strong> berdasarkan PADG No. 18 Tahun 2025.</p>
+    </section>
+
+    <!-- 23. DHE SDA dan Operasi Moneter -->
+    <section id="dhe" class="bab">
+        <h2>23. DHE SDA dan Operasi Moneter</h2>
+
+        <h3>Apa itu DHE SDA?</h3>
+        <p><strong>DHE SDA = Devisa Hasil Ekspor Sumber Daya Alam</strong></p>
+
+        <p>BI menyediakan instrumen untuk mendukung penempatan DHE SDA.</p>
+
+        <p>Salah satunya:</p>
+
+        <h3>TD Valas DHE</h3>
+        <p><strong>Term Deposit Valas Devisa Hasil Ekspor</strong></p>
+        <p>Mekanismenya memfasilitasi penempatan DHE oleh eksportir di BI melalui <strong>appointed bank</strong> sesuai mekanisme pasar.</p>
+    </section>
+
+    <!-- 24. Appointed Bank TD Valas DHE -->
+    <section id="appointed" class="bab">
+        <h2>24. Appointed Bank TD Valas DHE</h2>
+
+        <p>Dalam materi yang diberikan, bank yang tercantum adalah:</p>
+        <ol>
+            <li>PT Bank Mandiri (Persero), Tbk</li>
+            <li>PT Bank Rakyat Indonesia (Persero), Tbk</li>
+            <li>PT Bank Negara Indonesia (Persero), Tbk</li>
+            <li>PT Bank Tabungan Negara (Persero), Tbk</li>
+        </ol>
+
+        <p>Jumlah appointed bank dapat dievaluasi secara berkala.</p>
+    </section>
+
+    <!-- 25. Insentif TD Valas DHE -->
+    <section id="insentif" class="bab">
+        <h2>25. Insentif TD Valas DHE</h2>
+
+        <p>BI memberikan beberapa dukungan, antara lain:</p>
+
+        <h3>1. Suku bunga valas</h3>
+        <p>Memperhatikan:</p>
+        <ul>
+            <li>tiering nominal;</li>
+            <li>tenor.</li>
+        </ul>
+
+        <h3>2. Pengecualian tertentu</h3>
+        <p>Dana dikecualikan dari komponen DPK untuk perhitungan:</p>
+        <ul>
+            <li><strong>GWM</strong></li>
+            <li><strong>RIM</strong></li>
+        </ul>
+
+        <h3>3. Agent fee/spread</h3>
+        <p>Kepada bank dengan memperhatikan tenor TD Valas DHE.</p>
+    </section>
+
+    <!-- 26. SVBI dan SUVBI -->
+    <section id="svbi" class="bab">
+        <h2>26. SVBI dan SUVBI</h2>
+
+        <p>DHE SDA juga dapat ditempatkan pada:</p>
+        <ul>
+            <li><strong>SVBI</strong></li>
+            <li><strong>SUVBI</strong></li>
+        </ul>
+
+        <p>Instrumen tersebut tersedia di pasar sekunder sebagai alternatif instrumen penempatan DHE SDA.</p>
+
+        <div class="important">
+            <p><strong>Hal penting:</strong></p>
+            <blockquote><strong>Penempatan DHE SDA pada SVBI/SUVBI tidak dapat ditarik sebelum jatuh tempo.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 27. Underlying -->
+    <section id="underlying" class="bab">
+        <h2>27. Underlying</h2>
+
+        <p>Istilah <strong>underlying</strong> sangat penting dalam transaksi keuangan.</p>
+
+        <p>Underlying adalah aset/transaksi yang menjadi dasar atau referensi dari suatu transaksi.</p>
+
+        <p><strong>Contoh dalam materi:</strong></p>
+        <p>Untuk transaksi swap investasi portofolio, underlying dapat berupa:</p>
+        <ul>
+            <li>SRBI;</li>
+            <li>SBN;</li>
+            <li>obligasi korporasi;</li>
+            <li>EBA;</li>
+            <li>saham.</li>
+        </ul>
+
+        <div class="hafal">
+            <p><strong>Jadi:</strong></p>
+            <blockquote><strong>Underlying = transaksi/aset yang menjadi dasar transaksi lindung nilai.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 28. Swap Lindung Nilai -->
+    <section id="swap" class="bab">
+        <h2>28. Swap Lindung Nilai</h2>
+
+        <h3>Pengertian</h3>
+        <p><strong>Swap lindung nilai (hedging)</strong> digunakan untuk mengelola risiko perubahan nilai tukar.</p>
+
+        <p>Dalam materi, BI menyediakan beberapa fasilitas swap untuk mendukung:</p>
+        <ul>
+            <li>stabilitas nilai tukar Rupiah;</li>
+            <li>investasi portofolio;</li>
+            <li>perdagangan internasional;</li>
+            <li>pendalaman pasar valas.</li>
+        </ul>
+    </section>
+
+    <!-- 29. Swap Beli Lindung Nilai untuk Investasi Portofolio -->
+    <section id="swap-ip" class="bab">
+        <h2>29. Swap Beli Lindung Nilai untuk Investasi Portofolio</h2>
+
+        <p>BI membuka:</p>
+        <div class="formula">
+> <strong>Transaksi Swap Beli Lindung Nilai Konvensional kepada BI dalam rangka Investasi Portofolio.</strong>
+        </div>
+
+        <p><strong>Tujuannya:</strong></p>
+        <ul>
+            <li>mendorong investasi portofolio dalam Rupiah;</li>
+            <li>meningkatkan daya tarik aset keuangan domestik;</li>
+            <li>mendukung aliran masuk modal asing;</li>
+            <li>memperkuat stabilitas Rupiah;</li>
+            <li>memperdalam pasar valas.</li>
+        </ul>
+
+        <h3>Mata uang</h3>
+        <div class="formula">
+> <strong>USD</strong>
+        </div>
+
+        <h3>Tenor</h3>
+        <ul>
+            <li>1 bulan</li>
+            <li>3 bulan</li>
+            <li>6 bulan</li>
+            <li>12 bulan</li>
+        </ul>
+
+        <h3>Underlying</h3>
+        <ul>
+            <li>SRBI</li>
+            <li>SBN</li>
+            <li>obligasi korporasi termasuk EBA</li>
+            <li>saham</li>
+        </ul>
+
+        <p>Materi menyebut bahwa pada RDG <strong>9 Juni 2026</strong>, BI memberikan insentif berupa penurunan premi swap sebesar <strong>10%</strong>.</p>
+    </section>
+
+    <!-- 30. Swap Lindung Nilai untuk Perdagangan dan Investasi RMB -->
+    <section id="swap-rmb" class="bab">
+        <h2>30. Swap Lindung Nilai untuk Perdagangan dan Investasi RMB</h2>
+
+        <p>BI juga menyediakan:</p>
+        <div class="formula">
+> <strong>Transaksi Swap Jual Lindung Nilai Konvensional kepada BI dalam rangka Perdagangan dan Investasi dalam mata uang RMB.</strong>
+        </div>
+
+        <p><strong>Tujuan utamanya:</strong></p>
+        <ul>
+            <li>meningkatkan <strong>Local Currency Transaction (LCT)</strong>;</li>
+            <li>mendukung diversifikasi transaksi valas;</li>
+            <li>memperkuat stabilitas Rupiah;</li>
+            <li>memperdalam PUVA.</li>
+        </ul>
+
+        <h3>Mata uang</h3>
+        <div class="formula">
+> <strong>CNY</strong>
+        </div>
+
+        <h3>Tenor</h3>
+        <ul>
+            <li>3 bulan</li>
+            <li>6 bulan</li>
+            <li>12 bulan</li>
+        </ul>
+
+        <h3>Peserta</h3>
+        <p>Peserta OM konvensional yang:</p>
+        <ul>
+            <li>memenuhi persyaratan kesehatan bank;</li>
+            <li>merupakan <strong>ACCD</strong> dalam framework LCT Indonesia–Tiongkok;</li>
+            <li>tidak sedang dikenakan sanksi Operasi Moneter.</li>
+        </ul>
+    </section>
+
+    <!-- 31. Apa Itu ACCD? -->
+    <section id="accd" class="bab">
+        <h2>31. Apa Itu ACCD?</h2>
+
+        <p><strong>ACCD = Appointed Cross Currency Dealer</strong></p>
+
+        <p>Dalam konteks materi ini, ACCD merupakan bank yang ditunjuk untuk mendukung transaksi lintas mata uang dalam kerangka <strong>Local Currency Transaction (LCT)</strong>.</p>
+    </section>
+
+    <!-- 32. DNDF -->
+    <section id="dndf" class="bab">
+        <h2>32. DNDF</h2>
+
+        <h3>Domestic Non-Deliverable Forward</h3>
+        <p><strong>DNDF</strong> adalah instrumen lindung nilai valuta asing yang penyelesaiannya dilakukan berdasarkan selisih nilai, tanpa pertukaran valuta asing secara fisik sebagaimana transaksi spot biasa.</p>
+
+        <p>Dalam materi, BI menyediakan DNDF untuk beberapa tujuan.</p>
+    </section>
+
+    <!-- 33. DNDF Investasi Portofolio -->
+    <section id="dndf-ip" class="bab">
+        <h2>33. DNDF Investasi Portofolio</h2>
+
+        <p>BI membuka:</p>
+        <div class="formula">
+> <strong>DNDF Lindung Nilai kepada BI dalam rangka Investasi Portofolio.</strong>
+        </div>
+
+        <p><strong>Tujuan:</strong></p>
+        <ol>
+            <li>meningkatkan aliran masuk investasi portofolio asing;</li>
+            <li>memperkuat stabilitas nilai tukar Rupiah;</li>
+            <li>mempercepat pendalaman PUVA.</li>
+        </ol>
+
+        <h3>Mata uang</h3>
+        <div class="formula">
+> <strong>USD</strong>
+        </div>
+
+        <h3>Tenor</h3>
+        <ul>
+            <li>6 bulan</li>
+            <li>12 bulan</li>
+        </ul>
+
+        <h3>Underlying</h3>
+        <p>Investasi portofolio nonresiden pada:</p>
+        <ul>
+            <li>SRBI;</li>
+            <li>SBN;</li>
+            <li>obligasi korporasi termasuk EBA;</li>
+            <li>saham;</li>
+            <li>baik konvensional maupun syariah.</li>
+        </ul>
+
+        <h3>Insentif</h3>
+        <p>Materi menyebut:</p>
+        <div class="formula">
+> <strong>15%</strong>
+        </div>
+        <p>berdasarkan RDGB Juli 2026.</p>
+    </section>
+
+    <!-- 34. Cara Menentukan Kurs DNDF Investasi Portofolio -->
+    <section id="kurs" class="bab">
+        <h2>34. Cara Menentukan Kurs DNDF Investasi Portofolio</h2>
+
+        <p>Dalam materi:</p>
+
+        <h3>Kurs DNDF outright</h3>
+        <div class="formula">
+> <strong>Kurs JISDOR USD/IDR saat transaksi + Premi DNDF</strong>
+        </div>
+
+        <p>Sedangkan:</p>
+
+        <h3>Fixing rate</h3>
+        <p>Menggunakan:</p>
+        <div class="formula">
+> <strong>JISDOR USD/IDR pada tanggal fixing</strong>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Intinya</strong></p>
+            <blockquote><strong>Kurs awal → JISDOR + premi</strong><br><strong>Kurs penyelesaian/fixing → JISDOR pada fixing date</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 35. DNDF Perdagangan Internasional -->
+    <section id="dndf-pi" class="bab">
+        <h2>35. DNDF Perdagangan Internasional</h2>
+
+        <p>BI juga menyediakan:</p>
+        <div class="formula">
+> <strong>DNDF Lindung Nilai Perdagangan Internasional</strong>
+        </div>
+
+        <p><strong>Tujuannya:</strong></p>
+        <ul>
+            <li>mendukung perdagangan internasional;</li>
+            <li>meningkatkan penggunaan mata uang lokal;</li>
+            <li>mendukung LCT;</li>
+            <li>mendiversifikasi transaksi valas;</li>
+            <li>memperkuat stabilitas Rupiah;</li>
+            <li>memperdalam PUVA.</li>
+        </ul>
+
+        <h3>Mata uang</h3>
+        <ul>
+            <li>JPY/IDR</li>
+            <li>CNY/IDR</li>
+            <li>CNH/IDR</li>
+        </ul>
+
+        <h3>Tenor</h3>
+        <ul>
+            <li>6 bulan</li>
+            <li>12 bulan</li>
+        </ul>
+
+        <h3>Insentif</h3>
+        <p>Materi menyebut:</p>
+        <div class="formula">
+> <strong>10%</strong>
+        </div>
+        <p>berdasarkan RDGB Juli 2026.</p>
+    </section>
+
+    <!-- 36. Perbedaan Swap dan DNDF -->
+    <section id="perbedaan-swap" class="bab">
+        <h2>36. Perbedaan Swap dan DNDF</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Swap</th>
+                        <th>DNDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fungsi utama</td>
+                        <td>Lindung nilai</td>
+                        <td>Lindung nilai</td>
+                    </tr>
+                    <tr>
+                        <td>Digunakan untuk</td>
+                        <td>Investasi/perdagangan</td>
+                        <td>Investasi/perdagangan</td>
+                    </tr>
+                    <tr>
+                        <td>Instrumen</td>
+                        <td>Swap</td>
+                        <td>Forward</td>
+                    </tr>
+                    <tr>
+                        <td>Dapat memiliki underlying</td>
+                        <td>Ya</td>
+                        <td>Ya</td>
+                    </tr>
+                    <tr>
+                        <td>Tujuan</td>
+                        <td>Mengelola risiko nilai tukar</td>
+                        <td>Mengelola risiko nilai tukar</td>
+                    </tr>
+                    <tr>
+                        <td>Dalam materi</td>
+                        <td>USD, CNY, dll.</td>
+                        <td>USD, JPY, CNY, CNH</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="important">
+            <p><strong>Jangan tertukar:</strong></p>
+            <blockquote><strong>Swap ≠ DNDF</strong><br>Keduanya sama-sama dapat digunakan untuk <strong>hedging</strong>, tetapi struktur transaksinya berbeda.</blockquote>
+        </div>
+    </section>
+
+    <!-- 37. Rollover, Early Terminate, dan Unwind -->
+    <section id="rollover" class="bab">
+        <h2>37. Rollover, Early Terminate, dan Unwind</h2>
+
+        <p>Tiga istilah ini perlu diperhatikan.</p>
+
+        <h3>Rollover</h3>
+        <p>Memperpanjang transaksi ke periode berikutnya.</p>
+
+        <h3>Early Terminate</h3>
+        <p>Mengakhiri transaksi sebelum jatuh tempo.</p>
+
+        <h3>Unwind</h3>
+        <p>Membatalkan atau melakukan transaksi balik untuk menutup posisi sebelum jatuh tempo.</p>
+
+        <p>Dalam materi:</p>
+
+        <h3>Swap Beli Lindung Nilai IP</h3>
+        <ul>
+            <li>dapat <strong>rollover</strong>;</li>
+            <li>tidak dapat <strong>early terminate</strong>.</li>
+        </ul>
+
+        <h3>Swap Jual Lindung Nilai PI</h3>
+        <ul>
+            <li>tidak dapat rollover;</li>
+            <li>tidak dapat early terminate.</li>
+        </ul>
+
+        <h3>DNDF Investasi Portofolio</h3>
+        <ul>
+            <li>dapat rollover;</li>
+            <li>tidak dapat early terminate;</li>
+            <li>tidak dapat unwind.</li>
+        </ul>
+
+        <h3>DNDF Perdagangan Internasional</h3>
+        <ul>
+            <li>dapat rollover;</li>
+            <li>tidak dapat early terminate;</li>
+            <li>tidak dapat unwind.</li>
+        </ul>
+    </section>
+
+    <!-- 38. Infrastruktur Transaksi -->
+    <section id="infrastruktur" class="bab">
+        <h2>38. Infrastruktur Transaksi</h2>
+
+        <p>Dalam beberapa transaksi swap dan DNDF yang dijelaskan:</p>
+
+        <h3>Platform</h3>
+        <div class="formula">
+> <strong>LSEG AD</strong>
+        </div>
+
+        <h3>Setelmen</h3>
+        <p>Untuk transaksi Rupiah:</p>
+        <div class="formula">
+> <strong>RTGS</strong>
+        </div>
+
+        <p>Sedangkan mata uang asing menggunakan:</p>
+        <div class="formula">
+> <strong>Bank Koresponden</strong>
+        </div>
+
+        <p><strong>Contoh:</strong></p>
+        <div class="formula">
+> <strong>USD → Bank Koresponden USD</strong>
+> <strong>CNY → Bank Koresponden CNY</strong>
+        </div>
+    </section>
+
+    <!-- 39. Peta Besar Pengendalian Moneter -->
+    <section id="peta" class="bab">
+        <h2>39. Peta Besar Pengendalian Moneter</h2>
+
+        <p>Berikut cara paling mudah melihat keseluruhan materi:</p>
+
+        <div class="diagram">
+                 KEBIJAKAN MONETER BI
+                         │
+                         ▼
+                PENGENDALIAN MONETER
+                         │
+          ┌──────────────┴──────────────┐
+          │                             │
+          ▼                             ▼
+   OPERASI MONETER                    GWM
+          │
+     ┌────┴────┐
+     ▼         ▼
+ OM Rupiah   OM Valas
+     │         │
+ ┌───┴───┐     │
+ │       │     │
+ ▼       ▼     ▼
+OPT   Standing  Instrumen
+      Facilities Valas
+ │       │
+ ▼       ▼
+Repo   DF/LF/FF
+Reverse
+Repo
+Outright
+TD
+dll.
+        </div>
+    </section>
+
+    <!-- 40. Alur Pengendalian Likuiditas -->
+    <section id="alur-likuiditas" class="bab">
+        <h2>40. Alur Pengendalian Likuiditas</h2>
+
+        <h3>Ketika likuiditas berlebih</h3>
+        <div class="diagram">
+Likuiditas berlebih
+       ↓
+BI melakukan absorpsi
+       ↓
+Likuiditas berkurang
+       ↓
+Tekanan penurunan suku bunga berkurang
+       ↓
+PUAB Overnight diarahkan sekitar BI-Rate
+        </div>
+
+        <h3>Ketika likuiditas kurang</h3>
+        <div class="diagram">
+Likuiditas kurang
+       ↓
+BI melakukan injeksi
+       ↓
+Likuiditas bertambah
+       ↓
+Tekanan kenaikan suku bunga berkurang
+       ↓
+PUAB Overnight diarahkan sekitar BI-Rate
+        </div>
+    </section>
+
+    <!-- 41. Alur Pengendalian Nilai Tukar -->
+    <section id="alur-valas" class="bab">
+        <h2>41. Alur Pengendalian Nilai Tukar</h2>
+
+        <p>Untuk aspek valuta asing:</p>
+        <div class="diagram">
+Perubahan kondisi pasar valas
+             ↓
+      BI melakukan OM Valas
+             ↓
+Pengelolaan likuiditas valas
+             +
+Instrumen swap/DNDF/valas lainnya
+             ↓
+Mendukung stabilitas Rupiah
+        </div>
+    </section>
+
+    <!-- 42. Mengapa Pasar Uang dan Pasar Valas Dikembangkan? -->
+    <section id="mengapa" class="bab">
+        <h2>42. Mengapa Pasar Uang dan Pasar Valas Dikembangkan?</h2>
+
+        <p>Pengendalian moneter tidak hanya berbicara mengenai jumlah uang.</p>
+
+        <p>BI juga membutuhkan pasar keuangan yang:</p>
+        <ul>
+            <li>likuid;</li>
+            <li>efisien;</li>
+            <li>memiliki pembentukan harga yang baik;</li>
+            <li>memiliki interkoneksi antarpelaku;</li>
+            <li>mampu mentransmisikan kebijakan moneter.</li>
+        </ul>
+
+        <p>Karena itu:</p>
+        <div class="formula">
+> <strong>Operasi Moneter + Pengembangan PUVA = bagian dari strategi pengendalian moneter yang terintegrasi.</strong>
+        </div>
+    </section>
+
+    <!-- 43. Istilah Penting yang Harus Dikuasai -->
+    <section id="istilah" class="bab">
+        <h2>43. Istilah Penting yang Harus Dikuasai</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Istilah</th>
+                        <th>Arti sederhana</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BI-Rate</td>
+                        <td>Suku bunga kebijakan BI</td>
+                    </tr>
+                    <tr>
+                        <td>PUAB</td>
+                        <td>Pasar Uang Antar Bank</td>
+                    </tr>
+                    <tr>
+                        <td>Overnight</td>
+                        <td>Jangka waktu sangat pendek, satu malam</td>
+                    </tr>
+                    <tr>
+                        <td>OM</td>
+                        <td>Operasi Moneter</td>
+                    </tr>
+                    <tr>
+                        <td>OPT</td>
+                        <td>Operasi Pasar Terbuka</td>
+                    </tr>
+                    <tr>
+                        <td>Repo</td>
+                        <td>Transaksi berbasis surat berharga untuk pengelolaan likuiditas</td>
+                    </tr>
+                    <tr>
+                        <td>Reverse Repo</td>
+                        <td>Transaksi kebalikan repo</td>
+                    </tr>
+                    <tr>
+                        <td>Standing Facilities</td>
+                        <td>Fasilitas likuiditas akhir hari</td>
+                    </tr>
+                    <tr>
+                        <td>DF</td>
+                        <td>Deposit Facility</td>
+                    </tr>
+                    <tr>
+                        <td>LF</td>
+                        <td>Lending Facility</td>
+                    </tr>
+                    <tr>
+                        <td>FF</td>
+                        <td>Financing Facility</td>
+                    </tr>
+                    <tr>
+                        <td>FASBIS</td>
+                        <td>Fasilitas Simpanan Bank Indonesia Syariah</td>
+                    </tr>
+                    <tr>
+                        <td>SRBI</td>
+                        <td>Sekuritas Rupiah Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>BI-FRN</td>
+                        <td>Bank Indonesia Floating Rate Note</td>
+                    </tr>
+                    <tr>
+                        <td>TD</td>
+                        <td>Term Deposit</td>
+                    </tr>
+                    <tr>
+                        <td>DHE SDA</td>
+                        <td>Devisa Hasil Ekspor Sumber Daya Alam</td>
+                    </tr>
+                    <tr>
+                        <td>DNDF</td>
+                        <td>Domestic Non-Deliverable Forward</td>
+                    </tr>
+                    <tr>
+                        <td>LCT</td>
+                        <td>Local Currency Transaction</td>
+                    </tr>
+                    <tr>
+                        <td>ACCD</td>
+                        <td>Appointed Cross Currency Dealer</td>
+                    </tr>
+                    <tr>
+                        <td>Haircut</td>
+                        <td>Pengurang nilai surat berharga sebagai collateral</td>
+                    </tr>
+                    <tr>
+                        <td>Underlying</td>
+                        <td>Aset/transaksi yang menjadi dasar transaksi</td>
+                    </tr>
+                    <tr>
+                        <td>Hedging</td>
+                        <td>Lindung nilai</td>
+                    </tr>
+                    <tr>
+                        <td>Primary Dealer</td>
+                        <td>Dealer utama</td>
+                    </tr>
+                    <tr>
+                        <td>PUVA</td>
+                        <td>Pasar Uang dan Pasar Valuta Asing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 44. Mnemonik untuk Menghafal -->
+    <section id="mnemonik" class="bab">
+        <h2>44. Mnemonik untuk Menghafal</h2>
+
+        <h3>A. OM</h3>
+        <div class="formula">
+> <strong>RUPIAH + VALAS</strong>
+        </div>
+        <p>OM terdiri dari:</p>
+        <div class="formula">
+> <strong>OM Rupiah + OM Valas</strong>
+        </div>
+
+        <hr>
+
+        <h3>B. OM Rupiah</h3>
+        <div class="formula">
+> <strong>OPT + SF</strong>
+        </div>
+        <p><strong>OPT</strong> = mengelola likuiditas pasar</p>
+        <p><strong>SF</strong> = menjaga kecukupan likuiditas akhir hari</p>
+
+        <hr>
+
+        <h3>C. Standing Facilities</h3>
+        <div class="formula">
+> <strong>DEPOSIT – LENDING</strong>
+        </div>
+        <p><strong>Deposit</strong> → bank menempatkan dana di BI.</p>
+        <p><strong>Lending/Financing</strong> → BI menyediakan dana kepada bank.</p>
+
+        <hr>
+
+        <h3>D. OPT</h3>
+        <p>Ingat:</p>
+        <div class="formula">
+> <strong>O-R-R-T</strong>
+        </div>
+        <ul>
+            <li><strong>O</strong> = Outright</li>
+            <li><strong>R</strong> = Repo</li>
+            <li><strong>R</strong> = Reverse Repo</li>
+            <li><strong>T</strong> = Term Deposit</li>
+        </ul>
+    </section>
+
+    <!-- 45. Perbedaan Absorpsi dan Injeksi -->
+    <section id="absorpsi" class="bab">
+        <h2>45. Perbedaan Absorpsi dan Injeksi</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kondisi</th>
+                        <th>Tindakan BI</th>
+                        <th>Dampak likuiditas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Likuiditas berlebih</td>
+                        <td>Absorpsi</td>
+                        <td>Berkurang</td>
+                    </tr>
+                    <tr>
+                        <td>Likuiditas kurang</td>
+                        <td>Injeksi</td>
+                        <td>Bertambah</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="hafal">
+            <p><strong>Cara hafal:</strong></p>
+            <blockquote><strong>Absorpsi = Ambil</strong><br><strong>Injeksi = Isi</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 46. Perbedaan Repo, Reverse Repo, dan Outright -->
+    <section id="perbedaan-instrumen" class="bab">
+        <h2>46. Perbedaan Repo, Reverse Repo, dan Outright</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Instrumen</th>
+                        <th>Konsep utama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Repo</td>
+                        <td>Transaksi surat berharga dengan mekanisme pembelian kembali</td>
+                    </tr>
+                    <tr>
+                        <td>Reverse Repo</td>
+                        <td>Kebalikan dari sisi repo</td>
+                    </tr>
+                    <tr>
+                        <td>Outright</td>
+                        <td>Jual/beli surat berharga secara langsung</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Tidak perlu hanya menghafalkan istilahnya. Yang penting pahami bahwa ketiganya merupakan instrumen yang dapat digunakan dalam <strong>pengelolaan likuiditas</strong>.</p>
+    </section>
+
+    <!-- 47-52. Contoh Kasus -->
+    <section id="kasus1" class="bab">
+        <h2>47-52. Contoh Kasus</h2>
+
+        <h3>Contoh Kasus 1 — Likuiditas Berlebih</h3>
+        <p><strong>Misalnya perbankan mengalami kelebihan likuiditas.</strong></p>
+        <p><strong>Apa yang dapat dilakukan BI?</strong></p>
+
+        <div class="soal">
+            <h4>Jawaban:</h4>
+            <p>BI dapat melakukan <strong>absorpsi likuiditas</strong> melalui instrumen Operasi Moneter yang tersedia.</p>
+            <p><strong>Tujuannya:</strong></p>
+            <blockquote>mengurangi kelebihan likuiditas dan membantu mengarahkan kondisi pasar uang sesuai dengan stance kebijakan moneter.</blockquote>
+        </div>
+
+        <hr>
+
+        <h3>Contoh Kasus 2 — Bank Kekurangan Likuiditas</h3>
+        <p>Jika bank membutuhkan likuiditas pada akhir hari, fasilitas yang relevan adalah:</p>
+        <div class="formula">
+> <strong>Standing Facilities</strong>
+        </div>
+        <p>khusunya fasilitas penyediaan dana yang sesuai dengan jenis peserta.</p>
+
+        <p>Konvensional:</p>
+        <div class="formula">
+> <strong>Lending Facility</strong>
+        </div>
+
+        <p>Syariah:</p>
+        <div class="formula">
+> <strong>Financing Facility</strong>
+        </div>
+
+        <hr>
+
+        <h3>Contoh Kasus 3 — Bank Memiliki Kelebihan Dana</h3>
+        <p>Jika bank mempunyai kelebihan dana pada akhir hari, fasilitas yang dapat digunakan adalah:</p>
+        <div class="formula">
+> <strong>Deposit Facility</strong>
+        </div>
+
+        <p>Untuk prinsip syariah:</p>
+        <div class="formula">
+> <strong>FASBIS</strong>
+        </div>
+
+        <hr>
+
+        <h3>Contoh Kasus 4 — Nilai Tukar Rupiah Menghadapi Tekanan</h3>
+        <p>BI memiliki instrumen dalam <strong>OM Valas</strong> untuk membantu pengelolaan likuiditas valuta asing dan stabilitas nilai tukar.</p>
+
+        <p><strong>Instrumen dapat mencakup:</strong></p>
+        <ul>
+            <li>transaksi valuta asing;</li>
+            <li>repo/reverse repo;</li>
+            <li>swap;</li>
+            <li>DNDF;</li>
+            <li>instrumen OM valas lainnya.</li>
+        </ul>
+
+        <hr>
+
+        <h3>Contoh Kasus 5 — Investor Asing Ingin Lindung Nilai</h3>
+        <p>Investor asing memiliki investasi portofolio dalam aset domestik dan menghadapi risiko perubahan nilai Rupiah.</p>
+
+        <p>BI menyediakan instrumen seperti:</p>
+        <div class="formula">
+> <strong>Swap Beli Lindung Nilai</strong> dan <strong>DNDF Lindung Nilai Investasi Portofolio</strong>
+        </div>
+
+        <p><strong>Tujuannya</strong> antara lain mendukung investasi portofolio dan stabilitas nilai tukar.</p>
+
+        <hr>
+
+        <h3>Contoh Kasus 6 — Perdagangan Indonesia–Tiongkok</h3>
+        <p>Jika transaksi perdagangan melibatkan CNY/CNH dan ingin mendukung <strong>Local Currency Transaction</strong>, instrumen dalam materi mencakup:</p>
+        <div class="formula">
+> <strong>Swap Jual Lindung Nilai</strong> dan <strong>DNDF Lindung Nilai Perdagangan Internasional</strong>
+        </div>
+    </section>
+
+    <!-- 53. Pertanyaan yang Sering Keluar di Ujian -->
+    <section id="pertanyaan" class="bab">
+        <h2>53. Pertanyaan yang Sering Keluar di Ujian</h2>
+
+        <h3>1. Apa tujuan pengendalian moneter?</h3>
+        <p>Untuk mendukung pencapaian sasaran kebijakan moneter melalui operasi moneter yang terintegrasi dengan pengembangan pasar uang, pasar valuta asing, serta pengaturan GWM.</p>
+
+        <hr>
+
+        <h3>2. Apa saja jenis Operasi Moneter?</h3>
+        <p><strong>OM Rupiah dan OM Valas.</strong></p>
+
+        <hr>
+
+        <h3>3. Apa saja komponen OM Rupiah?</h3>
+        <p><strong>OPT Rupiah dan Standing Facilities.</strong></p>
+
+        <hr>
+
+        <h3>4. Apa tujuan OPT Rupiah?</h3>
+        <p>Untuk mengelola likuiditas pasar uang Rupiah melalui:</p>
+        <ul>
+            <li>absorpsi;</li>
+            <li>injeksi.</li>
+        </ul>
+
+        <hr>
+
+        <h3>5. Apa tujuan Standing Facilities?</h3>
+        <p>Menjaga kecukupan likuiditas peserta Operasi Moneter pada akhir hari.</p>
+
+        <hr>
+
+        <h3>6. Apa perbedaan Deposit Facility dan Lending Facility?</h3>
+        <p><strong>Deposit Facility:</strong> peserta menempatkan dana di BI.</p>
+        <p><strong>Lending Facility:</strong> BI menyediakan dana kepada peserta konvensional.</p>
+
+        <hr>
+
+        <h3>7. Apa fasilitas syariah yang setara?</h3>
+        <ul>
+            <li>Deposit → <strong>FASBIS</strong></li>
+            <li>Lending → <strong>Financing Facility</strong></li>
+        </ul>
+
+        <hr>
+
+        <h3>8. Apa tujuan OM Valas?</h3>
+        <p>Mengelola likuiditas valuta asing dan menjaga stabilitas nilai tukar Rupiah.</p>
+
+        <hr>
+
+        <h3>9. Apa itu haircut?</h3>
+        <p>Faktor pengurang nilai surat berharga yang digunakan sebagai collateral untuk memitigasi risiko.</p>
+
+        <hr>
+
+        <h3>10. Apa itu underlying?</h3>
+        <p>Aset atau transaksi yang menjadi dasar transaksi lindung nilai.</p>
+    </section>
+
+    <!-- 54. Latihan Pilihan Ganda -->
+    <section id="pilihan" class="bab">
+        <h2>54. Latihan Pilihan Ganda</h2>
+
+        <div class="soal">
+            <h4>Soal 1</h4>
+            <p>Operasi Moneter Bank Indonesia terdiri atas...</p>
+            <ol type="A">
+                <li>OPT dan GWM</li>
+                <li>OM Rupiah dan OM Valas</li>
+                <li>BI-Rate dan JISDOR</li>
+                <li>Repo dan DNDF</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 2</h4>
+            <p>OPT Rupiah bertujuan utama untuk...</p>
+            <ol type="A">
+                <li>Mengatur pajak</li>
+                <li>Mengelola likuiditas pasar uang Rupiah</li>
+                <li>Menentukan APBN</li>
+                <li>Menentukan harga saham</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 3</h4>
+            <p>Jika likuiditas perbankan berlebih, tindakan yang sesuai adalah...</p>
+            <ol type="A">
+                <li>Injeksi</li>
+                <li>Absorpsi</li>
+                <li>Devaluasi</li>
+                <li>Deregulasi</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 4</h4>
+            <p>Fasilitas yang digunakan untuk penempatan dana peserta di BI adalah...</p>
+            <ol type="A">
+                <li>Lending Facility</li>
+                <li>Financing Facility</li>
+                <li>Deposit Facility</li>
+                <li>DNDF</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 5</h4>
+            <p>FASBIS merupakan fasilitas berdasarkan prinsip...</p>
+            <ol type="A">
+                <li>Konvensional</li>
+                <li>Syariah</li>
+                <li>Valuta asing</li>
+                <li>Perdagangan internasional</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 6</h4>
+            <p>Instrumen yang digunakan untuk mengurangi risiko perubahan nilai tukar disebut...</p>
+            <ol type="A">
+                <li>Hedging</li>
+                <li>Haircut</li>
+                <li>Outright</li>
+                <li>Excess Reserve</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: A</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 7</h4>
+            <p>DNDF merupakan singkatan dari...</p>
+            <ol type="A">
+                <li>Domestic Net Deposit Facility</li>
+                <li>Domestic Non-Deliverable Forward</li>
+                <li>Domestic National Dollar Fund</li>
+                <li>Domestic Non-Deposit Financing</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 8</h4>
+            <p>Haircut diterapkan pada surat berharga yang digunakan sebagai...</p>
+            <ol type="A">
+                <li>Pajak</li>
+                <li>Collateral</li>
+                <li>Devisa</li>
+                <li>Modal saham</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 9</h4>
+            <p>Instrumen yang digunakan untuk mendukung pengelolaan DHE SDA antara lain...</p>
+            <ol type="A">
+                <li>TD Valas DHE</li>
+                <li>BI-Rate</li>
+                <li>PUAB</li>
+                <li>JISDOR</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: A</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 10</h4>
+            <p>Tujuan utama OM Valas adalah...</p>
+            <ol type="A">
+                <li>Menentukan inflasi</li>
+                <li>Mengelola likuiditas valas dan menjaga stabilitas Rupiah</li>
+                <li>Menentukan APBN</li>
+                <li>Mengatur GWM saja</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+    </section>
+
+    <!-- 55. Soal Analisis -->
+    <section id="analisis" class="bab">
+        <h2>55. Soal Analisis</h2>
+
+        <div class="soal">
+            <h4>Soal</h4>
+            <p>Bank Indonesia melihat bahwa likuiditas perbankan terlalu besar sehingga suku bunga pasar uang berada di bawah arah yang diinginkan kebijakan moneter.</p>
+            <p><strong>Apa yang dapat dilakukan BI?</strong></p>
+
+            <h4>Jawaban:</h4>
+            <p>BI dapat melakukan <strong>absorpsi likuiditas melalui Operasi Moneter</strong>, menggunakan instrumen yang tersedia dalam OPT Rupiah.</p>
+            <p><strong>Logikanya:</strong></p>
+            <div class="diagram">
+<strong>Likuiditas berlebih</strong>
+↓
+<strong>absorpsi</strong>
+↓
+<strong>likuiditas berkurang</strong>
+↓
+<strong>kondisi pasar uang berubah</strong>
+↓
+<strong>suku bunga PUAB diarahkan agar bergerak sekitar BI-Rate</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- 56. Ringkasan Super Singkat -->
+    <section id="ringkasan" class="bab">
+        <h2>56. Ringkasan Super Singkat</h2>
+
+        <p>Kalau waktu belajar sangat terbatas, hafalkan bagian ini:</p>
+
+        <h3>PENGENDALIAN MONETER</h3>
+        <p><strong>Tujuannya:</strong></p>
+        <div class="formula">
+> <strong>mendukung sasaran kebijakan moneter</strong>
+        </div>
+
+        <p><strong>Dilakukan melalui:</strong></p>
+        <div class="formula">
+> <strong>OM + pengembangan PUVA + GWM</strong>
+        </div>
+
+        <hr>
+
+        <h3>OPERASI MONETER</h3>
+        <div class="formula">
+> <strong>OM = OM Rupiah + OM Valas</strong>
+        </div>
+
+        <hr>
+
+        <h3>OM RUPIAH</h3>
+        <div class="formula">
+> <strong>OM Rupiah = OPT + Standing Facilities</strong>
+        </div>
+
+        <p><strong>OPT:</strong></p>
+        <div class="formula">
+> <strong>mengelola likuiditas pasar uang</strong>
+        </div>
+
+        <p><strong>Standing Facilities:</strong></p>
+        <div class="formula">
+> <strong>menjaga kecukupan likuiditas akhir hari</strong>
+        </div>
+
+        <hr>
+
+        <h3>OPT</h3>
+        <p><strong>Dapat berupa:</strong></p>
+        <div class="formula">
+> <strong>Outright + Repo + Reverse Repo + Term Deposit + instrumen lainnya</strong>
+        </div>
+
+        <p><strong>Jangka waktu:</strong></p>
+        <div class="formula">
+> <strong>1 hari – 12 bulan</strong>
+        </div>
+
+        <hr>
+
+        <h3>STANDING FACILITIES</h3>
+        <p><strong>Kelebihan dana:</strong></p>
+        <div class="formula">
+> <strong>Deposit Facility / FASBIS</strong>
+        </div>
+
+        <p><strong>Kekurangan dana:</strong></p>
+        <div class="formula">
+> <strong>Lending Facility / Financing Facility</strong>
+        </div>
+
+        <hr>
+
+        <h3>OM VALAS</h3>
+        <p><strong>Tujuan:</strong></p>
+        <div class="formula">
+> <strong>mengelola likuiditas valas + menjaga stabilitas Rupiah</strong>
+        </div>
+
+        <hr>
+
+        <h3>HAIRCUT</h3>
+        <div class="formula">
+> <strong>Pengurang nilai collateral untuk memitigasi risiko</strong>
+        </div>
+
+        <hr>
+
+        <h3>HEDGING</h3>
+        <p><strong>Lindung nilai terhadap risiko perubahan nilai tukar</strong></p>
+        <p><strong>Instrumen yang dibahas:</strong></p>
+        <div class="formula">
+> <strong>Swap + DNDF</strong>
+        </div>
+
+        <hr>
+
+        <h3>DHE SDA</h3>
+        <p><strong>Instrumen:</strong></p>
+        <div class="formula">
+> <strong>TD Valas DHE + SVBI/SUVBI</strong>
+        </div>
+    </section>
+
+    <!-- 57. Peta Hafalan Akhir -->
+    <section id="petaakhir" class="bab">
+        <h2>57. Peta Hafalan Akhir</h2>
+
+        <div class="diagram">
+                 BANK INDONESIA
+                       │
+                       ▼
+             PENGENDALIAN MONETER
+                       │
+          ┌────────────┼────────────┐
+          │            │            │
+          ▼            ▼            ▼
+         OM           PUVA         GWM
+          │
+     ┌────┴────┐
+     ▼         ▼
+ OM RUPIAH   OM VALAS
+     │         │
+ ┌───┴───┐     ├─ Surat Berharga
+ ▼       ▼     ├─ Repo
+OPT    Standing ├─ Reverse Repo
+       Facilities├─ TD
+ │       │      ├─ FX
+ │       │      ├─ Swap
+ │       │      └─ DNDF
+ │       │
+ ├─ Repo        │
+ ├─ Reverse     │
+ ├─ Outright    │
+ ├─ TD          │
+ └─ dll.        │
+         │
+         ▼
+   LIKUIDITAS & NILAI TUKAR
+         │
+         ▼
+    SASARAN MONETER
+        </div>
+
+        <div class="summary">
+            <h3>🎯 Kalimat kunci untuk ujian</h3>
+            <p><strong>Pengendalian moneter Bank Indonesia dilakukan untuk mendukung sasaran kebijakan moneter melalui Operasi Moneter yang terintegrasi dengan pengembangan pasar uang dan pasar valuta asing serta pengaturan GWM. Operasi Moneter terdiri atas OM Rupiah dan OM Valas. OM Rupiah terdiri atas OPT dan Standing Facilities, sedangkan OM Valas digunakan untuk mengelola likuiditas valuta asing dan menjaga stabilitas nilai tukar Rupiah.</strong></p>
+
+            <p><strong>Urutan yang paling penting untuk diingat:</strong></p>
+            <p><strong>Pengendalian Moneter → Operasi Moneter → OM Rupiah & OM Valas → OPT & Standing Facilities → Likuiditas → Suku Bunga & Nilai Tukar → Sasaran Kebijakan Moneter.</strong></p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 3px solid var(--primary-color); background-color: white; border-radius: 10px;">
+        <p><strong>📚 Materi Pembelajaran: Pengendalian Moneter & Operasi Moneter Bank Indonesia</strong></p>
+        <p>© 2024 | Modul Pembelajaran Sistematik untuk Ujian, Kuliah, dan Presentasi</p>
+        <p><em>Pola: Pengertian → Tujuan → Mekanisme → Instrumen → Contoh → Perbandingan → Rangkuman → Latihan Soal</em></p>
+    </footer>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

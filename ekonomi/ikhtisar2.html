@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stabilitas Sistem Keuangan dan Peran Bank Indonesia</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #ff9800;
+            --success-color: #4caf50;
+            --warning-color: #ffc107;
+            --danger-color: #f44336;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 4px solid var(--primary-color);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.9em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--secondary-color);
+        }
+
+        .bab {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .important {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background-color: #c8e6c9;
+            padding: 20px;
+            border-left: 5px solid var(--success-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .diagram {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 20px 0;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .soal {
+            background-color: #e3f2fd;
+            padding: 22px;
+            border-radius: 8px;
+            margin: 22px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .jawaban {
+            background-color: #e8f5e9;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 5px solid var(--success-color);
+        }
+
+        .mnemonik {
+            background-color: #fce4ec;
+            padding: 20px;
+            border-left: 5px solid var(--danger-color);
+            border-radius: 6px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 35px 0;
+        }
+
+        .hafal {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-left: 5px solid var(--warning-color);
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+
+            .diagram {
+                font-size: 0.85em;
+            }
+
+            .toc li {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📘 MATERI PEMBELAJARAN LENGKAP</h1>
+        <h2>Stabilitas Sistem Keuangan dan Peran Bank Indonesia</h2>
+        <p><em>Format: Konsep → Tujuan → Mekanisme → Kewenangan → Pengawasan → Contoh → Perbandingan → Latihan Soal</em></p>
+    </header>
+
+    <nav class="toc">
+        <h2>Daftar Isi</h2>
+        <ul>
+            <li><a href="#tujuan">1. Tujuan Pembelajaran</a></li>
+            <li><a href="#gambaran">2. Gambaran Besar</a></li>
+            <li><a href="#ssk">3. Apa Itu SSK?</a></li>
+            <li><a href="#penting">4. Mengapa SSK Penting?</a></li>
+            <li><a href="#intermediasi">5. Fungsi Intermediasi</a></li>
+            <li><a href="#krisis">6. Pelajaran Krisis 2008/2009</a></li>
+            <li><a href="#moneter-ssk">7. Kebijakan Moneter & SSK</a></li>
+            <li><a href="#tanggung">8. Tanggung Jawab Bersama</a></li>
+            <li><a href="#lolr">9. Peran BI sebagai LoLR</a></li>
+            <li><a href="#hukum">10. Payung Hukum</a></li>
+            <li><a href="#tujuan-bi">11. Tujuan BI</a></li>
+            <li><a href="#tugas">12. Tugas BI</a></li>
+            <li><a href="#makroprudensial">13. Kebijakan Makroprudensial</a></li>
+            <li><a href="#tiga-fokus">14. Tiga Fokus Makroprudensial</a></li>
+            <li><a href="#intermediasi-kualitas">15. Intermediasi Berkualitas</a></li>
+            <li><a href="#risiko">16. Risiko Sistemik</a></li>
+            <li><a href="#contagion">17. Contagion Effect</a></li>
+            <li><a href="#faktor">18. Faktor Risiko Sistemik</a></li>
+            <li><a href="#size">19. Size - Ukuran</a></li>
+            <li><a href="#complexity">20. Complexity</a></li>
+            <li><a href="#interconnectedness">21. Interconnectedness</a></li>
+            <li><a href="#procyclicality">22. Procyclicality</a></li>
+            <li><a href="#countercyclical">23. Countercyclical</a></li>
+            <li><a href="#sasaran">24. Sasaran Kebijakan</a></li>
+            <li><a href="#surveilans">25. Surveilans</a></li>
+            <li><a href="#cakupan">26. Cakupan Surveilans</a></li>
+            <li><a href="#pengawasan">27. Pengawasan Makroprudensial</a></li>
+            <li><a href="#proses">28. Proses Surveilans</a></li>
+            <li><a href="#kewajiban">29. Kewajiban Bank</a></li>
+            <li><a href="#dsrs">30. DSRS</a></li>
+            <li><a href="#karakteristik">31. Karakteristik DSRS</a></li>
+            <li><a href="#linkages">32. Microfinancial Linkages</a></li>
+            <li><a href="#idio-vs-systemic">33. Idiosyncratic vs Systemic</a></li>
+            <li><a href="#mekanisme-dsrs">34. Mekanisme DSRS</a></li>
+            <li><a href="#kewenangan">35. Kewenangan BI</a></li>
+            <li><a href="#hubungan">36. Hubungan Moneter & Makroprudensial</a></li>
+            <li><a href="#integrasi">37. Integrasi Kebijakan</a></li>
+            <li><a href="#green">38. Green Central Banking</a></li>
+            <li><a href="#tabel">39. Tabel Konsep</a></li>
+            <li><a href="#mikro-vs-makro">40. Mikro vs Makro</a></li>
+            <li><a href="#alur">41. Alur Lengkap</a></li>
+            <li><a href="#contoh">42. Contoh Sederhana</a></li>
+            <li><a href="#hub-lolr">43. Hubungan LoLR & SSK</a></li>
+            <li><a href="#pilihan">44. Soal Pilihan Ganda</a></li>
+            <li><a href="#analisis">45. Soal Analisis</a></li>
+            <li><a href="#esai">46. Soal Esai</a></li>
+            <li><a href="#esai-dsrs">47. Soal Esai DSRS</a></li>
+            <li><a href="#cheat">48. Cheat Sheet</a></li>
+            <li><a href="#kesimpulan">49. Kesimpulan</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Tujuan Pembelajaran -->
+    <section id="tujuan" class="bab">
+        <h2>1. Tujuan Pembelajaran</h2>
+        <p>Setelah mempelajari materi ini, Anda diharapkan mampu:</p>
+        <ol>
+            <li>Menjelaskan pengertian <strong>Stabilitas Sistem Keuangan (SSK)</strong>.</li>
+            <li>Menjelaskan mengapa SSK penting bagi perekonomian.</li>
+            <li>Menjelaskan hubungan antara stabilitas sistem keuangan dan kebijakan moneter.</li>
+            <li>Menjelaskan peran Bank Indonesia dalam menjaga SSK.</li>
+            <li>Memahami konsep <strong>Lender of Last Resort (LoLR)</strong>.</li>
+            <li>Menjelaskan pengertian dan tujuan <strong>kebijakan makroprudensial</strong>.</li>
+            <li>Memahami konsep <strong>risiko sistemik</strong> dan faktor penyebabnya.</li>
+            <li>Menjelaskan sifat <strong>countercyclical</strong> kebijakan makroprudensial.</li>
+            <li>Memahami cakupan surveilans sistem keuangan.</li>
+            <li>Menjelaskan <strong>Dynamic Systemic Risk Surveillance (DSRS)</strong>.</li>
+        </ol>
+    </section>
+
+    <!-- 2. Gambaran Besar -->
+    <section id="gambaran" class="bab">
+        <h2>2. Gambaran Besar Materi</h2>
+        <p>Secara sederhana, hubungan seluruh konsep dapat digambarkan:</p>
+        <div class="diagram">
+                 SISTEM KEUANGAN
+                       │
+                       ↓
+              Stabil dan berfungsi
+                       │
+          ┌────────────┴────────────┐
+          ↓                         ↓
+    Intermediasi                Jasa Keuangan
+      berjalan                    berjalan
+          │                         │
+          └────────────┬────────────┘
+                       ↓
+             Aktivitas ekonomi
+                  berjalan baik
+                       ↓
+             Pertumbuhan ekonomi
+                 berkelanjutan
+        </div>
+        <p>Sebaliknya:</p>
+        <div class="diagram">
+Gangguan sistem keuangan
+          ↓
+Risiko menyebar (contagion)
+          ↓
+Intermediasi terganggu
+          ↓
+Kegiatan ekonomi terganggu
+          ↓
+Pertumbuhan melambat
+          ↓
+Potensi kontraksi ekonomi
+        </div>
+    </section>
+
+    <!-- 3. Apa Itu SSK? -->
+    <section id="ssk" class="bab">
+        <h2>3. Apa Itu Stabilitas Sistem Keuangan?</h2>
+        <p>Menurut materi:</p>
+        <div class="highlight">
+            <p><strong>Stabilitas Sistem Keuangan adalah kondisi sistem keuangan yang berfungsi secara efektif dan efisien serta mampu bertahan dari gejolak yang bersumber dari dalam negeri dan luar negeri.</strong></p>
+        </div>
+        <p>Ada <strong>dua unsur utama</strong> dalam definisi tersebut:</p>
+        <h3>A. Sistem keuangan berfungsi efektif dan efisien</h3>
+        <p>Artinya sistem keuangan mampu menjalankan fungsi dan layanan keuangannya dengan baik.</p>
+        <h3>B. Mampu bertahan terhadap gejolak</h3>
+        <p>Gejolak dapat berasal dari:</p>
+        <ul>
+            <li><strong>dalam negeri</strong>, maupun</li>
+            <li><strong>luar negeri</strong>.</li>
+        </ul>
+        <div class="important">
+            <p>Jadi, stabilitas bukan berarti <strong>tidak pernah terjadi gejolak</strong>.</p>
+            <p>Yang lebih penting adalah:</p>
+            <blockquote><strong>Sistem keuangan mampu tetap berfungsi ketika menghadapi gejolak.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 4. Mengapa SSK Penting? -->
+    <section id="penting" class="bab">
+        <h2>4. Mengapa Stabilitas Sistem Keuangan Penting?</h2>
+        <p>Ketika sistem keuangan stabil:</p>
+        <div class="diagram">
+SSK terjaga
+   ↓
+Intermediasi berjalan
+   ↓
+Jasa keuangan berjalan
+   ↓
+Pembiayaan ekonomi tersedia
+   ↓
+Kegiatan ekonomi berjalan
+   ↓
+Pertumbuhan ekonomi
+        </div>
+        <p>Dalam materi disebutkan bahwa fungsi <strong>intermediasi</strong> dan layanan jasa keuangan lainnya dapat berjalan secara optimal.</p>
+        <div class="important">
+            <p>Karena itu:</p>
+            <blockquote><strong>Stabilitas sistem keuangan memiliki peran penting dalam menjaga stabilitas perekonomian.</strong></blockquote>
+        </div>
+    </section>
+
+    <!-- 5. Fungsi Intermediasi -->
+    <section id="intermediasi" class="bab">
+        <h2>5. Apa yang Dimaksud Fungsi Intermediasi?</h2>
+        <p>Secara sederhana, intermediasi adalah proses mempertemukan:</p>
+        <div class="highlight">
+            <p><strong>pihak yang memiliki dana</strong> dengan <strong>pihak yang membutuhkan dana</strong>.</p>
+        </div>
+        <p><strong>Contoh sederhana:</strong></p>
+        <div class="diagram">
+Masyarakat
+  memiliki dana
+      ↓
+    Bank
+      ↓
+Menyalurkan dana
+      ↓
+Rumah tangga / perusahaan
+  membutuhkan dana
+      ↓
+Kegiatan ekonomi
+        </div>
+        <p>Apabila sistem keuangan terganggu, proses intermediasi dapat ikut terganggu.</p>
+        <p>Akibatnya, pembiayaan kepada kegiatan ekonomi dapat menjadi kurang optimal.</p>
+    </section>
+
+    <!-- 6. Pelajaran Krisis 2008/2009 -->
+    <section id="krisis" class="bab">
+        <h2>6. Pelajaran dari Krisis Global 2008/2009</h2>
+        <p>Krisis ekonomi global <strong>2008/2009</strong> memberikan pelajaran penting mengenai hubungan antara sektor keuangan dan perekonomian.</p>
+        <p>Salah satu konsep penting adalah:</p>
+        <h3>Macrofinancial Linkages</h3>
+        <p><strong>Macrofinancial linkages</strong> = keterkaitan antara kondisi makroekonomi dan sistem keuangan.</p>
+        <p>Ketika keterkaitan ini semakin kuat, gangguan pada sistem keuangan dapat berdampak besar terhadap perekonomian.</p>
+        <p><strong>Mekanismenya:</strong></p>
+        <div class="diagram">
+Gangguan sistem keuangan
+          ↓
+Fungsi keuangan terganggu
+          ↓
+Efektivitas kebijakan moneter menurun
+          ↓
+Kegiatan ekonomi terganggu
+          ↓
+Pertumbuhan melambat
+          ↓
+Potensi kontraksi ekonomi
+        </div>
+    </section>
+
+    <!-- 7. Kebijakan Moneter & SSK -->
+    <section id="moneter-ssk" class="bab">
+        <h2>7. Mengapa Kebijakan Moneter Membutuhkan Sistem Keuangan yang Stabil?</h2>
+        <p>Kebijakan moneter tidak bekerja di ruang kosong.</p>
+        <p>Kebijakan moneter ditransmisikan melalui sistem keuangan menuju perekonomian.</p>
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+Kebijakan Moneter
+       ↓
+Pasar Keuangan
+       ↓
+Perbankan
+       ↓
+Suku bunga / pembiayaan
+       ↓
+Konsumsi & investasi
+       ↓
+Perekonomian
+        </div>
+        <p>Jika sistem keuangan mengalami gangguan serius, jalur transmisi tersebut dapat terganggu.</p>
+        <div class="important">
+            <p><strong>Maka:</strong></p>
+            <p><strong>SSK stabil → transmisi kebijakan lebih efektif</strong></p>
+            <p><strong>SSK terganggu → efektivitas kebijakan moneter dapat menurun</strong></p>
+        </div>
+    </section>
+
+    <!-- 8. Tanggung Jawab Bersama -->
+    <section id="tanggung" class="bab">
+        <h2>8. SSK Merupakan Tanggung Jawab Bersama</h2>
+        <p>Stabilitas sistem keuangan bukan hanya tanggung jawab satu lembaga.</p>
+        <p>Materi menekankan bahwa:</p>
+        <div class="highlight">
+            <p><strong>SSK merupakan tanggung jawab bersama berbagai otoritas sektor keuangan, termasuk Bank Indonesia.</strong></p>
+        </div>
+        <p>Mengapa?</p>
+        <p>Karena sistem keuangan terdiri dari berbagai unsur dan memiliki keterkaitan satu sama lain.</p>
+        <div class="diagram">
+               SISTEM KEUANGAN
+                     │
+       ┌─────────────┼─────────────┐
+       ↓             ↓             ↓
+    Bank          Pasar        Lembaga
+   Keuangan      Keuangan      Keuangan
+       │             │             │
+       └─────────────┼─────────────┘
+                     ↓
+                Perekonomian
+        </div>
+        <p>Gangguan pada satu bagian dapat menimbulkan dampak terhadap bagian lainnya.</p>
+    </section>
+
+    <!-- 9. LoLR -->
+    <section id="lolr" class="bab">
+        <h2>9. Peran Bank Indonesia sebagai Lender of Last Resort</h2>
+        <p>Bank Indonesia memiliki kepentingan dalam menjaga SSK salah satunya karena fungsi:</p>
+        <div class="highlight">
+            <p><strong>Lender of Last Resort (LoLR)</strong></p>
+        </div>
+        <h3>Apa itu LoLR?</h3>
+        <p>LoLR adalah peran otoritas yang berwenang <strong>menyediakan likuiditas pada saat krisis</strong>.</p>
+        <p><strong>Sederhananya:</strong></p>
+        <div class="diagram">
+Bank mengalami tekanan likuiditas
+              ↓
+Likuiditas pasar tidak mencukupi
+              ↓
+Fungsi LoLR
+              ↓
+Penyediaan likuiditas
+              ↓
+Membantu menjaga stabilitas
+        </div>
+        <div class="mnemonik">
+            <p><strong>Kata kunci ujian:</strong></p>
+            <p><strong>LoLR = likuiditas saat krisis</strong></p>
+        </div>
+        <p>Jangan tertukar:</p>
+        <ul>
+            <li>LoLR → <strong>likuiditas</strong></li>
+            <li>Kebijakan makroprudensial → <strong>stabilitas sistem keuangan dan risiko sistemik</strong></li>
+        </ul>
+    </section>
+
+    <!-- 10. Payung Hukum -->
+    <section id="hukum" class="bab">
+        <h2>10. Payung Hukum</h2>
+        <p>Dalam materi yang diberikan, beberapa payung hukum yang berkaitan dengan mandat dan kewenangan BI dalam menjaga SSK adalah:</p>
+        <ol>
+            <li><strong>UU No. 21 Tahun 2011 tentang Otoritas Jasa Keuangan</strong></li>
+            <li><strong>UU No. 9 Tahun 2016 tentang Pencegahan dan Penanganan Krisis Sistem Keuangan</strong></li>
+            <li><strong>PBI No. 16/11/PBI/2014 tentang Pengaturan dan Pengawasan Makroprudensial</strong></li>
+            <li><strong>UU No. 2 Tahun 2020</strong> tentang penetapan Perppu No. 1 Tahun 2020 terkait kebijakan keuangan negara dan stabilitas sistem keuangan untuk penanganan pandemi COVID-19 dan/atau ancaman terhadap perekonomian nasional/SSK.</li>
+            <li><strong>UU No. 4 Tahun 2023 tentang Pengembangan dan Penguatan Sektor Keuangan (UU PPSK).</strong></li>
+        </ol>
+        <div class="hafal">
+            <p><strong>Catatan hafalan</strong></p>
+            <p><strong>OJK → Krisis Sistem Keuangan → Makroprudensial → Pandemi → UU PPSK</strong></p>
+        </div>
+    </section>
+
+    <!-- 11. Tujuan BI -->
+    <section id="tujuan-bi" class="bab">
+        <h2>11. Tujuan Bank Indonesia</h2>
+        <p>Berdasarkan materi, tujuan BI adalah:</p>
+        <ul>
+            <li><strong>Stabilitas Nilai Rupiah</strong></li>
+            <li><strong>Stabilitas Sistem Pembayaran</strong></li>
+            <li><strong>Stabilitas Sistem Keuangan</strong></li>
+        </ul>
+        <p>→</p>
+        <ul>
+            <li><strong>Pertumbuhan Ekonomi Berkelanjutan</strong></li>
+        </ul>
+        <p><strong>Secara visual:</strong></p>
+        <div class="diagram">
+        TUJUAN BANK INDONESIA
+                 │
+    ┌────────────┼────────────┐
+    ↓            ↓            ↓
+ Nilai        Sistem       Sistem
+ Rupiah      Pembayaran    Keuangan
+ Stabil       Stabil        Stabil
+    └────────────┼────────────┘
+                 ↓
+       Pertumbuhan ekonomi
+          yang berkelanjutan
+        </div>
+    </section>
+
+    <!-- 12. Tugas BI -->
+    <section id="tugas" class="bab">
+        <h2>12. Tugas BI yang Berkaitan dengan SSK</h2>
+        <p>Untuk mencapai tujuan tersebut, salah satu tugas BI adalah:</p>
+        <div class="highlight">
+            <p><strong>Menetapkan dan melaksanakan kebijakan makroprudensial.</strong></p>
+        </div>
+        <p><strong>Jadi:</strong></p>
+        <div class="mnemonik">
+            <p><strong>Tujuan → menjaga SSK</strong></p>
+            <p><strong>Tugas → kebijakan makroprudensial</strong></p>
+        </div>
+    </section>
+
+    <!-- 13. Kebijakan Makroprudensial -->
+    <section id="makroprudensial" class="bab">
+        <h2>13. Apa Itu Kebijakan Makroprudensial?</h2>
+        <p>Menurut materi:</p>
+        <div class="highlight">
+            <p><strong>Kebijakan makroprudensial merupakan kebijakan yang ditetapkan dan dilaksanakan untuk turut menjaga stabilitas sistem keuangan.</strong></p>
+        </div>
+        <p>Caranya melalui tiga kelompok utama:</p>
+        <h3>1. Mendorong intermediasi</h3>
+        <p>Intermediasi harus:</p>
+        <ul>
+            <li>seimbang;</li>
+            <li>berkualitas;</li>
+            <li>berkelanjutan.</li>
+        </ul>
+        <h3>2. Memitigasi dan mengelola risiko sistemik</h3>
+        <p>Tujuannya mencegah gangguan yang dapat menyebar ke sistem keuangan.</p>
+        <h3>3. Mendorong inklusi dan keuangan berkelanjutan</h3>
+        <p>Meliputi:</p>
+        <ul>
+            <li>inklusi ekonomi;</li>
+            <li>inklusi keuangan;</li>
+            <li>keuangan berkelanjutan.</li>
+        </ul>
+    </section>
+
+    <!-- 14. Tiga Fokus -->
+    <section id="tiga-fokus" class="bab">
+        <h2>14. Tiga Fokus Utama Kebijakan Makroprudensial</h2>
+        <p>Gunakan mnemonic:</p>
+        <div class="mnemonik">
+            <p><strong>I-R-I</strong></p>
+        </div>
+        <ul>
+            <li><strong>I</strong> = Intermediasi</li>
+            <li><strong>R</strong> = Risiko sistemik</li>
+            <li><strong>I</strong> = Inklusi & keuangan berkelanjutan</li>
+        </ul>
+        <div class="diagram">
+          MAKROPRUDENSIAL
+                 │
+       ┌─────────┼─────────┐
+       ↓         ↓         ↓
+ Intermediasi  Risiko    Inklusi &
+              Sistemik  Sustainability
+        </div>
+    </section>
+
+    <!-- 15. Intermediasi Berkualitas -->
+    <section id="intermediasi-kualitas" class="bab">
+        <h2>15. Intermediasi yang Seimbang, Berkualitas, dan Berkelanjutan</h2>
+        <h3>A. Seimbang</h3>
+        <p>Tingkat intermediasi harus sesuai dengan:</p>
+        <blockquote><strong>kapasitas perekonomian.</strong></blockquote>
+        <p>Artinya intermediasi tidak berlebihan maupun terlalu rendah dibandingkan kemampuan ekonomi.</p>
+        <h3>B. Berkualitas</h3>
+        <p>Intermediasi harus memiliki:</p>
+        <blockquote><strong>kinerja yang baik.</strong></blockquote>
+        <h3>C. Inklusif</h3>
+        <p>Intermediasi juga perlu memperhatikan:</p>
+        <blockquote><strong>inklusivitas.</strong></blockquote>
+        <div class="hafal">
+            <p><strong>Rumus:</strong></p>
+            <p><strong>Intermediasi = sesuai kapasitas + kinerja baik + inklusif</strong></p>
+        </div>
+    </section>
+
+    <!-- 16. Risiko Sistemik -->
+    <section id="risiko" class="bab">
+        <h2>16. Apa Itu Risiko Sistemik?</h2>
+        <p>Risiko sistemik adalah:</p>
+        <div class="highlight">
+            <p><strong>Potensi instabilitas akibat gangguan yang menular (contagion) pada sebagian atau seluruh sistem keuangan.</strong></p>
+        </div>
+        <p>Ini merupakan konsep yang sangat penting.</p>
+        <div class="mnemonik">
+            <p><strong>Kata kunci:</strong></p>
+            <p><strong>Risiko Sistemik = Risiko yang dapat MENYEBAR ke sistem.</strong></p>
+        </div>
+    </section>
+
+    <!-- 17. Contagion Effect -->
+    <section id="contagion" class="bab">
+        <h2>17. Contagion Effect</h2>
+        <p><strong>Contagion</strong> berarti <strong>penularan/rambatan</strong> gangguan.</p>
+        <p><strong>Contoh sederhana:</strong></p>
+        <div class="diagram">
+Institusi A bermasalah
+        ↓
+Institusi B terkena dampak
+        ↓
+Institusi C terkena dampak
+        ↓
+Pasar keuangan terganggu
+        ↓
+Sistem keuangan terganggu
+        </div>
+        <p>Jadi, risiko sistemik tidak hanya melihat apakah <strong>satu institusi</strong> bermasalah.</p>
+        <p>Yang diperhatikan adalah:</p>
+        <div class="highlight">
+            <p><strong>Apakah masalah tersebut dapat merambat ke institusi/pasar lain dan akhirnya memengaruhi sistem keuangan?</strong></p>
+        </div>
+    </section>
+
+    <!-- 18. Faktor Risiko Sistemik -->
+    <section id="faktor" class="bab">
+        <h2>18. Empat Faktor Risiko Sistemik</h2>
+        <p>Materi menyebutkan empat faktor utama:</p>
+        <div class="mnemonik">
+            <p><strong>S-C-I-P</strong></p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Huruf</th>
+                    <th>Faktor</th>
+                    <th>Arti</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>S</strong></td>
+                    <td>Size</td>
+                    <td>Ukuran</td>
+                </tr>
+                <tr>
+                    <td><strong>C</strong></td>
+                    <td>Complexity</td>
+                    <td>Kompleksitas</td>
+                </tr>
+                <tr>
+                    <td><strong>I</strong></td>
+                    <td>Interconnectedness</td>
+                    <td>Keterkaitan</td>
+                </tr>
+                <tr>
+                    <td><strong>P</strong></td>
+                    <td>Procyclicality</td>
+                    <td>Perilaku mengikuti siklus ekonomi</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="hafal">
+            <p><strong>Mnemonik:</strong></p>
+            <p><strong>SCIP = Size – Complexity – Interconnectedness – Procyclicality</strong></p>
+        </div>
+    </section>
+
+    <!-- 19. Size -->
+    <section id="size" class="bab">
+        <h2>19. Size — Ukuran</h2>
+        <p><strong>Size</strong> berkaitan dengan ukuran suatu institusi.</p>
+        <p>Semakin besar suatu institusi, potensi dampaknya terhadap sistem dapat semakin besar apabila institusi tersebut mengalami gangguan.</p>
+        <p><strong>Konsep sederhananya:</strong></p>
+        <div class="diagram">
+Institusi besar
+      ↓
+Dampak potensial lebih besar
+      ↓
+Perlu diperhatikan dari perspektif sistemik
+        </div>
+    </section>
+
+    <!-- 20. Complexity -->
+    <section id="complexity" class="bab">
+        <h2>20. Complexity — Kompleksitas</h2>
+        <p><strong>Complexity</strong> = kompleksitas usaha.</p>
+        <p>Semakin kompleks aktivitas dan hubungan suatu institusi, semakin sulit memahami dan mengelola potensi dampak gangguannya terhadap sistem.</p>
+    </section>
+
+    <!-- 21. Interconnectedness -->
+    <section id="interconnectedness" class="bab">
+        <h2>21. Interconnectedness — Keterkaitan</h2>
+        <p><strong>Interconnectedness</strong> adalah keterkaitan:</p>
+        <ul>
+            <li>antar-institusi;</li>
+            <li>antar-pasar keuangan.</li>
+        </ul>
+        <p><strong>Contohnya:</strong></p>
+        <div class="diagram">
+Bank A ─── Bank B
+  │          │
+  └── Pasar ─┘
+       │
+    Institusi C
+        </div>
+        <p>Semakin banyak hubungan, semakin besar kemungkinan gangguan menyebar.</p>
+    </section>
+
+    <!-- 22. Procyclicality -->
+    <section id="procyclicality" class="bab">
+        <h2>22. Procyclicality</h2>
+        <p><strong>Procyclicality</strong> berkaitan dengan kecenderungan pelaku/institusi keuangan untuk mengikuti siklus perekonomian secara berlebihan.</p>
+        <p><strong>Secara sederhana:</strong></p>
+        <div class="diagram">
+Ekonomi membaik
+      ↓
+Pembiayaan meningkat
+      ↓
+Aktivitas keuangan meningkat
+      ↓
+Jika berlebihan → risiko menumpuk
+        </div>
+        <p>Kemudian ketika kondisi berbalik:</p>
+        <div class="diagram">
+Ekonomi memburuk
+      ↓
+Pembiayaan mengetat
+      ↓
+Tekanan meningkat
+      ↓
+Risiko sistemik dapat meningkat
+        </div>
+        <p>Karena itu kebijakan makroprudensial bersifat <strong>countercyclical</strong>.</p>
+    </section>
+
+    <!-- 23. Countercyclical -->
+    <section id="countercyclical" class="bab">
+        <h2>23. Apa Itu Countercyclical?</h2>
+        <p>Ini merupakan salah satu konsep <strong>paling penting dalam ujian</strong>.</p>
+        <h3>Countercyclical</h3>
+        <p>= kebijakan yang merespons siklus keuangan dengan arah yang berlawanan untuk membantu mengurangi akumulasi risiko.</p>
+        <p><strong>Secara konseptual:</strong></p>
+        <div class="diagram">
+Boom / ekspansi berlebihan
+          ↓
+Risiko meningkat
+          ↓
+Kebijakan dapat diarahkan untuk menahan
+akumulasi risiko
+        </div>
+        <p>Sebaliknya:</p>
+        <div class="diagram">
+Downturn / tekanan
+       ↓
+Intermediasi melemah
+       ↓
+Kebijakan dapat diarahkan untuk
+mendukung intermediasi
+        </div>
+        <div class="mnemonik">
+            <p><strong>Kata kunci:</strong></p>
+            <p><strong>Countercyclical = melawan siklus keuangan.</strong></p>
+        </div>
+    </section>
+
+    <!-- 24. Sasaran Kebijakan -->
+    <section id="sasaran" class="bab">
+        <h2>24. Siapa yang Menjadi Sasaran Kebijakan Makroprudensial?</h2>
+        <p>Dalam materi:</p>
+        <div class="highlight">
+            <p><strong>Kebijakan makroprudensial diterapkan terhadap <strong>perbankan</strong>, baik konvensional maupun berdasarkan prinsip syariah.</strong></p>
+        </div>
+        <p>Namun penetapannya mempertimbangkan:</p>
+        <ul>
+            <li>kondisi sistem keuangan secara keseluruhan;</li>
+            <li>keterkaitan dengan kondisi perekonomian.</li>
+        </ul>
+        <p>Jadi pendekatannya bersifat:</p>
+        <div class="mnemonik">
+            <p><strong>Makro / sistem</strong></p>
+        </div>
+        <p>bukan hanya melihat satu bank secara terisolasi.</p>
+    </section>
+
+    <!-- 25. Surveilans -->
+    <section id="surveilans" class="bab">
+        <h2>25. Mengapa Diperlukan Surveilans?</h2>
+        <p>Sebelum mengambil keputusan kebijakan makroprudensial, BI harus memahami kondisi sistem keuangan.</p>
+        <p>Karena itu diperlukan:</p>
+        <div class="highlight">
+            <p><strong>Surveilans terhadap elemen-elemen sistem keuangan.</strong></p>
+        </div>
+        <p>Surveilans berarti melakukan pemantauan dan penilaian terhadap perkembangan serta risiko sistem keuangan.</p>
+    </section>
+
+    <!-- 26. Cakupan Surveilans -->
+    <section id="cakupan" class="bab">
+        <h2>26. Cakupan Surveilans Sistem Keuangan</h2>
+        <p>Materi menyebutkan enam elemen:</p>
+        <ol>
+            <li><strong>Sistem perbankan</strong></li>
+            <li><strong>Industri keuangan non-bank</strong></li>
+            <li><strong>Korporasi non-keuangan</strong></li>
+            <li><strong>Rumah tangga</strong></li>
+            <li><strong>Pasar keuangan</strong></li>
+            <li><strong>Infrastruktur pasar keuangan</strong></li>
+        </ol>
+        <div class="mnemonik">
+            <p><strong>Mnemonik:</strong></p>
+            <p><strong>B-N-K-R-P-I</strong></p>
+            <ul>
+                <li><strong>B</strong>ank</li>
+                <li><strong>N</strong>on-bank</li>
+                <li><strong>K</strong>orporasi</li>
+                <li><strong>R</strong>umah tangga</li>
+                <li><strong>P</strong>asar</li>
+                <li><strong>I</strong>nfrastruktur</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 27. Pengawasan Makroprudensial -->
+    <section id="pengawasan" class="bab">
+        <h2>27. Pengawasan Makroprudensial</h2>
+        <p>Bank Indonesia melakukan pengawasan makroprudensial melalui:</p>
+        <h3>1. Surveilans</h3>
+        <p>Terhadap:</p>
+        <blockquote><strong>sistem keuangan.</strong></blockquote>
+        <h3>2. Pemeriksaan</h3>
+        <p>Terhadap:</p>
+        <blockquote><strong>perbankan dan/atau pihak lainnya.</strong></blockquote>
+        <p><strong>Tujuannya:</strong></p>
+        <blockquote><strong>memastikan pelaksanaan kebijakan makroprudensial.</strong></blockquote>
+    </section>
+
+    <!-- 28. Proses Surveilans -->
+    <section id="proses" class="bab">
+        <h2>28. Apa yang Dilakukan dalam Surveilans?</h2>
+        <p>Surveilans dilakukan mulai dari:</p>
+        <div class="diagram">
+Pemantauan kondisi sistem keuangan
+             ↓
+Identifikasi risiko
+             ↓
+Analisis risiko
+             ↓
+Penilaian risiko
+             ↓
+Pengambilan kesimpulan/asesmen
+             ↓
+Kebijakan atau tindakan yang diperlukan
+        </div>
+        <p>Jadi surveilans <strong>bukan hanya mengumpulkan data</strong>.</p>
+        <p>Ada proses:</p>
+        <div class="mnemonik">
+            <p><strong>monitoring → identifikasi → analisis → assessment</strong></p>
+        </div>
+    </section>
+
+    <!-- 29. Kewajiban Bank -->
+    <section id="kewajiban" class="bab">
+        <h2>29. Kewajiban Bank dalam Pengawasan</h2>
+        <p>Dalam pelaksanaan surveilans:</p>
+        <div class="highlight">
+            <p><strong>Bank wajib menyediakan dan menyampaikan data serta informasi yang diperlukan.</strong></p>
+        </div>
+        <p>Bank juga bertanggung jawab atas:</p>
+        <blockquote><strong>kebenaran data dan informasi yang disampaikan.</strong></blockquote>
+        <div class="mnemonik">
+            <p><strong>Dua kata kunci:</strong></p>
+            <p><strong>Menyediakan + Bertanggung jawab</strong></p>
+        </div>
+    </section>
+
+    <!-- 30. DSRS -->
+    <section id="dsrs" class="bab">
+        <h2>30. Dynamic Systemic Risk Surveillance — DSRS</h2>
+        <p>Sejak <strong>2020</strong>, Bank Indonesia menggunakan pendekatan pengawasan:</p>
+        <div class="highlight">
+            <p><strong>Dynamic Systemic Risk Surveillance (DSRS).</strong></p>
+        </div>
+        <p>DSRS merupakan kerangka surveilans risiko sistemik.</p>
+        <h3>Tujuan utamanya</h3>
+        <p>Memahami bagaimana risiko individual suatu bank dapat berkembang menjadi risiko sistemik melalui <strong>contagion effect</strong>.</p>
+    </section>
+
+    <!-- 31. Karakteristik DSRS -->
+    <section id="karakteristik" class="bab">
+        <h2>31. Karakteristik DSRS</h2>
+        <p>Dalam materi, DSRS memiliki beberapa karakteristik penting:</p>
+        <h3>1. Dynamic</h3>
+        <p>Memperhatikan perkembangan risiko dari waktu ke waktu.</p>
+        <h3>2. Systemic Risk</h3>
+        <p>Fokus pada risiko yang dapat memengaruhi sistem keuangan.</p>
+        <h3>3. Forward Looking</h3>
+        <p>Tidak hanya melihat kondisi sekarang atau masa lalu.</p>
+        <p>Tetapi mempertimbangkan:</p>
+        <blockquote><strong>potensi perkembangan risiko ke depan.</strong></blockquote>
+        <h3>4. Terintegrasi</h3>
+        <p>Menggunakan seluruh informasi pengawasan yang dimiliki dan dapat diakses BI.</p>
+    </section>
+
+    <!-- 32. Microfinancial Linkages -->
+    <section id="linkages" class="bab">
+        <h2>32. Microfinancial Linkages</h2>
+        <p>DSRS mempertimbangkan dimensi:</p>
+        <div class="highlight">
+            <p><strong>keterkaitan mikrofinansial (microfinancial linkages).</strong></p>
+        </div>
+        <p>Sederhananya, pendekatan ini melihat hubungan antara kondisi individu institusi keuangan dengan dampaknya terhadap sistem.</p>
+        <div class="diagram">
+Risiko individual bank
+          ↓
+Keterkaitan dengan institusi/pasar lain
+          ↓
+Contagion effect
+          ↓
+Eskalasi risiko sistemik
+          ↓
+Dampak terhadap sistem keuangan
+        </div>
+    </section>
+
+    <!-- 33. Idiosyncratic vs Systemic -->
+    <section id="idio-vs-systemic" class="bab">
+        <h2>33. Idiosyncratic Risk vs Systemic Risk</h2>
+        <p>Konsep ini penting untuk memahami DSRS.</p>
+        <h3>Idiosyncratic / individual risk</h3>
+        <p>Risiko yang berasal dari:</p>
+        <blockquote><strong>individu bank/institusi tertentu.</strong></blockquote>
+        <h3>Systemic risk</h3>
+        <p>Risiko yang:</p>
+        <blockquote><strong>dapat menyebar dan mengganggu sebagian atau seluruh sistem keuangan.</strong></blockquote>
+        <p><strong>Perbedaannya:</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Idiosyncratic Risk</th>
+                    <th>Systemic Risk</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fokus individu</td>
+                    <td>Fokus sistem</td>
+                </tr>
+                <tr>
+                    <td>Berasal dari institusi tertentu</td>
+                    <td>Dapat menyebar</td>
+                </tr>
+                <tr>
+                    <td>Dampak awal bersifat individual</td>
+                    <td>Dampak dapat menjadi luas</td>
+                </tr>
+                <tr>
+                    <td>Contagion belum tentu terjadi</td>
+                    <td>Contagion menjadi perhatian utama</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 34. Mekanisme DSRS -->
+    <section id="mekanisme-dsrs" class="bab">
+        <h2>34. Mekanisme DSRS</h2>
+        <p>Berdasarkan materi, prosesnya dapat dipahami:</p>
+        <div class="diagram">
+         Individual Bank
+              │
+              ↓
+     Asesmen risiko individual
+              │
+              ↓
+    Apakah ada dampak rambatan?
+              │
+              ↓
+       Contagion Effect
+              │
+              ↓
+     Eskalasi Risiko Sistemik
+              │
+              ↓
+        Risiko Sistem Keuangan
+        </div>
+        <div class="important">
+            <p><strong>Inti DSRS:</strong></p>
+            <p><strong>Mulai dari risiko individual → lihat dampak rambatan → nilai risiko sistemik.</strong></p>
+        </div>
+    </section>
+
+    <!-- 35. Kewenangan BI -->
+    <section id="kewenangan" class="bab">
+        <h2>35. Kewenangan BI dalam Menjaga SSK</h2>
+        <p>Materi menyebutkan enam kelompok kewenangan:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Kewenangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Pengaturan makroprudensial</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Pengawasan makroprudensial, termasuk pemeriksaan dan sanksi</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Pengaturan dan pengembangan pembiayaan inklusif dan keuangan berkelanjutan</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Penyediaan dana untuk bank dalam rangka LoLR</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Reverse repo dan/atau pembelian SBN yang dimiliki LPS saat LPS memerlukan likuiditas</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Koordinasi dengan otoritas terkait</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mnemonik">
+            <p><strong>Mnemonik:</strong></p>
+            <p><strong>P-P-I-L-R-K</strong></p>
+            <ul>
+                <li><strong>P</strong>engaturan</li>
+                <li><strong>P</strong>engawasan</li>
+                <li><strong>I</strong>nklusi</li>
+                <li><strong>L</strong>oLR</li>
+                <li><strong>R</strong>everse repo/pembelian SBN LPS</li>
+                <li><strong>K</strong>oordinasi</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 36. Hubungan Moneter & Makroprudensial -->
+    <section id="hubungan" class="bab">
+        <h2>36. Hubungan Kebijakan Moneter dan Makroprudensial</h2>
+        <p>Jangan menyamakan keduanya.</p>
+        <h3>Kebijakan Moneter</h3>
+        <p><strong>Fokus utama:</strong></p>
+        <blockquote><strong>stabilitas nilai Rupiah, terutama dalam kerangka kebijakan moneter.</strong></blockquote>
+        <h3>Kebijakan Makroprudensial</h3>
+        <p><strong>Fokus:</strong></p>
+        <blockquote><strong>stabilitas sistem keuangan.</strong></blockquote>
+        <p>Keduanya saling melengkapi.</p>
+        <div class="diagram">
+                 BAURAN KEBIJAKAN BI
+                         │
+          ┌──────────────┼──────────────┐
+          ↓              ↓              ↓
+       Moneter      Makroprudensial   Sistem
+                                    Pembayaran
+          │              │              │
+          └──────────────┼──────────────┘
+                         ↓
+               Stabilitas ekonomi
+        </div>
+    </section>
+
+    <!-- 37. Integrasi Kebijakan -->
+    <section id="integrasi" class="bab">
+        <h2>37. Mengapa Kebijakan Makroprudensial Harus Terintegrasi?</h2>
+        <p>Sistem keuangan terus berkembang.</p>
+        <p>Karena itu BI terus mengembangkan instrumen makroprudensial sebagai bagian dari:</p>
+        <blockquote><strong>bauran kebijakan BI bersama kebijakan moneter dan sistem pembayaran.</strong></blockquote>
+        <p>Selain itu, BI juga memperkuat inovasi dan sinergi pada aspek:</p>
+        <ul>
+            <li>digital;</li>
+            <li>inklusi keuangan;</li>
+            <li>kebijakan berwawasan lingkungan.</li>
+        </ul>
+    </section>
+
+    <!-- 38. Green Central Banking -->
+    <section id="green" class="bab">
+        <h2>38. Green Central Banking dan Green Financing</h2>
+        <p>Dalam materi disebutkan perhatian terhadap:</p>
+        <h3>Green Central Banking</h3>
+        <p>Pendekatan kebijakan bank sentral yang memperhatikan aspek lingkungan dalam pelaksanaan kebijakan dan pengelolaan risiko.</p>
+        <h3>Green Financing</h3>
+        <p>Pembiayaan yang memperhatikan aspek keberlanjutan/lingkungan.</p>
+        <p>Dalam konteks materi, keduanya merupakan bagian dari perkembangan dan inovasi kebijakan makroprudensial yang memperhatikan perubahan perilaku finansial dan perhatian pelaku sektor keuangan.</p>
+    </section>
+
+    <!-- 39. Tabel Konsep -->
+    <section id="tabel" class="bab">
+        <h2>39. Tabel Konsep Utama</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Konsep</th>
+                    <th>Inti Pengertian</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>SSK</strong></td>
+                    <td>Sistem keuangan efektif, efisien, dan tahan terhadap gejolak</td>
+                </tr>
+                <tr>
+                    <td><strong>Intermediasi</strong></td>
+                    <td>Fungsi penyaluran dana dalam sistem keuangan</td>
+                </tr>
+                <tr>
+                    <td><strong>LoLR</strong></td>
+                    <td>Penyediaan likuiditas pada saat krisis</td>
+                </tr>
+                <tr>
+                    <td><strong>Makroprudensial</strong></td>
+                    <td>Kebijakan untuk menjaga stabilitas sistem keuangan</td>
+                </tr>
+                <tr>
+                    <td><strong>Risiko sistemik</strong></td>
+                    <td>Risiko instabilitas yang dapat menyebar ke sistem</td>
+                </tr>
+                <tr>
+                    <td><strong>Contagion</strong></td>
+                    <td>Rambatan/penularan gangguan</td>
+                </tr>
+                <tr>
+                    <td><strong>Countercyclical</strong></td>
+                    <td>Merespons siklus keuangan dengan arah yang berlawanan</td>
+                </tr>
+                <tr>
+                    <td><strong>Surveilans</strong></td>
+                    <td>Pemantauan, identifikasi, analisis, dan penilaian risiko</td>
+                </tr>
+                <tr>
+                    <td><strong>DSRS</strong></td>
+                    <td>Kerangka surveilans risiko sistemik yang forward-looking dan terintegrasi</td>
+                </tr>
+                <tr>
+                    <td><strong>Microfinancial linkages</strong></td>
+                    <td>Keterkaitan antar unsur/institusi dari perspektif mikrofinansial</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 40. Mikro vs Makro -->
+    <section id="mikro-vs-makro" class="bab">
+        <h2>40. Perbedaan Mikroprudensial dan Makroprudensial</h2>
+        <p>Berdasarkan kerangka konsep dalam materi, perbedaan paling mudah dipahami adalah:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mikroprudensial</th>
+                    <th>Makroprudensial</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fokus pada individu/institusi</td>
+                    <td>Fokus pada sistem</td>
+                </tr>
+                <tr>
+                    <td>Melihat kesehatan institusi</td>
+                    <td>Melihat stabilitas sistem</td>
+                </tr>
+                <tr>
+                    <td>Risiko individual</td>
+                    <td>Risiko sistemik</td>
+                </tr>
+                <tr>
+                    <td>Perspektif mikro</td>
+                    <td>Perspektif makro</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mnemonik">
+            <p><strong>Mnemonik:</strong></p>
+            <p><strong>MIKRO = institusi</strong></p>
+            <p><strong>MAKRO = sistem</strong></p>
+        </div>
+        <p>Hal ini membantu memahami mengapa DSRS menghubungkan <strong>risiko individual bank</strong> dengan kemungkinan <strong>contagion dan risiko sistemik</strong>.</p>
+    </section>
+
+    <!-- 41. Alur Lengkap -->
+    <section id="alur" class="bab">
+        <h2>41. Alur Lengkap Menjaga Stabilitas Sistem Keuangan</h2>
+        <div class="diagram">
+              KONDISI PEREKONOMIAN
+                       │
+                       ↓
+               SURVEILANS BI
+                       │
+       ┌───────────────┼────────────────┐
+       ↓               ↓                ↓
+     Bank          Non-bank           Pasar
+       │               │                │
+       └───────────────┼────────────────┘
+                       ↓
+                 Analisis Risiko
+                       ↓
+             Risiko Individual
+                       ↓
+              Contagion Effect?
+                       ↓
+                Risiko Sistemik
+                       ↓
+             Kebijakan Makroprudensial
+                       ↓
+          Mitigasi & Pengelolaan Risiko
+                       ↓
+                 SSK Terjaga
+                       ↓
+          Intermediasi berjalan optimal
+                       ↓
+             Ekonomi berkelanjutan
+        </div>
+    </section>
+
+    <!-- 42. Contoh Sederhana -->
+    <section id="contoh" class="bab">
+        <h2>42. Contoh Sederhana</h2>
+        <p>Bayangkan sebuah bank besar mengalami masalah likuiditas.</p>
+        <p><strong>Jika masalah tersebut hanya berdampak pada bank tersebut:</strong></p>
+        <div class="diagram">
+Bank A bermasalah
+      ↓
+Dampak terbatas
+        </div>
+        <p>Maka perhatian utamanya masih berada pada risiko individual.</p>
+        <p><strong>Namun jika:</strong></p>
+        <div class="diagram">
+Bank A bermasalah
+      ↓
+Bank B terkena dampak
+      ↓
+Pasar keuangan terganggu
+      ↓
+Bank lain terkena dampak
+      ↓
+Kredit/intermediasi terganggu
+      ↓
+Perekonomian terkena dampak
+        </div>
+        <p>maka muncul <strong>risiko sistemik</strong>.</p>
+        <p>Di sinilah pentingnya perspektif makroprudensial.</p>
+    </section>
+
+    <!-- 43. Hubungan LoLR dengan SSK -->
+    <section id="hub-lolr" class="bab">
+        <h2>43. Hubungan LoLR dengan SSK</h2>
+        <p><strong>Contoh konseptual:</strong></p>
+        <div class="diagram">
+Tekanan likuiditas
+       ↓
+Potensi gangguan pada bank
+       ↓
+Risiko dapat menyebar
+       ↓
+SSK terancam
+       ↓
+Peran LoLR
+       ↓
+Penyediaan likuiditas
+       ↓
+Membantu menjaga stabilitas
+        </div>
+        <p>Namun perlu dibedakan:</p>
+        <div class="important">
+            <p><strong>LoLR adalah salah satu kewenangan BI dalam kerangka menjaga SSK, sedangkan kebijakan makroprudensial merupakan kebijakan untuk menjaga SSK melalui intermediasi, mitigasi risiko sistemik, inklusi, dan keuangan berkelanjutan.</strong></p>
+        </div>
+    </section>
+
+    <!-- 44. Soal Pilihan Ganda -->
+    <section id="pilihan" class="bab">
+        <h2>44. Soal Latihan Pilihan Ganda</h2>
+
+        <div class="soal">
+            <h4>Soal 1</h4>
+            <p>Stabilitas Sistem Keuangan adalah kondisi ketika sistem keuangan...</p>
+            <ol type="A">
+                <li>Tidak pernah mengalami gejolak</li>
+                <li>Hanya mampu menghadapi gejolak domestik</li>
+                <li>Berfungsi efektif dan efisien serta mampu bertahan dari gejolak</li>
+                <li>Hanya berfungsi sebagai penyedia kredit</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 2</h4>
+            <p>Salah satu dampak sistem keuangan yang tidak berfungsi dengan baik adalah...</p>
+            <ol type="A">
+                <li>Selalu meningkatkan efektivitas moneter</li>
+                <li>Mengganggu kegiatan perekonomian</li>
+                <li>Menghilangkan risiko sistemik</li>
+                <li>Meningkatkan stabilitas secara otomatis</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 3</h4>
+            <p>LoLR berkaitan dengan...</p>
+            <ol type="A">
+                <li>Penyediaan likuiditas pada saat krisis</li>
+                <li>Penerbitan uang digital</li>
+                <li>Penetapan pajak</li>
+                <li>Pengawasan pasar modal</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: A</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 4</h4>
+            <p>Fokus utama kebijakan makroprudensial adalah...</p>
+            <ol type="A">
+                <li>Menjaga satu perusahaan saja</li>
+                <li>Menjaga stabilitas sistem keuangan</li>
+                <li>Menentukan APBN</li>
+                <li>Menentukan harga barang</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 5</h4>
+            <p>Yang <strong>bukan</strong> merupakan faktor risiko sistemik dalam materi adalah...</p>
+            <ol type="A">
+                <li>Size</li>
+                <li>Complexity</li>
+                <li>Interconnectedness</li>
+                <li>Profitability</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: D</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 6</h4>
+            <p>Contagion dalam konteks risiko sistemik berarti...</p>
+            <ol type="A">
+                <li>Penyimpanan dana</li>
+                <li>Penularan atau rambatan gangguan</li>
+                <li>Penurunan inflasi</li>
+                <li>Peningkatan ekspor</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: B</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 7</h4>
+            <p>Kebijakan makroprudensial yang bersifat countercyclical berarti...</p>
+            <ol type="A">
+                <li>Selalu mengikuti siklus keuangan</li>
+                <li>Tidak memperhatikan siklus keuangan</li>
+                <li>Merespons siklus keuangan dengan arah yang berlawanan</li>
+                <li>Hanya diterapkan saat krisis</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 8</h4>
+            <p>Yang termasuk cakupan surveilans sistem keuangan adalah...</p>
+            <ol type="A">
+                <li>Hanya perbankan</li>
+                <li>Hanya pasar keuangan</li>
+                <li>Perbankan, non-bank, korporasi, rumah tangga, pasar, dan infrastruktur pasar keuangan</li>
+                <li>Hanya rumah tangga</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 9</h4>
+            <p>DSRS mulai ditempuh Bank Indonesia sejak...</p>
+            <ol type="A">
+                <li>2008</li>
+                <li>2014</li>
+                <li>2020</li>
+                <li>2023</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+
+        <div class="soal">
+            <h4>Soal 10</h4>
+            <p>Salah satu karakteristik DSRS adalah...</p>
+            <ol type="A">
+                <li>Backward looking saja</li>
+                <li>Tidak terintegrasi</li>
+                <li>Forward looking</li>
+                <li>Hanya melihat kondisi satu bank</li>
+            </ol>
+            <div class="jawaban"><p><strong>Jawaban: C</strong></p></div>
+        </div>
+    </section>
+
+    <!-- 45. Soal Analisis -->
+    <section id="analisis" class="bab">
+        <h2>45. Soal Analisis</h2>
+        <div class="soal">
+            <h4>Soal:</h4>
+            <p>Mengapa gangguan pada satu institusi keuangan dapat menjadi masalah sistemik?</p>
+            <h4>Jawaban:</h4>
+            <p>Karena institusi keuangan memiliki keterkaitan dengan institusi dan/atau pasar keuangan lainnya. Apabila gangguan tersebut menimbulkan <strong>contagion effect</strong>, risiko dapat merambat ke sebagian atau seluruh sistem keuangan. Faktor seperti <strong>size, complexity, interconnectedness, dan procyclicality</strong> dapat memengaruhi potensi risiko sistemik.</p>
+        </div>
+    </section>
+
+    <!-- 46. Soal Esai -->
+    <section id="esai" class="bab">
+        <h2>46. Soal Esai</h2>
+        <div class="soal">
+            <h4>Pertanyaan:</h4>
+            <p><strong>Jelaskan tiga fokus utama kebijakan makroprudensial!</strong></p>
+            <h4>Jawaban:</h4>
+            <p>Kebijakan makroprudensial memiliki tiga fokus utama, yaitu:</p>
+            <ol>
+                <li><strong>Mendorong intermediasi yang seimbang, berkualitas, dan berkelanjutan</strong> sesuai dengan kapasitas perekonomian, memiliki kinerja yang baik, dan inklusif.</li>
+                <li><strong>Memitigasi dan mengelola risiko sistemik</strong>, yaitu risiko instabilitas yang dapat menyebar melalui contagion pada sebagian atau seluruh sistem keuangan.</li>
+                <li><strong>Mendorong inklusi ekonomi dan keuangan serta keuangan berkelanjutan</strong> untuk mendukung pertumbuhan ekonomi yang berkelanjutan.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 47. Soal Esai DSRS -->
+    <section id="esai-dsrs" class="bab">
+        <h2>47. Soal Esai DSRS</h2>
+        <div class="soal">
+            <h4>Pertanyaan:</h4>
+            <p><strong>Jelaskan bagaimana DSRS dapat digunakan untuk mengidentifikasi risiko sistemik!</strong></p>
+            <h4>Jawaban:</h4>
+            <p>DSRS melakukan asesmen terhadap risiko <strong>idiosyncratic individual</strong> suatu bank dengan mempertimbangkan dampak rambatan atau <strong>contagion effect</strong> yang dapat ditimbulkan. Selanjutnya, hasil asesmen digunakan untuk menilai bagaimana risiko tersebut dapat mengalami eskalasi menjadi <strong>risiko sistemik</strong>. DSRS bersifat <strong>forward-looking dan terintegrasi</strong>, dengan mempertimbangkan seluruh informasi pengawasan yang dimiliki dan dapat diakses Bank Indonesia.</p>
+        </div>
+    </section>
+
+    <!-- 48. Cheat Sheet -->
+    <section id="cheat" class="bab">
+        <h2>🔥 Cheat Sheet Ujian</h2>
+        <p>Jika hanya punya waktu beberapa menit, hafalkan ini:</p>
+        <h3>SSK</h3>
+        <div class="mnemonik">
+            <p><strong>Efektif + efisien + tahan gejolak</strong></p>
+        </div>
+        <h3>Mengapa penting?</h3>
+        <div class="mnemonik">
+            <p><strong>SSK → intermediasi → ekonomi → pertumbuhan</strong></p>
+        </div>
+        <h3>Krisis 2008/2009</h3>
+        <div class="mnemonik">
+            <p><strong>Macrofinancial linkages</strong></p>
+        </div>
+        <h3>LoLR</h3>
+        <div class="mnemonik">
+            <p><strong>Penyedia likuiditas saat krisis</strong></p>
+        </div>
+        <h3>Makroprudensial</h3>
+        <div class="mnemonik">
+            <p><strong>I-R-I</strong></p>
+            <ul>
+                <li><strong>I</strong>ntermediasi</li>
+                <li><strong>R</strong>isiko sistemik</li>
+                <li><strong>I</strong>nklusi & keuangan berkelanjutan</li>
+            </ul>
+        </div>
+        <h3>Risiko Sistemik</h3>
+        <div class="mnemonik">
+            <p><strong>S-C-I-P</strong></p>
+            <ul>
+                <li><strong>S</strong>ize</li>
+                <li><strong>C</strong>omplexity</li>
+                <li><strong>I</strong>nterconnectedness</li>
+                <li><strong>P</strong>rocyclicality</li>
+            </ul>
+        </div>
+        <h3>Countercyclical</h3>
+        <div class="mnemonik">
+            <p><strong>Melawan siklus keuangan</strong></p>
+        </div>
+        <h3>Surveilans</h3>
+        <div class="mnemonik">
+            <p><strong>Monitor → Identifikasi → Analisis → Penilaian</strong></p>
+        </div>
+        <h3>Cakupan</h3>
+        <div class="mnemonik">
+            <p><strong>B-N-K-R-P-I</strong></p>
+            <ul>
+                <li><strong>B</strong>ank</li>
+                <li><strong>N</strong>on-bank</li>
+                <li><strong>K</strong>orporasi</li>
+                <li><strong>R</strong>umah tangga</li>
+                <li><strong>P</strong>asar</li>
+                <li><strong>I</strong>nfrastruktur</li>
+            </ul>
+        </div>
+        <h3>DSRS</h3>
+        <div class="mnemonik">
+            <p><strong>2020 → Forward Looking → Individual Risk → Contagion → Systemic Risk</strong></p>
+        </div>
+    </section>
+
+    <!-- 49. Kesimpulan -->
+    <section id="kesimpulan" class="bab">
+        <h2>🎯 KESIMPULAN</h2>
+        <div class="summary">
+            <p><strong>Inti dari materi ini adalah:</strong></p>
+            <p>Stabilitas Sistem Keuangan merupakan kondisi ketika sistem keuangan dapat berfungsi secara efektif dan efisien serta mampu bertahan menghadapi gejolak. Stabilitas ini penting karena sistem keuangan yang sehat memungkinkan intermediasi dan layanan keuangan berjalan optimal sehingga mendukung pertumbuhan ekonomi.</p>
+            <p>Bank Indonesia berperan dalam menjaga SSK antara lain melalui <strong>kebijakan makroprudensial</strong>, pengawasan makroprudensial, fungsi <strong>Lender of Last Resort</strong>, pengembangan inklusi dan keuangan berkelanjutan, serta koordinasi dengan otoritas terkait.</p>
+            <p>Sementara itu, kebijakan makroprudensial berfokus pada:</p>
+            <blockquote><strong>INTERMEDIASI + RISIKO SISTEMIK + INKLUSI/KEBERLANJUTAN</strong></blockquote>
+            <p>dan menggunakan pendekatan <strong>countercyclical</strong>.</p>
+            <p>Untuk mendeteksi dan mengelola risiko sistemik, BI menggunakan <strong>Dynamic Systemic Risk Surveillance (DSRS)</strong> yang menghubungkan:</p>
+            <blockquote><strong>Risiko individual → Contagion → Eskalasi risiko sistemik → Stabilitas sistem keuangan.</strong></blockquote>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 3px solid var(--primary-color); background-color: white; border-radius: 10px;">
+        <p><strong>📘 Materi Pembelajaran: Stabilitas Sistem Keuangan dan Peran Bank Indonesia</strong></p>
+        <p>© 2024 | Modul Pembelajaran Sistematik untuk Ujian, Kuliah, dan Referensi</p>
+        <p><em>Format: Konsep → Tujuan → Mekanisme → Kewenangan → Pengawasan → Contoh → Perbandingan → Latihan Soal</em></p>
+    </footer>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

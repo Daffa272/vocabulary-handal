@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkuman TOEFL Structure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ai-generator.css">
+<style>
+  :root{
+    --ink:#152227;
+    --ink-2:#1c2f36;
+    --paper:#f2ead4;
+    --paper-2:#e8dfc4;
+    --gold:#c99a3c;
+    --gold-soft:#e3c481;
+    --rust:#b45a3c;
+    --muted:#7c8e93;
+    --line: rgba(242,234,212,0.14);
+    --line-paper: rgba(21,34,39,0.14);
+    --radius: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  a{color:inherit;}
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns: 300px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  @media (max-width: 900px){
+    .shell{grid-template-columns: 1fr;}
+    .sidebar{position:relative; height:auto; border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    padding:36px 20px 40px 32px;
+    border-right:1px solid var(--line);
+  }
+  .sidebar::-webkit-scrollbar{width:6px;}
+  .sidebar::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px;}
+
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    margin-bottom:2px;
+  }
+  .brand span{color:var(--gold);}
+  .brand-sub{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:30px;
+  }
+
+  .toc-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    color:var(--gold);
+    margin-bottom:9px;
+  }
+
+  .navlist{list-style:none; margin:0; padding:0;}
+  .navlist li{margin-bottom:1px;}
+  .navlist a{
+    display:flex;
+    gap:12px;
+    align-items:baseline;
+    text-decoration:none;
+    padding:8px 8px;
+    border-radius:var(--radius);
+    font-size:13.5px;
+    color:rgba(242,234,212,0.62);
+    transition: color .15s ease, background .15s ease;
+  }
+  .navlist a:hover{ color:var(--paper); background:rgba(242,234,212,0.05); }
+  .navlist a.active{ color:var(--gold-soft); background:rgba(201,154,60,0.1); }
+  .navlist a:focus-visible,
+  .cheat-btn:focus-visible,
+  .drawer-close:focus-visible{
+    outline:2px solid var(--gold-soft);
+    outline-offset:2px;
+  }
+  .navlist .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    width:18px;
+    flex-shrink:0;
+  }
+  .navlist a.active .num{color:var(--gold);}
+
+  .sidebar-foot{
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  .cheat-btn{
+    width:100%;
+    background:var(--gold);
+    color:var(--ink);
+    border:none;
+    padding:11px 14px;
+    border-radius:var(--radius);
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    cursor:pointer;
+    transition: background .15s ease;
+  }
+  .cheat-btn:hover{background:var(--gold-soft);}
+
+  /* ---------- Main ---------- */
+  main{padding:0 0 80px 0;}
+
+  .hero{
+    padding:72px 56px 52px 56px;
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:900px){.hero{padding:48px 24px 36px;}}
+
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(36px, 5vw, 58px);
+    line-height:1.05;
+    margin:0 0 20px 0;
+    max-width:14ch;
+  }
+  .hero p{
+    font-size:16px;
+    line-height:1.65;
+    color:rgba(242,234,212,0.72);
+    max-width:56ch;
+    margin:0;
+  }
+
+  .hero-stats{
+    display:flex;
+    gap:36px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .stat b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:26px;
+    color:var(--gold-soft);
+  }
+  .stat span{
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* ---------- Section cards ---------- */
+  .topics{padding:0 56px;}
+  @media (max-width:900px){.topics{padding:0 24px;}}
+
+  .topic{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:24px;
+  }
+  .topic:last-child{border-bottom:none;}
+
+  .topic-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:18px;
+  }
+  .topic-head .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--gold);
+  }
+  .topic-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:26px;
+    margin:0;
+  }
+
+  .topic-intro{
+    color:rgba(242,234,212,0.68);
+    font-size:14.5px;
+    line-height:1.7;
+    max-width:62ch;
+    margin-bottom:22px;
+  }
+
+  .pattern-box{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    margin-bottom:20px;
+    display:inline-block;
+    min-width:280px;
+  }
+  .pattern-box .label{
+    font-size:10.5px;
+    letter-spacing:0.04em;
+    color:var(--rust);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .pattern-box code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    font-weight:600;
+  }
+
+  .pattern-pair{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+  }
+
+  .examples{
+    margin-bottom:20px;
+  }
+  .ex-line{
+    font-size:15px;
+    line-height:2;
+    color:var(--paper);
+  }
+  .ex-line b{
+    color:var(--gold-soft);
+    font-weight:600;
+  }
+  .ex-mean{
+    display:block;
+    font-size:13px;
+    color:var(--muted);
+    margin:-2px 0 10px 0;
+    font-style:italic;
+  }
+
+  .rw-row{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .rw{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:6px 0;
+  }
+  .rw.wrong{color:#d98b78;}
+  .rw.right{color:#8fbf9a;}
+
+  table.compare{
+    border-collapse:collapse;
+    margin-top:6px;
+    font-size:13.5px;
+  }
+  table.compare th, table.compare td{
+    border:1px solid var(--line);
+    padding:9px 16px;
+    text-align:left;
+  }
+  table.compare th{
+    color:var(--gold-soft);
+    font-weight:600;
+    font-size:12px;
+  }
+  table.compare td{color:rgba(242,234,212,0.85);}
+
+  .note{
+    margin-top:16px;
+    padding:12px 16px;
+    border-left:2px solid var(--rust);
+    font-size:13.5px;
+    color:rgba(242,234,212,0.75);
+    background:rgba(180,90,60,0.06);
+  }
+
+  .taglist{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    padding:4px 10px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:rgba(242,234,212,0.7);
+  }
+
+  /* ---------- Cheat sheet drawer ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(10,16,19,0.55);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:40;
+  }
+  .overlay.open{opacity:1; pointer-events:auto;}
+
+  .drawer{
+    position:fixed;
+    top:0; right:0;
+    height:100vh;
+    width:380px;
+    max-width:92vw;
+    background:var(--paper);
+    color:var(--ink);
+    z-index:50;
+    transform:translateX(100%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    overflow-y:auto;
+    padding:30px 26px 40px;
+  }
+  .drawer.open{transform:translateX(0);}
+
+  .drawer-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:6px;
+  }
+  .drawer-head h3{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    margin:0;
+  }
+  .drawer-close{
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    color:var(--ink);
+    line-height:1;
+    padding:4px;
+  }
+  .drawer-sub{
+    font-size:12.5px;
+    color:#6b6250;
+    margin-bottom:22px;
+  }
+
+  .cheat-table{width:100%; border-collapse:collapse; margin-bottom:26px;}
+  .cheat-table td{
+    padding:9px 0;
+    border-bottom:1px solid var(--line-paper);
+    font-size:13px;
+    vertical-align:top;
+  }
+  .cheat-table td:first-child{
+    width:42%;
+    color:#4a463a;
+  }
+  .cheat-table td:last-child{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:12.5px;
+  }
+
+  .key-patterns{
+    background:var(--ink);
+    color:var(--paper);
+    padding:18px 20px;
+    border-radius:var(--radius);
+  }
+  .key-patterns .label{
+    font-size:10.5px;
+    color:var(--gold-soft);
+    letter-spacing:0.04em;
+    margin-bottom:10px;
+  }
+  .key-patterns div.kp{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    padding:5px 0;
+    color:var(--gold-soft);
+  }
+
+  footer{
+    padding:40px 56px;
+    color:var(--muted);
+    font-size:12.5px;
+  }
+  @media (max-width:900px){footer{padding:32px 24px;}}
+
+  .ai-generator{
+    max-width:none;
+    margin:0 56px 10px;
+    padding:24px 0 0;
+    background:transparent;
+    border:0;
+    border-top:1px solid var(--line);
+    border-radius:0;
+    box-shadow:none;
+    color:var(--paper);
+  }
+  .ai-generator h2{color:var(--paper); font-family:'Fraunces',serif; font-size:28px;}
+  .ai-generator > p{color:rgba(242,234,212,0.68); line-height:1.6;}
+  .ai-controls input{background:var(--paper); color:var(--ink); border-color:var(--gold-soft); border-radius:var(--radius);}
+  .ai-controls button,.ai-check-btn{background:var(--gold); color:var(--ink); border-radius:var(--radius);}
+  .ai-controls button:hover,.ai-check-btn:hover{background:var(--gold-soft);}
+  .ai-question{background:var(--paper); border-color:var(--line-paper); border-radius:var(--radius);}
+  .ai-question p,.ai-question label{color:var(--ink);}
+  .ai-question label{background:#fbf7eb; border-color:var(--line-paper); border-radius:var(--radius);}
+  .ai-answer{color:#226b4a;}
+  .ai-explanation{color:#5d5545;}
+  @media (max-width:900px){.ai-generator{margin-left:24px; margin-right:24px;}}
+</style>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body data-ai-topic="15 pola TOEFL Structure: modal, passive voice, agreement, gerund, parallel structure, reduced clause, noun clause, inversion, participial phrase, perfect tense, so that, dan such that" data-ai-title="TOEFL Structure">
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">TOEFL <span>Structure</span></div>
+    <div class="brand-sub">15 pola grammar yang paling sering diuji</div>
+
+    <div class="toc-label">DAFTAR ISI</div>
+    <ul class="navlist" id="navlist">
+      <li><a href="#t1"><span class="num">01</span>Modal + Verb</a></li>
+      <li><a href="#t2"><span class="num">02</span>Modal + Passive</a></li>
+      <li><a href="#t3"><span class="num">03</span>Modal Perfect</a></li>
+      <li><a href="#t4"><span class="num">04</span>Modal + Adjective</a></li>
+      <li><a href="#t5"><span class="num">05</span>Subject–Verb Agreement</a></li>
+      <li><a href="#t6"><span class="num">06</span>Gerund vs Infinitive</a></li>
+      <li><a href="#t7"><span class="num">07</span>Parallel Structure</a></li>
+      <li><a href="#t8"><span class="num">08</span>Reduced Adjective Clause</a></li>
+      <li><a href="#t9"><span class="num">09</span>Noun Clause</a></li>
+      <li><a href="#t10"><span class="num">10</span>Inversion</a></li>
+      <li><a href="#t11"><span class="num">11</span>Participial Phrase</a></li>
+      <li><a href="#t12"><span class="num">12</span>Modal Perfect Passive</a></li>
+      <li><a href="#t13"><span class="num">13</span>Perfect Tense</a></li>
+      <li><a href="#t14"><span class="num">14</span>So...that</a></li>
+      <li><a href="#t15"><span class="num">15</span>Such...that</a></li>
+    </ul>
+
+    <div class="sidebar-foot">
+      <button class="cheat-btn" id="openCheat">Buka Ringkasan Rumus ⌘</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <section class="hero">
+      <div class="hero-eyebrow">RANGKUMAN MATERI</div>
+      <h1>Menguasai pola kalimat yang diuji di TOEFL Structure.</h1>
+      <p>Soal Structure tidak menguji makna kalimat, melainkan pola. Begitu sebuah pola dikenali — modal, passive, clause, atau inversion — jawaban yang benar biasanya sudah bisa ditebak dalam beberapa detik.</p>
+      <div class="hero-stats">
+        <div class="stat"><b>15</b><span>Pola inti</span></div>
+        <div class="stat"><b>5</b><span>Pola paling penting</span></div>
+        <div class="stat"><b>1</b><span>Ringkasan cepat</span></div>
+      </div>
+    </section>
+
+    <div class="topics">
+
+      <!-- 1 -->
+      <article class="topic" id="t1">
+        <div class="topic-head"><span class="idx">01</span><h2>Modal + Verb</h2></div>
+        <p class="topic-intro">Modal yang sering muncul: can, could, may, might, should, must, will, would. Setelah modal, kata kerja selalu dalam bentuk dasar (V1).</p>
+        <div class="pattern-box"><div class="label">POLA</div><code>Subject + modal + V1</code></div>
+        <div class="examples">
+          <div class="ex-line">Students <b>can improve</b> their English.</div>
+          <div class="ex-line">People <b>could travel</b> more easily in the past.</div>
+        </div>
+        <div class="rw-row">
+          <span class="rw wrong">❌ can improved · can improving · can to improve</span>
+          <span class="rw right">✅ can improve</span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="topic" id="t2">
+        <div class="topic-head"><span class="idx">02</span><h2>Modal + Passive Voice</h2></div>
+        <p class="topic-intro">Passive dipakai ketika subjek menerima tindakan, bukan melakukannya.</p>
+        <div class="pattern-box"><div class="label">POLA</div><code>Subject + modal + be + V3</code></div>
+        <div class="examples">
+          <div class="ex-line">The problem <b>can be solved</b> easily.</div>
+          <div class="ex-line">The documents <b>could be accessed</b> online.</div>
+        </div>
+        <table class="compare">
+          <tr><th>Active</th><th>Passive</th></tr>
+          <tr><td>Technology can improve education.</td><td>Education can be improved by technology.</td></tr>
+        </table>
+        <div class="taglist">
+          <span class="tag">can + V1 → can + be + V3</span>
+          <span class="tag">could + V1 → could + be + V3</span>
+          <span class="tag">should + V1 → should + be + V3</span>
+          <span class="tag">must + V1 → must + be + V3</span>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="topic" id="t3">
+        <div class="topic-head"><span class="idx">03</span><h2>Modal Perfect</h2></div>
+        <p class="topic-intro">Dipakai untuk membicarakan kemungkinan atau kemampuan yang berkaitan dengan masa lalu.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">AKTIF</div><code>S + could + have + V3</code></div>
+          <div class="pattern-box"><div class="label">PASIF</div><code>S + could + have + been + V3</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line">She <b>could have finished</b> the work.</div>
+          <div class="ex-mean">Dia mungkin/dapat saja telah menyelesaikan pekerjaan tersebut.</div>
+          <div class="ex-line">The accident <b>could have been prevented</b>.</div>
+          <div class="ex-mean">Kecelakaan tersebut sebenarnya dapat dicegah.</div>
+        </div>
+        <div class="note">Urutan wajib: <strong>could → have → been → V3</strong>. Jangan sampai terbalik atau ada kata yang hilang.</div>
+        <div class="rw-row">
+          <span class="rw wrong">❌ could been prevented · could have prevent · could have been prevent</span>
+          <span class="rw right">✅ could have been prevented</span>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="topic" id="t4">
+        <div class="topic-head"><span class="idx">04</span><h2>Subject + Modal + Adjective</h2></div>
+        <p class="topic-intro">Modal tidak selalu diikuti verb — jika kata berikutnya adalah adjective, gunakan "be" sebelum kata sifat itu.</p>
+        <div class="pattern-box"><div class="label">POLA</div><code>Subject + modal + be + adjective</code></div>
+        <div class="examples">
+          <div class="ex-line">The city <b>can be beautiful</b>.</div>
+          <div class="ex-line">The information <b>could be useful</b>.</div>
+          <div class="ex-line">The problem <b>may be difficult</b>.</div>
+        </div>
+        <table class="compare">
+          <tr><th>Verb</th><th>Adjective</th></tr>
+          <tr><td>Technology can improve education.</td><td>Technology can be useful.</td></tr>
+        </table>
+      </article>
+
+      <!-- 5 -->
+      <article class="topic" id="t5">
+        <div class="topic-head"><span class="idx">05</span><h2>Subject–Verb Agreement</h2></div>
+        <p class="topic-intro">Subject dan verb harus sesuai jumlahnya — jangan tertipu kata yang berada di antara keduanya.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">SINGULAR</div><code>He / She / It + V-s/es</code></div>
+          <div class="pattern-box"><div class="label">PLURAL</div><code>They / We / People + V1</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line">She <b>works</b> every day. · The machine <b>produces</b> electricity.</div>
+          <div class="ex-line">They <b>work</b> every day. · People <b>use</b> technology.</div>
+        </div>
+        <div class="note">The quality of the products <strong>is</strong> excellent — subjek sebenarnya adalah "the quality", bukan "products".</div>
+      </article>
+
+      <!-- 6 -->
+      <article class="topic" id="t6">
+        <div class="topic-head"><span class="idx">06</span><h2>Gerund vs Infinitive</h2></div>
+        <p class="topic-intro">Gerund (V-ing) berfungsi seperti noun; infinitive (to + V1) mengikuti verb tertentu.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">GERUND</div><code>Verb + ing</code></div>
+          <div class="pattern-box"><div class="label">INFINITIVE</div><code>to + V1</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line"><b>Reading</b> is important. · I enjoy <b>reading</b> books.</div>
+          <div class="ex-line">I want <b>to study</b> English. · They decided <b>to leave</b> early.</div>
+        </div>
+        <div class="taglist">
+          <span class="tag">enjoy</span><span class="tag">avoid</span><span class="tag">finish</span><span class="tag">consider</span><span class="tag">suggest</span><span class="tag">practice</span>
+        </div>
+        <div class="taglist">
+          <span class="tag">want</span><span class="tag">need</span><span class="tag">decide</span><span class="tag">hope</span><span class="tag">plan</span><span class="tag">promise</span><span class="tag">expect</span>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="topic" id="t7">
+        <div class="topic-head"><span class="idx">07</span><h2>Parallel Structure</h2></div>
+        <p class="topic-intro">Kata atau frasa yang sejajar dalam satu kalimat harus memakai bentuk grammar yang sama.</p>
+        <div class="examples">
+          <div class="ex-line">She likes <b>reading, writing, and speaking</b> English.</div>
+          <div class="ex-line">The job requires <b>patience, skill, and dedication</b>.</div>
+        </div>
+        <div class="rw-row">
+          <span class="rw wrong">❌ reading, writing, and to speak</span>
+          <span class="rw right">✅ reading, writing, and speaking</span>
+        </div>
+        <div class="taglist">
+          <span class="tag">and</span><span class="tag">or</span><span class="tag">but</span><span class="tag">both...and</span><span class="tag">either...or</span><span class="tag">neither...nor</span><span class="tag">not only...but also</span>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="topic" id="t8">
+        <div class="topic-head"><span class="idx">08</span><h2>Reduced Adjective Clause</h2></div>
+        <p class="topic-intro">Adjective clause bisa direduksi agar kalimat lebih ringkas, tanpa mengubah makna.</p>
+        <table class="compare">
+          <tr><th>Bentuk lengkap</th><th>Direduksi</th></tr>
+          <tr><td>The man who works here...</td><td>The man working here...</td></tr>
+          <tr><td>The books which are written in English...</td><td>The books written in English...</td></tr>
+        </table>
+        <div class="pattern-pair" style="margin-top:18px;">
+          <div class="pattern-box"><div class="label">AKTIF</div><code>who/which + V → V-ing</code></div>
+          <div class="pattern-box"><div class="label">PASIF</div><code>who/which + be + V3 → V3</code></div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="topic" id="t9">
+        <div class="topic-head"><span class="idx">09</span><h2>Noun Clause</h2></div>
+        <p class="topic-intro">Clause yang berfungsi sebagai noun. Susunan kata di dalamnya bukan bentuk pertanyaan.</p>
+        <div class="examples">
+          <div class="ex-line">I know <b>what he wants</b>.</div>
+          <div class="ex-line">She explained <b>why the meeting was canceled</b>.</div>
+          <div class="ex-line">We don't know <b>where they live</b>.</div>
+        </div>
+        <table class="compare">
+          <tr><th>Direct question</th><th>Noun clause</th></tr>
+          <tr><td>Where does he live?</td><td>I know where he lives.</td></tr>
+        </table>
+        <div class="taglist">
+          <span class="tag">what</span><span class="tag">where</span><span class="tag">when</span><span class="tag">why</span><span class="tag">how</span><span class="tag">whether</span><span class="tag">if</span><span class="tag">that</span>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="topic" id="t10">
+        <div class="topic-head"><span class="idx">10</span><h2>Inversion</h2></div>
+        <p class="topic-intro">Perubahan posisi auxiliary/modal dan subject, dipicu oleh kata negatif tertentu di awal kalimat.</p>
+        <div class="pattern-box"><div class="label">POLA</div><code>Negative expression + auxiliary + subject + verb</code></div>
+        <table class="compare">
+          <tr><th>Normal</th><th>Inversion</th></tr>
+          <tr><td>The students rarely do this.</td><td>Rarely do the students do this.</td></tr>
+        </table>
+        <div class="examples" style="margin-top:16px;">
+          <div class="ex-line">Never <b>have I seen</b> such a beautiful place.</div>
+        </div>
+        <div class="taglist">
+          <span class="tag">never</span><span class="tag">rarely</span><span class="tag">seldom</span><span class="tag">hardly</span><span class="tag">scarcely</span><span class="tag">barely</span><span class="tag">not only</span><span class="tag">under no circumstances</span>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="topic" id="t11">
+        <div class="topic-head"><span class="idx">11</span><h2>Participial Phrase</h2></div>
+        <p class="topic-intro">Memberikan informasi tambahan tentang subject kalimat utama.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">PRESENT PARTICIPLE</div><code>V-ing</code></div>
+          <div class="pattern-box"><div class="label">PAST PARTICIPLE</div><code>V3</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line"><b>Walking along the street</b>, she saw an old friend.</div>
+          <div class="ex-mean">Saat berjalan di sepanjang jalan, dia melihat seorang teman lama.</div>
+          <div class="ex-line"><b>Located near the airport</b>, the hotel is convenient for travelers.</div>
+          <div class="ex-mean">Terletak dekat bandara, hotel tersebut nyaman bagi wisatawan.</div>
+        </div>
+        <div class="note">Subjek dari participial phrase harus sesuai dengan subjek kalimat utama.</div>
+      </article>
+
+      <!-- 12 -->
+      <article class="topic" id="t12">
+        <div class="topic-head"><span class="idx">12</span><h2>Modal Perfect Passive</h2></div>
+        <p class="topic-intro">Kombinasi yang sangat sering muncul di TOEFL Structure.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">UTAMA</div><code>Modal + be + V3</code></div>
+          <div class="pattern-box"><div class="label">MASA LALU</div><code>Modal + have + been + V3</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line">The problem <b>must be solved</b> immediately.</div>
+          <div class="ex-line">The information <b>should be provided</b> clearly.</div>
+          <div class="ex-line">The problem <b>should have been solved</b> earlier.</div>
+          <div class="ex-line">The accident <b>could have been prevented</b>.</div>
+        </div>
+      </article>
+
+      <!-- 13 -->
+      <article class="topic" id="t13">
+        <div class="topic-head"><span class="idx">13</span><h2>Perfect Tense</h2></div>
+        <p class="topic-intro">Present perfect menghubungkan kejadian lampau dengan sekarang; past perfect menandai kejadian yang lebih dulu terjadi.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">PRESENT PERFECT</div><code>have/has + V3</code></div>
+          <div class="pattern-box"><div class="label">PAST PERFECT</div><code>had + V3</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line">She <b>has finished</b> her work.</div>
+          <div class="ex-line">They <b>have lived</b> here for ten years.</div>
+          <div class="ex-line">The train <b>had left</b> before we arrived.</div>
+        </div>
+        <div class="note">Urutan kejadian: kejadian pertama pakai <strong>had + V3</strong>, kejadian berikutnya pakai V2 biasa.</div>
+      </article>
+
+      <!-- 14 -->
+      <article class="topic" id="t14">
+        <div class="topic-head"><span class="idx">14</span><h2>So...that</h2></div>
+        <p class="topic-intro">Menunjukkan hasil atau akibat dari suatu sifat atau keadaan.</p>
+        <div class="pattern-pair">
+          <div class="pattern-box"><div class="label">ADJECTIVE</div><code>so + adjective + that</code></div>
+          <div class="pattern-box"><div class="label">ADVERB</div><code>so + adverb + that</code></div>
+        </div>
+        <div class="examples">
+          <div class="ex-line">The book was <b>so interesting that</b> I read it twice.</div>
+          <div class="ex-line">He ran <b>so quickly that</b> nobody could catch him.</div>
+        </div>
+      </article>
+
+      <!-- 15 -->
+      <article class="topic" id="t15">
+        <div class="topic-head"><span class="idx">15</span><h2>Such...that</h2></div>
+        <p class="topic-intro">Fungsinya sama seperti so...that, tapi diikuti noun phrase, bukan adjective/adverb langsung.</p>
+        <div class="pattern-box"><div class="label">POLA</div><code>such + noun phrase + that</code></div>
+        <div class="examples">
+          <div class="ex-line">It was <b>such an interesting book that</b> I read it twice.</div>
+        </div>
+        <table class="compare">
+          <tr><th>SO</th><th>SUCH</th></tr>
+          <tr><td>so + adjective/adverb + that</td><td>such + noun + that</td></tr>
+        </table>
+      </article>
+
+    </div>
+
+    <footer>Rangkuman materi TOEFL Structure — gunakan daftar isi untuk berpindah topik, lalu coba pembuat soal AI untuk latihan tambahan.</footer>
+
+  </main>
+</div>
+
+<!-- CHEAT SHEET DRAWER -->
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Ringkasan Rumus Cepat</h3>
+    <button class="drawer-close" id="closeCheat">&times;</button>
+  </div>
+  <div class="drawer-sub">Referensi sekilas untuk semua 15 pola.</div>
+
+  <table class="cheat-table">
+    <tr><td>Modal aktif</td><td>S + modal + V1</td></tr>
+    <tr><td>Modal passive</td><td>S + modal + be + V3</td></tr>
+    <tr><td>Modal perfect</td><td>S + could + have + V3</td></tr>
+    <tr><td>Modal perfect passive</td><td>S + could + have + been + V3</td></tr>
+    <tr><td>Adjective setelah modal</td><td>modal + be + adjective</td></tr>
+    <tr><td>Gerund</td><td>V-ing</td></tr>
+    <tr><td>Infinitive</td><td>to + V1</td></tr>
+    <tr><td>Present perfect</td><td>have/has + V3</td></tr>
+    <tr><td>Past perfect</td><td>had + V3</td></tr>
+    <tr><td>Passive</td><td>be + V3</td></tr>
+    <tr><td>Reduced active clause</td><td>V-ing</td></tr>
+    <tr><td>Reduced passive clause</td><td>V3</td></tr>
+    <tr><td>Noun clause</td><td>connector + S + V</td></tr>
+    <tr><td>Inversion</td><td>neg. expression + aux + S + V</td></tr>
+    <tr><td>So...that</td><td>so + adj/adv + that</td></tr>
+    <tr><td>Such...that</td><td>such + noun + that</td></tr>
+  </table>
+
+  <div class="key-patterns">
+    <div class="label">5 POLA PALING PENTING UNTUK DIHAFALKAN</div>
+    <div class="kp">CAN + V1</div>
+    <div class="kp">CAN BE + V3</div>
+    <div class="kp">COULD + V1</div>
+    <div class="kp">COULD HAVE + V3</div>
+    <div class="kp">COULD HAVE BEEN + V3</div>
+  </div>
+</div>
+
+<script>
+  // Drawer open/close
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+  const openBtn = document.getElementById('openCheat');
+  const closeBtn = document.getElementById('closeCheat');
+
+  function openDrawer(){ drawer.classList.add('open'); overlay.classList.add('open'); }
+  function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+  openBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
+
+  // Scrollspy for sidebar nav
+  const links = Array.from(document.querySelectorAll('#navlist a'));
+  const sections = links.map(l => document.querySelector(l.getAttribute('href')));
+
+  function onScroll(){
+    let current = sections[0];
+    const scrollPos = window.scrollY + 120;
+    for(const sec of sections){
+      if(sec && sec.offsetTop <= scrollPos) current = sec;
+    }
+    links.forEach(l => l.classList.remove('active'));
+    if(current){
+      const active = links.find(l => l.getAttribute('href') === '#' + current.id);
+      if(active) active.classList.add('active');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+</script>
+<script src="ai-generator.js"></script>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

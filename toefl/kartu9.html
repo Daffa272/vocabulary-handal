@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkuman TOEFL Structure</title>
+<style>
+  :root{
+    --ink: #1c2536;
+    --ink-soft: #4a5568;
+    --paper: #eef1f6;
+    --card: #ffffff;
+    --rule: #d7dce6;
+    --navy: #24344d;
+    --navy-deep: #16233a;
+    --gold: #b8863c;
+    --green-bg: #e6f2e9;
+    --green-txt: #256b3f;
+    --yellow-bg: #fbf1de;
+    --yellow-txt: #8a5a12;
+    --red-bg: #fbe9e7;
+    --red-txt: #a13d2e;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.65;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px 96px;
+  }
+
+  header.hero{
+    background:linear-gradient(180deg,var(--navy-deep),var(--navy));
+    color:#f2f4f8;
+    padding:64px 24px 48px;
+    margin-bottom:8px;
+  }
+
+  header.hero .hero-inner{
+    max-width:760px;
+    margin:0 auto;
+  }
+
+  .kicker{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-style:italic;
+    color:#c9b48a;
+    font-size:1.05rem;
+    margin:0 0 6px;
+  }
+
+  h1.title{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:2.6rem;
+    line-height:1.1;
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+  }
+
+  .hero-sub{
+    color:#c3cbdb;
+    font-size:1.05rem;
+    max-width:56ch;
+  }
+
+  .score-row{
+    display:flex;
+    gap:28px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+
+  .score-box{
+    border-left:2px solid #c9b48a;
+    padding-left:14px;
+  }
+
+  .score-box .num{
+    font-family:Georgia, serif;
+    font-size:1.9rem;
+    color:#f2f4f8;
+    display:block;
+  }
+
+  .score-box .lbl{
+    font-size:0.85rem;
+    color:#a9b3c7;
+  }
+
+  section{
+    margin-top:44px;
+  }
+
+  h2.sec-title{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--navy);
+    border-bottom:2px solid var(--rule);
+    padding-bottom:10px;
+    margin:0 0 20px;
+  }
+
+  .sec-num{
+    color:var(--gold);
+    font-style:italic;
+    margin-right:8px;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:22px 26px;
+  }
+
+  .formula{
+    display:inline-block;
+    background:#f4f0e6;
+    border:1px solid #e2d6b8;
+    color:var(--navy-deep);
+    font-family:"Courier New", monospace;
+    padding:4px 12px;
+    border-radius:4px;
+    font-size:0.95rem;
+    margin:6px 0;
+  }
+
+  .example{
+    border-left:3px solid var(--rule);
+    padding-left:16px;
+    margin:14px 0;
+    color:var(--ink-soft);
+  }
+
+  .example .en{
+    color:var(--ink);
+    font-style:italic;
+  }
+
+  .wrong{
+    color:var(--red-txt);
+  }
+
+  .right{
+    color:var(--green-txt);
+  }
+
+  .note{
+    font-size:0.95rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:0.96rem;
+  }
+
+  th, td{
+    text-align:left;
+    padding:9px 12px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  th{
+    color:var(--navy);
+    font-weight:700;
+    border-bottom:2px solid var(--navy);
+  }
+
+  .badge{
+    display:inline-block;
+    font-size:0.78rem;
+    padding:2px 10px;
+    border-radius:12px;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+
+  .badge.low{background:var(--green-bg); color:var(--green-txt);}
+  .badge.mid{background:var(--yellow-bg); color:var(--yellow-txt);}
+  .badge.high{background:var(--red-bg); color:var(--red-txt);}
+
+  .priority-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+  }
+
+  @media(max-width:640px){
+    .priority-grid{grid-template-columns:1fr;}
+    h1.title{font-size:2rem;}
+    header.hero{padding:48px 20px 36px;}
+  }
+
+  .priority-col{
+    border-radius:6px;
+    padding:16px 18px;
+  }
+
+  .priority-col.low{background:var(--green-bg);}
+  .priority-col.mid{background:var(--yellow-bg);}
+  .priority-col.high{background:var(--red-bg);}
+
+  .priority-col h3{
+    margin:0 0 10px;
+    font-size:1rem;
+    font-family:Georgia, serif;
+  }
+
+  .priority-col.low h3{color:var(--green-txt);}
+  .priority-col.mid h3{color:var(--yellow-txt);}
+  .priority-col.high h3{color:var(--red-txt);}
+
+  .priority-col ul{
+    margin:0;
+    padding-left:18px;
+  }
+
+  .priority-col li{
+    margin-bottom:4px;
+  }
+
+  .master-table td:first-child{
+    color:var(--ink-soft);
+    width:45%;
+  }
+
+  .master-table td:last-child{
+    font-family:"Courier New", monospace;
+    color:var(--navy-deep);
+    font-weight:600;
+  }
+
+  .closing{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--rule);
+    color:var(--ink-soft);
+    font-style:italic;
+    text-align:center;
+  }
+
+  ::selection{background:#d9c99a;}
+</style>
+  <link rel="stylesheet" href="ai-generator.css">
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body data-ai-title="Rangkuman TOEFL Structure" data-ai-topic="subject-verb agreement, infinitive, simple past, present perfect, past perfect, past continuous, simple future, future in the past, passive voice, sequence of tenses, dan pola waktu TOEFL">
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Panduan Belajar</p>
+    <h1 class="title">Rangkuman TOEFL Structure</h1>
+    <p class="hero-sub">Tenses, passive voice, infinitive, agreement, dan will/would — disusun dari pola soal dan hasil latihanmu.</p>
+    <div class="score-row">
+      <div class="score-box">
+        <span class="num">20/25</span>
+        <span class="lbl">Hasil latihan terakhir</span>
+      </div>
+      <div class="score-box">
+        <span class="num">80%</span>
+        <span class="lbl">Tingkat ketepatan</span>
+      </div>
+      <div class="score-box">
+        <span class="num">17</span>
+        <span class="lbl">Pola tata bahasa dibahas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">01</span>Subject–Verb Agreement</h2>
+    <div class="card">
+      <p>Verb harus sesuai dengan jumlah subject.</p>
+      <p><strong>Singular → verb singular</strong></p>
+      <div class="example"><span class="en">She <strong>is</strong> a good manager.</span><br><span class="en">The company <strong>has</strong> a new policy.</span></div>
+      <p><strong>Plural → verb plural</strong></p>
+      <div class="example"><span class="en">They <strong>are</strong> employees.</span><br><span class="en">The students <strong>have</strong> assignments.</span></div>
+      <p><strong>Jangan tertipu oleh kata di tengah</strong></p>
+      <div class="example"><span class="en">The quality of the products <strong>is</strong> excellent.</span><br>Subject sebenarnya adalah <em>quality</em> (singular), bukan <em>products</em>.</div>
+      <table>
+        <tr><th>Subject</th><th>Be</th><th>Have</th></tr>
+        <tr><td>I</td><td>am</td><td>have</td></tr>
+        <tr><td>He / She / It</td><td>is</td><td>has</td></tr>
+        <tr><td>You / We / They</td><td>are</td><td>have</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">02</span>Simple Present</h2>
+    <div class="card">
+      <p>Digunakan untuk fakta, kebiasaan, kondisi umum, dan jadwal.</p>
+      <span class="formula">S + V1 &nbsp;|&nbsp; He/She/It + V-s/es</span>
+      <div class="example"><span class="en">I <strong>work</strong> every day.</span><br><span class="en">She <strong>works</strong> every day.</span></div>
+      <p class="note">Setelah <em>when / before / after / until</em>, jika kalimat utama membicarakan masa depan, klausa waktu tetap memakai Simple Present.</p>
+      <div class="example"><span class="en right">I will call you when I <strong>arrive</strong>.</span><br><span class="en wrong">when I will arrive</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">03</span>Simple Past</h2>
+    <div class="card">
+      <p>Untuk kejadian yang sudah selesai di masa lalu.</p>
+      <span class="formula">S + V2</span>
+      <div class="example"><span class="en">I <strong>visited</strong> Japan last year.</span><br><span class="en">She <strong>was</strong> in Jakarta yesterday.</span></div>
+      <p class="note">Kata petunjuk: yesterday, last week, last year, two days ago, in 2020, when I was young.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">04</span>Present Continuous</h2>
+    <div class="card">
+      <p>Untuk sesuatu yang sedang berlangsung sekarang.</p>
+      <span class="formula">S + am/is/are + V-ing</span>
+      <div class="example"><span class="en">I <strong>am reading</strong> a book.</span><br><span class="en">She <strong>is working</strong> now.</span><br><span class="en">They <strong>are studying</strong>.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">05</span>Past Continuous <span class="badge low">sudah kuat</span></h2>
+    <div class="card">
+      <p>Untuk aktivitas yang sedang berlangsung pada waktu tertentu di masa lalu — salah satu pola yang muncul di soalmu.</p>
+      <span class="formula">S + was/were + V-ing</span>
+      <div class="example"><span class="en">I <strong>was reading</strong> when you called.</span><br><span class="en">They <strong>were working</strong> when the manager arrived.</span></div>
+      <p class="note">Pola TOEFL yang sering muncul:</p>
+      <span class="formula">While + S + was/were + V-ing</span>
+      <div class="example"><span class="en">While I <strong>was studying</strong>, my friend called me.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">06</span>Present Perfect <span class="badge low">sudah kuat</span></h2>
+    <div class="card">
+      <span class="formula">S + have/has + V3</span>
+      <p>Digunakan untuk kejadian yang dimulai di masa lalu dan masih berkaitan dengan sekarang, pengalaman, atau kejadian yang sudah terjadi.</p>
+      <div class="example"><span class="en">They <strong>have lived</strong> in Jakarta since 2020.</span><br><span class="en">She <strong>has finished</strong> the assignment.</span></div>
+      <p class="note"><strong>since</strong> + titik waktu (since 2020, since Monday) — <strong>for</strong> + durasi (for three years, for two months).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">07</span>Past Perfect <span class="badge high">prioritas utama</span></h2>
+    <div class="card">
+      <p>Salah satu materi yang perlu kamu perkuat. Digunakan ketika ada dua kejadian di masa lalu, untuk menunjukkan kejadian mana yang terjadi lebih dahulu.</p>
+      <span class="formula">S + had + V3</span>
+      <div class="example"><span class="en">When I arrived, she <strong>had left</strong>.</span><br>Urutan: <em>she left</em> → <em>I arrived</em>. Karena "left" terjadi lebih dahulu, dipakai "had left".</div>
+      <p class="note">Pola TOEFL:</p>
+      <span class="formula">By the time + S + V2, S + had + V3</span>
+      <div class="example"><span class="en">By the time we arrived, the train <strong>had left</strong>.</span></div>
+      <p class="note">Cara berpikir: kalau ada "By the time...", cek apakah ada dua kejadian masa lalu. Kejadian pertama → had + V3, kejadian kedua → V2.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">08</span>Future dengan Will <span class="badge low">sudah kuat</span></h2>
+    <div class="card">
+      <span class="formula">S + will + V1</span>
+      <div class="example"><span class="en">The company <strong>will open</strong> a new branch.</span><br><span class="en">I <strong>will help</strong> you.</span></div>
+      <p class="note">Setelah <em>will</em>, selalu gunakan V1.<br><span class="wrong">will opened, will opening</span> — <span class="right">will open</span></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">09</span>Be Going To</h2>
+    <div class="card">
+      <p>Untuk rencana atau sesuatu yang diperkirakan akan terjadi.</p>
+      <span class="formula">am/is/are + going to + V1</span>
+      <div class="example"><span class="en">I <strong>am going to study</strong> tonight.</span><br><span class="en">She <strong>is going to leave</strong> tomorrow.</span><br><span class="en">They <strong>are going to build</strong> a new office.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">10</span>Future in the Past <span class="badge high">prioritas utama</span></h2>
+    <div class="card">
+      <p>Salah satu materi yang paling perlu kamu kuasai. Artinya "akan", tetapi dilihat dari sudut pandang masa lalu.</p>
+      <table>
+        <tr><th>Future</th><th>Future in the Past</th></tr>
+        <tr><td>will</td><td>would</td></tr>
+        <tr><td>am going to</td><td>was going to</td></tr>
+        <tr><td>is going to</td><td>was going to</td></tr>
+        <tr><td>are going to</td><td>were going to</td></tr>
+      </table>
+      <div class="example">
+        Direct: <span class="en">He said, "I <strong>will</strong> come."</span><br>
+        Reported: <span class="en">He said that he <strong>would</strong> come.</span>
+      </div>
+      <div class="example">
+        <span class="en">I <strong>will</strong> receive the scholarship if I pass.</span><br>
+        Dilihat dari masa lalu: <span class="en">I <strong>was going to</strong> receive the scholarship if I passed.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">11</span>Sequence of Tenses <span class="badge mid">perlu latihan</span></h2>
+    <div class="card">
+      <p>Ketika kata kerja utama berada di past tense, kata kerja di klausa berikutnya sering ikut mundur waktunya.</p>
+      <table>
+        <tr><th>Bentuk asli</th><th>Setelah dilaporkan</th></tr>
+        <tr><td>am / is / are (present)</td><td>was / were</td></tr>
+        <tr><td>will</td><td>would</td></tr>
+        <tr><td>can</td><td>could</td></tr>
+      </table>
+      <div class="example">
+        <span class="en">I <strong>am</strong> tired.</span> → <span class="en">He said that he <strong>was</strong> tired.</span><br>
+        <span class="en">He said, "I <strong>will</strong> help."</span> → <span class="en">He said that he <strong>would</strong> help.</span><br>
+        <span class="en">He said, "I <strong>can</strong> do it."</span> → <span class="en">He said that he <strong>could</strong> do it.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">12</span>Passive Voice <span class="badge mid">perlu latihan</span></h2>
+    <div class="card">
+      <p>Sangat sering muncul di soal TOEFL. Pada active voice, subject melakukan tindakan; pada passive voice, subject menerima tindakan.</p>
+      <div class="example">
+        Active: <span class="en">The security <strong>closed</strong> the doors.</span><br>
+        Passive: <span class="en">The doors <strong>were closed</strong> by the security.</span>
+      </div>
+      <span class="formula">S + BE + V3</span>
+      <table>
+        <tr><th>Tense</th><th>Bentuk Passive</th></tr>
+        <tr><td>Present</td><td>is / are + V3</td></tr>
+        <tr><td>Past</td><td>was / were + V3</td></tr>
+        <tr><td>Future</td><td>will be + V3</td></tr>
+        <tr><td>Present Perfect</td><td>has / have been + V3</td></tr>
+        <tr><td>Modal</td><td>modal + be + V3</td></tr>
+      </table>
+      <div class="example">
+        <span class="en">The door <strong>is closed</strong>.</span><br>
+        <span class="en">The door <strong>was closed</strong>.</span><br>
+        <span class="en">The door <strong>will be closed</strong>.</span><br>
+        <span class="en">The door <strong>has been closed</strong>.</span><br>
+        <span class="en">The door <strong>must be closed</strong>.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">13</span>Infinitive <span class="badge low">sudah kuat</span></h2>
+    <div class="card">
+      <span class="formula">to + V1</span>
+      <p>Contoh: to study, to work, to be, to help.</p>
+      <div class="example"><span class="en">We wanted <strong>to be</strong> more independent.</span><br><span class="en">She decided <strong>to leave</strong> early.</span></div>
+      <p class="note">Pola penting: want / need / decide / plan / hope + to V1.<br><span class="wrong">wanted being, wanted been</span> — <span class="right">wanted to be</span></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">14</span>Gerund</h2>
+    <div class="card">
+      <p>Gerund adalah V-ing yang berfungsi seperti noun.</p>
+      <div class="example"><span class="en"><strong>Reading</strong> is important.</span><br><span class="en"><strong>Working</strong> hard is necessary.</span></div>
+      <p class="note">Setelah preposition, biasanya gunakan V-ing.</p>
+      <div class="example"><span class="en">She is interested in <strong>learning</strong> English.</span><br><span class="en">He is good at <strong>speaking</strong> English.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">15</span>There + Be</h2>
+    <div class="card">
+      <p>Jangan melihat kata <em>there</em> sebagai subject — perhatikan noun setelah <em>be</em>.</p>
+      <div class="example">
+        Singular: <span class="en">There <strong>is</strong> a problem.</span><br>
+        Plural: <span class="en">There <strong>are</strong> several problems.</span>
+      </div>
+      <p class="note">Contoh soal: <em>There _____ several reasons for the increase.</em> Jawaban: <strong>are</strong>, karena "reasons" plural.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">16</span>No Sooner...Than <span class="badge high">prioritas utama</span></h2>
+    <div class="card">
+      <span class="formula">No sooner had + S + V3 + than + S + V2</span>
+      <div class="example"><span class="en">No sooner had he arrived than the meeting started.</span><br>Artinya: baru saja dia tiba, rapat langsung dimulai.</div>
+      <p class="note">Perhatikan urutan: <span class="right">had arrived → started</span>, bukan <span class="wrong">had arrived → starts</span>.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title"><span class="sec-num">17</span>By the Time <span class="badge high">prioritas utama</span></h2>
+    <div class="card">
+      <span class="formula">By the time + S + V2, S + had + V3</span>
+      <div class="example"><span class="en">By the time I arrived, she <strong>had left</strong>.</span><br>Maknanya: (1) she left, (2) I arrived.</div>
+      <p class="note">Shortcut: kalau melihat "By the time...", cari dua kejadian masa lalu. Yang terjadi lebih dahulu biasanya had + V3.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Master Formula</h2>
+    <div class="card">
+      <table class="master-table">
+        <tr><td>yesterday / last year</td><td>V2</td></tr>
+        <tr><td>now / at the moment</td><td>am/is/are + V-ing</td></tr>
+        <tr><td>since / for</td><td>have/has + V3</td></tr>
+        <tr><td>before + kejadian masa lalu</td><td>had + V3</td></tr>
+        <tr><td>by the time</td><td>had + V3</td></tr>
+        <tr><td>while + kejadian masa lalu</td><td>was/were + V-ing</td></tr>
+        <tr><td>will</td><td>V1</td></tr>
+        <tr><td>going to</td><td>be + going to + V1</td></tr>
+        <tr><td>reported speech</td><td>will → would</td></tr>
+        <tr><td>future dari sudut masa lalu</td><td>was/were going to</td></tr>
+        <tr><td>passive</td><td>BE + V3</td></tr>
+        <tr><td>want</td><td>to + V1</td></tr>
+        <tr><td>there + singular</td><td>is</td></tr>
+        <tr><td>there + plural</td><td>are</td></tr>
+        <tr><td>no sooner had</td><td>V3 → V2</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Prioritas Belajar</h2>
+    <p class="note">Berdasarkan hasil 20/25 (80%), berikut area yang sudah kuat dan yang masih perlu perhatian.</p>
+    <div class="priority-grid">
+      <div class="priority-col low">
+        <h3>Sudah cukup kuat</h3>
+        <ul>
+          <li>Subject–Verb Agreement</li>
+          <li>Infinitive</li>
+          <li>Simple Future</li>
+          <li>Present Perfect</li>
+          <li>Past Continuous</li>
+        </ul>
+      </div>
+      <div class="priority-col mid">
+        <h3>Perlu sedikit latihan</h3>
+        <ul>
+          <li>Passive Voice</li>
+          <li>Sequence of Tenses</li>
+          <li>Simple Past</li>
+        </ul>
+      </div>
+      <div class="priority-col high">
+        <h3>Prioritas utama</h3>
+        <ul>
+          <li>Future in the Past</li>
+          <li>Past Perfect</li>
+          <li>Passive Voice</li>
+          <li>No sooner...than / By the time</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Lima Rumus Terpenting</h2>
+    <div class="card">
+      <div class="example"><strong>Past</strong> — had + V3 → V2<br><span class="en">The train had left before we arrived.</span></div>
+      <div class="example"><strong>Future</strong> — will + V1<br><span class="en">I will study tomorrow.</span></div>
+      <div class="example"><strong>Future in the Past</strong> — would + V1<br><span class="en">He said he would study.</span></div>
+      <div class="example"><strong>Future in the Past (rencana)</strong> — was/were going to + V1<br><span class="en">She was going to study.</span></div>
+      <div class="example"><strong>Passive</strong> — be + V3<br><span class="en">The report was completed.</span></div>
+      <div class="example"><strong>Infinitive</strong> — to + V1<br><span class="en">They wanted to leave.</span></div>
+    </div>
+  </section>
+
+  <p class="closing">Kuasai lima pola besar ini, dan sebagian besar soal Structure akan jauh lebih mudah.</p>
+
+</div>
+<script src="ai-generator.js"></script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran: Indikator Moneter Bank Indonesia</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #303f9f;
+            --accent-color: #ff9800;
+            --success-color: #4caf50;
+            --warning-color: #ffc107;
+            --danger-color: #f44336;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --code-bg: #f8f9fa;
+            --highlight-bg: #fff3e0;
+            --table-header: #263238;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 0;
+            border-bottom: 4px solid var(--primary-color);
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 0.3em;
+        }
+
+        h2 {
+            font-size: 1.9em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+
+        .bab {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 20px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .formula {
+            background-color: var(--code-bg);
+            padding: 18px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 6px;
+            margin: 18px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+
+        .important {
+            background-color: #f8bbd0;
+            padding: 20px;
+            border-left: 5px solid var(--danger-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background-color: #c8e6c9;
+            padding: 20px;
+            border-left: 5px solid var(--success-color);
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .diagram {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        blockquote {
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 20px;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .soal {
+            background-color: #e3f2fd;
+            padding: 22px;
+            border-radius: 8px;
+            margin: 22px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .jawaban {
+            background-color: #e8f5e9;
+            padding: 18px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 5px solid var(--success-color);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .toc {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 35px;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            columns: 2;
+            column-gap: 25px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 35px 0;
+        }
+
+        .kunci {
+            color: var(--danger-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .data-table {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+
+            .diagram {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📚 MATERI PEMBELAJARAN LENGKAP</h1>
+        <h2>INDIKATOR MONETER BANK INDONESIA</h2>
+        <p><em>Modul pembelajaran sistematis untuk kuliah, ujian, presentasi, dan pemahaman konsep ekonomi moneter</em></p>
+    </header>
+
+    <nav class="toc">
+        <h2>Daftar Isi</h2>
+        <ul>
+            <li><a href="#pengertian">1. Pengertian Indikator Moneter</a></li>
+            <li><a href="#jenis">2. Jenis-Jenis Indikator Moneter</a></li>
+            <li><a href="#uangprimer">3. Uang Primer</a></li>
+            <li><a href="#plnb">4. Posisi Luar Negeri Bersih Bank Sentral</a></li>
+            <li><a href="#adnb">5. Aktiva Dalam Negeri Bersih Bank Sentral</a></li>
+            <li><a href="#cadangan">6. Cadangan Devisa</a></li>
+            <li><a href="#indikator-bi">7. Indikator Moneter yang Ditampilkan BI</a></li>
+            <li><a href="#bi-rate">8. BI-Rate</a></li>
+            <li><a href="#ihk">9. Inflasi IHK</a></li>
+            <li><a href="#target">10. Target Inflasi</a></li>
+            <li><a href="#perbandingan">11. Membandingkan Inflasi dengan Target</a></li>
+            <li><a href="#cadangandata">12. Cadangan Devisa (Data)</a></li>
+            <li><a href="#jisdor">13. JISDOR</a></li>
+            <li><a href="#nilaitukar">14. Pentingnya Nilai Tukar</a></li>
+            <li><a href="#indonia">15. INDONIA</a></li>
+            <li><a href="#hubungan">16. Hubungan BI-Rate dan INDONIA</a></li>
+            <li><a href="#srbi">17. SRBI</a></li>
+            <li><a href="#nonresiden">18. Nonresiden</a></li>
+            <li><a href="#hubantar">19. Hubungan Antarindikator</a></li>
+            <li><a href="#hubeksternal">20. Hubungan dengan Cadangan Devisa</a></li>
+            <li><a href="#analisis">21. Indikator Moneter sebagai Alat Analisis</a></li>
+            <li><a href="#contoh">22. Contoh Analisis Data</a></li>
+            <li><a href="#petakonsep">23. Peta Konsep</a></li>
+            <li><a href="#instrumen">24. Hubungan dengan Kebijakan Moneter</a></li>
+            <li><a href="#perbedaan">25. Perbedaan Indikator</a></li>
+            <li><a href="#penting">26. Hal Penting untuk Dipahami</a></li>
+            <li><a href="#ringkasan">27. Ringkasan Super Singkat</a></li>
+            <li><a href="#rumus">28. Rumus Konsep Target Inflasi</a></li>
+            <li><a href="#latihan">29. Latihan Soal</a></li>
+            <li><a href="#esai">30. Soal Esai</a></li>
+            <li><a href="#hafalan">31. Cara Menghafal Materi</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Pengertian Indikator Moneter -->
+    <section id="pengertian" class="bab">
+        <h2>1. Pengertian Indikator Moneter</h2>
+
+        <p><strong>Indikator moneter</strong> adalah data atau statistik moneter yang digunakan untuk melihat dan memahami <strong>perkembangan kondisi moneter suatu negara</strong> secara ringkas dan cepat.</p>
+
+        <p>Bank Indonesia menyediakan indikator moneter dalam bentuk data bulanan untuk memberikan gambaran mengenai perkembangan berbagai besaran moneter.</p>
+
+        <div class="highlight">
+            <p><strong>Sederhananya:</strong></p>
+            <blockquote>
+                <strong>Indikator moneter = alat untuk melihat kondisi dan perkembangan sektor moneter dalam perekonomian.</strong>
+            </blockquote>
+        </div>
+
+        <p>Indikator ini penting karena kondisi moneter dapat memberikan informasi mengenai:</p>
+        <ul>
+            <li>jumlah dan perkembangan uang dalam perekonomian,</li>
+            <li>kondisi aset dan kewajiban bank sentral,</li>
+            <li>posisi sektor eksternal,</li>
+            <li>kemampuan negara dalam memenuhi kebutuhan valuta asing,</li>
+            <li>serta kondisi yang berkaitan dengan kebijakan moneter.</li>
+        </ul>
+    </section>
+
+    <!-- 2. Jenis-Jenis Indikator Moneter -->
+    <section id="jenis" class="bab">
+        <h2>2. Jenis-Jenis Indikator Moneter</h2>
+
+        <p>Berdasarkan materi, indikator moneter terdiri atas:</p>
+        <ol>
+            <li><strong>Uang Primer</strong></li>
+            <li><strong>Posisi Luar Negeri Bersih Bank Sentral</strong></li>
+            <li><strong>Aktiva Dalam Negeri Bersih Bank Sentral</strong></li>
+            <li><strong>Cadangan Devisa</strong></li>
+        </ol>
+
+        <p>Keempat indikator tersebut memberikan gambaran yang berbeda mengenai kondisi moneter.</p>
+    </section>
+
+    <!-- 3. Uang Primer -->
+    <section id="uangprimer" class="bab">
+        <h2>3. Uang Primer</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>Uang primer</strong> merupakan salah satu indikator utama dalam sistem moneter yang menggambarkan uang yang menjadi dasar bagi proses penciptaan uang dalam perekonomian.</p>
+
+        <p>Dalam pembahasan moneter, uang primer berkaitan erat dengan:</p>
+        <ul>
+            <li>uang kartal,</li>
+            <li>cadangan bank di bank sentral,</li>
+            <li>serta komponen moneter yang berada pada sisi kewajiban bank sentral.</li>
+        </ul>
+
+        <div class="highlight">
+            <p><strong>Konsep sederhananya:</strong></p>
+            <blockquote>
+                <strong>Bank Indonesia → uang primer → sistem perbankan → proses penciptaan uang → kegiatan ekonomi</strong>
+            </blockquote>
+        </div>
+
+        <p>Uang primer sering menjadi perhatian karena perubahan pada kondisi moneter bank sentral dapat memengaruhi likuiditas sistem perbankan dan selanjutnya aktivitas ekonomi.</p>
+    </section>
+
+    <!-- 4. Posisi Luar Negeri Bersih Bank Sentral -->
+    <section id="plnb" class="bab">
+        <h2>4. Posisi Luar Negeri Bersih Bank Sentral</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>Posisi luar negeri bersih bank sentral</strong> menggambarkan posisi bersih Bank Indonesia terhadap sektor luar negeri.</p>
+
+        <p>Indikator ini berkaitan dengan transaksi dan posisi aset serta kewajiban Bank Indonesia terhadap pihak luar negeri.</p>
+
+        <div class="highlight">
+            <p><strong>Secara sederhana:</strong></p>
+            <blockquote>
+                <strong>Posisi luar negeri bersih menunjukkan hubungan posisi keuangan bank sentral dengan sektor eksternal.</strong>
+            </blockquote>
+        </div>
+
+        <p>Indikator ini penting untuk memahami kondisi eksternal yang dapat memengaruhi:</p>
+        <ul>
+            <li>likuiditas,</li>
+            <li>nilai tukar,</li>
+            <li>cadangan devisa,</li>
+            <li>dan kondisi moneter secara keseluruhan.</li>
+        </ul>
+    </section>
+
+    <!-- 5. Aktiva Dalam Negeri Bersih Bank Sentral -->
+    <section id="adnb" class="bab">
+        <h2>5. Aktiva Dalam Negeri Bersih Bank Sentral</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>Aktiva dalam negeri bersih bank sentral</strong> menggambarkan posisi bersih aset domestik Bank Indonesia.</p>
+
+        <p>Komponen ini berkaitan dengan aktivitas dan posisi Bank Indonesia terhadap perekonomian domestik.</p>
+
+        <div class="highlight">
+            <p><strong>Secara sederhana:</strong></p>
+            <blockquote>
+                <strong>Aktiva dalam negeri bersih = gambaran posisi bersih bank sentral terhadap sektor domestik.</strong>
+            </blockquote>
+        </div>
+
+        <p>Perkembangan indikator ini dapat membantu melihat bagaimana aktivitas domestik Bank Indonesia berhubungan dengan kondisi moneter.</p>
+    </section>
+
+    <!-- 6. Cadangan Devisa -->
+    <section id="cadangan" class="bab">
+        <h2>6. Cadangan Devisa</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>Cadangan devisa</strong> adalah aset luar negeri yang dimiliki atau dikuasai oleh otoritas moneter dan dapat digunakan untuk memenuhi kebutuhan transaksi internasional serta mendukung stabilitas eksternal.</p>
+
+        <p>Cadangan devisa menjadi salah satu indikator penting karena berkaitan dengan kemampuan suatu negara menghadapi kebutuhan valuta asing.</p>
+
+        <h3>Fungsi penting cadangan devisa antara lain:</h3>
+        <ul>
+            <li>mendukung transaksi internasional,</li>
+            <li>menjaga kepercayaan terhadap perekonomian,</li>
+            <li>mendukung stabilitas nilai tukar,</li>
+            <li>membantu memenuhi kewajiban luar negeri,</li>
+            <li>dan menjadi salah satu bantalan dalam menghadapi tekanan eksternal.</li>
+        </ul>
+    </section>
+
+    <!-- 7. Indikator Moneter yang Ditampilkan Bank Indonesia -->
+    <section id="indikator-bi" class="bab">
+        <h2>7. Indikator Moneter yang Ditampilkan Bank Indonesia</h2>
+
+        <p>Berdasarkan data yang diberikan, terdapat beberapa indikator penting:</p>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indikator</th>
+                        <th>Nilai</th>
+                        <th>Tanggal/Periode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BI-Rate</strong></td>
+                        <td><strong>5,75%</strong></td>
+                        <td>19 Agustus 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inflasi IHK (yoy)</strong></td>
+                        <td><strong>3,19%</strong></td>
+                        <td>31 Agustus 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Target Inflasi</strong></td>
+                        <td><strong>2,5 ± 1%</strong></td>
+                        <td>2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cadangan Devisa</strong></td>
+                        <td><strong>US$146.508 juta</strong></td>
+                        <td>31 Agustus 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JISDOR</strong></td>
+                        <td><strong>Rp17.552</strong></td>
+                        <td>9 September 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INDONIA</strong></td>
+                        <td><strong>5,93825%</strong></td>
+                        <td>9 September 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SRBI – Transaksi Neto Nonresiden</strong></td>
+                        <td><strong>-Rp5,35 triliun</strong></td>
+                        <td>31 Agustus–3 September 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SRBI – Setelmen Neto Nonresiden</strong></td>
+                        <td><strong>Rp172,08 triliun</strong></td>
+                        <td>2 Januari–3 September 2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="note">✳️ <strong>Catatan:</strong> angka-angka di atas adalah angka sebagaimana tercantum dalam bahan yang diberikan dan memiliki tanggal observasi masing-masing.</p>
+    </section>
+
+    <!-- 8. BI-Rate -->
+    <section id="bi-rate" class="bab">
+        <h2>8. BI-Rate</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>BI-Rate</strong> merupakan <strong>suku bunga kebijakan Bank Indonesia</strong> yang digunakan sebagai salah satu instrumen utama dalam pelaksanaan kebijakan moneter.</p>
+
+        <p>BI-Rate berfungsi sebagai <strong>sinyal arah kebijakan moneter</strong>.</p>
+
+        <p><strong>Contohnya:</strong></p>
+
+        <h4>Jika BI-Rate naik</h4>
+        <p>Secara umum dapat memberikan tekanan ke arah:</p>
+        <div class="diagram">
+<strong>BI-Rate ↑</strong>
+↓
+Suku bunga pasar/perbankan ↑
+↓
+Kredit lebih mahal
+↓
+Konsumsi & investasi cenderung ↓
+↓
+Permintaan agregat ↓
+↓
+Tekanan inflasi ↓
+        </div>
+
+        <h4>Jika BI-Rate turun</h4>
+        <p>Secara umum:</p>
+        <div class="diagram">
+<strong>BI-Rate ↓</strong>
+↓
+Suku bunga pasar/perbankan ↓
+↓
+Kredit lebih murah
+↓
+Konsumsi & investasi cenderung ↑
+↓
+Permintaan agregat ↑
+↓
+Aktivitas ekonomi meningkat
+        </div>
+
+        <div class="important">
+            <p>Namun, hubungan tersebut <strong>tidak selalu berlangsung secara langsung atau dengan kecepatan yang sama</strong> karena dipengaruhi kondisi perbankan, risiko ekonomi, permintaan kredit, dan faktor lainnya.</p>
+        </div>
+    </section>
+
+    <!-- 9. Inflasi IHK -->
+    <section id="ihk" class="bab">
+        <h2>9. Inflasi IHK</h2>
+
+        <h3>A. Apa itu IHK?</h3>
+        <p><strong>IHK = Indeks Harga Konsumen.</strong></p>
+
+        <p>IHK digunakan untuk mengukur perubahan tingkat harga barang dan jasa yang dikonsumsi masyarakat.</p>
+        <p>Inflasi IHK menunjukkan kenaikan tingkat harga secara umum berdasarkan perubahan IHK.</p>
+
+        <h3>Inflasi yoy</h3>
+        <p><strong>yoy = year-on-year</strong></p>
+        <p>Artinya perubahan dibandingkan dengan periode yang sama pada tahun sebelumnya.</p>
+
+        <p><strong>Contoh dari data:</strong></p>
+        <div class="formula">
+> <strong>Inflasi IHK (yoy) = 3,19%</strong>
+        </div>
+        <p>Artinya tingkat harga konsumen pada periode tersebut mengalami kenaikan <strong>3,19% dibandingkan periode yang sama tahun sebelumnya</strong>, sesuai data yang diberikan.</p>
+    </section>
+
+    <!-- 10. Target Inflasi -->
+    <section id="target" class="bab">
+        <h2>10. Target Inflasi</h2>
+
+        <p>Data yang diberikan menunjukkan:</p>
+        <div class="formula">
+> <strong>Target inflasi 2026 = 2,5% ± 1%</strong>
+        </div>
+
+        <p>Artinya sasaran memiliki rentang:</p>
+        <div class="diagram">
+<strong>2,5% - 1% = 1,5%</strong>
+
+hingga
+
+<strong>2,5% + 1% = 3,5%</strong>
+        </div>
+
+        <p>Jadi rentang target:</p>
+        <h3 style="text-align: center; color: var(--secondary-color);">1,5% – 3,5%</h3>
+        <p>Jika inflasi berada dalam rentang tersebut, maka secara sederhana inflasi berada dalam <strong>kisaran sasaran</strong> yang tercantum dalam materi.</p>
+    </section>
+
+    <!-- 11. Membandingkan Inflasi dengan Target -->
+    <section id="perbandingan" class="bab">
+        <h2>11. Membandingkan Inflasi dengan Target</h2>
+
+        <p><strong>Data:</strong></p>
+        <ul>
+            <li>Inflasi IHK = <strong>3,19%</strong></li>
+            <li>Target = <strong>2,5% ± 1%</strong></li>
+            <li>Batas bawah = <strong>1,5%</strong></li>
+            <li>Batas atas = <strong>3,5%</strong></li>
+        </ul>
+
+        <p><strong>Maka:</strong></p>
+        <div class="formula">
+<strong>1,5% ≤ 3,19% ≤ 3,5%</strong>
+        </div>
+
+        <div class="success">
+            <p>Dengan demikian, berdasarkan angka yang diberikan, inflasi <strong>3,19% masih berada dalam rentang target inflasi 2026</strong>.</p>
+        </div>
+    </section>
+
+    <!-- 12. Cadangan Devisa -->
+    <section id="cadangandata" class="bab">
+        <h2>12. Cadangan Devisa</h2>
+
+        <p><strong>Data yang diberikan:</strong></p>
+        <div class="formula">
+> <strong>Cadangan devisa = US$146.508 juta</strong>
+        </div>
+
+        <p>Karena satuannya adalah <strong>juta dolar AS</strong>, maka secara nominal:</p>
+        <div class="formula">
+<strong>US$146.508 juta = sekitar US$146,508 miliar</strong>
+        </div>
+
+        <p>Cadangan devisa menjadi indikator penting dalam melihat kondisi sektor eksternal Indonesia.</p>
+        <p>Semakin kuat posisi cadangan devisa, secara umum semakin besar bantalan yang tersedia untuk menghadapi kebutuhan eksternal, meskipun penilaiannya tidak cukup dilakukan hanya dari satu angka.</p>
+    </section>
+
+    <!-- 13. JISDOR -->
+    <section id="jisdor" class="bab">
+        <h2>13. JISDOR</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>JISDOR = Jakarta Interbank Spot Dollar Rate.</strong></p>
+
+        <p>JISDOR merupakan indikator nilai tukar rupiah terhadap dolar AS yang digunakan sebagai salah satu referensi nilai tukar.</p>
+
+        <p><strong>Data yang diberikan:</strong></p>
+        <div class="formula">
+> <strong>JISDOR = Rp17.552</strong>
+        </div>
+        <p>Artinya nilai referensi yang tercantum adalah sekitar:</p>
+        <blockquote><strong>Rp17.552 per US$1</strong></blockquote>
+    </section>
+
+    <!-- 14. Mengapa Nilai Tukar Penting? -->
+    <section id="nilaitukar" class="bab">
+        <h2>14. Mengapa Nilai Tukar Penting?</h2>
+
+        <p>Nilai tukar memiliki hubungan dengan inflasi dan perekonomian.</p>
+
+        <p><strong>Misalnya:</strong></p>
+
+        <h3>Rupiah melemah</h3>
+        <div class="diagram">
+Rupiah ↓
+↓
+Harga barang impor dalam rupiah cenderung ↑
+↓
+Biaya impor dapat meningkat
+↓
+Tekanan harga meningkat
+↓
+Inflasi dapat meningkat
+        </div>
+
+        <p>Sebaliknya, apabila rupiah menguat:</p>
+        <div class="diagram">
+Rupiah ↑
+↓
+Harga barang impor dalam rupiah cenderung lebih murah
+↓
+Tekanan dari harga impor dapat berkurang
+↓
+Tekanan inflasi dapat berkurang
+        </div>
+
+        <p>Tetapi dampak akhirnya tetap bergantung pada kondisi ekonomi dan faktor lainnya.</p>
+    </section>
+
+    <!-- 15. INDONIA -->
+    <section id="indonia" class="bab">
+        <h2>15. INDONIA</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>INDONIA = Indonesia Overnight Index Average.</strong></p>
+
+        <p>INDONIA merupakan indikator suku bunga transaksi pasar uang antarbank untuk tenor <strong>overnight</strong>.</p>
+
+        <p>Dalam kerangka kebijakan moneter, pasar uang antarbank memiliki peran penting dalam transmisi kebijakan suku bunga.</p>
+
+        <p><strong>Data yang diberikan:</strong></p>
+        <div class="formula">
+> <strong>INDONIA = 5,93825%</strong>
+        </div>
+
+        <p><strong>Tanggal:</strong></p>
+        <div class="formula">
+> <strong>9 September 2026</strong>
+        </div>
+    </section>
+
+    <!-- 16. Hubungan BI-Rate dan INDONIA -->
+    <section id="hubungan" class="bab">
+        <h2>16. Hubungan BI-Rate dan INDONIA</h2>
+
+        <p>Secara sederhana dapat digambarkan:</p>
+        <div class="diagram">
+<strong>BI-Rate</strong>
+↓
+Sinyal kebijakan moneter
+↓
+Pasar uang
+↓
+<strong>INDONIA</strong>
+↓
+Suku bunga pasar dan perbankan
+↓
+Kredit, konsumsi, investasi
+↓
+Permintaan agregat
+↓
+Inflasi
+        </div>
+
+        <div class="highlight">
+            <p>Jadi, BI-Rate tidak bekerja secara langsung terhadap inflasi.</p>
+            <p>Ada proses <strong>transmisi kebijakan moneter</strong>.</p>
+        </div>
+    </section>
+
+    <!-- 17. SRBI -->
+    <section id="srbi" class="bab">
+        <h2>17. SRBI</h2>
+
+        <h3>A. Pengertian</h3>
+        <p><strong>SRBI = Sekuritas Rupiah Bank Indonesia.</strong></p>
+
+        <p>Dalam data yang diberikan terdapat dua informasi:</p>
+
+        <h4>1. Transaksi Neto Nonresiden</h4>
+        <div class="formula">
+> <strong>-Rp5,35 triliun</strong>
+        </div>
+        <p><strong>Periode:</strong></p>
+        <div class="formula">
+<strong>31 Agustus – 3 September 2026</strong>
+        </div>
+
+        <h4>2. Setelmen Neto Nonresiden</h4>
+        <div class="formula">
+> <strong>Rp172,08 triliun</strong>
+        </div>
+        <p><strong>Periode:</strong></p>
+        <div class="formula">
+<strong>2 Januari – 3 September 2026</strong>
+        </div>
+
+        <div class="important">
+            <p>Keduanya memiliki <strong>periode pengukuran yang berbeda</strong>, sehingga tidak dapat langsung dibandingkan sebagai angka untuk periode yang sama.</p>
+        </div>
+    </section>
+
+    <!-- 18. Apa yang Dimaksud Nonresiden? -->
+    <section id="nonresiden" class="bab">
+        <h2>18. Apa yang Dimaksud Nonresiden?</h2>
+
+        <p><strong>Nonresiden</strong> adalah pihak yang bukan merupakan penduduk/residen Indonesia dalam konteks statistik dan transaksi ekonomi.</p>
+
+        <p>Dalam konteks pasar keuangan, transaksi nonresiden dapat memberikan informasi mengenai aktivitas investor atau pelaku pasar dari luar negeri.</p>
+
+        <p>Pergerakan dana nonresiden dapat berhubungan dengan:</p>
+        <ul>
+            <li>nilai tukar,</li>
+            <li>kondisi pasar keuangan,</li>
+            <li>likuiditas,</li>
+            <li>serta persepsi investor terhadap perekonomian Indonesia.</li>
+        </ul>
+    </section>
+
+    <!-- 19. Hubungan Antarindikator Moneter -->
+    <section id="hubantar" class="bab">
+        <h2>19. Hubungan Antarindikator Moneter</h2>
+
+        <p>Indikator moneter tidak berdiri sendiri.</p>
+        <p>Berbagai indikator tersebut saling berkaitan dalam sistem perekonomian.</p>
+
+        <p><strong>Contoh hubungan sederhananya:</strong></p>
+        <div class="diagram">
+<strong>BI-Rate</strong>
+↓
+<strong>Suku bunga pasar</strong>
+↓
+<strong>INDONIA</strong>
+↓
+<strong>Suku bunga perbankan</strong>
+↓
+<strong>Kredit</strong>
+↓
+<strong>Konsumsi & investasi</strong>
+↓
+<strong>Permintaan agregat</strong>
+↓
+<strong>Inflasi</strong>
+        </div>
+
+        <p>Sementara itu:</p>
+        <div class="diagram">
+<strong>BI-Rate</strong>
+↓
+Perbedaan imbal hasil domestik & luar negeri
+↓
+<strong>Arus modal</strong>
+↓
+<strong>Nilai tukar Rupiah</strong>
+↓
+Harga barang impor
+↓
+<strong>Inflasi</strong>
+        </div>
+    </section>
+
+    <!-- 20. Hubungan dengan Cadangan Devisa -->
+    <section id="hubeksternal" class="bab">
+        <h2>20. Hubungan dengan Cadangan Devisa</h2>
+
+        <p>Kondisi eksternal juga dapat berhubungan dengan cadangan devisa.</p>
+
+        <p><strong>Secara konseptual:</strong></p>
+        <div class="diagram">
+<strong>Transaksi eksternal & arus modal</strong>
+↓
+Pasar valuta asing
+↓
+<strong>Nilai tukar Rupiah</strong>
+↓
+Kondisi sektor eksternal
+↓
+<strong>Cadangan devisa</strong>
+        </div>
+
+        <p>Namun, hubungan aktualnya kompleks karena dipengaruhi berbagai transaksi dan kebijakan.</p>
+    </section>
+
+    <!-- 21. Indikator Moneter sebagai Alat Analisis -->
+    <section id="analisis" class="bab">
+        <h2>21. Indikator Moneter sebagai Alat Analisis</h2>
+
+        <p>Indikator moneter dapat digunakan untuk menjawab pertanyaan seperti:</p>
+
+        <h3>Pertanyaan 1</h3>
+        <p><strong>Bagaimana stance kebijakan moneter?</strong></p>
+        <p>→ Salah satu indikator utama yang dilihat adalah <strong>BI-Rate</strong>.</p>
+
+        <h3>Pertanyaan 2</h3>
+        <p><strong>Bagaimana kondisi inflasi?</strong></p>
+        <p>→ Lihat <strong>Inflasi IHK</strong>.</p>
+
+        <h3>Pertanyaan 3</h3>
+        <p><strong>Apakah inflasi sesuai sasaran?</strong></p>
+        <p>→ Bandingkan <strong>Inflasi IHK</strong> dengan <strong>Target Inflasi</strong>.</p>
+
+        <h3>Pertanyaan 4</h3>
+        <p><strong>Bagaimana kondisi nilai tukar?</strong></p>
+        <p>→ Salah satu indikator yang dapat digunakan adalah <strong>JISDOR</strong>.</p>
+
+        <h3>Pertanyaan 5</h3>
+        <p><strong>Bagaimana kondisi suku bunga pasar uang overnight?</strong></p>
+        <p>→ Lihat <strong>INDONIA</strong>.</p>
+
+        <h3>Pertanyaan 6</h3>
+        <p><strong>Bagaimana kondisi aset eksternal?</strong></p>
+        <p>→ Lihat <strong>Cadangan Devisa</strong>.</p>
+
+        <h3>Pertanyaan 7</h3>
+        <p><strong>Bagaimana aktivitas nonresiden di SRBI?</strong></p>
+        <p>→ Lihat <strong>Transaksi Neto Nonresiden</strong> dan <strong>Setelmen Neto Nonresiden</strong>.</p>
+    </section>
+
+    <!-- 22. Contoh Analisis Data -->
+    <section id="contoh" class="bab">
+        <h2>22. Contoh Analisis Data</h2>
+
+        <p>Mari gunakan seluruh data yang diberikan.</p>
+
+        <h3>Data:</h3>
+        <div class="formula">
+<strong>BI-Rate = 5,75%</strong>
+<strong>Inflasi IHK = 3,19%</strong>
+<strong>Target inflasi = 2,5% ± 1%</strong>
+<strong>Cadangan devisa = US$146,508 miliar</strong>
+<strong>JISDOR = Rp17.552/US$</strong>
+<strong>INDONIA = 5,93825%</strong>
+        </div>
+
+        <h3>Analisis sederhana</h3>
+
+        <h4>1. Kebijakan moneter</h4>
+        <p>BI-Rate sebesar <strong>5,75%</strong> menunjukkan tingkat suku bunga kebijakan sebagaimana tercantum dalam data.</p>
+
+        <h4>2. Inflasi</h4>
+        <p>Inflasi IHK sebesar <strong>3,19% yoy</strong>.</p>
+
+        <h4>3. Sasaran inflasi</h4>
+        <p>Rentang target:</p>
+        <div class="formula">
+<strong>1,5% – 3,5%</strong>
+        </div>
+        <p>Inflasi:</p>
+        <div class="formula">
+<strong>3,19%</strong>
+        </div>
+        <p>Sehingga masih berada dalam rentang sasaran.</p>
+
+        <h4>4. Nilai tukar</h4>
+        <p>JISDOR tercatat:</p>
+        <div class="formula">
+<strong>Rp17.552/US$</strong>
+        </div>
+        <p>Hal ini menunjukkan posisi nilai tukar rupiah terhadap dolar AS pada tanggal pengamatan.</p>
+
+        <h4>5. Pasar uang</h4>
+        <p>INDONIA:</p>
+        <div class="formula">
+<strong>5,93825%</strong>
+        </div>
+        <p>Indikator ini menggambarkan kondisi suku bunga pasar uang antarbank overnight.</p>
+
+        <h4>6. Sektor eksternal</h4>
+        <p>Cadangan devisa:</p>
+        <div class="formula">
+<strong>US$146,508 miliar</strong>
+        </div>
+        <p>Angka ini memberikan gambaran mengenai posisi aset devisa yang tersedia pada periode tersebut.</p>
+    </section>
+
+    <!-- 23. Peta Konsep -->
+    <section id="petakonsep" class="bab">
+        <h2>23. Peta Konsep</h2>
+
+        <div class="diagram">
+                    INDIKATOR MONETER
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+     Uang Primer     Posisi Luar      Aktiva Dalam
+                     Negeri Bersih    Negeri Bersih
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                           ▼
+                    KONDISI MONETER
+                           │
+          ┌────────────────┼─────────────────┐
+          │                │                 │
+          ▼                ▼                 ▼
+       BI-Rate          INDONIA        Cadangan Devisa
+          │
+          ▼
+    Suku Bunga Pasar
+          │
+          ▼
+    Suku Bunga Bank
+          │
+          ▼
+     Kredit & Dana
+          │
+          ▼
+  Konsumsi & Investasi
+          │
+          ▼
+  Permintaan Agregat
+          │
+          ▼
+        INFLASI
+        </div>
+    </section>
+
+    <!-- 24. Hubungan Indikator Moneter dengan Kebijakan Moneter -->
+    <section id="instrumen" class="bab">
+        <h2>24. Hubungan Indikator Moneter dengan Kebijakan Moneter</h2>
+
+        <p>Perlu dibedakan antara <strong>indikator</strong> dan <strong>instrumen kebijakan</strong>.</p>
+
+        <h3>Instrumen/kebijakan</h3>
+        <p><strong>Contohnya:</strong></p>
+        <ul>
+            <li>BI-Rate,</li>
+            <li>operasi moneter,</li>
+            <li>kebijakan lainnya dalam bauran kebijakan.</li>
+        </ul>
+
+        <h3>Indikator</h3>
+        <p><strong>Contohnya:</strong></p>
+        <ul>
+            <li>uang primer,</li>
+            <li>posisi luar negeri bersih,</li>
+            <li>aktiva dalam negeri bersih,</li>
+            <li>cadangan devisa,</li>
+            <li>inflasi,</li>
+            <li>JISDOR,</li>
+            <li>INDONIA.</li>
+        </ul>
+
+        <div class="highlight">
+            <p><strong>Jadi:</strong></p>
+            <blockquote>
+                <strong>Instrumen kebijakan digunakan untuk memengaruhi perekonomian, sedangkan indikator digunakan untuk membaca dan memantau kondisi perekonomian.</strong>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- 25. Perbedaan BI-Rate, INDONIA, JISDOR, dan Inflasi -->
+    <section id="perbedaan" class="bab">
+        <h2>25. Perbedaan BI-Rate, INDONIA, JISDOR, dan Inflasi</h2>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indikator</th>
+                        <th>Menggambarkan</th>
+                        <th>Fokus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BI-Rate</strong></td>
+                        <td>Suku bunga kebijakan</td>
+                        <td>Kebijakan moneter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INDONIA</strong></td>
+                        <td>Suku bunga pasar uang overnight</td>
+                        <td>Pasar uang</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JISDOR</strong></td>
+                        <td>Nilai tukar rupiah terhadap USD</td>
+                        <td>Pasar valuta asing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inflasi IHK</strong></td>
+                        <td>Perubahan harga konsumen</td>
+                        <td>Stabilitas harga</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cadangan devisa</strong></td>
+                        <td>Posisi aset devisa</td>
+                        <td>Sektor eksternal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Uang primer</strong></td>
+                        <td>Kondisi moneter dasar</td>
+                        <td>Likuiditas/moneter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Posisi luar negeri bersih</strong></td>
+                        <td>Posisi bank sentral terhadap luar negeri</td>
+                        <td>Eksternal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aktiva dalam negeri bersih</strong></td>
+                        <td>Posisi domestik bank sentral</td>
+                        <td>Domestik</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 26. Hal Penting untuk Dipahami -->
+    <section id="penting" class="bab">
+        <h2>26. Hal Penting untuk Dipahami</h2>
+
+        <p>Ada beberapa konsep yang sering tertukar.</p>
+
+        <h3>❌ BI-Rate bukan inflasi</h3>
+        <p>BI-Rate adalah <strong>suku bunga kebijakan</strong>.</p>
+        <p>Inflasi adalah <strong>kenaikan tingkat harga secara umum</strong>.</p>
+
+        <hr>
+
+        <h3>❌ INDONIA bukan BI-Rate</h3>
+        <p>BI-Rate merupakan <strong>suku bunga kebijakan</strong>.</p>
+        <p>INDONIA merupakan <strong>indikator suku bunga pasar uang antarbank overnight</strong>.</p>
+        <p>Keduanya berhubungan, tetapi bukan hal yang sama.</p>
+
+        <hr>
+
+        <h3>❌ JISDOR bukan cadangan devisa</h3>
+        <p>JISDOR menunjukkan <strong>nilai tukar</strong>.</p>
+        <p>Cadangan devisa menunjukkan <strong>posisi aset devisa</strong>.</p>
+
+        <hr>
+
+        <h3>❌ Inflasi 3,19% bukan berarti semua barang naik 3,19%</h3>
+        <p>Inflasi IHK merupakan ukuran <strong>perubahan tingkat harga secara agregat berdasarkan keranjang konsumsi</strong>, bukan berarti setiap barang mengalami kenaikan harga yang sama sebesar 3,19%.</p>
+    </section>
+
+    <!-- 27. Ringkasan Super Singkat -->
+    <section id="ringkasan" class="bab">
+        <h2>27. Ringkasan Super Singkat</h2>
+
+        <p>Jika harus menghafal materi ini untuk ujian, gunakan pola berikut:</p>
+
+        <h3>4 indikator moneter utama</h3>
+        <div class="formula">
+> <strong>Uang Primer – Posisi Luar Negeri Bersih – Aktiva Dalam Negeri Bersih – Cadangan Devisa</strong>
+        </div>
+
+        <h3>4 indikator penting dalam data BI</h3>
+        <div class="formula">
+> <strong>BI-Rate – Inflasi – JISDOR – INDONIA</strong>
+        </div>
+
+        <h3>Ingat fungsinya:</h3>
+        <ul>
+            <li><strong>BI-Rate</strong><br>→ kebijakan suku bunga</li>
+            <li><strong>Inflasi IHK</strong><br>→ perkembangan harga</li>
+            <li><strong>JISDOR</strong><br>→ nilai tukar</li>
+            <li><strong>INDONIA</strong><br>→ suku bunga pasar uang overnight</li>
+            <li><strong>Cadangan devisa</strong><br>→ kondisi aset devisa/sektor eksternal</li>
+            <li><strong>Uang primer</strong><br>→ dasar kondisi moneter</li>
+        </ul>
+    </section>
+
+    <!-- 28. Rumus Konsep Target Inflasi -->
+    <section id="rumus" class="bab">
+        <h2>28. Rumus Konsep Target Inflasi</h2>
+
+        <p>Jika target ditulis:</p>
+        <div class="formula">
+> <strong>2,5% ± 1%</strong>
+        </div>
+
+        <p><strong>Maka:</strong></p>
+        <div class="diagram">
+<strong>Target tengah = 2,5%</strong>
+
+<strong>Batas bawah = 2,5% − 1% = 1,5%</strong>
+
+<strong>Batas atas = 2,5% + 1% = 3,5%</strong>
+        </div>
+
+        <p><strong>Sehingga:</strong></p>
+        <div class="formula">
+> <strong>Target inflasi = 1,5% – 3,5%</strong>
+        </div>
+
+        <p>Dengan inflasi aktual:</p>
+        <div class="formula">
+> <strong>3,19%</strong>
+        </div>
+
+        <p><strong>maka:</strong></p>
+        <div class="success">
+> <strong>3,19% masih berada di dalam rentang target 1,5%–3,5%.</strong>
+        </div>
+    </section>
+
+    <!-- 29. Latihan Soal -->
+    <section id="latihan" class="bab">
+        <h2>29. Latihan Soal</h2>
+
+        <h3>Pilihan Ganda</h3>
+
+        <div class="soal">
+            <h4>1. Apa yang dimaksud dengan indikator moneter?</h4>
+            <ol type="A">
+                <li>Data mengenai perdagangan internasional saja</li>
+                <li>Data/statistik untuk mengetahui perkembangan besaran moneter</li>
+                <li>Data mengenai jumlah penduduk</li>
+                <li>Data mengenai penerimaan pajak</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>2. Berikut yang termasuk indikator moneter adalah...</h4>
+            <ol type="A">
+                <li>Uang primer</li>
+                <li>Jumlah penduduk</li>
+                <li>Tingkat pendidikan</li>
+                <li>Luas wilayah</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: A</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>3. BI-Rate merupakan...</h4>
+            <ol type="A">
+                <li>Tingkat inflasi</li>
+                <li>Nilai tukar</li>
+                <li>Suku bunga kebijakan Bank Indonesia</li>
+                <li>Cadangan devisa</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>4. INDONIA berkaitan dengan...</h4>
+            <ol type="A">
+                <li>Harga saham</li>
+                <li>Suku bunga pasar uang antarbank overnight</li>
+                <li>Harga minyak dunia</li>
+                <li>Inflasi pangan</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>5. JISDOR berkaitan dengan...</h4>
+            <ol type="A">
+                <li>Nilai tukar</li>
+                <li>Jumlah uang beredar</li>
+                <li>Harga saham</li>
+                <li>Suku bunga kredit</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: A</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>6. Inflasi IHK sebesar 3,19% dibandingkan target 2,5% ± 1% berarti...</h4>
+            <ol type="A">
+                <li>Di bawah target</li>
+                <li>Di atas batas atas target</li>
+                <li>Masih berada dalam rentang target</li>
+                <li>Tidak dapat dibandingkan</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>7. Batas atas target inflasi 2,5% ± 1% adalah...</h4>
+            <ol type="A">
+                <li>1,0%</li>
+                <li>1,5%</li>
+                <li>3,0%</li>
+                <li>3,5%</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: D</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>8. Batas bawah target tersebut adalah...</h4>
+            <ol type="A">
+                <li>0,5%</li>
+                <li>1,0%</li>
+                <li>1,5%</li>
+                <li>2,0%</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: C</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>9. Cadangan devisa terutama berkaitan dengan...</h4>
+            <ol type="A">
+                <li>Kondisi eksternal dan aset devisa</li>
+                <li>Jumlah penduduk</li>
+                <li>Pajak daerah</li>
+                <li>Produksi pertanian</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: A</strong></p>
+            </div>
+        </div>
+
+        <div class="soal">
+            <h4>10. Jika BI-Rate turun, dalam kondisi normal salah satu dampak yang diharapkan adalah...</h4>
+            <ol type="A">
+                <li>Suku bunga kredit meningkat</li>
+                <li>Kredit menjadi lebih murah</li>
+                <li>Konsumsi pasti turun</li>
+                <li>Investasi pasti turun</li>
+            </ol>
+            <div class="jawaban">
+                <p><strong>Jawaban: B</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 30. Soal Esai -->
+    <section id="esai" class="bab">
+        <h2>30. Soal Esai</h2>
+
+        <ol>
+            <li><strong>Jelaskan pengertian indikator moneter!</strong></li>
+
+            <li><strong>Sebutkan empat indikator moneter yang terdapat dalam materi!</strong></li>
+
+            <li><strong>Apa perbedaan BI-Rate dan INDONIA?</strong></li>
+
+            <li><strong>Apa fungsi JISDOR dalam perekonomian?</strong></li>
+
+            <li><strong>Mengapa cadangan devisa penting bagi suatu negara?</strong></li>
+
+            <li><strong>Jelaskan hubungan antara BI-Rate, suku bunga perbankan, kredit, konsumsi, investasi, dan inflasi!</strong></li>
+
+            <li><strong>Jika target inflasi adalah 2,5% ± 1% dan inflasi aktual 3,19%, bagaimana posisi inflasi tersebut terhadap target?</strong></li>
+
+            <li><strong>Apa yang dimaksud dengan inflasi IHK yoy?</strong></li>
+        </ol>
+    </section>
+
+    <!-- 31. Cara Menghafal Materi -->
+    <section id="hafalan" class="bab">
+        <h2>🧠 Cara Menghafal Materi</h2>
+
+        <p>Gunakan singkatan:</p>
+
+        <h3>"U-P-A-C"</h3>
+        <div class="formula">
+<strong>U</strong> = Uang Primer
+<strong>P</strong> = Posisi Luar Negeri Bersih
+<strong>A</strong> = Aktiva Dalam Negeri Bersih
+<strong>C</strong> = Cadangan Devisa
+        </div>
+
+        <p>Untuk indikator yang muncul dalam data:</p>
+
+        <h3>"B-I-J-I"</h3>
+        <div class="formula">
+<strong>B</strong> = BI-Rate
+<strong>I</strong> = Inflasi IHK
+<strong>J</strong> = JISDOR
+<strong>I</strong> = INDONIA
+        </div>
+
+        <p><strong>Kemudian ingat:</strong></p>
+        <div class="summary">
+            <p><strong>BI-Rate</strong> → kebijakan bunga</p>
+            <p><strong>INDONIA</strong> → pasar uang</p>
+            <p><strong>JISDOR</strong> → nilai tukar</p>
+            <p><strong>Inflasi</strong> → harga</p>
+            <p><strong>Cadangan devisa</strong> → aset eksternal</p>
+        </div>
+
+        <p>Dengan pola ini, materi akan jauh lebih mudah diingat dan dihubungkan dengan <strong>transmisi kebijakan moneter</strong> yang kamu kirim sebelumnya.</p>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 3px solid var(--primary-color); background-color: white; border-radius: 10px;">
+        <p><strong>📚 Materi Pembelajaran: Indikator Moneter Bank Indonesia</strong></p>
+        <p>© 2024 | Modul Pembelajaran Sistematik untuk Kuliah, Ujian, dan Presentasi</p>
+        <p><em>Dapat digunakan untuk pemahaman konsep ekonomi moneter dan kebijakan Bank Indonesia</em></p>
+    </footer>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

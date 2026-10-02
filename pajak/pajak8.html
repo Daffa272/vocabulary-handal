@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPh Pasal 22 — Ringkasan & Studi Kasus</title>
+<style>
+  :root{
+    --navy:#0f2440;
+    --navy-2:#173561;
+    --accent:#c8952b;
+    --accent-2:#e0b158;
+    --bg:#f7f5f0;
+    --card:#ffffff;
+    --text:#1c2733;
+    --muted:#5c6b7a;
+    --border:#e3e0d8;
+    --good:#2e7d4f;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia','Times New Roman',serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 80px;}
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);
+    color:#fff;
+    padding:56px 24px 44px;
+    margin-bottom:36px;
+  }
+  header.hero .inner{max-width:920px;margin:0 auto;}
+  .eyebrow{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:12px;
+    color:var(--accent-2);
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:38px;
+    margin:0 0 12px;
+    font-weight:700;
+    line-height:1.2;
+  }
+  .sub{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    color:#d7dee7;
+    font-size:15px;
+    max-width:640px;
+  }
+  h2{
+    font-size:23px;
+    color:var(--navy);
+    margin:48px 0 16px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--accent);
+  }
+  h3{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:16px;
+    color:var(--navy-2);
+    margin:28px 0 10px;
+    font-weight:700;
+  }
+  p{margin:0 0 14px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:24px 26px;
+    margin-bottom:22px;
+    box-shadow:0 1px 3px rgba(15,36,64,.05);
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:14.5px;
+    margin:14px 0 8px;
+  }
+  th, td{
+    padding:11px 14px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+  }
+  th{
+    background:var(--navy);
+    color:#fff;
+    font-weight:600;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  tr:nth-child(even) td{background:#faf9f6;}
+  td.num, th.num{text-align:right;}
+  .tag{
+    display:inline-block;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:999px;
+    background:#eef3ee;
+    color:var(--good);
+    margin-bottom:10px;
+  }
+  .tag.warn{background:#fbeee0;color:#95541a;}
+  .flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    margin:18px 0;
+  }
+  .flow div{
+    background:var(--navy);
+    color:#fff;
+    padding:10px 16px;
+    border-radius:8px;
+    font-size:13.5px;
+    font-weight:600;
+    flex:1 1 150px;
+    text-align:center;
+  }
+  .flow .arrow{
+    background:none;
+    color:var(--accent);
+    font-size:20px;
+    flex:0 0 auto;
+    padding:10px 0;
+  }
+  .formula{
+    background:#f2ede1;
+    border-left:4px solid var(--accent);
+    padding:14px 18px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--navy);
+    border-radius:4px;
+    margin:14px 0;
+  }
+  .case{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:16px 20px;
+    margin-bottom:14px;
+    background:#fdfcfa;
+  }
+  .case .result{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    color:var(--good);
+    margin-top:6px;
+  }
+  ul.excl{
+    columns:1;
+    margin:0 0 8px;
+    padding-left:20px;
+  }
+  ul.excl li{margin-bottom:6px;font-size:15px;}
+  .quiz{
+    background:var(--navy);
+    color:#fff;
+    border-radius:10px;
+    padding:26px 28px;
+    margin-top:40px;
+  }
+  .quiz h2{color:#fff;border-bottom:2px solid var(--accent-2);}
+  .quiz ol{padding-left:20px;}
+  .quiz li{margin-bottom:12px;font-size:15.5px;}
+  details{
+    margin-top:16px;
+    background:rgba(255,255,255,.08);
+    border-radius:6px;
+    padding:10px 16px;
+  }
+  summary{
+    cursor:pointer;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    color:var(--accent-2);
+  }
+  details p{margin:10px 0 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14.5px;color:#e5e9ee;}
+  .note{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:13px;
+    color:var(--muted);
+    font-style:italic;
+    margin-top:6px;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    margin-top:50px;
+  }
+  .total-box{
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+    color:var(--navy);
+    border-radius:10px;
+    padding:20px 24px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:19px;
+    text-align:center;
+    margin-top:18px;
+  }
+</style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">Corporate Tax Series</div>
+    <h1>Pajak Penghasilan (PPh) Pasal 22</h1>
+    <p class="sub">Ringkasan pemungut, objek, dan tarif PPh 22 — dilengkapi studi kasus PT Maju Jaya Indonesia serta latihan soal cepat.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>1. Siapa yang Wajib Memungut PPh 22?</h2>
+  <div class="card">
+    <div class="flow">
+      <div>Bendahara Pemerintah</div>
+      <div class="arrow">＋</div>
+      <div>Badan Tertentu (Impor/Usaha)</div>
+      <div class="arrow">＋</div>
+      <div>WP Badan Penjual Barang Sangat Mewah</div>
+    </div>
+    <p>Kewajiban memungut PPh 22 melekat pada tiga kelompok pemungut: bendahara pemerintah atas pembayaran penyerahan barang, badan-badan tertentu atas kegiatan impor atau usaha di bidang lain, dan Wajib Pajak badan tertentu atas penjualan barang yang tergolong sangat mewah.</p>
+  </div>
+
+  <h2>2. Tarif Pemungut Bendahara Pemerintah</h2>
+  <div class="card">
+    <table>
+      <tr><th>Pemungut</th><th>Objek Transaksi</th><th class="num">Tarif</th></tr>
+      <tr><td>KPA / Bendahara Pengguna (Pusat &amp; Daerah)</td><td>Pembayaran pembelian barang via LS</td><td class="num">1,5%</td></tr>
+      <tr><td>Bendahara Instansi/BUMN/BUMD</td><td>Pembelian barang via Uang Persediaan (UP)</td><td class="num">1,5%</td></tr>
+      <tr><td>Badan usaha tertentu</td><td>Pembelian barang via Uang Persediaan (UP)</td><td class="num">1,5%</td></tr>
+    </table>
+    <p class="note">Catatan: Wajib Pajak tanpa NPWP dikenakan tarif 100% lebih tinggi (2× tarif normal).</p>
+  </div>
+
+  <h2>3. PPh 22 Impor &amp; Ekspor</h2>
+  <div class="card">
+    <p><strong>Pemungut:</strong> Bank Devisa &amp; Direktorat Jenderal Bea dan Cukai.</p>
+    <table>
+      <tr><th>Kegiatan</th><th class="num">Tarif</th></tr>
+      <tr><td>Impor Barang</td><td class="num">0,5% / 2,5% / 7,5% / 10% *</td></tr>
+      <tr><td>Ekspor Barang</td><td class="num">1,5%</td></tr>
+    </table>
+    <p class="note">* Sesuai lampiran PMK No.41/PMK.010/2022, tergantung jenis dan kategori barang.</p>
+  </div>
+
+  <h2>4. Tarif Pemungut WP Tertentu</h2>
+  <div class="card">
+    <table>
+      <tr><th>Pemungut</th><th>Objek Transaksi</th><th class="num">Tarif</th></tr>
+      <tr><td>Industri perkebunan / kehutanan / pertanian / peternakan / perikanan</td><td>Pembelian bahan dari pedagang pengumpul</td><td class="num">0,25%</td></tr>
+      <tr><td>Industri semen</td><td>Penjualan ke distributor</td><td class="num">0,25%</td></tr>
+      <tr><td>Industri kertas</td><td>Penjualan ke distributor</td><td class="num">0,1%</td></tr>
+      <tr><td>Industri baja</td><td>Penjualan ke distributor</td><td class="num">0,3%</td></tr>
+      <tr><td>Industri otomotif</td><td>Penjualan ke distributor</td><td class="num">0,45%</td></tr>
+      <tr><td>Industri farmasi (obat)</td><td>Penjualan ke distributor</td><td class="num">0,3%</td></tr>
+      <tr><td>ATPM / APM / importir umum</td><td>Penjualan kendaraan bermotor</td><td class="num">0,45%</td></tr>
+      <tr><td>Produsen/importir BBM, gas, pelumas</td><td>Penjualan bahan bakar &amp; pelumas</td><td class="num">0,25% / 0,3%</td></tr>
+      <tr><td>Badan usaha pembeli komoditas tambang</td><td>Pembelian batubara/mineral dari pemegang izin usaha</td><td class="num">1,5%</td></tr>
+      <tr><td>Badan usaha penjual emas batangan</td><td>Penjualan emas dalam negeri</td><td class="num">0,45%</td></tr>
+      <tr><td>Badan usaha penjual barang sangat mewah</td><td>Penjualan barang sangat mewah</td><td class="num">5%</td></tr>
+    </table>
+  </div>
+
+  <h2>5. Transaksi yang Bukan Objek PPh 22</h2>
+  <div class="card">
+    <span class="tag warn">Pengecualian</span>
+    <h3>Transaksi Bendahara Pemerintah</h3>
+    <ul class="excl">
+      <li>Pembayaran maks. Rp2.000.000 oleh bendahara pemerintah/KPA</li>
+      <li>Pembayaran maks. Rp10.000.000 oleh badan usaha tertentu BUMN</li>
+      <li>Pembelian BBM, gas, pelumas, benda pos</li>
+      <li>Pemakaian air dan listrik</li>
+      <li>Pembelian minyak/gas bumi hasil kontraktor kerja sama</li>
+      <li>Pembelian panas bumi/listrik dari usaha panas bumi</li>
+      <li>Pembelian hasil kehutanan/pertanian belum diproses, maks. Rp20.000.000/bulan</li>
+      <li>Pembelian gabah/beras oleh bendahara pemerintah atau Perum BULOG</li>
+    </ul>
+    <h3>Transaksi Impor</h3>
+    <ul class="excl">
+      <li>Barang yang tidak terutang PPh berdasarkan undang-undang</li>
+      <li>Impor sementara (untuk diekspor kembali) &amp; re-impor</li>
+      <li>Impor emas batangan untuk diproses menjadi perhiasan ekspor</li>
+      <li>Barang bebas Bea Masuk/PPN: barang perwakilan negara asing, badan internasional, hadiah/hibah ibadah &amp; sosial, museum/kebun binatang, penelitian, penyandang disabilitas, jenazah, barang pindahan, barang bawaan penumpang, vaksin Polio, buku pelajaran &amp; kitab suci, kegiatan hulu migas &amp; panas bumi</li>
+      <li>Kapal, pesawat udara, kereta api beserta suku cadang untuk operasional niaga nasional</li>
+      <li>Peralatan Kemhan/TNI untuk pemetaan wilayah pertahanan</li>
+    </ul>
+    <h3>Lainnya</h3>
+    <ul class="excl">
+      <li>Pembelian barang dengan dana BOS</li>
+      <li>Penjualan kendaraan bermotor domestik yang sudah kena PPh 22 ayat (1) huruf c</li>
+      <li>Penjualan emas batangan kepada Bank Indonesia</li>
+      <li>Pembelian bahan pangan pokok oleh Perum BULOG/BUMN penugasan</li>
+    </ul>
+  </div>
+
+  <h2>6. Studi Kasus — PT Maju Jaya Indonesia</h2>
+  <div class="card">
+    <span class="tag">Kasus Utama · Januari 2026</span>
+    <p>PT Maju Jaya Indonesia melakukan enam transaksi: menjual barang ke pemerintah, membeli bahan baku pertanian, mengimpor mesin, membeli kendaraan dari ATPM, membeli listrik pabrik, dan membeli alat tulis dari BUMN.</p>
+
+    <div class="case">
+      <strong>1. Pembelian barang oleh bendahara pemerintah</strong>
+      <p>Rp500.000.000 × 1,5%</p>
+      <div class="result">= Rp7.500.000</div>
+    </div>
+
+    <div class="case">
+      <strong>2. Jika PT Maju Jaya tidak memiliki NPWP</strong>
+      <p>Tarif naik 100% → 1,5% × 200% = 3% → Rp500.000.000 × 3%</p>
+      <div class="result">= Rp15.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>3. Pembelian bahan baku pertanian dari pedagang pengumpul</strong>
+      <p>Rp100.000.000 × 0,25%</p>
+      <div class="result">= Rp250.000</div>
+    </div>
+
+    <div class="case">
+      <strong>4. Penjualan produk industri semen ke distributor</strong>
+      <p>Rp2.000.000.000 × 0,25%</p>
+      <div class="result">= Rp5.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>4b. Perbandingan — industri kertas</strong>
+      <p>Rp3.000.000.000 × 0,1%</p>
+      <div class="result">= Rp3.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>5. Penjualan kendaraan bermotor (ATPM)</strong>
+      <p>Rp4.000.000.000 × 0,45%</p>
+      <div class="result">= Rp18.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>6. Penjualan BBM (produsen/importir)</strong>
+      <p>Rp10.000.000.000 × 0,25%</p>
+      <div class="result">= Rp25.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>7. Pembelian komoditas tambang batubara</strong>
+      <p>Rp5.000.000.000 × 1,5%</p>
+      <div class="result">= Rp75.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>8. Penjualan emas batangan</strong>
+      <p>Rp2.000.000.000 × 0,45%</p>
+      <div class="result">= Rp9.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>9. Penjualan barang sangat mewah</strong>
+      <p>Rp10.000.000.000 × 5%</p>
+      <div class="result">= Rp500.000.000</div>
+    </div>
+
+    <div class="case">
+      <strong>10–11. Impor barang</strong>
+      <p>Tarif 2,5%: Rp1.000.000.000 × 2,5% = Rp25.000.000<br>
+      Tarif 7,5%: Rp1.000.000.000 × 7,5% = Rp75.000.000</p>
+      <p class="note">Pemungut: Bank Devisa / Direktorat Jenderal Bea dan Cukai.</p>
+    </div>
+
+    <div class="case">
+      <strong>12. Bukan objek PPh 22</strong>
+      <p>Listrik Rp50.000.000, air Rp20.000.000, pembelian bendahara Rp1.500.000 (≤ batas Rp2.000.000) → semuanya <strong>Rp0</strong>.</p>
+      <p class="note">Pengecualian: pembelian barang Rp12.000.000 oleh BUMN &gt; batas Rp10.000.000, sehingga tetap terutang.</p>
+    </div>
+  </div>
+
+  <h2>7. Rekap Studi Kasus Gabungan</h2>
+  <div class="card">
+    <table>
+      <tr><th>Transaksi</th><th class="num">Nilai</th><th class="num">Tarif</th><th class="num">PPh 22</th></tr>
+      <tr><td>Pembelian barang oleh pemerintah</td><td class="num">Rp500 jt</td><td class="num">1,5%</td><td class="num">Rp7.500.000</td></tr>
+      <tr><td>Pembelian bahan pertanian</td><td class="num">Rp100 jt</td><td class="num">0,25%</td><td class="num">Rp250.000</td></tr>
+      <tr><td>Penjualan semen</td><td class="num">Rp2 M</td><td class="num">0,25%</td><td class="num">Rp5.000.000</td></tr>
+      <tr><td>Penjualan kendaraan</td><td class="num">Rp4 M</td><td class="num">0,45%</td><td class="num">Rp18.000.000</td></tr>
+      <tr><td>Pembelian listrik</td><td class="num">Rp50 jt</td><td class="num">Bukan objek</td><td class="num">Rp0</td></tr>
+      <tr><td>Pembelian barang Rp1,5 jt oleh bendahara</td><td class="num">Rp1,5 jt</td><td class="num">Bukan objek</td><td class="num">Rp0</td></tr>
+      <tr><td>Impor barang</td><td class="num">Rp1 M</td><td class="num">2,5%</td><td class="num">Rp25.000.000</td></tr>
+    </table>
+    <div class="total-box">Total PPh 22 Dipungut = Rp55.750.000</div>
+  </div>
+
+  <h2>8. Cara Cepat Mengerjakan Soal PPh 22</h2>
+  <div class="card">
+    <div class="flow">
+      <div>1. Siapa Pemungutnya?</div>
+      <div class="arrow">→</div>
+      <div>2. Transaksi Apa?</div>
+      <div class="arrow">→</div>
+      <div>3. Cek Pengecualian</div>
+    </div>
+    <div class="flow">
+      <div>4. Cari Tarif</div>
+      <div class="arrow">→</div>
+      <div>5. Hitung</div>
+    </div>
+    <div class="formula">PPh 22 = Dasar Pengenaan Pajak × Tarif</div>
+    <p class="note">Berbeda dengan PPh 21 yang fokus pada orang pribadi + pekerjaan/jasa/kegiatan, PPh 22 fokus pada transaksi barang oleh pemungut tertentu.</p>
+  </div>
+
+  <h2>9. Peta Hafalan Tarif</h2>
+  <div class="card">
+    <table>
+      <tr><th>Transaksi</th><th class="num">Tarif</th></tr>
+      <tr><td>Pembelian barang oleh bendahara pemerintah</td><td class="num">1,5%</td></tr>
+      <tr><td>Bahan dari pedagang pengumpul</td><td class="num">0,25%</td></tr>
+      <tr><td>Semen</td><td class="num">0,25%</td></tr>
+      <tr><td>Kertas</td><td class="num">0,1%</td></tr>
+      <tr><td>Baja</td><td class="num">0,3%</td></tr>
+      <tr><td>Otomotif</td><td class="num">0,45%</td></tr>
+      <tr><td>Obat</td><td class="num">0,3%</td></tr>
+      <tr><td>Kendaraan bermotor</td><td class="num">0,45%</td></tr>
+      <tr><td>BBM / gas / pelumas</td><td class="num">0,25% / 0,3%</td></tr>
+      <tr><td>Komoditas tambang</td><td class="num">1,5%</td></tr>
+      <tr><td>Emas batangan</td><td class="num">0,45%</td></tr>
+      <tr><td>Barang sangat mewah</td><td class="num">5%</td></tr>
+      <tr><td>Ekspor</td><td class="num">1,5%</td></tr>
+      <tr><td>Impor</td><td class="num">0,5% / 2,5% / 7,5% / 10%</td></tr>
+    </table>
+    <p><strong>Trik menghafal:</strong> Pemerintah &amp; Tambang → 1,5% · Sangat mewah → 5% · Kendaraan &amp; Emas → 0,45% · Semen → 0,25% · Kertas → 0,1% · Baja &amp; Obat → 0,3%</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Latihan Cepat</h2>
+    <ol>
+      <li>Pemerintah membeli komputer Rp800 juta. Tarif 1,5%. Berapa PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Rp800.000.000 × 1,5% = <strong>Rp12.000.000</strong></p></details>
+      </li>
+      <li>Perusahaan membeli bahan dari pedagang pengumpul Rp400 juta. Tarif 0,25%. Berapa PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Rp400.000.000 × 0,25% = <strong>Rp1.000.000</strong></p></details>
+      </li>
+      <li>Perusahaan kertas menjual produk Rp5 miliar. Tarif 0,1%. Berapa PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Rp5.000.000.000 × 0,1% = <strong>Rp5.000.000</strong></p></details>
+      </li>
+      <li>Perusahaan menjual kendaraan Rp3 miliar. Tarif 0,45%. Berapa PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Rp3.000.000.000 × 0,45% = <strong>Rp13.500.000</strong></p></details>
+      </li>
+      <li>Perusahaan menjual barang sangat mewah Rp8 miliar. Tarif 5%. Berapa PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Rp8.000.000.000 × 5% = <strong>Rp400.000.000</strong></p></details>
+      </li>
+      <li>Bendahara pemerintah membeli barang Rp1,8 juta. Apakah dipungut PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Tidak — nilainya di bawah batas pengecualian Rp2.000.000, jadi <strong>bukan objek PPh 22</strong>.</p></details>
+      </li>
+      <li>Perusahaan membayar listrik Rp100 juta. Apakah dipungut PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Tidak — pemakaian listrik termasuk <strong>bukan objek PPh 22</strong>.</p></details>
+      </li>
+      <li>Perusahaan mengimpor barang Rp2 miliar dengan tarif 2,5%. Berapa PPh 22?
+        <details><summary>Lihat jawaban</summary><p>Rp2.000.000.000 × 2,5% = <strong>Rp50.000.000</strong></p></details>
+      </li>
+    </ol>
+  </div>
+
+  <footer>Disusun dari materi Corporate Tax Series — Accounting, Finance and Tax Path, MySkill.id. Ketentuan tarif dapat berubah sesuai regulasi terbaru; sesuaikan dengan peraturan perpajakan yang berlaku saat digunakan.</footer>
+
+</div>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,1759 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPh Umum - Studi Kasus & Panduan Lengkap</title>
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --light: #f5f3ff;
+            --dark: #1e1b4b;
+            --border: #e0e7ff;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        nav .container {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px 20px;
+        }
+        
+        nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.85rem;
+            border-radius: var(--radius);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding-bottom: 40px;
+        }
+        
+        section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        section h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background: #f3f4f6;
+        }
+        
+        /* Case Study Cards */
+        .case-study {
+            background: #f5f3ff;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .case-study h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .case-study .label {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Calculation Box */
+        .calculation {
+            background: #e0e7ff;
+            border: 1px solid #c7d2fe;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calculation .formula {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .calculation .result {
+            font-weight: bold;
+            color: var(--danger);
+            font-size: 1.1rem;
+        }
+        
+        /* Important Notes */
+        .note {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .note::before {
+            content: "⚠️ ";
+        }
+        
+        .note strong {
+            color: var(--warning);
+        }
+        
+        /* Success Box */
+        .success {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .success::before {
+            content: "✅ ";
+        }
+        
+        /* Info Box */
+        .info {
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .info::before {
+            content: "ℹ️ ";
+        }
+        
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .summary .total {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--danger);
+        }
+        
+        /* Key Point */
+        .key-point {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--info);
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-op { background: #dbeafe; color: #1e40af; }
+        .badge-badan { background: #dcfce7; color: #047857; }
+        .badge-final { background: #fef3c7; color: #92400e; }
+        .badge-kredit { background: #e0e7ff; color: #3730a3; }
+        .badge-ptkp { background: #f3e8ff; color: #6b21a8; }
+        .badge-21 { background: #dbeafe; color: #1e40af; }
+        .badge-22 { background: #dcfce7; color: #047857; }
+        .badge-23 { background: #fef3c7; color: #92400e; }
+        .badge-24 { background: #e0e7ff; color: #3730a3; }
+        .badge-25 { background: #f3e8ff; color: #6b21a8; }
+        .badge-26 { background: #fef2f2; color: #991b1b; }
+        .badge-29 { background: #f5f5f5; color: #374151; }
+        
+        /* Flowchart */
+        .flowchart {
+            background: #f8fafc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Tarif Table */
+        .tarif-table {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--radius);
+        }
+        
+        .tarif-table table td {
+            text-align: center;
+        }
+        
+        .tarif-table table th {
+            text-align: center;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>💜 PPh Umum - Studi Kasus & Panduan Lengkap</h1>
+                <p>Pajak Penghasilan - Subjek, Objek, PTKP, Tarif, Kredit Pajak, dan Perhitungan</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="no-print">
+        <div class="container">
+            <a href="#dasar" class="active">Dasar Hukum</a>
+            <a href="#subjek">Subjek Pajak</a>
+            <a href="#objek">Objek Pajak</a>
+            <a href="#ptkp">PTKP</a>
+            <a href="#tarif">Tarif</a>
+            <a href="#kredit">Kredit Pajak</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#jawaban">Kunci Jawaban</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        
+        <!-- DASAR HUKUM -->
+        <section id="dasar">
+            <h2>⚖️ Dasar Hukum PPh</h2>
+            <p><strong>Pajak Penghasilan</strong> merupakan kontribusi wajib kepada negara yang dikenakan pada penghasilan. Pada tahun 2023, pajak penghasilan memiliki kontribusi <strong>53%</strong> dari realisasi penerimaan pajak, yaitu <strong>Rp993,0 triliun</strong> dari total penerimaan <strong>Rp1.869,2 triliun</strong>.</p>
+            
+            <h3>📜 Riwayat Dasar Hukum:</h3>
+            <ol>
+                <li>UU Nomor 7 Tahun 1983 tentang Pajak Penghasilan</li>
+                <li>UU Nomor 7 Tahun 1991 tentang Perubahan atas UU Nomor 7 Tahun 1983</li>
+                <li>UU Nomor 10 Tahun 1994 tentang Perubahan atas UU Nomor 7 Tahun 1983</li>
+                <li>UU Nomor 17 Tahun 2000 tentang Perubahan Ketiga</li>
+                <li>UU Nomor 36 Tahun 2008 tentang Perubahan Keempat</li>
+                <li>UU Nomor 11 Tahun 2020 tentang Cipta Kerja</li>
+                <li><strong>UU Nomor 7 Tahun 2021 tentang Harmonisasi Peraturan Perpajakan (HPP)</strong></li>
+            </ol>
+        </section>
+        
+        <!-- SUBJEK PAJAK -->
+        <section id="subjek">
+            <h2>👥 Subjek Pajak</h2>
+            <p><strong>Subjek pajak</strong> adalah pihak yang memiliki potensi (atau memenuhi syarat) untuk membayar pajak. Subjek pajak baru wajib membayar pajak manakala kewajiban subjektif dan objektifnya telah terpenuhi.</p>
+            
+            <h3>📌 Pihak yang Menjadi Subjek Pajak:</h3>
+            <ol>
+                <li><strong>Orang Pribadi</strong> - Bertempat tinggal atau berada di Indonesia maupun di luar Indonesia</li>
+                <li><strong>Warisan yang belum terbagi</strong> - Harta peninggalan yang belum mengalami pembagian di antara ahli warisnya</li>
+                <li><strong>Badan</strong> - Sekumpulan orang dan/atau modal (PT, CV, Yayasan, dll.)</li>
+                <li><strong>Bentuk Usaha Tetap (BUT)</strong> - Entitas tempat usaha yang digunakan oleh orang/badan luar negeri di Indonesia</li>
+            </ol>
+            
+            <div class="info">
+                <h4>ℹ️ Contoh Warisan Belum Terbagi:</h4>
+                <p>Gedung yang disewakan, dari orang tua yang telah meninggal dan atas warisan tersebut belum dibagi kepada ahli warisnya. Ketika penyewa membayar uang sewa, pajak penghasilan tetap harus dipotong dan disetor atas nama orang tua tersebut.</p>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Contoh BUT:</h4>
+                <p>Mr. A (warga asing) mendirikan villa di Bali untuk disewakan. Karena Mr. A tidak tinggal di Indonesia, administrasi perpajakannya menggunakan NPWP BUT Mr. A.</p>
+            </div>
+            
+            <h3>🌍 Jenis Subjek Pajak:</h3>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subjek Pajak Dalam Negeri</th>
+                            <th>Subjek Pajak Luar Negeri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Orang Pribadi (WNI/WNA) tinggal di Indonesia >183 hari dalam 12 bulan</td>
+                            <td>Orang Pribadi yang tidak bertempat tinggal di Indonesia</td>
+                        </tr>
+                        <tr>
+                            <td>WNA di Indonesia dan mempunyai niat untuk bertempat tinggal</td>
+                            <td>WNA di Indonesia <183 hari dalam 12 bulan</td>
+                        </tr>
+                        <tr>
+                            <td>Badan yang didirikan/berkedudukan di Indonesia</td>
+                            <td>WNI di luar Indonesia >183 hari dalam 12 bulan</td>
+                        </tr>
+                        <tr>
+                            <td>Warisan yang belum terbagi sebagai satu kesatuan menggantikan yang berhak</td>
+                            <td>Badan yang tidak didirikan dan tidak berkedudukan di Indonesia</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="key-point">
+                <h4>🔑 Perbedaan Subjek Pajak dan Wajib Pajak:</h4>
+                <p><strong>Subjek Pajak:</strong> Pihak yang berpotensi membayar pajak (semua orang adalah subjek pajak)</p>
+                <p><strong>Wajib Pajak:</strong> Orang pribadi atau badan yang <strong>telah memenuhi kewajiban subjektif dan objektif</strong> untuk dikenakan pajak</p>
+            </div>
+            
+            <h3>🆔 NPWP (Nomor Pokok Wajib Pajak):</h3>
+            <p>Setiap wajib pajak yang terdaftar mendapat NPWP. Sejak UU HPP 2021:</p>
+            <ul>
+                <li>Orang pribadi: Menggunakan <strong>NIK (16 digit)</strong></li>
+                <li>Badan/WNA/Instansi Pemerintah: NPWP 15 digit ditambah <strong>0 di awal</strong> → 16 digit</li>
+            </ul>
+        </section>
+        
+        <!-- OBJEK PAJAK -->
+        <section id="objek">
+            <h2>💰 Objek Pajak</h2>
+            <p><strong>Objek PPh adalah Penghasilan.</strong> Menurut UU PPh Pasal 4 ayat (1), penghasilan adalah setiap tambahan kemampuan ekonomis yang diterima atau diperoleh Wajib Pajak, baik dari Indonesia maupun luar Indonesia, yang dapat dipakai untuk konsumsi atau menambah kekayaan, dengan nama dan dalam bentuk apapun.</p>
+            
+            <h3>📊 Klasifikasi Objek Pajak Pendapatan:</h3>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Contoh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pendapatan dari Aktivitas Pekerjaan</strong></td>
+                            <td>Gaji, honorarium, tunjangan, dll.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pendapatan dari Usaha dan Kegiatan Ekonomi</strong></td>
+                            <td>Pendapatan dari usaha jual beli, perdagangan, industri, dll.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pendapatan dari Investasi Modal</strong></td>
+                            <td>Bunga, dividen, royalti, sewa, keuntungan penjualan aset</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pendapatan Lainnya</strong></td>
+                            <td>Pembebasan utang, hadiah, dll.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>📌 Penghasilan Kena Pajak (PKP):</h3>
+            <p>PKP adalah jumlah penghasilan yang digunakan untuk menentukan pajak terutang. PKP inilah yang nantinya akan dikalikan dengan tarif pajak.</p>
+            
+            <h3>📊 Perhitungan PKP:</h3>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis WP</th>
+                            <th>Omzet</th>
+                            <th>Metode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">Orang Pribadi</td>
+                            <td>Pegawai & Pekerjaan Bebas</td>
+                            <td>Penghasilan bruto - biaya jabatan/iuran - PTKP</td>
+                        </tr>
+                        <tr>
+                            <td>Pedagang/UMKM</td>
+                            <td>
+                                <ul>
+                                    <li>Omzet < Rp4,8M: Tarif final 0,5% dari bruto</li>
+                                    <li>Omzet > Rp4,8M: Pembukuan (bruto - biaya)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Badan</td>
+                            <td>Omzet < Rp4,8M</td>
+                            <td>
+                                <ul>
+                                    <li>Pencatatan: Tarif final 0,5% dari bruto</li>
+                                    <li>Pembukuan: Bruto - biaya</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Omzet > Rp4,8M</td>
+                            <td>Pembukuan (bruto - biaya)</td>
+                        </tr>
+                        <tr>
+                            <td>BUT</td>
+                            <td>-</td>
+                            <td>Pembukuan (bruto - biaya)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- PTKP -->
+        <section id="ptkp">
+            <h2>🛡️ Penghasilan Tidak Kena Pajak (PTKP)</h2>
+            <p>PTKP adalah jumlah pendapatan wajib pajak pribadi yang dibebaskan dari PPh Pasal 21.</p>
+            
+            <div class="tarif-table">
+                <h3 style="text-align: center; color: var(--primary);">📋 Tabel PTKP 2026</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Jumlah (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Untuk setiap Wajib Pajak Orang Pribadi</td>
+                                <td><strong>54.000.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Tambahan untuk Wajib Pajak yang sudah menikah</td>
+                                <td><strong>4.500.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Tambahan untuk seorang istri (penghasilan digabung)</td>
+                                <td><strong>54.000.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Tambahan untuk setiap tanggungan (maksimal 3)</td>
+                                <td><strong>4.500.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="text-align: center; margin-top: 15px;"><strong>Contoh:</strong> Pak Budi (K/2) = Rp54.000.000 + Rp4.500.000 + (2 × Rp4.500.000) = <span class="badge badge-ptkp">Rp67.500.000</span></p>
+            </div>
+            
+            <h3>📌 Status PTKP:</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kode Status</th>
+                            <th>Keterangan</th>
+                            <th>Contoh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-ptkp">TK/0</span></td>
+                            <td>Tidak Kawin, 0 tanggungan</td>
+                            <td>Rp54.000.000</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-ptkp">K/0</span></td>
+                            <td>Kawin, 0 tanggungan</td>
+                            <td>Rp58.500.000</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-ptkp">K/1</span></td>
+                            <td>Kawin, 1 tanggungan</td>
+                            <td>Rp63.000.000</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-ptkp">K/2</span></td>
+                            <td>Kawin, 2 tanggungan</td>
+                            <td>Rp67.500.000</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-ptkp">K/3</span></td>
+                            <td>Kawin, 3 tanggungan</td>
+                            <td>Rp72.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- PENGURANG PENGHASILAN -->
+        <section>
+            <h2>📉 Pengurang Penghasilan</h2>
+            <p>Untuk menentukan PKP bagi WP yang melakukan pembukuan, dihitung dari penghasilan bruto dikurangi biaya 3M:</p>
+            
+            <div class="success">
+                <h4>✅ Biaya 3M (Memenuhi Syarat):</h4>
+                <ol>
+                    <li><strong>Mendapatkan</strong> penghasilan</li>
+                    <li><strong>Menagih</strong> penghasilan</li>
+                    <li><strong>Memelihara</strong> penghasilan</li>
+                </ol>
+            </div>
+            
+            <h3>📋 Biaya yang Termasuk 3M:</h3>
+            <ol>
+                <li>Biaya yang secara langsung/tidak langsung berkaitan dengan kegiatan usaha</li>
+                <li>Penyusutan dan amortisasi</li>
+                <li>Iuran dana pensiun</li>
+                <li>Kerugian atas penjualan/pengalihan harta</li>
+                <li>Kerugian selisih kurs mata uang asing</li>
+                <li>Biaya penelitian dan pengembangan yang dilakukan di Indonesia</li>
+                <li>Biaya beasiswa, magang, dan pelatihan</li>
+                <li>Piutang yang nyata-nyata tak tertagih (dengan syarat)</li>
+                <li>Sumbangan bencana nasional (diatur PP)</li>
+                <li>Sumbangan penelitian & pengembangan (diatur PP)</li>
+                <li>Biaya pembangunan infrastruktur sosial (diatur PP)</li>
+                <li>Sumbangan fasilitas pendidikan (diatur PP)</li>
+                <li>Sumbangan pembinaan olahraga (diatur PP)</li>
+                <li>Biaya penggantian/imbalan dalam bentuk natura</li>
+            </ol>
+            
+            <div class="note">
+                <h4>⚠️ Biaya yang TIDAK Dapat Dikurangkan:</h4>
+                <ul>
+                    <li>Sumbangan yang tidak memenuhi ketentuan</li>
+                    <li>Denda pajak</li>
+                    <li>Biaya pribadi/pengeluaran non-usaha</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- TARIF -->
+        <section id="tarif">
+            <h2>💵 Tarif PPh</h2>
+            
+            <h3>👤 Wajib Pajak Orang Pribadi (Pasal 17 UU PPh):</h3>
+            <div class="tarif-table">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lapisan PKP</th>
+                                <th>Tarif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sampai Rp60.000.000</td>
+                                <td><strong>5%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Di atas Rp60.000.000 s.d Rp250.000.000</td>
+                                <td><strong>15%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Di atas Rp250.000.000 s.d Rp500.000.000</td>
+                                <td><strong>25%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Di atas Rp500.000.000 s.d Rp5.000.000.000</td>
+                                <td><strong>30%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Di atas Rp5.000.000.000</td>
+                                <td><strong>35%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="text-align: center; color: var(--warning);"><strong>⚠️ Tarif Progresif - Jangan mengalikan seluruh PKP dengan satu tarif!</strong></p>
+            </div>
+            
+            <h3>🏢 Wajib Pajak Badan:</h3>
+            <div class="info">
+                <p><strong>Tarif umum:</strong> <span class="badge badge-badan">22%</span> dari Penghasilan Neto</p>
+                <p><strong>Fasilitas:</strong> Badan dengan peredaran bruto ≤ Rp50 miliar mendapatkan pengurangan tarif 50% (11%) untuk PKP dari bagian peredaran bruto sampai Rp4,8 miliar</p>
+                <p><strong>Catatan:</strong> Tarif 22% berlaku sejak tahun pajak 2020 (sebelumnya 25%)</p>
+            </div>
+            
+            <h3>🏗️ Bentuk Usaha Tetap (BUT):</h3>
+            <div class="info">
+                <p>Perhitungan pajak dipersamakan dengan Wajib Pajak Badan (22%)</p>
+                <p>Jika terdapat laba setelah pajak yang tidak diinvestasikan kembali di Indonesia, dikenakan PPh Pasal 26 sebesar <span class="badge badge-26">20%</span> atau sesuai P3B</p>
+            </div>
+            
+            <h3>💰 Tarif Final UMKM (PP 55/2022):</h3>
+            <div class="success">
+                <p><strong>Tarif:</strong> <span class="badge badge-final">0,5%</span> dari peredaran bruto</p>
+                <p><strong>Syarat:</strong> Peredaran bruto ≤ Rp4,8 miliar per tahun</p>
+                <p><strong>Khusus OP:</strong> Peredaran bruto sampai Rp500.000.000 <strong>tidak dikenai pajak</strong></p>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis WP</th>
+                            <th>Jangka Waktu Tarif Final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Orang Pribadi</td>
+                            <td>7 tahun sejak terdaftar, atau sejak 2018</td>
+                        </tr>
+                        <tr>
+                            <td>Badan (Koperasi, CV, Firma, BUMD, PT Perorangan)</td>
+                            <td>4 tahun sejak terdaftar, atau sejak 2018</td>
+                        </tr>
+                        <tr>
+                            <td>Badan (PT)</td>
+                            <td>3 tahun sejak terdaftar, atau sejak 2018</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- JENIS PAJAK TERUTANG -->
+        <section>
+            <h2>📋 Jenis Pajak Terutang</h2>
+            <p><strong>Pajak Terutang</strong> adalah kewajiban pembayaran pajak yang harus diselesaikan pada suatu waktu tertentu (Masa Pajak, Tahun Pajak, atau Bagian Tahun Pajak).</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis PPh</th>
+                            <th>Deskripsi</th>
+                            <th>Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PPh Pasal 21</strong></td>
+                            <td>Pemotongan penghasilan oleh pemberi kerja atas gaji/imbalan dari pekerjaan</td>
+                            <td><span class="badge badge-21">PPh 21</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 22</strong></td>
+                            <td>Pemotongan pajak oleh wajib pajak badan usaha tertentu (pengadaan barang, ekspor, impor)</td>
+                            <td><span class="badge badge-22">PPh 22</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 23</strong></td>
+                            <td>Pemotongan pajak oleh badan pemerintah/subjek pajak badan/BUT atas dividen, bunga, royalti, hadiah, sewa (selain tanah & bangunan), jasa</td>
+                            <td><span class="badge badge-23">PPh 23</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 24</strong></td>
+                            <td>Pemotongan pajak Wajib Pajak luar negeri selain BUT atas penghasilan dari Indonesia</td>
+                            <td><span class="badge badge-24">PPh 24</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 25</strong></td>
+                            <td>Pembayaran pajak penghasilan yang dilakukan secara diangsur per bulan</td>
+                            <td><span class="badge badge-25">PPh 25</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 26</strong></td>
+                            <td>Pemotongan pajak atas penghasilan yang diterima oleh Wajib Pajak luar negeri (BUT)</td>
+                            <td><span class="badge badge-26">PPh 26</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 29</strong></td>
+                            <td>Pelunasan jika terjadi kurang bayar saat pelaporan SPT Tahunan</td>
+                            <td><span class="badge badge-29">PPh 29</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 4(2)</strong></td>
+                            <td>Pemotongan pajak penghasilan yang bersifat final (bunga deposito, hadiah undian, transaksi saham, dll.)</td>
+                            <td><span class="badge badge-final">Final</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 15</strong></td>
+                            <td>Norma Penghitungan Khusus (pelayaran, penerbangan internasional, asuransi luar negeri, dll.)</td>
+                            <td><span class="badge badge-op">PPh 15</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- KREDIT PAJAK -->
+        <section id="kredit">
+            <h2>💳 Kredit Pajak</h2>
+            <p><strong>Kredit pajak</strong> adalah pelunasan pembayaran pajak dalam tahun berjalan, yang dapat diperhitungkan sebagai pengurang PPh yang terutang.</p>
+            
+            <div class="success">
+                <h4>✅ Manfaat Kredit Pajak:</h4>
+                <ol>
+                    <li><strong>Meredakan beban pajak</strong> - Mengurangi jumlah PPh terutang</li>
+                    <li><strong>Meningkatkan likuiditas</strong> - Dapat diklaim segera setelah dibayarkan</li>
+                    <li><strong>Meningkatkan kepatuhan pajak</strong> - Mendorong WP untuk patuh</li>
+                </ol>
+            </div>
+            
+            <h3>📌 Jenis-jenis Kredit Pajak:</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis</th>
+                            <th>Deskripsi</th>
+                            <th>Cara Pengajuan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-21">PPh 21</span></td>
+                            <td>Pajak yang dipotong dari gaji karyawan</td>
+                            <td>SPT Tahunan PPh OP</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-22">PPh 22</span></td>
+                            <td>Pajak yang dipotong dari pembayaran penyerahan barang/jasa</td>
+                            <td>SPT Masa PPh 22</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-23">PPh 23</span></td>
+                            <td>Pajak yang dipotong dari penghasilan modal dan jasa</td>
+                            <td>SPT Masa PPh 23</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-24">PPh 24</span></td>
+                            <td>Pajak yang dibayarkan di luar negeri</td>
+                            <td>SPT Tahunan PPh</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-kredit">Kredit Lainnya</span></td>
+                            <td>Kredit pajak khusus (penelitian, KEK, dll.)</td>
+                            <td>Sesuai peraturan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Pembayaran Pajak:</h4>
+                <p>Disetorkan ke Kas Negara melalui bank, kantor pos, atau tempat pembayaran lain dengan <strong>kode billing</strong>.</p>
+                <p>Pembayaran yang berhasil mendapatkan <strong>NTPN (Nomor Transaksi Perpajakan Negara)</strong>.</p>
+            </div>
+            
+            <div class="note">
+                <h4>⚠️ Catatan Penting:</h4>
+                <p><strong>Kredit pajak hanya berlaku untuk PPh yang tidak bersifat final.</strong></p>
+                <p>PPh Final (seperti PPh Pasal 4(2)) tidak dapat dikreditkan.</p>
+            </div>
+        </section>
+        
+        <!-- STUDI KASUS -->
+        <section id="studi-kasus">
+            <h2>📖 Studi Kasus Terintegrasi PPh Umum</h2>
+            <p><strong>Kasus:</strong> PT Arunika Nusantara dan Bapak Andi</p>
+            
+            <!-- PT Arunika -->
+            <div class="case-study">
+                <span class="label">PT Arunika Nusantara</span>
+                <p><strong>Profil:</strong> Perusahaan perdagangan dan jasa, berkedudukan di Indonesia, terdaftar sebagai Wajib Pajak Badan.</p>
+                <p><strong>Tahun Pajak:</strong> 2026</p>
+                <p><strong>Peredaran Bruto:</strong> Rp12.000.000.000</p>
+                
+                <h4>📊 Data Keuangan:</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Penjualan dalam negeri</td>
+                                <td>10.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Pendapatan jasa konsultasi</td>
+                                <td>2.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Penghasilan Bruto</strong></td>
+                                <td><strong>12.000.000.000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Beban pembelian barang dagangan</td>
+                                <td>6.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban gaji dan tunjangan</td>
+                                <td>1.200.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban sewa kantor</td>
+                                <td>400.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban listrik, internet, telekomunikasi</td>
+                                <td>200.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban penyusutan aset</td>
+                                <td>300.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Biaya promosi</td>
+                                <td>150.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Sumbangan (tidak memenuhi ketentuan)</td>
+                                <td>100.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Denda pajak</td>
+                                <td>50.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban lain-lain (berhubungan dengan usaha)</td>
+                                <td>100.000.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4>💰 Penghasilan Lain:</h4>
+                <ul>
+                    <li>Penghasilan bunga deposito: <strong>Rp100.000.000</strong> (telah dipotong PPh Final)</li>
+                    <li>Penghasilan dari luar negeri: <strong>Rp500.000.000</strong></li>
+                    <li>Pajak yang telah dibayar di luar negeri: <strong>Rp100.000.000</strong></li>
+                </ul>
+                
+                <h4>💳 Kredit Pajak 2026:</h4>
+                <ul>
+                    <li><span class="badge badge-22">PPh Pasal 22</span>: Rp75.000.000</li>
+                    <li><span class="badge badge-23">PPh Pasal 23</span>: Rp50.000.000</li>
+                    <li><span class="badge badge-25">PPh Pasal 25</span> (Angsuran): Rp300.000.000</li>
+                </ul>
+            </div>
+            
+            <!-- Bapak Andi -->
+            <div class="case-study">
+                <span class="label">Bapak Andi</span>
+                <p><strong>Status:</strong> Wajib Pajak Orang Pribadi Dalam Negeri, <span class="badge badge-ptkp">K/2</span></p>
+                
+                <h4>💰 Penghasilan 2026:</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sumber Penghasilan</th>
+                                <th>Nilai (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gaji sebagai direktur</td>
+                                <td>480.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Tunjangan</td>
+                                <td>60.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Honorarium sebagai pembicara seminar</td>
+                                <td>40.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Penghasilan sewa kendaraan</td>
+                                <td>30.000.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Penghasilan Bruto</strong></td>
+                                <td><strong>610.000.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>PPh Pasal 21 yang dipotong:</strong> Rp30.000.000</p>
+                <p><strong>Usaha sampingan:</strong> Perdagangan makanan, omzet setahun = <strong>Rp700.000.000</strong></p>
+            </div>
+            
+            <h3>❓ Pertanyaan:</h3>
+            
+            <h4>A. Subjek Pajak</h4>
+            <ol>
+                <li>Tentukan siapa yang termasuk subjek pajak dalam kasus tersebut.</li>
+                <li>Apakah PT Arunika Nusantara merupakan Subjek Pajak Dalam Negeri atau Luar Negeri?</li>
+                <li>Apakah Bapak Andi merupakan Subjek Pajak Dalam Negeri?</li>
+                <li>Jelaskan perbedaan <strong>subjek pajak</strong> dan <strong>Wajib Pajak</strong>.</li>
+            </ol>
+            
+            <h4>B. Objek Pajak</h4>
+            <p>Identifikasi apakah penghasilan berikut merupakan objek PPh:</p>
+            <ol>
+                <li>Penjualan barang PT Arunika</li>
+                <li>Pendapatan jasa konsultasi</li>
+                <li>Bunga deposito</li>
+                <li>Penghasilan dari luar negeri</li>
+                <li>Gaji Bapak Andi</li>
+                <li>Honorarium seminar</li>
+                <li>Penghasilan sewa kendaraan</li>
+                <li>Penghasilan usaha makanan</li>
+            </ol>
+            <p>Kemudian kelompokkan berdasarkan sumber penghasilan:</p>
+            <ul>
+                <li>Pekerjaan</li>
+                <li>Usaha</li>
+                <li>Investasi/modal</li>
+                <li>Penghasilan lainnya</li>
+            </ul>
+            
+            <h4>C. Penghasilan Neto PT Arunika</h4>
+            <p>Hitung:</p>
+            <ol>
+                <li>Total penghasilan bruto</li>
+                <li>Total biaya yang dapat dikurangkan</li>
+                <li>Biaya yang tidak dapat dikurangkan</li>
+                <li>Penghasilan neto fiskal sebelum memperhitungkan penghasilan yang dikenai PPh Final</li>
+            </ol>
+            
+            <h4>D. Penghasilan Kena Pajak PT Arunika</h4>
+            <p>Tentukan PKP PT Arunika dengan memperhatikan:</p>
+            <ul>
+                <li>Penghasilan bunga deposito yang bersifat final</li>
+                <li>Biaya yang tidak memenuhi ketentuan sebagai pengurang</li>
+                <li>Penghasilan dari luar negeri</li>
+                <li>Pajak yang telah dibayar di luar negeri</li>
+            </ul>
+            
+            <h4>E. PPh Badan Terutang</h4>
+            <p>Berdasarkan tarif umum PPh Badan <span class="badge badge-badan">22%</span>:</p>
+            <ol>
+                <li>Apakah PT Arunika berhak mendapatkan fasilitas pengurangan tarif?</li>
+                <li>Bagian PKP mana yang mendapatkan fasilitas?</li>
+                <li>Berapa PPh Badan terutang?</li>
+            </ol>
+            
+            <h4>F. Kredit Pajak PT Arunika</h4>
+            <p>Hitung kredit pajak yang dapat diperhitungkan dari:</p>
+            <ol>
+                <li>PPh Pasal 22</li>
+                <li>PPh Pasal 23</li>
+                <li>PPh Pasal 24</li>
+                <li>PPh Pasal 25</li>
+            </ol>
+            <p>Kemudian tentukan: <strong>PPh Kurang/Lebih Bayar = PPh Terutang - Kredit Pajak</strong></p>
+            <p>Jika kurang bayar, tentukan <span class="badge badge-29">PPh Pasal 29</span>.</p>
+            
+            <h4>G. PPh Pasal 24</h4>
+            <p>PT Arunika memperoleh penghasilan luar negeri Rp500.000.000, pajak yang dibayar Rp100.000.000.</p>
+            <ol>
+                <li>Apakah pajak luar negeri tersebut dapat menjadi kredit pajak?</li>
+                <li>Berapa maksimal kredit pajak yang dapat diperhitungkan?</li>
+                <li>Apakah seluruh Rp100 juta dapat dikreditkan?</li>
+            </ol>
+            
+            <h4>H. PPh Orang Pribadi (Bapak Andi)</h4>
+            <p>Hitung:</p>
+            <ol>
+                <li>Penghasilan bruto dari pekerjaan</li>
+                <li>Penghasilan neto dari pekerjaan</li>
+                <li>PTKP</li>
+                <li>Penghasilan Kena Pajak</li>
+                <li>PPh terutang menggunakan tarif progresif Pasal 17</li>
+                <li>Kurangi dengan PPh Pasal 21 yang telah dipotong</li>
+            </ol>
+            <p><strong>PTKP K/2:</strong> Rp54.000.000 + Rp4.500.000 + (2 × Rp4.500.000) = <span class="badge badge-ptkp">Rp67.500.000</span></p>
+            
+            <h4>I. Usaha Sampingan Bapak Andi</h4>
+            <p>Omzet usaha makanan: <strong>Rp700.000.000 per tahun</strong></p>
+            <ol>
+                <li>Apakah usaha tersebut dapat menggunakan tarif PPh Final 0,5%?</li>
+                <li>Apakah seluruh omzet dikenai tarif 0,5%?</li>
+                <li>Bagaimana perlakuan atas omzet sampai dengan Rp500.000.000 untuk WP Orang Pribadi?</li>
+                <li>Berapa PPh Final yang harus dibayar atas bagian omzet yang melebihi batas?</li>
+            </ol>
+            
+            <h4>J. Identifikasi Jenis PPh</h4>
+            <p>Tentukan jenis PPh yang paling tepat:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>Jenis PPh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PT membayar gaji karyawan</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Pembelian barang oleh pihak tertentu</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Pembayaran jasa kepada badan dalam negeri</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Pembayaran royalti kepada perusahaan dalam negeri</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Pembayaran penghasilan kepada WP luar negeri</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Angsuran pajak perusahaan</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Kurang bayar SPT Tahunan</td>
+                            <td>?</td>
+                        </tr>
+                        <tr>
+                            <td>Bunga deposito</td>
+                            <td>?</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Pilihan:</strong> PPh 21, PPh 22, PPh 23, PPh 24, PPh 25, PPh 26, PPh 29, PPh Final Pasal 4(2)</p>
+            
+            <h4>K. Studi Kasus Tambahan - WP Luar Negeri</h4>
+            <p>PT Arunika menggunakan jasa konsultan dari perusahaan yang tidak didirikan di Indonesia, pembayaran Rp200.000.000.</p>
+            <ol>
+                <li>Apakah pembayaran tersebut memiliki konsekuensi PPh?</li>
+                <li>Termasuk PPh Pasal berapa?</li>
+                <li>Siapa yang berkewajiban melakukan pemotongan?</li>
+                <li>Berapa PPh yang harus dipotong?</li>
+                <li>Bagaimana jika perusahaan luar negeri tersebut memiliki BUT di Indonesia?</li>
+            </ol>
+        </section>
+        
+        <!-- KUNCI JAWABAN -->
+        <section id="jawaban">
+            <h2>🔑 Kunci Jawaban & Pembahasan</h2>
+            
+            <!-- A. Subjek Pajak -->
+            <div class="case-study">
+                <span class="label">A. Subjek Pajak</span>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>Subjek pajak dalam kasus:</strong> PT Arunika Nusantara (badan), Bapak Andi (orang pribadi)</li>
+                        <li><strong>PT Arunika:</strong> <span class="badge badge-badan">Subjek Pajak Dalam Negeri</span> (badan yang didirikan/berkedudukan di Indonesia)</li>
+                        <li><strong>Bapak Andi:</strong> <span class="badge badge-op">Subjek Pajak Dalam Negeri</span> (WNI yang tinggal di Indonesia)</li>
+                        <li><strong>Perbedaan:</strong>
+                            <ul>
+                                <li><strong>Subjek Pajak:</strong> Pihak yang berpotensi membayar pajak (semua orang adalah subjek pajak)</li>
+                                <li><strong>Wajib Pajak:</strong> Pihak yang <strong>telah memenuhi kewajiban subjektif dan objektif</strong> untuk dikenakan pajak</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- B. Objek Pajak -->
+            <div class="case-study">
+                <span class="label">B. Objek Pajak</span>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <p><strong>Semua penghasilan dalam kasus merupakan objek PPh</strong>, karena memenuhi definisi penghasilan menurut Pasal 4(1) UU PPh.</p>
+                    
+                    <h4>📊 Klasifikasi:</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Penghasilan</th>
+                                    <th>Objek PPh?</th>
+                                    <th>Sumber</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Penjualan barang PT Arunika</td>
+                                    <td>✅ Ya</td>
+                                    <td>Usaha</td>
+                                </tr>
+                                <tr>
+                                    <td>Pendapatan jasa konsultasi</td>
+                                    <td>✅ Ya</td>
+                                    <td>Usaha</td>
+                                </tr>
+                                <tr>
+                                    <td>Bunga deposito</td>
+                                    <td>✅ Ya</td>
+                                    <td>Investasi/modal</td>
+                                </tr>
+                                <tr>
+                                    <td>Penghasilan dari luar negeri</td>
+                                    <td>✅ Ya</td>
+                                    <td>Usaha</td>
+                                </tr>
+                                <tr>
+                                    <td>Gaji Bapak Andi</td>
+                                    <td>✅ Ya</td>
+                                    <td>Pekerjaan</td>
+                                </tr>
+                                <tr>
+                                    <td>Honorarium seminar</td>
+                                    <td>✅ Ya</td>
+                                    <td>Pekerjaan</td>
+                                </tr>
+                                <tr>
+                                    <td>Penghasilan sewa kendaraan</td>
+                                    <td>✅ Ya</td>
+                                    <td>Investasi/modal</td>
+                                </tr>
+                                <tr>
+                                    <td>Penghasilan usaha makanan</td>
+                                    <td>✅ Ya</td>
+                                    <td>Usaha</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- C. Penghasilan Neto PT Arunika -->
+            <div class="case-study">
+                <span class="label">C. Penghasilan Neto PT Arunika</span>
+                <div class="calculation">
+                    <div><span class="formula">Total Penghasilan Bruto</span> = Rp10.000.000.000 + Rp2.000.000.000 = <span class="result">Rp12.000.000.000</span></div>
+                </div>
+                
+                <h4>📉 Biaya yang Dapat Dikurangkan:</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Beban pembelian barang dagangan</td>
+                                <td>6.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban gaji dan tunjangan</td>
+                                <td>1.200.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban sewa kantor</td>
+                                <td>400.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban listrik, internet, telekomunikasi</td>
+                                <td>200.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban penyusutan aset</td>
+                                <td>300.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Biaya promosi</td>
+                                <td>150.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>Beban lain-lain (berhubungan dengan usaha)</td>
+                                <td>100.000.000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Biaya Dapat Dikurangkan</strong></td>
+                                <td><strong>Rp8.350.000.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4>❌ Biaya yang TIDAK Dapat Dikurangkan:</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uraian</th>
+                                <th>Nilai (Rp)</th>
+                                <th>Alasan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sumbangan</td>
+                                <td>100.000.000</td>
+                                <td>Tidak memenuhi ketentuan</td>
+                            </tr>
+                            <tr>
+                                <td>Denda pajak</td>
+                                <td>50.000.000</td>
+                                <td>Denda pajak tidak dapat dikurangkan</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Biaya Tidak Dapat Dikurangkan</strong></td>
+                                <td><strong>Rp150.000.000</strong></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">Penghasilan Neto Fiskal</span> = Penghasilan Bruto - Biaya Dapat Dikurangkan</div>
+                    <div>= Rp12.000.000.000 - Rp8.350.000.000 = <span class="result">Rp3.650.000.000</span></div>
+                </div>
+            </div>
+            
+            <!-- D. Penghasilan Kena Pajak PT Arunika -->
+            <div class="case-study">
+                <span class="label">D. Penghasilan Kena Pajak PT Arunika</span>
+                <p><strong>Rekonsiliasi Fiskal:</strong></p>
+                <div class="info">
+                    <ol>
+                        <li><strong>Penghasilan bunga deposito (Rp100M):</strong> <span class="badge badge-final">PPh Final</span> → <strong>Tidak digabungkan</strong> ke PKP tarif umum</li>
+                        <li><strong>Biaya tidak dapat dikurangkan (Rp150M):</strong> <strong>Tidak boleh dikurangkan</strong> dari penghasilan</li>
+                        <li><strong>Penghasilan luar negeri (Rp500M):</strong> <strong>Digabungkan</strong> ke PKP</li>
+                    </ol>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">Penghasilan Neto Fiskal</span> = Rp3.650.000.000 (dari usaha) + Rp500.000.000 (luar negeri)</div>
+                    <div>= <span class="result">Rp4.150.000.000</span></div>
+                    <div style="margin-top: 10px;"><strong>PKP PT Arunika = Rp4.150.000.000</strong></div>
+                </div>
+                
+                <div class="note">
+                    <p><strong>⚠️ Catatan:</strong> Penghasilan bunga deposito yang bersifat final <strong>tidak digabungkan</strong> ke PKP tarif umum, dan pajaknya <strong>tidak dapat dikreditkan</strong>.</p>
+                </div>
+            </div>
+            
+            <!-- E. PPh Badan Terutang -->
+            <div class="case-study">
+                <span class="label">E. PPh Badan Terutang</span>
+                <div class="info">
+                    <h4>ℹ️ Analisis Fasilitas:</h4>
+                    <ul>
+                        <li><strong>Peredaran bruto PT Arunika:</strong> Rp12.000.000.000 (> Rp50M)</li>
+                        <li><strong>Fasilitas:</strong> Tidak berhak karena peredaran bruto > Rp50 miliar</li>
+                        <li><strong>Tarif berlaku:</strong> <span class="badge badge-badan">22%</span> (tidak mendapat pengurangan)</li>
+                    </ul>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">PPh Badan Terutang</span> = PKP × Tarif</div>
+                    <div>= Rp4.150.000.000 × 22%</div>
+                    <div>= <span class="result">Rp913.000.000</span></div>
+                </div>
+            </div>
+            
+            <!-- F. Kredit Pajak -->
+            <div class="case-study">
+                <span class="label">F. Kredit Pajak PT Arunika</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jenis Kredit</th>
+                                <th>Jumlah (Rp)</th>
+                                <th>Dapat Dikreditkan?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-22">PPh Pasal 22</span></td>
+                                <td>75.000.000</td>
+                                <td>✅ Ya</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-23">PPh Pasal 23</span></td>
+                                <td>50.000.000</td>
+                                <td>✅ Ya</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-24">PPh Pasal 24</span></td>
+                                <td>100.000.000</td>
+                                <td>✅ Ya (dengan batasan)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-25">PPh Pasal 25</span></td>
+                                <td>300.000.000</td>
+                                <td>✅ Ya</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Kredit Pajak</strong></td>
+                                <td><strong>Rp525.000.000</strong></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">PPh Kurang Bayar</span> = PPh Terutang - Kredit Pajak</div>
+                    <div>= Rp913.000.000 - Rp525.000.000</div>
+                    <div>= <span class="result">Rp388.000.000</span></div>
+                </div>
+                
+                <div class="success">
+                    <p><strong>✅ Kesimpulan:</strong> PT Arunika mengalami <span class="badge badge-29">PPh Kurang Bayar</span> sebesar <strong>Rp388.000.000</strong></p>
+                    <p><strong>PPh Pasal 29:</strong> Rp388.000.000 (harus disetor)</p>
+                </div>
+            </div>
+            
+            <!-- G. PPh Pasal 24 -->
+            <div class="case-study">
+                <span class="label">G. PPh Pasal 24</span>
+                <div class="info">
+                    <h4>ℹ️ Mekanisme PPh Pasal 24:</h4>
+                    <p>Pajak luar negeri pada prinsipnya <strong>dapat menjadi kredit pajak</strong>, tetapi <strong>tidak otomatis seluruhnya</strong>.</p>
+                    <p>Kredit dibatasi oleh <strong>batas maksimum</strong> sesuai mekanisme Pasal 24.</p>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">Penghasilan luar negeri</span> = Rp500.000.000</div>
+                    <div><span class="formula">PPh yang terutang atas penghasilan luar negeri</span> = Rp500.000.000 × 22% = Rp110.000.000</div>
+                    <div><span class="formula">Pajak yang dibayar di luar negeri</span> = Rp100.000.000</div>
+                    <div style="margin-top: 10px;"><strong>Batas maksimum kredit:</strong> Rp110.000.000</div>
+                    <div style="margin-top: 5px;"><strong>Kredit yang dapat diperhitungkan:</strong> <span class="result">Rp100.000.000</span> (karena ≤ Rp110M)</div>
+                </div>
+                
+                <div class="success">
+                    <ol>
+                        <li><strong>Dapat menjadi kredit?</strong> ✅ Ya</li>
+                        <li><strong>Maksimal kredit?</strong> Rp110.000.000</li>
+                        <li><strong>Seluruh Rp100M dapat dikreditkan?</strong> ✅ Ya (karena ≤ batas maksimum)</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- H. PPh Orang Pribadi (Bapak Andi) -->
+            <div class="case-study">
+                <span class="label">H. PPh Orang Pribadi (Bapak Andi)</span>
+                
+                <h4>📊 Perhitungan:</h4>
+                <div class="calculation">
+                    <div><span class="formula">1. Penghasilan Bruto dari Pekerjaan</span> = Gaji + Tunjangan + Honorarium + Sewa</div>
+                    <div>= Rp480.000.000 + Rp60.000.000 + Rp40.000.000 + Rp30.000.000</div>
+                    <div>= <span class="result">Rp610.000.000</span></div>
+                    <div style="margin-top: 10px;"><span class="formula">2. Penghasilan Neto dari Pekerjaan</span> = Penghasilan Bruto - Biaya Jabatan (5%)</div>
+                    <div>= Rp610.000.000 - (5% × Rp610.000.000)</div>
+                    <div>= Rp610.000.000 - Rp30.500.000 = <span class="result">Rp579.500.000</span></div>
+                    <div style="margin-top: 10px;"><span class="formula">3. PTKP (K/2)</span> = Rp54.000.000 + Rp4.500.000 + (2 × Rp4.500.000) = <span class="result">Rp67.500.000</span></div>
+                    <div style="margin-top: 10px;"><span class="formula">4. Penghasilan Kena Pajak</span> = Penghasilan Neto - PTKP</div>
+                    <div>= Rp579.500.000 - Rp67.500.000 = <span class="result">Rp512.000.000</span></div>
+                </div>
+                
+                <h4>💵 PPh Terutang (Tarif Progresif):</h4>
+                <div class="tarif-table">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Lapisan PKP</th>
+                                    <th>Jumlah (Rp)</th>
+                                    <th>Tarif</th>
+                                    <th>PPh (Rp)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sampai Rp60.000.000</td>
+                                    <td>60.000.000</td>
+                                    <td>5%</td>
+                                    <td>3.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Rp60.000.000 - Rp250.000.000</td>
+                                    <td>190.000.000</td>
+                                    <td>15%</td>
+                                    <td>28.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Rp250.000.000 - Rp500.000.000</td>
+                                    <td>262.000.000</td>
+                                    <td>25%</td>
+                                    <td>65.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>Di atas Rp500.000.000</td>
+                                    <td>12.000.000</td>
+                                    <td>30%</td>
+                                    <td>3.600.000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total PPh Terutang</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>Rp100.600.000</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">PPh Pasal 21 yang dipotong</span> = Rp30.000.000</div>
+                    <div><span class="formula">PPh yang harus dibayar</span> = Rp100.600.000 - Rp30.000.000 = <span class="result">Rp70.600.000</span></div>
+                </div>
+                
+                <div class="note">
+                    <p><strong>⚠️ Catatan:</strong> Tarif progresif - <strong>jangan mengalikan seluruh PKP dengan satu tarif!</strong></p>
+                </div>
+            </div>
+            
+            <!-- I. Usaha Sampingan -->
+            <div class="case-study">
+                <span class="label">I. Usaha Sampingan Bapak Andi</span>
+                <p><strong>Omzet:</strong> Rp700.000.000 per tahun</p>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>Dapat menggunakan tarif final 0,5%?</strong> ✅ Ya (omzet ≤ Rp4,8M)</li>
+                        <li><strong>Seluruh omzet dikenai 0,5%?</strong> ❌ Tidak</li>
+                        <li><strong>Perlakuan omzet ≤ Rp500M:</strong> <strong>Tidak dikenai pajak</strong> (untuk WP OP)</li>
+                        <li><strong>Bagian yang dikenai:</strong> Rp700.000.000 - Rp500.000.000 = <span class="badge badge-final">Rp200.000.000</span></li>
+                    </ol>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">PPh Final</span> = 0,5% × Rp200.000.000 = <span class="result">Rp1.000.000</span></div>
+                </div>
+                
+                <div class="info">
+                    <p><strong>ℹ️ Catatan:</strong> Berlaku dengan asumsi Bapak Andi memenuhi persyaratan untuk menggunakan skema PPh Final berdasarkan PP 55/2022.</p>
+                </div>
+            </div>
+            
+            <!-- J. Identifikasi Jenis PPh -->
+            <div class="case-study">
+                <span class="label">J. Identifikasi Jenis PPh</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaksi</th>
+                                <th>Jenis PPh</th>
+                                <th>Badge</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PT membayar gaji karyawan</td>
+                                <td><strong>PPh Pasal 21</strong></td>
+                                <td><span class="badge badge-21">PPh 21</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pembelian barang oleh pihak tertentu</td>
+                                <td><strong>PPh Pasal 22</strong></td>
+                                <td><span class="badge badge-22">PPh 22</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pembayaran jasa kepada badan dalam negeri</td>
+                                <td><strong>PPh Pasal 23</strong></td>
+                                <td><span class="badge badge-23">PPh 23</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pembayaran royalti kepada perusahaan dalam negeri</td>
+                                <td><strong>PPh Pasal 23</strong></td>
+                                <td><span class="badge badge-23">PPh 23</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pembayaran penghasilan kepada WP luar negeri</td>
+                                <td><strong>PPh Pasal 26</strong></td>
+                                <td><span class="badge badge-26">PPh 26</span></td>
+                            </tr>
+                            <tr>
+                                <td>Angsuran pajak perusahaan</td>
+                                <td><strong>PPh Pasal 25</strong></td>
+                                <td><span class="badge badge-25">PPh 25</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kurang bayar SPT Tahunan</td>
+                                <td><strong>PPh Pasal 29</strong></td>
+                                <td><span class="badge badge-29">PPh 29</span></td>
+                            </tr>
+                            <tr>
+                                <td>Bunga deposito</td>
+                                <td><strong>PPh Pasal 4(2) Final</strong></td>
+                                <td><span class="badge badge-final">Final</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- K. WP Luar Negeri -->
+            <div class="case-study">
+                <span class="label">K. Studi Kasus Tambahan - WP Luar Negeri</span>
+                <p><strong>Pembayaran:</strong> Rp200.000.000 kepada konsultan luar negeri (tidak memiliki BUT di Indonesia)</p>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>Konsekuensi PPh?</strong> ✅ Ya, dikenai PPh</li>
+                        <li><strong>Jenis PPh:</strong> <span class="badge badge-26">PPh Pasal 26</span></li>
+                        <li><strong>Pemotong:</strong> PT Arunika (sebagai pihak yang membayar)</li>
+                        <li><strong>PPh yang dipotong:</strong> Rp200.000.000 × 20% = <span class="result">Rp40.000.000</span></li>
+                        <li><strong>Jika memiliki BUT:</strong> Dipersamakan dengan subjek pajak badan, dikenai tarif 22% (bukan 20%)</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Flowchart -->
+            <div class="flowchart">
+📌 ALUR PERHITUNGAN PPh UMUM:
+
+TRANSAKSI
+      ↓
+SUBJEK PAJAK (OP/Badan/BUT)
+      ↓
+OBJEK PAJAK (Penghasilan)
+      ↓
+PENGHASILAN BRUTO
+      ↓
+BIAYA YANG DAPAT DIKURANGKAN (3M)
+      ↓
+PENGHASILAN NETO
+      ↓
+PTKP (untuk OP)
+      ↓
+PENGHASILAN KENA PAJAK (PKP)
+      ↓
+TARIF (Progresif/22%/Final)
+      ↓
+PPh TERUTANG
+      ↓
+KREDIT PAJAK (PPh 21/22/23/24/25)
+      ↓
+PPh KURANG/LEBIH BAYAR
+      ↓
+PPh PASAL 29 (jika kurang bayar)
+            </div>
+            
+            <div class="key-point">
+                <h4>🔑 Poin Penting yang Harus Dikuasai:</h4>
+                <ol>
+                    <li><strong>PPh Final vs PPh Tidak Final</strong> - Final tidak digabungkan ke PKP tarif umum</li>
+                    <li><strong>Objek pajak vs Bukan objek pajak</strong> - Tidak semua penghasilan adalah objek</li>
+                    <li><strong>Biaya fiskal vs Biaya nonfiskal</strong> - Tidak semua biaya dapat dikurangkan</li>
+                    <li><strong>PPh terutang vs Kredit pajak</strong> - Kredit pajak mengurangi PPh terutang</li>
+                    <li><strong>PPh 21/22/23/24/25/26/29</strong> - Mengenal jenis-jenis PPh</li>
+                    <li><strong>Tarif progresif OP</strong> - Bertingkat, jangan dikali semua dengan satu tarif</li>
+                    <li><strong>PTKP</strong> - Pengurang untuk WP Orang Pribadi</li>
+                    <li><strong>Fasilitas tarif badan</strong> - 50% untuk peredaran bruto ≤ Rp4,8M (jika ≤ Rp50M)</li>
+                </ol>
+            </div>
+        </section>
+        
+    </main>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

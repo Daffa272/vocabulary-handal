@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sesi 4 — Rasio Keuangan Perbankan</title>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+<style>
+  :root{
+    --bg:#0f172a; --card:#1e293b; --card2:#243447; --ink:#e2e8f0; --muted:#94a3b8;
+    --accent:#38bdf8; --green:#4ade80; --red:#f87171; --amber:#fbbf24; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:960px;margin:0 auto;padding:24px 20px 80px}
+  header{background:linear-gradient(135deg,#0ea5e9,#6366f1);padding:48px 20px;text-align:center;border-radius:0 0 24px 24px}
+  header h1{margin:0;font-size:2rem}
+  header p{opacity:.9;margin:.5rem 0 0}
+  .pill{display:inline-block;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:.8rem;margin-top:12px}
+  nav{position:sticky;top:0;background:rgba(15,23,42,.95);backdrop-filter:blur(6px);z-index:10;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;border-bottom:1px solid #334155}
+  nav a{color:var(--accent);text-decoration:none;font-size:.8rem;padding:4px 10px;border-radius:999px;background:#1e293b}
+  nav a:hover{background:#334155}
+  section{background:var(--card);border:1px solid #334155;border-radius:16px;padding:28px;margin:24px 0}
+  h2{margin-top:0;color:var(--accent);font-size:1.35rem;border-bottom:2px solid #334155;padding-bottom:8px}
+  h3{color:var(--purple);margin-bottom:.4rem}
+  .quote{border-left:4px solid var(--accent);background:#0f172a;padding:12px 16px;border-radius:0 10px 10px 0;margin:12px 0;font-style:italic}
+  .formula{background:#0b1220;border:1px dashed #38bdf8;border-radius:10px;padding:14px 18px;margin:12px 0;font-family:'Cascadia Code',Consolas,monospace;font-size:1.05rem;color:var(--amber)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+  th{background:#334155;text-align:left;padding:10px}
+  td{padding:9px 10px;border-bottom:1px solid #334155}
+  tr:nth-child(even) td{background:#1a2537}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .card{background:var(--card2);border-radius:12px;padding:16px 20px;margin:12px 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .kpi{background:var(--card2);border-radius:12px;padding:16px;text-align:center;border:1px solid #334155}
+  .kpi .label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .kpi .value{font-size:1.6rem;font-weight:700;color:var(--green)}
+  .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+  .chain span{background:#0b1220;border:1px solid #38bdf8;border-radius:999px;padding:6px 14px;font-size:.85rem}
+  .chain .arrow{color:var(--amber);border:none;background:none;padding:0}
+  .good{color:var(--green)} .bad{color:var(--red)} .warn{color:var(--amber)}
+  details{background:var(--card2);border-radius:10px;padding:12px 16px;margin:10px 0;border:1px solid #334155}
+  summary{cursor:pointer;font-weight:600;color:var(--accent)}
+  .calc{background:#0b1220;border-radius:10px;padding:14px 18px;margin:10px 0;font-family:Consolas,monospace;font-size:.95rem}
+  .calc b{color:var(--green)}
+  input,button,select{font-family:inherit}
+  .quiz-q{background:var(--card2);border-radius:12px;padding:16px;margin:12px 0;border:1px solid #334155}
+  .quiz-q p{margin:0 0 10px;font-weight:600}
+  .quiz-q input{width:100%;padding:8px 10px;border-radius:8px;border:1px solid #475569;background:#0f172a;color:var(--ink);margin-bottom:8px}
+  .quiz-q button{background:var(--accent);color:#082f49;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer}
+  .quiz-q .fb{margin-top:8px;font-size:.9rem}
+  .tag{font-size:.72rem;padding:2px 10px;border-radius:999px;background:#334155;color:var(--muted)}
+  footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:40px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏦 SESI 4 — RASIO KEUANGAN PERBANKAN</h1>
+  <p>Menganalisis kesehatan &amp; kinerja bank dari laporan keuangan</p>
+  <div class="pill">"Profit dari mana? Seberapa efisien? Berisiko? Likuid? Modal kuat?"</div>
+</header>
+
+<nav>
+  <a href="#kenapa">Kenapa Penting</a>
+  <a href="#framework">Framework</a>
+  <a href="#profit">Profitability</a>
+  <a href="#assetq">Asset Quality</a>
+  <a href="#eff">Efficiency</a>
+  <a href="#liq">Liquidity</a>
+  <a href="#funding">Funding</a>
+  <a href="#capital">Capital</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#skenario">Skenario</a>
+  <a href="#quiz">Kuis</a>
+  <a href="#case">Mini Case</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===================== KENAPA ===================== -->
+<section id="kenapa">
+  <h2>1–2. Kenapa Rasio Keuangan Bank Penting?</h2>
+  <p>"Bank A laba Rp10 triliun" — apakah itu bagus? Belum tahu. Laba absolut tidak cukup.</p>
+  <table>
+    <tr><th>Bank</th><th class="num">Laba</th><th class="num">Assets</th><th class="num">ROA</th></tr>
+    <tr><td>A</td><td class="num">Rp10 T</td><td class="num">Rp100 T</td><td class="num good">10%</td></tr>
+    <tr><td>B</td><td class="num">Rp15 T</td><td class="num">Rp300 T</td><td class="num warn">5%</td></tr>
+  </table>
+  <p>Bank B labanya lebih besar, tapi <b>asetnya jauh lebih besar</b> — jadi efektivitasnya lebih rendah. Kita perlu membandingkan profit dengan: assets, equity, earning assets, income, risk, capital.</p>
+</section>
+
+<!-- ===================== FRAMEWORK ===================== -->
+<section id="framework">
+  <h2>3. Framework: 6 Area Rasio Bank</h2>
+  <table>
+    <tr><th>Area</th><th>Rasio Utama</th></tr>
+    <tr><td>Profitability</td><td>ROA, ROE, NIM</td></tr>
+    <tr><td>Asset Quality</td><td>NPL, Credit Cost, Coverage</td></tr>
+    <tr><td>Efficiency</td><td>BOPO, CIR</td></tr>
+    <tr><td>Liquidity</td><td>LDR, LCR, NSFR</td></tr>
+    <tr><td>Funding</td><td>CASA, Cost of Funds</td></tr>
+    <tr><td>Capital</td><td>CAR</td></tr>
+  </table>
+  <div class="quote">Profit → Asset Quality → Efficiency → Liquidity → Funding → Capital. Jangan pernah baca satu rasio sendirian.</div>
+  <p>💡 Cara cepat mengingat: <b>P-M-C-E-L-F-C</b> → <b>P</b>rofitability, <b>M</b>argin, <b>C</b>redit Quality, <b>E</b>fficiency, <b>L</b>iquidity, <b>F</b>unding, <b>C</b>apital.</p>
+</section>
+
+<!-- ===================== PROFITABILITY ===================== -->
+<section id="profit">
+  <h2>4–10. Profitability: ROA, ROE, NIM, CASA, Cost of Funds</h2>
+
+  <h3>📐 ROA — Return on Assets</h3>
+  <div class="quote">Seberapa efektif bank menghasilkan laba dari aset yang dimilikinya?</div>
+  <div class="formula">ROA = Net Income ÷ Average Total Assets</div>
+  <div class="calc">Net Income Rp2 T, Average Assets Rp100 T → ROA = 2/100 = <b>2%</b><br>Artinya: setiap Rp100 aset menghasilkan ±Rp2 laba.</div>
+  <details><summary>Kenapa pakai <i>Average</i> Assets?</summary>
+    <p>Aset bank berubah sepanjang tahun. Awal tahun Rp90 T, akhir tahun Rp110 T → rata-rata = (90+110)/2 = Rp100 T. Lebih representatif daripada aset akhir tahun saja.</p>
+  </details>
+
+  <h3>📐 ROE — Return on Equity</h3>
+  <div class="quote">Seberapa besar return yang dihasilkan terhadap modal pemegang saham?</div>
+  <div class="formula">ROE = Net Income ÷ Average Equity</div>
+  <div class="calc">Net Income Rp2 T, Average Equity Rp20 T → ROE = 2/20 = <b>10%</b></div>
+
+  <h3>⚖️ ROA vs ROE — peran leverage</h3>
+  <div class="card">
+    <p>Assets Rp100 T = Liabilities 90 T + Equity 10 T. Net Income Rp2 T:</p>
+    <div class="calc">ROA = 2/100 = <b>2%</b> &nbsp;•&nbsp; ROE = 2/10 = <b>20%</b></div>
+    <p>ROE jauh lebih tinggi karena bank pakai <b>leverage</b>: Rp10 T equity mendukung Rp100 T assets.</p>
+    <p class="warn">⚠️ ROE tinggi ≠ otomatis sehat. ROE bisa naik karena laba naik, equity relatif kecil, atau leverage naik. <b>ROE harus dibaca bersama CAR dan risiko.</b></p>
+  </div>
+
+  <h3>📐 NIM — Net Interest Margin</h3>
+  <div class="quote">Seberapa besar margin bunga bersih dari earning assets?</div>
+  <div class="formula">NIM = Net Interest Income ÷ Average Earning Assets<br>NII = Interest Income − Interest Expense</div>
+  <div class="calc">Interest Income Rp8 T − Interest Expense Rp3 T = NII Rp5 T<br>NII 5 / Avg EA 100 = <b>NIM 5%</b></div>
+  <p>Faktor yang mempengaruhi NIM: <b>loan yield</b>, <b>cost of funds</b>, <b>komposisi earning assets</b> (loans, securities, placements), <b>komposisi funding</b> (giro, tabungan, deposito, wholesale).</p>
+
+  <h3>💰 CASA — Current Account + Savings Account (Giro + Tabungan)</h3>
+  <div class="formula">CASA Ratio = (Giro + Tabungan) ÷ Total Deposits</div>
+  <div class="calc">Deposits Rp100 T, Giro Rp30 T, Tabungan Rp40 T → CASA = 70/100 = <b>70%</b></div>
+  <table>
+    <tr><th>Funding</th><th class="num">Dana</th><th class="num">Cost</th></tr>
+    <tr><td>Giro</td><td class="num">Rp30 T</td><td class="num">1%</td></tr>
+    <tr><td>Tabungan</td><td class="num">Rp40 T</td><td class="num">2%</td></tr>
+    <tr><td>Deposito</td><td class="num">Rp30 T</td><td class="num">5%</td></tr>
+  </table>
+  <p>Proporsi dana murah tinggi → <b>cost of funds rendah → NIM lebih terjaga</b>. Tapi hubungannya tidak otomatis — tetap dipengaruhi pricing kredit, suku bunga pasar, dan struktur aset.</p>
+
+  <h3>💸 Cost of Funds</h3>
+  <div class="formula">CoF = Interest Expense ÷ Average Interest-Bearing Liabilities</div>
+  <div class="calc">Interest expense Rp4 T / Rp100 T = <b>4%</b></div>
+  <p>Funding makin mahal → tekanan ke margin bunga jika yield aset tidak ikut naik.</p>
+</section>
+
+<!-- ===================== ASSET QUALITY ===================== -->
+<section id="assetq">
+  <h2>11–16. Asset Quality: NPL, Credit Cost, Coverage</h2>
+
+  <h3>📉 NPL — Non-Performing Loan</h3>
+  <div class="formula">NPL = Non-Performing Loans ÷ Total Loans</div>
+  <div class="calc">NPL Rp2 T / Loans Rp100 T = <b>2%</b></div>
+  <div class="chain">
+    <span>NPL ↑</span><span class="arrow">→</span>
+    <span>Credit Loss ↑</span><span class="arrow">→</span>
+    <span>Provision/CKPN ↑</span><span class="arrow">→</span>
+    <span>Profit ↓</span><span class="arrow">→</span>
+    <span>Capital ↓</span>
+  </div>
+  <details><summary>Gross NPL vs Net NPL</summary>
+    <p><b>Gross NPL</b>: kredit bermasalah sebelum cadangan. <b>Net NPL</b>: setelah memperhitungkan coverage/CKPN. Selalu cek definisi di laporan bank/OJK.</p>
+  </details>
+
+  <h3>📉 Credit Cost</h3>
+  <div class="formula">Credit Cost = Credit Loss Expense ÷ Average Loans</div>
+  <div class="calc">Credit loss Rp500 M / Avg loans Rp100 T = <b>0,5%</b></div>
+
+  <h3>🎯 NPL ≠ Credit Cost</h3>
+  <div class="card">
+    <p>Bank A: NPL 1%, Credit Cost 0,3%. Bank B: NPL 1%, Credit Cost 1%. NPL sama, credit cost beda!</p>
+    <p>Penyebabnya: probability of default, severity of loss, collateral, recovery, provisioning, perubahan kualitas kredit, komposisi portofolio.</p>
+  </div>
+
+  <h3>🛡️ Loan Loss Coverage</h3>
+  <div class="formula">Coverage = CKPN (Loan Loss Allowance) ÷ NPL</div>
+  <div class="calc">NPL Rp2 T, CKPN Rp2,5 T → Coverage = 2,5/2 = <b>125%</b></div>
+  <p class="tag">Catatan: definisi coverage tiap bank bisa beda — jangan campur formula antarbank tanpa cek definisi.</p>
+</section>
+
+<!-- ===================== EFFICIENCY ===================== -->
+<section id="eff">
+  <h2>17–19. Efficiency: BOPO &amp; CIR</h2>
+  <h3>⚙️ BOPO</h3>
+  <div class="formula">BOPO = Operating Expenses ÷ Operating Income × 100%</div>
+  <div class="calc">Opex Rp4 T / Op. Income Rp5 T = <b>80%</b><br>Setiap Rp100 pendapatan operasional, biaya operasional ±Rp80.</div>
+  <p>BOPO ↓ → efisiensi membaik. BOPO ↑ → biaya relatif terhadap pendapatan naik. Tapi jangan menyimpulkan dari satu periode — bisa dipengaruhi income naik/turun, restructuring, investasi teknologi, ekspansi cabang, atau credit cost (tergantung definisi).</p>
+
+  <h3>⚙️ CIR — Cost to Income Ratio</h3>
+  <div class="formula">CIR = Operating Costs ÷ Operating Income</div>
+  <p>Konsepnya mirip BOPO, tapi <b>definisi komponen bisa berbeda</b> antar bank/laporan/analis. Jangan anggap BOPO dan CIR selalu identik.</p>
+</section>
+
+<!-- ===================== LIQUIDITY ===================== -->
+<section id="liq">
+  <h2>20–24. Liquidity: LDR, LCR, NSFR</h2>
+  <div class="quote">Bank bisa profitable tapi kena liquidity problem — karena pola short-term funding → long-term lending.</div>
+
+  <h3>💧 LDR — Loan to Deposit Ratio</h3>
+  <div class="formula">LDR = Total Loans ÷ Total Deposits × 100%</div>
+  <div class="calc">Loans Rp80 T / Deposits Rp100 T = <b>80%</b></div>
+  <div class="grid">
+    <div class="kpi"><div class="label">LDR Rendah</div><div style="font-size:.85rem">Konservatif, liquidity buffer besar, tapi asset utilization rendah</div></div>
+    <div class="kpi"><div class="label">LDR Tinggi</div><div style="font-size:.85rem">Agresif menyalurkan kredit, earning assets besar, tapi tekanan likuiditas jika funding tidak stabil</div></div>
+  </div>
+  <p>LDR tinggi tidak otomatis bagus/buruk — lihat bersama NIM, NPL, CASA, liquidity buffer, funding stability, capital.</p>
+
+  <h3>💧 LCR — Liquidity Coverage Ratio</h3>
+  <div class="formula">LCR = HQLA ÷ Net Cash Outflows (30 hari)</div>
+  <div class="calc">HQLA Rp120 T / Outflow Rp100 T = <b>120%</b></div>
+  <p>Tujuan: kemampuan bank bertahan menghadapi tekanan likuiditas <b>jangka pendek</b> (short-term resilience).</p>
+
+  <h3>💧 NSFR — Net Stable Funding Ratio</h3>
+  <div class="formula">NSFR = Available Stable Funding ÷ Required Stable Funding</div>
+  <p>Fokusnya lebih panjang: <b>stabilitas struktur pendanaan</b>.</p>
+  <div class="card"><b>LCR</b> → tahan liquidity stress jangka pendek &nbsp;|&nbsp; <b>NSFR</b> → struktur pendanaan stabil horizon lebih panjang.</div>
+</section>
+
+<!-- ===================== CAPITAL ===================== -->
+<section id="capital">
+  <h2>25–30. Capital: CAR, Buffer, CET1, dan hubungan dengan ROE</h2>
+
+  <h3>🏛️ CAR — Capital Adequacy Ratio</h3>
+  <div class="formula">CAR = Capital ÷ Risk Weighted Assets (ATMR)</div>
+  <div class="calc">Capital Rp15 T / RWA Rp100 T = <b>15%</b></div>
+
+  <h3>Kenapa RWA, bukan Total Assets?</h3>
+  <table>
+    <tr><th>Asset</th><th class="num">Nilai</th><th>Risiko</th></tr>
+    <tr><td>Cash</td><td class="num">Rp10 T</td><td class="good">Relatif rendah</td></tr>
+    <tr><td>Government securities</td><td class="num">Rp20 T</td><td class="warn">Tergantung karakteristik/regulasi</td></tr>
+    <tr><td>Corporate loans</td><td class="num">Rp30 T</td><td class="bad">Lebih tinggi</td></tr>
+    <tr><td>Risky loans</td><td class="num">Rp10 T</td><td class="bad">Lebih tinggi</td></tr>
+  </table>
+  <p>Tidak semua aset berisiko sama → regulator pakai <b>Risk Weighted Assets (RWA)</b>.</p>
+
+  <h3>Capital sebagai buffer</h3>
+  <div class="calc">Assets 100 T = Liab 90 T + Equity 10 T<br>Loss Rp3 T → Equity = 10 − 3 = <b class="warn">Rp7 T</b></div>
+  <p>Modal = <b>buffer penyerap kerugian</b>. Makin besar risiko yang ditanggung, makin penting kemampuan modal menyerap kerugian.</p>
+
+  <h3>CET1, Tier 1, Total Capital</h3>
+  <ul>
+    <li><b>CET1</b> (Common Equity Tier 1): modal kualitas tertinggi untuk menyerap kerugian.</li>
+    <li><b>Tier 1</b>: modal inti.</li>
+    <li><b>Total Capital</b>: mencakup komponen modal yang memenuhi persyaratan permodalan regulasi.</li>
+  </ul>
+  <div class="card warn">⚠️ ROE &amp; CAR: leverage naik → assets naik relatif ke equity → ROE bisa naik, tapi sensitivitas terhadap kerugian naik dan capital buffer tertekan. <b>Selalu baca ROE bersama CAR.</b></div>
+</section>
+
+<!-- ===================== DASHBOARD ===================== -->
+<section id="dashboard">
+  <h2>31–32. Banking Ratio Dashboard</h2>
+  <table>
+    <tr><th>Area</th><th>Ratio</th><th>Pertanyaan</th></tr>
+    <tr><td>Profitability</td><td>ROA</td><td>Seberapa efektif aset menghasilkan profit?</td></tr>
+    <tr><td>Profitability</td><td>ROE</td><td>Seberapa besar return terhadap equity?</td></tr>
+    <tr><td>Margin</td><td>NIM</td><td>Seberapa besar margin bunga bersih?</td></tr>
+    <tr><td>Asset Quality</td><td>NPL</td><td>Bagaimana kualitas kredit?</td></tr>
+    <tr><td>Credit Risk</td><td>Credit Cost</td><td>Seberapa besar beban risiko kredit?</td></tr>
+    <tr><td>Coverage</td><td>Coverage</td><td>Seberapa besar cadangan dibanding NPL?</td></tr>
+    <tr><td>Efficiency</td><td>BOPO / CIR</td><td>Seberapa efisien operasi?</td></tr>
+    <tr><td>Liquidity</td><td>LDR / LCR</td><td>Seberapa besar deposit disalurkan? Kuatkah short-term stress resilience?</td></tr>
+    <tr><td>Funding</td><td>CASA / NSFR</td><td>Seberapa besar dana murah? Stabilkah struktur funding?</td></tr>
+    <tr><td>Capital</td><td>CAR</td><td>Seberapa kuat modal terhadap RWA?</td></tr>
+  </table>
+  <div class="quote">Contoh: ROE 20% kelihatan menarik → cek ROA (1,2%), NIM (4,5%), NPL (3,5%), credit cost (2%), CAR (14%). Baru lengkap gambarnya.</div>
+</section>
+
+<!-- ===================== CONTOH ANALISIS ABC ===================== -->
+<section>
+  <h2>33–34. Contoh Analisis Bank ABC</h2>
+  <p>Data: Avg Assets 200 T • Net Income 3 T • Avg Equity 25 T • NII 8 T • Avg EA 160 T • NPL 4 T • Loans (utk NPL) 100 T • Opex 6 T • Op. Income 12 T • Loans 120 T • Deposits 150 T • CASA 75 T • Capital 20 T • RWA 140 T</p>
+  <div class="grid">
+    <div class="kpi"><div class="label">ROA</div><div class="value">1,5%</div><div class="calc" style="border:none;background:none;padding:4px 0">3/200</div></div>
+    <div class="kpi"><div class="label">ROE</div><div class="value">12%</div><div class="calc" style="border:none;background:none;padding:4px 0">3/25</div></div>
+    <div class="kpi"><div class="label">NIM</div><div class="value">5%</div><div class="calc" style="border:none;background:none;padding:4px 0">8/160</div></div>
+    <div class="kpi"><div class="label">NPL</div><div class="value" style="color:var(--red)">4%</div><div class="calc" style="border:none;background:none;padding:4px 0">4/100</div></div>
+    <div class="kpi"><div class="label">BOPO</div><div class="value">50%</div><div class="calc" style="border:none;background:none;padding:4px 0">6/12</div></div>
+    <div class="kpi"><div class="label">LDR</div><div class="value">80%</div><div class="calc" style="border:none;background:none;padding:4px 0">120/150</div></div>
+    <div class="kpi"><div class="label">CASA</div><div class="value">50%</div><div class="calc" style="border:none;background:none;padding:4px 0">75/150</div></div>
+    <div class="kpi"><div class="label">CAR</div><div class="value">14,29%</div><div class="calc" style="border:none;background:none;padding:4px 0">20/140</div></div>
+  </div>
+  <ul>
+    <li><b>Profitability</b> sehat: ROA 1,5%, ROE 12%.</li>
+    <li><b>NIM 5%</b> berdasarkan denominator earning assets contoh.</li>
+    <li><b class="warn">NPL 4% perlu perhatian</b> — dampak akhirnya belum bisa dinilai tanpa coverage, credit cost, collateral, recovery, loan classification.</li>
+    <li><b>BOPO 50%</b> relatif efisien; <b>LDR 80%</b> — masih perlu cek liquidity buffer; <b>CASA 50%</b>; <b>CAR 14,29%</b>.</li>
+  </ul>
+</section>
+
+<!-- ===================== SKENARIO ===================== -->
+<section id="skenario">
+  <h2>35–37. Hubungan Antar-Rasio: 3 Skenario</h2>
+
+  <h3>📉 Skenario 1 — Economic Slowdown</h3>
+  <div class="chain">
+    <span>Pendapatan debitur ↓</span><span class="arrow">→</span>
+    <span>NPL ↑</span><span class="arrow">→</span>
+    <span>ECL ↑</span><span class="arrow">→</span>
+    <span>Credit Cost ↑</span><span class="arrow">→</span>
+    <span>ROA ↓</span><span class="arrow">→</span>
+    <span>ROE ↓</span><span class="arrow">→</span>
+    <span>CAR ↓</span>
+  </div>
+
+  <h3>📈 Skenario 2 — Suku Bunga Naik</h3>
+  <div class="calc">Loan yield 8% − CoF 4% = spread <b>4%</b><br>CoF naik ke 6% → spread 8% − 6% = <b class="warn">2%</b> → NIM ↓</div>
+  <p>Tanpa penyesuaian pricing atau asset mix, profitability ikut tertekan.</p>
+
+  <h3>🚀 Skenario 3 — Credit Growth 20%</h3>
+  <div class="calc">Rp100 T × 1,20 = <b>Rp120 T</b></div>
+  <p>Growth tinggi, tapi harus ditanya: apakah kualitas tetap baik? Jika loan growth ↑ tapi NPL ↑ dan credit cost ↑ → pertumbuhan perlu dianalisis lebih lanjut. <b>Loan growth ≠ quality growth.</b></p>
+</section>
+
+<!-- ===================== 7 LANGKAH ===================== -->
+<section>
+  <h2>38–40. Analisis Bank dalam 7 Langkah + Cheat Sheet</h2>
+  <table>
+    <tr><th>#</th><th>Step</th><th>Lihat</th><th>Pertanyaan kunci</th></tr>
+    <tr><td>1</td><td><b>Profitability</b></td><td>ROA, ROE, Net Income</td><td>Profit seberapa efektif?</td></tr>
+    <tr><td>2</td><td><b>Margin</b></td><td>NIM, NII, CoF, CASA</td><td>Dari mana profit bunga berasal?</td></tr>
+    <tr><td>3</td><td><b>Asset Quality</b></td><td>NPL, Credit Cost, Coverage, Loan growth</td><td>Apakah growth menambah risiko?</td></tr>
+    <tr><td>4</td><td><b>Efficiency</b></td><td>BOPO, CIR, Opex</td><td>Berapa biaya per income?</td></tr>
+    <tr><td>5</td><td><b>Liquidity</b></td><td>LDR, LCR, NSFR, buffer</td><td>Mampu memenuhi kewajiban likuiditas?</td></tr>
+    <tr><td>6</td><td><b>Funding</b></td><td>CASA, Deposits, CoF, deposit growth</td><td>Dari mana dana, berapa mahal?</td></tr>
+    <tr><td>7</td><td><b>Capital</b></td><td>CAR, CET1, Tier 1, RWA</td><td>Capital buffer memadai?</td></tr>
+  </table>
+
+  <h3>📋 Cheat Sheet Formula</h3>
+  <table>
+    <tr><th>Ratio</th><th>Formula sederhana</th></tr>
+    <tr><td>ROA</td><td>Net Income / Average Assets</td></tr>
+    <tr><td>ROE</td><td>Net Income / Average Equity</td></tr>
+    <tr><td>NIM</td><td>NII / Average Earning Assets</td></tr>
+    <tr><td>NPL</td><td>NPL / Total Loans</td></tr>
+    <tr><td>Credit Cost</td><td>Credit Loss Expense / Average Loans</td></tr>
+    <tr><td>Coverage</td><td>CKPN / NPL</td></tr>
+    <tr><td>BOPO</td><td>Operating Expense / Operating Income</td></tr>
+    <tr><td>CIR</td><td>Operating Cost / Operating Income</td></tr>
+    <tr><td>LDR</td><td>Loans / Deposits</td></tr>
+    <tr><td>CASA</td><td>(Giro + Tabungan) / Deposits</td></tr>
+    <tr><td>LCR</td><td>HQLA / Net Cash Outflow 30 hari</td></tr>
+    <tr><td>NSFR</td><td>Available / Required Stable Funding</td></tr>
+    <tr><td>CAR</td><td>Capital / RWA</td></tr>
+  </table>
+  <p class="tag">Semua formula di atas adalah versi pembelajaran yang disederhanakan. Untuk analisis laporan bank sebenarnya, gunakan definisi laporan keuangan, laporan publikasi, atau ketentuan regulator yang berlaku.</p>
+</section>
+
+<!-- ===================== QUIZ ===================== -->
+<section id="quiz">
+  <h2>42. Active Recall — Kuis Interaktif</h2>
+  <p>Jawab dulu, lalu cek. Soal isian angka akan dicek otomatis.</p>
+  <div id="quizBox"></div>
+</section>
+
+<!-- ===================== MINI CASE ===================== -->
+<section id="case">
+  <h2>43. Mini Case — Bank XYZ (Integrated Banking Analysis)</h2>
+  <p>Data: Net Income 4 T • Avg Assets 250 T • Avg Equity 40 T • NII 10 T • Avg EA 200 T • NPL 5 T • Loans (NPL basis) 125 T • Opex 7 T • Op. Income 14 T • Loans 150 T • Deposits 200 T • Giro+Tabungan 120 T • Capital 25 T • RWA 180 T</p>
+  <div class="grid">
+    <div class="kpi"><div class="label">ROA</div><div class="value">1,6%</div><div class="calc" style="border:none;background:none;padding:4px 0">4/250</div></div>
+    <div class="kpi"><div class="label">ROE</div><div class="value">10%</div><div class="calc" style="border:none;background:none;padding:4px 0">4/40</div></div>
+    <div class="kpi"><div class="label">NIM</div><div class="value">5%</div><div class="calc" style="border:none;background:none;padding:4px 0">10/200</div></div>
+    <div class="kpi"><div class="label">NPL</div><div class="value" style="color:var(--red)">4%</div><div class="calc" style="border:none;background:none;padding:4px 0">5/125</div></div>
+    <div class="kpi"><div class="label">BOPO</div><div class="value">50%</div><div class="calc" style="border:none;background:none;padding:4px 0">7/14</div></div>
+    <div class="kpi"><div class="label">LDR</div><div class="value">75%</div><div class="calc" style="border:none;background:none;padding:4px 0">150/200</div></div>
+    <div class="kpi"><div class="label">CASA</div><div class="value">60%</div><div class="calc" style="border:none;background:none;padding:4px 0">120/200</div></div>
+    <div class="kpi"><div class="label">CAR</div><div class="value">13,9%</div><div class="calc" style="border:none;background:none;padding:4px 0">25/180</div></div>
+  </div>
+  <div class="quote">Kesimpulan harus dibuat dengan framework: Profitability → Margin → Asset Quality → Efficiency → Liquidity → Funding → Capital. Jangan berhenti di angka!</div>
+</section>
+
+<footer>
+  Sesi 4 — Rasio Keuangan Perbankan • Menghubungkan seluruh materi Sesi 1–4 menjadi satu kemampuan analisis bank.
+</footer>
+
+</div>
+
+<script>
+  // ================= QUIZ =================
+  const quiz = [
+    {q:"Apa perbedaan utama ROA dan ROE?", a:"ROA mengukur efektivitas aset menghasilkan laba (laba/average assets); ROE mengukur return terhadap modal pemegang saham (laba/average equity). ROE lebih tinggi dari ROA karena leverage."},
+    {q:"Net Income Rp2 T, Average Assets Rp100 T. ROA?", num:"2", suffix:"%", a:"ROA = 2/100 = 2%."},
+    {q:"Net Income Rp2 T, Average Equity Rp20 T. ROE?", num:"10", suffix:"%", a:"ROE = 2/20 = 10%."},
+    {q:"Apa yang diukur oleh NIM?", a:"Margin bunga bersih (NII) yang diperoleh bank dari earning assets — seberapa besar selisih bunga masuk vs bunga keluar relatif terhadap aset produktif."},
+    {q:"NII Rp5 T, Average Earning Assets Rp100 T. NIM?", num:"5", suffix:"%", a:"NIM = 5/100 = 5%."},
+    {q:"Apa yang dimaksud NPL?", a:"Non-Performing Loan: kredit berkategori tidak lancar/wajib ditulis off, dibanding total loans. Indikator kualitas kredit."},
+    {q:"NPL Rp3 T, Total Loans Rp100 T. NPL ratio?", num:"3", suffix:"%", a:"NPL = 3/100 = 3%."},
+    {q:"Apa hubungan NPL dengan Credit Cost?", a:"NPL tinggi cenderung mendorong credit cost naik (via provisioning/ECL), tapi keduanya tidak identik — credit cost dipengaruhi PD, severity/LGD, collateral, recovery, dan komposisi portofolio. NPL ≠ Credit Cost."},
+    {q:"Apa fungsi CASA dalam analisis bank?", a:"Mengukur proporsi dana murah (giro+tabungan) terhadap total deposits. CASA tinggi → cost of funds cenderung lebih rendah → NIM lebih terjaga."},
+    {q:"Giro+Tabungan Rp60 T, Deposits Rp100 T. CASA ratio?", num:"60", suffix:"%", a:"CASA = 60/100 = 60%."},
+    {q:"Loans Rp80 T, Deposits Rp100 T. LDR?", num:"80", suffix:"%", a:"LDR = 80/100 = 80%."},
+    {q:"Apa perbedaan LCR dan NSFR secara konsep?", a:"LCR = HQLA / net cash outflow 30 hari → ketahanan tekanan likuiditas jangka pendek. NSFR = available/required stable funding → stabilitas struktur pendanaan jangka panjang."},
+    {q:"Apa fungsi CAR?", a:"Mengukur kecukupan modal bank terhadap risiko yang ditanggung (Capital / Risk Weighted Assets) — seberapa kuat modal menyerap potensi kerugian."},
+    {q:"Capital Rp15 T, RWA Rp100 T. CAR?", num:"15", suffix:"%", a:"CAR = 15/100 = 15%."},
+    {q:"Kenapa ROE tinggi belum tentu bank lebih baik?", a:"ROE bisa tinggi karena leverage naik atau equity relatif kecil, bukan karena profitabilitas aset membaik. ROE harus dibaca bersama CAR dan profil risiko."},
+    {q:"Jika NPL meningkat, dampaknya ke credit cost dan profit?", a:"Credit cost cenderung naik (provisioning/ECL naik) → profit turun (ROA & ROE turun) → pada akhirnya bisa menekan capital/CAR."},
+    {q:"Cost of funds naik, loan yield tetap. Apa yang terjadi pada NIM?", a:"Spread menyempit → NIM turun, dan jika tidak ada penyesuaian pricing atau asset mix, profitability ikut tertekan."},
+    {q:"Kenapa loan growth tidak boleh dianalisis sendirian?", a:"Growth tinggi bisa didapat dengan menurunkan standar kredit → NPL dan credit cost bisa naik setelahnya. Cek NPL, coverage, credit cost, dan komposisi kredit. Loan growth ≠ quality growth."},
+    {q:"Apa hubungan CASA dengan cost of funds?", a:"Giro dan tabungan umumnya berbiaya dana lebih rendah daripada deposito; proporsi CASA tinggi menurunkan blended cost of funds, mendukung NIM — meski tidak otomatis (dipengaruhi pricing, bunga pasar, struktur aset)."},
+    {q:"Susun urutan analisis bank dari: Profitability–Asset Quality–Liquidity–Capital–Efficiency–Funding–Margin.", a:"Profitability → Margin → Asset Quality (Credit) → Efficiency → Liquidity → Funding → Capital (P-M-C-E-L-F-C)."}
+  ];
+
+  const box = document.getElementById("quizBox");
+  const norm = s => s.toLowerCase().replace(/,/g,".").replace(/[^0-9.%a-z ]/g,"").trim();
+
+  quiz.forEach((item,i)=>{
+    const div = document.createElement("div");
+    div.className = "quiz-q";
+    let inner = `<p>${i+1}. ${item.q}</p>`;
+    if(item.num !== undefined){
+      inner += `<input type="text" placeholder="Ketik angka (contoh: 2 atau 2.5)" data-ans="${item.num}" />`;
+      inner += `<button>Cek Jawaban</button>`;
+    } else {
+      inner += `<details><summary>Lihat kunci jawaban</summary><p>${item.a}</p></details>`;
+    }
+    div.innerHTML = inner;
+
+    if(item.num !== undefined){
+      const btn = div.querySelector("button");
+      const inp = div.querySelector("input");
+      const check = ()=>{
+        const v = parseFloat(norm(inp.value));
+        const fb = div.querySelector(".fb") || (()=>{const f=document.createElement("div");f.className="fb";div.appendChild(f);return f;})();
+        if(!isNaN(v) && Math.abs(v - item.num) < 0.051){
+          fb.innerHTML = `<span class="good">✅ Benar! ${item.a}</span>`;
+        } else {
+          fb.innerHTML = `<span class="bad">❌ Belum tepat. Coba lagi, atau lihat kunci: <i>${item.a}</i></span>`;
+        }
+      };
+      btn.addEventListener("click", check);
+      inp.addEventListener("keydown", e=>{ if(e.key==="Enter") check(); });
+    }
+    box.appendChild(div);
+  });
+</script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

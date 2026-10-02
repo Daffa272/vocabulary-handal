@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pajak Internasional - Studi Kasus PT Global Nusantara Teknologi</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: 600;
+        }
+
+        section h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        section h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin: 1rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Code & Highlights */
+        .highlight {
+            background: #fef3c7;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .important {
+            background: #dbeafe;
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: #fef2f2;
+            padding: 1rem;
+            border-left: 4px solid var(--danger-color);
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Case Study Box */
+        .case-study {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid var(--primary-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .case-study h3 {
+            color: var(--primary-color);
+        }
+
+        /* Answer Box */
+        .answer-box {
+            background: #f0fdf4;
+            border: 2px solid var(--success-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .answer-box h4 {
+            color: #065f46;
+        }
+
+        /* Formula */
+        .formula {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            background: #e2e8f0;
+            height: 200px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.25rem;
+            }
+
+            nav .nav-container {
+                padding: 0.5rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <nav class="no-print">
+        <div class="nav-container">
+            <a href="#pengertian">Pengertian</a>
+            <a href="#ketentuan">Ketentuan</a>
+            <a href="#subjek-pajak">Subjek Pajak</a>
+            <a href="#kredit-pajak">Kredit Pajak</a>
+            <a href="#p3b">P3B</a>
+            <a href="#transfer-pricing">Transfer Pricing</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#pertanyaan">Pertanyaan</a>
+            <a href="#kunci-jawaban">Kunci Jawaban</a>
+            <a href="#kesimpulan">Kesimpulan</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Pajak Internasional</h1>
+        <p class="subtitle">Corporate Tax Series - MySkill.id</p>
+    </header>
+
+    <main class="container">
+        <!-- Pengertian dan Konsep Dasar -->
+        <section id="pengertian">
+            <h2>📚 Pengertian dan Konsep Dasar Pajak Internasional</h2>
+            <p>Pada konsep dasar, suatu subjek dan objek pajak yang sama sebisa mungkin akan dihindarkan dari pengenaan pajak berganda. Misalnya kita tidak akan pernah menemukan PPN yang dikenakan pada masakan di restoran, karena telah dikenakan Pajak Restoran.</p>
+            <p>Begitu halnya dengan skala global, <strong>pajak internasional</strong> merupakan kesepakatan beberapa negara untuk menyetujui penghindaran pajak berganda. Ketentuan dan tarif ditentukan oleh negara-negara yang terkait. Kesepakatan ini dibuat untuk meningkatkan perekonomian dan tingkat investasi.</p>
+            <p>Indonesia sebagai negara yang memiliki banyak aktivitas internasional, memiliki perjanjian <strong>bilateral</strong> maupun <strong>multilateral</strong> dengan negara-negara lain. Dalam aktivitas internasional salah satunya adalah perdagangan internasional terkait impor dan ekspor, yang mengakibatkan salah satu dari negara akan memperoleh penghasilan yang nantinya akan dikenakan pajak internasional.</p>
+            <p>Indonesia telah membuat <strong>Perjanjian Penghindaran Pajak Berganda (P3B)</strong> atau sering disebut <em>tax treaty</em> dengan pihak negara lain. Adanya P3B ini mengatur lebih lanjut ketentuan perpajakan yang bersinggungan antar kedua negara.</p>
+        </section>
+
+        <!-- Ketentuan Pajak Internasional -->
+        <section id="ketentuan">
+            <h2>📋 Ketentuan Pajak Internasional</h2>
+            <p>Ketentuan pajak internasional diatur melalui peraturan perundangan domestik dan perjanjian pajak internasional. Di Indonesia, ketentuan ini diatur dalam beberapa pasal di <strong>UU PPh</strong>.</p>
+            
+            <h3>Ketentuan Domestik</h3>
+            <p>Ketentuan pajak internasional yang diatur melalui peraturan perundangan domestik di Indonesia terdapat dalam beberapa pasal di UU PPh:</p>
+            <ul>
+                <li><strong>Pasal 2:</strong> Mengatur subjek pajak dalam negeri, subjek pajak luar negeri, dan bentuk usaha tetap (BUT).</li>
+                <li><strong>Pasal 3:</strong> Mengatur subjek pajak yang tidak termasuk dalam subjek pajak.</li>
+                <li><strong>Pasal 5:</strong> Mengatur objek pajak BUT.</li>
+                <li><strong>Pasal 15:</strong> Mengatur aturan norma penghitungan khusus untuk menghitung penghasilan neto pelayaran, penerbangan internasional, dan kantor perwakilan dagang asing (KPDA).</li>
+                <li><strong>Pasal 18:</strong> Mengatur Debt Equity Ratio (DER), Controlled Foreign Company, Hubungan Istimewa, Prosedur Persetujuan Bersama dan Kesepakatan Harga Transfer, dan Special Purpose Company.</li>
+                <li><strong>Pasal 24:</strong> Mengatur kredit pajak luar negeri.</li>
+                <li><strong>Pasal 26:</strong> Mengatur objek pajak dari subjek pajak luar negeri.</li>
+                <li><strong>Pasal 32A:</strong> Mengatur kewenangan melakukan tax treaty.</li>
+            </ul>
+            
+            <h3>Tax Treaty / P3B</h3>
+            <p>Perjanjian pajak internasional yang disepakati bersama dengan suatu negara secara bilateral maupun multilateral mengenai penghindaran pengenaan pajak berganda. Kedudukan tax treaty atau P3B bersifat <em>lex specialis</em> terhadap undang-undang domestik. Oleh karena itu, jika terdapat ketentuan dalam undang-undang domestik yang bertentangan dengan ketentuan dalam P3B maka yang dimenangkan adalah ketentuan P3B.</p>
+        </section>
+
+        <!-- Subjek Pajak Luar Negeri -->
+        <section id="subjek-pajak">
+            <h2>🌍 Subjek Pajak Luar Negeri</h2>
+            <p>Subjek pajak luar negeri meliputi:</p>
+            
+            <h3>1. Orang Pribadi</h3>
+            <ul>
+                <li>Orang pribadi yang tidak bertempat tinggal di Indonesia.</li>
+                <li>Orang pribadi yang berada di Indonesia tidak lebih dari 183 hari dalam jangka waktu 12 bulan.</li>
+                <li>Orang pribadi yang melakukan kegiatan melalui BUT maupun tidak.</li>
+            </ul>
+            
+            <h3>2. Badan</h3>
+            <ul>
+                <li>Badan yang tidak didirikan dan tidak bertempat kedudukan di Indonesia.</li>
+                <li>Badan yang melakukan kegiatan melalui BUT maupun tidak.</li>
+            </ul>
+            
+            <h3>Pajak Internasional mengatur tentang:</h3>
+            <ul>
+                <li><strong>Wajib Pajak Dalam Negeri</strong> yang memperoleh penghasilan dari luar negeri. Melalui metode P3B pengakuan kredit pajak seluruhnya atau sebagian dari penghasilan yang didapat di luar negeri.</li>
+                <li><strong>Wajib Pajak Luar Negeri</strong> yang memperoleh penghasilan dari Indonesia.</li>
+                <li>Dalam bentuk BUT dipersamakan dengan badan, sehingga wajib melaksanakan kewajiban perpajakan sebagaimana mestinya wajib pajak badan di Indonesia.</li>
+                <li>Tidak dalam bentuk BUT penghasilan yang diperoleh akan dipotong/dipungut pajaknya oleh pemotong/pemungut pajak sesuai ketentuan PPh Pasal 26, atau sesuai dengan ketentuan dalam P3B sepanjang WPLN menyampaikan <strong>Surat Keterangan Domisili (SKD)</strong> WPLN.</li>
+            </ul>
+        </section>
+
+        <!-- Kredit Pajak Luar Negeri -->
+        <section id="kredit-pajak">
+            <h2>💳 Kredit Pajak Luar Negeri</h2>
+            <p>Kredit pajak luar negeri adalah fasilitas pajak yang diberikan kepada <strong>Wajib Pajak Dalam Negeri</strong> yang memiliki penghasilan dari luar negeri. Berdasarkan <strong>Pasal 24 UU PPh</strong>, pajak yang dibayar atau terutang di luar negeri atas penghasilan dari luar negeri yang diterima atau diperoleh Wajib Pajak dalam negeri boleh dikreditkan terhadap pajak yang terutang dalam tahun pajak yang sama.</p>
+            <p><strong>Besar kredit pajak</strong> adalah sebesar pajak penghasilan yang dibayar atau terutang di luar negeri, tetapi tidak boleh melebihi penghitungan pajak yang terutang berdasarkan UU PPh.</p>
+            
+            <h3>Sumber Kredit Pajak Luar Negeri</h3>
+            <p>Sumber penghasilan luar negeri yang dapat dikreditkan pajak luar negeri meliputi:</p>
+            <ul>
+                <li><strong>Saham dan sekuritas lainnya:</strong> Keuntungan dari pengalihan saham dan sekuritas lainnya yang diterima dari negara tempat badan penerbit saham / sekuritas lainnya didirikan atau berkedudukan.</li>
+                <li><strong>Bunga, royalti, dan sewa sehubungan dengan penggunaan harta gerak:</strong> Keuntungan dari penggunaan harta gerak yang diterima dari negara tempat pihak yang dibebani bunga, royalti, atau sewa tersebut berada.</li>
+                <li><strong>Sewa sehubungan dengan penggunaan harta tak gerak:</strong> Keuntungan dari penggunaan harta tak gerak yang diterima dari negara tempat harta tersebut terletak.</li>
+                <li><strong>Imbalan sehubungan dengan jasa, pekerjaan, dan kegiatan:</strong> Keuntungan dari jasa, pekerjaan, dan kegiatan yang diterima dari negara tempat pihak yang membayar bertempat kedudukan atau berada.</li>
+                <li><strong>Bentuk usaha tetap:</strong> Keuntungan dari bentuk usaha tetap yang diterima dari negara tempat bentuk usaha tetap tersebut menjalankan usaha.</li>
+                <li><strong>Pengalihan sebagian atau seluruh hak penambangan:</strong> Keuntungan dari pengalihan hak penambangan atau tanda turut serta dalam pembiayaan atau permodalan dalam perusahaan pertambangan yang diterima dari negara tempat lokasi penambangan berada.</li>
+                <li><strong>Keuntungan karena pengalihan harta tetap:</strong> Keuntungan dari pengalihan harta tetap yang diterima dari negara tempat harta tetap berada.</li>
+                <li><strong>Keuntungan pengalihan harta yang menjadi bagian dari suatu bentuk usaha tetap:</strong> Keuntungan dari pengalihan harta yang menjadi bagian dari suatu bentuk usaha tetap yang diterima dari negara tempat bentuk usaha tetap berada.</li>
+            </ul>
+            
+            <h3>Persyaratan Kredit Pajak Luar Negeri</h3>
+            <p>Untuk mengkreditkan pajak luar negeri, Wajib Pajak Dalam Negeri harus memiliki bukti pemenuhan pembayaran PPh Luar Negeri yang mencantumkan nama Wajib Pajak dan jumlah PPh luar negeri yang dipotong. Bukti tersebut dapat berupa:</p>
+            <ul>
+                <li>Salinan bukti pembayaran atau bukti pemotongan PPh Luar Negeri</li>
+                <li>Salinan bukti lainnya yang dapat menunjukkan adanya pembayaran atau pemotongan PPh Luar Negeri</li>
+            </ul>
+        </section>
+
+        <!-- P3B -->
+        <section id="p3b">
+            <h2>🤝 Perjanjian Penghindaran Pajak Berganda (P3B)</h2>
+            
+            <h3>Pembentukan P3B</h3>
+            <p>Sesuai dengan UU PPh, Pemerintah Indonesia berwenang untuk membentuk dan/atau melaksanakan perjanjian di bidang perpajakan dengan pemerintah negara mitra atau yurisdiksi mitra, baik secara bilateral maupun multilateral, dalam rangka:</p>
+            <ul>
+                <li>Penghindaran pajak berganda dan pencegahan pengelakan pajak;</li>
+                <li>Pencegahan penggerusan basis pemajakan dan pergeseran laba;</li>
+                <li>Pertukaran informasi perpajakan;</li>
+                <li>Bantuan penagihan pajak; dan</li>
+                <li>Kerja sama perpajakan lainnya</li>
+            </ul>
+            
+            <h3>Metode P3B</h3>
+            <p>Terdapat dua metode P3B yang diterapkan di banyak negara:</p>
+            <ol>
+                <li><strong>Metode Pembebasan:</strong> Metode pembebasan menghendaki suatu negara pemegang yurisdiksi pemajakan untuk rela melepaskan hak pemajakannya dan sepertinya mengakui pemajakan eksklusif di negara sumber. Pembebasan ini meliputi pembebasan subjek, objek, dan pajak.</li>
+                <li><strong>Metode Kredit:</strong> Metode yang mengakui kredit dari luar negeri sebagai pengurang pajak terutang dalam negeri. Hal ini diatur dalam Pasal 24 Undang-Undang PPh.</li>
+            </ol>
+            
+            <h3>Syarat Pemanfaatan P3B</h3>
+            <p>Terdapat perbedaan antara ketentuan yang diatur dalam UU PPh dan ketentuan dalam perjanjian penghindaran pajak berganda:</p>
+            <ul>
+                <li>Penerima penghasilan bukan subjek pajak dalam negeri Indonesia.</li>
+                <li>Wajib Pajak Luar Negeri (WPLN) menyampaikan <strong>Surat Keterangan Domisili (SKD)</strong> WPLN yang telah memenuhi persyaratan administratif dan persyaratan tertentu lainnya.</li>
+                <li>Tidak terjadi penyalahgunaan P3B</li>
+                <li>Penerima penghasilan merupakan <em>beneficial owner</em> dalam hal yang dipersyaratkan dalam P3B</li>
+            </ul>
+            <p><em>Dasar hukum: PER-10/PJ/2017</em></p>
+        </section>
+
+        <!-- Transfer Pricing -->
+        <section id="transfer-pricing">
+            <h2>🔄 Transfer Pricing</h2>
+            <p>Berdasarkan <strong>PMK Nomor 22 Tahun 2022</strong>, transfer pricing adalah harga dalam transaksi yang dipengaruhi hubungan istimewa.</p>
+            <p class="important">⚠️ Transfer pricing <strong>bukan merupakan kegiatan yang melanggar hukum</strong>, akan tetapi dalam pelaksanaannya harus tetap berpegang pada prinsip kewajaran dan kelaziman usaha (<em>Arm's Length Principle / ALP</em>).</p>
+            
+            <h3>Prinsip Kewajaran dan Kelaziman Usaha (Arm's Length Principle)</h3>
+            <p>Prinsip kewajaran dan kelaziman usaha diterapkan dengan cara membandingkan kondisi dan indikator harga transaksi yang dipengaruhi hubungan istimewa dengan kondisi dan indikator harga transaksi independen yang sebanding.</p>
+            
+            <h3>Hubungan Istimewa</h3>
+            <p>Hubungan Istimewa merupakan hubungan keterikatan antara satu pihak dengan pihak lainnya, yang mana dapat menjadikan satu pihak dapat mengendalikan pihak lainnya.</p>
+            <p>Berdasarkan <strong>Pasal 18 ayat (4) UU Pajak Penghasilan</strong>, bahwa Hubungan istimewa dapat timbul akibat:</p>
+            
+            <h4>1. Karena Kepemilikan</h4>
+            <p>Terdapat hubungan kepemilikan antara beberapa pihak, berupa penyertaan modal sebesar <strong>25% atau lebih</strong> secara langsung ataupun tidak langsung.</p>
+            
+            <h4>2. Karena Penguasaan</h4>
+            <p>Terjadi karena penguasaan melalui manajemen atau penggunaan teknologi walaupun tidak terdapat hubungan kepemilikan.</p>
+            
+            <h4>3. Karena Hubungan Keluarga</h4>
+            <p>Terdapat hubungan keluarga baik sedarah maupun semenda dalam garis keturunan lurus dan/atau ke samping satu derajat. Mencakup ayah, ibu, anak, saudara kandung, mertua, anak tiri, dan ipar.</p>
+            
+            <h3>Metode Penentuan Transfer Pricing</h3>
+            <ol>
+                <li><strong>Comparable Uncontrolled Price (CUP):</strong> Yaitu metode yang membandingkan harga suatu barang atau jasa yang terjadi dalam transaksi afiliasi dengan transaksi independen.</li>
+                <li><strong>Resale Price Method (RPM):</strong> Metode yang membandingkan laba kotor yang didapatkan dari transaksi afiliasi, atas produk yang dibeli dari pihak afiliasi, untuk kemudian dijual kepada pihak independen, dengan laba kotor yang didapatkan dari transaksi independen.</li>
+                <li><strong>Cost Plus (C+):</strong> Metode yang membandingkan mark-up atas biaya dalam transaksi afiliasi dengan mark-up atas biaya yang dikenakan dalam transaksi independen.</li>
+                <li><strong>Business Valuation:</strong> Metode dilakukan sesuai dengan ketentuan perpajakan yang mengatur mengenai standar penilaian yang berlaku, dan sesuai untuk karakteristik transaksi yang dipengaruhi hubungan istimewa.</li>
+                <li><strong>Metode Lainnya:</strong>
+                    <ul>
+                        <li>Metode pembagian laba (<em>profit split method</em>)</li>
+                        <li>Metode laba bersih transaksional (<em>transactional net margin method</em>)</li>
+                        <li>Metode perbandingan transaksi independen (<em>comparable uncontrolled transaction method</em>)</li>
+                        <li>Metode dalam penilaian harta berwujud dan/atau harta tidak berwujud (<em>tangible asset and intangible asset valuation</em>)</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>Kriteria Pemilihan Metode</h3>
+            <p>Metode-metode yang dijelaskan sebelumnya, dapat dipilih berdasarkan pada pertimbangan ketepatan yang dinilai melalui beberapa kriteria:</p>
+            <ul>
+                <li><strong>Kesesuaian dengan Karakteristik Transaksi:</strong> Memastikan bahwa metode penentuan harga transfer yang dipilih sesuai dengan karakteristik transaksi yang terpengaruh oleh hubungan istimewa yang sedang diuji.</li>
+                <li><strong>Kelebihan dan Kekurangan Setiap Metode:</strong> Mempertimbangkan secara cermat keunggulan dan kelemahan setiap metode.</li>
+                <li><strong>Ketersediaan Transaksi Independen Sebagai Pembanding:</strong> Memastikan bahwa terdapat transaksi independen yang dapat diandalkan sebagai pembanding.</li>
+                <li><strong>Tingkat Kesebandingan:</strong> Menilai tingkat kesebandingan antara transaksi yang dipengaruhi oleh hubungan istimewa dengan transaksi independen.</li>
+                <li><strong>Keakuratan Penyesuaian:</strong> Memastikan bahwa penyesuaian yang dilakukan dapat mencerminkan dengan akurat perbedaan kondisi.</li>
+            </ul>
+            
+            <h3>Transfer Pricing Documentation</h3>
+            <p>Transfer Pricing (TP Doc) merupakan suatu kebijakan perusahaan yang terafiliasi dengan pihak hubungan istimewa, dalam menentukan harga transfer suatu transaksi, baik barang, jasa, transaksi finansial atau harta tak berwujud.</p>
+            <p>Menurut <strong>PMK 213/2016</strong>, terdapat tiga tipe TP Doc:</p>
+            <ol>
+                <li><strong>Dokumen induk (master file);</strong></li>
+                <li><strong>Dokumen lokal (local file);</strong></li>
+                <li><strong>Laporan per negara (Country by Country Report/CbCR).</strong></li>
+            </ol>
+            
+            <p><strong>Pihak yang wajib membuat TP Doc Dokumen Induk dan Dokumen Lokal</strong> adalah Wajib Pajak yang melakukan transaksi afiliasi dengan batasan:</p>
+            <ul>
+                <li>Peredaran bruto tahun sebelumnya melebihi <strong>Rp 50 miliar</strong></li>
+                <li>Memiliki nilai transaksi afiliasi tahun pajak sebelumnya lebih dari <strong>Rp20 miliar</strong> untuk transaksi barang berwujud</li>
+                <li>Lebih dari <strong>Rp5 miliar</strong> untuk masing-masing penyedia jasa, pembayaran bunga, pemanfaatan barang tidak berwujud, atau transaksi lainnya</li>
+                <li>Pihak afiliasi yang berada di negara dengan tarif PPh lebih rendah dari tarif PPh Umum di Indonesia</li>
+            </ul>
+            
+            <p><strong>Pihak yang wajib membuat TP Doc Dokumen Induk, Dokumen Lokal dan Laporan Per Negara:</strong></p>
+            <ul>
+                <li>Wajib pajak yang termasuk dalam entitas induk dari suatu grup usaha yang memiliki peredaran bruto konsolidasi paling sedikit <strong>Rp11 triliun</strong> pada tahun pajak bersangkutan.</li>
+            </ul>
+        </section>
+
+        <!-- Studi Kasus -->
+        <section id="studi-kasus">
+            <div class="case-study">
+                <h2>📊 STUDI KASUS PAJAK INTERNASIONAL</h2>
+                
+                <h3>A. Latar Belakang</h3>
+                <p><strong>PT Global Nusantara Teknologi</strong> merupakan perusahaan yang didirikan dan berkedudukan di Indonesia. Perusahaan bergerak dalam bidang teknologi informasi dan distribusi perangkat elektronik.</p>
+                <p>Dalam menjalankan usahanya, PT Global Nusantara Teknologi melakukan berbagai transaksi internasional:</p>
+                <ol>
+                    <li>Menerima jasa dari perusahaan Singapura;</li>
+                    <li>Memperoleh royalti dari perusahaan Malaysia;</li>
+                    <li>Membayar jasa konsultasi kepada perusahaan Jepang;</li>
+                    <li>Melakukan transaksi pembelian barang dari perusahaan afiliasi di Singapura;</li>
+                    <li>Memiliki hubungan istimewa dengan perusahaan asing;</li>
+                    <li>Memiliki cabang tetap di Thailand.</li>
+                </ol>
+                <p>Manajemen perusahaan meminta bagian pajak untuk melakukan analisis mengenai <strong>pajak internasional</strong> dan memastikan seluruh transaksi telah memenuhi ketentuan perpajakan Indonesia dan tax treaty yang relevan.</p>
+            </div>
+
+            <h3>B. Status Perusahaan</h3>
+            <p><strong>PT Global Nusantara Teknologi:</strong></p>
+            <ul>
+                <li>Didirikan di Indonesia;</li>
+                <li>Berkedudukan di Indonesia;</li>
+                <li>Menjalankan kegiatan usaha di Indonesia;</li>
+                <li>Memiliki penghasilan dari dalam dan luar negeri.</li>
+            </ul>
+            <p>Dengan demikian, untuk skenario kasus ini perusahaan merupakan <strong class="highlight">Wajib Pajak Dalam Negeri (WPDN)</strong>.</p>
+            <p>Sebagai WPDN, perusahaan pada prinsipnya perlu memperhatikan penghasilan yang berasal dari dalam maupun luar negeri dan mekanisme kredit pajak luar negeri sesuai ketentuan yang berlaku.</p>
+
+            <h3>C. Penghasilan dari Luar Negeri</h3>
+            <p>Pada tahun pajak 2025, PT Global Nusantara Teknologi memperoleh penghasilan dari beberapa negara.</p>
+            
+            <h4>1. Penghasilan Jasa dari Singapura</h4>
+            <p>Perusahaan memperoleh penghasilan jasa konsultasi teknologi dari perusahaan di Singapura:</p>
+            <table>
+                <tr><th>Penghasilan</th><th>Pajak Dipotong di Singapura</th></tr>
+                <tr><td>Rp1.000.000.000</td><td>Rp100.000.000</td></tr>
+            </table>
+            <p>Perusahaan memiliki bukti pemotongan pajak dari otoritas/pihak pemotong di Singapura.</p>
+
+            <h4>2. Royalti dari Malaysia</h4>
+            <p>PT Global Nusantara Teknologi memperoleh royalti atas penggunaan perangkat lunak dari perusahaan Malaysia:</p>
+            <table>
+                <tr><th>Penghasilan</th><th>Pajak Dipotong di Malaysia</th></tr>
+                <tr><td>Rp500.000.000</td><td>Rp50.000.000</td></tr>
+            </table>
+            <p>Perusahaan memiliki dokumen pemotongan pajak dari Malaysia.</p>
+
+            <h4>3. Penghasilan dari BUT di Thailand</h4>
+            <p>PT Global Nusantara Teknologi memiliki cabang tetap di Thailand.</p>
+            <table>
+                <tr><th>Laba Neto BUT</th><th>Pajak Penghasilan di Thailand</th></tr>
+                <tr><td>Rp800.000.000</td><td>Rp160.000.000</td></tr>
+            </table>
+
+            <h3>D. Penghasilan Dalam Negeri</h3>
+            <p>Selain penghasilan luar negeri, PT Global Nusantara Teknologi memperoleh penghasilan dalam negeri sebagai berikut:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis Penghasilan</th>
+                        <th>Nilai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Penjualan dalam negeri</td><td>Rp15.000.000.000</td></tr>
+                    <tr><td>Laba usaha Indonesia</td><td>Rp2.500.000.000</td></tr>
+                    <tr><td>Penghasilan jasa luar negeri</td><td>Rp1.000.000.000</td></tr>
+                    <tr><td>Royalti Malaysia</td><td>Rp500.000.000</td></tr>
+                    <tr><td>Laba BUT Thailand</td><td>Rp800.000.000</td></tr>
+                    <tr><td><strong>Total Penghasilan Neto</strong></td><td><strong>Rp4.800.000.000</strong></td></tr>
+                </tbody>
+            </table>
+            <p>Untuk mempermudah latihan, diasumsikan seluruh penghasilan luar negeri tersebut merupakan penghasilan yang harus diperhitungkan dalam mekanisme pajak Indonesia dan tidak terdapat penghasilan luar negeri yang dikecualikan.</p>
+
+            <h3>E. Pajak Penghasilan Badan</h3>
+            <p>Untuk tujuan latihan digunakan tarif PPh Badan: <strong>22%</strong></p>
+            <p><strong>Penghasilan neto yang menjadi dasar penghitungan sebelum kredit pajak luar negeri:</strong></p>
+            <ul>
+                <li>Laba usaha Indonesia = Rp2.500.000.000</li>
+                <li>Jasa Singapura = Rp1.000.000.000</li>
+                <li>Royalti Malaysia = Rp500.000.000</li>
+                <li>Laba BUT Thailand = Rp800.000.000</li>
+                <li><strong>Total = Rp4.800.000.000</strong></li>
+            </ul>
+            <div class="formula">
+                PPh Badan = 22% × Rp4.800.000.000 = <strong>Rp1.056.000.000</strong>
+            </div>
+
+            <h3>F. Kredit Pajak Luar Negeri</h3>
+            <p><strong>Pajak yang telah dibayar di luar negeri:</strong></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Negara</th>
+                        <th>Penghasilan</th>
+                        <th>Pajak Luar Negeri</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Singapura</td><td>Rp1.000.000.000</td><td>Rp100.000.000</td></tr>
+                    <tr><td>Malaysia</td><td>Rp500.000.000</td><td>Rp50.000.000</td></tr>
+                    <tr><td>Thailand</td><td>Rp800.000.000</td><td>Rp160.000.000</td></tr>
+                    <tr><td><strong>Total</strong></td><td><strong>Rp2.300.000.000</strong></td><td><strong>Rp310.000.000</strong></td></tr>
+                </tbody>
+            </table>
+            <p class="warning">⚠️ Perusahaan tidak boleh langsung menganggap seluruh Rp310.000.000 otomatis dapat dikreditkan. Kredit pajak luar negeri harus memperhatikan <strong>batas maksimum kredit pajak</strong> berdasarkan ketentuan PPh Indonesia.</p>
+
+            <h3>G. Perhitungan Batas Kredit Pajak Luar Negeri</h3>
+            <p>Untuk latihan sederhana, diasumsikan penghasilan neto luar negeri dapat dipisahkan per negara dan tidak terdapat perbedaan penghitungan lainnya.</p>
+            
+            <h4>1. Singapura</h4>
+            <ul>
+                <li>Penghasilan dari Singapura: <strong>Rp1.000.000.000</strong></li>
+                <li>Pajak Indonesia yang secara proporsional terkait penghasilan tersebut: <strong>22% × Rp1.000.000.000 = Rp220.000.000</strong></li>
+                <li>Pajak yang telah dibayar di Singapura: <strong>Rp100.000.000</strong></li>
+                <li>Kredit yang dapat diperhitungkan: <strong>Rp100.000.000</strong> (Karena Rp100.000.000 < Rp220.000.000)</li>
+            </ul>
+
+            <h4>2. Malaysia</h4>
+            <ul>
+                <li>Penghasilan: <strong>Rp500.000.000</strong></li>
+                <li>Batas pajak Indonesia: <strong>22% × Rp500.000.000 = Rp110.000.000</strong></li>
+                <li>Pajak yang dibayar di Malaysia: <strong>Rp50.000.000</strong></li>
+                <li>Kredit: <strong>Rp50.000.000</strong></li>
+            </ul>
+
+            <h4>3. Thailand</h4>
+            <ul>
+                <li>Penghasilan BUT: <strong>Rp800.000.000</strong></li>
+                <li>Batas pajak Indonesia: <strong>22% × Rp800.000.000 = Rp176.000.000</strong></li>
+                <li>Pajak yang telah dibayar di Thailand: <strong>Rp160.000.000</strong></li>
+                <li>Kredit: <strong>Rp160.000.000</strong></li>
+            </ul>
+
+            <h3>H. Total Kredit Pajak Luar Negeri</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Negara</th>
+                        <th>Pajak Dibayar</th>
+                        <th>Batas Kredit</th>
+                        <th>Kredit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Singapura</td><td>Rp100.000.000</td><td>Rp220.000.000</td><td>Rp100.000.000</td></tr>
+                    <tr><td>Malaysia</td><td>Rp50.000.000</td><td>Rp110.000.000</td><td>Rp50.000.000</td></tr>
+                    <tr><td>Thailand</td><td>Rp160.000.000</td><td>Rp176.000.000</td><td>Rp160.000.000</td></tr>
+                    <tr><td><strong>Total</strong></td><td><strong>Rp310.000.000</strong></td><td>-</td><td><strong>Rp310.000.000</strong></td></tr>
+                </tbody>
+            </table>
+            <p>Karena dalam skenario latihan seluruh pajak luar negeri masih berada di bawah batas kredit, maka:</p>
+            <div class="answer-box">
+                <h4>✅ PPh Pasal 24 yang dapat dikreditkan = Rp310.000.000</h4>
+            </div>
+
+            <h3>I. PPh Badan Setelah Kredit Pajak Luar Negeri</h3>
+            <ul>
+                <li>PPh Badan terutang: <strong>Rp1.056.000.000</strong></li>
+                <li>Kredit PPh Pasal 24: <strong>Rp310.000.000</strong></li>
+            </ul>
+            <div class="formula">
+                PPh setelah PPh 24 = Rp1.056.000.000 − Rp310.000.000 = <strong>Rp746.000.000</strong>
+            </div>
+            <p>Apabila perusahaan juga memiliki kredit PPh dalam negeri, maka kredit tersebut selanjutnya diperhitungkan sesuai ketentuan.</p>
+
+            <h3>J. Transaksi dengan Wajib Pajak Luar Negeri</h3>
+            <p>PT Global Nusantara Teknologi membayar jasa konsultasi kepada perusahaan Jepang sebesar: <strong>Rp500.000.000</strong></p>
+            <p>Perusahaan Jepang tidak memiliki BUT di Indonesia.</p>
+            <p>Bagian pajak harus menentukan:</p>
+            <ol>
+                <li>Apakah penghasilan tersebut merupakan objek PPh Pasal 26;</li>
+                <li>Apakah terdapat P3B Indonesia–Jepang;</li>
+                <li>Apakah perusahaan Jepang dapat menggunakan tarif berdasarkan P3B;</li>
+                <li>Apakah perusahaan Jepang memberikan <strong>Surat Keterangan Domisili (SKD)</strong> yang memenuhi persyaratan;</li>
+                <li>Apakah terdapat persyaratan <em>beneficial owner</em>;</li>
+                <li>Apakah transaksi tersebut memenuhi ketentuan <em>anti-treaty abuse</em>.</li>
+            </ol>
+            <p>Untuk latihan, diasumsikan ketentuan domestik menetapkan pemotongan PPh Pasal 26 sebesar <strong>20%</strong> apabila tarif P3B tidak dapat diterapkan.</p>
+            <div class="formula">
+                PPh 26 = 20% × Rp500.000.000 = <strong>Rp100.000.000</strong>
+            </div>
+            <p>Namun apabila berdasarkan P3B tarif yang memenuhi syarat lebih rendah, perusahaan dapat menerapkan tarif treaty tersebut sesuai persyaratan yang berlaku.</p>
+
+            <h3>K. Analisis P3B / Tax Treaty</h3>
+            <p>Dalam kasus ini terdapat beberapa transaksi yang melibatkan negara:</p>
+            <ul>
+                <li>Indonesia;</li>
+                <li>Singapura;</li>
+                <li>Malaysia;</li>
+                <li>Thailand;</li>
+                <li>Jepang.</li>
+            </ul>
+            <p>Perusahaan harus menentukan negara mana yang memiliki hak pemajakan.</p>
+            <p><strong>Tax treaty</strong> pada dasarnya digunakan untuk:</p>
+            <ol>
+                <li>Menghindari pajak berganda;</li>
+                <li>Menentukan pembagian hak pemajakan antarnegara;</li>
+                <li>Mencegah pengelakan pajak;</li>
+                <li>Memberikan kepastian perpajakan;</li>
+                <li>Mendukung kegiatan investasi dan perdagangan internasional.</li>
+            </ol>
+            <p>Apabila ketentuan domestik berbeda dengan P3B yang berlaku dan persyaratan treaty terpenuhi, ketentuan P3B dapat memberikan perlakuan khusus.</p>
+
+            <h3>L. Transfer Pricing</h3>
+            <p>PT Global Nusantara Teknologi memiliki perusahaan afiliasi di Singapura, yaitu <strong>Global Tech Singapore Pte. Ltd.</strong></p>
+            <p>PT Global Nusantara Teknologi membeli perangkat elektronik dari perusahaan tersebut.</p>
+            <p><strong>Pada tahun 2025:</strong></p>
+            <ul>
+                <li>Nilai transaksi afiliasi = <strong>Rp6.000.000.000</strong></li>
+                <li>Harga pembelian dari perusahaan afiliasi = <strong>Rp6.000.000.000</strong></li>
+            </ul>
+            <p>Bagian pajak menemukan bahwa harga barang yang sama dari pemasok independen hanya: <strong>Rp5.000.000.000</strong></p>
+            <p>Perusahaan menjelaskan bahwa harga lebih tinggi karena terdapat tambahan layanan teknis.</p>
+            <p>Manajemen kemudian meminta bagian pajak menentukan apakah harga transaksi tersebut sudah wajar.</p>
+
+            <h3>M. Analisis Arm's Length Principle</h3>
+            <p>Transfer pricing <strong>tidak otomatis merupakan pelanggaran</strong>. Permasalahan muncul apabila harga transaksi afiliasi tidak mencerminkan kondisi yang wajar.</p>
+            <p>Perusahaan harus menerapkan: <strong>Arm's Length Principle</strong></p>
+            <p>Artinya, transaksi pihak yang mempunyai hubungan istimewa harus dibandingkan dengan transaksi yang dilakukan oleh pihak independen dalam kondisi yang sebanding.</p>
+            <p><strong>Dalam kasus tersebut:</strong></p>
+            <ul>
+                <li>Harga afiliasi = <strong>Rp6.000.000.000</strong></li>
+                <li>Harga independen = <strong>Rp5.000.000.000</strong></li>
+                <li>Perbedaan = <strong>Rp1.000.000.000</strong></li>
+            </ul>
+            <p class="warning">⚠️ Perbedaan tersebut belum otomatis berarti koreksi transfer pricing karena harus dianalisis: spesifikasi barang, volume pembelian, kualitas, syarat pembayaran, garansi, layanan purnajual, fungsi, aset, risiko, kondisi pasar, manfaat layanan tambahan.</p>
+
+            <h3>N. Pemilihan Metode Transfer Pricing</h3>
+            <p>Perusahaan memiliki beberapa alternatif metode:</p>
+            <ol>
+                <li><strong>Comparable Uncontrolled Price (CUP):</strong> Membandingkan harga transaksi afiliasi dengan harga transaksi independen. Dalam kasus ini CUP dapat menjadi kandidat kuat apabila barang dan kondisi transaksi cukup sebanding.</li>
+                <li><strong>Resale Price Method:</strong> Digunakan dengan melihat margin laba kotor ketika barang dibeli dari pihak afiliasi kemudian dijual kepada pihak independen.</li>
+                <li><strong>Cost Plus Method:</strong> Membandingkan mark-up biaya dalam transaksi afiliasi dengan mark-up transaksi independen.</li>
+                <li><strong>Profit Split Method:</strong> Laba transaksi dibagi berdasarkan kontribusi masing-masing pihak.</li>
+                <li><strong>Transactional Net Margin Method:</strong> Membandingkan indikator laba bersih yang relevan antara transaksi afiliasi dan transaksi independen.</li>
+            </ol>
+            <p>Pemilihan metode harus mempertimbangkan karakteristik transaksi dan ketersediaan pembanding yang dapat diandalkan.</p>
+
+            <h3>O. Hubungan Istimewa</h3>
+            <p>PT Global Nusantara Teknologi memiliki <strong>40% saham</strong> Global Tech Singapore Pte. Ltd.</p>
+            <p>Berdasarkan data tersebut terdapat indikasi hubungan istimewa karena kepemilikan saham.</p>
+            <p>Dengan adanya hubungan istimewa, transaksi antara kedua perusahaan perlu dianalisis dari perspektif transfer pricing.</p>
+
+            <h3>P. Transfer Pricing Documentation</h3>
+            <p>Pada tahun sebelumnya, PT Global Nusantara Teknologi memiliki:</p>
+            <ul>
+                <li>Peredaran bruto = <strong>Rp80.000.000.000</strong></li>
+                <li>Transaksi barang berwujud dengan afiliasi = <strong>Rp30.000.000.000</strong></li>
+                <li>Transaksi jasa dengan afiliasi = <strong>Rp7.000.000.000</strong></li>
+            </ul>
+            <p>Berdasarkan skenario materi, perusahaan perlu mengevaluasi kewajiban penyusunan:</p>
+            <ol>
+                <li><strong>Master File</strong></li>
+                <li><strong>Local File</strong></li>
+                <li><strong>Country-by-Country Report (CbCR)</strong> jika memenuhi persyaratan.</li>
+            </ol>
+            <p>Perusahaan tidak boleh menganggap bahwa seluruh transaksi afiliasi otomatis wajib membuat semua jenis dokumentasi.</p>
+            <p><strong>Kewajiban TP Doc</strong> harus ditentukan berdasarkan: peredaran bruto, nilai transaksi afiliasi, jenis transaksi, lokasi pihak afiliasi, tarif pajak negara mitra, status perusahaan dalam grup usaha, ketentuan perpajakan yang berlaku.</p>
+        </section>
+
+        <!-- Pertanyaan -->
+        <section id="pertanyaan">
+            <h2>❓ Pertanyaan Studi Kasus</h2>
+            <p>Berdasarkan kasus PT Global Nusantara Teknologi, jawab pertanyaan berikut:</p>
+            <ol>
+                <li>Mengapa PT Global Nusantara Teknologi dikategorikan sebagai Wajib Pajak Dalam Negeri?</li>
+                <li>Apa perbedaan perlakuan pajak antara WPDN yang memperoleh penghasilan luar negeri dan WPLN yang memperoleh penghasilan dari Indonesia?</li>
+                <li>Hitung PPh Pasal 24 dari penghasilan Singapura.</li>
+                <li>Hitung PPh Pasal 24 dari penghasilan Malaysia.</li>
+                <li>Hitung PPh Pasal 24 dari penghasilan Thailand.</li>
+                <li>Berapa total kredit pajak luar negeri yang dapat digunakan berdasarkan asumsi kasus?</li>
+                <li>Apakah PT Global Nusantara Teknologi dapat langsung mengkreditkan seluruh pajak yang dibayar di luar negeri?</li>
+                <li>Apa fungsi P3B dalam kasus tersebut?</li>
+                <li>Apa yang harus dilakukan perusahaan Jepang agar dapat menggunakan tarif berdasarkan P3B jika persyaratannya terpenuhi?</li>
+                <li>Apakah transaksi pembelian Rp6 miliar dari perusahaan afiliasi Singapura otomatis melanggar transfer pricing?</li>
+                <li>Metode transfer pricing apa yang paling mungkin digunakan jika terdapat harga barang sebanding dari pihak independen?</li>
+                <li>Apa yang dimaksud dengan Arm's Length Principle?</li>
+                <li>Apa saja dokumen yang harus diperhatikan dalam TP Documentation?</li>
+                <li>Apa risiko bagi perusahaan apabila transaksi afiliasi tidak sesuai prinsip kewajaran?</li>
+            </ol>
+        </section>
+
+        <!-- Kunci Jawaban -->
+        <section id="kunci-jawaban">
+            <h2>🔑 Kunci Jawaban Singkat</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Jawaban</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Karena perusahaan didirikan dan berkedudukan di Indonesia.</td></tr>
+                    <tr><td>2</td><td>WPDN pada prinsipnya memperhitungkan penghasilan sesuai ketentuan domestik, termasuk mekanisme kredit pajak luar negeri; WPLN dikenai pajak atas penghasilan yang bersumber dari Indonesia sesuai ketentuan domestik/P3B.</td></tr>
+                    <tr><td>3</td><td>Rp100.000.000</td></tr>
+                    <tr><td>4</td><td>Rp50.000.000</td></tr>
+                    <tr><td>5</td><td>Rp160.000.000</td></tr>
+                    <tr><td>6</td><td>Rp310.000.000</td></tr>
+                    <tr><td>7</td><td>Tidak selalu; harus memperhatikan batas maksimum kredit dan persyaratan dokumentasi.</td></tr>
+                    <tr><td>8</td><td>Mengatur pembagian hak pemajakan dan mencegah pajak berganda serta pengelakan pajak.</td></tr>
+                    <tr><td>9</td><td>Memenuhi persyaratan administratif dan substantif P3B, termasuk SKD dan persyaratan lain yang relevan.</td></tr>
+                    <tr><td>10</td><td>Tidak. Harus dianalisis berdasarkan prinsip kewajaran dan kelaziman usaha.</td></tr>
+                    <tr><td>11</td><td>CUP, jika tersedia pembanding independen yang andal dan cukup sebanding.</td></tr>
+                    <tr><td>12</td><td>Prinsip bahwa transaksi pihak berelasi harus mencerminkan kondisi yang sebanding dengan transaksi pihak independen.</td></tr>
+                    <tr><td>13</td><td>Master File, Local File, dan CbCR jika memenuhi kriteria.</td></tr>
+                    <tr><td>14</td><td>Dapat menimbulkan koreksi pajak, tambahan pajak, sanksi, dan sengketa dengan otoritas pajak.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Analisis Perbandingan -->
+        <section id="analisis">
+            <h2>📈 Analisis Perbandingan Pajak Internasional</h2>
+            <p>Kasus PT Global Nusantara Teknologi menunjukkan bahwa transaksi internasional harus dianalisis dari beberapa sisi secara bersamaan.</p>
+            
+            <h3>Penghasilan luar negeri</h3>
+            <div class="formula">
+                Penghasilan luar negeri → Tentukan negara sumber → Tentukan hak pemajakan → Periksa P3B → Hitung pajak luar negeri → Hitung batas PPh Pasal 24 → Kreditkan pajak yang memenuhi syarat
+            </div>
+            
+            <h3>Pembayaran kepada WPLN</h3>
+            <div class="formula">
+                Pembayaran kepada WPLN → Tentukan jenis penghasilan → Periksa PPh Pasal 26 → Periksa P3B → Periksa SKD dan persyaratan treaty → Tentukan tarif yang berlaku → Lakukan pemotongan dan pelaporan
+            </div>
+            
+            <h3>Transaksi Afiliasi</h3>
+            <div class="formula">
+                Transaksi dengan pihak afiliasi → Identifikasi hubungan istimewa → Analisis fungsi, aset, dan risiko → Cari pembanding independen → Pilih metode transfer pricing → Uji Arm's Length Principle → Dokumentasikan
+            </div>
+        </section>
+
+        <!-- Kesimpulan -->
+        <section id="kesimpulan">
+            <h2>🎯 Kesimpulan</h2>
+            <p>Berdasarkan kasus tersebut, pajak internasional tidak hanya berkaitan dengan menghitung pajak atas transaksi luar negeri.</p>
+            <p>Perusahaan harus memahami hubungan antara:</p>
+            <div class="formula">
+                Ketentuan domestik → P3B → Kredit Pajak Luar Negeri → PPh 26 → BUT → Transfer Pricing → TP Documentation
+            </div>
+            <p>PT Global Nusantara Teknologi sebagai WPDN dapat memperoleh penghasilan dari luar negeri, tetapi pajak yang telah dibayar di luar negeri tidak serta-merta seluruhnya dapat dikreditkan. Perusahaan harus memperhatikan batas kredit dan persyaratan administrasi.</p>
+            <p>Di sisi lain, ketika perusahaan membayar penghasilan kepada WPLN, perusahaan harus menganalisis PPh Pasal 26 serta kemungkinan penggunaan tarif P3B.</p>
+            <p>Untuk transaksi dengan perusahaan afiliasi, perusahaan harus menerapkan <strong>Arm's Length Principle</strong> dan menentukan metode transfer pricing yang paling sesuai.</p>
+            <div class="answer-box">
+                <h4>🎯 Tujuan utama pengelolaan pajak internasional:</h4>
+                <p><strong>Menghindari pajak berganda dan pengelakan pajak, sekaligus memastikan hak pemajakan masing-masing negara tetap dihormati sesuai ketentuan domestik dan perjanjian pajak.</strong></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Pajak Internasional - Corporate Tax Series</strong></p>
+        <p>Sumber: MySkill.id | Artikel diterbitkan: 21 Juni 2024</p>
+        <p>© 2024 MySkill.id - Accounting, Finance and Tax Path</p>
+    </footer>
+
+    <div class="scroll-top no-print" id="scrollTop">↑</div>
+
+    <script>
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active nav link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Highlight nav link when section is in view
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

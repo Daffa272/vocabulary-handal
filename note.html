@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catatan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f3ed;
+    --surface: #fffefa;
+    --surface-soft: #eeece4;
+    --ink: #26352f;
+    --ink-soft: #62716a;
+    --muted: #8a9188;
+    --line: #dcded4;
+    --green: #32735c;
+    --green-soft: #e4f0e9;
+    --coral: #bf644d;
+    --shadow: 0 16px 40px rgba(39, 52, 43, .08);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+  .global-nav { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 12px 18px; background: rgba(255,254,250,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+  .page { width: min(1250px, 100%); margin: 0 auto; padding: 34px 24px 60px; }
+  .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+  .page-head-actions { display: grid; justify-items: end; gap: 8px; }
+  .backup-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+  .backup-button { min-height: 32px; padding: 0 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink-soft); font: 700 11px 'DM Sans', sans-serif; cursor: pointer; }
+  .backup-button:hover { border-color: var(--green); color: var(--green); }
+  .eyebrow { margin: 0 0 5px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  h1, h2, h3, p { margin-top: 0; }
+  h1 { margin-bottom: 4px; font: 600 34px/1.15 'Source Serif 4', serif; }
+  .subtitle { margin: 0; color: var(--ink-soft); font-size: 14px; }
+  .new-note { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 0 16px; border: 0; border-radius: 7px; background: var(--green); color: white; font: 700 13px 'DM Sans', sans-serif; cursor: pointer; transition: background .18s, transform .18s; }
+  .new-note:hover { background: #275d49; transform: translateY(-1px); }
+  .new-note span { font-size: 19px; line-height: 1; }
+  .workspace { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 620px; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; box-shadow: var(--shadow); overflow: hidden; }
+  .archive { padding: 22px 17px; background: #f9f8f3; border-right: 1px solid var(--line); }
+  .archive-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .archive h2 { margin: 0; font: 600 17px 'Source Serif 4', serif; }
+  .note-count { min-width: 25px; padding: 3px 7px; border-radius: 20px; background: var(--green-soft); color: var(--green); font-size: 11px; font-weight: 700; text-align: center; }
+  .search { width: 100%; height: 38px; margin-bottom: 18px; padding: 0 11px; border: 1px solid var(--line); border-radius: 6px; outline: 0; background: var(--surface); color: var(--ink); font: 13px 'DM Sans', sans-serif; }
+  .search:focus, .date-input:focus, .title-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(50,115,92,.1); }
+  .archive-list { display: grid; align-content: start; gap: 17px; }
+  .day-group h3 { margin: 0 0 7px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+  .day-notes { display: grid; gap: 3px; }
+  .note-link { display: grid; gap: 3px; width: 100%; padding: 9px 10px; border: 0; border-radius: 5px; background: transparent; color: var(--ink); text-align: left; cursor: pointer; }
+  .note-link:hover { background: #eeefe8; }
+  .note-link.active { background: var(--green-soft); box-shadow: inset 2px 0 var(--green); }
+  .note-link strong { overflow: hidden; font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+  .note-link span { color: var(--muted); font-size: 10px; }
+  .archive-empty { padding: 20px 8px; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+  .editor-pane { min-width: 0; padding: 24px clamp(20px, 5vw, 62px) 38px; }
+  .editor-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+  .date-control { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+  .date-input { width: 145px; height: 34px; padding: 0 8px; border: 1px solid var(--line); border-radius: 5px; outline: 0; background: var(--surface); color: var(--ink); font: 12px 'DM Sans', sans-serif; }
+  .save-state { color: var(--muted); font-size: 11px; white-space: nowrap; }
+  .editor-content { max-width: 760px; margin: 30px auto 0; }
+  .title-input { display: block; width: 100%; padding: 0 0 14px; border: 0; border-bottom: 1px solid transparent; border-radius: 0; outline: 0; background: transparent; color: var(--ink); font: 600 29px/1.25 'Source Serif 4', serif; }
+  .title-input:focus { border-bottom-color: var(--line); box-shadow: none; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin: 18px 0 0; padding: 8px; border: 1px solid var(--line); border-radius: 6px 6px 0 0; background: #f8f7f1; }
+  .tool-button, .format-select { min-width: 34px; height: 32px; padding: 0 9px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--ink-soft); font: 600 13px 'DM Sans', sans-serif; cursor: pointer; }
+  .tool-button:hover, .format-select:hover { border-color: var(--line); background: var(--surface); color: var(--green); }
+  .tool-button:active { background: var(--green-soft); }
+  .tool-button em { font-family: Georgia, serif; }
+  .table-controls { display: inline-flex; align-items: center; gap: 6px; padding: 3px 5px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); }
+  .table-controls label { display: inline-flex; align-items: center; gap: 4px; color: var(--ink-soft); font-size: 10px; }
+  .table-controls input { width: 46px; height: 27px; padding: 0 4px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); font: 12px 'DM Sans', sans-serif; }
+  .table-controls .tool-button { height: 28px; padding: 0 8px; background: var(--green); color: white; }
+  .tool-divider { width: 1px; height: 20px; margin: 0 3px; background: var(--line); }
+  .format-select { width: 112px; padding: 0 6px; border-color: var(--line); background: var(--surface); font-size: 11px; }
+  .document { min-height: 365px; padding: 22px 20px 30px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 6px 6px; outline: 0; color: #35453e; font: 15px/1.8 'DM Sans', sans-serif; overflow-wrap: anywhere; }
+  .document:focus { border-color: #a8c6b4; box-shadow: 0 0 0 2px rgba(50,115,92,.06); }
+  .document:empty::before { content: attr(data-placeholder); color: #a5aaa1; pointer-events: none; }
+  .document h2 { margin: 18px 0 8px; font: 600 22px 'Source Serif 4', serif; }
+  .document h3 { margin: 16px 0 7px; font: 600 18px 'Source Serif 4', serif; }
+  .document blockquote { margin: 14px 0; padding: 3px 0 3px 15px; border-left: 3px solid #8bb59b; color: var(--ink-soft); }
+  .document ul, .document ol { padding-left: 24px; }
+  .document table { width: 100%; margin: 14px 0; border-collapse: collapse; table-layout: fixed; }
+  .document th, .document td { min-width: 72px; padding: 8px 10px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .document th { background: var(--green-soft); color: var(--ink); font-weight: 700; }
+  .document td:focus, .document th:focus { outline: 2px solid rgba(50,115,92,.35); outline-offset: -2px; }
+  .editor-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 11px; color: var(--muted); font-size: 10px; }
+  .text-action { padding: 4px 0; border: 0; background: transparent; color: var(--coral); font: 700 11px 'DM Sans', sans-serif; cursor: pointer; }
+  .text-action:hover { text-decoration: underline; }
+  .welcome { display: grid; min-height: 530px; place-content: center; padding: 30px; text-align: center; }
+  .welcome-mark { display: grid; width: 54px; height: 54px; margin: 0 auto 17px; place-items: center; border: 1px solid #c6d9cb; border-radius: 50%; background: var(--green-soft); color: var(--green); font: 26px 'Source Serif 4', serif; }
+  .welcome h2 { margin-bottom: 7px; font: 600 23px 'Source Serif 4', serif; }
+  .welcome p { max-width: 310px; margin: 0 auto; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
+  .vocab-section { margin-top: 30px; padding: 24px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); box-shadow: var(--shadow); }
+  .vocab-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .vocab-head h2 { margin: 0 0 4px; font: 600 22px 'Source Serif 4', serif; }
+  .vocab-head p { margin: 0; color: var(--ink-soft); font-size: 12px; }
+  .vocab-counts { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+  .vocab-count { padding: 5px 9px; border-radius: 20px; background: var(--green-soft); color: var(--green); font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .vocab-count.due { background: #f9e9e1; color: var(--coral); }
+  .vocab-proficiency-panel { display: flex; align-items: center; gap: 16px; margin-top: 16px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: #f8f7f1; }
+  .vocab-proficiency-chart { position: relative; display: grid; width: 96px; height: 96px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: conic-gradient(#cbd5e1 0 100%); }
+  .vocab-proficiency-chart::before { position: absolute; inset: 16px; border-radius: 50%; background: #f8f7f1; content: ''; }
+  .vocab-proficiency-total { position: relative; z-index: 1; color: var(--ink-soft); font-size: 10px; text-align: center; }
+  .vocab-proficiency-total strong { display: block; color: var(--ink); font-size: 20px; }
+  .vocab-proficiency-legend { display: grid; width: 100%; gap: 7px; }
+  .vocab-proficiency-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--ink-soft); font-size: 11px; }
+  .vocab-proficiency-label { display: flex; align-items: center; gap: 7px; }
+  .vocab-proficiency-dot { width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; }
+  .vocab-proficiency-value { color: var(--ink); font-weight: 700; white-space: nowrap; }
+  .vocab-layout { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr); gap: 25px; padding-top: 20px; }
+  .vocab-form { display: grid; align-content: start; gap: 11px; }
+  .vocab-form-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+  .vocab-form h3, .vocab-list-heading { margin: 0; font: 600 16px 'Source Serif 4', serif; }
+  .vocab-field { display: grid; gap: 5px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
+  .vocab-field input, .vocab-api-input, .vocab-answer-input { width: 100%; min-height: 39px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 5px; outline: 0; background: #fffefa; color: var(--ink); font: 13px 'DM Sans', sans-serif; }
+  .vocab-field input:focus, .vocab-api-input:focus, .vocab-answer-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(50,115,92,.1); }
+  .vocab-primary, .vocab-secondary, .vocab-danger { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 13px; border: 1px solid transparent; border-radius: 5px; font: 700 12px 'DM Sans', sans-serif; cursor: pointer; }
+  .vocab-primary { background: var(--green); color: white; }
+  .vocab-primary:hover:not(:disabled) { background: #275d49; }
+  .vocab-secondary { border-color: var(--line); background: var(--surface); color: var(--ink-soft); }
+  .vocab-secondary:hover:not(:disabled) { border-color: var(--green); color: var(--green); }
+  .vocab-danger { min-height: 30px; padding: 0 9px; border-color: #ead2ca; background: #fff8f5; color: var(--coral); font-size: 10px; }
+  .vocab-primary:disabled, .vocab-secondary:disabled { opacity: .58; cursor: not-allowed; }
+  .vocab-api { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; margin-top: 5px; }
+  .vocab-api-input { min-width: 0; font-size: 11px; }
+  .vocab-status { min-height: 18px; margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
+  .vocab-status.error { color: #a33f32; }
+  .vocab-status.success { color: var(--green); }
+  .vocab-list-panel { min-width: 0; }
+  .vocab-list-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .vocab-list { display: grid; grid-auto-rows: minmax(56px, auto); gap: 7px; max-height: 390px; overflow: auto; padding: 1px 5px 1px 1px; scrollbar-gutter: stable; }
+  .vocab-card-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 5px; background: #fffefa; cursor: pointer; }
+  .vocab-card-row:hover { border-color: #a8c6b4; background: #fbfcf8; }
+  .vocab-card-row strong { display: block; overflow-wrap: anywhere; color: var(--ink); font-size: 13px; }
+  .vocab-card-row span { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 11px; }
+  .vocab-card-sentence { display: flex; align-items: flex-start; gap: 7px; max-width: 100%; padding: 0; border: 0; background: transparent; color: var(--ink); text-align: left; font: 700 13px/1.45 'DM Sans', sans-serif; cursor: pointer; }
+  .vocab-card-sentence:hover { color: var(--green); }
+  .vocab-card-sentence svg { width: 14px; height: 14px; flex: 0 0 auto; margin-top: 2px; }
+  .vocab-empty { padding: 24px 10px; border: 1px dashed var(--line); border-radius: 5px; color: var(--muted); font-size: 12px; text-align: center; }
+  .vocab-review { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .vocab-view-tabs { display: flex; gap: 5px; margin-top: 20px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: #f8f7f1; }
+  .vocab-view-tab { min-height: 34px; padding: 0 12px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--ink-soft); font: 700 11px 'DM Sans', sans-serif; cursor: pointer; }
+  .vocab-view-tab[aria-selected="true"] { border-color: var(--line); background: var(--surface); color: var(--green); box-shadow: 0 1px 2px rgba(39, 52, 43, .06); }
+  .vocab-view-panel[hidden] { display: none !important; }
+  .vocab-review-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
+  .vocab-review-top h3 { margin: 0; font: 600 16px 'Source Serif 4', serif; }
+  .vocab-review-modes { display: flex; flex-wrap: wrap; gap: 5px; }
+  .vocab-review-mode { min-height: 32px; padding: 0 9px; border: 1px solid var(--line); border-radius: 5px; background: transparent; color: var(--ink-soft); font: 600 10px 'DM Sans', sans-serif; cursor: pointer; }
+  .vocab-review-mode[aria-pressed="true"] { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+  .vocab-review-actions { display: flex; align-items: center; gap: 8px; }
+  .vocab-review-card { padding: 16px; border-left: 3px solid var(--green); background: #f5f7f1; }
+  .vocab-review-progress { margin: 0 0 8px; color: var(--muted); font-size: 10px; font-weight: 700; }
+  .vocab-review-next { margin: 0 0 10px; color: var(--green); font-size: 11px; font-weight: 700; }
+  .vocab-review-prompt { margin: 0 0 10px; color: var(--ink-soft); font-size: 12px; }
+  .vocab-review-reference { margin: 0 0 8px; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.5; overflow-wrap: anywhere; }
+  .vocab-review-context { margin: 0 0 12px; color: var(--ink-soft); font-size: 12px; line-height: 1.5; }
+  .vocab-review-meaning { margin: 0 0 12px; color: var(--ink); font: 600 20px/1.35 'Source Serif 4', serif; overflow-wrap: anywhere; }
+  .vocab-review-answer { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .vocab-review-field { display: grid; gap: 5px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
+  .vocab-answer-input { min-width: 0; }
+  .vocab-feedback { margin-top: 12px; padding: 10px 11px; border-radius: 5px; background: #fffefa; color: var(--ink-soft); font-size: 12px; line-height: 1.55; }
+  .vocab-feedback.correct { border-left: 3px solid var(--green); }
+  .vocab-feedback.incorrect { border-left: 3px solid var(--coral); }
+  .vocab-feedback strong { display: block; margin-bottom: 3px; color: var(--ink); }
+  .vocab-feedback-part + .vocab-feedback-part { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .vocab-suggestion-row { display: flex; align-items: flex-start; gap: 5px; margin-top: 4px; color: var(--ink); }
+  .vocab-suggestion-speak { display: inline-flex; align-items: flex-start; gap: 5px; padding: 0; border: 0; background: transparent; color: var(--green); text-align: left; font: inherit; cursor: pointer; }
+  .vocab-suggestion-speak:hover { color: #275d49; text-decoration: underline; }
+  .vocab-suggestion-speak svg { width: 13px; height: 13px; flex: 0 0 auto; margin-top: 2px; }
+  .vocab-rating-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; padding: 10px; border: 1px solid var(--line); border-radius: 5px; background: #fffefa; }
+  .vocab-rating-actions p { margin: 0; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
+  .vocab-rating-buttons { display: flex; gap: 7px; }
+  .vocab-rating-buttons button { min-height: 33px; padding: 0 11px; border: 1px solid transparent; border-radius: 5px; font: 700 11px 'DM Sans', sans-serif; cursor: pointer; }
+  .vocab-rating-forgot { border-color: #ead2ca !important; background: #fff1ec; color: #a34834; }
+  .vocab-rating-remembered { border-color: #c6d9cb !important; background: var(--green-soft); color: var(--green); }
+  .vocab-weekly-status { min-height: 18px; margin: -4px 0 10px; color: var(--ink-soft); font-size: 11px; }
+  .vocab-today-study { padding-top: 8px; }
+  .vocab-today-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+  .vocab-today-heading h3 { margin: 0; font: 600 16px 'Source Serif 4', serif; }
+  .vocab-today-list { display: grid; gap: 9px; }
+  .vocab-today-item { padding: 13px; border: 1px solid var(--line); border-radius: 5px; background: #fffefa; }
+  .vocab-today-item > .vocab-card-sentence { color: var(--ink); font-size: 14px; }
+  .vocab-today-meta { margin-top: 4px; color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
+  .vocab-schedule { color: var(--green) !important; font-weight: 700; }
+  .vocab-today-evaluations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+  .vocab-today-evaluation { padding: 9px; border-radius: 4px; background: #f5f7f1; color: var(--ink-soft); font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+  .vocab-today-evaluation strong { display: block; margin-bottom: 4px; color: var(--ink); }
+  .vocab-today-empty { padding: 15px; border: 1px dashed var(--line); border-radius: 5px; color: var(--muted); font-size: 12px; }
+  .vocab-next-row { display: flex; justify-content: flex-end; margin-top: 10px; }
+  @media (max-width: 760px) {
+    .vocab-section { padding: 18px 14px; }
+    .vocab-head { flex-direction: column; }
+    .vocab-counts { justify-content: flex-start; }
+    .vocab-proficiency-panel { align-items: flex-start; }
+    .vocab-proficiency-chart { width: 84px; height: 84px; }
+    .vocab-proficiency-chart::before { inset: 14px; }
+    .vocab-layout { grid-template-columns: 1fr; gap: 20px; }
+    .vocab-review-top { align-items: flex-start; flex-direction: column; }
+    .vocab-view-tabs { width: 100%; }
+    .vocab-view-tab { flex: 1; }
+    .vocab-today-evaluations { grid-template-columns: 1fr; }
+  }
+  [hidden] { display: none !important; }
+  @media (max-width: 760px) {
+    .page { padding: 24px 14px 38px; }
+    .page-head { align-items: flex-start; }
+    h1 { font-size: 29px; }
+    .workspace { grid-template-columns: 1fr; }
+    .archive { border-right: 0; border-bottom: 1px solid var(--line); padding: 15px; }
+    .archive-list { display: flex; gap: 15px; max-height: 180px; overflow: auto; }
+    .day-group { min-width: 185px; }
+    .editor-pane { padding: 19px 16px 28px; }
+    .editor-top { align-items: flex-start; }
+    .date-control { display: grid; gap: 5px; }
+    .date-input { width: 140px; }
+    .title-input { font-size: 25px; }
+    .document { min-height: 310px; padding: 18px 14px; }
+  }
+  @media (max-width: 420px) {
+    .page-head { flex-direction: column; }
+    .new-note { align-self: stretch; }
+    .page-head-actions { width: 100%; justify-items: stretch; }
+    .backup-actions { justify-content: stretch; }
+    .backup-button { flex: 1; }
+    .editor-footer { align-items: flex-start; flex-direction: column; }
+  }
+</style>
+<script defer src="tracker-menu.js"></script>
+</head>
+<body>
+<nav class="global-nav" aria-label="Menu navigasi utama"></nav>
+<main class="page">
+  <header class="page-head">
+    <div><p class="eyebrow">Ruang pribadi</p><h1>Catatan</h1><p class="subtitle">Simpan ide, rencana, dan hal-hal yang ingin kamu ingat.</p></div>
+    <div class="page-head-actions">
+      <button class="new-note" id="newNote" type="button"><span aria-hidden="true">+</span> Catatan baru</button>
+      <div class="backup-actions" aria-label="Backup data Note">
+        <button class="backup-button" id="exportNoteData" type="button">Export JSON</button>
+        <button class="backup-button" id="openNoteImport" type="button">Import JSON</button>
+        <input id="noteImportFile" type="file" accept="application/json,.json" hidden>
+      </div>
+    </div>
+  </header>
+  <section class="workspace" aria-label="Ruang catatan">
+    <aside class="archive" aria-label="Arsip catatan">
+      <div class="archive-top"><h2>Arsip</h2><span class="note-count" id="noteCount">0</span></div>
+      <input class="search" id="searchNotes" type="search" placeholder="Cari catatan..." aria-label="Cari catatan">
+      <div class="archive-list" id="archiveList"></div>
+    </aside>
+    <section class="editor-pane" aria-label="Editor catatan">
+      <div class="welcome" id="welcome">
+        <div><div class="welcome-mark" aria-hidden="true">N</div><h2>Mulai dari sebuah ide</h2><p>Setiap catatan tersimpan otomatis dan dikelompokkan berdasarkan tanggal pembuatannya.</p></div>
+      </div>
+      <div id="editor" hidden>
+        <div class="editor-top">
+          <label class="date-control" for="noteDate">Tanggal catatan<input class="date-input" id="noteDate" type="date"></label>
+          <span class="save-state" id="saveState" role="status" aria-live="polite">Tersimpan</span>
+        </div>
+        <div class="editor-content">
+          <input class="title-input" id="noteTitle" type="text" placeholder="Judul catatan" maxlength="120" aria-label="Judul catatan">
+          <div class="toolbar" role="toolbar" aria-label="Format teks">
+            <select class="format-select" id="formatBlock" aria-label="Gaya teks">
+              <option value="p">Teks biasa</option><option value="h2">Judul bagian</option><option value="h3">Subjudul</option>
+            </select>
+            <span class="tool-divider" aria-hidden="true"></span>
+            <button class="tool-button" type="button" data-command="bold" title="Tebal (Ctrl+B)" aria-label="Tebal"><strong>B</strong></button>
+            <button class="tool-button" type="button" data-command="italic" title="Miring (Ctrl+I)" aria-label="Miring"><em>I</em></button>
+            <button class="tool-button" type="button" data-command="underline" title="Garis bawah (Ctrl+U)" aria-label="Garis bawah"><u>U</u></button>
+            <span class="tool-divider" aria-hidden="true"></span>
+            <button class="tool-button" type="button" data-command="insertUnorderedList" title="Daftar berpoin" aria-label="Daftar berpoin">&#8226; Daftar</button>
+            <button class="tool-button" type="button" data-command="insertOrderedList" title="Daftar bernomor" aria-label="Daftar bernomor">1. Daftar</button>
+            <button class="tool-button" type="button" data-command="formatBlock" data-value="blockquote" title="Kutipan" aria-label="Kutipan">Kutipan</button>
+            <span class="tool-divider" aria-hidden="true"></span>
+            <button class="tool-button" id="insertTableButton" type="button" title="Sisipkan tabel" aria-label="Sisipkan tabel">Tabel</button>
+            <div class="table-controls" id="tableControls" role="group" aria-label="Ukuran tabel" hidden>
+              <label>Baris<input id="tableRows" type="number" min="1" max="20" value="3" aria-label="Jumlah baris"></label>
+              <label>Kolom<input id="tableColumns" type="number" min="1" max="12" value="3" aria-label="Jumlah kolom"></label>
+              <button class="tool-button" id="confirmInsertTable" type="button">Sisipkan</button>
+              <button class="tool-button" id="addTableRow" type="button" aria-label="Tambah baris di tabel aktif" disabled>+ Baris</button>
+              <button class="tool-button" id="removeTableRow" type="button" aria-label="Hapus baris aktif" disabled>- Baris</button>
+              <button class="tool-button" id="addTableColumn" type="button" aria-label="Tambah kolom di tabel aktif" disabled>+ Kolom</button>
+              <button class="tool-button" id="removeTableColumn" type="button" aria-label="Hapus kolom aktif" disabled>- Kolom</button>
+            </div>
+            <button class="tool-button" type="button" data-command="undo" title="Urungkan" aria-label="Urungkan">&#8630;</button>
+            <button class="tool-button" type="button" data-command="redo" title="Ulangi" aria-label="Ulangi">&#8631;</button>
+          </div>
+          <div class="document" id="noteBody" contenteditable="true" role="textbox" aria-label="Isi catatan" aria-multiline="true" data-placeholder="Mulai menulis di sini..."></div>
+          <div class="editor-footer"><span id="wordCount">0 kata</span><button class="text-action" id="deleteNote" type="button">Hapus catatan</button></div>
+        </div>
+      </div>
+    </section>
+  </section>
+  <section class="vocab-section" aria-labelledby="noteVocabTitle">
+    <div class="vocab-head">
+      <div><h2 id="noteVocabTitle">Conversation Practice</h2><p>Simpan kalimat percakapan dan latih kembali dengan koreksi AI.</p></div>
+      <div class="vocab-counts" aria-live="polite">
+        <span class="vocab-count due" id="noteVocabDue">0 jatuh tempo</span>
+      </div>
+    </div>
+    <div class="vocab-proficiency-panel" aria-label="Kemahiran kalimat conversation">
+      <div class="vocab-proficiency-chart" id="noteVocabProficiencyChart">
+        <div class="vocab-proficiency-total"><strong id="noteVocabTotal">0</strong>kartu</div>
+      </div>
+      <div class="vocab-proficiency-legend" id="noteVocabProficiencyLegend"></div>
+    </div>
+    <div class="vocab-layout">
+      <form class="vocab-form" id="noteVocabForm">
+        <h3>Tambah kalimat</h3>
+        <label class="vocab-field" for="noteVocabSentence">Kalimat percakapan bahasa Inggris
+          <input id="noteVocabSentence" type="text" maxlength="500" required placeholder="Contoh: Could I get a glass of water, please?">
+        </label>
+        <button class="vocab-secondary" id="noteVocabGenerate" type="button">Generate arti, situasi, dan kondisi</button>
+        <label class="vocab-field" for="noteVocabTranslationId">Arti kalimat dalam bahasa Indonesia
+          <input id="noteVocabTranslationId" type="text" maxlength="500" placeholder="Dibuat otomatis dari kalimat Inggris">
+        </label>
+        <label class="vocab-field" for="noteVocabSituation">Situasi percakapan
+          <input id="noteVocabSituation" type="text" maxlength="300" placeholder="Contoh: memesan minuman di kafe">
+        </label>
+        <label class="vocab-field" for="noteVocabCondition">Kondisi atau konteks
+          <input id="noteVocabCondition" type="text" maxlength="300" placeholder="Contoh: berbicara sopan kepada pelayan">
+        </label>
+        <div class="vocab-form-actions">
+          <button class="vocab-primary" id="noteVocabSaveSentence" type="submit">Simpan kalimat</button>
+          <button class="vocab-secondary" id="noteVocabCancelEdit" type="button" hidden>Batal edit</button>
+        </div>
+        <p class="vocab-status" id="noteVocabFormStatus" role="status" aria-live="polite"></p>
+      </form>
+      <div class="vocab-list-panel">
+        <div class="vocab-list-top"><h3 class="vocab-list-heading">Kalimat tersimpan</h3><span class="save-state" id="noteVocabLearningCount">0 sedang dipelajari</span></div>
+        <div class="vocab-list" id="noteVocabList" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="vocab-view-tabs" role="tablist" aria-label="Tampilan conversation practice">
+      <button class="vocab-view-tab" id="noteVocabReviewTab" type="button" role="tab" aria-selected="true" aria-controls="noteVocabReviewPanel">Review</button>
+      <button class="vocab-view-tab" id="noteVocabTodayTab" type="button" role="tab" aria-selected="false" aria-controls="noteVocabTodayStudy">Kalimat baru hari ini</button>
+    </div>
+    <div class="vocab-review vocab-view-panel" id="noteVocabReviewPanel" role="tabpanel" aria-labelledby="noteVocabReviewTab">
+      <div class="vocab-review-top">
+        <h3>Review kalimat dengan AI</h3>
+        <div class="vocab-review-actions">
+          <div class="vocab-review-modes" role="group" aria-label="Pilih kalimat review">
+            <button class="vocab-review-mode" type="button" data-note-review-mode="due" aria-pressed="true">Jatuh tempo</button>
+            <button class="vocab-review-mode" type="button" data-note-review-mode="learning" aria-pressed="false">Dipelajari</button>
+            <button class="vocab-review-mode" type="button" data-note-review-mode="weekly" aria-pressed="false">Tes mingguan</button>
+            <button class="vocab-review-mode" type="button" data-note-review-mode="all" aria-pressed="false">Semua</button>
+          </div>
+          <button class="vocab-primary" id="noteVocabStartReview" type="button">Mulai review</button>
+        </div>
+      </div>
+      <p class="vocab-weekly-status" id="noteVocabWeeklyStatus" role="status" aria-live="polite"></p>
+      <p class="vocab-status" id="noteVocabReviewStatus" role="status" aria-live="polite"></p>
+      <div class="vocab-review-card" id="noteVocabReviewCard" hidden>
+        <p class="vocab-review-progress" id="noteVocabReviewProgress"></p>
+        <p class="vocab-review-next" id="noteVocabReviewNext"></p>
+        <p class="vocab-review-prompt" id="noteVocabTranslationPrompt">Terjemahkan arti bahasa Indonesia ke bahasa Inggris:</p>
+        <p class="vocab-review-meaning" id="noteVocabReviewMeaning"></p>
+        <p class="vocab-review-context" id="noteVocabReviewContext"></p>
+        <p class="vocab-review-prompt" id="noteVocabReviewPrompt"></p>
+        <form class="vocab-review-answer" id="noteVocabAnswerForm">
+          <label class="vocab-review-field" for="noteVocabTranslation">Terjemahkan situasi bahasa Indonesia ke bahasa Inggris
+            <input class="vocab-answer-input" id="noteVocabTranslation" type="text" maxlength="500" autocomplete="off" required placeholder="Tulis terjemahan bahasa Inggris">
+          </label>
+          <label class="vocab-review-field" id="noteVocabResponseLabel" for="noteVocabResponse">Respons bahasa Inggris
+            <input class="vocab-answer-input" id="noteVocabResponse" type="text" maxlength="500" autocomplete="off" required placeholder="Tulis kalimat respons">
+          </label>
+          <button class="vocab-primary" id="noteVocabCheckAnswer" type="submit">Periksa dua jawaban</button>
+        </form>
+        <div class="vocab-feedback" id="noteVocabFeedback" hidden></div>
+        <div class="vocab-rating-actions" id="noteVocabRatingActions" hidden>
+          <p>Nilai ingatanmu</p>
+          <div class="vocab-rating-buttons">
+            <button class="vocab-rating-forgot" type="button" data-memory-rating="forgot">Tidak ingat</button>
+            <button class="vocab-rating-remembered" type="button" data-memory-rating="remembered">Ingat</button>
+          </div>
+        </div>
+        <div class="vocab-next-row"><button class="vocab-secondary" id="noteVocabNext" type="button" hidden>Kartu berikutnya</button></div>
+      </div>
+    </div>
+    <section class="vocab-today-study vocab-view-panel" id="noteVocabTodayStudy" role="tabpanel" aria-labelledby="noteVocabTodayTab" hidden>
+      <div class="vocab-today-heading">
+        <h3 id="noteVocabTodayTitle">Kalimat baru hari ini</h3>
+        <span class="save-state" id="noteVocabTodayCount">0 kalimat</span>
+      </div>
+      <div class="vocab-today-list" id="noteVocabTodayList" aria-live="polite"></div>
+    </section>
+  </section>
+</main>
+<script>
+(function () {
+  const STORAGE_KEY = 'english-notes-v1';
+  const DAY_NAMES = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', "Jum'at", 'Sabtu'];
+  const MONTH_NAMES = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  const allowedTags = new Set(['P', 'BR', 'STRONG', 'B', 'EM', 'I', 'U', 'S', 'H2', 'H3', 'UL', 'OL', 'LI', 'BLOCKQUOTE', 'DIV', 'TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD']);
+  const archiveList = document.getElementById('archiveList');
+  const noteCount = document.getElementById('noteCount');
+  const searchNotes = document.getElementById('searchNotes');
+  const newNoteButton = document.getElementById('newNote');
+  const welcome = document.getElementById('welcome');
+  const editor = document.getElementById('editor');
+  const noteDate = document.getElementById('noteDate');
+  const noteTitle = document.getElementById('noteTitle');
+  const noteBody = document.getElementById('noteBody');
+  const saveState = document.getElementById('saveState');
+  const wordCount = document.getElementById('wordCount');
+  let notes = loadNotes();
+  let activeId = null;
+  let selectedDate = todayKey();
+  let saveTimer;
+  let dirty = false;
+  let savedSelection = null;
+
+  function todayKey() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  }
+  function loadNotes() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return Array.isArray(stored) ? stored.filter(note => note && typeof note.id === 'string' && typeof note.date === 'string') : [];
+    } catch (error) { return []; }
+  }
+  function persist() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+      saveState.textContent = 'Tersimpan';
+      dirty = false;
+    } catch (error) {
+      saveState.textContent = 'Gagal menyimpan';
+    }
+  }
+  function formatDate(key, includeDay) {
+    const [year, month, day] = key.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return `${includeDay ? DAY_NAMES[date.getDay()] + ', ' : ''}${day} ${MONTH_NAMES[month - 1]} ${year}`;
+  }
+  function safeHtml(html) {
+    const parsed = new DOMParser().parseFromString(html, 'text/html');
+    function clean(node) {
+      Array.from(node.children).forEach(child => {
+        if (!allowedTags.has(child.tagName)) {
+          clean(child);
+          child.replaceWith(...Array.from(child.childNodes));
+          return;
+        }
+        Array.from(child.attributes).forEach(attribute => child.removeAttribute(attribute.name));
+        clean(child);
+      });
+    }
+    clean(parsed.body);
+    return parsed.body.innerHTML;
+  }
+  function getPlainText(html) {
+    const parsed = new DOMParser().parseFromString(html || '', 'text/html');
+    return parsed.body.textContent.trim();
+  }
+  function refreshWordCount() {
+    const words = noteBody.innerText.trim().split(/\s+/).filter(Boolean).length;
+    wordCount.textContent = `${words} kata`;
+  }
+  function scheduleSave() {
+    if (!activeId) return;
+    dirty = true;
+    saveState.textContent = 'Menyimpan...';
+    window.clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(saveActive, 450);
+  }
+  function saveActive() {
+    if (!activeId) return;
+    window.clearTimeout(saveTimer);
+    const note = notes.find(item => item.id === activeId);
+    if (!note) return;
+    note.title = noteTitle.value.trim();
+    note.content = safeHtml(noteBody.innerHTML);
+    note.updatedAt = Date.now();
+    persist();
+    renderArchive();
+  }
+  function openNote(id) {
+    if (dirty) saveActive();
+    const note = notes.find(item => item.id === id);
+    if (!note) return;
+    activeId = id;
+    selectedDate = note.date;
+    welcome.hidden = true;
+    editor.hidden = false;
+    noteDate.value = note.date;
+    noteTitle.value = note.title;
+    noteBody.innerHTML = safeHtml(note.content || '');
+    saveState.textContent = 'Tersimpan';
+    refreshWordCount();
+    renderArchive();
+    noteTitle.focus({ preventScroll: true });
+  }
+  function renderArchive() {
+    const query = searchNotes.value.trim().toLocaleLowerCase('id');
+    const filtered = notes.filter(note => `${note.title} ${getPlainText(note.content)}`.toLocaleLowerCase('id').includes(query));
+    const groups = new Map();
+    filtered.sort((a, b) => b.date.localeCompare(a.date) || (b.updatedAt || 0) - (a.updatedAt || 0)).forEach(note => {
+      if (!groups.has(note.date)) groups.set(note.date, []);
+      groups.get(note.date).push(note);
+    });
+    noteCount.textContent = String(notes.length);
+    archiveList.replaceChildren();
+    if (!groups.size) {
+      const empty = document.createElement('div');
+      empty.className = 'archive-empty';
+      empty.textContent = notes.length ? 'Tidak ada catatan yang cocok.' : 'Catatan yang kamu buat akan muncul di sini.';
+      archiveList.appendChild(empty);
+      return;
+    }
+    groups.forEach((items, date) => {
+      const group = document.createElement('section');
+      group.className = 'day-group';
+      const heading = document.createElement('h3');
+      heading.textContent = formatDate(date, true);
+      const list = document.createElement('div');
+      list.className = 'day-notes';
+      items.forEach(note => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `note-link${note.id === activeId ? ' active' : ''}`;
+        button.setAttribute('aria-current', note.id === activeId ? 'page' : 'false');
+        const title = document.createElement('strong');
+        title.textContent = note.title || 'Catatan tanpa judul';
+        const time = document.createElement('span');
+        time.textContent = new Date(note.updatedAt || note.createdAt || Date.now()).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+        button.append(title, time);
+        button.addEventListener('click', () => openNote(note.id));
+        list.appendChild(button);
+      });
+      group.append(heading, list);
+      archiveList.appendChild(group);
+    });
+  }
+  function createNote() {
+    if (dirty) saveActive();
+    const note = { id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, date: selectedDate || todayKey(), title: '', content: '', createdAt: Date.now(), updatedAt: Date.now() };
+    notes.push(note);
+    activeId = note.id;
+    welcome.hidden = true;
+    editor.hidden = false;
+    noteDate.value = note.date;
+    noteTitle.value = '';
+    noteBody.replaceChildren();
+    saveState.textContent = 'Tersimpan';
+    refreshWordCount();
+    persist();
+    renderArchive();
+    noteTitle.focus();
+  }
+
+  newNoteButton.addEventListener('click', createNote);
+  searchNotes.addEventListener('input', renderArchive);
+  noteTitle.addEventListener('input', scheduleSave);
+  noteBody.addEventListener('input', () => { refreshWordCount(); scheduleSave(); });
+  noteDate.addEventListener('change', () => {
+    if (!activeId) { selectedDate = noteDate.value; return; }
+    if (!noteDate.value) { noteDate.value = selectedDate; return; }
+    const note = notes.find(item => item.id === activeId);
+    if (note) {
+      note.date = noteDate.value;
+      selectedDate = note.date;
+      scheduleSave();
+      renderArchive();
+    }
+  });
+  function getSelectedTableCell(range) {
+    if (!range || !noteBody.contains(range.commonAncestorContainer)) return null;
+    const container = range.startContainer;
+    const element = container.nodeType === Node.ELEMENT_NODE ? container : container.parentElement;
+    return element && element.closest ? element.closest('td, th') : null;
+  }
+  function focusTableCell(cell) {
+    noteBody.focus();
+    const range = document.createRange();
+    range.selectNodeContents(cell);
+    range.collapse(true);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    savedSelection = range.cloneRange();
+  }
+  function updateTableAdjustmentButtons() {
+    const cell = getSelectedTableCell(savedSelection);
+    const table = cell && cell.closest('table');
+    document.getElementById('addTableRow').disabled = !table || table.rows.length >= 100;
+    document.getElementById('removeTableRow').disabled = !table || table.rows.length <= 1;
+    document.getElementById('addTableColumn').disabled = !table || table.rows[0].cells.length >= 50;
+    document.getElementById('removeTableColumn').disabled = !table || table.rows[0].cells.length <= 1;
+  }
+  document.querySelectorAll('.tool-button').forEach(button => {
+    button.addEventListener('mousedown', event => event.preventDefault());
+    button.addEventListener('click', () => {
+      if (button.id === 'insertTableButton') {
+        const selection = window.getSelection();
+        savedSelection = selection && selection.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
+        updateTableAdjustmentButtons();
+        document.getElementById('tableControls').hidden = false;
+        document.getElementById('tableRows').focus();
+        return;
+      }
+      if (button.id === 'addTableRow' || button.id === 'removeTableRow' || button.id === 'addTableColumn' || button.id === 'removeTableColumn') {
+        const cell = getSelectedTableCell(savedSelection);
+        const table = cell && cell.closest('table');
+        if (!cell || !table) return;
+        if (button.id === 'removeTableRow' && table.rows.length > 1) {
+          const activeRow = cell.closest('tr');
+          const rowIndex = Array.from(table.rows).indexOf(activeRow);
+          const adjacentRow = table.rows[rowIndex + 1] || table.rows[rowIndex - 1];
+          const rowHasContent = Array.from(activeRow.cells).some(activeCell => activeCell.innerText.trim());
+          if (rowHasContent && !window.confirm('Hapus baris ini beserta isinya?')) return;
+          activeRow.remove();
+          if (adjacentRow) focusTableCell(adjacentRow.cells[Math.min(cell.cellIndex, adjacentRow.cells.length - 1)]);
+        } else if (button.id === 'removeTableColumn' && table.rows[0].cells.length > 1) {
+          const columnIndex = cell.cellIndex;
+          const tableRows = Array.from(table.rows);
+          const columnHasContent = tableRows.some(row => row.cells[columnIndex] && row.cells[columnIndex].innerText.trim());
+          if (columnHasContent && !window.confirm('Hapus kolom ini beserta isinya?')) return;
+          let adjacentCell = null;
+          tableRows.forEach(row => {
+            const activeCell = row.cells[columnIndex];
+            if (!activeCell) return;
+            if (row === cell.closest('tr')) adjacentCell = activeCell.nextElementSibling || activeCell.previousElementSibling;
+            activeCell.remove();
+          });
+          if (adjacentCell) focusTableCell(adjacentCell);
+        } else if (button.id === 'addTableRow' && table.rows.length < 100) {
+          const activeRow = cell.closest('tr');
+          const columnCount = Math.max(...Array.from(table.rows, row => row.cells.length));
+          const newRow = activeRow.cloneNode(false);
+          for (let column = 0; column < columnCount; column += 1) {
+            const newCell = document.createElement('td');
+            newCell.innerHTML = '<br>';
+            newRow.appendChild(newCell);
+          }
+          activeRow.parentElement.insertBefore(newRow, activeRow.nextSibling);
+          focusTableCell(newRow.cells[Math.min(cell.cellIndex, newRow.cells.length - 1)]);
+        } else if (button.id === 'addTableColumn' && table.rows[0].cells.length < 50) {
+          const columnIndex = cell.cellIndex;
+          let activeCell = null;
+          Array.from(table.rows).forEach((row, rowIndex) => {
+            const newCell = document.createElement(row.cells[columnIndex].tagName === 'TH' ? 'th' : 'td');
+            newCell.innerHTML = '<br>';
+            row.cells[columnIndex].insertAdjacentElement('afterend', newCell);
+            if (row === cell.closest('tr')) activeCell = newCell;
+          });
+          if (activeCell) focusTableCell(activeCell);
+        }
+        updateTableAdjustmentButtons();
+        refreshWordCount();
+        scheduleSave();
+        return;
+      }
+      if (button.id === 'confirmInsertTable') {
+        const rowCount = Math.min(20, Math.max(1, Number(document.getElementById('tableRows').value) || 3));
+        const columnCount = Math.min(12, Math.max(1, Number(document.getElementById('tableColumns').value) || 3));
+        const selection = window.getSelection();
+        noteBody.focus();
+        if (savedSelection && noteBody.contains(savedSelection.commonAncestorContainer) && selection) {
+          selection.removeAllRanges();
+          selection.addRange(savedSelection);
+        }
+        const tableRows = Array.from({ length: rowCount }, (_, rowIndex) => {
+          const cellTag = rowIndex === 0 ? 'th' : 'td';
+          const cells = Array.from({ length: columnCount }, (_, columnIndex) => {
+            const content = rowIndex === 0 ? `Kolom ${columnIndex + 1}` : '<br>';
+            return `<${cellTag}>${content}</${cellTag}>`;
+          }).join('');
+          return `<tr>${cells}</tr>`;
+        }).join('');
+        document.execCommand('insertHTML', false, `<table><tbody>${tableRows}</tbody></table><p><br></p>`);
+        savedSelection = null;
+        document.getElementById('tableControls').hidden = true;
+        refreshWordCount();
+        scheduleSave();
+        return;
+      }
+      noteBody.focus();
+      document.execCommand(button.dataset.command, false, button.dataset.value || undefined);
+      refreshWordCount();
+      scheduleSave();
+    });
+  });
+  document.getElementById('formatBlock').addEventListener('change', event => {
+    noteBody.focus();
+    document.execCommand('formatBlock', false, event.target.value);
+    scheduleSave();
+  });
+  document.getElementById('deleteNote').addEventListener('click', () => {
+    if (!activeId || !window.confirm('Hapus catatan ini? Tindakan ini tidak dapat dibatalkan.')) return;
+    window.clearTimeout(saveTimer);
+    notes = notes.filter(note => note.id !== activeId);
+    activeId = null;
+    dirty = false;
+    persist();
+    renderArchive();
+    editor.hidden = true;
+    welcome.hidden = false;
+  });
+  window.addEventListener('beforeunload', () => {
+    window.clearTimeout(saveTimer);
+    if (dirty && !window.__noteDataImporting) saveActive();
+  });
+
+  window.__noteFlushPending = () => {
+    window.clearTimeout(saveTimer);
+    if (dirty) saveActive();
+  };
+  window.__notePrepareImport = () => {
+    window.clearTimeout(saveTimer);
+    dirty = false;
+    window.__noteDataImporting = true;
+  };
+
+  renderArchive();
+  if (notes.length) openNote([...notes].sort((a, b) => b.date.localeCompare(a.date) || (b.updatedAt || 0) - (a.updatedAt || 0))[0].id);
+})();
+</script>
+<script>
+(() => {
+  const STORAGE_KEY = 'english_note_conversations_v1';
+  const LEGACY_STORAGE_KEY = 'english_note_vocabulary_v1';
+  const API_KEY_STORAGE_KEY = 'gemini_api_key';
+  const MODEL = 'gemini-3.5-flash-lite';
+  const WEEKLY_TEST_STORAGE_KEY = 'english_note_conversation_weekly_test_v1';
+  const sentenceInput = document.getElementById('noteVocabSentence');
+  const generatedTranslationInput = document.getElementById('noteVocabTranslationId');
+  const situationInput = document.getElementById('noteVocabSituation');
+  const conditionInput = document.getElementById('noteVocabCondition');
+  const generateButton = document.getElementById('noteVocabGenerate');
+  const saveSentenceButton = document.getElementById('noteVocabSaveSentence');
+  const cancelEditButton = document.getElementById('noteVocabCancelEdit');
+  const form = document.getElementById('noteVocabForm');
+  const formStatus = document.getElementById('noteVocabFormStatus');
+  const cardsList = document.getElementById('noteVocabList');
+  const reviewStatus = document.getElementById('noteVocabReviewStatus');
+  const reviewCard = document.getElementById('noteVocabReviewCard');
+  const answerForm = document.getElementById('noteVocabAnswerForm');
+  const reviewTranslationInput = document.getElementById('noteVocabTranslation');
+  const responseInput = document.getElementById('noteVocabResponse');
+  const checkButton = document.getElementById('noteVocabCheckAnswer');
+  const feedback = document.getElementById('noteVocabFeedback');
+  const nextButton = document.getElementById('noteVocabNext');
+  const ratingActions = document.getElementById('noteVocabRatingActions');
+  const reviewPanel = document.getElementById('noteVocabReviewPanel');
+  const todayStudyPanel = document.getElementById('noteVocabTodayStudy');
+  const reviewTab = document.getElementById('noteVocabReviewTab');
+  const todayTab = document.getElementById('noteVocabTodayTab');
+  let cards = loadCards();
+  let reviewMode = 'due';
+  let reviewQueue = [];
+  let reviewIndex = 0;
+  let activeCard = null;
+  let isChecking = false;
+  let lastGeneratedSentence = '';
+  let generationPromise = null;
+  let generationDebounce = 0;
+  let editingCardId = null;
+  let latestReviewWasCorrect = false;
+  let weeklyTestScore = 0;
+
+  function loadCards() {
+    try {
+      const currentData = localStorage.getItem(STORAGE_KEY);
+      const isLegacyData = currentData === null;
+      const stored = JSON.parse(currentData === null ? localStorage.getItem(LEGACY_STORAGE_KEY) || '[]' : currentData);
+      if (!Array.isArray(stored)) return [];
+      const validCards = stored.filter(card => card && typeof (card.sentence || card.word) === 'string');
+      const normalized = validCards.map(card => {
+        const conversation = {
+          ...card,
+          sentence: card.sentence || card.word,
+          translationId: card.translationId || card.indonesianTranslation || '',
+          situation: card.situation || card.context || card.meaning || '',
+          condition: card.condition || ''
+        };
+        delete conversation.word;
+        delete conversation.meaning;
+        if (isLegacyData) delete conversation.context;
+        return conversation;
+      });
+      if (isLegacyData) localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
+      return normalized;
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCards() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+  }
+
+  function getLocalDateKey(date = new Date()) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  }
+
+  function isDue(card) {
+    return !card.nextReviewDate || new Date(card.nextReviewDate).getTime() <= Date.now();
+  }
+
+  function isMastered(card) {
+    return (card.repetition || 0) >= 3 && (card.interval || 0) >= 14;
+  }
+
+  function isWeeklyTestDue(card) {
+    return isMastered(card) && (!card.nextWeeklyTestDate || new Date(card.nextWeeklyTestDate).getTime() <= Date.now());
+  }
+
+  function getReviewScheduleLabel(card) {
+    const schedules = [];
+    if (card.nextReviewDate) schedules.push({ date: new Date(card.nextReviewDate), label: 'Review' });
+    else schedules.push({ date: new Date(0), label: 'Review' });
+    if (isMastered(card)) {
+      schedules.push({ date: card.nextWeeklyTestDate ? new Date(card.nextWeeklyTestDate) : new Date(0), label: 'Tes mingguan' });
+    }
+    schedules.sort((first, second) => first.date - second.date);
+    const next = schedules.find(item => Number.isFinite(item.date.getTime()));
+    if (!next || next.date.getTime() <= Date.now()) return 'Due Now';
+    const days = Math.ceil((next.date.getTime() - Date.now()) / 86400000);
+    return `${next.label}: ${days} hari lagi`;
+  }
+
+  function proficiency(card) {
+    if (isMastered(card)) return 'Dikuasai';
+    return (card.repetition || 0) > 0 ? 'Sedang dipelajari' : 'Baru';
+  }
+
+  function renderProficiencyChart() {
+    const groups = [
+      { name: 'Baru', color: '#cbd5e1' },
+      { name: 'Sedang dipelajari', color: '#f59e0b' },
+      { name: 'Dikuasai', color: '#10b981' }
+    ];
+    const total = cards.length;
+    const counts = groups.map(group => cards.filter(card => proficiency(card) === group.name).length);
+    let offset = 0;
+    const segments = total
+      ? groups.map((group, index) => {
+        const start = offset;
+        offset += counts[index] / total * 100;
+        return `${group.color} ${start}% ${offset}%`;
+      }).join(', ')
+      : '#cbd5e1 0 100%';
+    document.getElementById('noteVocabProficiencyChart').style.background = `conic-gradient(${segments})`;
+    document.getElementById('noteVocabTotal').textContent = total;
+    const legend = document.getElementById('noteVocabProficiencyLegend');
+    legend.replaceChildren();
+    groups.forEach((group, index) => {
+      const row = document.createElement('div');
+      row.className = 'vocab-proficiency-row';
+      const label = document.createElement('span');
+      label.className = 'vocab-proficiency-label';
+      const dot = document.createElement('span');
+      dot.className = 'vocab-proficiency-dot';
+      dot.style.background = group.color;
+      const name = document.createElement('span');
+      name.textContent = group.name;
+      label.append(dot, name);
+      const value = document.createElement('span');
+      value.className = 'vocab-proficiency-value';
+      const percentage = total ? Math.round(counts[index] / total * 100) : 0;
+      value.textContent = `${counts[index]} (${percentage}%)`;
+      row.append(label, value);
+      legend.appendChild(row);
+    });
+  }
+
+  function renderCards() {
+    const dueCount = cards.filter(isDue).length;
+    const learningCount = cards.filter(card => (card.repetition || 0) > 0 && !isMastered(card)).length;
+    renderProficiencyChart();
+    document.getElementById('noteVocabDue').textContent = `${dueCount} jatuh tempo`;
+    document.getElementById('noteVocabLearningCount').textContent = `${learningCount} sedang dipelajari`;
+    const masteredCards = cards.filter(isMastered);
+    const weeklyReady = masteredCards.filter(isWeeklyTestDue);
+    const nextWeeklyDate = masteredCards
+      .filter(card => card.nextWeeklyTestDate)
+      .map(card => new Date(card.nextWeeklyTestDate))
+      .sort((first, second) => first - second)[0];
+    document.getElementById('noteVocabWeeklyStatus').textContent = !masteredCards.length
+      ? 'Tes mingguan tersedia setelah kalimat mencapai status Dikuasai.'
+      : (weeklyReady.length
+        ? `${weeklyReady.length} kalimat Dikuasai siap untuk tes mingguan.`
+        : `Tes mingguan berikutnya ${nextWeeklyDate ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium' }).format(nextWeeklyDate) : 'akan dijadwalkan'}.`);
+    cardsList.replaceChildren();
+    if (!cards.length) {
+      const empty = document.createElement('div');
+      empty.className = 'vocab-empty';
+      empty.textContent = 'Belum ada kalimat percakapan.';
+      cardsList.appendChild(empty);
+      renderTodayNewSentences();
+      return;
+    }
+    cards.slice().sort((first, second) => first.sentence.localeCompare(second.sentence)).forEach(card => {
+      const row = document.createElement('div');
+      row.className = 'vocab-card-row';
+      row.addEventListener('click', () => loadCardIntoForm(card));
+      const info = document.createElement('div');
+      const sentenceButton = document.createElement('button');
+      sentenceButton.className = 'vocab-card-sentence';
+      sentenceButton.type = 'button';
+      sentenceButton.title = 'Dengarkan kalimat';
+      sentenceButton.setAttribute('aria-label', `Dengarkan kalimat: ${card.sentence}`);
+      sentenceButton.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"></path></svg>';
+      const sentenceText = document.createElement('span');
+      sentenceText.textContent = card.sentence;
+      sentenceButton.appendChild(sentenceText);
+      sentenceButton.addEventListener('click', event => {
+        event.stopPropagation();
+        speakConversationSentence(card.sentence);
+      });
+      const detail = document.createElement('span');
+      detail.textContent = `${card.translationId || 'Arti Indonesia belum dibuat'} · ${card.situation || 'Situasi belum dibuat'} · ${proficiency(card)} · ${isDue(card) ? 'Jatuh tempo' : 'Terjadwal'}`;
+      const schedule = document.createElement('span');
+      schedule.className = 'vocab-schedule';
+      schedule.textContent = getReviewScheduleLabel(card);
+      info.append(sentenceButton, detail, schedule);
+      const removeButton = document.createElement('button');
+      removeButton.className = 'vocab-danger';
+      removeButton.type = 'button';
+      removeButton.textContent = 'Hapus';
+      removeButton.setAttribute('aria-label', `Hapus kalimat ${card.sentence}`);
+      removeButton.addEventListener('click', event => {
+        event.stopPropagation();
+        cards = cards.filter(item => item.id !== card.id);
+        if (editingCardId === card.id) resetSentenceForm();
+        saveCards();
+        renderCards();
+      });
+      row.append(info, removeButton);
+      cardsList.appendChild(row);
+    });
+    renderTodayNewSentences();
+  }
+
+  function speakConversationSentence(sentence) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(sentence);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.85;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function createSuggestionSpeaker(sentence) {
+    const button = document.createElement('button');
+    button.className = 'vocab-suggestion-speak';
+    button.type = 'button';
+    button.title = 'Dengarkan saran';
+    button.setAttribute('aria-label', `Dengarkan saran: ${sentence}`);
+    const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    icon.setAttribute('viewBox', '0 0 24 24');
+    icon.setAttribute('fill', 'none');
+    icon.setAttribute('stroke', 'currentColor');
+    icon.setAttribute('stroke-width', '2');
+    icon.setAttribute('aria-hidden', 'true');
+    const speaker = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    speaker.setAttribute('d', 'M11 5 6 9H2v6h4l5 4V5Z');
+    const sound = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    sound.setAttribute('d', 'M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14');
+    icon.append(speaker, sound);
+    const text = document.createElement('span');
+    text.textContent = sentence;
+    button.append(icon, text);
+    button.addEventListener('click', () => speakConversationSentence(sentence));
+    return button;
+  }
+
+  function loadCardIntoForm(card) {
+    editingCardId = card.id;
+    sentenceInput.value = card.sentence;
+    generatedTranslationInput.value = card.translationId || '';
+    situationInput.value = card.situation || '';
+    conditionInput.value = card.condition || '';
+    lastGeneratedSentence = card.sentence;
+    saveSentenceButton.textContent = 'Perbarui kalimat';
+    cancelEditButton.hidden = false;
+    setStatus(formStatus, 'Kalimat dimuat. Arti dan konteks dapat dilihat atau diedit.');
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    sentenceInput.focus({ preventScroll: true });
+  }
+
+  function resetSentenceForm() {
+    editingCardId = null;
+    form.reset();
+    lastGeneratedSentence = '';
+    saveSentenceButton.textContent = 'Simpan kalimat';
+    cancelEditButton.hidden = true;
+  }
+
+  function renderTodayNewSentences() {
+    const list = document.getElementById('noteVocabTodayList');
+    const todaySentences = cards
+      .filter(card => card.firstReviewEvaluation?.reviewDate === getLocalDateKey())
+      .sort((first, second) => first.firstReviewEvaluation.reviewedAt.localeCompare(second.firstReviewEvaluation.reviewedAt));
+    document.getElementById('noteVocabTodayCount').textContent = `${todaySentences.length} kalimat`;
+    list.replaceChildren();
+    if (!todaySentences.length) {
+      const empty = document.createElement('div');
+      empty.className = 'vocab-today-empty';
+      empty.textContent = 'Evaluasi dari review pertama hari ini akan tersimpan di sini untuk dipelajari kembali.';
+      list.appendChild(empty);
+      return;
+    }
+    todaySentences.forEach(card => {
+      const evaluation = card.firstReviewEvaluation;
+      const item = document.createElement('article');
+      item.className = 'vocab-today-item';
+      const sentence = document.createElement('button');
+      sentence.className = 'vocab-card-sentence';
+      sentence.type = 'button';
+      sentence.title = 'Dengarkan kalimat';
+      sentence.setAttribute('aria-label', `Dengarkan kalimat: ${card.sentence}`);
+      sentence.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"></path></svg>';
+      const sentenceText = document.createElement('span');
+      sentenceText.textContent = card.sentence;
+      sentence.appendChild(sentenceText);
+      sentence.addEventListener('click', () => speakConversationSentence(card.sentence));
+      const context = document.createElement('div');
+      context.className = 'vocab-today-meta';
+      context.textContent = `${card.translationId} · Situasi: ${card.situation} · Kondisi: ${card.condition} · ${getReviewScheduleLabel(card)}`;
+      const evaluations = document.createElement('div');
+      evaluations.className = 'vocab-today-evaluations';
+      const translation = document.createElement('div');
+      translation.className = 'vocab-today-evaluation';
+      const translationHeading = document.createElement('strong');
+      translationHeading.textContent = `Terjemahan ${evaluation.translationCorrect ? 'tepat' : 'perlu dipelajari'}`;
+      translation.append(translationHeading, document.createTextNode(`Jawaban: ${evaluation.translationAttempt}`));
+      const translationNote = document.createElement('div');
+      translationNote.textContent = evaluation.translationFeedback;
+      const translationSuggestion = document.createElement('div');
+      translationSuggestion.className = 'vocab-suggestion-row';
+      const translationSuggestionLabel = document.createElement('span');
+      translationSuggestionLabel.textContent = 'Saran:';
+      translationSuggestion.append(translationSuggestionLabel, createSuggestionSpeaker(evaluation.translationCorrection));
+      translation.append(translationNote, translationSuggestion);
+      const response = document.createElement('div');
+      response.className = 'vocab-today-evaluation';
+      const responseHeading = document.createElement('strong');
+      const responseLabel = evaluation.responseType === 'answer' ? 'Jawaban' : 'Pertanyaan';
+      responseHeading.textContent = `${responseLabel} ${evaluation.responseCorrect ? 'sesuai' : 'perlu dipelajari'}`;
+      response.append(responseHeading, document.createTextNode(`Jawaban: ${evaluation.responseAttempt}`));
+      const responseNote = document.createElement('div');
+      responseNote.textContent = evaluation.responseFeedback;
+      const responseSuggestion = document.createElement('div');
+      responseSuggestion.className = 'vocab-suggestion-row';
+      const responseSuggestionLabel = document.createElement('span');
+      responseSuggestionLabel.textContent = 'Saran:';
+      responseSuggestion.append(responseSuggestionLabel, createSuggestionSpeaker(evaluation.responseCorrection));
+      response.append(responseNote, responseSuggestion);
+      evaluations.append(translation, response);
+      item.append(sentence, context, evaluations);
+      list.appendChild(item);
+    });
+  }
+
+  function setStatus(element, message, type = '') {
+    element.textContent = message;
+    element.classList.toggle('error', type === 'error');
+    element.classList.toggle('success', type === 'success');
+  }
+
+  async function requestGeminiJSON(systemPrompt, requestData) {
+    let apiKey = localStorage.getItem(API_KEY_STORAGE_KEY) || '';
+    if (!apiKey) {
+      try { apiKey = JSON.parse(localStorage.getItem('english_app_state_v1') || '{}').apiKey || ''; } catch {}
+    }
+    if (!apiKey) throw new Error('Simpan Gemini API Key di halaman Vocabulary terlebih dahulu.');
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(MODEL)}:generateContent?key=${encodeURIComponent(apiKey)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        contents: [{ role: 'user', parts: [{ text: JSON.stringify(requestData) }] }],
+        generationConfig: { responseMimeType: 'application/json', temperature: 0 }
+      })
+    });
+    if (!response.ok) {
+      const errorBody = await response.text();
+      let detail = '';
+      try { detail = JSON.parse(errorBody)?.error?.message || ''; } catch {}
+      throw new Error(detail || `Gemini API menolak permintaan (${response.status}).`);
+    }
+    const payload = await response.json();
+    const responseText = payload.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('').replace(/```json|```/g, '').trim();
+    if (!responseText) throw new Error('Gemini tidak mengembalikan data.');
+    return JSON.parse(responseText);
+  }
+
+  function generateConversationDetails(force = false) {
+    const sentence = sentenceInput.value.trim();
+    if (!sentence) {
+      setStatus(formStatus, 'Isi kalimat bahasa Inggris terlebih dahulu.');
+      sentenceInput.focus();
+      return Promise.resolve(false);
+    }
+    if (generationPromise) return generationPromise;
+    if (!force && sentence === lastGeneratedSentence) return Promise.resolve(true);
+    generateButton.disabled = true;
+    generateButton.textContent = 'Membuat arti dan konteks...';
+    setStatus(formStatus, 'Gemini sedang menerjemahkan dan membuat situasi/kondisi...');
+    generationPromise = (async () => {
+      try {
+        const details = await requestGeminiJSON(
+          'Anda adalah pelatih percakapan bahasa Inggris. Untuk satu kalimat bahasa Inggris, buat terjemahan bahasa Indonesia yang setia pada makna, situasi percakapan singkat, dan kondisi atau konteks spesifik. Terjemahan Indonesia harus dapat dipakai sebagai petunjuk untuk mengingat kembali kalimat Inggris. Situasi menjelaskan tujuan/interaksi, kondisi menjelaskan detail atau batasan yang relevan. Balas hanya JSON: {"translationId":"terjemahan bahasa Indonesia","situation":"situasi percakapan","condition":"kondisi atau konteks"}.',
+          { sentence }
+        );
+        if (![details.translationId, details.situation, details.condition].every(value => typeof value === 'string' && value.trim())) {
+          throw new Error('Hasil arti, situasi, atau kondisi belum lengkap. Coba generate lagi.');
+        }
+        if (sentenceInput.value.trim() !== sentence) return false;
+        generatedTranslationInput.value = details.translationId.trim();
+        situationInput.value = details.situation.trim();
+        conditionInput.value = details.condition.trim();
+        lastGeneratedSentence = sentence;
+        setStatus(formStatus, 'Arti, situasi, dan kondisi berhasil dibuat. Periksa atau edit sebelum menyimpan.', 'success');
+        return true;
+      } catch (error) {
+        setStatus(formStatus, error.message || 'Generate gagal. Coba lagi.', 'error');
+        return false;
+      } finally {
+        generationPromise = null;
+        generateButton.disabled = false;
+        generateButton.textContent = 'Generate arti, situasi, dan kondisi';
+      }
+    })();
+    return generationPromise;
+  }
+
+  generateButton.addEventListener('click', () => generateConversationDetails(true));
+  sentenceInput.addEventListener('input', () => {
+    window.clearTimeout(generationDebounce);
+    if (sentenceInput.value.trim() === lastGeneratedSentence) return;
+    generatedTranslationInput.value = '';
+    situationInput.value = '';
+    conditionInput.value = '';
+    lastGeneratedSentence = '';
+    if (sentenceInput.value.trim()) {
+      generationDebounce = window.setTimeout(() => generateConversationDetails(), 700);
+    }
+  });
+  sentenceInput.addEventListener('blur', () => {
+    if (sentenceInput.value.trim() && (!generatedTranslationInput.value.trim() || !situationInput.value.trim() || !conditionInput.value.trim())) {
+      generateConversationDetails();
+    }
+  });
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const sentence = sentenceInput.value.trim();
+    if (!sentence) return;
+    if (!generatedTranslationInput.value.trim() || !situationInput.value.trim() || !conditionInput.value.trim()) {
+      if (!await generateConversationDetails()) return;
+    }
+    const translationId = generatedTranslationInput.value.trim();
+    const situation = situationInput.value.trim();
+    const condition = conditionInput.value.trim();
+    if (cards.some(card => card.id !== editingCardId && card.sentence.toLocaleLowerCase() === sentence.toLocaleLowerCase())) {
+      setStatus(formStatus, 'Kalimat ini sudah ada di daftar.', 'error');
+      return;
+    }
+    if (editingCardId) {
+      const card = cards.find(item => item.id === editingCardId);
+      if (!card) {
+        resetSentenceForm();
+        setStatus(formStatus, 'Kalimat tidak ditemukan. Silakan pilih lagi.', 'error');
+        return;
+      }
+      const contentChanged = card.sentence !== sentence || card.translationId !== translationId || card.situation !== situation || card.condition !== condition;
+      Object.assign(card, { sentence, translationId, situation, condition });
+      if (contentChanged) {
+        card.repetition = 0;
+        card.interval = 0;
+        card.easiness = 2.5;
+        card.nextReviewDate = new Date().toISOString();
+        delete card.firstReviewEvaluation;
+        delete card.weeklyTestPasses;
+        delete card.weeklyTestIntervalDays;
+        delete card.nextWeeklyTestDate;
+      }
+    } else {
+      cards.push({
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        sentence,
+        translationId,
+        situation,
+        condition,
+        repetition: 0,
+        interval: 0,
+        easiness: 2.5,
+        nextReviewDate: new Date().toISOString()
+      });
+    }
+    saveCards();
+    renderCards();
+    const wasEditing = Boolean(editingCardId);
+    resetSentenceForm();
+    setStatus(formStatus, wasEditing ? 'Kalimat diperbarui.' : 'Kalimat tersimpan.', 'success');
+    sentenceInput.focus();
+  });
+
+  cancelEditButton.addEventListener('click', () => {
+    resetSentenceForm();
+    setStatus(formStatus, 'Edit dibatalkan.');
+  });
+
+  document.querySelectorAll('[data-note-review-mode]').forEach(button => button.addEventListener('click', () => {
+    reviewMode = button.dataset.noteReviewMode;
+    document.querySelectorAll('[data-note-review-mode]').forEach(modeButton => {
+      modeButton.setAttribute('aria-pressed', String(modeButton === button));
+    });
+    setStatus(reviewStatus, `Mode review: ${button.textContent}.`);
+  }));
+
+  function selectConversationTab(tab) {
+    const showToday = tab === 'today';
+    reviewPanel.hidden = showToday;
+    todayStudyPanel.hidden = !showToday;
+    reviewTab.setAttribute('aria-selected', String(!showToday));
+    todayTab.setAttribute('aria-selected', String(showToday));
+    if (showToday) renderTodayNewSentences();
+  }
+
+  reviewTab.addEventListener('click', () => selectConversationTab('review'));
+  todayTab.addEventListener('click', () => selectConversationTab('today'));
+
+  function matchingCards() {
+    if (reviewMode === 'due') return cards.filter(isDue);
+    if (reviewMode === 'learning') return cards.filter(card => (card.repetition || 0) > 0);
+    if (reviewMode === 'weekly') return cards.filter(isWeeklyTestDue).slice(0, 15);
+    return cards;
+  }
+
+  async function ensureReviewDetails(card) {
+    if (card.translationId && card.situation && card.condition) return;
+    const details = await requestGeminiJSON(
+      'Buat terjemahan Indonesia yang setia pada kalimat Inggris, serta situasi percakapan dan kondisi/konteksnya. Terjemahan digunakan sebagai petunjuk review tanpa menampilkan kalimat Inggris. Balas hanya JSON: {"translationId":"terjemahan Indonesia","situation":"situasi percakapan","condition":"kondisi atau konteks"}.',
+      { sentence: card.sentence, situation: card.situation || '', condition: card.condition || '' }
+    );
+    if (![details.translationId, details.situation, details.condition].every(value => typeof value === 'string' && value.trim())) {
+      throw new Error('Arti, situasi, atau kondisi untuk kartu lama belum lengkap.');
+    }
+    card.translationId = card.translationId || details.translationId.trim();
+    card.situation = card.situation || details.situation.trim();
+    card.condition = card.condition || details.condition.trim();
+    saveCards();
+    renderCards();
+  }
+
+  async function showReviewCard() {
+    if (reviewIndex >= reviewQueue.length) {
+      activeCard = null;
+      reviewCard.hidden = true;
+      if (reviewMode === 'weekly') {
+        localStorage.setItem(WEEKLY_TEST_STORAGE_KEY, JSON.stringify({ completedAt: new Date().toISOString(), score: weeklyTestScore, total: reviewQueue.length }));
+        setStatus(reviewStatus, `Tes mingguan selesai: ${weeklyTestScore}/${reviewQueue.length} kalimat lolos.`, 'success');
+        renderCards();
+      } else {
+        setStatus(reviewStatus, `Review selesai. ${reviewQueue.length} kalimat diproses.`, 'success');
+      }
+      return;
+    }
+    activeCard = reviewQueue[reviewIndex];
+    if (!activeCard.translationId || !activeCard.situation || !activeCard.condition) {
+      reviewCard.hidden = true;
+      setStatus(reviewStatus, 'Membuat petunjuk Indonesia untuk kalimat ini...');
+      try {
+        await ensureReviewDetails(activeCard);
+      } catch (error) {
+        setStatus(reviewStatus, error.message || 'Tidak dapat membuat petunjuk review.', 'error');
+        return;
+      }
+    }
+    reviewCard.hidden = false;
+    document.getElementById('noteVocabReviewProgress').textContent = `Kartu ${reviewIndex + 1} dari ${reviewQueue.length}`;
+    document.getElementById('noteVocabReviewNext').textContent = getReviewScheduleLabel(activeCard);
+    const isReferenceQuestion = /\?\s*["'”’)]*$/.test(activeCard.sentence.trim());
+    document.getElementById('noteVocabReviewPrompt').textContent = isReferenceQuestion
+      ? 'Tulis kalimat jawaban untuk pertanyaan Indonesia di atas:'
+      : 'Tulis pertanyaan yang sesuai dengan kalimat Indonesia di atas:';
+    document.getElementById('noteVocabReviewMeaning').textContent = activeCard.translationId;
+    document.getElementById('noteVocabReviewContext').textContent = `Situasi: ${activeCard.situation} · Kondisi: ${activeCard.condition}`;
+    reviewTranslationInput.value = '';
+    responseInput.value = '';
+    responseInput.placeholder = isReferenceQuestion ? 'Tulis kalimat jawaban' : 'Tulis kalimat pertanyaan';
+    responseInput.setAttribute('aria-label', isReferenceQuestion ? 'Kalimat jawaban dalam bahasa Inggris' : 'Kalimat pertanyaan dalam bahasa Inggris');
+    responseInput.dataset.responseType = isReferenceQuestion ? 'answer' : 'question';
+    reviewTranslationInput.disabled = false;
+    responseInput.disabled = false;
+    checkButton.disabled = false;
+    checkButton.textContent = 'Periksa dua jawaban';
+    feedback.hidden = true;
+    feedback.className = 'vocab-feedback';
+    feedback.replaceChildren();
+    ratingActions.hidden = true;
+    nextButton.hidden = true;
+    latestReviewWasCorrect = false;
+    setStatus(reviewStatus, 'Isi terjemahan dan respons percakapan.');
+    reviewTranslationInput.focus();
+  }
+
+  document.getElementById('noteVocabStartReview').addEventListener('click', async event => {
+    reviewQueue = matchingCards();
+    reviewIndex = 0;
+    if (reviewMode === 'weekly') weeklyTestScore = 0;
+    if (!reviewQueue.length) {
+      reviewCard.hidden = true;
+      const emptyMessage = reviewMode === 'due'
+        ? 'Tidak ada kalimat yang jatuh tempo.'
+        : (reviewMode === 'weekly' ? 'Belum ada kalimat Dikuasai yang siap dites.' : 'Tidak ada kalimat untuk mode review ini.');
+      setStatus(reviewStatus, emptyMessage);
+      return;
+    }
+    const startButton = event.currentTarget;
+    startButton.disabled = true;
+    try {
+      await showReviewCard();
+    } finally {
+      startButton.disabled = false;
+    }
+  });
+
+  function updateRepetition(card, isCorrect) {
+    const reviewedAt = new Date();
+    const wasMastered = isMastered(card);
+    let easiness = Number(card.easiness) || 2.5;
+    if (!isCorrect) {
+      card.repetition = 0;
+      card.interval = 0;
+      card.easiness = Math.max(1.3, easiness - 0.2);
+      card.nextReviewDate = reviewedAt.toISOString();
+      delete card.weeklyTestPasses;
+      delete card.weeklyTestIntervalDays;
+      delete card.nextWeeklyTestDate;
+      return;
+    }
+    const repetition = Number(card.repetition) || 0;
+    const previousInterval = Number(card.interval) || 0;
+    const interval = repetition === 0 ? 1 : (repetition === 1 ? 6 : Math.max(1, Math.round(previousInterval * easiness)));
+    card.repetition = repetition + 1;
+    card.interval = interval;
+    card.easiness = Math.max(1.3, easiness + 0.1 - (5 - 4) * (0.08 + (5 - 4) * 0.02));
+    const nextReviewDate = new Date(reviewedAt);
+    nextReviewDate.setDate(nextReviewDate.getDate() + interval);
+    card.nextReviewDate = nextReviewDate.toISOString();
+    if (!wasMastered && isMastered(card)) {
+      card.weeklyTestPasses = 0;
+      card.weeklyTestIntervalDays = 7;
+      const weeklyDate = new Date(reviewedAt);
+      weeklyDate.setDate(weeklyDate.getDate() + 7);
+      card.nextWeeklyTestDate = weeklyDate.toISOString();
+    }
+  }
+
+  function rateCurrentCard(isRemembered) {
+    if (!activeCard || ratingActions.hidden) return;
+    const now = new Date();
+    let passedWeeklyTest = false;
+    if (reviewMode === 'weekly') {
+      passedWeeklyTest = isRemembered && latestReviewWasCorrect;
+      if (passedWeeklyTest) {
+        const nextInterval = (Number(activeCard.weeklyTestIntervalDays) || 7) * 2;
+        activeCard.weeklyTestPasses = (Number(activeCard.weeklyTestPasses) || 0) + 1;
+        activeCard.weeklyTestIntervalDays = nextInterval;
+        const nextDate = new Date(now);
+        nextDate.setDate(nextDate.getDate() + nextInterval);
+        activeCard.nextWeeklyTestDate = nextDate.toISOString();
+        weeklyTestScore++;
+      } else {
+        delete activeCard.weeklyTestPasses;
+        delete activeCard.weeklyTestIntervalDays;
+        delete activeCard.nextWeeklyTestDate;
+        activeCard.repetition = 1;
+        activeCard.interval = 1;
+        activeCard.nextReviewDate = now.toISOString();
+      }
+    } else {
+      updateRepetition(activeCard, isRemembered);
+    }
+    saveCards();
+    renderCards();
+    ratingActions.hidden = true;
+    nextButton.hidden = false;
+    setStatus(reviewStatus, reviewMode === 'weekly'
+      ? (passedWeeklyTest ? 'Tes mingguan lulus; jadwal berikutnya diperpanjang.' : 'Tes belum lulus; kalimat kembali ke review reguler.')
+      : (isRemembered ? 'Ditandai ingat; jadwal repetition diperbarui.' : 'Ditandai tidak ingat; kalimat kembali jatuh tempo.'), passedWeeklyTest || (reviewMode !== 'weekly' && isRemembered) ? 'success' : '');
+  }
+
+  ratingActions.querySelectorAll('[data-memory-rating]').forEach(button => button.addEventListener('click', () => {
+    rateCurrentCard(button.dataset.memoryRating === 'remembered');
+  }));
+
+  function displayFeedback(results) {
+    feedback.className = 'vocab-feedback';
+    feedback.replaceChildren();
+    const sections = [
+      { title: results.translationCorrect ? 'Terjemahan tepat' : 'Periksa terjemahan', correct: results.translationCorrect, message: results.translationFeedback, suggestion: results.translationCorrection },
+      { title: results.responseCorrect ? (responseInput.dataset.responseType === 'answer' ? 'Jawaban sesuai' : 'Pertanyaan sesuai') : 'Periksa respons', correct: results.responseCorrect, message: results.responseFeedback, suggestion: results.responseCorrection }
+    ];
+    sections.forEach(section => {
+      const part = document.createElement('div');
+      part.className = `vocab-feedback-part ${section.correct ? 'correct' : 'incorrect'}`;
+      const heading = document.createElement('strong');
+      heading.textContent = section.title;
+      const detail = document.createElement('div');
+      detail.textContent = section.message;
+      const suggestionRow = document.createElement('div');
+      suggestionRow.className = 'vocab-suggestion-row';
+      const suggestionLabel = document.createElement('span');
+      suggestionLabel.textContent = 'Saran:';
+      suggestionRow.append(suggestionLabel, createSuggestionSpeaker(section.suggestion));
+      part.append(heading, detail, suggestionRow);
+      feedback.appendChild(part);
+    });
+    feedback.hidden = false;
+  }
+
+  answerForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!activeCard || isChecking) return;
+    const translationAttempt = reviewTranslationInput.value.trim();
+    const responseAttempt = responseInput.value.trim();
+    if (!translationAttempt || !responseAttempt) return;
+    isChecking = true;
+    reviewTranslationInput.disabled = true;
+    responseInput.disabled = true;
+    checkButton.disabled = true;
+    checkButton.textContent = 'Memeriksa...';
+    setStatus(reviewStatus, 'Gemini sedang memeriksa terjemahan dan respons...');
+    const responseType = responseInput.dataset.responseType || 'answer';
+    try {
+      const result = await requestGeminiJSON(
+        'Anda adalah pelatih bahasa Inggris. Nilai dua tugas secara terpisah. Pertama, tentukan apakah translationAttempt merupakan terjemahan bahasa Inggris yang akurat dan alami dari translationInIndonesian; berikan translationCorrection yang benar bila perlu. Kedua, evaluasi expectedResponseType berdasarkan referenceSentence, situation, dan condition. Jika tipenya "answer", nilai apakah responseAttempt menjawab pertanyaan acuan dengan relevan, alami, dan tata bahasa yang benar. Jika tipenya "question", nilai apakah responseAttempt merupakan pertanyaan alami yang cocok untuk memperoleh kalimat acuan sebagai jawabannya dan sesuai situasi/kondisi. Terima variasi yang wajar. Balas hanya JSON dengan bentuk: {"translationCorrect":true,"translationFeedback":"catatan singkat bahasa Indonesia","translationCorrection":"terjemahan bahasa Inggris yang tepat","responseCorrect":true,"responseFeedback":"catatan singkat bahasa Indonesia","responseCorrection":"respons bahasa Inggris yang tepat"}.',
+        { translationInIndonesian: activeCard.translationId, referenceSentence: activeCard.sentence, situation: activeCard.situation, condition: activeCard.condition, expectedResponseType: responseType, translationAttempt, responseAttempt }
+      );
+      if (typeof result.translationCorrect !== 'boolean' || typeof result.responseCorrect !== 'boolean') throw new Error('Format koreksi Gemini tidak valid.');
+      const results = {
+        translationCorrect: result.translationCorrect,
+        translationFeedback: String(result.translationFeedback || ''),
+        translationCorrection: String(result.translationCorrection || activeCard.sentence),
+        responseCorrect: result.responseCorrect,
+        responseFeedback: String(result.responseFeedback || ''),
+        responseCorrection: String(result.responseCorrection || activeCard.sentence)
+      };
+      if (!activeCard.firstReviewEvaluation) {
+        const evaluatedAt = new Date();
+        activeCard.firstReviewEvaluation = {
+          reviewedAt: evaluatedAt.toISOString(),
+          reviewDate: getLocalDateKey(evaluatedAt),
+          translationAttempt,
+          translationCorrect: results.translationCorrect,
+          translationFeedback: results.translationFeedback,
+          translationCorrection: results.translationCorrection,
+          responseType,
+          responseAttempt,
+          responseCorrect: results.responseCorrect,
+          responseFeedback: results.responseFeedback,
+          responseCorrection: results.responseCorrection
+        };
+        saveCards();
+        renderCards();
+      }
+      const bothCorrect = results.translationCorrect && results.responseCorrect;
+      latestReviewWasCorrect = bothCorrect;
+      displayFeedback(results);
+      ratingActions.hidden = false;
+      setStatus(reviewStatus, bothCorrect ? 'Koreksi selesai. Nilai apakah kamu mengingat kalimat ini.' : 'Koreksi selesai. Periksa saran, lalu nilai ingatanmu.');
+      reviewTranslationInput.disabled = true;
+      responseInput.disabled = true;
+    } catch (error) {
+      reviewTranslationInput.disabled = false;
+      responseInput.disabled = false;
+      checkButton.disabled = false;
+      setStatus(reviewStatus, error.message || 'Koreksi AI gagal. Coba lagi.', 'error');
+      return;
+    } finally {
+      isChecking = false;
+      checkButton.textContent = 'Periksa dua jawaban';
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    reviewIndex++;
+    showReviewCard();
+  });
+
+  renderCards();
+})();
+</script>
+
+<script>
+(() => {
+  const backupKeys = {
+    notes: 'english-notes-v1',
+    conversations: 'english_note_conversations_v1',
+    legacyConversations: 'english_note_vocabulary_v1',
+    weeklyTest: 'english_note_conversation_weekly_test_v1'
+  };
+  const formatName = 'english-note-backup';
+  const importFile = document.getElementById('noteImportFile');
+
+  function readStoredJson(key, fallback) {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : JSON.parse(value);
+  }
+
+  function buildBackup() {
+    window.__noteFlushPending?.();
+    return {
+      format: formatName,
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      notes: readStoredJson(backupKeys.notes, []),
+      conversations: readStoredJson(backupKeys.conversations, []),
+      legacyConversations: readStoredJson(backupKeys.legacyConversations, []),
+      weeklyTest: readStoredJson(backupKeys.weeklyTest, null)
+    };
+  }
+
+  function validateBackup(data) {
+    if (!data || data.format !== formatName || data.version !== 1) throw new Error('Format backup Note tidak dikenali.');
+    if (!Array.isArray(data.notes) || !data.notes.every(note => note && typeof note.id === 'string' && typeof note.date === 'string' && typeof note.title === 'string' && typeof note.content === 'string')) {
+      throw new Error('Data catatan tidak valid atau tidak lengkap.');
+    }
+    if (!Array.isArray(data.conversations) || !data.conversations.every(card => card && typeof card.id === 'string' && typeof card.sentence === 'string')) {
+      throw new Error('Data kalimat conversation tidak valid atau tidak lengkap.');
+    }
+    if (!Array.isArray(data.legacyConversations)) throw new Error('Data conversation lama tidak valid.');
+    if (data.weeklyTest !== null && (typeof data.weeklyTest !== 'object' || Array.isArray(data.weeklyTest))) {
+      throw new Error('Hasil tes mingguan tidak valid.');
+    }
+  }
+
+  document.getElementById('exportNoteData').addEventListener('click', () => {
+    try {
+      const backup = buildBackup();
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `note-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      window.alert(error.message || 'Data Note gagal diekspor.');
+    }
+  });
+
+  document.getElementById('openNoteImport').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', async () => {
+    const file = importFile.files?.[0];
+    if (!file) return;
+    try {
+      const backup = JSON.parse(await file.text());
+      validateBackup(backup);
+      if (!window.confirm('Impor akan mengganti seluruh catatan, kalimat conversation, dan hasil tes mingguan di halaman ini. Lanjutkan?')) return;
+
+      const values = {
+        [backupKeys.notes]: JSON.stringify(backup.notes),
+        [backupKeys.conversations]: JSON.stringify(backup.conversations),
+        [backupKeys.legacyConversations]: JSON.stringify(backup.legacyConversations),
+        [backupKeys.weeklyTest]: backup.weeklyTest === null ? null : JSON.stringify(backup.weeklyTest)
+      };
+      const previous = Object.fromEntries(Object.keys(values).map(key => [key, localStorage.getItem(key)]));
+      try {
+        window.__notePrepareImport?.();
+        Object.entries(values).forEach(([key, value]) => {
+          if (value === null) localStorage.removeItem(key);
+          else localStorage.setItem(key, value);
+        });
+      } catch (error) {
+        Object.entries(previous).forEach(([key, value]) => {
+          if (value === null) localStorage.removeItem(key);
+          else localStorage.setItem(key, value);
+        });
+        throw error;
+      }
+      window.location.reload();
+    } catch (error) {
+      window.alert(error.message || 'File backup gagal diimpor.');
+    } finally {
+      importFile.value = '';
+    }
+  });
+})();
+</script>
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

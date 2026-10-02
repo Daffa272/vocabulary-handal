@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkuman Materi TOEFL — Will & Would</title>
+<style>
+  :root{
+    --navy:#1a2b4c;
+    --blue:#2f5fae;
+    --gold:#c9a227;
+    --bg:#f7f6f2;
+    --card:#ffffff;
+    --text:#26303d;
+    --muted:#5b6472;
+    --border:#e3e1d9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Georgia', 'Times New Roman', serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+  }
+  .wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:48px 24px 100px;
+  }
+  header.hero{
+    text-align:center;
+    padding:40px 20px 32px;
+    margin-bottom:40px;
+    background:linear-gradient(135deg, var(--navy), var(--blue));
+    color:#fff;
+    border-radius:14px;
+    box-shadow:0 8px 24px rgba(26,43,76,0.25);
+  }
+  header.hero .tag{
+    letter-spacing:3px;
+    font-size:0.75rem;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-family:Arial, sans-serif;
+    margin-bottom:10px;
+  }
+  header.hero h1{
+    margin:0;
+    font-size:2rem;
+    font-weight:700;
+  }
+  header.hero p{
+    font-family:Arial, sans-serif;
+    font-size:0.95rem;
+    color:#d7deef;
+    margin-top:10px;
+  }
+
+  nav.toc{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 24px;
+    margin-bottom:40px;
+    font-family:Arial, sans-serif;
+  }
+  nav.toc h2{
+    font-size:0.9rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin:0 0 12px;
+  }
+  nav.toc ol{
+    columns:2;
+    -webkit-columns:2;
+    margin:0;
+    padding-left:20px;
+    font-size:0.88rem;
+  }
+  nav.toc li{margin-bottom:6px;}
+  nav.toc a{color:var(--text); text-decoration:none;}
+  nav.toc a:hover{color:var(--blue); text-decoration:underline;}
+
+  section.point{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:5px solid var(--blue);
+    border-radius:10px;
+    padding:26px 28px;
+    margin-bottom:26px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.03);
+  }
+  section.point.star{
+    border-left-color:var(--gold);
+  }
+  section.point h2{
+    margin-top:0;
+    font-size:1.25rem;
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  section.point h2 .num{
+    font-family:Arial, sans-serif;
+    background:var(--navy);
+    color:#fff;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.85rem;
+    flex-shrink:0;
+  }
+  section.point.star h2 .num{background:var(--gold); color:var(--navy);}
+
+  h3.sub{
+    font-family:Arial, sans-serif;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    color:var(--muted);
+    margin:18px 0 8px;
+  }
+
+  .formula{
+    background:#eef2fb;
+    border:1px dashed var(--blue);
+    border-radius:8px;
+    padding:12px 18px;
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    color:var(--navy);
+    font-size:1.05rem;
+    margin:8px 0 16px;
+  }
+
+  .examples{
+    margin:0 0 12px;
+    padding-left:0;
+    list-style:none;
+  }
+  .examples li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:8px;
+    font-style:italic;
+    color:var(--text);
+  }
+  .examples li::before{
+    content:"❝";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+    font-style:normal;
+  }
+  .examples b{font-style:normal; color:var(--blue); font-weight:700;}
+
+  .hints{
+    font-family:Arial, sans-serif;
+    font-size:0.88rem;
+    color:var(--muted);
+    background:#faf7ef;
+    border-radius:8px;
+    padding:10px 16px;
+    margin-top:10px;
+  }
+  .hints span.label{
+    font-weight:bold;
+    color:var(--navy);
+    display:block;
+    margin-bottom:4px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-family:Arial, sans-serif;
+    font-size:0.92rem;
+  }
+  th, td{
+    border:1px solid var(--border);
+    padding:10px 14px;
+    text-align:left;
+  }
+  th{
+    background:var(--navy);
+    color:#fff;
+    font-weight:600;
+  }
+  tr:nth-child(even) td{background:#f5f6fa;}
+
+  .master-table th{background:var(--gold); color:var(--navy);}
+
+  .check{color:#2a8f4a; font-weight:bold;}
+  .cross{color:#c0392b; font-weight:bold;}
+
+  .quick-steps{
+    background:linear-gradient(135deg, #fff7e6, #fff);
+    border:1px solid var(--gold);
+    border-radius:12px;
+    padding:26px 28px;
+    margin:30px 0;
+  }
+  .quick-steps h2{
+    color:var(--navy);
+    margin-top:0;
+  }
+  .step{
+    display:flex;
+    gap:14px;
+    margin-bottom:14px;
+    align-items:flex-start;
+  }
+  .step .circle{
+    font-family:Arial, sans-serif;
+    background:var(--gold);
+    color:var(--navy);
+    min-width:28px;
+    height:28px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:0.85rem;
+    margin-top:2px;
+  }
+  .step p{margin:0;}
+  .step .lead{font-family:Arial, sans-serif; font-weight:bold; color:var(--blue);}
+
+  .core-formula{
+    background:var(--navy);
+    color:#fff;
+    border-radius:14px;
+    padding:32px;
+    margin-top:36px;
+  }
+  .core-formula h2{
+    text-align:center;
+    color:var(--gold);
+    letter-spacing:1px;
+    margin-top:0;
+  }
+  .core-formula ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .core-formula li{
+    font-family:'Courier New', monospace;
+    padding:10px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .core-formula li:last-child{border-bottom:none;}
+  .core-formula .f{color:var(--gold); font-weight:bold;}
+  .core-formula .m{color:#d7deef; font-family:Arial, sans-serif; font-style:italic;}
+
+  footer{
+    text-align:center;
+    margin-top:50px;
+    font-family:Arial, sans-serif;
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+
+  @media (max-width:600px){
+    nav.toc ol{columns:1;}
+    header.hero h1{font-size:1.5rem;}
+    section.point{padding:20px;}
+  }
+</style>
+  <link rel="stylesheet" href="ai-generator.css">
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body data-ai-title="Will & Would dalam TOEFL" data-ai-topic="will + V1, future continuous, future perfect, future perfect continuous, would + V1, conditional, reported speech, future in the past, was/were going to, would like, passive voice, serta past continuous">
+<div class="wrap">
+
+  <header class="hero">
+    <div class="tag">TOEFL Structure & Written Expression</div>
+    <h1>📚 Rangkuman Materi TOEFL</h1>
+    <p>Penggunaan <strong>WILL</strong> &amp; <strong>WOULD</strong> dalam Berbagai Bentuk Kalimat</p>
+  </header>
+
+  <nav class="toc">
+    <h2>Daftar Isi</h2>
+    <ol>
+      <li><a href="#p1">Will + V1 — Simple Future</a></li>
+      <li><a href="#p2">Will Be + V-ing — Future Continuous</a></li>
+      <li><a href="#p3">Will Have + V3 — Future Perfect</a></li>
+      <li><a href="#p4">Will Have Been + V-ing</a></li>
+      <li><a href="#p5">Would + V1</a></li>
+      <li><a href="#p6">Second Conditional ⭐</a></li>
+      <li><a href="#p7">Third Conditional</a></li>
+      <li><a href="#p8">First, Second, Third Conditional</a></li>
+      <li><a href="#p9">Would dalam Reported Speech</a></li>
+      <li><a href="#p10">Future in the Past</a></li>
+      <li><a href="#p11">Was/Were Going To</a></li>
+      <li><a href="#p12">Will vs Would</a></li>
+      <li><a href="#p13">Would Like</a></li>
+      <li><a href="#p14">Will/Would + Be + V3 (Passive)</a></li>
+      <li><a href="#p15">Will Have Been + V3</a></li>
+      <li><a href="#p16">V-ing vs V3 setelah Will Have Been</a></li>
+      <li><a href="#p17">Pola Waktu yang Sering Muncul</a></li>
+      <li><a href="#p18">Past Continuous</a></li>
+    </ol>
+  </nav>
+
+  <section class="point" id="p1">
+    <h2><span class="num">1</span> WILL + V1 — Simple Future</h2>
+    <p>Digunakan untuk menyatakan sesuatu yang <strong>akan terjadi di masa depan</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">S + will + V1</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>I <b>will study</b> tomorrow.</li>
+      <li>The company <b>will open</b> a new branch next year.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Ingat</span>
+      Setelah <em>will</em>, gunakan V1 &nbsp; <span class="check">✅ will go</span> &nbsp; <span class="cross">❌ will went / will going</span>
+    </div>
+  </section>
+
+  <section class="point" id="p2">
+    <h2><span class="num">2</span> WILL BE + V-ING — Future Continuous</h2>
+    <p>Digunakan untuk menyatakan aktivitas yang <strong>sedang berlangsung pada waktu tertentu di masa depan</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">S + will be + V-ing</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>This time tomorrow, I <b>will be traveling</b> to Jakarta.</li>
+      <li>At 8 p.m. tonight, she <b>will be studying</b>.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Kata petunjuk</span>
+      this time tomorrow · this time next week · at this time next month · at 8 p.m. tomorrow
+    </div>
+  </section>
+
+  <section class="point" id="p3">
+    <h2><span class="num">3</span> WILL HAVE + V3 — Future Perfect</h2>
+    <p>Digunakan untuk menyatakan aktivitas yang <strong>sudah selesai sebelum waktu tertentu di masa depan</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">S + will have + V3</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>By next month, I <b>will have completed</b> the course.</li>
+      <li>By 2030, scientists <b>will have developed</b> new technologies.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Kata petunjuk: by + waktu masa depan</span>
+      by tomorrow · by next week · by the end of this year · by 2030
+    </div>
+  </section>
+
+  <section class="point" id="p4">
+    <h2><span class="num">4</span> WILL HAVE BEEN + V-ING — Future Perfect Continuous</h2>
+    <p>Digunakan untuk menunjukkan aktivitas yang <strong>akan sudah berlangsung selama periode tertentu sampai suatu titik di masa depan</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">S + will have been + V-ing</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>By next Friday, I <b>will have been working</b> here for six months.</li>
+      <li>By the time she retires, she <b>will have been teaching</b> for thirty years.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Kata petunjuk: for + durasi</span>
+      for three hours · for six months · for ten years · for thirty years
+    </div>
+  </section>
+
+  <section class="point" id="p5">
+    <h2><span class="num">5</span> WOULD + V1</h2>
+    <p><em>Would + V1</em> memiliki beberapa penggunaan penting dalam TOEFL.</p>
+    <h3 class="sub">A. Conditional</h3>
+    <p>Digunakan untuk kondisi <strong>hipotetis</strong>.</p>
+    <div class="formula">If + S + V2, S + would + V1</div>
+    <ul class="examples">
+      <li>If I had more money, I <b>would travel</b> abroad.</li>
+      <li>If she knew the answer, she <b>would tell</b> us.</li>
+    </ul>
+  </section>
+
+  <section class="point star" id="p6">
+    <h2><span class="num">6</span> SECOND CONDITIONAL ⭐</h2>
+    <p>Digunakan untuk kondisi yang <strong>tidak nyata atau hipotetis pada saat sekarang</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">If + S + V2, S + would + V1</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>If I <b>had</b> more free time, I <b>would learn</b> another language.</li>
+      <li>If he <b>were</b> here, he <b>would help</b> us.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Pola utama</span>
+      V2 → would + V1 &nbsp;|&nbsp; If I <b>knew</b> → I <b>would tell</b> &nbsp;|&nbsp; If she <b>had</b> → she <b>would buy</b>
+    </div>
+  </section>
+
+  <section class="point" id="p7">
+    <h2><span class="num">7</span> THIRD CONDITIONAL</h2>
+    <p>Digunakan untuk kondisi <strong>masa lalu yang tidak terjadi</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">If + S + had + V3, S + would have + V3</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>If I <b>had studied</b> harder, I <b>would have passed</b> the exam.</li>
+      <li>If she <b>had arrived</b> earlier, she <b>would have met</b> him.</li>
+    </ul>
+    <div class="hints"><span class="label">Pola utama</span> had + V3 → would have + V3</div>
+  </section>
+
+  <section class="point" id="p8">
+    <h2><span class="num">8</span> First, Second, & Third Conditional</h2>
+    <p>Ini adalah salah satu pola terpenting untuk TOEFL.</p>
+    <table>
+      <thead><tr><th>Jenis</th><th>If Clause</th><th>Main Clause</th></tr></thead>
+      <tbody>
+        <tr><td><strong>First</strong></td><td>V1</td><td>will + V1</td></tr>
+        <tr><td><strong>Second</strong></td><td>V2</td><td>would + V1</td></tr>
+        <tr><td><strong>Third</strong></td><td>had + V3</td><td>would have + V3</td></tr>
+      </tbody>
+    </table>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li><strong>First:</strong> If I <b>have</b> time, I <b>will study</b>.</li>
+      <li><strong>Second:</strong> If I <b>had</b> time, I <b>would study</b>.</li>
+      <li><strong>Third:</strong> If I <b>had had</b> time, I <b>would have studied</b>.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Shortcut</span>
+      V1 → WILL &nbsp;|&nbsp; V2 → WOULD &nbsp;|&nbsp; HAD + V3 → WOULD HAVE + V3
+    </div>
+  </section>
+
+  <section class="point" id="p9">
+    <h2><span class="num">9</span> WOULD dalam Reported Speech</h2>
+    <p><em>Would</em> dapat digunakan ketika <em>will</em> diubah menjadi bentuk lampau dalam reported speech.</p>
+    <table>
+      <tr><th>Direct Speech</th><td>He said, "I <b>will</b> come."</td></tr>
+      <tr><th>Reported Speech</th><td>He said that he <b>would</b> come.</td></tr>
+    </table>
+    <h3 class="sub">Perubahan umum</h3>
+    <table>
+      <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+      <tbody>
+        <tr><td>will</td><td><b>would</b></td></tr>
+        <tr><td>can</td><td><b>could</b></td></tr>
+        <tr><td>may</td><td><b>might</b></td></tr>
+        <tr><td>am/is</td><td><b>was</b></td></tr>
+        <tr><td>are</td><td><b>were</b></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="point" id="p10">
+    <h2><span class="num">10</span> Future in the Past</h2>
+    <p>Digunakan ketika seseorang pada masa lalu membicarakan sesuatu yang <strong>akan terjadi setelah waktu tersebut</strong>.</p>
+    <div class="formula">WILL → WOULD</div>
+    <ul class="examples">
+      <li>He said that he <b>would return</b>. <em>— Dia mengatakan bahwa dia akan kembali.</em></li>
+      <li>I thought she <b>would come</b>.</li>
+      <li>They believed the company <b>would succeed</b>.</li>
+    </ul>
+  </section>
+
+  <section class="point" id="p11">
+    <h2><span class="num">11</span> WAS/WERE GOING TO</h2>
+    <p>Digunakan untuk menyatakan <strong>rencana atau sesuatu yang diperkirakan akan terjadi dari sudut pandang masa lalu</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">S + was/were going to + V1</div>
+    <ul class="examples">
+      <li>I <b>was going to study</b> that night.</li>
+      <li>They <b>were going to build</b> a new office.</li>
+    </ul>
+    <h3 class="sub">Perbandingan</h3>
+    <table>
+      <tr><th>Present/Future</th><td>I <b>am going to study</b>.</td></tr>
+      <tr><th>Past</th><td>I <b>was going to study</b>.</td></tr>
+    </table>
+  </section>
+
+  <section class="point" id="p12">
+    <h2><span class="num">12</span> WILL vs WOULD</h2>
+    <table>
+      <thead><tr><th>WILL — biasanya untuk</th><th>WOULD — biasanya untuk</th></tr></thead>
+      <tbody>
+        <tr><td>masa depan</td><td>conditional</td></tr>
+        <tr><td>prediksi</td><td>situasi hipotetis</td></tr>
+        <tr><td>keputusan</td><td>reported speech</td></tr>
+        <tr><td>janji</td><td>future in the past</td></tr>
+        <tr><td>kemauan</td><td>permintaan yang lebih sopan</td></tr>
+      </tbody>
+    </table>
+    <ul class="examples">
+      <li>I <b>will help</b> you. / She <b>will arrive</b> tomorrow.</li>
+      <li>I <b>would help</b> if I could. / He said he <b>would come</b>. / <b>Would</b> you like some coffee?</li>
+    </ul>
+  </section>
+
+  <section class="point" id="p13">
+    <h2><span class="num">13</span> WOULD LIKE</h2>
+    <p>Digunakan untuk menyampaikan keinginan secara sopan.</p>
+    <div class="formula">would like + noun</div>
+    <p style="font-style:italic;">I <b>would like some coffee</b>.</p>
+    <div class="formula">would like + to + V1</div>
+    <ul class="examples">
+      <li>I <b>would like to study</b> abroad.</li>
+      <li>Would you like <b>to join</b> us?</li>
+      <li>Would you like <b>to help</b> me?</li>
+    </ul>
+    <div class="hints">⚠️ Setelah <em>would like</em>, jika diikuti verb gunakan <strong>to + V1</strong></div>
+  </section>
+
+  <section class="point" id="p14">
+    <h2><span class="num">14</span> WILL / WOULD + BE + V3 — Passive Voice</h2>
+    <p>Ketika tindakan dilakukan terhadap subject.</p>
+    <h3 class="sub">Future Passive</h3>
+    <div class="formula">will be + V3</div>
+    <ul class="examples">
+      <li>The building <b>will be completed</b> next year.</li>
+      <li>The report <b>will be submitted</b> tomorrow.</li>
+    </ul>
+    <h3 class="sub">Conditional Passive</h3>
+    <div class="formula">would be + V3</div>
+    <ul class="examples">
+      <li>The candidate <b>would be hired</b> if he passed the interview.</li>
+    </ul>
+  </section>
+
+  <section class="point" id="p15">
+    <h2><span class="num">15</span> WILL HAVE BEEN + V3 — Future Perfect Passive</h2>
+    <p>Digunakan untuk menunjukkan bahwa sesuatu <strong>akan sudah diselesaikan pada waktu tertentu di masa depan</strong>.</p>
+    <div class="formula">will have been + V3</div>
+    <ul class="examples">
+      <li>By next year, the building <b>will have been completed</b>.</li>
+    </ul>
+    <div class="hints">Struktur: <strong>will + have + been + V3</strong></div>
+  </section>
+
+  <section class="point" id="p16">
+    <h2><span class="num">16</span> Will Have Been + V-ing vs V3 — Jangan Tertukar</h2>
+    <table>
+      <thead><tr><th>Future Perfect Continuous</th><th>Future Perfect Passive</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>will have been + V-ing</strong><br>Menekankan durasi aktivitas.<br><em>I will have been working for ten years.</em></td>
+          <td><strong>will have been + V3</strong><br>Menekankan tindakan yang diterima subject.<br><em>The building will have been completed.</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="point" id="p17">
+    <h2><span class="num">17</span> Pola Waktu yang Sering Muncul</h2>
+    <table>
+      <thead><tr><th>Petunjuk Waktu</th><th>Bentuk yang Biasa Dipakai</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>This time tomorrow</td><td>will be + V-ing</td><td>This time tomorrow, I <b>will be flying</b> to Singapore.</td></tr>
+        <tr><td>By next year</td><td>will have + V3</td><td>By next year, she <b>will have graduated</b>.</td></tr>
+        <tr><td>By the time...</td><td>will have + V3</td><td>By the time you arrive, I <b>will have finished</b> the work.</td></tr>
+        <tr><td>For + duration</td><td>will have been + V-ing</td><td>By June, I <b>will have been working</b> here for five years.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="point" id="p18">
+    <h2><span class="num">18</span> PAST CONTINUOUS — WAS/WERE + V-ING</h2>
+    <p>Digunakan untuk menyatakan <strong>kegiatan yang sedang berlangsung pada waktu tertentu di masa lalu</strong>.</p>
+    <h3 class="sub">Rumus</h3>
+    <div class="formula">Subject + was/were + V-ing</div>
+    <h3 class="sub">Contoh</h3>
+    <ul class="examples">
+      <li>The manager <b>was preparing</b> the report when the client called.</li>
+      <li><em>Manajer sedang mempersiapkan laporan ketika klien menelepon.</em></li>
+    </ul>
+    <h3 class="sub">Pola penting TOEFL</h3>
+    <div class="formula">Past Continuous + when + Simple Past</div>
+    <ul class="examples">
+      <li>She <b>was studying</b> when her friend <b>called</b>.</li>
+    </ul>
+    <div class="hints">
+      <span class="label">Cara mengenali pola</span>
+      <b>was studying</b> menunjukkan kegiatan yang sedang berlangsung, sedangkan <b>called</b> menunjukkan kejadian yang terjadi atau menyela kegiatan tersebut.
+    </div>
+  </section>
+
+  <div class="quick-steps">
+    <h2>🎯 Cara Cepat Mengerjakan Soal</h2>
+    <p style="font-family:Arial, sans-serif;">Saat menemukan soal will/would, lakukan 3 langkah:</p>
+
+    <div class="step">
+      <div class="circle">1</div>
+      <div>
+        <p class="lead">Lihat waktunya</p>
+        <p>tomorrow / next week → kemungkinan <b>will</b> &nbsp;|&nbsp; this time tomorrow → <b>will be + V-ing</b> &nbsp;|&nbsp; by next year → <b>will have + V3</b></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="circle">2</div>
+      <div>
+        <p class="lead">Lihat IF</p>
+        <p>If + V1 → will + V1 &nbsp;|&nbsp; If + V2 → would + V1 &nbsp;|&nbsp; If + had + V3 → would have + V3</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="circle">3</div>
+      <div>
+        <p class="lead">Lihat konteks masa lalu</p>
+        <p>Jika ada <em>said, thought, believed, knew, expected</em> → perhatikan kemungkinan perubahan <b>will → would</b>. Contoh: She said that she <b>would come</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="text-align:center; color:var(--navy); margin-top:40px;">🧠 Master Formula</h2>
+  <table class="master-table">
+    <thead><tr><th>Struktur</th><th>Rumus</th><th>Fungsi</th></tr></thead>
+    <tbody>
+      <tr><td>Simple Future</td><td><strong>will + V1</strong></td><td>akan melakukan</td></tr>
+      <tr><td>Future Continuous</td><td><strong>will be + V-ing</strong></td><td>akan sedang melakukan</td></tr>
+      <tr><td>Future Perfect</td><td><strong>will have + V3</strong></td><td>akan sudah melakukan</td></tr>
+      <tr><td>Future Perfect Continuous</td><td><strong>will have been + V-ing</strong></td><td>akan sudah melakukan selama...</td></tr>
+      <tr><td>Conditional</td><td><strong>would + V1</strong></td><td>akan dalam kondisi hipotetis</td></tr>
+      <tr><td>Conditional Perfect</td><td><strong>would have + V3</strong></td><td>akan sudah terjadi dalam kondisi masa lalu</td></tr>
+      <tr><td>Future in the Past</td><td><strong>would + V1</strong></td><td>akan dari sudut masa lalu</td></tr>
+      <tr><td>Past Plan</td><td><strong>was/were going to + V1</strong></td><td>berencana akan</td></tr>
+      <tr><td>Future Passive</td><td><strong>will be + V3</strong></td><td>akan dikenai tindakan</td></tr>
+      <tr><td>Conditional Passive</td><td><strong>would be + V3</strong></td><td>akan dikenai tindakan secara hipotetis</td></tr>
+      <tr><td>Future Perfect Passive</td><td><strong>will have been + V3</strong></td><td>akan sudah dikenai tindakan</td></tr>
+    </tbody>
+  </table>
+
+  <div class="core-formula">
+    <h2>📌 Rumus Inti untuk Dihafalkan</h2>
+    <ul>
+      <li><span class="f">WILL + V1</span><span class="m">akan melakukan</span></li>
+      <li><span class="f">WILL BE + V-ING</span><span class="m">akan sedang melakukan</span></li>
+      <li><span class="f">WILL HAVE + V3</span><span class="m">akan sudah melakukan</span></li>
+      <li><span class="f">WILL HAVE BEEN + V-ING</span><span class="m">akan sudah melakukan selama...</span></li>
+      <li><span class="f">WOULD + V1</span><span class="m">akan secara hipotetis / future in the past</span></li>
+      <li><span class="f">WOULD HAVE + V3</span><span class="m">akan sudah terjadi jika...</span></li>
+      <li><span class="f">WAS/WERE GOING TO + V1</span><span class="m">berencana akan</span></li>
+      <li><span class="f">WOULD LIKE + TO V1</span><span class="m">ingin secara sopan</span></li>
+    </ul>
+  </div>
+
+  <footer>Rangkuman Materi TOEFL Structure — Will &amp; Would</footer>
+
+</div>
+<script src="ai-generator.js"></script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

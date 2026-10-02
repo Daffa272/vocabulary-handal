@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL Structure — Adverbs &amp; Adverbial Expressions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F0E1;
+    --paper: #FBF8F0;
+    --ink: #1F2A24;
+    --ink-soft: #4B5850;
+    --accent: #A6752C;
+    --accent-deep: #7C5620;
+    --accent-soft: #EDDFB9;
+    --correct: #3F6B4A;
+    --correct-bg: #E6EEE3;
+    --incorrect: #9C3B3B;
+    --incorrect-bg: #F3E4DF;
+    --rule: #DCD2B6;
+    --serif: 'Fraunces', serif;
+    --sans: 'Public Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ---------- Header ---------- */
+  header.hero{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px 28px 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--accent-deep);
+    margin: 0 0 10px;
+  }
+  h1.title{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(34px, 5.5vw, 52px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .lede{
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  /* ---------- Table of contents ---------- */
+  nav.toc{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(245,240,225,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav.toc .toc-inner{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 28px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav.toc .toc-inner::-webkit-scrollbar{ display:none; }
+  nav.toc a{
+    flex: 0 0 auto;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 6px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.toc a:hover, nav.toc a.active{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+
+  /* ---------- Main layout ---------- */
+  main{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 8px 28px 40px;
+  }
+
+  section.point{
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 56px;
+  }
+  section.point:last-of-type{ border-bottom: none; }
+
+  .num{
+    font-family: var(--serif);
+    font-size: 34px;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  h2.point-title{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 26px;
+    margin: 0 0 6px;
+  }
+  .point-sub{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 0 0 18px;
+  }
+
+  p{ margin: 0 0 14px; }
+
+  /* ---------- Tables ---------- */
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 20px;
+    font-size: 14.5px;
+  }
+  caption{
+    text-align: left;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  th{
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--ink);
+  }
+  td{
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  tr:last-child td{ border-bottom: none; }
+  td em{ color: var(--accent-deep); font-style: normal; font-weight: 600; }
+
+  /* ---------- Example lines ---------- */
+  .ex{
+    font-family: var(--serif);
+    font-size: 16.5px;
+    margin: 4px 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--rule);
+  }
+  .ex b{ color: var(--accent-deep); font-weight: 600; }
+
+  .ex-good, .ex-bad{
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-family: var(--serif);
+    font-size: 16px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    margin: 6px 0;
+  }
+  .ex-good{ background: var(--correct-bg); color: var(--correct); }
+  .ex-bad{ background: var(--incorrect-bg); color: var(--incorrect); }
+  .ex-good .mark{ color: var(--correct); }
+  .ex-bad .mark{ color: var(--incorrect); }
+  .mark{ font-family: var(--sans); font-weight: 700; flex: 0 0 auto; }
+  .ex-good b, .ex-bad b{ color: inherit; font-weight: 700; }
+
+  /* ---------- Rule / formula box ---------- */
+  .rulebox{
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 18px 0;
+  }
+  .rulebox .label{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--accent-deep);
+    margin: 0 0 8px;
+  }
+  .rulebox .formula{
+    font-family: var(--mono);
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.9;
+  }
+  .rulebox .formula .arrow{ color: var(--accent-deep); margin: 0 6px; }
+
+  .note{
+    font-size: 14px;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--accent);
+    padding-left: 12px;
+    margin: 14px 0;
+  }
+
+  /* ---------- Comparison pairs ---------- */
+  .pair{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 10px 0 20px;
+  }
+  .pair > div{
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .pair h3{
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: lowercase;
+    color: var(--accent-deep);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+
+  /* ---------- Strategy section ---------- */
+  .strategy{
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 26px;
+  }
+  .strategy ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+  }
+  .strategy li{
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .strategy li:last-child{ border-bottom: none; }
+  .strategy li::before{
+    content: counter(step);
+    font-family: var(--serif);
+    color: var(--accent);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .strategy .q{ font-weight: 600; }
+  .strategy .a{ color: var(--ink-soft); font-size: 14.5px; margin-top: 2px; }
+
+  /* ---------- Final key box ---------- */
+  .keybox{
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px;
+    padding: 26px 28px;
+    margin-top: 22px;
+  }
+  .keybox .label{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent-soft);
+    font-size: 14px;
+    margin: 0 0 14px;
+  }
+  .keybox .grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    font-family: var(--mono);
+    font-size: 13.5px;
+    line-height: 2;
+  }
+  .keybox .grid b{ color: var(--accent-soft); }
+
+  footer{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 28px 60px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-family: var(--serif);
+    font-style: italic;
+  }
+
+  @media (max-width: 620px){
+    section.point{ grid-template-columns: 36px 1fr; gap: 12px; }
+    .num{ font-size: 24px; }
+    .pair{ grid-template-columns: 1fr; }
+    .keybox .grid{ grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="ai-generator.css">
+<script defer src="ai-generator.js"></script>
+<link rel="stylesheet" href="../ekonomi/annotation.css">
+<script defer src="../ekonomi/annotation.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">ringkasan materi — TOEFL structure</p>
+  <h1 class="title">Adverbs &amp; Adverbial Expressions</h1>
+  <p class="lede">Kumpulan pola waktu, frekuensi, dan posisi adverb yang paling sering muncul di soal TOEFL Structure — lengkap dengan rumus cepat dan strategi menjawab.</p>
+</header>
+
+<nav class="toc" id="toc">
+  <div class="toc-inner">
+    <a href="#waktu">1. waktu</a>
+    <a href="#since-for-ago">2. since/for/ago</a>
+    <a href="#frekuensi">3. frekuensi</a>
+    <a href="#modal">4. modal</a>
+    <a href="#just-already-yet">5. just/already/yet</a>
+    <a href="#ever-never">6. ever/never</a>
+    <a href="#still-yet">7. still/yet</a>
+    <a href="#finally-eventually">8. finally/eventually</a>
+    <a href="#during-since">9. during/since</a>
+    <a href="#awal-kalimat">10. awal kalimat</a>
+    <a href="#posisi">11. posisi adverb</a>
+    <a href="#strategi">strategi</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- 1 -->
+  <section class="point" id="waktu">
+    <span class="num">01</span>
+    <div>
+      <h2 class="point-title">Adverbs of Time</h2>
+      <p class="point-sub">keterangan waktu — kapan suatu aktivitas terjadi</p>
+
+      <table>
+        <thead><tr><th>adverb</th><th>arti</th><th>contoh</th></tr></thead>
+        <tbody>
+          <tr><td><em>now</em></td><td>sekarang</td><td>She is working now.</td></tr>
+          <tr><td><em>today</em></td><td>hari ini</td><td>He is studying today.</td></tr>
+          <tr><td><em>tomorrow</em></td><td>besok</td><td>They will leave tomorrow.</td></tr>
+          <tr><td><em>yesterday</em></td><td>kemarin</td><td>She arrived yesterday.</td></tr>
+          <tr><td><em>recently</em></td><td>baru-baru ini</td><td>He has recently moved.</td></tr>
+          <tr><td><em>nowadays</em></td><td>zaman sekarang</td><td>Nowadays, people use smartphones.</td></tr>
+          <tr><td><em>eventually</em></td><td>akhirnya</td><td>He eventually found the answer.</td></tr>
+          <tr><td><em>finally</em></td><td>akhirnya</td><td>She finally completed the project.</td></tr>
+          <tr><td><em>formerly</em></td><td>dahulu / sebelumnya</td><td>The building was formerly a school.</td></tr>
+        </tbody>
+      </table>
+
+      <p class="note">Perhatikan hubungan dengan tense:</p>
+      <div class="ex">Past Simple + ago — <b>The company was established ten years ago.</b></div>
+      <div class="ex">Present Perfect + since — <b>The company has operated here since 2015.</b></div>
+      <div class="ex">Present Perfect + for — <b>The company has operated here for ten years.</b></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="point" id="since-for-ago">
+    <span class="num">02</span>
+    <div>
+      <h2 class="point-title">Since vs For vs Ago</h2>
+      <p class="point-sub">pola yang sangat penting dalam TOEFL</p>
+
+      <div class="pair">
+        <div>
+          <h3>since + titik waktu</h3>
+          <p style="margin-bottom:8px;">Menunjukkan awal suatu periode.</p>
+          <p style="margin-bottom:8px; color:var(--ink-soft); font-size:14px;">since 2015 &nbsp;·&nbsp; since Monday &nbsp;·&nbsp; since January &nbsp;·&nbsp; since the 1980s</p>
+          <div class="ex">She has lived here <b>since 2015</b>.</div>
+        </div>
+        <div>
+          <h3>for + durasi</h3>
+          <p style="margin-bottom:8px;">Menunjukkan berapa lama.</p>
+          <p style="margin-bottom:8px; color:var(--ink-soft); font-size:14px;">for three years &nbsp;·&nbsp; for two months &nbsp;·&nbsp; for ten days &nbsp;·&nbsp; for several decades</p>
+          <div class="ex">She has lived here <b>for three years</b>.</div>
+        </div>
+      </div>
+
+      <div class="rulebox">
+        <p class="label">ago</p>
+        <p style="margin-bottom:8px;">Digunakan untuk kejadian yang terjadi di masa lalu — two years ago, five days ago, several months ago.</p>
+        <div class="ex" style="border:none; padding-left:0;">She moved here <b>two years ago</b>.</div>
+      </div>
+
+      <div class="rulebox">
+        <p class="label">rumus cepat</p>
+        <div class="formula">
+          since <span class="arrow">→</span> kapan mulai<br>
+          for <span class="arrow">→</span> berapa lama<br>
+          ago <span class="arrow">→</span> berapa waktu yang lalu
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="point" id="frekuensi">
+    <span class="num">03</span>
+    <div>
+      <h2 class="point-title">Adverbs of Frequency</h2>
+      <p class="point-sub">seberapa sering suatu aktivitas terjadi</p>
+
+      <table>
+        <thead><tr><th>adverb</th><th>arti</th></tr></thead>
+        <tbody>
+          <tr><td><em>always</em></td><td>selalu</td></tr>
+          <tr><td><em>usually</em></td><td>biasanya</td></tr>
+          <tr><td><em>often</em></td><td>sering</td></tr>
+          <tr><td><em>sometimes</em></td><td>kadang-kadang</td></tr>
+          <tr><td><em>rarely</em></td><td>jarang</td></tr>
+          <tr><td><em>seldom</em></td><td>jarang</td></tr>
+          <tr><td><em>never</em></td><td>tidak pernah</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pair">
+        <div>
+          <h3>dengan verb biasa</h3>
+          <div class="rulebox" style="margin:0 0 12px;">
+            <div class="formula">Subject <span class="arrow">+</span> adverb <span class="arrow">+</span> verb</div>
+          </div>
+          <div class="ex">She <b>usually visits</b> the library.</div>
+          <div class="ex">They <b>often study</b> together.</div>
+          <div class="ex">He <b>seldom watches</b> television.</div>
+        </div>
+        <div>
+          <h3>dengan verb BE</h3>
+          <div class="rulebox" style="margin:0 0 12px;">
+            <div class="formula">Subject <span class="arrow">+</span> BE <span class="arrow">+</span> adverb</div>
+          </div>
+          <div class="ex">She <b>is usually</b> late.</div>
+          <div class="ex">They <b>are often</b> busy.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="point" id="modal">
+    <span class="num">04</span>
+    <div>
+      <h2 class="point-title">Adverb setelah Modal</h2>
+      <p class="point-sub">can, could, may, might, must, should, will, would</p>
+
+      <div class="rulebox">
+        <p class="label">rumus</p>
+        <div class="formula">Subject <span class="arrow">+</span> modal <span class="arrow">+</span> adverb <span class="arrow">+</span> V1</div>
+      </div>
+
+      <div class="ex">Students <b>can often buy</b> books online.</div>
+      <div class="ex">She <b>will usually arrive</b> early.</div>
+      <div class="ex">They <b>should always follow</b> the rules.</div>
+      <div class="ex">He <b>may never understand</b> the problem.</div>
+
+      <p class="note">Jangan menggunakan "to" setelah modal:</p>
+      <div class="ex-bad"><span class="mark">✗</span> can often <b>to buy</b></div>
+      <div class="ex-bad"><span class="mark">✗</span> should <b>to study</b></div>
+      <div class="ex-bad"><span class="mark">✗</span> must <b>to leave</b></div>
+      <div class="ex-good"><span class="mark">✓</span> can often <b>buy</b></div>
+      <div class="ex-good"><span class="mark">✓</span> should <b>study</b></div>
+      <div class="ex-good"><span class="mark">✓</span> must <b>leave</b></div>
+
+      <p class="note">Setelah modal → langsung V1.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="point" id="just-already-yet">
+    <span class="num">05</span>
+    <div>
+      <h2 class="point-title">Just, Already, Yet</h2>
+      <p class="point-sub">sering muncul bersama Present Perfect</p>
+
+      <h3 style="font-family:var(--mono); font-size:12px; color:var(--accent-deep); text-transform:lowercase; margin:0 0 6px;">just = baru saja</h3>
+      <div class="rulebox" style="margin:0 0 10px;"><div class="formula">Subject + have/has + <b>just</b> + V3</div></div>
+      <div class="ex">She has <b>just arrived</b>.</div>
+      <div class="ex">The professor has <b>just called</b> me.</div>
+
+      <h3 style="font-family:var(--mono); font-size:12px; color:var(--accent-deep); text-transform:lowercase; margin:24px 0 6px;">already = sudah</h3>
+      <div class="rulebox" style="margin:0 0 10px;"><div class="formula">Subject + have/has + <b>already</b> + V3</div></div>
+      <div class="ex">She has <b>already finished</b> the assignment.</div>
+      <div class="ex">The researchers have <b>already completed</b> the experiment.</div>
+
+      <h3 style="font-family:var(--mono); font-size:12px; color:var(--accent-deep); text-transform:lowercase; margin:24px 0 6px;">yet = belum / sudah</h3>
+      <p>Biasanya digunakan dalam kalimat negatif dan pertanyaan, umumnya di akhir kalimat.</p>
+      <div class="ex">She hasn't finished <b>yet</b>. <span style="color:var(--ink-soft); font-family:var(--sans); font-size:13px;">(negative)</span></div>
+      <div class="ex">Have you finished <b>yet</b>? <span style="color:var(--ink-soft); font-family:var(--sans); font-size:13px;">(question)</span></div>
+
+      <div class="rulebox">
+        <p class="label">perbandingan</p>
+        <div class="formula">
+          I have <b>already finished</b>. <span class="arrow">=</span> Saya sudah selesai.<br>
+          I haven't finished <b>yet</b>. <span class="arrow">=</span> Saya belum selesai.<br>
+          Have you finished <b>yet</b>? <span class="arrow">=</span> Apakah kamu sudah selesai?
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="point" id="ever-never">
+    <span class="num">06</span>
+    <div>
+      <h2 class="point-title">Ever vs Never</h2>
+      <div class="pair">
+        <div>
+          <h3>ever = pernah</h3>
+          <p style="margin-bottom:8px; font-size:14px; color:var(--ink-soft);">biasanya digunakan dalam pertanyaan</p>
+          <div class="ex">Have you <b>ever visited</b> Bali?</div>
+          <div class="ex">Has she <b>ever seen</b> this movie?</div>
+        </div>
+        <div>
+          <h3>never = tidak pernah</h3>
+          <div class="ex">She has <b>never visited</b> Bali.</div>
+          <div class="ex">He has <b>never seen</b> the movie.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="point" id="still-yet">
+    <span class="num">07</span>
+    <div>
+      <h2 class="point-title">Still vs Yet</h2>
+      <p class="point-sub">berkaitan dengan sesuatu yang belum berubah / terjadi, posisinya berbeda</p>
+
+      <div class="pair">
+        <div>
+          <h3>still — sebelum main verb</h3>
+          <div class="ex">They <b>still continue</b> to collect data.</div>
+          <div class="ex">She <b>still lives</b> in Jakarta.</div>
+          <p style="margin-top:10px; font-size:14px; color:var(--ink-soft);">Dengan BE, diletakkan setelah BE:</p>
+          <div class="ex">She <b>is still</b> working.</div>
+        </div>
+        <div>
+          <h3>yet — di akhir kalimat</h3>
+          <div class="ex">She hasn't arrived <b>yet</b>.</div>
+          <div class="ex">They haven't finished the project <b>yet</b>.</div>
+        </div>
+      </div>
+
+      <div class="rulebox">
+        <p class="label">perbandingan</p>
+        <div class="formula">
+          She <b>still works</b> here. <span class="arrow">=</span> Dia masih bekerja di sini.<br>
+          She hasn't finished <b>yet</b>. <span class="arrow">=</span> Dia belum selesai.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="point" id="finally-eventually">
+    <span class="num">08</span>
+    <div>
+      <h2 class="point-title">Finally vs Eventually vs Lastly</h2>
+      <p class="point-sub">ketiganya bisa berarti "akhirnya", penggunaannya berbeda</p>
+
+      <p><b style="font-family:var(--serif); color:var(--accent-deep);">Finally</b> — tahap terakhir, sering setelah proses yang panjang.</p>
+      <div class="ex">The researchers <b>finally completed</b> the study.</div>
+
+      <p style="margin-top:16px;"><b style="font-family:var(--serif); color:var(--accent-deep);">Eventually</b> — sesuatu akhirnya terjadi setelah beberapa waktu / proses.</p>
+      <div class="ex">He <b>eventually discovered</b> the answer.</div>
+
+      <p style="margin-top:16px;"><b style="font-family:var(--serif); color:var(--accent-deep);">Lastly</b> — menyusun urutan atau poin terakhir.</p>
+      <div class="ex"><b>Lastly</b>, we need to discuss the budget.</div>
+
+      <div class="rulebox">
+        <div class="formula">
+          lastly <span class="arrow">=</span> poin terakhir<br>
+          finally <span class="arrow">=</span> tahap terakhir<br>
+          eventually <span class="arrow">=</span> akhirnya setelah proses / waktu
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="point" id="during-since">
+    <span class="num">09</span>
+    <div>
+      <h2 class="point-title">During vs Since</h2>
+
+      <div class="pair">
+        <div>
+          <h3>during + periode</h3>
+          <p style="margin-bottom:8px; font-size:14px; color:var(--ink-soft);">during the 1980s · during the summer · during the meeting · during the experiment</p>
+          <div class="ex">Many changes occurred <b>during the 1980s</b>.</div>
+        </div>
+        <div>
+          <h3>since + titik awal</h3>
+          <p style="margin-bottom:8px; font-size:14px; color:var(--ink-soft);">since 1980 · since Monday · since 2015</p>
+          <div class="ex">Technology has changed significantly <b>since 1980</b>.</div>
+        </div>
+      </div>
+
+      <p class="note">Jangan tertukar:</p>
+      <div class="ex-bad"><span class="mark">✗</span> since the 1980s <span style="font-family:var(--sans); font-size:13px;">(jika maksudnya "selama periode 1980-an")</span></div>
+      <div class="ex-good"><span class="mark">✓</span> during the 1980s</div>
+      <div class="ex-good" style="margin-top:10px;"><span class="mark">✓</span> since the 1980s <span style="font-family:var(--sans); font-size:13px; color:var(--ink-soft);">— sejak 1980-an sampai sekarang</span></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="point" id="awal-kalimat">
+    <span class="num">10</span>
+    <div>
+      <h2 class="point-title">Adverb di Awal Kalimat</h2>
+      <p class="point-sub">beberapa adverb dapat memberikan konteks di awal kalimat</p>
+
+      <div class="ex"><b>Nowadays</b>, people communicate through smartphones.</div>
+      <div class="ex"><b>Finally</b>, the researchers reached a conclusion.</div>
+      <div class="ex"><b>Recently</b>, the university introduced a new program.</div>
+      <div class="ex"><b>Eventually</b>, the project was completed.</div>
+
+      <div class="rulebox">
+        <div class="formula">Adverb <span class="arrow">+</span> comma <span class="arrow">+</span> Subject <span class="arrow">+</span> Verb</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="point" id="posisi">
+    <span class="num">11</span>
+    <div>
+      <h2 class="point-title">Posisi Adverb — Pola Penting</h2>
+
+      <table>
+        <thead><tr><th>konteks</th><th>rumus</th><th>contoh</th></tr></thead>
+        <tbody>
+          <tr><td>verb biasa</td><td><em>S + adverb + verb</em></td><td>She usually studies at night.</td></tr>
+          <tr><td>verb BE</td><td><em>S + BE + adverb</em></td><td>She is usually tired.</td></tr>
+          <tr><td>modal</td><td><em>S + modal + adverb + V1</em></td><td>She can often solve difficult problems.</td></tr>
+          <tr><td>present perfect</td><td><em>S + have/has + adverb + V3</em></td><td>She has already completed the assignment.</td></tr>
+          <tr><td>present perfect</td><td><em>S + have/has + just + V3</em></td><td>She has just finished the test.</td></tr>
+          <tr><td>yet</td><td><em>S + have/has + not + V3 + yet</em></td><td>She hasn't finished yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Strategy -->
+  <section class="point" id="strategi" style="border-bottom:none;">
+    <span class="num">＋</span>
+    <div>
+      <h2 class="point-title">Strategi Mengerjakan Soal</h2>
+      <p class="point-sub">saat melihat bagian kosong, tanyakan secara berurutan</p>
+
+      <div class="strategy">
+        <ol>
+          <li>
+            <div>
+              <div class="q">Apakah yang dibutuhkan adalah keterangan waktu?</div>
+              <div class="a">now, yesterday, tomorrow, recently, nowadays</div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="q">Apakah ada present perfect?</div>
+              <div class="a">pertimbangkan just, already, yet, ever, never, since, for</div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="q">Apakah kalimat menunjukkan frekuensi?</div>
+              <div class="a">often, usually, seldom, rarely, always</div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="q">Apakah ada modal?</div>
+              <div class="a">modal + adverb + V1</div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="q">Apakah ada durasi atau titik awal?</div>
+              <div class="a">for + durasi &nbsp;/&nbsp; since + titik waktu</div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="q">Apakah sesuatu belum terjadi?</div>
+              <div class="a">not + V3 + yet</div>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="keybox">
+        <p class="label">kunci utama</p>
+        <div class="grid">
+          <div><b>SINCE</b> — sejak kapan</div>
+          <div><b>ALREADY</b> — sudah</div>
+          <div><b>FOR</b> — selama berapa lama</div>
+          <div><b>YET</b> — belum / sudah? (sampai sekarang)</div>
+          <div><b>AGO</b> — berapa waktu yang lalu</div>
+          <div><b>JUST</b> — baru saja</div>
+          <div><b>EVER</b> — pernah</div>
+          <div><b>NEVER</b> — tidak pernah</div>
+          <div><b>STILL</b> — masih</div>
+          <div><b>MODAL + ADVERB + V1</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Ringkasan materi TOEFL Structure — Adverbs &amp; Adverbial Expressions.</footer>
+
+<script>
+  // highlight active section in the table of contents while scrolling
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = '#' + entry.target.id;
+      const link = links.find(a => a.getAttribute('href') === id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(sec => observer.observe(sec));
+</script>
+
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

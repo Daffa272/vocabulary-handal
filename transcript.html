@@ -1,0 +1,3294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Live Transcript</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #090b0f;
+    --panel: #15181e;
+    --panel2: #101318;
+    --border: #292e37;
+    --text: #ffffff;
+    --muted: #8d95a3;
+    --accent: #ffffff;
+    --danger: #ff4d4d;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+button,
+select,
+input {
+    font-family: inherit;
+}
+
+.app {
+    width: min(1100px, 94%);
+    margin: 28px auto 60px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.header p {
+    margin: 7px 0 0;
+    color: var(--muted);
+}
+
+
+/* =========================
+   CONTROL PANEL
+========================= */
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    align-items: center;
+}
+
+button,
+select {
+    height: 42px;
+    border-radius: 9px;
+    border: 1px solid #343a45;
+    padding: 0 14px;
+    font-size: 14px;
+}
+
+button {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    filter: brightness(1.12);
+}
+
+.start {
+    background: #ffffff;
+    color: #111111;
+}
+
+.stop {
+    background: #3a1d1d;
+    color: #ff7777;
+}
+
+.pause {
+    background: #302d1b;
+    color: #f2d35e;
+}
+
+.secondary {
+    background: #20242c;
+    color: white;
+}
+
+select {
+    background: #101318;
+    color: white;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    margin-top: 13px;
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+    margin-right: 8px;
+}
+
+.status-dot.live {
+    background: #ff3b30;
+    box-shadow:
+        0 0 8px rgba(255,59,48,.7);
+}
+
+
+/* =========================
+   CAPTION WINDOW
+========================= */
+
+.caption-window {
+    position: relative;
+
+    background:
+        rgba(0,0,0,.94);
+
+    border:
+        1px solid #333;
+
+    border-radius:
+        18px;
+
+    min-height:
+        310px;
+
+    padding:
+        42px 45px 30px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
+}
+
+.caption-label {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+
+    color: #70757e;
+}
+
+.live-label {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+
+    display: none;
+
+    font-size: 11px;
+    color: #ff5757;
+}
+
+.live-label.active {
+    display: block;
+}
+
+.caption-text {
+    font-size: 30px;
+    line-height: 1.55;
+    font-weight: 500;
+
+    min-height: 95px;
+}
+
+.interim {
+    color: #777e89;
+}
+
+.empty {
+    color: #555b65;
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+.history-container {
+    margin-top: 28px;
+}
+
+.history-title {
+    font-size: 14px;
+    color: #8d95a3;
+    margin-bottom: 10px;
+}
+
+.history {
+    max-height: 300px;
+    overflow-y: auto;
+
+    padding-right: 8px;
+}
+
+.history-item {
+    display: flex;
+    gap: 13px;
+
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid #20242a;
+}
+
+.history-content {
+    flex: 1;
+}
+
+.speaker-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #f2d35e;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.speaker-separator {
+    display: block;
+    width: 100%;
+    height: 26px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #686f7a;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.speaker-separator:hover {
+    background: #20242a;
+    color: #ffffff;
+    filter: none;
+}
+
+.history-item.selected {
+    background: #1d2633;
+    outline: 1px solid #4b8acb;
+    outline-offset: -1px;
+}
+
+.minute-group {
+    margin-bottom: 14px;
+    border-bottom: 1px solid #20242a;
+}
+
+.minute-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0 5px;
+    color: #8d95a3;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.minute-title button {
+    height: 30px;
+    padding: 0 9px;
+    font-size: 12px;
+}
+
+.ai-settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.ai-key {
+    flex: 1 1 240px;
+    min-width: 180px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #343a45;
+    border-radius: 8px;
+    background: #101318;
+    color: #ffffff;
+}
+
+.ai-preview {
+    margin-top: 8px;
+    padding: 10px;
+    border-left: 2px solid #4b8acb;
+    color: #c9cdd3;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ai-preview-dialog {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .72);
+}
+
+.ai-preview-panel {
+    width: min(760px, 100%);
+    max-height: 85vh;
+    overflow: auto;
+    padding: 20px;
+    border: 1px solid #343a45;
+    border-radius: 12px;
+    background: #15181e;
+}
+
+.ai-preview-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 14px 0;
+}
+
+.ai-preview-column {
+    padding: 10px;
+    border: 1px solid #292e37;
+    color: #c9cdd3;
+    white-space: pre-wrap;
+}
+
+.ai-preview-column::before {
+    display: block;
+    margin-bottom: 8px;
+    color: #f2d35e;
+    font-weight: 700;
+    content: attr(data-label);
+}
+
+.ai-preview-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.paragraph-editor {
+    width: 100%;
+    min-height: 280px;
+    resize: vertical;
+    padding: 12px;
+    border: 1px solid #4b8acb;
+    border-radius: 8px;
+    background: #101318;
+    color: #ffffff;
+    font: inherit;
+    line-height: 1.55;
+}
+
+.word {
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.word:hover,
+.word.range-selected {
+    background: #3165a0;
+    color: #ffffff;
+}
+
+.speaker-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.speaker-button {
+    height: 34px;
+    padding: 0 10px;
+    background: #20242c;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.speaker-button.active {
+    background: #4b8acb;
+}
+
+.history-button:disabled {
+    cursor: not-allowed;
+    opacity: .4;
+    filter: none;
+}
+
+.speaker-button:disabled {
+    cursor: not-allowed;
+    opacity: .4;
+    filter: none;
+}
+
+.minute-line {
+    padding: 7px 0;
+    color: #c9cdd3;
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+.minute-speaker {
+    display: inline-block;
+    margin-right: 6px;
+    color: #f2d35e;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.time {
+    min-width: 58px;
+
+    color: #686f7a;
+
+    font-size: 12px;
+
+    padding-top: 3px;
+}
+
+.sentence {
+    flex: 1;
+
+    color: #c9cdd3;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+}
+
+.copy-sentence {
+    opacity: .5;
+
+    height: 30px;
+
+    padding: 0 9px;
+
+    font-size: 12px;
+
+    background: #1b1e24;
+
+    color: white;
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+.setting-label {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+/* =========================
+   HELP
+========================= */
+
+.help {
+    color: #777f8c;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-top: 18px;
+}
+
+.help strong {
+    color: #aeb4bd;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .app {
+        width: 94%;
+        margin-top: 18px;
+    }
+
+    .caption-window {
+        padding:
+            42px 20px 25px;
+    }
+
+    .caption-text {
+        font-size: 23px;
+    }
+
+    .sentence {
+        font-size: 15px;
+    }
+
+    .controls button,
+    .controls select {
+        flex: 1;
+    }
+
+}
+
+</style>
+<script defer src="tracker-menu.js"></script>
+</head>
+
+
+<body>
+
+<div class="global-nav" style="position:sticky;top:0;z-index:50;background:rgba(13,15,20,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;box-shadow:0 8px 18px rgba(0,0,0,0.14);">
+    <a href="index.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">Vocabulary</a>
+    <a href="publicspeaking.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">Public Speaking</a>
+    <a href="chunk.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">ChunkSpeak</a>
+    <a href="material.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">Material</a>
+    <a href="kbbi.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">KBBI</a>
+    <a href="transcript.html" style="padding:8px 12px;border-radius:10px;background:#ffffff;color:#111111;text-decoration:none;font-weight:700;font-size:0.82rem;">Transcript</a>
+    <a href="pranikah.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">Pranikah</a>
+    <a href="psikotest.html" style="padding:8px 12px;border-radius:10px;background:#20242c;color:white;text-decoration:none;font-weight:700;font-size:0.82rem;">Psikotest</a>
+</div>
+
+<div class="app">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            Live Transcript
+        </h1>
+
+        <p>
+            Real-time captions dari mikrofon browser
+        </p>
+
+    </div>
+
+
+    <!-- CONTROL PANEL -->
+
+    <div class="panel">
+
+        <div class="controls">
+
+            <button
+                class="start"
+                onclick="startTranscript()">
+
+                🎙 Start
+
+            </button>
+
+
+            <button
+                class="pause"
+                id="pauseButton"
+                onclick="togglePause()"
+                disabled>
+
+                ⏸ Pause
+
+            </button>
+
+
+            <button
+                class="stop"
+                onclick="stopTranscript()">
+
+                ⏹ Stop
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="copyAll()">
+
+                📋 Copy All
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="copyLast()">
+
+                📌 Copy Last
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="clearTranscript()">
+
+                🧹 Clear
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="downloadTranscript()">
+
+                💾 TXT
+
+            </button>
+
+            <button
+                class="secondary history-button"
+                id="undoButton"
+                onclick="undoSpeakerEdit()"
+                disabled>
+                ↶ Undo
+            </button>
+
+            <button
+                class="secondary history-button"
+                id="redoButton"
+                onclick="redoSpeakerEdit()"
+                disabled>
+                ↷ Redo
+            </button>
+
+
+            <select
+                id="language"
+                onchange="changeLanguage()">
+
+                <option value="en-US">
+                    English (US)
+                </option>
+
+                <option value="en-GB">
+                    English (UK)
+                </option>
+
+                <option value="id-ID">
+                    Bahasa Indonesia
+                </option>
+
+                <option value="mixed">
+                    Campuran Indonesia + English
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- SETTINGS -->
+
+        <div class="settings">
+
+            <span class="setting-label">
+                Text size:
+            </span>
+
+            <button
+                class="secondary"
+                onclick="changeFont(-2)">
+
+                A−
+
+            </button>
+
+            <button
+                class="secondary"
+                onclick="changeFont(2)">
+
+                A+
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="toggleAutoScroll()">
+
+                ↕ Auto Scroll:
+                <span id="autoScrollText">
+                    ON
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <div class="speaker-controls">
+
+            <span class="setting-label">
+                Klik kata awal dan kata akhir, lalu tandai:
+            </span>
+
+            <button
+                class="speaker-button"
+                id="speaker1Button"
+                onclick="assignSelectedSpeaker(1)">
+                Pembicara 1
+            </button>
+
+            <button
+                class="speaker-button"
+                id="speaker2Button"
+                onclick="assignSelectedSpeaker(2)">
+                Pembicara 2
+            </button>
+
+            <button
+                class="speaker-button"
+                id="otherSpeakerButton"
+                onclick="assignOtherSpeaker()">
+                Pembicara lain
+            </button>
+
+        </div>
+
+
+        <div class="ai-settings">
+
+            <span class="setting-label">Koreksi AI:</span>
+
+            <input
+                class="ai-key"
+                id="mistralApiKey"
+                type="password"
+                placeholder="Masukkan API key Mistral">
+
+            <span class="setting-label">
+                Diproses per menit dan dikirim ke Mistral.
+            </span>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="status">
+
+            <span
+                id="statusDot"
+                class="status-dot">
+            </span>
+
+            <span id="status">
+                Ready
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- CAPTION -->
+
+    <div class="caption-window">
+
+        <div class="caption-label">
+            LIVE TRANSCRIPT
+        </div>
+
+        <div
+            id="liveLabel"
+            class="live-label">
+
+            ● LIVE
+
+        </div>
+
+
+        <div
+            id="captionText"
+            class="caption-text">
+
+            <span class="empty">
+                Tekan Start dan izinkan akses mikrofon.
+            </span>
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <div class="history-container">
+
+            <div class="history-title">
+                Transcript History
+            </div>
+
+            <div
+                id="history"
+                class="history">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HELP -->
+
+    <div class="help">
+
+        <strong>Cara menggunakan:</strong>
+
+        <ol>
+
+            <li>
+                Buka video YouTube atau sumber audio yang ingin didengarkan.
+            </li>
+
+            <li>
+                Putar video yang ingin kamu dengarkan.
+
+            <li>
+                Mode Campuran memakai Bahasa Indonesia sebagai dasar recognition
+                dan mempertahankan kata English dalam koreksi AI.
+            </li>
+            </li>
+
+            <li>
+                Kembali ke halaman Live Transcript ini dan gunakan mikrofon.
+            </li>
+
+            <li>
+                Klik <strong>🎙 Start</strong>.
+            </li>
+
+            <li>
+                Izinkan akses mikrofon saat diminta.
+            </li>
+
+            <li>
+                Letakkan sumber audio dekat mikrofon, atau gunakan perangkat
+                audio virtual sebagai input mikrofon.
+            </li>
+
+            <li>
+                Transcript akan muncul secara real-time.
+            </li>
+
+            <li>
+                Klik kata awal dan kata akhir dari suara pembicara lain,
+                lalu pilih label pembicaranya.
+            </li>
+
+            <li>
+                Klik tombol Edit paragraf untuk memperbaiki beberapa typo;
+                tekan Ctrl+Enter untuk menyimpan atau Escape untuk membatalkan.
+            </li>
+
+        </ol>
+
+        <strong>Catatan:</strong>
+
+            Tanpa API atau aplikasi desktop, browser tidak dapat memasukkan
+            audio tab YouTube langsung ke Speech Recognition. Chrome/Edge
+            terbaru tetap direkomendasikan.
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let recognition = null;
+
+let microphoneStream = null;
+
+let running = false;
+
+let paused = false;
+
+let autoScroll = true;
+
+let fontSize = 30;
+
+let fullTranscript = "";
+
+let sentences = [];
+
+let lastSentence = "";
+
+let activeSpeaker = 1;
+
+let selectedSentenceIndex = -1;
+
+let wordSelectionStart = null;
+
+let wordSelectionEnd = null;
+
+let undoStack = [];
+
+let redoStack = [];
+
+let restartTimer = null;
+
+
+/* =========================================
+   SPEECH RECOGNITION
+========================================= */
+
+function getSpeechRecognition() {
+
+    return window.SpeechRecognition ||
+           window.webkitSpeechRecognition;
+
+}
+
+
+/* =========================================
+   CREATE RECOGNITION
+========================================= */
+
+function createRecognition() {
+
+    const SpeechRecognition =
+        getSpeechRecognition();
+
+
+    if (!SpeechRecognition) {
+
+        alert(
+            "Speech Recognition tidak didukung.\n\n" +
+            "Gunakan Chrome atau Edge terbaru."
+        );
+
+        return null;
+
+    }
+
+
+    const r =
+        new SpeechRecognition();
+
+
+    r.lang =
+        recognitionLanguage();
+
+
+    r.continuous = true;
+
+    r.interimResults = true;
+
+    r.maxAlternatives = 1;
+
+
+    /* RESULT */
+
+    r.onresult = function(event) {
+
+        let interim = "";
+
+
+        for (
+            let i = event.resultIndex;
+            i < event.results.length;
+            i++
+        ) {
+
+            const result =
+                event.results[i];
+
+
+            const text =
+                result[0]
+                    .transcript
+                    .trim();
+
+
+            if (result.isFinal) {
+
+                if (text) {
+
+                    addSentence(text);
+
+                }
+
+            }
+
+            else {
+
+                interim += text + " ";
+
+            }
+
+        }
+
+
+        showCaption(interim);
+
+    };
+
+
+    /* START */
+
+    r.onstart = function() {
+
+        setStatus(
+            "Mendengarkan mikrofon...",
+            true
+        );
+
+    };
+
+
+    /* ERROR */
+
+    r.onerror = function(event) {
+
+        console.log(
+            "Recognition error:",
+            event.error
+        );
+
+
+        if (
+            event.error ===
+            "not-allowed"
+        ) {
+
+            setStatus(
+                "Izin mikrofon atau speech recognition ditolak.",
+                false
+            );
+
+            return;
+
+        }
+
+
+        if (
+            event.error ===
+            "no-speech"
+        ) {
+
+            return;
+
+        }
+
+
+        setStatus(
+            "Recognition: " +
+            event.error,
+            false
+        );
+
+    };
+
+
+    /* END */
+
+    r.onend = function() {
+
+        if (
+            running &&
+            !paused
+        ) {
+
+            clearTimeout(
+                restartTimer
+            );
+
+
+            restartTimer =
+                setTimeout(
+                    () => {
+
+                        try {
+
+                            r.start();
+
+                        }
+
+                        catch(e) {
+
+                            console.log(e);
+
+                        }
+
+                    },
+                    400
+                );
+
+        }
+
+    };
+
+
+    return r;
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+async function startTranscript() {
+
+    if (running) {
+
+        return;
+
+    }
+
+
+    const SpeechRecognition =
+        getSpeechRecognition();
+
+
+    if (!SpeechRecognition) {
+
+        return;
+
+    }
+
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+
+        alert(
+            "Akses mikrofon tidak tersedia.\n\n" +
+            "Buka halaman ini melalui HTTPS atau localhost."
+        );
+
+        return;
+
+    }
+
+    try {
+
+        microphoneStream =
+            await navigator.mediaDevices.getUserMedia({
+                audio: true
+            });
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+        setStatus(
+            "Akses mikrofon dibatalkan atau ditolak.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    recognition =
+        createRecognition();
+
+
+    if (!recognition) {
+
+        stopMicrophone();
+
+        return;
+
+    }
+
+
+    running = true;
+
+    paused = false;
+
+
+    document.getElementById(
+        "pauseButton"
+    ).disabled = false;
+
+
+    document.getElementById(
+        "pauseButton"
+    ).textContent =
+        "⏸ Pause";
+
+
+    try {
+
+        recognition.start();
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+
+        alert(
+            "Speech Recognition gagal dimulai.\n\n" +
+            "Pastikan izin mikrofon sudah diberikan."
+        );
+
+
+        stopTranscript();
+
+        return;
+
+    }
+
+
+    microphoneStream
+        .getTracks()
+        .forEach(
+            track => {
+
+                track.onended =
+                    function() {
+
+                        stopTranscript();
+
+                    };
+
+            }
+        );
+
+}
+
+
+/* =========================================
+   PAUSE
+========================================= */
+
+function togglePause() {
+
+    if (!running) {
+
+        return;
+
+    }
+
+
+    if (!paused) {
+
+        paused = true;
+
+
+        try {
+
+            recognition.stop();
+
+        }
+
+        catch(e) {}
+
+
+        document.getElementById(
+            "pauseButton"
+        ).textContent =
+            "▶ Resume";
+
+
+        setStatus(
+            "Paused.",
+            false
+        );
+
+    }
+
+    else {
+
+        paused = false;
+
+
+        try {
+
+            recognition.start();
+
+        }
+
+        catch(e) {}
+
+
+        document.getElementById(
+            "pauseButton"
+        ).textContent =
+            "⏸ Pause";
+
+
+        setStatus(
+            "Listening...",
+            true
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   STOP
+========================================= */
+
+function stopTranscript() {
+
+    running = false;
+
+    paused = false;
+
+
+    clearTimeout(
+        restartTimer
+    );
+
+
+    if (recognition) {
+
+        try {
+
+            recognition.stop();
+
+        }
+
+        catch(e) {}
+
+
+        recognition = null;
+
+    }
+
+
+    stopMicrophone();
+
+
+    document.getElementById(
+        "pauseButton"
+    ).disabled = true;
+
+
+    document.getElementById(
+        "pauseButton"
+    ).textContent =
+        "⏸ Pause";
+
+
+    document.getElementById(
+        "liveLabel"
+    ).classList.remove(
+        "active"
+    );
+
+
+    setStatus(
+        "Stopped.",
+        false
+    );
+
+}
+
+
+/* =========================================
+   MEDIA STREAM
+========================================= */
+
+function stopMicrophone() {
+
+    if (!microphoneStream) {
+
+        return;
+
+    }
+
+
+    microphoneStream
+        .getTracks()
+        .forEach(
+            track => track.stop()
+        );
+
+
+    microphoneStream = null;
+
+}
+
+
+/* =========================================
+   ADD SENTENCE
+========================================= */
+
+function splitIntoSentences(text) {
+
+    if (
+        "Segmenter" in Intl
+    ) {
+
+        return Array.from(
+            new Intl.Segmenter(
+                segmentationLanguage(),
+                {
+                    granularity: "sentence"
+                }
+            ).segment(text),
+            part => part.segment.trim()
+        ).filter(Boolean);
+
+    }
+
+
+    return (
+        text.match(/[^.!?]+(?:[.!?]+|$)/g) || []
+    )
+        .map(sentence => sentence.trim())
+        .filter(Boolean);
+
+}
+
+function addSentence(text) {
+
+    if (!text) {
+
+        return;
+
+    }
+
+
+    const time =
+        new Date()
+            .toLocaleTimeString(
+                [],
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                }
+            );
+
+
+    const parts =
+        splitIntoSentences(text);
+
+
+    parts.forEach(
+        part => {
+
+            sentences.push({
+
+                text: part,
+
+                time: time,
+
+                speaker: activeSpeaker,
+
+                words: createWords(part, activeSpeaker)
+
+            });
+
+        }
+    );
+
+
+    rebuildTranscript();
+
+
+    lastSentence =
+        parts[parts.length - 1] || text;
+
+
+    renderHistory();
+
+}
+
+
+/* =========================================
+   CREATE HISTORY ITEM
+========================================= */
+
+function renderHistory() {
+
+    const history =
+        document.getElementById(
+            "history"
+        );
+
+    const normalizedSentences = [];
+
+    sentences.forEach(
+        data => {
+
+            const parts =
+                splitIntoSentences(data.text);
+
+            parts.forEach(
+                part => {
+
+                    normalizedSentences.push({
+
+                        text: part,
+
+                        time: data.time,
+
+                        speaker: data.speaker,
+
+                        words: data.words || createWords(part, data.speaker)
+
+                    });
+
+                }
+            );
+
+        }
+    );
+
+    sentences = normalizedSentences;
+
+    history.innerHTML = "";
+
+    const groups = new Map();
+
+    sentences.forEach(
+        (data, index) => {
+
+            const minuteMatch = data.time.match(/\d{1,2}:\d{2}/);
+            const minute = minuteMatch ? minuteMatch[0] : data.time;
+
+            if (!groups.has(minute)) groups.set(minute, []);
+
+            groups.get(minute).push({ data, index });
+
+        }
+    );
+
+    groups.forEach(
+        (items, minute) => {
+
+            const group = document.createElement("section");
+            group.className = "minute-group";
+
+            const title = document.createElement("div");
+            title.className = "minute-title";
+            const minuteLabel = document.createElement("span");
+            minuteLabel.textContent = minute;
+            title.appendChild(minuteLabel);
+
+            const repairButton = document.createElement("button");
+            repairButton.className = "secondary";
+            repairButton.type = "button";
+            repairButton.textContent = "Perbaiki AI";
+            repairButton.onclick = () => repairMinuteWithMistral(minute, items, repairButton);
+            title.appendChild(repairButton);
+
+            const editButton = document.createElement("button");
+            editButton.className = "secondary";
+            editButton.type = "button";
+            editButton.textContent = "✎ Edit paragraf";
+            editButton.onclick = () => editMinuteParagraph(items, minuteContent, editButton);
+            title.appendChild(editButton);
+            group.appendChild(title);
+
+            const minuteContent = document.createElement("div");
+            minuteContent.className = "minute-content";
+
+            renderMinuteParagraph(items, minuteContent);
+
+            group.appendChild(minuteContent);
+
+            history.appendChild(group);
+
+        }
+    );
+
+    if (autoScroll) {
+
+        history.scrollTop =
+            history.scrollHeight;
+
+    }
+
+}
+
+
+async function repairMinuteWithMistral(minute, items, button) {
+
+    const apiKey =
+        document.getElementById("mistralApiKey").value.trim();
+
+    if (!apiKey) {
+
+        alert("Masukkan API key Mistral terlebih dahulu.");
+        return;
+
+    }
+
+    if (!items.length) return;
+
+    const original = items.map(
+        ({ data }) => ({
+            speaker: data.speaker,
+            text: data.text
+        })
+    );
+
+    const language =
+        document.getElementById("language").value;
+
+    const languageName =
+        getLanguageName(language);
+
+    const correctionInstruction = language === "mixed"
+        ? "Perbaiki transcript campuran Bahasa Indonesia dan English. Pertahankan bahasa asli setiap kata, jangan menerjemahkan, dan jangan mengubah istilah teknis atau nama. "
+        : "Perbaiki typo, ejaan, kapitalisasi, dan tanda baca transcript dalam " + languageName + ". ";
+
+    button.disabled = true;
+    button.textContent = "Memproses...";
+    setStatus("Menganalisis menit " + minute + " dengan Mistral...", false);
+
+    try {
+
+        const response = await fetch(
+            "https://api.mistral.ai/v1/chat/completions",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + apiKey
+                },
+                body: JSON.stringify({
+                    model: "mistral-small-latest",
+                    temperature: 0,
+                    response_format: { type: "json_object" },
+                    messages: [
+                        {
+                            role: "system",
+                            content:
+                                correctionInstruction +
+                                "Jangan mengubah makna atau label speaker. Balas JSON valid dengan format " +
+                                "{\"segments\":[{\"speaker\":1,\"text\":\"...\"}]}. " +
+                                "Jumlah segments harus sama dan urutannya tidak boleh berubah."
+                        },
+                        {
+                            role: "user",
+                            content: JSON.stringify({ minute, segments: original })
+                        }
+                    ]
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Mistral HTTP " + response.status);
+        }
+
+        const payload = await response.json();
+        const content = payload.choices?.[0]?.message?.content;
+        const result = typeof content === "string"
+            ? JSON.parse(content)
+            : content;
+        const corrected = result?.segments;
+
+        if (!Array.isArray(corrected) || corrected.length !== items.length) {
+            throw new Error("Format hasil Mistral tidak sesuai.");
+        }
+
+        const preview = corrected.map(
+            (segment, index) =>
+                speakerLabel(original[index].speaker) + ": " + segment.text
+        ).join("\n");
+
+        const applyCorrection =
+            await showCorrectionPreview(minute, original, corrected);
+
+        if (!applyCorrection) {
+            setStatus("Koreksi AI dibatalkan.", false);
+            return;
+        }
+
+        saveSpeakerEdit();
+
+        items.forEach(
+            ({ data }, index) => {
+
+                const text = String(corrected[index].text || "").trim();
+
+                if (!text) return;
+
+                data.text = text;
+                data.words = createWords(text, data.speaker);
+
+            }
+        );
+
+        rebuildTranscript();
+        renderHistory();
+        setStatus("Koreksi AI menit " + minute + " diterapkan.", false);
+
+    } catch (error) {
+
+        console.error(error);
+        setStatus("Koreksi AI gagal: " + error.message, false);
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Perbaiki AI";
+
+    }
+
+}
+
+
+function showCorrectionPreview(minute, original, corrected) {
+
+    return new Promise(resolve => {
+
+        const overlay = document.createElement("div");
+        overlay.className = "ai-preview-dialog";
+
+        const panel = document.createElement("div");
+        panel.className = "ai-preview-panel";
+
+        const heading = document.createElement("h3");
+        heading.textContent = "Preview koreksi AI - " + minute;
+        panel.appendChild(heading);
+
+        const columns = document.createElement("div");
+        columns.className = "ai-preview-columns";
+
+        const originalColumn = document.createElement("div");
+            originalColumn.className = "ai-preview-column";
+            originalColumn.dataset.label = "Asli";
+        originalColumn.textContent = original.map(
+            segment => speakerLabel(segment.speaker) + ": " + segment.text
+        ).join("\n");
+
+        const correctedColumn = document.createElement("div");
+            correctedColumn.className = "ai-preview-column";
+            correctedColumn.dataset.label = "Hasil AI";
+        correctedColumn.textContent = corrected.map(
+            (segment, index) => speakerLabel(original[index].speaker) + ": " + segment.text
+        ).join("\n");
+
+        columns.append(originalColumn, correctedColumn);
+        panel.appendChild(columns);
+
+        const actions = document.createElement("div");
+        actions.className = "ai-preview-actions";
+
+        const cancel = document.createElement("button");
+        cancel.className = "secondary";
+        cancel.textContent = "Batal";
+
+        const apply = document.createElement("button");
+        apply.className = "start";
+        apply.textContent = "Terapkan";
+
+        const close = value => {
+            overlay.remove();
+            resolve(value);
+        };
+
+        cancel.onclick = () => close(false);
+        apply.onclick = () => close(true);
+        overlay.onclick = event => {
+            if (event.target === overlay) close(false);
+        };
+
+        actions.append(cancel, apply);
+        panel.appendChild(actions);
+        overlay.appendChild(panel);
+        document.body.appendChild(overlay);
+
+    });
+
+}
+
+
+function renderMinuteParagraph(items, container) {
+
+    const paragraph = document.createElement("div");
+    paragraph.className = "minute-line";
+
+    let previousSpeaker = null;
+
+    items.forEach(
+        ({ data, index }) => {
+
+            data.words.forEach(
+                (word, wordIndex) => {
+
+                    if (word.speaker !== previousSpeaker) {
+
+                        if (previousSpeaker !== null) {
+
+                            paragraph.appendChild(document.createElement("br"));
+
+                        }
+
+                        const label = document.createElement("span");
+                        label.className = "minute-speaker";
+                        label.textContent = speakerLabel(word.speaker) + ":";
+                        paragraph.appendChild(label);
+                        previousSpeaker = word.speaker;
+
+                    }
+
+                    const wordElement = document.createElement("span");
+                    wordElement.className = "word";
+                    wordElement.textContent = word.text;
+                    wordElement.dataset.sentence = index;
+                    wordElement.dataset.word = wordIndex;
+
+                    if (isWordSelected(index, wordIndex)) {
+                        wordElement.classList.add("range-selected");
+                    }
+
+                    wordElement.onclick = event => {
+                        event.stopPropagation();
+                        selectWord(index, wordIndex);
+                    };
+
+                    paragraph.appendChild(wordElement);
+                    paragraph.appendChild(document.createTextNode(" "));
+
+                }
+            );
+
+        }
+    );
+
+    container.appendChild(paragraph);
+    return paragraph;
+
+}
+
+
+function editMinuteParagraph(items, container, button) {
+
+    const paragraph = container.querySelector(".minute-line");
+    if (!paragraph) return;
+
+    button.disabled = true;
+
+    const overlay = document.createElement("div");
+    overlay.className = "ai-preview-dialog";
+
+    const panel = document.createElement("div");
+    panel.className = "ai-preview-panel";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Edit paragraf transcript";
+    panel.appendChild(heading);
+
+    const editor = document.createElement("textarea");
+    editor.className = "paragraph-editor";
+    editor.value = items.map(({ data }) => data.text).join(" ");
+    panel.appendChild(editor);
+
+    const actions = document.createElement("div");
+    actions.className = "ai-preview-actions";
+
+    const cancelButton = document.createElement("button");
+    cancelButton.className = "secondary";
+    cancelButton.type = "button";
+    cancelButton.textContent = "Batal";
+
+    const saveButton = document.createElement("button");
+    saveButton.className = "start";
+    saveButton.type = "button";
+    saveButton.textContent = "Simpan";
+
+    actions.append(cancelButton, saveButton);
+    panel.appendChild(actions);
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
+    editor.focus();
+
+    let finished = false;
+
+    const finish = save => {
+
+        if (finished) return;
+        finished = true;
+
+        const text = editor.value.trim();
+
+        if (save && text) {
+
+            saveSpeakerEdit();
+
+            const words = text.split(/\s+/).filter(Boolean);
+            let wordIndex = 0;
+
+            items.forEach(({ data }) => {
+
+                const count = data.words.length;
+                const replacement = words.slice(wordIndex, wordIndex + count);
+                wordIndex += count;
+
+                if (replacement.length) {
+                    data.words = replacement.map((word, index) => ({
+                        text: word,
+                        speaker: data.words[index]?.speaker || data.speaker
+                    }));
+                    data.text = replacement.join(" ");
+                }
+
+            });
+
+            rebuildTranscript();
+            setStatus("Paragraf diperbarui.", false);
+
+        }
+
+        overlay.remove();
+        renderHistory();
+
+    };
+
+    saveButton.onclick = () => finish(true);
+    cancelButton.onclick = () => finish(false);
+    overlay.onclick = event => {
+        if (event.target === overlay) finish(false);
+    };
+
+    editor.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") finish(false);
+        if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) finish(true);
+
+    });
+
+}
+
+
+function renderMinuteLine(data, index, container) {
+
+    const line = document.createElement("div");
+    line.className = "minute-line";
+
+    const label = document.createElement("strong");
+    label.className = "speaker-label";
+    label.textContent = speakerLabel(data.speaker);
+    line.appendChild(label);
+
+    const text = document.createElement("span");
+
+    data.words.forEach(
+        (word, wordIndex) => {
+
+            const wordElement = document.createElement("span");
+            wordElement.className = "word";
+            wordElement.textContent = word.text;
+
+            if (isWordSelected(index, wordIndex)) {
+                wordElement.classList.add("range-selected");
+            }
+
+            wordElement.onclick = event => {
+                event.stopPropagation();
+                selectWord(index, wordIndex);
+            };
+
+            text.appendChild(wordElement);
+
+        }
+    );
+
+    line.appendChild(text);
+    container.appendChild(line);
+
+}
+
+
+function speakerLabel(speaker) {
+
+    if (speaker === "Lain") return "Pembicara lain";
+    if (speaker === "campuran") return "Beberapa pembicara";
+    if (typeof speaker === "string") return speaker;
+    return "Pembicara " + speaker;
+
+}
+
+
+function createWords(text, speaker) {
+
+    return text
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .map(word => ({ text: word, speaker }));
+
+}
+
+
+function createHistoryItem(data, index, container) {
+
+    const history =
+        document.getElementById(
+            "history"
+        );
+
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "history-item";
+
+    item.dataset.index = index;
+
+    if (selectedSentenceIndex === index) {
+
+        item.classList.add("selected");
+
+    }
+
+    const time =
+        document.createElement(
+            "div"
+        );
+
+
+    time.className =
+        "time";
+
+
+    time.textContent =
+        data.time;
+
+
+    const content =
+        document.createElement(
+            "div"
+        );
+
+
+    content.className =
+        "history-content";
+
+
+    const speaker =
+        document.createElement(
+            "span"
+        );
+
+
+    speaker.className =
+        "speaker-label";
+
+
+    speaker.textContent =
+        speakerLabel(data.speaker);
+
+
+    const sentence =
+        document.createElement(
+            "div"
+        );
+
+
+    sentence.className =
+        "sentence";
+
+
+    sentence.innerHTML = "";
+
+    data.words.forEach(
+        (word, wordIndex) => {
+
+            const wordElement = document.createElement("span");
+            wordElement.className = "word";
+            wordElement.textContent = word.text;
+            wordElement.dataset.sentence = index;
+            wordElement.dataset.word = wordIndex;
+
+            if (isWordSelected(index, wordIndex)) {
+                wordElement.classList.add("range-selected");
+            }
+
+            wordElement.onclick = event => {
+                event.stopPropagation();
+                selectWord(index, wordIndex);
+            };
+
+            sentence.appendChild(wordElement);
+
+        }
+    );
+
+
+    const copyButton =
+        document.createElement(
+            "button"
+        );
+
+
+    copyButton.className =
+        "copy-sentence";
+
+
+    copyButton.textContent =
+        "Copy";
+
+
+    copyButton.onclick =
+        function() {
+
+            copyText(
+                formatSpeakerText(data)
+            );
+
+        };
+
+
+    item.appendChild(
+        time
+    );
+
+
+    content.appendChild(speaker);
+
+    content.appendChild(sentence);
+
+    item.appendChild(content);
+
+
+    item.appendChild(
+        copyButton
+    );
+
+
+    container.appendChild(item);
+
+
+}
+
+
+function isWordSelected(sentenceIndex, wordIndex) {
+
+    if (!wordSelectionStart || !wordSelectionEnd) {
+
+        return false;
+
+    }
+
+
+    const current = {
+        sentenceIndex,
+        wordIndex
+    };
+
+    return compareWordPoint(current, wordSelectionStart) >= 0 &&
+        compareWordPoint(current, wordSelectionEnd) <= 0;
+
+}
+
+
+function compareWordPoint(first, second) {
+
+    if (first.sentenceIndex !== second.sentenceIndex) {
+
+        return first.sentenceIndex - second.sentenceIndex;
+
+    }
+
+
+    return first.wordIndex - second.wordIndex;
+
+}
+
+
+function formatSpeakerText(data) {
+
+    const parts = [];
+
+    data.words.forEach(
+        word => {
+
+            const previous =
+                parts[parts.length - 1];
+
+            if (
+                previous &&
+                previous.speaker === word.speaker
+            ) {
+
+                previous.text += " " + word.text;
+
+            }
+
+            else {
+
+                parts.push({
+                    speaker: word.speaker,
+                    text: word.text
+                });
+
+            }
+
+        }
+    );
+
+    return parts
+        .map(
+            part =>
+                speakerLabel(part.speaker) +
+                ": " +
+                part.text
+        )
+        .join(" ");
+
+}
+
+
+function selectWord(sentenceIndex, wordIndex) {
+
+    const point = {
+
+        sentenceIndex,
+
+        wordIndex
+
+    };
+
+    if (
+        !wordSelectionStart ||
+        wordSelectionEnd
+    ) {
+
+        wordSelectionStart = point;
+        wordSelectionEnd = null;
+        setStatus("Pilih kata terakhir dari rentang.", false);
+
+    }
+
+    else {
+
+        wordSelectionEnd = point;
+
+        if (
+            compareWordPoint(wordSelectionEnd, wordSelectionStart) < 0
+        ) {
+
+            const first = wordSelectionEnd;
+            wordSelectionEnd = wordSelectionStart;
+            wordSelectionStart = first;
+
+        }
+
+        setStatus("Rentang kata dipilih. Pilih label speaker.", false);
+
+    }
+
+
+    renderHistory();
+
+}
+
+
+function splitSpeakerAfter(index) {
+
+    if (
+        index < 0 ||
+        index >= sentences.length - 1
+    ) {
+
+        return;
+
+    }
+
+    saveSpeakerEdit();
+
+
+    const currentSpeaker =
+        sentences[index].speaker;
+
+
+    const nextSpeaker =
+        currentSpeaker === 1
+            ? 2
+            : 1;
+
+
+    for (
+        let itemIndex = index + 1;
+        itemIndex < sentences.length;
+        itemIndex++
+    ) {
+
+        sentences[itemIndex].speaker =
+            nextSpeaker;
+
+    }
+
+
+    activeSpeaker =
+        nextSpeaker;
+
+
+    rebuildTranscript();
+
+    renderHistory();
+
+}
+
+
+function assignSelectedSpeaker(speakerNumber) {
+
+    if (
+        !wordSelectionStart ||
+        !wordSelectionEnd
+    ) {
+
+        setStatus(
+            "Klik kata awal dan kata akhir terlebih dahulu.",
+            false
+        );
+
+        return;
+
+    }
+
+    saveSpeakerEdit();
+
+
+    for (
+        let sentenceIndex = wordSelectionStart.sentenceIndex;
+        sentenceIndex <= wordSelectionEnd.sentenceIndex;
+        sentenceIndex++
+    ) {
+
+        const sentence = sentences[sentenceIndex];
+
+        const firstWord =
+            sentenceIndex === wordSelectionStart.sentenceIndex
+                ? wordSelectionStart.wordIndex
+                : 0;
+
+        const lastWord =
+            sentenceIndex === wordSelectionEnd.sentenceIndex
+                ? wordSelectionEnd.wordIndex
+                : sentence.words.length - 1;
+
+        for (
+            let wordIndex = firstWord;
+            wordIndex <= lastWord;
+            wordIndex++
+        ) {
+
+            sentence.words[wordIndex].speaker =
+                speakerNumber;
+
+        }
+
+        sentence.text =
+            sentence.words.map(word => word.text).join(" ");
+
+        const speakers = new Set(
+            sentence.words.map(word => word.speaker)
+        );
+
+        sentence.speaker =
+            speakers.size === 1
+                ? sentence.words[0].speaker
+                : "campuran";
+
+    }
+
+    sentences = splitSpeakerSegments(sentences);
+
+    activeSpeaker =
+        speakerNumber;
+
+    rebuildTranscript();
+    wordSelectionStart = null;
+    wordSelectionEnd = null;
+    renderHistory();
+
+    setStatus(
+        "Rentang ditandai sebagai " + speakerLabel(speakerNumber) + ".",
+        false
+    );
+
+}
+
+
+function saveSpeakerEdit() {
+
+    undoStack.push({
+        sentences: JSON.parse(JSON.stringify(sentences)),
+        activeSpeaker: activeSpeaker
+    });
+
+    if (undoStack.length > 50) undoStack.shift();
+
+    redoStack = [];
+    updateHistoryButtons();
+
+}
+
+
+function restoreSpeakerState(state) {
+
+    sentences = JSON.parse(JSON.stringify(state.sentences));
+    activeSpeaker = state.activeSpeaker;
+    wordSelectionStart = null;
+    wordSelectionEnd = null;
+    rebuildTranscript();
+    renderHistory();
+
+}
+
+
+function undoSpeakerEdit() {
+
+    if (!undoStack.length) return;
+
+    redoStack.push({
+        sentences: JSON.parse(JSON.stringify(sentences)),
+        activeSpeaker: activeSpeaker
+    });
+
+    restoreSpeakerState(undoStack.pop());
+    updateHistoryButtons();
+    setStatus("Perubahan speaker dibatalkan.", false);
+
+}
+
+
+function redoSpeakerEdit() {
+
+    if (!redoStack.length) return;
+
+    undoStack.push({
+        sentences: JSON.parse(JSON.stringify(sentences)),
+        activeSpeaker: activeSpeaker
+    });
+
+    restoreSpeakerState(redoStack.pop());
+    updateHistoryButtons();
+    setStatus("Perubahan speaker diulangi.", false);
+
+}
+
+
+function updateHistoryButtons() {
+
+    document.getElementById("undoButton").disabled = !undoStack.length;
+    document.getElementById("redoButton").disabled = !redoStack.length;
+
+}
+
+
+function assignOtherSpeaker() {
+
+    const name =
+        prompt("Nama atau label pembicara lain:", "Pembicara lain");
+
+    if (!name || !name.trim()) {
+
+        return;
+
+    }
+
+
+    assignSelectedSpeaker(name.trim());
+
+}
+
+
+function splitSpeakerSegments(items) {
+
+    const result = [];
+
+    const splitTime =
+        new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+
+    items.forEach(
+        item => {
+
+            if (!item.words || !item.words.length) {
+
+                result.push(item);
+                return;
+
+            }
+
+            let currentWords = [];
+            let currentSpeaker = item.words[0].speaker;
+
+            const pushSegment = () => {
+
+                if (!currentWords.length) return;
+
+                result.push({
+                    text: currentWords
+                        .map(word => word.text)
+                        .join(" "),
+                    time: currentSpeaker === item.speaker
+                        ? item.time
+                        : splitTime,
+                    speaker: currentSpeaker,
+                    words: currentWords
+                        .map(word => ({ ...word }))
+                });
+
+            };
+
+            item.words.forEach(
+                word => {
+
+                    if (word.speaker !== currentSpeaker) {
+
+                        pushSegment();
+                        currentWords = [];
+                        currentSpeaker = word.speaker;
+
+                    }
+
+                    currentWords.push(word);
+
+                }
+            );
+
+            pushSegment();
+
+        }
+    );
+
+    return result;
+
+}
+
+
+function rebuildTranscript() {
+
+    fullTranscript =
+        sentences
+            .map(
+                data => {
+
+                    const wordsBySpeaker = [];
+
+                    data.words.forEach(word => {
+
+                        const previous =
+                            wordsBySpeaker[wordsBySpeaker.length - 1];
+
+                        if (
+                            previous &&
+                            previous.speaker === word.speaker
+                        ) {
+
+                            previous.text += " " + word.text;
+
+                        }
+
+                        else {
+
+                            wordsBySpeaker.push({
+                                speaker: word.speaker,
+                                text: word.text
+                            });
+
+                        }
+
+                    });
+
+                    return wordsBySpeaker
+                        .map(
+                            part =>
+                                speakerLabel(part.speaker) +
+                                ": " +
+                                part.text
+                        )
+                        .join(" ");
+
+                }
+            )
+            .join("\n");
+
+}
+
+
+/* =========================================
+   LIVE CAPTION
+========================================= */
+
+function showCaption(interim) {
+
+    const box =
+        document.getElementById(
+            "captionText"
+        );
+
+
+    box.innerHTML = "";
+
+
+    if (
+        lastSentence ||
+        interim
+    ) {
+
+        const finalText =
+            document.createElement(
+                "span"
+            );
+
+
+        const latestSentence =
+            sentences[sentences.length - 1];
+
+
+        finalText.textContent =
+            speakerLabel(latestSentence
+                ? latestSentence.speaker
+                : activeSpeaker) +
+            ": " +
+            lastSentence + " ";
+
+
+        box.appendChild(
+            finalText
+        );
+
+
+        if (interim) {
+
+            const interimText =
+                document.createElement(
+                    "span"
+                );
+
+
+            interimText.className =
+                "interim";
+
+
+            interimText.textContent =
+                interim;
+
+
+            box.appendChild(
+                interimText
+            );
+
+        }
+
+    }
+
+    else {
+
+        box.innerHTML =
+            '<span class="empty">' +
+            'Listening...' +
+            '</span>';
+
+    }
+
+
+    box.style.fontSize =
+        fontSize + "px";
+
+
+    if (autoScroll) {
+
+        box.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
+    }
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+async function copyText(text) {
+
+    if (!text) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await navigator
+            .clipboard
+            .writeText(text);
+
+
+        showTemporaryStatus(
+            "Copied!"
+        );
+
+
+    }
+
+    catch(error) {
+
+        fallbackCopy(
+            text
+        );
+
+    }
+
+
+}
+
+/* =========================================
+   COPY ALL
+========================================= */
+
+function copyAll() {
+
+    if (!fullTranscript.trim()) {
+
+        alert(
+            "Belum ada transcript."
+        );
+
+        return;
+
+    }
+
+
+    copyText(
+        fullTranscript.trim()
+    );
+
+}
+
+
+/* =========================================
+   COPY LAST
+========================================= */
+
+function copyLast() {
+
+    if (!lastSentence) {
+
+        alert(
+            "Belum ada kalimat."
+        );
+
+        return;
+
+    }
+
+
+    const latestSentence =
+        sentences[sentences.length - 1];
+
+
+    copyText(formatSpeakerText(latestSentence));
+
+}
+
+
+/* =========================================
+   FALLBACK COPY
+========================================= */
+
+function fallbackCopy(text) {
+
+    const textarea =
+        document.createElement(
+            "textarea"
+        );
+
+
+    textarea.value =
+        text;
+
+
+    document.body.appendChild(
+        textarea
+    );
+
+
+    textarea.select();
+
+
+    document.execCommand(
+        "copy"
+    );
+
+
+    textarea.remove();
+
+
+    showTemporaryStatus(
+        "Copied!"
+    );
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearTranscript() {
+
+    if (
+        !confirm(
+            "Clear seluruh transcript?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    fullTranscript = "";
+
+    sentences = [];
+
+    lastSentence = "";
+
+    activeSpeaker = 1;
+
+    selectedSentenceIndex = -1;
+
+
+    document.getElementById(
+        "history"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "captionText"
+    ).innerHTML =
+        '<span class="empty">' +
+        'Transcript cleared.' +
+        '</span>';
+
+}
+
+
+/* =========================================
+   DOWNLOAD
+========================================= */
+
+function downloadTranscript() {
+
+    if (!fullTranscript.trim()) {
+
+        alert(
+            "Belum ada transcript."
+        );
+
+        return;
+
+    }
+
+
+    const blob =
+        new Blob(
+            [
+                fullTranscript.trim()
+            ],
+            {
+                type:
+                    "text/plain;charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const a =
+        document.createElement(
+            "a"
+        );
+
+
+    a.href =
+        url;
+
+
+    a.download =
+        "youtube-live-transcript.txt";
+
+
+    document.body.appendChild(
+        a
+    );
+
+
+    a.click();
+
+
+    a.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* =========================================
+   FONT
+========================================= */
+
+function changeFont(amount) {
+
+    fontSize += amount;
+
+
+    if (fontSize < 18) {
+
+        fontSize = 18;
+
+    }
+
+
+    if (fontSize > 50) {
+
+        fontSize = 50;
+
+    }
+
+
+    document.getElementById(
+        "captionText"
+    ).style.fontSize =
+        fontSize + "px";
+
+}
+
+
+/* =========================================
+   AUTO SCROLL
+========================================= */
+
+function toggleAutoScroll() {
+
+    autoScroll =
+        !autoScroll;
+
+
+    document.getElementById(
+        "autoScrollText"
+    ).textContent =
+        autoScroll
+            ? "ON"
+            : "OFF";
+
+}
+
+
+/* =========================================
+   LANGUAGE
+========================================= */
+
+function changeLanguage() {
+
+    const language =
+        document.getElementById(
+            "language"
+        ).value;
+
+    if (!recognition) {
+
+        setStatus(
+            "Bahasa siap: " + getLanguageName(language),
+            false
+        );
+
+        return;
+
+    }
+
+
+    recognition.lang = recognitionLanguage();
+
+    if (running && !paused) {
+
+        try {
+
+            recognition.stop();
+
+        }
+
+        catch(error) {}
+
+    }
+
+    setStatus(
+        "Bahasa diubah ke " + getLanguageName(language) + ".",
+        running && !paused
+    );
+
+}
+
+
+function getLanguageName(language) {
+
+    if (language === "mixed") return "Campuran Indonesia + English";
+    if (language === "id-ID") return "Bahasa Indonesia";
+    if (language === "en-GB") return "English (UK)";
+    return "English (US)";
+
+}
+
+
+function recognitionLanguage() {
+
+    const language =
+        document.getElementById("language").value;
+
+    return language === "mixed" ? "id-ID" : language;
+
+}
+
+
+function segmentationLanguage() {
+
+    const language =
+        document.getElementById("language").value;
+
+    return language === "mixed" ? "id" : language;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function setStatus(
+    text,
+    live
+) {
+
+    document.getElementById(
+        "status"
+    ).textContent =
+        text;
+
+
+    const dot =
+        document.getElementById(
+            "statusDot"
+        );
+
+
+    const liveLabel =
+        document.getElementById(
+            "liveLabel"
+        );
+
+
+    if (live) {
+
+        dot.classList.add(
+            "live"
+        );
+
+        liveLabel.classList.add(
+            "active"
+        );
+
+    }
+
+    else {
+
+        dot.classList.remove(
+            "live"
+        );
+
+        liveLabel.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   TEMPORARY STATUS
+========================================= */
+
+function showTemporaryStatus(
+    message
+) {
+
+    const old =
+        document.getElementById(
+            "status"
+        ).textContent;
+
+
+    setStatus(
+        message,
+        false
+    );
+
+
+    setTimeout(
+        () => {
+
+            if (!running) {
+
+                setStatus(
+                    "Ready",
+                    false
+                );
+
+            }
+            else {
+
+                setStatus(
+                    paused
+                        ? "Paused."
+                        : "Listening...",
+                    !paused
+                );
+
+            }
+
+        },
+        1200
+    );
+
+}
+
+
+/* =========================================
+   KEYBOARD SHORTCUTS
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        /*
+         * Ctrl + Shift + C
+         * Copy all
+         */
+
+        if (
+            event.ctrlKey &&
+            event.shiftKey &&
+            event.key.toLowerCase() === "c"
+        ) {
+
+            event.preventDefault();
+
+            copyAll();
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            !event.shiftKey &&
+            event.key.toLowerCase() === "z"
+        ) {
+
+            event.preventDefault();
+            undoSpeakerEdit();
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            !event.shiftKey &&
+            event.key.toLowerCase() === "y"
+        ) {
+
+            event.preventDefault();
+            redoSpeakerEdit();
+
+        }
+
+
+        /*
+         * Space
+         * Pause / Resume
+         */
+
+        if (
+            event.code === "Space" &&
+            event.target.tagName !== "INPUT" &&
+            event.target.tagName !== "TEXTAREA"
+        ) {
+
+            event.preventDefault();
+
+            togglePause();
+
+        }
+
+    }
+);
+
+</script>
+
+
+<script src="pomodoro-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran Lengkap: JISDOR, Kurs Acuan Non-USD/IDR, dan Kurs Transaksi BI</title>
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #00897b;
+            --accent: #ff9800;
+            --accent2: #f44336;
+            --light: #e8f5e8;
+            --light2: #f0f8ff;
+            --dark: #263238;
+            --text: #333;
+            --border: #b2dfdb;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --success: #4caf50;
+            --warning: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        header h1 .subtitle {
+            font-size: 0.7em;
+            font-weight: 300;
+            display: block;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        nav h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            text-align: center;
+            position: relative;
+        }
+
+        nav h2:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            column-gap: 20px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 12px 15px;
+            background: var(--light2);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.95em;
+        }
+
+        .toc a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateX(8px);
+            box-shadow: 0 3px 10px rgba(0, 137, 123, 0.3);
+        }
+
+        main {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 45px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        section::before {
+            content: "";
+            display: block;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            position: absolute;
+            left: -20px;
+            top: 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.9em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        h2 .icon {
+            font-size: 0.8em;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.5em;
+            margin: 25px 0 18px 0;
+        }
+
+        h4 {
+            color: var(--accent);
+            font-size: 1.25em;
+            margin: 20px 0 12px 0;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        blockquote {
+            background: linear-gradient(135deg, var(--light2), #fff);
+            border-left: 6px solid var(--secondary);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--dark);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        blockquote p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .definition {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 6px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.2);
+        }
+
+        .definition p {
+            margin: 0;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .definition p + p {
+            margin-top: 10px;
+        }
+
+        .important {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            border-left: 5px solid var(--accent2);
+            box-shadow: 0 2px 8px rgba(244, 67, 54, 0.15);
+        }
+
+        .important p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .important p + p {
+            margin-top: 8px;
+        }
+
+        .diagram {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.5;
+            font-size: 0.95em;
+            color: var(--dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 3px 12px var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(0, 137, 123, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(0, 137, 123, 0.1);
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 6px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 137, 123, 0.2);
+        }
+
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .summary ul {
+            margin-left: 20px;
+            padding-bottom: 10px;
+        }
+
+        .summary li {
+            margin-bottom: 8px;
+        }
+
+        .summary p {
+            margin-bottom: 12px;
+        }
+
+        .exercise {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.15);
+        }
+
+        .exercise h3 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .answer {
+            background: white;
+            padding: 15px;
+            margin-top: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .answer strong {
+            color: var(--primary);
+        }
+
+        .keywords {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .keywords table {
+            margin: 0;
+        }
+
+        .highlight {
+            background: #fffde7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .contoh {
+            background: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .contoh p:first-child {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .formula {
+            background: #f0f8ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border: 1px dashed var(--secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 137, 123, 0.3);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 137, 123, 0.4);
+        }
+
+        .time-info {
+            background: rgba(255, 152, 0, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .time-info p {
+            margin: 0;
+            text-align: left;
+        }
+
+        .time-info strong {
+            color: var(--accent);
+        }
+
+        .list-custom {
+            margin-left: 20px;
+            padding-bottom: 10px;
+        }
+
+        .list-custom li {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+
+            .toc {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .diagram {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .toc a {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .back-to-top, .toc {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .diagram, .code-block {
+                white-space: pre-wrap;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+<link rel="stylesheet" href="annotation.css">
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Materi Pembelajaran Lengkap
+                <span class="subtitle">JISDOR, Kurs Acuan Non-USD/IDR, dan Kurs Transaksi BI</span>
+            </h1>
+            <p>Definisi, Fungsi, Mekanisme, Spesifikasi, Perbedaan, Contoh, Rangkuman, dan Latihan Soal</p>
+        </header>
+
+        <nav>
+            <h2>📚 Daftar Isi</h2>
+            <div class="toc">
+                <a href="#pengertian-jisdor">1. Pengertian JISDOR</a>
+                <a href="#usd-idr">2. Memahami USD/IDR</a>
+                <a href="#harga-spot">3. Harga Spot</a>
+                <a href="#fungsi-jisdor">4. Fungsi JISDOR</a>
+                <a href="#pembentukan-jisdor">5. Pembentukan JISDOR</a>
+                <a href="#sismontavar">6. SISMONTAVAR</a>
+                <a href="#metode-perhitungan">7. Metode Perhitungan</a>
+                <a href="#kontributor">8. Kontributor Data</a>
+                <a href="#spesifikasi-jisdor">9. Spesifikasi JISDOR</a>
+                <a href="#jam-pengambilan">10. Jam Pengambilan Data</a>
+                <a href="#perubahan-jam">11. Perubahan Jam JISDOR</a>
+                <a href="#hari-publikasi">12. Hari Publikasi</a>
+                <a href="#data-tidak-tersedia">13. Data Tidak Tersedia</a>
+                <a href="#penguatan-jisdor">14. Penguatan JISDOR</a>
+                <a href="#pentingnya-jisdor">15. Pentingnya JISDOR</a>
+                <a href="#kurs-acuan-non-usd">16. Kurs Acuan Non-USD/IDR</a>
+                <a href="#mata-uang-non-usd">17. Mata Uang Non-USD</a>
+                <a href="#contoh-non-usd">18. Contoh Non-USD/IDR</a>
+                <a href="#sumber-data-non-usd">19. Sumber Data Non-USD</a>
+                <a href="#spesifikasi-non-usd">20. Spesifikasi Non-USD</a>
+                <a href="#kurs-transaksi-bi">21. Kurs Transaksi BI</a>
+                <a href="#fungsi-kurs-bi">22. Fungsi Kurs Transaksi BI</a>
+                <a href="#kurs-jual-beli">23. Kurs Jual dan Beli</a>
+                <a href="#hubungan-kurs-bi-jisdor">24. Hubungan Kurs BI & JISDOR</a>
+                <a href="#waktu-kurs-bi">25. Waktu Kurs Transaksi BI</a>
+                <a href="#perbedaan-jisdor-kurs-bi">26. Perbedaan JISDOR & Kurs BI</a>
+                <a href="#perbedaan-jisdor-non-usd">27. Perbedaan JISDOR & Non-USD</a>
+                <a href="#tiga-jenis-kurs">28. Tiga Jenis Kurs</a>
+                <a href="#hubungan-ketiga">29. Hubungan Ketiganya</a>
+                <a href="#jisdor-nilai-tukar">30. JISDOR & Nilai Tukar</a>
+                <a href="#jisdor-inflasi">31. JISDOR & Inflasi</a>
+                <a href="#contoh-sederhana">32. Contoh Sederhana</a>
+                <a href="#contoh-kasus">33. Contoh Kasus Ekonomi</a>
+                <a href="#konsep-representatif">34. Konsep Representatif</a>
+                <a href="#kata-kunci">35. Kata Kunci Hafalan</a>
+                <a href="#peta-konsep">36. Peta Konsep</a>
+                <a href="#ringkasan-jisdor">37. Ringkasan JISDOR</a>
+                <a href="#ringkasan-non-usd">38. Ringkasan Non-USD</a>
+                <a href="#ringkasan-kurs-bi">39. Ringkasan Kurs BI</a>
+                <a href="#latihan-pilihan">40. Latihan Pilihan Ganda</a>
+                <a href="#soal-esai">41. Soal Esai</a>
+                <a href="#hafalan-30">42. Hafalan 30 Detik</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Section 1 -->
+            <section id="pengertian-jisdor">
+                <h2><span class="icon">💱</span> PENGERTIAN JISDOR</h2>
+                <div class="definition">
+                    <p><strong>JISDOR</strong> merupakan singkatan dari <strong>Jakarta Interbank Spot Dollar Rate</strong>.</p>
+                    <p style="margin-top: 15px; font-size: 1.1em;">JISDOR adalah <strong>harga spot USD/IDR</strong> yang disusun berdasarkan transaksi <strong>spot USD/IDR antarbank di pasar valuta asing Indonesia</strong>.</p>
+                </div>
+
+                <p>Data transaksi tersebut dikumpulkan melalui:</p>
+                <blockquote>
+                    <strong>SISMONTAVAR (Sistem Monitoring Transaksi Valuta Asing Terhadap Rupiah)</strong>
+                </blockquote>
+                <p>yang dilakukan secara <strong>real time</strong> di Bank Indonesia.</p>
+
+                <h3>Sederhananya:</h3>
+                <div class="formula">
+JISDOR = referensi harga pasar USD terhadap Rupiah<br>
+berdasarkan transaksi spot antarbank.
+                </div>
+
+                <p>JISDOR digunakan untuk memberikan <strong>referensi harga pasar yang representatif</strong> bagi transaksi spot USD/IDR di pasar valuta asing Indonesia.</p>
+
+                <div class="important">
+                    <p>⚠️ <strong>Catatan:</strong> JISDOR mulai diterbitkan sejak:</p>
+                    <p style="text-align: center; font-size: 1.1em; margin-top: 10px;"><strong>20 Mei 2013</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="usd-idr">
+                <h2><span class="icon">💵</span> MEMAHAMI USD/IDR</h2>
+                <p>Sebelum memahami JISDOR, kita perlu memahami pasangan mata uangnya.</p>
+
+                <h3>USD/IDR</h3>
+                <ul class="list-custom">
+                    <li><strong>USD</strong> = Dolar Amerika Serikat</li>
+                    <li><strong>IDR</strong> = Rupiah Indonesia</li>
+                </ul>
+
+                <p>Jika JISDOR misalnya:</p>
+                <div class="code-block">
+JISDOR = Rp17.552/USD
+                </div>
+                <p>maka secara sederhana berarti:</p>
+                <div class="formula">
+US$1 = Rp17.552
+                </div>
+
+                <div class="important">
+                    <p>💡 <strong>Penting:</strong> Jadi semakin besar angka USD/IDR, semakin banyak rupiah yang diperlukan untuk memperoleh US$1.</p>
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="harga-spot">
+                <h2><span class="icon">⚡</span> APA YANG DIMAKSUD DENGAN HARGA SPOT?</h2>
+                <div class="definition">
+                    <p><strong>Spot</strong> berarti transaksi valuta asing untuk penyelesaian dalam mekanisme transaksi spot sesuai ketentuan pasar valuta asing yang berlaku.</p>
+                </div>
+
+                <p>Dalam konteks JISDOR, yang diamati adalah:</p>
+                <blockquote>
+                    transaksi spot USD/IDR antarbank
+                </blockquote>
+
+                <div class="important">
+                    <p>⚠️ <strong>Catatan:</strong> Jadi JISDOR bukan sekadar angka yang ditentukan secara sembarang, melainkan menggunakan <strong>data transaksi aktual</strong>.</p>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="fungsi-jisdor">
+                <h2><span class="icon">🎯</span> FUNGSI JISDOR</h2>
+                <div class="definition">
+                    <p><strong>Tujuan utama JISDOR</strong> adalah:</p>
+                    <p style="margin-top: 15px; font-size: 1.1em; text-align: center;">Memberikan referensi harga pasar yang representatif untuk transaksi spot USD/IDR di pasar valuta asing Indonesia.</p>
+                </div>
+
+                <p>Dengan adanya JISDOR, pelaku pasar mempunyai suatu referensi mengenai harga USD terhadap Rupiah.</p>
+
+                <h3>JISDOR dapat digunakan sebagai referensi untuk:</h3>
+                <ul class="list-custom">
+                    <li>melihat perkembangan nilai tukar USD/IDR,</li>
+                    <li>memahami kondisi pasar valuta asing,</li>
+                    <li>menjadi referensi harga pasar,</li>
+                    <li>dan membantu pelaku pasar dalam melakukan analisis nilai tukar.</li>
+                </ul>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="pembentukan-jisdor">
+                <h2><span class="icon">🔄</span> BAGAIMANA JISDOR DIBENTUK?</h2>
+                <p>Proses sederhananya dapat digambarkan seperti berikut:</p>
+                <div class="diagram">
+Transaksi Spot USD/IDR Antarbank
+              ↓
+      Dilaporkan melalui
+         SISMONTAVAR
+              ↓
+      Data Transaksi Aktual
+              ↓
+   Data Volume & Nilai Tukar
+              ↓
+     Weighted Average
+     (Rata-rata Tertimbang)
+              ↓
+            JISDOR
+              ↓
+   Referensi Harga USD/IDR
+                </div>
+
+                <p><strong>Jadi terdapat beberapa unsur penting:</strong></p>
+                <div class="code-block">
+Transaksi aktual → SISMONTAVAR → volume & nilai tukar → rata-rata tertimbang → JISDOR
+                </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="sismontavar">
+                <h2><span class="icon">📊</span> SISMONTAVAR</h2>
+                <h3>Apa itu SISMONTAVAR?</h3>
+                <div class="definition">
+                    <p>SISMONTAVAR merupakan sistem yang digunakan untuk <strong>monitoring transaksi valuta asing terhadap Rupiah</strong>.</p>
+                </div>
+
+                <p>Dalam pembentukan JISDOR, data transaksi USD/IDR dikumpulkan melalui sistem tersebut secara <strong>real time</strong>.</p>
+                <p>Dengan demikian, JISDOR menggunakan informasi transaksi pasar valuta asing yang aktual.</p>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="metode-perhitungan">
+                <h2><span class="icon">📈</span> METODE PERHITUNGAN JISDOR</h2>
+                <div class="definition">
+                    <p>JISDOR dihitung menggunakan:</p>
+                    <p style="margin-top: 10px; font-size: 1.1em; text-align: center;"><strong>Rata-rata tertimbang (Weighted Average)</strong></p>
+                </div>
+
+                <p>berdasarkan:</p>
+                <ol>
+                    <li><strong>Volume transaksi</strong></li>
+                    <li><strong>Nilai tukar transaksi</strong></li>
+                </ol>
+
+                <p>Jadi, JISDOR tidak sekadar menghitung rata-rata sederhana dari seluruh harga transaksi.</p>
+
+                <h3>Konsep sederhananya:</h3>
+                <p>Misalnya terdapat dua transaksi:</p>
+                <table>
+                    <tr>
+                        <th>Transaksi</th>
+                        <th>Kurs</th>
+                        <th>Volume</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>Rp17.500</td>
+                        <td>US$1 juta</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>Rp17.600</td>
+                        <td>US$9 juta</td>
+                    </tr>
+                </table>
+                <p>Transaksi B memiliki volume lebih besar sehingga mempunyai <strong>bobot lebih besar</strong> dalam perhitungan.</p>
+
+                <div class="formula">
+JISDOR = rata-rata nilai tukar yang diberi bobot<br>
+berdasarkan volume transaksi.
+                </div>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="kontributor">
+                <h2><span class="icon">🏦</span> KONTRIBUTOR DATA JISDOR</h2>
+                <div class="definition">
+                    <p>Kontributor data JISDOR adalah:</p>
+                    <p style="margin-top: 15px; font-size: 1.1em; text-align: center;"><strong>Seluruh bank devisa yang melakukan transaksi spot USD/IDR antarbank dalam rentang waktu yang ditentukan.</strong></p>
+                </div>
+                <p>Artinya, data berasal dari transaksi yang dilakukan oleh bank devisa yang memenuhi ketentuan tersebut.</p>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="spesifikasi-jisdor">
+                <h2><span class="icon">📋</span> SPESIFIKASI JISDOR</h2>
+                <table>
+                    <tr>
+                        <th>Spesifikasi</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Currency Pair</strong></td>
+                        <td>USD/IDR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jenis Data</strong></td>
+                        <td>Data transaksi spot aktual antarbank USD/IDR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kontributor</strong></td>
+                        <td>Seluruh bank devisa yang melakukan transaksi spot USD/IDR antarbank dalam rentang waktu yang ditentukan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Media Pelaporan</strong></td>
+                        <td>SISMONTAVAR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penerbit</strong></td>
+                        <td>Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rentang pengambilan data</strong></td>
+                        <td>09.00–15.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cut-off time</strong></td>
+                        <td>15.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Waktu pengumuman</strong></td>
+                        <td>15.15 WIB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metode perhitungan</strong></td>
+                        <td>Weighted Average</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Media pengumuman</strong></td>
+                        <td>Website Bank Indonesia</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 10 -->
+            <section id="jam-pengambilan">
+                <h2><span class="icon">⏰</span> JAM PENGAMBILAN DATA JISDOR</h2>
+                <div class="definition">
+                    <p>Berdasarkan materi yang diberikan, saat ini data JISDOR diambil dalam rentang:</p>
+                    <p style="margin-top: 15px; font-size: 1.2em; text-align: center;"><strong>09.00 – 15.00 WIB</strong></p>
+                </div>
+
+                <p>Sedangkan:</p>
+                <div class="time-info">
+                    <p><strong>Cut-off time</strong> = <strong>15.00 WIB</strong></p>
+                    <p><strong>JISDOR diumumkan</strong> = <strong>15.15 WIB</strong></p>
+                </div>
+
+                <h3>Urutan waktunya:</h3>
+                <div class="diagram">
+09.00 WIB
+   ↓
+Mulai pengambilan data transaksi
+   ↓
+   ...
+   ↓
+15.00 WIB
+   ↓
+Cut-off
+   ↓
+Pengolahan data
+   ↓
+15.15 WIB
+   ↓
+JISDOR diumumkan
+                </div>
+            </section>
+
+            <!-- Section 11 -->
+            <section id="perubahan-jam">
+                <h2><span class="icon">🔄</span> MENGAPA JAM JISDOR DAPAT BERUBAH?</h2>
+                <p>Materi menyebutkan bahwa apabila terdapat <strong>perubahan jam operasional pasar valas domestik</strong>, maka rentang waktu pengambilan data dan publikasi JISDOR akan disesuaikan dengan jam operasi moneter pasar valuta asing domestik yang berlaku.</p>
+                <div class="important">
+                    <p>💡 <strong>Inti:</strong> Waktu JISDOR mengikuti perkembangan jam operasional pasar valas domestik.</p>
+                </div>
+            </section>
+
+            <!-- Section 12 -->
+            <section id="hari-publikasi">
+                <h2><span class="icon">📅</span> HARI PUBLIKASI JISDOR</h2>
+                <div class="definition">
+                    <p>JISDOR tersedia untuk:</p>
+                    <p style="margin-top: 15px; font-size: 1.1em; text-align: center;"><strong>setiap hari kerja</strong></p>
+                </div>
+
+                <p>Hari yang tidak termasuk antara lain:</p>
+                <ul class="list-custom">
+                    <li>Sabtu,</li>
+                    <li>Minggu,</li>
+                    <li>hari libur nasional,</li>
+                    <li>hari lain yang ditetapkan sebagai hari libur sehingga bank tidak melakukan kegiatan operasi.</li>
+                </ul>
+
+                <h3>Contoh sederhana:</h3>
+                <p>Jika Senin–Jumat merupakan hari kerja:</p>
+                <div class="contoh">
+                    <p><strong>Senin</strong> → ada JISDOR</p>
+                    <p><strong>Selasa</strong> → ada JISDOR</p>
+                    <p><strong>Rabu</strong> → ada JISDOR</p>
+                    <p><strong>Kamis</strong> → ada JISDOR</p>
+                    <p><strong>Jumat</strong> → ada JISDOR</p>
+                    <p><strong>Sabtu</strong> → tidak ada</p>
+                    <p><strong>Minggu</strong> → tidak ada</p>
+                </div>
+            </section>
+
+            <!-- Section 13 -->
+            <section id="data-tidak-tersedia">
+                <h2><span class="icon">⚠️</span> BAGAIMANA JIKA DATA TRANSAKSI TIDAK TERSEDIA?</h2>
+                <p>Terdapat kondisi ketika data transaksi spot antarbank tidak tersedia selama rentang waktu yang ditetapkan.</p>
+                <p><strong>Penyebabnya dapat berupa:</strong></p>
+                <ul class="list-custom">
+                    <li>ketidaktersediaan data,</li>
+                    <li>kerusakan sistem.</li>
+                </ul>
+
+                <p>Dalam kondisi tersebut:</p>
+                <div class="formula">
+JISDOR akan menampilkan kurs hari kerja sebelumnya.
+                </div>
+
+                <div class="important">
+                    <p>💡 <strong>Hafalan:</strong> <strong>Tidak ada data → gunakan JISDOR hari kerja sebelumnya.</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 14 -->
+            <section id="penguatan-jisdor">
+                <h2><span class="icon">📈</span> PENGUATAN JISDOR</h2>
+                <p>Materi menyebutkan bahwa penguatan JISDOR dilakukan sejak:</p>
+                <div class="code-block">
+Senin, 5 April 2021
+                </div>
+
+                <p>Kemudian, berdasarkan <strong>Peraturan Anggota Dewan Gubernur Nomor 7 Tahun 2026</strong> tentang perubahan atas <strong>PADG Nomor 11 Tahun 2024 tentang Transaksi Pasar Valuta Asing</strong>, rentang waktu pengambilan data JISDOR ditetapkan:</p>
+                <div class="code-block">
+09.00–15.00 WIB
+                </div>
+                <p>dengan publikasi:</p>
+                <div class="code-block">
+15.15 WIB
+                </div>
+            </section>
+
+            <!-- Section 15 -->
+            <section id="pentingnya-jisdor">
+                <h2><span class="icon">⭐</span> MENGAPA JISDOR PENTING?</h2>
+                <div class="definition">
+                    <p>JISDOR penting karena pasar valuta asing membutuhkan suatu <strong>referensi harga yang representatif</strong>.</p>
+                </div>
+                <p>Tanpa referensi, pelaku pasar akan lebih sulit memperoleh gambaran mengenai kondisi harga USD/IDR secara agregat.</p>
+                <p>JISDOR memberikan gambaran yang bersumber dari:</p>
+                <blockquote>
+                    transaksi aktual pasar antarbank
+                </blockquote>
+                <p>sehingga dapat menjadi referensi dalam melihat kondisi pasar USD/IDR.</p>
+            </section>
+
+            <!-- Section 16 -->
+            <section id="kurs-acuan-non-usd">
+                <h2><span class="icon">🌍</span> KURS ACUAN NON-USD/IDR</h2>
+                <p>Selain USD/IDR, Bank Indonesia juga menyediakan:</p>
+                <div class="formula">
+Kurs Acuan Non-USD/IDR
+                </div>
+                <p>Kurs acuan non-USD/IDR merupakan:</p>
+                <blockquote>
+                    nilai tukar mata uang asing tertentu terhadap Rupiah.
+                </blockquote>
+                <p>Kurs ini dapat digunakan pelaku pasar untuk:</p>
+                <blockquote>
+                    penyelesaian transaksi derivatif non-USD.
+                </blockquote>
+            </section>
+
+            <!-- Section 17 -->
+            <section id="mata-uang-non-usd">
+                <h2><span class="icon">💱</span> MATA UANG DALAM KURS ACUAN NON-USD/IDR</h2>
+                <p>Berdasarkan materi, pasangan mata uang yang tersedia meliputi:</p>
+                <h3>Kelompok mata uang:</h3>
+                <div class="code-block">
+• AUD/IDR    • CAD/IDR    • CHF/IDR
+• CNH/IDR    • CNY/IDR    • EUR/IDR
+• GBP/IDR    • JPY/IDR    • KRW/IDR
+• MYR/IDR    • NZD/IDR    • SAR/IDR
+• SGD/IDR    • THB/IDR    • INR/IDR
+• PHP/IDR    • AED/IDR
+                </div>
+            </section>
+
+            <!-- Section 18 -->
+            <section id="contoh-non-usd">
+                <h2><span class="icon">📝</span> CONTOH MEMAHAMI KURS NON-USD/IDR</h2>
+                <p>Misalnya terdapat:</p>
+                <div class="code-block">
+> EUR/IDR
+                </div>
+                <p>Artinya nilai mata uang <strong>Euro terhadap Rupiah</strong>.</p>
+                <p>Jika nilai tersebut misalnya Rp20.000, maka secara sederhana:</p>
+                <div class="formula">
+€1 = Rp20.000
+                </div>
+                <p>Contoh lain:</p>
+                <div class="code-block">
+> JPY/IDR
+                </div>
+                <p>menunjukkan nilai <strong>Yen Jepang terhadap Rupiah</strong>.</p>
+                <p>Jadi konsepnya sama dengan USD/IDR, tetapi mata uang asing yang digunakan berbeda.</p>
+            </section>
+
+            <!-- Section 19 -->
+            <section id="sumber-data-non-usd">
+                <h2><span class="icon">📊</span> SUMBER DATA KURS ACUAN NON-USD/IDR</h2>
+                <div class="definition">
+                    <p>Berdasarkan materi:</p>
+                    <p style="margin-top: 15px; font-size: 1.1em; text-align: center;"><strong>Sumber data = JISDOR dan kurs penutupan valuta asing terhadap valuta asing lainnya yang dikeluarkan oleh lembaga tertentu.</strong></p>
+                </div>
+                <p>Dengan demikian, kurs acuan non-USD/IDR tidak menggunakan sumber data yang persis sama dengan JISDOR USD/IDR.</p>
+            </section>
+
+            <!-- Section 20 -->
+            <section id="spesifikasi-non-usd">
+                <h2><span class="icon">📋</span> SPESIFIKASI KURS ACUAN NON-USD/IDR</h2>
+                <table>
+                    <tr>
+                        <th>Spesifikasi</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Currency Pair</strong></td>
+                        <td>AUD/IDR, CAD/IDR, CHF/IDR, CNH/IDR, CNY/IDR, EUR/IDR, GBP/IDR, JPY/IDR, KRW/IDR, MYR/IDR, NZD/IDR, SAR/IDR, SGD/IDR, THB/IDR, INR/IDR, PHP/IDR, AED/IDR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sumber data</strong></td>
+                        <td>JISDOR dan kurs penutupan valuta asing terhadap valuta asing lainnya dari lembaga tertentu</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penerbit</strong></td>
+                        <td>Bank Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Media</strong></td>
+                        <td>Website Bank Indonesia</td>
+                    </tr>
+                </table>
+                <div class="important">
+                    <p>⚠️ <strong>Catatan:</strong> bahan yang diberikan memuat dua keterangan waktu yang berbeda untuk kurs acuan non-USD/IDR: pada bagian uraian disebut <strong>15.30 WIB</strong>, sedangkan tabel spesifikasi mencantumkan <strong>16.30 WIB</strong>. Karena materi sumber tidak menjelaskan perbedaan tersebut, keduanya sebaiknya tidak digabung menjadi satu angka tanpa verifikasi lebih lanjut.</p>
+                </div>
+            </section>
+
+            <!-- Section 21 -->
+            <section id="kurs-transaksi-bi">
+                <h2><span class="icon">🏛️</span> KURS TRANSAKSI BI</h2>
+                <p>Sekarang kita masuk ke indikator yang ketiga:</p>
+                <div class="formula">
+Kurs Transaksi BI
+                </div>
+                <p>Kurs Transaksi BI disajikan dalam bentuk:</p>
+                <ul class="list-custom">
+                    <li><strong>kurs jual</strong></li>
+                    <li><strong>kurs beli</strong></li>
+                </ul>
+                <p>untuk valuta asing terhadap Rupiah.</p>
+            </section>
+
+            <!-- Section 22 -->
+            <section id="fungsi-kurs-bi">
+                <h2><span class="icon">🎯</span> FUNGSI KURS TRANSAKSI BI</h2>
+                <div class="definition">
+                    <p>Kurs Transaksi BI digunakan sebagai:</p>
+                    <p style="margin-top: 15px; font-size: 1.1em; text-align: center;"><strong>referensi transaksi Bank Indonesia dengan pihak ketiga, seperti pemerintah.</strong></p>
+                </div>
+                <p>Jadi berbeda dengan JISDOR yang dirancang sebagai referensi harga pasar spot USD/IDR.</p>
+            </section>
+
+            <!-- Section 23 -->
+            <section id="kurs-jual-beli">
+                <h2><span class="icon">💰</span> KURS JUAL DAN KURS BELI</h2>
+                <p>Secara konsep:</p>
+                <h3>Kurs jual</h3>
+                <p>Merupakan kurs ketika pihak <strong>menjual valuta asing</strong>.</p>
+                <h3>Kurs beli</h3>
+                <p>Merupakan kurs ketika pihak <strong>membeli valuta asing</strong>.</p>
+                <div class="important">
+                    <p>⚠️ <strong>Catatan:</strong> Dalam memahami kurs transaksi, penting untuk memperhatikan <strong>dari sudut pandang pihak yang melakukan transaksi</strong>, sehingga istilah jual dan beli tidak boleh dihafalkan tanpa konteks.</p>
+                </div>
+            </section>
+
+            <!-- Section 24 -->
+            <section id="hubungan-kurs-bi-jisdor">
+                <h2><span class="icon">🔗</span> HUBUNGAN KURS TRANSAKSI BI DENGAN JISDOR</h2>
+                <div class="definition">
+                    <p>Hal yang sangat penting:</p>
+                    <p style="margin-top: 15px; font-size: 1.1em; text-align: center;"><strong>Titik tengah Kurs Transaksi BI USD/IDR mengacu pada JISDOR hari kerja sebelumnya (H-1).</strong></p>
+                </div>
+
+                <h3>H-1 artinya:</h3>
+                <div class="formula">
+Hari kerja sebelumnya.
+                </div>
+
+                <h3>Contoh:</h3>
+                <p>Jika hari ini:</p>
+                <div class="code-block">
+> Selasa
+                </div>
+                <p>maka JISDOR yang menjadi acuan titik tengah Kurs Transaksi BI adalah:</p>
+                <div class="code-block">
+> JISDOR Senin, dengan catatan Senin merupakan hari kerja.
+                </div>
+            </section>
+
+            <!-- Section 25 -->
+            <section id="waktu-kurs-bi">
+                <h2><span class="icon">⏰</span> WAKTU PENGUMUMAN KURS TRANSAKSI BI</h2>
+                <p>Kurs Transaksi BI diumumkan:</p>
+                <div class="code-block">
+Sekali setiap hari kerja
+pada:
+08.00 WIB
+                </div>
+
+                <p>Bandingkan dengan JISDOR:</p>
+                <table>
+                    <tr>
+                        <th>Indikator</th>
+                        <th>Waktu</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Kurs Transaksi BI</strong></td>
+                        <td style="text-align: center;">08.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JISDOR</strong></td>
+                        <td style="text-align: center;">15.15 WIB</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 26 -->
+            <section id="perbedaan-jisdor-kurs-bi">
+                <h2><span class="icon">⚖️</span> PERBEDAAN JISDOR DAN KURS TRANSAKSI BI</h2>
+                <div class="important">
+                    <p>⚠️ <strong>Bagian ini sangat penting untuk ujian.</strong></p>
+                </div>
+                <table>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>JISDOR</th>
+                        <th>Kurs Transaksi BI</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Fokus</strong></td>
+                        <td>Referensi harga pasar spot USD/IDR</td>
+                        <td>Referensi transaksi BI dengan pihak ketiga</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pasangan utama</strong></td>
+                        <td>USD/IDR</td>
+                        <td>Valas terhadap Rupiah</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data</strong></td>
+                        <td>Transaksi spot aktual antarbank</td>
+                        <td>Mengacu antara lain pada JISDOR untuk titik tengah USD/IDR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penerbit</strong></td>
+                        <td>BI</td>
+                        <td>BI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Publikasi</strong></td>
+                        <td>15.15 WIB</td>
+                        <td>08.00 WIB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Frekuensi</strong></td>
+                        <td>Hari kerja</td>
+                        <td>Hari kerja</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Karakter</strong></td>
+                        <td>Referensi pasar USD/IDR</td>
+                        <td>Kurs jual dan beli</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 27 -->
+            <section id="perbedaan-jisdor-non-usd">
+                <h2><span class="icon">⚖️</span> PERBEDAAN JISDOR DENGAN KURS ACUAN NON-USD/IDR</h2>
+                <table>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>JISDOR</th>
+                        <th>Kurs Acuan Non-USD/IDR</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Mata uang utama</strong></td>
+                        <td>USD/IDR</td>
+                        <td>Mata uang non-USD terhadap IDR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contoh</strong></td>
+                        <td>USD/IDR</td>
+                        <td>EUR/IDR, JPY/IDR, SGD/IDR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dasar data</strong></td>
+                        <td>Transaksi spot aktual antarbank</td>
+                        <td>JISDOR dan kurs penutupan valas tertentu</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fungsi</strong></td>
+                        <td>Referensi harga pasar USD/IDR</td>
+                        <td>Referensi untuk transaksi derivatif non-USD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penerbit</strong></td>
+                        <td>BI</td>
+                        <td>BI</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Section 28 -->
+            <section id="tiga-jenis-kurs">
+                <h2><span class="icon">🔢</span> TIGA JENIS KURS YANG PERLU DIBEDAKAN</h2>
+                <p>Kamu dapat mengingatnya seperti ini:</p>
+                <h3>1. JISDOR</h3>
+                <div class="code-block">
+USD/IDR → pasar spot → referensi harga pasar
+                </div>
+                <h3>2. Kurs Acuan Non-USD/IDR</h3>
+                <div class="code-block">
+EUR/IDR, JPY/IDR, SGD/IDR, dll. → derivatif non-USD
+                </div>
+                <h3>3. Kurs Transaksi BI</h3>
+                <div class="code-block">
+Kurs jual & beli → transaksi BI dengan pihak ketiga
+                </div>
+            </section>
+
+            <!-- Section 29 -->
+            <section id="hubungan-ketiga">
+                <h2><span class="icon">🔗</span> HUBUNGAN KETIGANYA</h2>
+                <p>Secara sederhana:</p>
+                <div class="diagram">
+                 BANK INDONESIA
+                       │
+          ┌────────────┼────────────┐
+          │            │            │
+          ▼            ▼            ▼
+       JISDOR     Kurs Acuan      Kurs
+      USD/IDR     Non-USD/IDR   Transaksi BI
+          │            │            │
+          │            │            │
+          ▼            ▼            ▼
+     Referensi       Referensi    Referensi
+     USD/IDR         Valas        Transaksi BI
+     Spot            Non-USD      dengan pihak
+                                    ketiga
+                </div>
+            </section>
+
+            <!-- Section 30 -->
+            <section id="jisdor-nilai-tukar">
+                <h2><span class="icon">📊</span> JISDOR DAN NILAI TUKAR RUPIAH</h2>
+                <p>JISDOR sangat berkaitan dengan perkembangan nilai tukar Rupiah terhadap dolar AS.</p>
+                <h3>JISDOR naik</h3>
+                <p>Dari:</p>
+                <div class="code-block">
+Rp17.000 → Rp17.500/USD
+                </div>
+                <p>Maka dibutuhkan lebih banyak Rupiah untuk mendapatkan US$1.</p>
+                <p>Secara sederhana:</p>
+                <div class="formula">
+Rupiah melemah terhadap USD.
+                </div>
+
+                <h3>Sebaliknya: JISDOR turun</h3>
+                <p>Dari:</p>
+                <div class="code-block">
+Rp17.500 → Rp17.000/USD
+                </div>
+                <p>Maka diperlukan lebih sedikit Rupiah untuk mendapatkan US$1.</p>
+                <p>Secara sederhana:</p>
+                <div class="formula">
+Rupiah menguat terhadap USD.
+                </div>
+            </section>
+
+            <!-- Section 31 -->
+            <section id="jisdor-inflasi">
+                <h2><span class="icon">💹</span> HUBUNGAN JISDOR DENGAN INFLASI</h2>
+                <p>Nilai tukar dapat memengaruhi harga barang impor.</p>
+                <h3>Misalnya: Rupiah melemah</h3>
+                <div class="diagram">
+Rupiah melemah
+↓
+USD menjadi lebih mahal dalam Rupiah
+↓
+Barang impor menjadi relatif lebih mahal
+↓
+Biaya input impor dapat meningkat
+↓
+Tekanan harga dapat meningkat
+↓
+Inflasi berpotensi meningkat
+                </div>
+
+                <h3>Sebaliknya: Rupiah menguat</h3>
+                <div class="diagram">
+Rupiah menguat
+↓
+Harga barang impor dalam Rupiah cenderung lebih rendah
+↓
+Tekanan dari harga impor dapat berkurang
+↓
+Tekanan inflasi dapat berkurang
+                </div>
+                <p>Namun, pengaruh terhadap inflasi tidak otomatis dan dapat dipengaruhi banyak faktor lainnya.</p>
+            </section>
+
+            <!-- Section 32 -->
+            <section id="contoh-sederhana">
+                <h2><span class="icon">📝</span> CONTOH SEDERHANA</h2>
+                <p>Misalkan:</p>
+                <h3>Kondisi A</h3>
+                <p>JISDOR:</p>
+                <div class="code-block">
+JISDOR = Rp17.000/USD
+                </div>
+                <p>Perusahaan membutuhkan US$10.000.</p>
+                <p>Kebutuhan Rupiah:</p>
+                <div class="formula">
+10.000 × 17.000 = Rp170.000.000
+                </div>
+
+                <h3>Kondisi B</h3>
+                <p>JISDOR naik:</p>
+                <div class="code-block">
+JISDOR = Rp18.000/USD
+                </div>
+                <p>Untuk US$10.000:</p>
+                <div class="formula">
+10.000 × 18.000 = Rp180.000.000
+                </div>
+                <p>Perusahaan membutuhkan:</p>
+                <blockquote>
+                    Rp10 juta lebih banyak
+                </blockquote>
+                <p>untuk memperoleh jumlah USD yang sama.</p>
+                <p>Ini menunjukkan bagaimana perubahan nilai tukar dapat memengaruhi biaya transaksi internasional.</p>
+            </section>
+
+            <!-- Section 33 -->
+            <section id="contoh-kasus">
+                <h2><span class="icon">🏭</span> CONTOH KASUS EKONOMI</h2>
+                <p>Bayangkan perusahaan Indonesia harus mengimpor mesin dari Amerika Serikat dengan harga:</p>
+                <div class="code-block">
+US$100.000
+                </div>
+
+                <h3>Jika JISDOR Rp17.000/USD:</h3>
+                <div class="formula">
+100.000 × 17.000 = Rp1,7 miliar
+                </div>
+
+                <h3>Jika JISDOR Rp18.000/USD:</h3>
+                <div class="formula">
+100.000 × 18.000 = Rp1,8 miliar
+                </div>
+                <p>Maka pelemahan Rupiah menyebabkan kebutuhan Rupiah meningkat.</p>
+                <p>Hal tersebut dapat memengaruhi:</p>
+                <ul class="list-custom">
+                    <li>biaya impor,</li>
+                    <li>biaya produksi,</li>
+                    <li>harga jual,</li>
+                    <li>dan pada kondisi tertentu tekanan inflasi.</li>
+                </ul>
+            </section>
+
+            <!-- Section 34 -->
+            <section id="konsep-representatif">
+                <h2><span class="icon">✅</span> KONSEP PENTING: REPRESENTATIF</h2>
+                <p>Dalam memahami JISDOR, kata yang penting adalah:</p>
+                <div class="formula">
+Representatif
+                </div>
+                <p>JISDOR dirancang untuk memberikan gambaran harga pasar yang representatif karena menggunakan:</p>
+                <ul class="list-custom">
+                    <li>transaksi aktual,</li>
+                    <li>transaksi antarbank,</li>
+                    <li>data USD/IDR,</li>
+                    <li>volume transaksi,</li>
+                    <li>dan metode weighted average.</li>
+                </ul>
+                <p>Jadi bukan sekadar angka yang ditetapkan tanpa dasar transaksi.</p>
+            </section>
+
+            <!-- Section 35 -->
+            <section id="kata-kunci">
+                <h2><span class="icon">🔑</span> KATA KUNCI YANG HARUS DIHAFALKAN</h2>
+                <p>Untuk <strong>JISDOR</strong>, hafalkan:</p>
+                <div class="code-block">
+USD/IDR – Spot – Antarbank – SISMONTAVAR – Real Time – Weighted Average – BI – 09.00–15.00 – Publikasi 15.15
+                </div>
+
+                <p>Untuk <strong>Kurs Acuan Non-USD/IDR</strong>:</p>
+                <div class="code-block">
+Non-USD – terhadap Rupiah – derivatif non-USD – BI
+                </div>
+
+                <p>Untuk <strong>Kurs Transaksi BI</strong>:</p>
+                <div class="code-block">
+Kurs jual & beli – transaksi BI dengan pihak ketiga – titik tengah USD/IDR mengacu JISDOR H-1 – publikasi 08.00
+                </div>
+            </section>
+
+            <!-- Section 36 -->
+            <section id="peta-konsep">
+                <h2><span class="icon">🗺️</span> PETA KONSEP KESELURUHAN</h2>
+                <div class="diagram">
+                    NILAI TUKAR
+                         │
+        ┌────────────────┼─────────────────┐
+        │                │                 │
+        ▼                ▼                 ▼
+     JISDOR        Kurs Acuan         Kurs Transaksi
+     USD/IDR       Non-USD/IDR              BI
+        │                │                 │
+        │                │                 │
+        ▼                ▼                 ▼
+ Transaksi Spot      EUR/IDR          Kurs Jual
+ Antarbank           JPY/IDR          Kurs Beli
+        │             SGD/IDR              │
+        ▼                │                 ▼
+ SISMONTAVAR             │          Transaksi BI
+        │                │          dengan pihak
+        ▼                │             ketiga
+ Weighted Average        │
+        │                │
+        ▼                ▼
+ Referensi Harga     Referensi
+ USD/IDR             Derivatif
+                     Non-USD
+                </div>
+            </section>
+
+            <!-- Section 37 -->
+            <section id="ringkasan-jisdor">
+                <h2><span class="icon">📌</span> RINGKASAN JISDOR</h2>
+                <div class="summary">
+                    <h3>JISDOR</h3>
+                    <p><strong>JISDOR adalah harga spot USD/IDR yang disusun berdasarkan transaksi spot USD/IDR antarbank di pasar valuta asing Indonesia melalui SISMONTAVAR.</strong></p>
+
+                    <h3>Fungsi:</h3>
+                    <p>Referensi harga pasar USD/IDR yang representatif.</p>
+
+                    <h3>Mulai diterbitkan:</h3>
+                    <p>20 Mei 2013</p>
+
+                    <h3>Data:</h3>
+                    <p>Transaksi aktual</p>
+
+                    <h3>Metode:</h3>
+                    <p>Weighted Average</p>
+
+                    <h3>Waktu pengambilan:</h3>
+                    <p>09.00–15.00 WIB</p>
+
+                    <h3>Publikasi:</h3>
+                    <p>15.15 WIB</p>
+
+                    <h3>Penerbit:</h3>
+                    <p>Bank Indonesia</p>
+                </div>
+            </section>
+
+            <!-- Section 38 -->
+            <section id="ringkasan-non-usd">
+                <h2><span class="icon">📌</span> RINGKASAN KURS ACUAN NON-USD/IDR</h2>
+                <div class="summary">
+                    <p><strong>Kurs acuan non-USD/IDR adalah nilai tukar mata uang asing tertentu terhadap Rupiah yang dapat digunakan pelaku pasar untuk penyelesaian transaksi derivatif non-USD.</strong></p>
+
+                    <h3>Contohnya:</h3>
+                    <div class="code-block">
+EUR/IDR, JPY/IDR, SGD/IDR, GBP/IDR, AUD/IDR, CNY/IDR, dan lainnya.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 39 -->
+            <section id="ringkasan-kurs-bi">
+                <h2><span class="icon">📌</span> RINGKASAN KURS TRANSAKSI BI</h2>
+                <div class="summary">
+                    <p><strong>Kurs Transaksi BI disajikan dalam bentuk kurs jual dan kurs beli valuta asing terhadap Rupiah dan digunakan sebagai referensi transaksi Bank Indonesia dengan pihak ketiga.</strong></p>
+
+                    <h3>Hal penting:</h3>
+                    <p><strong>Titik tengah Kurs Transaksi BI USD/IDR mengacu pada JISDOR hari kerja sebelumnya (H-1).</strong></p>
+
+                    <h3>Publikasi:</h3>
+                    <p>08.00 WIB setiap hari kerja.</p>
+                </div>
+            </section>
+
+            <!-- Section 40 -->
+            <section id="latihan-pilihan">
+                <h2><span class="icon">🎯</span> LATIHAN SOAL PILIHAN GANDA</h2>
+
+                <div class="exercise">
+                    <h3>1. JISDOR merupakan singkatan dari...</h3>
+                    <ol type="A">
+                        <li>Jakarta International Spot Dollar Rate</li>
+                        <li>Jakarta Interbank Spot Dollar Rate</li>
+                        <li>Jakarta Indonesia Spot Dollar Rate</li>
+                        <li>Jakarta Interbank Standard Dollar Rate</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>2. JISDOR mengukur pasangan mata uang...</h3>
+                    <ol type="A">
+                        <li>EUR/USD</li>
+                        <li>USD/JPY</li>
+                        <li>USD/IDR</li>
+                        <li>SGD/USD</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>3. Data JISDOR berasal dari...</h3>
+                    <ol type="A">
+                        <li>Perkiraan Bank Indonesia</li>
+                        <li>Transaksi spot aktual antarbank</li>
+                        <li>Harga saham</li>
+                        <li>Harga komoditas</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>4. Sistem yang digunakan untuk pelaporan data transaksi JISDOR adalah...</h3>
+                    <ol type="A">
+                        <li>BI-FAST</li>
+                        <li>SISMONTAVAR</li>
+                        <li>BI-RTGS</li>
+                        <li>SNAP</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>5. Metode perhitungan JISDOR adalah...</h3>
+                    <ol type="A">
+                        <li>Simple Average</li>
+                        <li>Median</li>
+                        <li>Weighted Average</li>
+                        <li>Moving Average</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>6. Saat ini rentang pengambilan data JISDOR adalah...</h3>
+                    <ol type="A">
+                        <li>07.00–12.00 WIB</li>
+                        <li>08.00–14.00 WIB</li>
+                        <li>09.00–15.00 WIB</li>
+                        <li>10.00–16.00 WIB</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>7. JISDOR dipublikasikan pada...</h3>
+                    <ol type="A">
+                        <li>08.00 WIB</li>
+                        <li>12.00 WIB</li>
+                        <li>15.15 WIB</li>
+                        <li>16.30 WIB</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>8. Jika tidak tersedia data transaksi spot selama rentang waktu yang ditentukan, maka...</h3>
+                    <ol type="A">
+                        <li>JISDOR tidak diterbitkan selamanya</li>
+                        <li>JISDOR menggunakan kurs hari kerja sebelumnya</li>
+                        <li>JISDOR ditentukan secara acak</li>
+                        <li>JISDOR menggunakan kurs tiga hari sebelumnya</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>9. Salah satu fungsi JISDOR adalah...</h3>
+                    <ol type="A">
+                        <li>Menentukan inflasi</li>
+                        <li>Memberikan referensi harga pasar USD/IDR</li>
+                        <li>Menentukan pajak</li>
+                        <li>Menentukan harga saham</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>10. Kurs Transaksi BI disajikan dalam bentuk...</h3>
+                    <ol type="A">
+                        <li>Kurs jual dan kurs beli</li>
+                        <li>Inflasi dan deflasi</li>
+                        <li>Harga saham dan obligasi</li>
+                        <li>Ekspor dan impor</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: A</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>11. Titik tengah Kurs Transaksi BI USD/IDR mengacu pada...</h3>
+                    <ol type="A">
+                        <li>BI-Rate</li>
+                        <li>INDONIA</li>
+                        <li>JISDOR hari kerja sebelumnya</li>
+                        <li>Inflasi bulan sebelumnya</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: C</strong>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h3>12. Kurs Transaksi BI diumumkan pada...</h3>
+                    <ol type="A">
+                        <li>07.00 WIB</li>
+                        <li>08.00 WIB</li>
+                        <li>15.15 WIB</li>
+                        <li>16.30 WIB</li>
+                    </ol>
+                    <div class="answer">
+                        <strong>Jawaban: B</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 41 -->
+            <section id="soal-esai">
+                <h2><span class="icon">📝</span> SOAL ESAI</h2>
+                <ol>
+                    <li>Jelaskan pengertian JISDOR dengan menggunakan kata-kata sendiri!</li>
+                    <li>Mengapa JISDOR menggunakan transaksi aktual antarbank?</li>
+                    <li>Apa fungsi SISMONTAVAR dalam pembentukan JISDOR?</li>
+                    <li>Jelaskan apa yang dimaksud dengan metode <strong>Weighted Average</strong> dalam perhitungan JISDOR!</li>
+                    <li>Sebutkan spesifikasi utama JISDOR!</li>
+                    <li>Apa yang terjadi jika tidak terdapat data transaksi spot antarbank selama periode pengambilan data JISDOR?</li>
+                    <li>Apa yang dimaksud dengan kurs acuan non-USD/IDR?</li>
+                    <li>Sebutkan minimal lima pasangan mata uang dalam kurs acuan non-USD/IDR!</li>
+                    <li>Jelaskan perbedaan JISDOR dengan Kurs Transaksi BI!</li>
+                    <li>Jika JISDOR meningkat dari Rp17.000/USD menjadi Rp18.000/USD, apa yang terjadi terhadap nilai Rupiah terhadap USD?</li>
+                </ol>
+                <div class="answer">
+                    <p><strong>Jawaban inti soal 10:</strong> Rupiah mengalami pelemahan terhadap USD karena diperlukan lebih banyak Rupiah untuk memperoleh US$1.</p>
+                </div>
+            </section>
+
+            <!-- Section 42 -->
+            <section id="hafalan-30">
+                <h2><span class="icon">⏳</span> HAFALAN 30 DETIK SEBELUM UJIAN</h2>
+                <div class="summary">
+                    <p><strong>Kalau waktunya sangat singkat, hafalkan kalimat ini:</strong></p>
+
+                    <div class="code-block">
+JISDOR adalah referensi harga spot USD/IDR berdasarkan transaksi aktual<br>
+antarbank yang dikumpulkan melalui SISMONTAVAR dan dihitung<br>
+menggunakan weighted average. Data diambil 09.00–15.00 WIB dan<br>
+diumumkan 15.15 WIB.
+                    </div>
+
+                    <p>Kemudian:</p>
+                    <div class="code-block">
+Kurs acuan non-USD/IDR = nilai mata uang non-USD terhadap Rupiah<br>
+untuk referensi transaksi derivatif non-USD.
+                    </div>
+
+                    <p>Dan:</p>
+                    <div class="code-block">
+Kurs Transaksi BI = kurs jual dan beli valas terhadap Rupiah untuk<br>
+referensi transaksi BI dengan pihak ketiga, dengan titik tengah<br>
+USD/IDR mengacu JISDOR H-1 dan diumumkan 08.00 WIB.
+                    </div>
+
+                    <h3>🔑 Rumus hafalan:</h3>
+                    <div class="code-block">
+JISDOR → USD/IDR → SPOT → ANTARBANK → SISMONTAVAR → WEIGHTED AVERAGE → 15.15
+
+Non-USD → VALAS LAIN/IDR → DERIVATIF
+
+Kurs Transaksi BI → JUAL/BELI → TRANSAKSI BI → JISDOR H-1 → 08.00
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>📚 Materi Pembelajaran Lengkap</strong></p>
+            <p>JISDOR, Kurs Acuan Non-USD/IDR, dan Kurs Transaksi BI</p>
+            <p>Definisi, Fungsi, Mekanisme, Spesifikasi, Perbedaan, Contoh, Rangkuman, dan Latihan Soal</p>
+            <p>© 2024 - Hak Cipta Dilindungi | Bank Indonesia</p>
+            <a href="#" class="back-to-top">🔝 Kembali ke Atas</a>
+        </footer>
+    </div>
+
+    <script>
+        // Back to top button functionality
+        document.querySelector('.back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add hover effect to tables
+        document.querySelectorAll('table tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(0, 137, 123, 0.15)';
+            });
+
+            row.addEventListener('mouseleave', function() {
+                if (this.rowIndex % 2 === 0) {
+                    this.style.backgroundColor = 'rgba(0, 137, 123, 0.05)';
+                } else {
+                    this.style.backgroundColor = '';
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+<script src="annotation.js"></script>
+</html>

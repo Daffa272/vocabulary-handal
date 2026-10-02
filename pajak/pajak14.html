@@ -1,0 +1,1488 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPnBM - Studi Kasus & Panduan Lengkap</title>
+    <style>
+        :root {
+            --primary: #d97706;
+            --primary-dark: #b45309;
+            --secondary: #f59e0b;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #991b1b;
+            --info: #06b6d4;
+            --light: #fef3c7;
+            --dark: #78350f;
+            --border: #fde68a;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        nav .container {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px 20px;
+        }
+        
+        nav a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.85rem;
+            border-radius: var(--radius);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            padding-bottom: 40px;
+        }
+        
+        section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        section h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        section h3 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background: #fef3c7;
+        }
+        
+        /* Case Study Cards */
+        .case-study {
+            background: #fef3c7;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .case-study h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .case-study .label {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        /* Calculation Box */
+        .calculation {
+            background: #fde68a;
+            border: 1px solid #fbbf24;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .calculation .formula {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .calculation .result {
+            font-weight: bold;
+            color: var(--danger);
+            font-size: 1.1rem;
+        }
+        
+        /* Important Notes */
+        .note {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .note::before {
+            content: "⚠️ ";
+        }
+        
+        .note strong {
+            color: var(--danger);
+        }
+        
+        /* Success Box */
+        .success {
+            background: #d1fae5;
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .success::before {
+            content: "✅ ";
+        }
+        
+        /* Info Box */
+        .info {
+            background: #cffafe;
+            border: 1px solid #bfdbfe;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: var(--radius);
+        }
+        
+        .info::before {
+            content: "ℹ️ ";
+        }
+        
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #fde68a, #fbbf24);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .summary h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .summary .total {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--danger);
+        }
+        
+        /* Key Point */
+        .key-point {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--info);
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-10 { background: #dbeafe; color: #1e40af; }
+        .badge-20 { background: #dcfce7; color: #047857; }
+        .badge-30 { background: #fef3c7; color: #92400e; }
+        .badge-40 { background: #e0e7ff; color: #3730a3; }
+        .badge-50 { background: #f3e8ff; color: #6b21a8; }
+        .badge-60 { background: #fef2f2; color: #991b1b; }
+        .badge-75 { background: #f5f5f5; color: #374151; }
+        .badge-125 { background: #fee2e2; color: #991b1b; }
+        .badge-bebas { background: #d1fae5; color: #047857; }
+        .badge-kendaraan { background: #fbbf24; color: #78350f; }
+        .badge-non-kendaraan { background: #06b6d4; color: white; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav, .no-print {
+                display: none !important;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Tarif Table */
+        .tarif-table {
+            background: linear-gradient(135deg, #fde68a, #fbbf24);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--radius);
+        }
+        
+        .tarif-table table td {
+            text-align: center;
+        }
+        
+        .tarif-table table th {
+            text-align: center;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <h1>💎 PPnBM - Studi Kasus & Panduan Lengkap</h1>
+                <p>Pajak Penjualan atas Barang Mewah - Subjek, Objek, Tarif, dan Mekanisme</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="no-print">
+        <div class="container">
+            <a href="#dasar" class="active">Dasar Hukum</a>
+            <a href="#subjek-objek">Subjek & Objek</a>
+            <a href="#karakteristik">Karakteristik</a>
+            <a href="#barang-mewah">Barang Mewah</a>
+            <a href="#tarif">Tarif PPnBM</a>
+            <a href="#dpp">DPP & Perhitungan</a>
+            <a href="#pembebasan">Pembebasan</a>
+            <a href="#skb">SKB</a>
+            <a href="#pemungut">Pemungut</a>
+            <a href="#tujuan">Tujuan</a>
+            <a href="#studi-kasus">Studi Kasus</a>
+            <a href="#jawaban">Kunci Jawaban</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        
+        <!-- DASAR HUKUM -->
+        <section id="dasar">
+            <h2>⚖️ Dasar Hukum PPnBM</h2>
+            <p><strong>Pajak Penjualan atas Barang Mewah (PPnBM)</strong> secara prinsip memiliki aturan yang sama dengan PPN, yaitu berdasarkan:</p>
+            <ul>
+                <li>Undang-Undang №42 Tahun 2009 tentang PPN dan PPnBM</li>
+                <li>Undang-Undang №7 Tahun 2021 tentang Harmonisasi Perpajakan (UU HPP)</li>
+            </ul>
+            <div class="info">
+                <p><strong>ℹ️ Catatan:</strong> PPnBM diatur dalam UU yang sama dengan PPN, yaitu UU №42/2009 yang diubah dengan UU HPP 2021.</p>
+            </div>
+        </section>
+        
+        <!-- SUBJEK & OBJEK -->
+        <section id="subjek-objek">
+            <h2>👥 Subjek dan Objek PPnBM</h2>
+            
+            <h3>📌 Subjek Pajak PPnBM:</h3>
+            <p><strong>PKP (Pengusaha Kena Pajak)</strong> yang:</p>
+            <ul>
+                <li>Menghasilkan BKP yang tergolong mewah</li>
+                <li>Di dalam area pabean (di dalam Indonesia)</li>
+                <li>Dalam lingkungan perusahaan atau pekerjaannya</li>
+            </ul>
+            
+            <h3>💎 Objek Pajak PPnBM:</h3>
+            <p>Barang yang memenuhi kriteria:</p>
+            <ol>
+                <li>Bukan merupakan barang kebutuhan pokok</li>
+                <li>Dikonsumsi oleh masyarakat tertentu</li>
+                <li>Pada umumnya dikonsumsi oleh masyarakat berpenghasilan tinggi</li>
+                <li>Dikonsumsi untuk menunjukkan status</li>
+            </ol>
+            
+            <div class="key-point">
+                <h4>🔑 Contoh Barang Kena PPnBM:</h4>
+                <ul>
+                    <li>Kendaraan bermotor (kecuali ambulan, jenazah, pemadam kebakaran, tahanan, angkutan umum, kepentingan negara)</li>
+                    <li>Kelompok hunian mewah (rumah, apartemen, kondominium, town house)</li>
+                    <li>Pesawat udara (kecuali untuk keperluan negara atau angkutan udara niaga)</li>
+                    <li>Balon udara</li>
+                    <li>Peluru senjata api dan senjata api (kecuali untuk keperluan negara)</li>
+                    <li>Kapal pesiar mewah (kecuali untuk keperluan negara, angkutan umum, atau pariwisata)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- KARAKTERISTIK -->
+        <section id="karakteristik">
+            <h2>✨ Karakteristik PPnBM</h2>
+            <ol>
+                <li><strong>Pungutan tambahan di samping PPN</strong> - PPnBM dikenakan selain PPN</li>
+                <li><strong>Dikenakan hanya satu kali</strong> - Pada saat impor (masuk wilayah Indonesia) atau penyerahan barang mewah oleh pabrik</li>
+                <li><strong>Tidak dapat dikreditkan</strong> - Berbeda dengan PPN, PPnBM tidak dapat dikreditkan</li>
+                <li><strong>Dapat diminta kembali</strong> - PPnBM yang telah dibayar dapat diminta kembali ketika barang mewah diekspor</li>
+            </ol>
+            
+            <div class="note">
+                <h4>⚠️ Perbedaan PPN dan PPnBM:</h4>
+                <table class="table-container">
+                    <thead>
+                        <tr>
+                            <th>Aspek</th>
+                            <th>PPN</th>
+                            <th>PPnBM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dapat dikreditkan?</td>
+                            <td>✅ Ya</td>
+                            <td>❌ Tidak</td>
+                        </tr>
+                        <tr>
+                            <td>Objek</td>
+                            <td>BKP/JKP umumnya</td>
+                            <td>Barang mewah saja</td>
+                        </tr>
+                        <tr>
+                            <td>Pengembalian ekspor</td>
+                            <td>Dapat restitusi</td>
+                            <td>Dapat diminta kembali</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- BARANG MEWAH -->
+        <section id="barang-mewah">
+            <h2>🏷️ Kelompok Barang yang Terutang PPnBM</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kelompok</th>
+                            <th>Contoh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-kendaraan">Kendaraan Bermotor</span></td>
+                            <td>Mobil, motor (kecuali ambulan, jenazah, pemadam kebakaran, tahanan, angkutan umum, kepentingan negara)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-non-kendaraan">Hunian Mewah</span></td>
+                            <td>Rumah mewah, apartemen, kondominium, town house</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-non-kendaraan">Pesawat Udara</span></td>
+                            <td>Pesawat (kecuali untuk keperluan negara atau angkutan udara niaga)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-non-kendaraan">Balon Udara</span></td>
+                            <td>Balon udara dan balon udara yang dapat dikemudikan</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-non-kendaraan">Senjata Api</span></td>
+                            <td>Peluru senjata api dan senjata api (kecuali untuk keperluan negara)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-non-kendaraan">Kapal Pesiar</span></td>
+                            <td>Kapal pesiar mewah (kecuali untuk keperluan negara, angkutan umum, atau pariwisata)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- TARIF -->
+        <section id="tarif">
+            <h2>💵 Tarif PPnBM</h2>
+            
+            <h3>🚗 Tarif untuk Kendaraan Bermotor:</h3>
+            <div class="tarif-table">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Tarif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kendaraan pengangkutan 10-15 orang (diesel/semi diesel), 1 gardan, semua kapasitas</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang selain sedan/station wagon, 1 gardan, ≤1.500 cc</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang selain sedan/station wagon, 1 gardan, bahan bakar nyala kompresi, ≤1.500 cc</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang selain sedan/station wagon, 1 gardan, 1.500-2.500 cc</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang selain sedan/station wagon, 1 gardan, bahan bakar nyala kompresi, 1.500-2.500 cc</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kabin 2 baris, 3-6 orang, semua kapasitas, ≤5 ton</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sedan/Station Wagon <10 orang, ≤1.500 cc, 1-2 gardan</td>
+                                <td><span class="badge badge-30">30%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sedan/Station Wagon <10 orang, bahan bakar nyala kompresi, ≤1.500 cc, 1-2 gardan</td>
+                                <td><span class="badge badge-30">30%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang selain sedan/station wagon, 1 gardan, 2.500-3.000 cc</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sedan/Station Wagon <10 orang, >1.500-3.000 cc, 1 gardan</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sedan/Station Wagon <10 orang, >1.500-3.000 cc, bahan bakar nyala kompresi, 2 gardan</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang selain sedan/station wagon, bahan bakar nyala kompresi, >1.500-2.500 cc, 2 gardan</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan khusus untuk golf</td>
+                                <td><span class="badge badge-50">50%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Motor roda 2, 250-500 cc</td>
+                                <td><span class="badge badge-60">60%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan untuk salju, pantai, gunung</td>
+                                <td><span class="badge badge-60">60%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan <10 orang, >3.000 cc, sedan/station wagon, 1-2 gardan</td>
+                                <td><span class="badge badge-125">125%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan >10 orang, >2.500 cc, 1-2 gardan</td>
+                                <td><span class="badge badge-125">125%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Motor roda 2, >500 cc</td>
+                                <td><span class="badge badge-125">125%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Trailer caravan untuk perumahan/perkemahan</td>
+                                <td><span class="badge badge-125">125%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <h3>🏠 Tarif untuk Non-Kendaraan Bermotor:</h3>
+            <div class="tarif-table">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Tarif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alat rumah tangga, pesawat pendingin, pemanas, penerima siaran TV</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peralatan dan perlengkapan olahraga</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mesin pengatur suhu udara</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alat perekam/reproduksi gambar, penerima siaran radio</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alat fotografi, sinematografi, perlengkapannya</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Rumah/town house non-strata title, harga jual ≥ Rp20M</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Apartemen/kondominium/town house strata title, harga jual ≥ Rp10M</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Mesin cuci piring, pengering, elektromagnetik, instrumen musik</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Wangi-wangian (parfum)</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Balon udara</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Peluru senjata api (bukan untuk negara)</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Minuman beralkohol</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Barang dari kulit/tiruannya</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Permadani dari sutra/wool</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Barang dari kristal/logam mulia/campurannya</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alas kaki</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Perabot rumah tangga dan kantor</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Barang dari porselen/keramik/batu</td>
+                                <td><span class="badge badge-40">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pesawat udara (kecuali negara/niaga)</td>
+                                <td><span class="badge badge-50">50%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Senjata api (kecuali negara)</td>
+                                <td><span class="badge badge-50">50%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kapal pesiar, feri (kecuali negara/angkutan umum)</td>
+                                <td><span class="badge badge-75">75%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Yacht (kecuali negara/pariwisata)</td>
+                                <td><span class="badge badge-75">75%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- DPP -->
+        <section id="dpp">
+            <h2>💰 Dasar Pengenaan Pajak (DPP) PPnBM</h2>
+            <p><strong>DPP PPnBM</strong> meliputi:</p>
+            <ol>
+                <li>Harga jual barang</li>
+                <li>Biaya penggantian (termasuk biaya penyerahan) - <strong>tidak termasuk PPN</strong></li>
+                <li>Nilai impor (dari bea masuk, pungutan lain, dan cukai impor)</li>
+                <li>Nilai ekspor</li>
+                <li>Nilai lain sesuai dengan Keputusan Menteri Keuangan</li>
+            </ol>
+            
+            <div class="key-point">
+                <h4>🔑 Rumus Perhitungan PPnBM:</h4>
+                <p style="font-size: 1.3rem; font-weight: bold; text-align: center;">
+                    <span style="color: var(--primary);">PPnBM Terutang</span> = 
+                    <span style="color: var(--secondary);">DPP PPnBM</span> × 
+                    <span style="color: var(--info);">Tarif PPnBM</span>
+                </p>
+            </div>
+        </section>
+        
+        <!-- PEMBEBASAN -->
+        <section id="pembebasan">
+            <h2>🚫 Barang yang Dibebaskan dari PPnBM</h2>
+            <p>Tidak semua kendaraan bermotor dikenakan PPnBM. Berikut kriteria pembebasan:</p>
+            
+            <div class="success">
+                <h4>✅ Dibebaskan dari PPnBM:</h4>
+                <ol>
+                    <li>Kendaraan bermotor untuk <strong>ambulan</strong></li>
+                    <li>Kendaraan bermotor untuk <strong>jenazah</strong></li>
+                    <li>Kendaraan bermotor untuk <strong>pemadam kebakaran</strong></li>
+                    <li>Kendaraan bermotor untuk <strong>tahanan</strong></li>
+                    <li>Kendaraan bermotor untuk <strong>angkutan umum</strong></li>
+                    <li>Kendaraan bermotor untuk <strong>protokoler kenegaraan</strong></li>
+                    <li>Kendaraan bermotor untuk <strong>dinas dan patroli TNI/POLRI</strong></li>
+                    <li>Senjata api termasuk pelurunya untuk <strong>keperluan negara</strong></li>
+                    <li>Kendaraan laut termasuk yacht untuk <strong>kepentingan negara</strong> dan/atau <strong>pariwisata</strong></li>
+                </ol>
+            </div>
+            
+            <div class="note">
+                <h4>⚠️ Catatan:</h4>
+                <p><strong>PPnBM dibebaskan</strong> dapat diberikan <strong>tanpa SKB</strong> kecuali untuk <strong>yacht pariwisata</strong>.</p>
+            </div>
+        </section>
+        
+        <!-- SKB -->
+        <section id="skb">
+            <h2>📄 Surat Keterangan Bebas (SKB) PPnBM</h2>
+            
+            <h3>📌 Persyaratan Pengajuan SKB (PMK 15/2023):</h3>
+            <p>Permohonan SKB PPnBM harus memuat informasi:</p>
+            <ol>
+                <li>Nama Wajib Pajak, wakil, atau kuasa</li>
+                <li>Alamat Wajib Pajak</li>
+                <li>NPWP Wajib Pajak, wakil, atau kuasa</li>
+                <li>Jenis usaha Wajib Pajak</li>
+                <li>Kode BKP</li>
+                <li>Kuantitas barang</li>
+                <li>Nilai impor (untuk impor) atau harga jual</li>
+                <li>PPnBM terutang</li>
+                <li>Nomor dan tanggal invoice</li>
+                <li>Nomor dan tanggal kontrak pembelian BKP</li>
+                <li>Kurs mata uang asing dan tanggal Keputusan Menteri</li>
+                <li>Identitas pengurus/pejabat berwenang</li>
+            </ol>
+            
+            <h3>📁 Dokumen Pendukung:</h3>
+            <ol>
+                <li><strong>Invoice</strong> (untuk impor BKP mewah)</li>
+                <li><strong>Kontrak pembelian</strong> atau surat perjanjian jual beli</li>
+                <li><strong>NIB dan sertifikat standar</strong> (untuk impor kendaraan udara kepentingan negara)</li>
+                <li><strong>Nomor izin usaha dan sertifikat</strong> (untuk impor yacht pariwisata)</li>
+            </ol>
+            
+            <h3>✅ Persyaratan Khusus:</h3>
+            <ol>
+                <li>Sudah tidak memiliki utang pajak (kecuali diizinkan menunda)</li>
+                <li>Telah menyampaikan SPT PPh Badan 2 tahun terakhir</li>
+                <li>Telah melaporkan SPT Masa PPN selama 3 masa pajak terakhir</li>
+            </ol>
+        </section>
+        
+        <!-- PEMUNGUT -->
+        <section id="pemungut">
+            <h2>🏢 Pemungut PPnBM</h2>
+            <p>Berdasarkan peraturan perundang-undangan, pihak-pihak yang berhak memungut PPnBM:</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pemungut</th>
+                            <th>Dasar Hukum</th>
+                            <th>Batas Waktu Penyetoran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Instansi Pemerintah</strong></td>
+                            <td>Pasal 16 PMK №231/PMK.03/2019</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kontraktor</strong> (kerja sama dengan perusahaan minyak/gas bumi)</td>
+                            <td>PMK 73/PMK.03/2010</td>
+                            <td><strong>Tanggal 15 bulan berikutnya</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>BUMN</strong></td>
+                            <td>PMK №136/PMK.03/2012</td>
+                            <td><strong>Tanggal 15 bulan berikutnya</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Badan Usaha Tertentu</strong> (BUMN restrukturisasi, pupuk, dimiliki BUMN)</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="info">
+                <h4>ℹ️ Kewajiban Pemungut:</h4>
+                <p><strong>Memungut, menyetor, dan melaporkan</strong> PPnBM terkait dengan transaksinya.</p>
+            </div>
+        </section>
+        
+        <!-- TUJUAN -->
+        <section id="tujuan">
+            <h2>🎯 Tujuan Pemungutan PPnBM</h2>
+            
+            <h3>1. Keseimbangan Pembebanan Pajak</h3>
+            <ol>
+                <li><strong>Menciptakan keadilan:</strong> Kontribusi pajak seimbang antara masyarakat berpenghasilan rendah dan tinggi</li>
+                <li><strong>Mempersempit kesenjangan:</strong> Mengurangi ketimpangan pendapatan</li>
+            </ol>
+            
+            <h3>2. Pengendalian Konsumsi Barang Mewah</h3>
+            <ol>
+                <li><strong>Mengurangi konsumtif berlebihan:</strong> Mengendalikan konsumsi barang mewah yang tidak esensial</li>
+                <li><strong>Meningkatkan kesadaran:</strong> Meningkatkan kesadaran masyarakat akan dampak konsumtif</li>
+            </ol>
+            
+            <h3>3. Perlindungan Pengusaha Kecil dan UMKM</h3>
+            <ol>
+                <li><strong>Meminimalisir persaingan tidak sehat:</strong> Melindungi pengusaha kecil dari persaingan dengan perusahaan besar</li>
+                <li><strong>Memberikan lapangan bermain adil:</strong> Kesempatan setara untuk bersaing</li>
+            </ol>
+            
+            <h3>4. Peningkatan Penerimaan Negara</h3>
+            <ol>
+                <li><strong>Sumber pendapatan negara:</strong> PPnBM menjadi salah satu sumber pendapatan yang signifikan</li>
+                <li><strong>Membiayai pembangunan:</strong> Dana PPnBM dialokasikan untuk program pembangunan dan pelayanan publik</li>
+            </ol>
+        </section>
+        
+        <!-- STUDI KASUS -->
+        <section id="studi-kasus">
+            <h2>📖 Studi Kasus PPnBM</h2>
+            
+            <div class="case-study">
+                <span class="label">PT Garuda Luxury Automotive</span>
+                <p><strong>Profil:</strong> PKP yang bergerak dalam produksi dan perdagangan kendaraan bermotor</p>
+                <p><strong>Masa Pajak:</strong> September 2026</p>
+                
+                <h4>📊 Data Transaksi:</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Transaksi</th>
+                                <th>Nilai (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Memproduksi dan menjual sedan 1.500 cc kepada konsumen dalam negeri</td>
+                                <td>400.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Memproduksi dan menjual kendaraan non-sedan 1.800 cc, 1 gardan</td>
+                                <td>350.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Menjual kendaraan non-sedan 2.000 cc, 1 gardan</td>
+                                <td>500.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mengimpor kendaraan dengan kapasitas >3.000 cc</td>
+                                <td>2.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Mengimpor kapal yacht untuk kepentingan pribadi</td>
+                                <td>5.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Mengimpor ambulans untuk operasional rumah sakit</td>
+                                <td>1.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Menjual parfum mewah yang diproduksi perusahaan</td>
+                                <td>200.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Menjual alat fotografi yang termasuk kelompok barang mewah</td>
+                                <td>100.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Mengekspor kendaraan mewah ke Singapura</td>
+                                <td>3.000.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Menjual kendaraan dinas untuk kepentingan patroli POLRI</td>
+                                <td>800.000.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h4>📌 Asumsi:</h4>
+                <ul>
+                    <li>Seluruh nilai transaksi merupakan <strong>DPP sebelum PPnBM</strong></li>
+                    <li>Seluruh transaksi terjadi di Indonesia, kecuali transaksi ekspor</li>
+                    <li>PT Garuda Luxury Automotive merupakan PKP</li>
+                    <li>Gunakan tarif PPnBM sebagaimana tercantum dalam materi</li>
+                    <li>Tidak ada fasilitas lain selain yang disebutkan dalam kasus</li>
+                </ul>
+            </div>
+            
+            <h3>❓ Pertanyaan:</h3>
+            
+            <h4>A. Identifikasi Objek PPnBM</h4>
+            <p>Untuk transaksi nomor 1-10, tentukan:</p>
+            <ol>
+                <li>Apakah termasuk <strong>objek PPnBM</strong>?</li>
+                <li>Apakah PPnBM dikenakan?</li>
+                <li>Jika tidak dikenakan, jelaskan alasannya</li>
+            </ol>
+            
+            <h4>B. Menentukan Tarif</h4>
+            <p>Tentukan tarif PPnBM untuk transaksi:</p>
+            <ol>
+                <li>Sedan 1.500 cc</li>
+                <li>Kendaraan non-sedan 1.800 cc</li>
+                <li>Kendaraan non-sedan 2.000 cc</li>
+                <li>Kendaraan >3.000 cc</li>
+                <li>Parfum</li>
+                <li>Alat fotografi</li>
+                <li>Yacht</li>
+            </ol>
+            
+            <h4>C. Menghitung PPnBM Terutang</h4>
+            <p>Gunakan rumus: <strong>PPnBM Terutang = DPP PPnBM × Tarif PPnBM</strong></p>
+            <p>Hitung PPnBM untuk setiap transaksi yang merupakan objek PPnBM.</p>
+            
+            <h4>D. Analisis Barang yang Dibebaskan</h4>
+            <p>Analisis transaksi:</p>
+            <ul>
+                <li>Ambulans</li>
+                <li>Kendaraan jenazah</li>
+                <li>Kendaraan pemadam kebakaran</li>
+                <li>Kendaraan tahanan</li>
+                <li>Kendaraan angkutan umum</li>
+                <li>Kendaraan untuk protokoler kenegaraan</li>
+                <li>Kendaraan dinas dan patroli TNI/POLRI</li>
+                <li>Kapal/yacht untuk kepentingan negara atau pariwisata</li>
+            </ul>
+            <p>Tentukan mana yang <strong>dibebaskan dari PPnBM</strong>.</p>
+            
+            <h4>E. Analisis Ekspor</h4>
+            <p>PT Garuda mengekspor kendaraan mewah senilai Rp3.000.000.000.</p>
+            <ol>
+                <li>Apakah PPnBM dikenakan pada saat ekspor?</li>
+                <li>Bagaimana perlakuan terhadap PPnBM yang sebelumnya telah dibayar?</li>
+                <li>Apakah perusahaan dapat meminta kembali PPnBM tersebut?</li>
+            </ol>
+            
+            <h4>F. Menentukan DPP</h4>
+            <p>Tentukan DPP PPnBM untuk:</p>
+            <ol>
+                <li>Penjualan barang mewah dalam negeri</li>
+                <li>Impor barang mewah</li>
+                <li>Ekspor barang</li>
+                <li>Transaksi yang menggunakan nilai lain</li>
+            </ol>
+            
+            <h4>G. Studi Kasus Pemungut PPnBM</h4>
+            <p>PT Garuda menjual kendaraan mewah senilai Rp1.000.000.000 kepada sebuah BUMN.</p>
+            <ol>
+                <li>Apakah BUMN dapat menjadi pemungut PPnBM?</li>
+                <li>Siapa yang mempunyai kewajiban memungut?</li>
+                <li>Siapa yang menyetor?</li>
+                <li>Kapan batas waktu penyetoran?</li>
+            </ol>
+            
+            <h4>H. Studi Kasus SKB PPnBM</h4>
+            <p>PT Nusantara Air mengimpor pesawat senilai Rp50.000.000.000 untuk angkutan udara niaga.</p>
+            <ol>
+                <li>Apakah pesawat tersebut termasuk barang yang dikenai PPnBM?</li>
+                <li>Apakah terdapat pengecualian/fasilitas?</li>
+                <li>Apakah PT Nusantara Air perlu mengajukan SKB?</li>
+                <li>Apa saja informasi yang harus dicantumkan dalam permohonan SKB?</li>
+                <li>Dokumen pendukung apa yang harus dilampirkan?</li>
+            </ol>
+        </section>
+        
+        <!-- KUNCI JAWABAN -->
+        <section id="jawaban">
+            <h2>🔑 Kunci Jawaban & Pembahasan</h2>
+            
+            <!-- A. Identifikasi Objek -->
+            <div class="case-study">
+                <span class="label">A. Identifikasi Objek PPnBM</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Transaksi</th>
+                                <th>Objek PPnBM?</th>
+                                <th>PPnBM Dikenakan?</th>
+                                <th>Alasan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sedan 1.500 cc</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Sedan dengan kapasitas ≤1.500 cc</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Kendaraan non-sedan 1.800 cc, 1 gardan</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Non-sedan, 1.500-2.500 cc, 1 gardan</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Kendaraan non-sedan 2.000 cc, 1 gardan</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Non-sedan, 1.500-2.500 cc, 1 gardan</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Impor kendaraan >3.000 cc</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Kendaraan >3.000 cc</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Impor yacht untuk pribadi</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Yacht untuk kepentingan pribadi</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Impor ambulans</td>
+                                <td>✅ Ya (kendaraan bermotor)</td>
+                                <td>❌ Tidak</td>
+                                <td><span class="badge badge-bebas">Dibebaskan</span> (untuk ambulan)</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Parfum mewah</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Wangi-wangian (parfum)</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Alat fotografi</td>
+                                <td>✅ Ya</td>
+                                <td>✅ Ya</td>
+                                <td>Alat fotografi, sinematografi, perlengkapannya</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Ekspor kendaraan mewah</td>
+                                <td>✅ Ya</td>
+                                <td>⚠️ Ya, tetapi...</td>
+                                <td>PPnBM tidak dikenakan, dapat diminta kembali</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Kendaraan patroli POLRI</td>
+                                <td>✅ Ya (kendaraan bermotor)</td>
+                                <td>❌ Tidak</td>
+                                <td><span class="badge badge-bebas">Dibebaskan</span> (untuk patroli POLRI)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- B. Tarif -->
+            <div class="case-study">
+                <span class="label">B. Menentukan Tarif</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Transaksi</th>
+                                <th>Tarif PPnBM</th>
+                                <th>Badge</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sedan 1.500 cc</td>
+                                <td><strong>30%</strong></td>
+                                <td><span class="badge badge-30">30%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan non-sedan 1.800 cc</td>
+                                <td><strong>20%</strong></td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan non-sedan 2.000 cc</td>
+                                <td><strong>20%</strong></td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kendaraan >3.000 cc</td>
+                                <td><strong>125%</strong></td>
+                                <td><span class="badge badge-125">125%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Parfum</td>
+                                <td><strong>20%</strong></td>
+                                <td><span class="badge badge-20">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alat fotografi</td>
+                                <td><strong>10%</strong></td>
+                                <td><span class="badge badge-10">10%</span></td>
+                            </tr>
+                            <tr>
+                                <td>Yacht</td>
+                                <td><strong>75%</strong></td>
+                                <td><span class="badge badge-75">75%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- C. Perhitungan PPnBM -->
+            <div class="case-study">
+                <span class="label">C. Menghitung PPnBM Terutang</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Transaksi</th>
+                                <th>DPP (Rp)</th>
+                                <th>Tarif</th>
+                                <th>PPnBM Terutang (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sedan 1.500 cc</td>
+                                <td>400.000.000</td>
+                                <td><span class="badge badge-30">30%</span></td>
+                                <td class="result">120.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Kendaraan non-sedan 1.800 cc</td>
+                                <td>350.000.000</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                                <td class="result">70.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Kendaraan non-sedan 2.000 cc</td>
+                                <td>500.000.000</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                                <td class="result">100.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Impor kendaraan >3.000 cc</td>
+                                <td>2.000.000.000</td>
+                                <td><span class="badge badge-125">125%</span></td>
+                                <td class="result">2.500.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Impor yacht untuk pribadi</td>
+                                <td>5.000.000.000</td>
+                                <td><span class="badge badge-75">75%</span></td>
+                                <td class="result">3.750.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Impor ambulans</td>
+                                <td>1.000.000.000</td>
+                                <td><span class="badge badge-bebas">Dibebaskan</span></td>
+                                <td class="result">0</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Parfum mewah</td>
+                                <td>200.000.000</td>
+                                <td><span class="badge badge-20">20%</span></td>
+                                <td class="result">40.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Alat fotografi</td>
+                                <td>100.000.000</td>
+                                <td><span class="badge badge-10">10%</span></td>
+                                <td class="result">10.000.000</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Kendaraan patroli POLRI</td>
+                                <td>800.000.000</td>
+                                <td><span class="badge badge-bebas">Dibebaskan</span></td>
+                                <td class="result">0</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: right; font-weight: bold;">Total PPnBM Terutang:</td>
+                                <td class="result" style="font-size: 1.2rem;"><strong>Rp6.590.000.000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="calculation">
+                    <div><span class="formula">PPnBM Terutang</span> = DPP × Tarif PPnBM</div>
+                    <div><strong>Contoh:</strong> Sedan 1.500 cc = Rp400.000.000 × 30% = <span class="result">Rp120.000.000</span></div>
+                </div>
+            </div>
+            
+            <!-- D. Barang Dibebaskan -->
+            <div class="case-study">
+                <span class="label">D. Analisis Barang yang Dibebaskan</span>
+                <div class="success">
+                    <h4>✅ Dibebaskan dari PPnBM:</h4>
+                    <ol>
+                        <li><strong>Ambulans</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kendaraan jenazah</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kendaraan pemadam kebakaran</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kendaraan tahanan</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kendaraan angkutan umum</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kendaraan untuk protokoler kenegaraan</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kendaraan dinas dan patroli TNI/POLRI</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Kapal/yacht untuk kepentingan negara</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span></li>
+                        <li><strong>Yacht untuk pariwisata</strong> - ✅ <span class="badge badge-bebas">Dibebaskan</span> <em>(tetapi memerlukan SKB)</em></li>
+                    </ol>
+                </div>
+                
+                <div class="note">
+                    <h4>⚠️ Catatan:</h4>
+                    <p>PPnBM dibebaskan <strong>tanpa SKB</strong> kecuali untuk <strong>yacht pariwisata</strong>.</p>
+                </div>
+            </div>
+            
+            <!-- E. Ekspor -->
+            <div class="case-study">
+                <span class="label">E. Analisis Ekspor</span>
+                <div class="info">
+                    <h4>ℹ️ Jawaban:</h4>
+                    <ol>
+                        <li><strong>PPnBM dikenakan pada saat ekspor?</strong> ❌ <strong>Tidak</strong></li>
+                        <li><strong>Perlakuan PPnBM yang telah dibayar:</strong> <strong>Dapat diminta kembali</strong></li>
+                        <li><strong>Perusahaan dapat meminta kembali?</strong> ✅ <strong>Ya</strong></li>
+                    </ol>
+                </div>
+                
+                <div class="key-point">
+                    <h4>🔑 Perbedaan PPN dan PPnBM:</h4>
+                    <p><strong>PPN:</strong> Memiliki mekanisme Pajak Masukan dan Pajak Keluaran, dapat dikreditkan, dan dapat restitusi untuk ekspor.</p>
+                    <p><strong>PPnBM:</strong> <strong>Tidak dapat dikreditkan</strong>, tetapi PPnBM yang telah dibayar <strong>dapat diminta kembali</strong> ketika barang mewah diekspor.</p>
+                </div>
+            </div>
+            
+            <!-- F. DPP -->
+            <div class="case-study">
+                <span class="label">F. Menentukan DPP PPnBM</span>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kondisi</th>
+                                <th>DPP PPnBM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Penjualan barang mewah dalam negeri</td>
+                                <td><strong>Harga jual barang</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Impor barang mewah</td>
+                                <td><strong>Nilai impor</strong> (bea masuk + pungutan lain + cukai impor)</td>
+                            </tr>
+                            <tr>
+                                <td>Ekspor barang</td>
+                                <td><strong>Nilai ekspor</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Transaksi yang menggunakan nilai lain</td>
+                                <td><strong>Nilai lain sesuai KMK</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="note">
+                    <p><strong>⚠️ Catatan:</strong> Biaya penggantian (termasuk biaya penyerahan) <strong>tidak termasuk PPN</strong>.</p>
+                </div>
+            </div>
+            
+            <!-- G. Pemungut -->
+            <div class="case-study">
+                <span class="label">G. Studi Kasus Pemungut PPnBM</span>
+                <p><strong>Transaksi:</strong> PT Garuda menjual kendaraan mewah senilai Rp1.000.000.000 kepada BUMN.</p>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>BUMN dapat menjadi pemungut?</strong> ✅ <strong>Ya</strong></li>
+                        <li><strong>Siapa yang memungut?</strong> <strong>BUMN</strong> (sebagai pemungut yang ditunjuk)</li>
+                        <li><strong>Siapa yang menyetor?</strong> <strong>BUMN</strong></li>
+                        <li><strong>Batas waktu penyetoran?</strong> <strong>Tanggal 15 bulan berikutnya</strong></li>
+                    </ol>
+                </div>
+                
+                <div class="info">
+                    <p><strong>ℹ️ Dasar Hukum:</strong> PMK №136/PMK.03/2012</p>
+                </div>
+            </div>
+            
+            <!-- H. SKB -->
+            <div class="case-study">
+                <span class="label">H. Studi Kasus SKB PPnBM</span>
+                <p><strong>Transaksi:</strong> PT Nusantara Air mengimpor pesawat senilai Rp50.000.000.000 untuk angkutan udara niaga.</p>
+                <div class="success">
+                    <h4>✅ Jawaban:</h4>
+                    <ol>
+                        <li><strong>Pesawat termasuk barang PPnBM?</strong> ✅ <strong>Ya</strong> (pesawat udara kecuali untuk negara/niaga)</li>
+                        <li><strong>Terdapat pengecualian/fasilitas?</strong> ✅ <strong>Ya</strong> (untuk angkutan udara niaga)</li>
+                        <li><strong>Perlu mengajukan SKB?</strong> ❌ <strong>Tidak perlu</strong> (dibebaskan tanpa SKB)</li>
+                        <li><strong>Informasi dalam SKB:</strong>
+                            <ul>
+                                <li>Nama, alamat, NPWP WP</li>
+                                <li>Jenis usaha</li>
+                                <li>Kode BKP, kuantitas, nilai impor</li>
+                                <li>PPnBM terutang</li>
+                                <li>Nomor/tanggal invoice & kontrak</li>
+                                <li>Kurs mata uang asing</li>
+                                <li>Identitas pengurus/pejabat</li>
+                            </ul>
+                        </li>
+                        <li><strong>Dokumen pendukung:</strong>
+                            <ul>
+                                <li>Invoice</li>
+                                <li>Kontrak pembelian</li>
+                                <li>NIB dan sertifikat standar</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="note">
+                    <p><strong>⚠️ Catatan:</strong> Pesawat untuk <strong>angkutan udara niaga</strong> <span class="badge badge-bebas">dibebaskan</span> dari PPnBM.</p>
+                </div>
+            </div>
+            
+            <!-- Kompetensi -->
+            <div class="summary">
+                <h3>🎯 Kompetensi yang Diuji</h3>
+                <p style="font-size: 1.1rem;">Studi kasus ini mencakup hampir seluruh bagian materi PPnBM:</p>
+                <ol style="font-size: 1rem; text-align: left;">
+                    <li><strong>Subjek & Objek PPnBM</strong> → Transaksi 1-10</li>
+                    <li><strong>Karakteristik PPnBM</strong> → Pungutan tambahan, satu kali, tidak dapat dikreditkan</li>
+                    <li><strong>Klasifikasi barang mewah</strong> → Kendaraan, parfum, fotografi, yacht</li>
+                    <li><strong>Tarif PPnBM</strong> → 10%-125% untuk kendaraan dan non-kendaraan</li>
+                    <li><strong>DPP PPnBM</strong> → Harga jual, nilai impor, nilai ekspor</li>
+                    <li><strong>Barang yang dibebaskan</strong> → Ambulans, patroli POLRI, dll.</li>
+                    <li><strong>Ekspor barang mewah</strong> → Pengembalian PPnBM</li>
+                    <li><strong>SKB PPnBM</strong> → Persyaratan dan dokumen pendukung</li>
+                    <li><strong>Pemungut PPnBM</strong> → BUMN, pemerintah, kontraktor, badan usaha tertentu</li>
+                    <li><strong>Tujuan PPnBM</strong> → Keseimbangan pajak, pengendalian konsumsi, perlindungan UKM</li>
+                </ol>
+            </div>
+            
+            <div class="note">
+                <h4>⚠️ Catatan Penting:</h4>
+                <p><strong>PPnBM ≠ PPN:</strong></p>
+                <ul>
+                    <li>PPN: Dapat dikreditkan, mekanisme PM & PK</li>
+                    <li>PPnBM: <strong>Tidak dapat dikreditkan</strong>, tetapi <strong>dapat diminta kembali</strong> untuk ekspor</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Tarif PPnBM sangat bervariasi:</strong> 10%, 20%, 30%, 40%, 50%, 60%, 75%, 125%</p>
+            </div>
+        </section>
+        
+    </main>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Update active link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>

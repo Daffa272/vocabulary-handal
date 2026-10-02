@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus SPT Masa PPN & PPh Elektronik</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #2d8f9f;
+            --accent-color: #e67e22;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            font-size: 1.8em;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        .section h4 {
+            color: var(--accent-color);
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9f7fe;
+        }
+
+        .highlight-row {
+            background-color: #e8f5e9 !important;
+        }
+
+        .warning-row {
+            background-color: #fff3e0 !important;
+        }
+
+        .danger-row {
+            background-color: #ffebee !important;
+        }
+
+        /* Case Study Box */
+        .case-study {
+            background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .case-study h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .transaction {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .transaction h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .transaction-details {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .transaction-details p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        /* Answer Section */
+        .answer-section {
+            background: #f0f8ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .answer-section h4 {
+            color: var(--primary-color);
+        }
+
+        /* Formula */
+        .formula {
+            background: #fffde7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px dashed var(--warning-color);
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        /* Summary */
+        .summary {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .summary h3 {
+            color: var(--success-color);
+        }
+
+        /* Question Section */
+        .question {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .question h3 {
+            color: var(--accent-color);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .info-box h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Process Box */
+        .process-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid var(--accent-color);
+        }
+
+        .process-step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .process-step:before {
+            content: "➡️";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .process-step:first-child:before {
+            content: "✓";
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .section, .case-study, .transaction, .answer-section, .question, .summary, .info-box, .process-box {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            header {
+                background: var(--primary-color);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .total-row {
+            background-color: var(--primary-color) !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .currency {
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-kurang {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+
+        .status-nihil {
+            color: var(--warning-color);
+            font-weight: bold;
+        }
+
+        .status-lebih {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
+<link rel="stylesheet" href="../toefl/ai-generator.css">
+<script defer src="../toefl/ai-generator.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Studi Kasus SPT Masa PPN & PPh Elektronik</h1>
+            <p>Pengisian SPT Masa PPN dan PPh - Panduan Lengkap dengan Studi Kasus PT Sinar Teknologi Indonesia</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section class="section">
+            <h2>📚 Dasar Hukum Pelaporan SPT</h2>
+            <p><strong>SPT Masa PPN dan PPh Elektronik</strong> adalah wajib pajak yang digunakan untuk melaporkan penghitungan dan/atau pembayaran pajak, objek pajak dan/atau bukan objek pajak, dan/atau harta dan kewajiban sesuai dengan ketentuan peraturan perundang-undangan di bidang perpajakan untuk suatu Masa Pajak.</p>
+
+            <h3>👥 Siapa yang Wajib Melaporkan?</h3>
+            <ul>
+                <li><strong>SPT Masa PPN:</strong> Wajib pajak badan atau orang pribadi yang telah dikukuhkan sebagai <strong>PKP (Pengusaha Kena Pajak)</strong> atau wajib pajak yang belum dikukuhkan sebagai PKP tapi omzetnya telah mencapai <span class="currency">Rp4,8 M</span>.</li>
+                <li><strong>SPT Masa PPh:</strong> Wajib pajak badan atau orang pribadi yang melakukan pemotongan/pemungutan PPh kepada pihak lain.</li>
+            </ul>
+
+            <h3>⏰ Batas Waktu Penyampaian SPT</h3>
+            <ul>
+                <li><strong>SPT Masa PPN:</strong> Akhir bulan berikutnya (Pasal 15A UU PPN)</li>
+                <li><strong>SPT Masa PPh:</strong> Tanggal 20 bulan berikutnya (Pasal 3 ayat (3) UU KUP)</li>
+            </ul>
+            <div class="info-box">
+                <h4>⚠️ Catatan Penting:</h4>
+                <p>Jika tanggal batas akhir pelaporan bertepatan dengan hari libur (Sabtu, Minggu, atau hari libur nasional), pelaporan dapat dilakukan pada <strong>hari kerja berikutnya</strong>.</p>
+            </div>
+        </section>
+
+        <!-- PKP Section -->
+        <section class="section">
+            <h2>🏢 Proses Pengukuhan PKP</h2>
+            <p>Untuk dapat melaporkan SPT Masa PPN, wajib pajak harus melakukan permohonan untuk dikukuhkan sebagai <strong>Pengusaha Kena Pajak (PKP)</strong>.</p>
+
+            <div class="process-box">
+                <h4>📋 Tahapan Pengukuhan PKP:</h4>
+                <div class="process-step">Melakukan Permohonan Pengukuhan PKP di KPP terdaftar</div>
+                <div class="process-step">Menunggu Verifikasi lapangan oleh petugas pajak (memastikan eksistensi dan kevalidan data)</div>
+                <div class="process-step">Berhasil dikukuhkan sebagai PKP dan menerima:</div>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Surat Pengukuhan PKP (SPPKP)</strong>;</li>
+                    <li><strong>Kode Aktivasi akun PKP</strong> (dalam bentuk surat dari KPP);</li>
+                    <li><strong>Password E-Nofa</strong> (dikirimkan ke email yang digunakan saat permohonan).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sertifikat Elektronik Section -->
+        <section class="section">
+            <h2>🔐 Sertifikat Elektronik</h2>
+            <p>Setelah memiliki Kode Aktivasi dan Password E-Nofa, wajib pajak perlu melakukan aktivasi sertifikat elektronik:</p>
+
+            <div class="process-box">
+                <h4>📝 Tahapan Aktivasi Sertifikat:</h4>
+                <ol>
+                    <li><strong>Aktivasi E-Nofa</strong>
+                        <ul>
+                            <li>Login ke <span class="code">https://efaktur.pajak.go.id/login</span> dengan username NPWP</li>
+                            <li>Masukkan password E-Nofa</li>
+                            <li>Input kode aktivasi dan captcha, lalu klik aktivasi</li>
+                        </ul>
+                    </li>
+                    <li><strong>Download Sertifikat Elektronik</strong>
+                        <ul>
+                            <li>Login E-Nofa</li>
+                            <li>Cari menu download sertifikat digital</li>
+                            <li>Klik "download disini"</li>
+                            <li>Masukkan Passphrase (buat sendiri)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Install Sertifikat Elektronik pada browser</strong>
+                        <ul>
+                            <li>Akses <span class="code">https://web-efaktur.pajak.go.id/</span></li>
+                            <li>Rekomendasi: Gunakan Firefox / Google Chrome</li>
+                            <li>Buka menu options → certificates → view certificates</li>
+                            <li>Import sertifikat elektronik yang telah didownload</li>
+                            <li>Masukkan Passphrase</li>
+                            <li>Tutup dan buka kembali browser</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SPT PPN Process Section -->
+        <section class="section">
+            <h2>📄 Langkah Pengisian SPT PPN Elektronik</h2>
+
+            <div class="process-box">
+                <h4>🔑 Login & Profil</h4>
+                <ol>
+                    <li><strong>Login:</strong> Masuk ke <span class="code">https://web-efaktur.pajak.go.id/</span>, masukkan password akun PKP (password E-Nofa)</li>
+                    <li><strong>Isi Profil Penandatangan:</strong> Menu Profil PKP → Isi nama dan jabatan penandatangan faktur pajak → Save</li>
+                </ol>
+            </div>
+
+            <div class="process-box">
+                <h4>📊 Posting SPT</h4>
+                <ol>
+                    <li>Pilih menu "Administrasi SPT" → "Monitoring SPT" → "Posting SPT"</li>
+                    <li>Input Tahun Pajak, Masa Pajak, dan status SPT</li>
+                    <li>Klik Submit</li>
+                    <li>Jika berhasil, akan muncul status Sukses</li>
+                </ol>
+            </div>
+
+            <div class="process-box">
+                <h4>📝 Pengisian Detail SPT PPN</h4>
+                <ol>
+                    <li><strong>Buka SPT:</strong> Klik "buka" jika Posting SPT berhasil</li>
+                    <li><strong>Pilihan Menu:</strong>
+                        <ul>
+                            <li><strong>Lampiran Detail</strong> (A1, A2, B1, B2, B3)</li>
+                            <li><strong>Lampiran AB</strong> (Rekapitulasi)</li>
+                            <li><strong>Induk</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>Isi Lampiran Detail:</strong>
+                        <ul>
+                            <li><strong>A1:</strong> Daftar Ekspor</li>
+                            <li><strong>A2:</strong> PK Atas Penyerahan Dalam Negeri</li>
+                            <li><strong>B1:</strong> PM Dapat Dikreditkan atas Impor</li>
+                            <li><strong>B2:</strong> PM Dapat Dikreditkan atas Perolehan Dalam Negeri</li>
+                            <li><strong>B3:</strong> PM Tidak Dapat Dikreditkan atau Mendapat Fasilitas</li>
+                        </ul>
+                    </li>
+                    <li>Data akan sesuai dengan faktur pajak keluaran dan masukan yang diinput di e-Faktur</li>
+                </ol>
+            </div>
+
+            <div class="process-box">
+                <h4>📑 Lampiran AB</h4>
+                <ol>
+                    <li><strong>I. Rekapitulasi Penyerahan:</strong> Detail penyerahan barang/jasa kena pajak (ekspor & dalam negeri)</li>
+                    <li><strong>II. Rekapitulasi Perolehan:</strong> Informasi tentang barang/jasa yang dibeli</li>
+                    <li><strong>III. Perhitungan PM Yang Dapat Dikreditkan:</strong> Perhitungan Pajak Masukan yang mengurangi Pajak Keluaran</li>
+                    <li>Centang kolom pernyataan → Submit</li>
+                </ol>
+            </div>
+
+            <div class="process-box">
+                <h4>🔒 Upload & Finalisasi</h4>
+                <ol>
+                    <li>Upload sertifikat elektronik</li>
+                    <li>Masukkan passphrase</li>
+                    <li><strong>Isi SPT Induk:</strong>
+                        <ul>
+                            <li><strong>I. Penyerahan Barang dan Jasa:</strong> Informasi jenis dan jumlah penyerahan</li>
+                            <li><strong>II. Penghitungan PPN Kurang/Lebih Bayar:</strong> PK yang harus dipungut & PM yang dapat diperhitungkan</li>
+                        </ul>
+                    </li>
+                    <li><strong>Jika Kurang Bayar:</strong> Bayar terlebih dahulu, input NTPN</li>
+                    <li><strong>Jika Lebih Bayar:</strong> Pilih opsi kompensasi (bulan berikutnya) atau restitusi</li>
+                    <li>Klik "VI. Kelengkapan SPT" → Centang surat pernyataan → Isi nama, tempat, tanggal → Simpan</li>
+                    <li>Kembali ke monitoring SPT → Klik "lapor"</li>
+                    <li>Upload lampiran SPT → Klik "lapor"</li>
+                    <li><strong>Selesai:</strong> Lihat BPE (Bukti Penerimaan Elektronik) & Cetak SPT</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SPT PPh Section -->
+        <section class="section">
+            <h2>💰 Persiapan Pengisian SPT Masa PPh Elektronik</h2>
+            <p>Pelaporan SPT Masa PPh secara elektronik dapat dilakukan melalui <span class="code">https://djponline.pajak.go.id</span>:</p>
+
+            <div class="process-box">
+                <h4>🔧 Fitur yang Tersedia:</h4>
+                <ul>
+                    <li><strong>e-Bupot 21/26:</strong> Pembuatan bukti potong dan pelaporan SPT Masa PPh Pasal 21/26</li>
+                    <li><strong>e-Bupot Unifikasi:</strong> Pembuatan bukti potong dan pelaporan untuk PPh Pasal 4 ayat (2), PPh Pasal 15, PPh Pasal 22, PPh Pasal 23/26</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>⚙️ Aktivasi Fitur:</h4>
+                <p>Setelah login ke DJP Online, pilih menu <strong>Profil → Aktivasi Fitur</strong>, lalu centang:</p>
+                <ul>
+                    <li>e-Bupot 21/26</li>
+                    <li>e-Bupot Unifikasi</li>
+                </ul>
+            </div>
+
+            <div class="process-box">
+                <h4>📝 Proses Pengisian SPT PPh:</h4>
+                <ol>
+                    <li><strong>Buka SPT:</strong> Klik "buka" jika Posting SPT berhasil</li>
+                    <li><strong>Isi Lampiran Detail:</strong> Pilih formulir (A1, A2, B1, B2, B3) → Tampilkan/Download CSV</li>
+                    <li><strong>Lampiran AB:</strong> Rekapitulasi Penyerahan, Rekapitulasi Perolehan, Perhitungan PM</li>
+                    <li>Centang kolom pernyataan → Submit</li>
+                    <li>Upload sertifikat elektronik & passphrase</li>
+                    <li><strong>SPT Induk:</strong> Penyerahan Barang dan Jasa, Penghitungan PPN Kurang/Lebih Bayar</li>
+                    <li>Input NTPN jika kurang bayar, atau pilih kompensasi/restitusi jika lebih bayar</li>
+                    <li>Isi Kelengkapan SPT → Simpan → Lapor → Upload lampiran → Lapor</li>
+                    <li>Lihat BPE & Cetak SPT</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Case Study Section -->
+        <section class="section">
+            <h2>📊 STUDI KASUS: PT Sinar Teknologi Indonesia</h2>
+            
+            <div class="case-study">
+                <p>PT Sinar Teknologi Indonesia merupakan perusahaan yang bergerak di bidang perdagangan perangkat komputer dan jasa pemeliharaan sistem teknologi informasi. Perusahaan telah dikukuhkan sebagai <strong>Pengusaha Kena Pajak (PKP)</strong> dan melakukan kewajiban perpajakan secara elektronik.</p>
+                <p><strong>Masa Pajak: September 2026</strong></p>
+
+                <h3>💼 A. Transaksi Penjualan</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Transaksi</th>
+                            <th>DPP</th>
+                            <th>PPN (11%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Penjualan laptop kepada PT Alpha</td>
+                            <td class="text-right"><span class="currency">Rp500.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp55.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Penjualan server kepada PT Beta</td>
+                            <td class="text-right"><span class="currency">Rp300.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp33.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Penjualan perangkat jaringan kepada PT Gamma</td>
+                            <td class="text-right"><span class="currency">Rp200.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp22.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Ekspor perangkat komputer</td>
+                            <td class="text-right"><span class="currency">Rp150.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp0</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2" class="text-right"><strong>Total</strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp1.150.000.000</span></strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp110.000.000</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Catatan: Seluruh transaksi dalam negeri dikenakan PPN sebesar 11%. Seluruh transaksi dalam negeri telah dibuatkan faktur pajak keluaran yang sesuai.</em></p>
+
+                <h3>🛒 B. Transaksi Pembelian</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Transaksi</th>
+                            <th>DPP</th>
+                            <th>PPN (11%)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>1</td>
+                            <td>Pembelian barang dagangan dari PT Distributor</td>
+                            <td class="text-right"><span class="currency">Rp400.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp44.000.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>2</td>
+                            <td>Pembelian komputer untuk operasional</td>
+                            <td class="text-right"><span class="currency">Rp100.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp11.000.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>3</td>
+                            <td>Pembelian jasa konsultan</td>
+                            <td class="text-right"><span class="currency">Rp50.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp5.500.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>4</td>
+                            <td>Pembelian kendaraan untuk kegiatan operasional</td>
+                            <td class="text-right"><span class="currency">Rp200.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp22.000.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="danger-row">
+                            <td>5</td>
+                            <td>Pembelian barang untuk keperluan pribadi direktur</td>
+                            <td class="text-right"><span class="currency">Rp30.000.000</span></td>
+                            <td class="text-right"><span class="currency">Rp3.300.000</span></td>
+                            <td><strong>Tidak dapat dikreditkan</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>💸 C. Transaksi PPh</h3>
+                <div class="transaction">
+                    <h4>1. PPh Pasal 23</h4>
+                    <div class="transaction-details">
+                        <p><strong>Transaksi:</strong> Pembayaran jasa konsultasi kepada PT Konsultan Profesional</p>
+                        <p><strong>Nilai:</strong> <span class="currency">Rp50.000.000</span></p>
+                        <p><strong>Tarif:</strong> 2%</p>
+                        <p><strong>PPh Pasal 23:</strong> 2% × <span class="currency">Rp50.000.000</span> = <strong><span class="currency">Rp1.000.000</span></strong></p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>2. PPh Pasal 4 ayat (2)</h4>
+                    <div class="transaction-details">
+                        <p><strong>Transaksi:</strong> Sewa gedung kantor dari PT Properti Indonesia</p>
+                        <p><strong>Nilai sewa:</strong> <span class="currency">Rp100.000.000</span></p>
+                        <p><strong>Tarif:</strong> 10% (Final)</p>
+                        <p><strong>PPh Pasal 4 ayat (2):</strong> 10% × <span class="currency">Rp100.000.000</span> = <strong><span class="currency">Rp10.000.000</span></strong></p>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <h4>3. PPh Pasal 21</h4>
+                    <div class="transaction-details">
+                        <p><strong>Transaksi:</strong> Pembayaran gaji karyawan September 2026</p>
+                        <p><strong>PPh Pasal 21 yang dipotong:</strong> <strong><span class="currency">Rp15.000.000</span></strong></p>
+                    </div>
+                </div>
+
+                <h3>📋 D. Informasi Pelaporan</h3>
+                <p>PT Sinar Teknologi Indonesia memiliki:</p>
+                <ul>
+                    <li>Akun DJP Online;</li>
+                    <li>Akses e-Bupot;</li>
+                    <li>Sertifikat elektronik;</li>
+                    <li>Data faktur pajak keluaran;</li>
+                    <li>Data faktur pajak masukan;</li>
+                    <li>Bukti pembayaran pajak;</li>
+                    <li>Data pihak yang dipotong.</li>
+                </ul>
+                <p><em>Perusahaan harus memastikan seluruh transaksi telah masuk ke sistem sebelum melakukan pelaporan.</em></p>
+            </div>
+        </section>
+
+        <!-- Questions Section -->
+        <section class="section">
+            <h2>❓ PERTANYAAN</h2>
+
+            <div class="question">
+                <h3>A. SPT Masa PPN</h3>
+                <ol>
+                    <li>Tentukan total Pajak Keluaran PT Sinar Teknologi Indonesia.</li>
+                    <li>Tentukan total Pajak Masukan yang dapat dikreditkan.</li>
+                    <li>Tentukan Pajak Masukan yang tidak dapat dikreditkan.</li>
+                    <li>Hitung PPN yang harus dibayar sendiri oleh perusahaan.</li>
+                    <li>Tentukan apakah SPT Masa PPN September 2026 mengalami:
+                        <ul>
+                            <li>Kurang bayar;</li>
+                            <li>Nihil; atau</li>
+                            <li>Lebih bayar.</li>
+                        </ul>
+                    </li>
+                    <li>Tentukan transaksi mana yang harus masuk ke:
+                        <ul>
+                            <li>Lampiran A1;</li>
+                            <li>Lampiran A2;</li>
+                            <li>Lampiran B1;</li>
+                            <li>Lampiran B2;</li>
+                            <li>Lampiran B3.</li>
+                        </ul>
+                    </li>
+                    <li>Jelaskan data apa saja yang perlu diperiksa sebelum SPT Masa PPN dilaporkan.</li>
+                    <li>Jelaskan dokumen elektronik yang perlu disiapkan untuk proses pelaporan.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>B. SPT Masa PPh</h3>
+                <ol start="9">
+                    <li>Identifikasi jenis PPh yang muncul dari transaksi PT Sinar Teknologi Indonesia.</li>
+                    <li>Tentukan transaksi yang harus dibuatkan bukti potong.</li>
+                    <li>Tentukan jenis e-Bupot yang digunakan untuk masing-masing transaksi.</li>
+                    <li>Tentukan jumlah PPh Pasal 21 yang harus dilaporkan.</li>
+                    <li>Jelaskan proses pelaporan PPh Masa secara elektronik.</li>
+                    <li>Jelaskan fungsi bukti potong dalam pelaporan SPT Masa PPh.</li>
+                </ol>
+            </div>
+
+            <div class="question">
+                <h3>C. Prosedur Pelaporan Elektronik</h3>
+                <ol start="15">
+                    <li>Susun urutan proses pelaporan SPT Masa PPN secara elektronik mulai dari persiapan data sampai memperoleh <strong>Bukti Penerimaan Elektronik (BPE)</strong>.</li>
+                    <li>Susun urutan proses pelaporan SPT Masa PPh menggunakan e-Bupot.</li>
+                    <li>Jelaskan apa yang harus dilakukan apabila SPT Masa PPN menunjukkan kurang bayar.</li>
+                    <li>Jelaskan perbedaan perlakuan apabila SPT Masa PPN menunjukkan lebih bayar.</li>
+                    <li>Jelaskan fungsi <strong>NTPN</strong> dalam proses pelaporan SPT.</li>
+                    <li>Jelaskan mengapa rekonsiliasi antara faktur pajak, bukti potong, pembayaran pajak, dan SPT penting dilakukan sebelum pelaporan.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Answer Key Section -->
+        <section class="section">
+            <h2>🔑 KUNCI JAWABAN</h2>
+
+            <!-- Section A: SPT Masa PPN -->
+            <div class="answer-section">
+                <h3>A. Perhitungan SPT Masa PPN</h3>
+
+                <h4>1. Pajak Keluaran</h4>
+                <p>Pajak Keluaran berasal dari <strong>penjualan dalam negeri</strong>:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>PPN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Penjualan laptop</td>
+                            <td class="text-right"><span class="currency">Rp55.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>Penjualan server</td>
+                            <td class="text-right"><span class="currency">Rp33.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>Penjualan perangkat jaringan</td>
+                            <td class="text-right"><span class="currency">Rp22.000.000</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total Pajak Keluaran</strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp110.000.000</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Ekspor sebesar <span class="currency">Rp150.000.000</span> tidak menghasilkan PPN Keluaran.</em></p>
+                <p><strong>✅ Jawaban: Pajak Keluaran = <span class="currency">Rp110.000.000</span></strong></p>
+
+                <h4>2. Pajak Masukan yang Dapat Dikreditkan</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaksi</th>
+                            <th>PPN</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>Barang dagangan</td>
+                            <td class="text-right"><span class="currency">Rp44.000.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Komputer operasional</td>
+                            <td class="text-right"><span class="currency">Rp11.000.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Jasa konsultan</td>
+                            <td class="text-right"><span class="currency">Rp5.500.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Kendaraan operasional</td>
+                            <td class="text-right"><span class="currency">Rp22.000.000</span></td>
+                            <td>Dapat dikreditkan</td>
+                        </tr>
+                        <tr class="danger-row">
+                            <td>Keperluan pribadi direktur</td>
+                            <td class="text-right"><span class="currency">Rp3.300.000</span></td>
+                            <td>Tidak dapat dikreditkan</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total PM Dapat Dikreditkan</strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp82.500.000</span></strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>✅ Jawaban: PM yang dapat dikreditkan = <span class="currency">Rp82.500.000</span></strong></p>
+
+                <h4>3. Pajak Masukan Tidak Dapat Dikreditkan</h4>
+                <p>Pajak Masukan atas pembelian barang untuk keperluan pribadi direktur:</p>
+                <p><strong>✅ Jawaban: PM tidak dapat dikreditkan = <span class="currency">Rp3.300.000</span></strong></p>
+                <p><em>Pajak Masukan tersebut tidak diperhitungkan sebagai pengurang Pajak Keluaran.</em></p>
+
+                <h4>4. PPN Kurang/Lebih Bayar</h4>
+                <div class="formula">
+                    PPN Terutang = Pajak Keluaran − Pajak Masukan yang dapat dikreditkan<br>
+                    <small>= <span class="currency">Rp110.000.000</span> − <span class="currency">Rp82.500.000</span></small>
+                </div>
+                <p class="text-center" style="font-size: 1.2em; margin: 20px 0;">
+                    <strong>= <span class="currency">Rp27.500.000</span></strong>
+                </p>
+                <p><strong class="status-kurang">✅ Jawaban: PPN Kurang Bayar = <span class="currency">Rp27.500.000</span></strong></p>
+                <p><em>Perusahaan harus melakukan pembayaran atas kekurangan tersebut dan memperoleh <strong>NTPN</strong> sebagai bukti penerimaan negara sebelum menyelesaikan pelaporan.</em></p>
+
+                <h4>5. Klasifikasi Status SPT</h4>
+                <p>Karena PPN Terutang = <span class="currency">Rp27.500.000</span> (positif), maka:</p>
+                <p><strong class="status-kurang">✅ Jawaban: SPT Masa PPN September 2026 mengalami KURANG BAYAR</strong></p>
+
+                <h4>6. Klasifikasi Lampiran PPN</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lampiran</th>
+                            <th>Isi</th>
+                            <th>Transaksi</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A1</strong></td>
+                            <td>Transaksi ekspor</td>
+                            <td>Ekspor perangkat komputer</td>
+                            <td class="text-right"><span class="currency">Rp150.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>A2</strong></td>
+                            <td>Penyerahan dalam negeri</td>
+                            <td>Penjualan laptop, server, perangkat jaringan</td>
+                            <td class="text-right"><span class="currency">Rp1.000.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B1</strong></td>
+                            <td>PM atas impor</td>
+                            <td>Tidak ada transaksi impor</td>
+                            <td class="text-right">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>B2</strong></td>
+                            <td>PM dapat dikreditkan atas perolehan dalam negeri</td>
+                            <td>Barang dagangan, komputer, jasa konsultan, kendaraan</td>
+                            <td class="text-right"><span class="currency">Rp82.500.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B3</strong></td>
+                            <td>PM tidak dapat dikreditkan/mendapat fasilitas</td>
+                            <td>Barang untuk keperluan pribadi direktur</td>
+                            <td class="text-right"><span class="currency">Rp3.300.000</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>7. Data yang Perlu Diperiksa</h4>
+                <p>Sebelum SPT Masa PPN dilaporkan, perlu diperiksa:</p>
+                <ul>
+                    <li><strong>Kesesuaian data transaksi</strong> dengan faktur pajak keluaran dan masukan</li>
+                    <li><strong>Kelengkapan dokumen</strong> (faktur pajak, bukti pembayaran, dll.)</li>
+                    <li><strong>Kebenaran perhitungan</strong> Pajak Keluaran dan Pajak Masukan</li>
+                    <li><strong>Klasifikasi lampiran</strong> yang tepat (A1, A2, B1, B2, B3)</li>
+                    <li><strong>Status PKP</strong> yang valid</li>
+                    <li><strong>Sertifikat elektronik</strong> yang aktif</li>
+                </ul>
+
+                <h4>8. Dokumen Elektronik yang Perlu Disiapkan</h4>
+                <p>Dokumen elektronik untuk pelaporan:</p>
+                <ul>
+                    <li><strong>Sertifikat elektronik</strong> yang sudah diinstall di browser</li>
+                    <li><strong>Password E-Nofa</strong></li>
+                    <li><strong>Passphrase sertifikat</strong></li>
+                    <li><strong>Data faktur pajak</strong> (keluaran & masukan)</li>
+                    <li><strong>Bukti pembayaran pajak</strong> (jika kurang bayar)</li>
+                    <li><strong>NTPN</strong> (Nomor Transaksi Penerimaan Negara)</li>
+                </ul>
+            </div>
+
+            <!-- Section B: SPT Masa PPh -->
+            <div class="answer-section">
+                <h3>B. SPT Masa PPh</h3>
+
+                <h4>9. Identifikasi Jenis PPh</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis Pajak</th>
+                            <th>Transaksi</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PPh Pasal 21</strong></td>
+                            <td>Pembayaran gaji karyawan</td>
+                            <td class="text-right"><span class="currency">Rp15.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 23</strong></td>
+                            <td>Jasa konsultasi kepada PT Konsultan Profesional</td>
+                            <td class="text-right"><span class="currency">Rp1.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 4 ayat (2)</strong></td>
+                            <td>Sewa gedung kantor dari PT Properti Indonesia</td>
+                            <td class="text-right"><span class="currency">Rp10.000.000</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total</strong></td>
+                            <td></td>
+                            <td class="text-right"><strong><span class="currency">Rp26.000.000</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>10. Transaksi yang Harus Dibuatkan Bukti Potong</h4>
+                <p>Semua transaksi yang menimbulkan kewajiban pemotongan PPh:</p>
+                <ul>
+                    <li><strong>PPh Pasal 21:</strong> Pembayaran gaji karyawan</li>
+                    <li><strong>PPh Pasal 23:</strong> Pembayaran jasa konsultasi</li>
+                    <li><strong>PPh Pasal 4 ayat (2):</strong> Pembayaran sewa gedung</li>
+                </ul>
+
+                <h4>11. Jenis e-Bupot</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis PPh</th>
+                            <th>e-Bupot yang Digunakan</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PPh Pasal 21</strong></td>
+                            <td><strong>e-Bupot 21/26</strong></td>
+                            <td class="text-right"><span class="currency">Rp15.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 23</strong></td>
+                            <td><strong>e-Bupot Unifikasi</strong></td>
+                            <td class="text-right"><span class="currency">Rp1.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PPh Pasal 4 ayat (2)</strong></td>
+                            <td><strong>e-Bupot Unifikasi</strong></td>
+                            <td class="text-right"><span class="currency">Rp10.000.000</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>12. Jumlah PPh Pasal 21</h4>
+                <p><strong>✅ Jawaban: PPh Pasal 21 yang harus dilaporkan = <span class="currency">Rp15.000.000</span></strong></p>
+
+                <h4>13. Proses Pelaporan PPh Masa Secara Elektronik</h4>
+                <div class="process-box">
+                    <ol>
+                        <li>Identifikasi transaksi yang merupakan objek pemotongan</li>
+                        <li>Tentukan jenis PPh</li>
+                        <li>Hitung PPh</li>
+                        <li>Buat bukti potong melalui e-Bupot</li>
+                        <li>Lakukan pembayaran apabila diperlukan</li>
+                        <li>Dapatkan NTPN</li>
+                        <li>Susun SPT Masa PPh</li>
+                        <li>Validasi data</li>
+                        <li>Lapor SPT secara elektronik</li>
+                        <li>Dapatkan BPE</li>
+                    </ol>
+                </div>
+
+                <h4>14. Fungsi Bukti Potong</h4>
+                <p><strong>Bukti potong</strong> berfungsi sebagai:</p>
+                <ul>
+                    <li>Dokumen resmi yang menunjukkan bahwa pemotongan pajak telah dilakukan</li>
+                    <li>Bukti bagi pihak yang dipotong untuk memperoleh kredit pajak (jika berlaku)</li>
+                    <li>Dokumen pendukung untuk pelaporan SPT Masa PPh</li>
+                    <li>Alat verifikasi bagi DJP untuk memastikan kewajiban pemotongan telah dipenuhi</li>
+                </ul>
+            </div>
+
+            <!-- Section C: Prosedur Pelaporan -->
+            <div class="answer-section">
+                <h3>C. Prosedur Pelaporan Elektronik</h3>
+
+                <h4>15. Urutan Proses Pelaporan SPT Masa PPN</h4>
+                <div class="process-box">
+                    <div class="process-step">Kumpulkan data transaksi</div>
+                    <div class="process-step">Validasi faktur pajak keluaran</div>
+                    <div class="process-step">Validasi faktur pajak masukan</div>
+                    <div class="process-step">Posting/menyiapkan SPT Masa PPN</div>
+                    <div class="process-step">Isi Lampiran Detail (A1, A2, B1, B2, B3)</div>
+                    <div class="process-step">Isi Lampiran AB (Rekapitulasi)</div>
+                    <div class="process-step">Hitung Pajak Keluaran dan Pajak Masukan</div>
+                    <div class="process-step">Tentukan Kurang/Lebih Bayar</div>
+                    <div class="process-step">Bayar kekurangan pajak jika terdapat kurang bayar</div>
+                    <div class="process-step">Input NTPN</div>
+                    <div class="process-step">Isi SPT Induk</div>
+                    <div class="process-step">Upload/otorisasi sertifikat elektronik</div>
+                    <div class="process-step">Lapor SPT</div>
+                    <div class="process-step">Terbit BPE (Bukti Penerimaan Elektronik)</div>
+                </div>
+
+                <h4>16. Urutan Proses Pelaporan SPT Masa PPh</h4>
+                <div class="process-box">
+                    <div class="process-step">Identifikasi transaksi yang merupakan objek pemotongan</div>
+                    <div class="process-step">Tentukan jenis PPh</div>
+                    <div class="process-step">Hitung PPh</div>
+                    <div class="process-step">Buat bukti potong melalui e-Bupot</div>
+                    <div class="process-step">Lakukan pembayaran apabila diperlukan</div>
+                    <div class="process-step">Dapatkan NTPN</div>
+                    <div class="process-step">Susun SPT Masa PPh</div>
+                    <div class="process-step">Validasi data</div>
+                    <div class="process-step">Lapor SPT secara elektronik</div>
+                    <div class="process-step">Dapatkan BPE</div>
+                </div>
+
+                <h4>17. Jika SPT Masa PPN Kurang Bayar</h4>
+                <p>Apabila SPT Masa PPN menunjukkan kurang bayar:</p>
+                <ol>
+                    <li>Wajib Pajak harus <strong>membayar terlebih dahulu</strong> jumlah kekurangan pajak</li>
+                    <li>Memperoleh <strong>NTPN (Nomor Transaksi Penerimaan Negara)</strong> sebagai bukti pembayaran</li>
+                    <li>Input NTPN ke dalam SPT Masa PPN</li>
+                    <li>Barulah dapat melaporkan SPT Masa PPN</li>
+                </ol>
+
+                <h4>18. Jika SPT Masa PPN Lebih Bayar</h4>
+                <p>Apabila SPT Masa PPN menunjukkan lebih bayar, Wajib Pajak memiliki dua opsi:</p>
+                <ul>
+                    <li><strong>Dikompensasi:</strong> Lebih bayar diperhitungkan untuk <strong>bulan pajak berikutnya</strong></li>
+                    <li><strong>Direstitusi:</strong> Lebih bayar <strong>dikembalikan kepada Wajib Pajak</strong></li>
+                </ul>
+
+                <h4>19. Fungsi NTPN</h4>
+                <p><strong>NTPN (Nomor Transaksi Penerimaan Negara)</strong> berfungsi sebagai:</p>
+                <ul>
+                    <li>Nomor transaksi yang menjadi <strong>bukti penerimaan pembayaran pajak oleh negara</strong></li>
+                    <li>Dokumen resmi yang digunakan dalam <strong>proses administrasi pelaporan</strong></li>
+                    <li>Persyaratan untuk melengkapi pelaporan SPT apabila terdapat kurang bayar</li>
+                    <li>Alat verifikasi bagi DJP untuk memastikan pembayaran pajak telah dilakukan</li>
+                </ul>
+
+                <h4>20. Pentingnya Rekonsiliasi</h4>
+                <p>Rekonsiliasi antara faktur pajak, bukti potong, pembayaran pajak, dan SPT penting dilakukan karena:</p>
+                <ul>
+                    <li><strong>Menjamin akurasi data:</strong> Memastikan semua transaksi tercatat dengan benar</li>
+                    <li><strong>Mencegah kesalahan:</strong> Menghindari perbedaan antara data komersial dengan data perpajakan</li>
+                    <li><strong>Kepatuhan perpajakan:</strong> Memastikan semua kewajiban perpajakan terpenuhi</li>
+                    <li><strong>Efisiensi pelaporan:</strong> Mempercepat proses pelaporan dengan data yang sudah terverifikasi</li>
+                    <li><strong>Audit trail:</strong> Menyediakan jejak audit yang lengkap untuk keperluan pemeriksaan</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="section">
+            <h2>📈 REKAPITULASI HASIL</h2>
+            <div class="summary">
+                <h3>Ringkasan Perhitungan SPT Masa PPN & PPh</h3>
+                
+                <h4>💵 PPN</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th class="text-right">Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Penjualan dalam negeri</td>
+                            <td class="text-right"><span class="currency">Rp1.000.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ekspor</td>
+                            <td class="text-right"><span class="currency">Rp150.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pajak Keluaran</strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp110.000.000</span></strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>PM dapat dikreditkan</td>
+                            <td class="text-right"><span class="currency">Rp82.500.000</span></td>
+                        </tr>
+                        <tr class="danger-row">
+                            <td>PM tidak dapat dikreditkan</td>
+                            <td class="text-right"><span class="currency">Rp3.300.000</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>PPN Kurang Bayar</strong></td>
+                            <td class="text-right"><strong class="status-kurang"><span class="currency">Rp27.500.000</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>💰 PPh</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jenis PPh</th>
+                            <th class="text-right">Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PPh Pasal 21</td>
+                            <td class="text-right"><span class="currency">Rp15.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>PPh Pasal 23</td>
+                            <td class="text-right"><span class="currency">Rp1.000.000</span></td>
+                        </tr>
+                        <tr>
+                            <td>PPh Pasal 4 ayat (2)</td>
+                            <td class="text-right"><span class="currency">Rp10.000.000</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total PPh Dipotong</strong></td>
+                            <td class="text-right"><strong><span class="currency">Rp26.000.000</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="summary">
+                <h3>📝 Kesimpulan</h3>
+                <p>PT Sinar Teknologi Indonesia harus melakukan <strong>rekonsiliasi</strong> antara transaksi komersial dengan data perpajakan sebelum menyampaikan SPT. Pada Masa Pajak September 2026, perusahaan memiliki:</p>
+                <ul>
+                    <li><strong>Pajak Keluaran:</strong> <span class="currency">Rp110.000.000</span></li>
+                    <li><strong>Pajak Masukan yang dapat dikreditkan:</strong> <span class="currency">Rp82.500.000</span></li>
+                    <li><strong>PPN Kurang Bayar:</strong> <span class="currency">Rp27.500.000</span></li>
+                </ul>
+                <p>Selain kewajiban PPN, perusahaan juga memiliki kewajiban pemotongan:</p>
+                <ul>
+                    <li><strong>PPh Pasal 21:</strong> <span class="currency">Rp15.000.000</span></li>
+                    <li><strong>PPh Pasal 23:</strong> <span class="currency">Rp1.000.000</span></li>
+                    <li><strong>PPh Pasal 4 ayat (2):</strong> <span class="currency">Rp10.000.000</span></li>
+                </ul>
+                <p>Seluruh data tersebut harus didokumentasikan melalui <strong>bukti potong</strong> dan dilaporkan menggunakan kanal elektronik perpajakan yang sesuai.</p>
+                <p class="text-center" style="margin-top: 20px; font-weight: bold; font-size: 1.1em;">
+                    Studi kasus ini menggambarkan hubungan antara:<br>
+                    <strong>transaksi → bukti pajak → perhitungan → pembayaran → SPT → BPE</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="section text-center">
+            <p><strong>Studi Kasus SPT Masa PPN & PPh Elektronik</strong></p>
+            <p>PT Sinar Teknologi Indonesia - Masa Pajak September 2026</p>
+            <p>Sumber: Materi MySkill.id - Corporate Tax Series</p>
+            <p>© 2024 | Tarif PPN: 11% | Tarif PPh 23: 2% | Tarif PPh 4(2): 10%</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple interactivity for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Highlight tables on hover
+            document.querySelectorAll('table').forEach(table => {
+                table.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+                });
+                table.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // Print functionality
+            window.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'p') {
+                    window.print();
+                }
+            });
+
+            // Add click effect to process steps
+            document.querySelectorAll('.process-step').forEach(step => {
+                step.addEventListener('click', function() {
+                    this.style.backgroundColor = '#f0f8ff';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+
+<script src="../pomodoro-widget.js"></script>
+</body>
+</html>
