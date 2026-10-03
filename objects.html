@@ -9,6 +9,7 @@
     <style>
         :root { --ink: #19251f; --muted: #68746c; --paper: #f4f2e9; --surface: #fffefa; --line: #dddcd1; --green: #28664d; --green-dark: #194b38; --coral: #bd593e; --shadow: 0 16px 42px rgba(32,50,39,.09); }
         * { box-sizing: border-box; }
+        [hidden] { display: none !important; }
         body { margin: 0; min-height: 100vh; color: var(--ink); background: radial-gradient(ellipse at 92% 14%,rgba(217,229,210,.74),transparent 31%),var(--paper); font-family: 'DM Sans',sans-serif; }
         .global-nav { position: sticky; top: 0; z-index: 5; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 12px 18px; background: rgba(255,254,250,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
         .page { width: min(1180px,100%); margin: auto; padding: 36px 24px 56px; }
@@ -58,6 +59,24 @@
         .object-info { padding: 11px; } .object-info h3 { margin: 0 0 2px; overflow-wrap: anywhere; font-size: 1rem; } .object-info p { margin: 0; color: var(--muted); font-size: .82rem; }
         .object-actions { display: flex; gap: 6px; margin-top: 10px; } .object-actions button { flex: 1; min-height: 34px; padding: 6px; font-size: .75rem; }
         .object-actions .listen { color: var(--green-dark); background: #e7efe5; } .object-actions .listen:hover:not(:disabled) { background: #d7e7d6; }
+        .translation-status { min-height: 16px; margin: -8px 0 12px; color: var(--muted); font-size: .74rem; }
+        .review-panel { margin-top: 22px; }
+        .review-toolbar { display: flex; align-items: center; gap: 10px; }
+        .review-toolbar p { margin: 0; color: var(--muted); font-size: .82rem; }
+        .review-card { display: grid; grid-template-columns: minmax(140px,220px) minmax(0,1fr); gap: 20px; align-items: center; margin-top: 18px; padding: 18px; background: #f7f6ef; border: 1px solid var(--line); border-radius: 9px; }
+        .review-image { width: 100%; max-height: 280px; aspect-ratio: 2/3; object-fit: contain; background: #eeece3; border-radius: 7px; }
+        .review-prompt-label { margin-bottom: 6px; color: var(--muted); font-size: .78rem; font-weight: 700; }
+        .review-prompt { margin-bottom: 14px; font-size: clamp(1.4rem,3vw,2rem); overflow-wrap: anywhere; }
+        .review-context { margin: -8px 0 14px; color: var(--muted); font-size: .8rem; }
+        .review-answer-form { display: grid; gap: 9px; }
+        .review-feedback { min-height: 22px; font-size: .88rem; font-weight: 700; }
+        .review-feedback.correct { color: var(--green-dark); }
+        .review-feedback.incorrect { color: #a94335; }
+        .review-ratings { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; margin-top: 12px; }
+        .review-ratings button { min-height: 54px; padding: 7px; font-size: .8rem; }
+        .review-ratings small { font-size: .68rem; font-weight: 500; }
+        .review-empty { margin-top: 16px; padding: 20px; color: var(--muted); background: #faf9f3; border: 1px dashed var(--line); border-radius: 9px; text-align: center; line-height: 1.55; }
+        .review-complete { margin-top: 16px; padding: 20px; background: #e7efe5; border-radius: 9px; text-align: center; }
         .empty { grid-column: 1/-1; padding: 36px 18px; color: var(--muted); background: #faf9f3; border: 1px dashed var(--line); border-radius: 9px; text-align: center; line-height: 1.6; }
         .toast { position: fixed; right: 20px; bottom: 20px; z-index: 10; max-width: min(420px,calc(100vw - 40px)); padding: 12px 16px; color: white; background: var(--green-dark); border-radius: 7px; box-shadow: var(--shadow); opacity: 0; transform: translateY(8px); transition: .2s; pointer-events: none; }
         .toast.show { opacity: 1; transform: translateY(0); }
@@ -72,6 +91,7 @@
         .viewer-word-form { display: grid; gap: 8px; }
         .viewer-word-form input { background: white; }
         .viewer-word-form .pronunciation-input { color: var(--green-dark); background: #f3f7f0; }
+        .viewer-word-form .translation-status { margin: -4px 0 0; }
         .viewer-word-form button { width: 100%; }
         .viewer-word-list { display: grid; align-content: start; gap: 8px; margin: 0; padding: 0; list-style: none; }
         .viewer-word-item { display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: center; gap: 7px; padding: 9px; background: #f3f2e9; border-radius: 7px; }
@@ -81,8 +101,9 @@
         .viewer-word-item .viewer-delete-word { color: #984430; background: #f8e9e3; }
         .viewer-empty { margin: auto 0; color: var(--muted); font-size: .85rem; line-height: 1.5; }
         @keyframes arrive { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 780px) { .page { padding: 25px 16px 40px; } .masthead { align-items: start; flex-direction: column; gap: 10px; } .workspace { grid-template-columns: 1fr; } .upload-zone { width: min(100%,340px); margin-inline: auto; } }
+        @media (max-width: 780px) { .page { padding: 25px 16px 40px; } .masthead { align-items: start; flex-direction: column; gap: 10px; } .workspace { grid-template-columns: 1fr; } .upload-zone { width: min(100%,340px); margin-inline: auto; } .review-card { grid-template-columns: minmax(100px,160px) minmax(0,1fr); } }
         @media (max-width: 440px) { .panel { padding: 17px; } .gallery { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; } .object-info { padding: 9px; } .object-actions { flex-direction: column; } }
+        @media (max-width: 500px) { .review-toolbar { align-items: start; flex-direction: column; } .review-card { grid-template-columns: 1fr; } .review-image { width: min(100%,200px); max-height: 200px; margin: auto; } .review-ratings { grid-template-columns: repeat(2,minmax(0,1fr)); } }
         @media (max-width: 700px) { .image-viewer { width: 100vw; height: 100dvh; border-radius: 0; } .image-viewer-content { grid-template-columns: minmax(0,1fr); grid-template-rows: auto minmax(180px,42dvh) minmax(0,1fr); gap: 8px; padding: 10px; } .image-viewer-close { grid-column: 1; grid-row: 1; } .image-viewer img { grid-column: 1; grid-row: 2; } .image-viewer-vocabulary { grid-column: 1; grid-row: 3; padding: 12px; } }
         @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
     </style>
@@ -105,7 +126,8 @@
                     </label>
                     <p class="hint">Gambar lain yang tidak berasio 2:3 perlu dipotong terlebih dahulu.</p>
                     <div class="field"><label for="englishName">Nama dalam bahasa Inggris</label><input id="englishName" name="englishName" required maxlength="80" placeholder="Contoh: watering can"></div>
-                    <div class="field"><label for="indonesianName">Artinya dalam bahasa Indonesia</label><input id="indonesianName" name="indonesianName" required maxlength="100" placeholder="Contoh: penyiram tanaman"></div>
+                    <div class="field"><label for="indonesianName">Artinya dalam bahasa Indonesia</label><input id="indonesianName" name="indonesianName" maxlength="100" placeholder="Terjemahan otomatis atau isi manual"></div>
+                    <p class="translation-status" id="mainTranslationStatus" aria-live="polite"></p>
                     <div class="field"><label for="categoryInput">Folder kategori</label><div class="category-entry"><input id="categoryInput" list="categoryOptions" required maxlength="40" placeholder="Contoh: Garden" autocomplete="off"><datalist id="categoryOptions"></datalist><button class="secondary" id="addCategoryButton" type="button" aria-label="Buat folder kategori baru" title="Buat folder kategori baru">+</button></div></div>
                     <button id="saveButton" type="submit" style="width:100%">Simpan ke koleksi</button>
                     <p class="form-status" id="formStatus" aria-live="polite"></p>
@@ -119,6 +141,42 @@
                 <div class="gallery" id="gallery" aria-live="polite"></div>
             </section>
         </div>
+        <section class="panel review-panel" aria-labelledby="reviewTitle">
+            <div class="panel-heading">
+                <div><h2 id="reviewTitle">Review kosakata benda</h2><p class="intro">Terjemahkan arti bahasa Indonesia yang muncul menjadi nama benda dalam bahasa Inggris.</p></div>
+                <span class="count" id="reviewDueCount">0 jatuh tempo</span>
+            </div>
+            <div class="review-toolbar">
+                <button id="startReviewButton" type="button">Mulai review</button>
+                <p id="reviewStatus" role="status" aria-live="polite">Semua gambar dan kosakata tambahan akan masuk ke jadwal review.</p>
+            </div>
+            <div class="review-empty" id="reviewEmpty">Tambahkan benda dan gambar terlebih dahulu untuk mulai berlatih.</div>
+            <div class="review-card" id="reviewCard" hidden>
+                <img class="review-image" id="reviewImage" alt="">
+                <div>
+                    <div class="review-prompt-label" id="reviewProgress">Soal 1</div>
+                    <h3 class="review-prompt" id="reviewPrompt"></h3>
+                    <p class="review-context" id="reviewContext"></p>
+                    <form class="review-answer-form" id="reviewAnswerForm">
+                        <label for="reviewAnswerInput">Jawaban dalam bahasa Inggris</label>
+                        <input id="reviewAnswerInput" required maxlength="80" autocomplete="off" placeholder="Ketik nama bendanya dalam bahasa Inggris">
+                        <button id="checkReviewAnswerButton" type="submit">Periksa jawaban</button>
+                    </form>
+                    <p class="review-feedback" id="reviewFeedback" aria-live="polite"></p>
+                    <div class="review-ratings" id="reviewRatings" aria-label="Nilai ingatan untuk jadwal pengulangan" hidden>
+                        <button class="danger" type="button" data-quality="1">Lupa<br><small>Ulangi hari ini</small></button>
+                        <button class="secondary" type="button" data-quality="3">Sulit<br><small>Jadwal pendek</small></button>
+                        <button type="button" data-quality="4">Ingat<br><small>Jadwal normal</small></button>
+                        <button type="button" data-quality="5">Mudah<br><small>Jadwal lebih lama</small></button>
+                    </div>
+                </div>
+            </div>
+            <div class="review-complete" id="reviewComplete" hidden>
+                <strong>Review selesai!</strong>
+                <p id="reviewCompleteMessage"></p>
+                <button class="secondary" id="finishReviewButton" type="button">Selesai</button>
+            </div>
+        </section>
     </main>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <dialog class="image-viewer" id="imageViewer" aria-label="Tampilan gambar penuh">
@@ -129,7 +187,8 @@
                 <h2 id="viewerVocabularyTitle">Nama benda dalam gambar</h2>
                 <form class="viewer-word-form" id="viewerWordForm">
                     <input id="viewerEnglishInput" required maxlength="80" placeholder="Nama dalam bahasa Inggris" aria-label="Nama benda dalam bahasa Inggris">
-                    <input id="viewerIndonesianInput" maxlength="100" placeholder="Arti bahasa Indonesia (opsional)" aria-label="Arti bahasa Indonesia">
+                    <input id="viewerIndonesianInput" maxlength="100" placeholder="Terjemahan otomatis atau isi manual" aria-label="Arti bahasa Indonesia">
+                    <p class="translation-status" id="viewerTranslationStatus" aria-live="polite"></p>
                     <input id="viewerPronunciationInput" class="pronunciation-input" maxlength="120" placeholder="Cara baca akan terisi otomatis" aria-label="Cara baca dalam teks">
                     <button type="submit">Tambah nama benda</button>
                 </form>
@@ -147,7 +206,7 @@
             const TARGET_WIDTH = 1024;
             const TARGET_HEIGHT = 1536;
             const $ = id => document.getElementById(id);
-            const state = { db: null, imageBlob: null, imageUrl: '', cards: [], categories: [], filter: '', hideEnglish: false, activeCardId: null };
+            const state = { db: null, imageBlob: null, imageUrl: '', cards: [], categories: [], filter: '', hideEnglish: false, activeCardId: null, reviewQueue: [], reviewIndex: 0, reviewCorrect: 0, reviewImageUrl: '' };
             let databasePromise;
 
             function ensureDatabase() {
@@ -274,6 +333,55 @@
                 clearTimeout(toast.timer);
                 toast.timer = setTimeout(() => element.classList.remove('show'), 2600);
             }
+            function normalizeAnswer(value) {
+                return String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().replace(/\s+/g, ' ');
+            }
+
+            async function translateToIndonesian(englishInput, indonesianInput, statusElement) {
+                const word = englishInput.value.trim();
+                if (!word) {
+                    statusElement.textContent = '';
+                    return;
+                }
+                const previousTranslation = indonesianInput.dataset.autoTranslation || '';
+                const existingTranslation = indonesianInput.value.trim();
+                if (existingTranslation && existingTranslation !== previousTranslation) return;
+                const apiKey = localStorage.getItem('gemini_api_key') || '';
+                if (!apiKey) {
+                    statusElement.textContent = 'API key Gemini belum diatur; arti dapat diisi manual.';
+                    return;
+                }
+
+                const originalTranslation = indonesianInput.value;
+                statusElement.textContent = 'Menerjemahkan ke bahasa Indonesia...';
+                try {
+                    const model = localStorage.getItem('english_ai_model_gemini') || 'gemini-3.5-flash-lite';
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            systemInstruction: { parts: [{ text: 'Terjemahkan kata atau frasa Bahasa Inggris ke Bahasa Indonesia yang paling wajar, terutama sebagai nama benda. Berikan hanya terjemahan Bahasa Indonesia, tanpa tanda kutip atau penjelasan.' }] },
+                            contents: [{ role: 'user', parts: [{ text: word }] }],
+                            generationConfig: { temperature: 0.1, maxOutputTokens: 60 }
+                        })
+                    });
+                    if (!response.ok) throw new Error(`Gemini translation request failed (${response.status}).`);
+                    const data = await response.json();
+                    const translation = String(data.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('') || '')
+                        .replace(/^["'`]|["'`]$/g, '').replace(/\s+/g, ' ').trim();
+                    if (!translation) throw new Error('Gemini tidak mengembalikan terjemahan.');
+                    if (englishInput.value.trim() !== word || indonesianInput.value !== originalTranslation) return;
+                    indonesianInput.value = translation;
+                    indonesianInput.dataset.autoTranslation = translation;
+                    statusElement.textContent = 'Terjemahan otomatis. Kamu tetap dapat mengubahnya.';
+                } catch (error) {
+                    console.error('Terjemahan otomatis gagal.', error);
+                    if (englishInput.value.trim() === word) {
+                        statusElement.textContent = 'Terjemahan otomatis gagal. Isi arti secara manual.';
+                    }
+                }
+            }
+
             function openImageViewer(card) {
                 if (!(card.image instanceof Blob)) return toast('Gambar hanya tersedia di perangkat tempat gambar disimpan.');
                 const image = $('viewerImage');
@@ -351,6 +459,9 @@
             async function addViewerWord(event) {
                 event.preventDefault();
                 const english = $('viewerEnglishInput').value.trim();
+                if (english && !$('viewerIndonesianInput').value.trim()) {
+                    await translateToIndonesian($('viewerEnglishInput'), $('viewerIndonesianInput'), $('viewerTranslationStatus'));
+                }
                 const indonesian = $('viewerIndonesianInput').value.trim();
                 const pronunciation = $('viewerPronunciationInput').value.trim();
                 const card = state.cards.find(item => item.id === state.activeCardId);
@@ -358,6 +469,8 @@
                 const words = Array.isArray(card.words) ? card.words : [];
                 await updateViewerWords([...words, { english, indonesian, pronunciation }]);
                 $('viewerWordForm').reset();
+                delete $('viewerIndonesianInput').dataset.autoTranslation;
+                $('viewerTranslationStatus').textContent = '';
                 $('viewerEnglishInput').focus();
             }
 
@@ -453,6 +566,9 @@
             async function handleSubmit(event) {
                 event.preventDefault();
                 const english = $('englishName').value.trim();
+                if (english && !$('indonesianName').value.trim()) {
+                    await translateToIndonesian($('englishName'), $('indonesianName'), $('mainTranslationStatus'));
+                }
                 const indonesian = $('indonesianName').value.trim();
                 const category = $('categoryInput').value.trim();
                 if (!state.imageBlob) return setStatus('Pilih gambar dengan rasio 2:3 terlebih dahulu.', true);
@@ -469,6 +585,8 @@
                     }
                     $('objectForm').reset();
                     state.imageBlob = null;
+                    delete $('indonesianName').dataset.autoTranslation;
+                    $('mainTranslationStatus').textContent = '';
                     clearPreview();
                     setStatus('Benda tersimpan di perangkat ini.');
                     try {
@@ -607,10 +725,194 @@
                 }
                 $('gallery').replaceChildren(...visibleCards.map(card => cardElement({ ...card, hideEnglish: state.hideEnglish })));
             }
+
+            function getReviewEntries() {
+                return state.cards.flatMap(card => {
+                    const entries = [{
+                        cardId: card.id,
+                        english: card.english,
+                        indonesian: card.indonesian,
+                        category: card.category,
+                        image: card.image,
+                        repetition: card.repetition || 0,
+                        easiness: card.easiness || 2.5,
+                        interval: card.interval || 0,
+                        nextReviewDate: card.nextReviewDate
+                    }];
+                    (Array.isArray(card.words) ? card.words : []).forEach((word, index) => {
+                        if (!word?.english) return;
+                        entries.push({
+                            cardId: card.id,
+                            wordIndex: index,
+                            english: word.english,
+                            indonesian: word.indonesian,
+                            category: card.category,
+                            image: card.image,
+                            repetition: word.repetition || 0,
+                            easiness: word.easiness || 2.5,
+                            interval: word.interval || 0,
+                            nextReviewDate: word.nextReviewDate
+                        });
+                    });
+                    return entries;
+                });
+            }
+
+            function isReviewDue(entry, now = Date.now()) {
+                if (!entry.nextReviewDate) return true;
+                const dueTime = new Date(entry.nextReviewDate).getTime();
+                return !Number.isFinite(dueTime) || dueTime <= now;
+            }
+
+            function renderReviewSummary() {
+                const entries = getReviewEntries();
+                const dueCount = entries.filter(entry => isReviewDue(entry)).length;
+                $('reviewDueCount').textContent = `${dueCount} jatuh tempo`;
+                $('startReviewButton').disabled = dueCount === 0;
+                $('startReviewButton').textContent = dueCount ? `Mulai review (${dueCount})` : 'Belum ada review';
+                $('reviewEmpty').textContent = entries.length
+                    ? (dueCount ? 'Mulai sesi untuk menguji kosakata yang sudah jatuh tempo.' : 'Belum ada kosakata yang jatuh tempo. Jadwal berikutnya tersimpan otomatis.')
+                    : 'Tambahkan benda dan gambar terlebih dahulu untuk mulai berlatih.';
+            }
+
+            function startReview() {
+                state.reviewQueue = getReviewEntries().filter(entry => isReviewDue(entry));
+                if (!state.reviewQueue.length) {
+                    renderReviewSummary();
+                    return;
+                }
+                state.reviewQueue.sort(() => Math.random() - 0.5);
+                state.reviewIndex = 0;
+                state.reviewCorrect = 0;
+                $('reviewEmpty').hidden = true;
+                $('reviewComplete').hidden = true;
+                $('reviewCard').hidden = false;
+                $('reviewStatus').textContent = 'Jawab dalam bahasa Inggris, lalu pilih seberapa mudah kamu mengingatnya.';
+                renderReviewQuestion();
+            }
+
+            function renderReviewQuestion() {
+                const entry = state.reviewQueue[state.reviewIndex];
+                if (!entry) return finishReview();
+                if (state.reviewImageUrl) URL.revokeObjectURL(state.reviewImageUrl);
+                state.reviewImageUrl = '';
+                const image = $('reviewImage');
+                if (entry.image instanceof Blob) {
+                    state.reviewImageUrl = URL.createObjectURL(entry.image);
+                    image.src = state.reviewImageUrl;
+                    image.alt = `Gambar untuk kosakata ${entry.indonesian || entry.english}`;
+                    image.hidden = false;
+                } else {
+                    image.removeAttribute('src');
+                    image.alt = 'Gambar tidak tersedia di perangkat ini';
+                    image.hidden = true;
+                }
+                $('reviewProgress').textContent = `Soal ${state.reviewIndex + 1} dari ${state.reviewQueue.length} · ${entry.category}`;
+                $('reviewPrompt').textContent = entry.indonesian || 'Arti bahasa Indonesia belum tersedia';
+                $('reviewContext').textContent = entry.wordIndex === undefined ? 'Nama benda utama pada gambar' : 'Kosakata tambahan pada gambar';
+                $('reviewAnswerForm').reset();
+                $('reviewAnswerInput').disabled = false;
+                $('checkReviewAnswerButton').disabled = false;
+                $('reviewFeedback').textContent = '';
+                $('reviewFeedback').className = 'review-feedback';
+                $('reviewRatings').hidden = true;
+                $('reviewRatings').querySelectorAll('button').forEach(button => { button.disabled = false; });
+                $('reviewAnswerInput').focus();
+            }
+
+            function checkReviewAnswer(event) {
+                event.preventDefault();
+                const entry = state.reviewQueue[state.reviewIndex];
+                if (!entry) return;
+                const answer = $('reviewAnswerInput').value.trim();
+                if (!answer) return $('reviewAnswerInput').focus();
+                const correct = normalizeAnswer(answer) === normalizeAnswer(entry.english);
+                if (correct) state.reviewCorrect += 1;
+                $('reviewAnswerInput').disabled = true;
+                $('checkReviewAnswerButton').disabled = true;
+                $('reviewFeedback').textContent = correct
+                    ? 'Benar! Jawaban: ' + entry.english
+                    : `Belum tepat. Jawaban yang benar: ${entry.english}`;
+                $('reviewFeedback').classList.add(correct ? 'correct' : 'incorrect');
+                $('reviewRatings').hidden = false;
+            }
+
+            async function rateReviewAnswer(quality) {
+                const entry = state.reviewQueue[state.reviewIndex];
+                const card = state.cards.find(item => item.id === entry?.cardId);
+                if (!entry || !card) {
+                    toast('Kartu review tidak ditemukan. Muat ulang halaman dan coba lagi.');
+                    return;
+                }
+                const previous = entry.wordIndex === undefined ? card : card.words?.[entry.wordIndex];
+                if (!previous) {
+                    toast('Kosakata review tidak ditemukan. Muat ulang halaman dan coba lagi.');
+                    return;
+                }
+                const easiness = Math.max(1.3, (previous.easiness || 2.5) + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+                let repetition = previous.repetition || 0;
+                let interval = previous.interval || 0;
+                if (quality < 3) {
+                    repetition = 0;
+                    interval = 0;
+                } else {
+                    if (repetition === 0) interval = quality === 5 ? 2 : 1;
+                    else if (repetition === 1) interval = quality === 5 ? 8 : 6;
+                    else interval = Math.max(1, Math.round(interval * easiness * (quality === 5 ? 1.3 : quality === 3 ? 0.7 : 1)));
+                    repetition += 1;
+                }
+                const nextReviewDate = new Date();
+                nextReviewDate.setDate(nextReviewDate.getDate() + interval);
+                const schedule = { easiness, repetition, interval, nextReviewDate: nextReviewDate.toISOString() };
+                const updatedCard = { ...card };
+                if (entry.wordIndex === undefined) {
+                    Object.assign(updatedCard, schedule);
+                } else {
+                    updatedCard.words = card.words.map((word, index) => index === entry.wordIndex ? { ...word, ...schedule } : word);
+                }
+                const ratingButtons = [...$('reviewRatings').querySelectorAll('button')];
+                ratingButtons.forEach(button => { button.disabled = true; });
+                try {
+                    await saveCard(updatedCard);
+                    Object.assign(card, updatedCard);
+                    state.reviewIndex += 1;
+                    renderReviewSummary();
+                    renderReviewQuestion();
+                    syncLocalChangesToAccount().then(synced => {
+                        if (!synced) toast('Jadwal review tersimpan di perangkat, tetapi gagal disinkronkan ke akun.');
+                    });
+                } catch (error) {
+                    console.error('Jadwal review gagal disimpan.', error);
+                    toast('Jadwal review gagal disimpan. Coba pilih penilaian lagi.');
+                    ratingButtons.forEach(button => { button.disabled = false; });
+                }
+            }
+
+            function finishReview() {
+                if (state.reviewImageUrl) URL.revokeObjectURL(state.reviewImageUrl);
+                state.reviewImageUrl = '';
+                $('reviewCard').hidden = true;
+                $('reviewComplete').hidden = false;
+                $('reviewStatus').textContent = 'Sesi review selesai.';
+                $('reviewCompleteMessage').textContent = `Jawaban benar ${state.reviewCorrect} dari ${state.reviewQueue.length}. Jadwal pengulangan sudah diperbarui.`;
+                renderReviewSummary();
+            }
+
+            function closeReview() {
+                if (state.reviewImageUrl) URL.revokeObjectURL(state.reviewImageUrl);
+                state.reviewImageUrl = '';
+                state.reviewQueue = [];
+                $('reviewCard').hidden = true;
+                $('reviewComplete').hidden = true;
+                $('reviewEmpty').hidden = false;
+                $('reviewStatus').textContent = 'Semua gambar dan kosakata tambahan akan masuk ke jadwal review.';
+            }
+
             async function refresh() {
                 [state.cards, state.categories] = await Promise.all([allCards(), allCategories()]);
                 renderFilters();
                 renderGallery();
+                renderReviewSummary();
             }
             function safeFilename(value) {
                 return value.normalize('NFKD').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 70) || 'object';
@@ -734,11 +1036,30 @@
                 $('importInput').addEventListener('change', importBackup);
                 $('searchInput').addEventListener('input', renderGallery);
                 $('viewerWordForm').addEventListener('submit', addViewerWord);
+                let mainTranslationTimer;
+                $('englishName').addEventListener('input', () => {
+                    const translation = $('indonesianName');
+                    if (translation.value === translation.dataset.autoTranslation) translation.value = '';
+                    clearTimeout(mainTranslationTimer);
+                    mainTranslationTimer = setTimeout(() => translateToIndonesian($('englishName'), $('indonesianName'), $('mainTranslationStatus')), 450);
+                });
+                let viewerTranslationTimer;
                 let pronunciationTimer;
                 $('viewerEnglishInput').addEventListener('input', () => {
+                    const translation = $('viewerIndonesianInput');
+                    if (translation.value === translation.dataset.autoTranslation) translation.value = '';
+                    clearTimeout(viewerTranslationTimer);
+                    viewerTranslationTimer = setTimeout(() => translateToIndonesian($('viewerEnglishInput'), $('viewerIndonesianInput'), $('viewerTranslationStatus')), 450);
                     clearTimeout(pronunciationTimer);
                     pronunciationTimer = setTimeout(loadPronunciation, 450);
                 });
+                $('startReviewButton').addEventListener('click', startReview);
+                $('reviewAnswerForm').addEventListener('submit', checkReviewAnswer);
+                $('reviewRatings').addEventListener('click', event => {
+                    const button = event.target.closest('button[data-quality]');
+                    if (button) rateReviewAnswer(Number(button.dataset.quality));
+                });
+                $('finishReviewButton').addEventListener('click', closeReview);
                 $('learnToggle').addEventListener('click', event => {
                     state.hideEnglish = !state.hideEnglish;
                     event.currentTarget.textContent = state.hideEnglish ? 'Tampilkan English' : 'Sembunyikan English';
@@ -754,6 +1075,9 @@
                     if (event.target === $('imageViewer')) $('imageViewer').close();
                 });
                 window.addEventListener('beforeunload', clearPreview);
+                window.addEventListener('beforeunload', () => {
+                    if (state.reviewImageUrl) URL.revokeObjectURL(state.reviewImageUrl);
+                });
             }
             window.registerAccountStorageTask?.(syncObjectLibraryFromAccount);
             init();
