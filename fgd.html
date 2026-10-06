@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Analisis FGD Pribadi</title>
+  <script defer src="tracker-menu.js"></script>
+
+  <style>
+    :root{
+      --bg:#eef1f4;
+      --panel:#ffffff;
+      --panel2:#f7f9fb;
+      --ink:#14202b;
+      --mute:#5d6b78;
+      --line:#d3dae1;
+      --acc:#1f4fd8;
+      --acc2:#163da8;
+      --accsoft:#e3eafc;
+      --warn:#b3261e;
+      --success:#16794a;
+      --shadow:0 8px 28px rgba(20,32,43,.07);
+      --radius:12px;
+    }
+
+    @media(prefers-color-scheme:dark){
+      :root{
+        --bg:#10161c;
+        --panel:#18212a;
+        --panel2:#121a22;
+        --ink:#e6ecf1;
+        --mute:#93a1ae;
+        --line:#2b3742;
+        --acc:#7da2ff;
+        --acc2:#a5bdff;
+        --accsoft:#1d2b4d;
+        --warn:#ff8a80;
+        --success:#62d59b;
+        --shadow:0 8px 28px rgba(0,0,0,.25);
+      }
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:15px/1.6 "Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+
+    .wrap{
+      max-width:1150px;
+      margin:0 auto;
+      padding:28px 16px 70px;
+    }
+
+    .hero{
+      margin-bottom:22px;
+    }
+
+    h1{
+      font-size:clamp(1.65rem,4vw,2.1rem);
+      margin:0 0 5px;
+      letter-spacing:-.02em;
+    }
+
+    .sub{
+      color:var(--mute);
+      margin:0;
+      max-width:75ch;
+    }
+
+    section{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+      margin-bottom:16px;
+      box-shadow:var(--shadow);
+    }
+
+    h2{
+      font-size:1.08rem;
+      margin:0 0 14px;
+    }
+
+    h3{
+      margin:20px 0 8px;
+    }
+
+    label{
+      display:block;
+      font-size:.84rem;
+      font-weight:600;
+      color:var(--mute);
+      margin:11px 0 5px;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      font:inherit;
+      color:var(--ink);
+      background:var(--bg);
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:9px 11px;
+      transition:border-color .15s,box-shadow .15s;
+    }
+
+    textarea{
+      min-height:75px;
+      resize:vertical;
+    }
+
+    textarea.large{
+      min-height:220px;
+    }
+
+    textarea.medium{
+      min-height:125px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus{
+      outline:none;
+      border-color:var(--acc);
+      box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 15%,transparent);
+    }
+
+    :focus-visible{
+      outline:2px solid var(--acc);
+      outline-offset:2px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:0 16px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:0 16px;
+    }
+
+    .grid4{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:0 16px;
+    }
+
+    @media(max-width:760px){
+      .grid,
+      .grid3,
+      .grid4{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    button{
+      font:inherit;
+      cursor:pointer;
+      border-radius:8px;
+      border:1px solid var(--line);
+      background:var(--panel);
+      color:var(--ink);
+      padding:9px 14px;
+      transition:.15s;
+    }
+
+    button:hover{
+      border-color:var(--acc);
+      transform:translateY(-1px);
+    }
+
+    button.p{
+      background:var(--acc);
+      border-color:var(--acc);
+      color:#fff;
+      font-weight:700;
+    }
+
+    button.p:hover{
+      background:var(--acc2);
+      border-color:var(--acc2);
+    }
+
+    button:disabled{
+      opacity:.55;
+      cursor:wait;
+      transform:none;
+    }
+
+    .note{
+      font-size:.83rem;
+      color:var(--mute);
+    }
+
+    .err{
+      color:var(--warn)!important;
+      font-weight:600;
+    }
+
+    .success{
+      color:var(--success)!important;
+      font-weight:600;
+    }
+
+    .peer{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:14px;
+      margin-bottom:10px;
+      background:var(--panel2);
+    }
+
+    .peer-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:5px;
+      font-weight:700;
+    }
+
+    .x{
+      color:var(--warn);
+      border-color:var(--warn);
+      padding:4px 10px;
+      font-size:.82rem;
+    }
+
+    .statusbar{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      min-height:28px;
+      margin:10px 0;
+    }
+
+    .spinner{
+      width:16px;
+      height:16px;
+      border:2px solid var(--line);
+      border-top-color:var(--acc);
+      border-radius:50%;
+      animation:spin .8s linear infinite;
+      display:none;
+    }
+
+    .spinner.show{
+      display:block;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
+
+    #out{
+      line-height:1.7;
+      overflow-wrap:anywhere;
+    }
+
+    #out h3,
+    #out h4,
+    #out h5{
+      margin:22px 0 8px;
+      line-height:1.35;
+    }
+
+    #out h3{
+      font-size:1.2rem;
+    }
+
+    #out h4{
+      font-size:1.05rem;
+    }
+
+    #out table{
+      width:100%;
+      border-collapse:collapse;
+      margin:12px 0 18px;
+      font-size:.92rem;
+      overflow:hidden;
+    }
+
+    .table-wrap{
+      width:100%;
+      overflow-x:auto;
+      margin:10px 0 18px;
+    }
+
+    #out th,
+    #out td{
+      border:1px solid var(--line);
+      padding:8px 10px;
+      text-align:left;
+      vertical-align:top;
+    }
+
+    #out th{
+      background:var(--accsoft);
+      font-weight:700;
+    }
+
+    #out ul,
+    #out ol{
+      padding-left:24px;
+    }
+
+    #out li{
+      margin:4px 0;
+    }
+
+    #out blockquote,
+    .opinion{
+      border-left:4px solid var(--acc);
+      background:var(--accsoft);
+      padding:11px 14px;
+      border-radius:0 9px 9px 0;
+      margin:10px 0;
+    }
+
+    #out code{
+      background:var(--panel2);
+      border:1px solid var(--line);
+      border-radius:4px;
+      padding:1px 5px;
+    }
+
+    .result-block{
+      border:1px solid var(--line);
+      border-left:4px solid var(--acc);
+      border-radius:10px;
+      padding:14px 16px;
+      margin-top:14px;
+      background:var(--panel);
+    }
+
+    .result-block:nth-child(even){
+      background:var(--panel2);
+    }
+
+    .result-label{
+      display:inline-block;
+      margin-bottom:8px;
+      padding:3px 9px;
+      border-radius:999px;
+      background:var(--accsoft);
+      color:var(--ink);
+      font-size:.76rem;
+      font-weight:700;
+      letter-spacing:.03em;
+    }
+
+    .mode-info{
+      margin-top:8px;
+      padding:10px 12px;
+      border-radius:8px;
+      background:var(--accsoft);
+      color:var(--ink);
+      font-size:.85rem;
+    }
+
+    .danger-note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-left:4px solid var(--warn);
+      background:color-mix(in srgb,var(--warn) 8%,var(--panel));
+      border-radius:0 8px 8px 0;
+      font-size:.83rem;
+    }
+
+    .divider{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:18px 0;
+    }
+
+    .footer-note{
+      color:var(--mute);
+      font-size:.8rem;
+      text-align:center;
+      margin-top:22px;
+    }
+
+    .hidden{
+      display:none!important;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav
+  class="global-nav"
+  aria-label="Menu navigasi utama"
+  style="position:sticky;top:0;z-index:50;background:var(--panel);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;"
+></nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Analisis FGD Pribadi</h1>
+    <p class="sub">
+      Analisis kasus, evaluasi strategi, simulasi argumen, dan penyusunan draf opini
+      untuk membantu Anda menghadapi Focus Group Discussion.
+    </p>
+  </header>
+
+  <!-- =========================================================
+       1. PENGATURAN GEMINI
+  ========================================================== -->
+
+  <section>
+    <h2>Pengaturan Gemini</h2>
+
+    <div class="grid">
+      <div>
+        <label for="key">API Key Gemini</label>
+        <input
+          id="key"
+          type="password"
+          placeholder="AIza..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </div>
+
+      <div>
+        <label for="model">Model</label>
+        <select id="model">
+          <option value="gemini-3.5-flash" selected>
+            Gemini 3.5 Flash — kualitas analisis
+          </option>
+          <option value="gemini-3.5-flash-lite">
+            Gemini 3.5 Flash-Lite — cepat
+          </option>
+          <option value="gemini-3.1-flash-lite">
+            Gemini 3.1 Flash-Lite — hemat
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid4">
+
+      <div>
+        <label for="mode">Mode Analisis</label>
+        <select id="mode">
+          <option value="lengkap" selected>Analisis Lengkap</option>
+          <option value="fgd">Mode FGD</option>
+          <option value="cepat">Jawaban Cepat</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="detail">Tingkat Detail</label>
+        <select id="detail">
+          <option value="ringkas">Ringkas</option>
+          <option value="standar" selected>Standar</option>
+          <option value="dalam">Mendalam</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="thinking">Kedalaman Penalaran</label>
+        <select id="thinking">
+          <option value="low">Low — lebih cepat</option>
+          <option value="medium" selected>Medium — seimbang</option>
+          <option value="high">High — analisis lebih dalam</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="outputLanguage">Bahasa Hasil Generate</label>
+        <select id="outputLanguage">
+          <option value="id" selected>Bahasa Indonesia</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+    </div>
+
+    <p class="note">
+      Pilih bahasa untuk seluruh hasil analisis dan jawaban lanjutan. Bahasa kasus
+      dan masukan peserta boleh berbeda; nama, akronim, dan istilah teknis tetap dipertahankan.
+    </p>
+
+    <p class="note">
+      API key disimpan hanya di browser ini menggunakan localStorage dan dikirim langsung
+      ke Google Gemini. Jangan memasukkan API key ke repository GitHub publik.
+    </p>
+
+    <div class="danger-note">
+      <strong>Catatan keamanan:</strong>
+      untuk aplikasi pribadi, model ini dapat menggunakan API key pengguna.
+      Untuk website publik dengan satu API key milik Anda, gunakan backend/serverless
+      function agar key tidak terekspos di browser.
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       2. KASUS
+  ========================================================== -->
+
+  <section>
+    <h2>1. Kasus dan Tugas</h2>
+
+    <label for="kasus">
+      Kasus
+    </label>
+
+    <textarea
+      id="kasus"
+      class="large"
+      placeholder="Tempel kasus FGD di sini..."
+    >Kasus PT Nusantara Fresh, perusahaan FMCG yang memproduksi makanan dan minuman kemasan, mengalami masalah supply chain selama 6 bulan terakhir.
+
+Data perusahaan:
+- Penjualan meningkat 12%
+- Stockout di retailer meningkat 25%
+- Persediaan rata-rata meningkat 30%
+- Biaya logistik meningkat 18%
+- On-time delivery supplier turun dari 94% menjadi 82%
+- 20% produk di gudang memiliki inventory lebih dari 90 hari
+- Perusahaan memiliki anggaran tambahan Rp5 miliar
+- Manajemen ingin memperbaiki kondisi dalam 6 bulan
+
+Alternatif yang dipertimbangkan:
+A. Menambah safety stock
+B. Menambah dan melakukan diversifikasi supplier
+C. Meningkatkan demand forecasting
+D. Mengoptimalkan warehouse dan distribusi
+E. Mengimplementasikan sistem digital supply chain terintegrasi</textarea>
+
+    <label for="companyContext">
+      Data Perusahaan
+    </label>
+
+    <textarea
+      id="companyContext"
+      class="medium"
+      placeholder="Opsional: visi, misi, filosofi/nilai perusahaan, tujuan strategis, budaya kerja, atau batasan kebijakan. Masukkan hanya informasi yang diketahui."
+    ></textarea>
+
+    <p class="note">
+      Data ini akan digunakan untuk menilai kesesuaian strategi dengan arah dan
+      nilai perusahaan. Jika dikosongkan, AI tidak akan mengasumsikan visi atau
+      misi perusahaan.
+    </p>
+
+    <div class="grid">
+      <div>
+        <label for="productName">Nama Produk</label>
+        <input
+          id="productName"
+          type="text"
+          placeholder="Contoh: Nusantara Fresh"
+        >
+      </div>
+
+      <div>
+        <label for="exportRegions">Wilayah Ekspor</label>
+        <input
+          id="exportRegions"
+          type="text"
+          placeholder="Contoh: Singapura, Malaysia"
+        >
+      </div>
+    </div>
+
+    <p class="note">
+      Nama produk dan wilayah ekspor hanya disimpan di browser ini dan tidak
+      dikirim ke AI.
+    </p>
+
+    <label for="tugas">
+      Tugas kelompok / pertanyaan yang harus dijawab
+    </label>
+
+    <textarea
+      id="tugas"
+      class="medium"
+      placeholder="Tuliskan tugas FGD..."
+    >Dalam 20 menit, kelompok harus:
+1. Mengidentifikasi masalah utama/root cause.
+2. Menentukan satu prioritas strategi.
+3. Menjelaskan alasan pemilihan.
+4. Menentukan langkah implementasi.
+5. Menentukan KPI untuk mengukur keberhasilan.</textarea>
+
+    <div class="grid">
+
+      <div>
+        <label for="peran">Peran Saya di Diskusi</label>
+
+        <select id="peran">
+          <option value="pertama">
+            Orang pertama — pembuka/pengusul
+          </option>
+
+          <option value="kedua">
+            Orang kedua — penanggap
+          </option>
+
+          <option value="penyimpul">
+            Pembuat kesimpulan
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label for="awal">
+          Pandangan Awal Saya
+        </label>
+
+        <textarea
+          id="awal"
+          placeholder="Contoh: saya curiga akar masalahnya di forecasting, bukan supplier."
+        ></textarea>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       3. PESERTA
+  ========================================================== -->
+
+  <section>
+
+    <h2>2. Pendapat Peserta Lain</h2>
+
+    <p class="note">
+      Masukkan pendapat peserta jika sudah tersedia. AI akan mengidentifikasi
+      titik sepakat, perbedaan, kekuatan argumen, dan celah logikanya.
+    </p>
+
+    <div id="peers"></div>
+
+    <div class="row">
+      <button id="add" type="button">
+        + Tambah Peserta
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       4. ANALISIS
+  ========================================================== -->
+
+  <section>
+
+    <h2>3. Analisis</h2>
+
+    <div class="row">
+
+      <button
+        id="go"
+        class="p"
+        type="button"
+      >
+        Analisis dengan Gemini
+      </button>
+
+      <button
+        id="copy"
+        type="button"
+      >
+        Salin Hasil
+      </button>
+
+      <button
+        id="reset"
+        type="button"
+      >
+        Kosongkan Form
+      </button>
+
+    </div>
+
+    <div class="mode-info">
+      <strong>Mode saat ini:</strong>
+      <span id="modeText">Analisis Lengkap</span>
+    </div>
+
+    <div
+      class="statusbar"
+      role="status"
+      aria-live="polite"
+    >
+      <span
+        id="spinner"
+        class="spinner"
+      ></span>
+
+      <span
+        id="status"
+        class="note"
+      ></span>
+    </div>
+
+    <div id="out"></div>
+
+    <!-- =======================================================
+         FOLLOW UP
+    ======================================================== -->
+
+    <div id="follow" class="hidden">
+
+      <hr class="divider">
+
+      <label for="fu">
+        Pertanyaan Lanjutan / Revisi
+      </label>
+
+      <textarea
+        id="fu"
+        placeholder="Contoh: buat jawaban saya lebih singkat dan lebih tegas."
+      ></textarea>
+
+      <div class="row" style="margin-top:8px">
+
+        <button
+          id="fubtn"
+          class="p"
+          type="button"
+        >
+          Kirim
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <p class="footer-note">
+    Analisis AI bersifat sebagai alat bantu. Validasi kembali fakta,
+    angka, dan asumsi sebelum digunakan dalam FGD.
+  </p>
+
+</div>
+
+
+<script>
+/* ============================================================
+   DOM HELPER
+============================================================ */
+
+const $ = id => document.getElementById(id);
+let conversationHistory = [];
+
+
+/* ============================================================
+   SYSTEM PROMPT
+============================================================ */
+
+const SYS = `
+Anda adalah fasilitator Focus Group Discussion (FGD), business analyst, dan
+problem solver strategis. Anda bersikap netral, kritis, teliti, dan praktis.
+
+Tujuan Anda adalah membantu pengguna:
+1. memahami kasus,
+2. membedakan fakta dari asumsi,
+3. menemukan kandidat akar masalah,
+4. membandingkan alternatif solusi,
+5. mempertahankan argumen saat ditanggapi atau ditantang,
+6. menyampaikan opini dengan natural dalam diskusi.
+
+==============================
+GAYA BAHASA DAN KOMUNIKASI
+==============================
+
+- Gunakan bahasa yang sopan, jelas, dan profesional, tetapi tetap luwes dan enak
+  dibaca. Ikuti bahasa hasil yang dipilih pengguna.
+- Jika kasus memakai istilah teknis atau frasa dalam bahasa tertentu, pertahankan
+  nama, akronim, dan istilah teknis khusus dalam bentuk aslinya jika sesuai.
+- Hindari slang dan singkatan tidak baku.
+- Gunakan kalimat yang ringkas. Satu kalimat memuat satu gagasan utama.
+- Jangan menampilkan kode HTML atau LaTeX mentah, misalnya <br> atau
+  $\\rightarrow$. Gunakan kalimat, paragraf, daftar Markdown, atau simbol
+  panah biasa bila diperlukan.
+- Sampaikan kritik terhadap argumen, bukan terhadap orangnya. Gunakan
+  ungkapan yang menghargai, misalnya "Saya memahami sudut pandang tersebut,
+  namun...".
+- Gunakan format Markdown dengan judul bertingkat. Gunakan tabel jika membantu.
+- Jangan mengulang informasi yang sama. Hindari disclaimer yang panjang.
+- Terapkan hanya bagian analisis yang relevan dengan permintaan pengguna.
+  Jangan menyajikan semua bagian jika tidak diminta.
+- Jika pengguna meminta revisi draf, fokus pada revisi yang diminta saja.
+
+==============================
+ATURAN BUKTI
+==============================
+
+Bedakan empat jenis pernyataan dan beri label yang jelas:
+1. FAKTA: informasi yang tertulis eksplisit dalam kasus, konteks perusahaan,
+   atau pernyataan peserta.
+2. INFERENSI: kesimpulan logis dari fakta. Jangan menyebutnya sebagai fakta.
+3. ASUMSI: dugaan yang belum dapat dibuktikan dari informasi yang ada.
+4. REKOMENDASI: tindakan yang diusulkan berdasarkan analisis.
+
+Jangan mengarang angka, baseline, target, biaya, tanggal, jumlah pegawai,
+dampak finansial, atau fakta perusahaan.
+
+Jika informasi tidak cukup, sampaikan dengan jujur, misalnya: "Hal ini belum
+dapat dipastikan dari data yang tersedia." Anda boleh memvariasikan
+redaksinya. Jika kasus belum dilampirkan atau datanya sangat terbatas,
+sampaikan keterbatasan tersebut dan ajukan pertanyaan klarifikasi yang
+paling penting.
+
+Jika rekomendasi membutuhkan angka, gunakan istilah "estimasi" dan jelaskan
+bahwa angka tersebut bukan fakta kasus.
+
+Jangan memilih strategi hanya karena menggunakan teknologi atau terdengar
+modern.
+
+==============================
+ANALISIS AKAR MASALAH
+==============================
+
+Lakukan diagnosis secara bertahap:
+A. Identifikasi gejala.
+B. Kelompokkan gejala.
+C. Hubungkan indikator yang saling berkaitan.
+D. Tentukan kandidat penyebab.
+E. Uji setiap kandidat terhadap bukti.
+F. Pisahkan: gejala, faktor pendukung (contributing factor), kandidat akar
+   masalah, asumsi, dan hal yang belum dapat dipastikan.
+
+Jika bukti hanya cukup untuk menyebut suatu hal sebagai faktor pendukung,
+jangan menyebutnya sebagai akar masalah yang pasti.
+
+==============================
+EVALUASI STRATEGI
+==============================
+
+Jika ada beberapa alternatif, gunakan penilaian berbobot (skala 1-5,
+semakin tinggi semakin baik):
+
+| Kriteria | Bobot | Arti skor 5 |
+|---|---|---|
+| Dampak terhadap akar masalah | 35% | Menangani akar masalah secara langsung |
+| Kecepatan menghasilkan hasil | 20% | Hasil terlihat dalam waktu singkat |
+| Kelayakan anggaran | 20% | Sangat sesuai dengan anggaran yang tersedia |
+| Risiko implementasi | 15% | Risiko sangat rendah |
+| Kelayakan dalam periode kasus | 10% | Dapat diselesaikan sepenuhnya dalam periode kasus |
+
+- Sajikan setiap alternatif dalam tabel Markdown terpisah agar tabel tetap
+  mudah dibaca.
+- Gunakan kolom "Kriteria", "Bobot", dan "Penilaian".
+- Untuk setiap kriteria, buat satu baris berisi skor, lalu baris berikutnya
+  berlabel "Penjelasan" yang berisi alasan penilaian. Baris penjelasan harus
+  tepat berada di bawah skor yang dijelaskannya.
+- Akhiri setiap tabel dengan baris skor akhir alternatif tersebut.
+- Jangan gabungkan skor dan penjelasan dalam satu sel atau gunakan kode HTML
+  atau LaTeX untuk membuat baris baru.
+- Skor akhir = jumlah dari (skor x bobot) untuk semua kriteria.
+- Jika data tidak cukup untuk menilai suatu kriteria secara wajar, jelaskan
+  keterbatasannya dan jangan menyajikan skor tersebut seolah-olah objektif.
+
+==============================
+COUNTERARGUMENT
+==============================
+
+Setelah memilih strategi utama:
+1. Susun minimal 2 counterargument yang masuk akal dan tidak dibuat-buat.
+2. Nilai apakah masing-masing valid, sebagian valid, atau lemah.
+3. Tunjukkan bukti yang mendukung atau melemahkannya.
+4. Berikan jawaban yang dapat langsung digunakan pengguna dalam FGD, dengan
+   nada yang menghargai pihak yang berbeda pendapat.
+
+==============================
+DRAF OPINI
+==============================
+
+Draf harus:
+- menggunakan sudut pandang orang pertama,
+- terdengar seperti orang berbicara: profesional, sopan, dan natural,
+- tidak terlalu akademis dan tidak penuh jargon,
+- tidak menyebut "AI",
+- menggunakan kalimat pendek sehingga mudah dibacakan,
+- membedakan yang diketahui dari data dan yang merupakan pandangan pribadi,
+  dengan ungkapan alami seperti "Dari data yang ada..." atau "Menurut saya...".
+
+Sediakan, sesuai permintaan:
+1. Versi sekitar 30 detik (kurang lebih 70-80 kata).
+2. Versi sekitar 60 detik (kurang lebih 140-160 kata).
+3. Versi lebih tegas, tetap santun dan tidak menyerang.
+4. Versi lebih diplomatis, tetap jelas posisinya.
+
+Jika pengguna tidak menentukan versi, tawarkan atau buat versi 30 dan 60 detik
+terlebih dahulu.
+
+==============================
+KPI
+==============================
+
+Jika diminta, gunakan format:
+
+| KPI | Baseline | Target | Frekuensi |
+
+- Baseline hanya boleh berasal dari data kasus. Jika tidak ada, tulis
+  padanan bahasa hasil dari "Belum tersedia dalam kasus".
+- Target harus diberi label dengan padanan bahasa hasil dari "Usulan target".
+
+==============================
+ANALISIS PESERTA
+==============================
+
+Jika terdapat pendapat peserta, uraikan:
+- posisi dan jenis klaim,
+- bukti yang digunakan,
+- kekuatan argumen,
+- kelemahan atau celah,
+- titik sepakat dan titik perbedaan.
+`;
+
+
+/* ============================================================
+   STORAGE
+============================================================ */
+
+function store(key, value){
+  try{
+    if(value === undefined){
+      return localStorage.getItem(key);
+    }
+
+    localStorage.setItem(key, value);
+    return value;
+
+  }catch(error){
+    return null;
+  }
+}
+
+const formFieldIds = [
+  'key',
+  'model',
+  'mode',
+  'detail',
+  'thinking',
+  'outputLanguage',
+  'kasus',
+  'companyContext',
+  'productName',
+  'exportRegions',
+  'tugas',
+  'peran',
+  'awal',
+  'fu'
+];
+
+function saveFormDraft(){
+  const fields = {};
+
+  formFieldIds.forEach(id => {
+    fields[id] = $(id).value;
+  });
+
+  const peers = [...document.querySelectorAll('.peer')].map(peer => ({
+    name:peer.querySelector('.n').value,
+    type:peer.querySelector('.j').value,
+    position:peer.querySelector('.s').value,
+    claim:peer.querySelector('.k').value,
+    evidence:peer.querySelector('.a').value
+  }));
+
+  try{
+    localStorage.setItem(
+      'fgd_form_draft',
+      JSON.stringify({fields, peers})
+    );
+  }catch(error){
+    setStatus(
+      `Gagal menyimpan isian di browser: ${error.message}`,
+      'error'
+    );
+  }
+}
+
+function restoreFormDraft(){
+  const savedDraft = store('fgd_form_draft');
+
+  if(!savedDraft){
+    addPeer({n:'A'});
+    addPeer({n:'B'});
+    saveFormDraft();
+    return;
+  }
+
+  try{
+    const draft = JSON.parse(savedDraft);
+
+    if(draft.fields && typeof draft.fields === 'object'){
+      formFieldIds.forEach(id => {
+        if(typeof draft.fields[id] === 'string'){
+          $(id).value = draft.fields[id];
+        }
+      });
+    }
+
+    $('peers').innerHTML = '';
+
+    if(Array.isArray(draft.peers)){
+      draft.peers.forEach(peer => {
+        addPeer({
+          n:peer.name,
+          type:peer.type,
+          position:peer.position,
+          k:peer.claim,
+          a:peer.evidence
+        });
+      });
+    }
+
+    updateModeText();
+  }catch(error){
+    setStatus(
+      `Gagal memulihkan isian tersimpan: ${error.message}`,
+      'error'
+    );
+    addPeer({n:'A'});
+    addPeer({n:'B'});
+  }
+}
+
+document.addEventListener('input', event => {
+  if(formFieldIds.includes(event.target.id) || event.target.closest('.peer')){
+    saveFormDraft();
+  }
+});
+
+document.addEventListener('change', event => {
+  if(formFieldIds.includes(event.target.id) || event.target.closest('.peer')){
+    saveFormDraft();
+  }
+});
+
+
+/* ============================================================
+   INITIAL SETTINGS
+============================================================ */
+
+$('key').value =
+  store('gemini_api_key') ||
+  store('fgd_key') ||
+  '';
+
+$('model').value =
+  store('fgd_model') ||
+  'gemini-3.5-flash';
+
+$('mode').value =
+  store('fgd_mode') ||
+  'lengkap';
+
+$('detail').value =
+  store('fgd_detail') ||
+  'standar';
+
+$('thinking').value =
+  store('fgd_thinking') ||
+  'medium';
+
+$('outputLanguage').value =
+  store('fgd_output_language') ||
+  'id';
+
+
+/* ============================================================
+   SAVE SETTINGS
+============================================================ */
+
+$('key').addEventListener('change', () => {
+
+  const key = $('key').value.trim();
+
+  store('gemini_api_key', key);
+  store('fgd_key', key);
+
+});
+
+
+$('model').addEventListener('change', () => {
+  store('fgd_model', $('model').value);
+});
+
+
+$('mode').addEventListener('change', updateModeText);
+$('detail').addEventListener('change', () => {
+  store('fgd_detail', $('detail').value);
+});
+
+$('thinking').addEventListener('change', () => {
+  store('fgd_thinking', $('thinking').value);
+});
+
+$('outputLanguage').addEventListener('change', () => {
+  store('fgd_output_language', $('outputLanguage').value);
+});
+
+
+function getOutputLanguageInstruction(){
+  if($('outputLanguage').value === 'en'){
+    return `
+OUTPUT LANGUAGE:
+Write the entire response in clear, natural, professional English, including
+headings, table headers, labels, explanations, and follow-up answers. Translate
+ordinary descriptions and analysis instructions into English. Preserve proper
+nouns, acronyms, and specialized technical terms in their original form when
+appropriate. The language of the case and user inputs does not change this
+requirement.
+`;
+  }
+
+  return `
+BAHASA HASIL:
+Tulis seluruh jawaban dalam bahasa Indonesia yang jelas, natural, dan profesional,
+termasuk judul, header tabel, label, penjelasan, dan jawaban lanjutan. Terjemahkan
+uraian biasa ke bahasa Indonesia. Pertahankan nama diri, akronim, dan istilah
+teknis khusus dalam bentuk aslinya jika sesuai. Bahasa kasus dan masukan pengguna
+tidak mengubah ketentuan ini.
+`;
+}
+
+
+function updateModeText(){
+
+  const labels = {
+    lengkap:'Analisis Lengkap',
+    fgd:'Mode FGD',
+    cepat:'Jawaban Cepat'
+  };
+
+  $('modeText').textContent =
+    labels[$('mode').value] || 'Analisis Lengkap';
+
+  store('fgd_mode', $('mode').value);
+}
+
+updateModeText();
+
+
+/* ============================================================
+   PARTICIPANTS
+============================================================ */
+
+function addPeer(data = {}){
+
+  const el = document.createElement('div');
+
+  el.className = 'peer';
+
+  el.innerHTML = `
+    <div class="peer-title">
+      <span>Peserta</span>
+      <button
+        type="button"
+        class="x"
+        aria-label="Hapus peserta"
+      >
+        Hapus
+      </button>
+    </div>
+
+    <div class="grid3">
+
+      <div>
+        <label>Nama / Inisial</label>
+        <input
+          class="n"
+          value="${escapeAttr(data.n || '')}"
+          placeholder="A"
+        >
+      </div>
+
+      <div>
+        <label>Jenis Pernyataan</label>
+
+        <select class="j">
+          <option value="Fakta">Fakta</option>
+          <option value="Nilai">Nilai</option>
+          <option value="Usulan" selected>Usulan</option>
+          <option value="Asumsi">Asumsi</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Posisi</label>
+
+        <select class="s">
+          <option value="Setuju">Setuju</option>
+          <option value="Tolak">Tolak</option>
+          <option value="Netral">Netral</option>
+        </select>
+      </div>
+
+    </div>
+
+    <label>Klaim / Pendapat</label>
+
+    <textarea
+      class="k"
+      placeholder="Apa yang dikatakan peserta?"
+    >${escapeHtml(data.k || '')}</textarea>
+
+    <label>Alasan / Bukti yang Disebut</label>
+
+    <textarea
+      class="a"
+      placeholder="Apa alasan atau bukti yang diberikan?"
+    >${escapeHtml(data.a || '')}</textarea>
+  `;
+
+  if(data.type){
+    el.querySelector('.j').value = data.type;
+  }
+
+  if(data.position){
+    el.querySelector('.s').value = data.position;
+  }
+
+  el.querySelector('.x').onclick = () => {
+    el.remove();
+    renumberPeers();
+    saveFormDraft();
+  };
+
+  $('peers').appendChild(el);
+
+  renumberPeers();
+}
+
+
+function renumberPeers(){
+
+  [...document.querySelectorAll('.peer')].forEach((peer,index) => {
+
+    const title = peer.querySelector('.peer-title span');
+
+    if(title){
+      title.textContent =
+        `Peserta ${String.fromCharCode(65 + index)}`;
+    }
+
+  });
+
+}
+
+
+/* Restore saved form values and participants */
+
+restoreFormDraft();
+
+
+$('add').onclick = () => {
+
+  const count =
+    document.querySelectorAll('.peer').length;
+
+  addPeer({
+    n:String.fromCharCode(65 + count)
+  });
+
+  saveFormDraft();
+
+};
+
+
+/* ============================================================
+   ROLE GUIDE
+============================================================ */
+
+const roleGuide = {
+
+  pertama: `
+PERAN PENGGUNA:
+ORANG PERTAMA — PEMBUKA/PENGUSUL.
+
+Gunakan struktur:
+Posisi → alasan → bukti → usulan → undangan tanggapan.
+
+Pengguna harus terdengar percaya diri tetapi tidak memaksakan pendapat.
+`,
+
+  kedua: `
+PERAN PENGGUNA:
+ORANG KEDUA — PENANGGAP.
+
+Gunakan struktur:
+Tangkap inti → setuju/tambah/tantang → alasan → bukti →
+pertanyaan klarifikasi → alternatif.
+
+Rujuk pendapat peserta secara spesifik jika tersedia.
+`,
+
+  penyimpul: `
+PERAN PENGGUNA:
+PEMBUAT KESIMPULAN.
+
+Gunakan struktur:
+Yang disepakati → yang belum disepakati →
+rekomendasi → tindak lanjut.
+
+Jangan menambahkan opini baru yang tidak berasal dari diskusi.
+`
+};
+
+
+/* ============================================================
+   BUILD PARTICIPANT DATA
+============================================================ */
+
+function getPeers(){
+
+  return [...document.querySelectorAll('.peer')]
+    .map(peer => {
+
+      const get = selector => {
+        const el = peer.querySelector(selector);
+        return el ? el.value.trim() : '';
+      };
+
+      const claim = get('.k');
+
+      if(!claim){
+        return '';
+      }
+
+      return {
+        name:get('.n') || '?',
+        type:get('.j'),
+        position:get('.s'),
+        claim,
+        evidence:get('.a') || '(tidak disebut)'
+      };
+
+    })
+    .filter(Boolean);
+}
+
+
+/* ============================================================
+   BUILD PROMPT
+============================================================ */
+
+function buildPrompt(){
+
+  const peers = getPeers();
+  const companyContext = $('companyContext').value.trim();
+  const statusLabels = $('outputLanguage').value === 'en'
+    ? 'FACT / INFERENCE / ASSUMPTION'
+    : 'FAKTA / INFERENSI / ASUMSI';
+  const unavailableBaseline = $('outputLanguage').value === 'en'
+    ? '"Not available in the case"'
+    : '"Belum tersedia dalam kasus"';
+  const proposedTarget = $('outputLanguage').value === 'en'
+    ? '"Proposed target"'
+    : '"Usulan target"';
+
+  const detailMap = {
+
+    ringkas:
+      'Sangat ringkas dan padat. Fokus pada informasi yang dapat langsung digunakan.',
+
+    standar:
+      'Detail secukupnya. Jelaskan reasoning penting tanpa bertele-tele.',
+
+    dalam:
+      'Mendalam. Jelaskan hubungan sebab-akibat, trade-off, keterbatasan data, dan counterargument secara eksplisit.'
+  };
+
+  const modeInstructions = {
+
+    lengkap: `
+MODE ANALISIS LENGKAP.
+
+Berikan:
+1. Ringkasan kasus
+2. Evidence map
+3. Gejala
+4. Root cause analysis
+5. Evaluasi alternatif
+6. Weighted scoring
+7. Strategi prioritas
+8. Trade-off
+9. Implementasi
+10. KPI
+11. Counterargument
+12. Cara menjawab counterargument
+13. Draf opini 30 detik
+14. Draf opini 60 detik
+15. Versi tegas
+16. Versi diplomatis
+17. Pertanyaan sulit
+`,
+
+    fgd: `
+MODE FGD.
+
+Prioritaskan informasi yang dapat digunakan ketika berbicara.
+
+Berikan:
+1. Posisi utama
+2. 3 alasan terkuat
+3. Bukti pendukung
+4. Hal yang perlu diwaspadai
+5. Counterargument
+6. Jawaban ketika ditantang
+7. Cara menyetujui peserta lain tanpa kehilangan posisi
+8. Draf opini 30 detik
+9. Draf opini 60 detik
+10. Pertanyaan yang mungkin muncul
+`,
+
+    cepat: `
+MODE JAWABAN CEPAT.
+
+Berikan hanya:
+1. Masalah utama
+2. Root cause paling mungkin
+3. Strategi yang dipilih
+4. 2 alasan utama
+5. 1 risiko
+6. Jawaban jika ditantang
+7. Draf jawaban lisan sekitar 30 detik
+
+Hindari penjelasan panjang.
+`
+  };
+
+
+  const peerText = peers.length
+
+    ? peers.map(p => `
+- ${p.name}
+  Jenis: ${p.type}
+  Posisi: ${p.position}
+  Klaim: ${p.claim}
+  Alasan/bukti: ${p.evidence}
+`).join('\n')
+
+    : '(Belum ada pendapat peserta lain.)';
+
+
+  return `
+KASUS:
+${$('kasus').value.trim()}
+
+KONTEKS PERUSAHAAN:
+${companyContext || '(Tidak diberikan. Jangan mengasumsikan visi, misi, filosofi, nilai, atau tujuan strategis perusahaan.)'}
+
+PERTAHANKAN ISTILAH:
+Pertahankan nama diri, akronim, dan istilah teknis khusus dalam bentuk aslinya
+jika sesuai. Tulis uraian dan label analisis dalam bahasa hasil yang dipilih.
+
+
+TUGAS KELOMPOK:
+${$('tugas').value.trim() || '(Tidak ditentukan. Analisis kasus secara umum.)'}
+
+
+PERAN PENGGUNA:
+${roleGuide[$('peran').value]}
+
+
+PANDANGAN AWAL PENGGUNA:
+${$('awal').value.trim() || '(Tidak ada.)'}
+
+
+PENDAPAT PESERTA:
+${peerText}
+
+
+TINGKAT DETAIL:
+${detailMap[$('detail').value]}
+
+
+${modeInstructions[$('mode').value]}
+
+
+====================================================
+INSTRUKSI ANALISIS
+====================================================
+
+1. Mulai dengan ringkasan kasus yang terstruktur.
+
+2. Buat tabel evidence map:
+
+| Indikator/Temuan | Nilai/Data | Interpretasi | Status |
+|---|---|---|---|
+
+Status harus berupa:
+${statusLabels}.
+
+3. Identifikasi gejala utama.
+
+4. Hubungkan indikator yang saling berkaitan.
+
+5. Susun kandidat root cause.
+
+6. Uji setiap kandidat root cause terhadap data.
+
+7. Jangan memaksakan satu root cause jika bukti tidak cukup.
+
+8. Jelaskan:
+   - root cause paling didukung,
+   - contributing factors,
+   - gejala,
+   - asumsi,
+   - informasi yang masih kurang.
+
+9. Jika konteks perusahaan diberikan, nilai dan jelaskan kesesuaian strategi
+   dengan visi, misi, filosofi/nilai, serta tujuan strategis yang tercantum.
+   Tunjukkan bukti atau potensi konflik tanpa menambahkan asumsi.
+   Jika konteks tidak diberikan, nyatakan bahwa kesesuaian belum dapat dinilai.
+
+10. Jika ada alternatif strategi, buat weighted scoring.
+
+Gunakan bobot:
+
+- Dampak terhadap root cause = 35%
+- Kecepatan hasil = 20%
+- Kelayakan anggaran = 20%
+- Risiko implementasi = 15%
+- Kelayakan implementasi dalam periode kasus = 10%
+
+Gunakan skor 1-5.
+
+Sajikan setiap alternatif strategi dalam tabel Markdown yang terpisah, bukan
+satu tabel lebar. Gunakan kolom "Kriteria", "Bobot", dan "Penilaian".
+Untuk setiap kriteria, buat satu baris skor, lalu baris berikutnya berlabel
+"Penjelasan" dengan alasan berdasarkan bukti kasus. Baris "Penjelasan" harus
+tepat berada di bawah baris skor terkait. Akhiri tabel dengan baris skor akhir.
+
+Contoh format:
+
+| Kriteria | Bobot | Penilaian |
+|---|---:|---|
+| Dampak terhadap root cause | 35% | Skor: 4/5 |
+| Penjelasan |  | Menangani masalah yang paling didukung data kasus. |
+| Kecepatan hasil | 20% | Skor: 3/5 |
+| Penjelasan |  | Memerlukan waktu penyesuaian sebelum hasil terlihat. |
+
+Jangan gabungkan skor dan penjelasan dalam satu sel. Jangan gunakan kode HTML
+atau LaTeX untuk membuat baris baru.
+
+11. Setelah memilih strategi utama, jelaskan mengapa strategi lain
+ditunda atau tidak menjadi prioritas.
+
+12. Buat implementation roadmap berdasarkan waktu yang tersedia.
+
+Jika angka biaya tidak diberikan:
+jangan mengarang angka pasti.
+
+13. Buat KPI:
+
+| KPI | Baseline | Target | Frekuensi |
+|---|---|---|---|
+
+Baseline harus berasal dari kasus. Jika tidak tersedia, gunakan label
+${unavailableBaseline}.
+
+Target harus diberi label:
+${proposedTarget}.
+
+14. Analisis pendapat peserta.
+
+15. Identifikasi:
+   - titik sepakat,
+   - titik berbeda,
+   - argumen kuat,
+   - argumen lemah,
+   - evidence gap.
+
+16. Buat minimal dua counterargument.
+
+17. Untuk setiap counterargument:
+   - tulis argumen lawan,
+   - nilai validitasnya,
+   - berikan jawaban pengguna.
+
+18. Jangan membuat jawaban yang terlalu sempurna.
+Gunakan bahasa lisan profesional yang natural.
+
+19. Draf opini harus sesuai dengan peran pengguna.
+
+20. Buat versi 30 detik dan 60 detik.
+
+21. Buat versi tegas dan diplomatis.
+
+22. Tambahkan 2-3 pertanyaan tajam yang mungkin muncul,
+beserta jawaban singkat.
+
+23. Jika ada konflik antara pandangan awal pengguna dan bukti kasus,
+jelaskan konflik tersebut dan prioritaskan evidence.
+
+24. Jangan menyebut bahwa jawaban dibuat oleh AI.
+
+25. Jangan menampilkan kode HTML atau LaTeX mentah, misalnya <br> atau
+$\\rightarrow$. Gunakan paragraf, daftar Markdown, kata penghubung, atau
+simbol panah biasa bila diperlukan.
+
+${getOutputLanguageInstruction()}
+`;
+}
+
+
+/* ============================================================
+   GEMINI API
+============================================================ */
+
+async function callGemini(){
+
+  const key = $('key').value.trim();
+
+  if(!key){
+    throw new Error(
+      'Isi API key Gemini terlebih dahulu.'
+    );
+  }
+
+  const model = $('model').value;
+
+  const url =
+    `https://generativelanguage.googleapis.com/v1beta/models/` +
+    `${encodeURIComponent(model)}:generateContent?key=` +
+    `${encodeURIComponent(key)}`;
+
+  const payload = {
+
+    systemInstruction:{
+      parts:[
+        {
+          text:`${SYS}\n\n${getOutputLanguageInstruction()}`
+        }
+      ]
+    },
+
+    contents:conversationHistory,
+
+    generationConfig:{
+      thinkingConfig:{
+        thinkingLevel:$('thinking').value
+      }
+    }
+
+  };
+
+
+  let lastError = null;
+
+  /*
+    Retry maksimal 2 kali untuk error sementara.
+  */
+
+  for(let attempt = 0; attempt < 3; attempt++){
+
+    try{
+
+      const response = await fetch(url,{
+
+        method:'POST',
+
+        headers:{
+          'Content-Type':'application/json'
+        },
+
+        body:JSON.stringify(payload)
+
+      });
+
+
+      let data = null;
+
+      try{
+        data = await response.json();
+      }catch{
+        data = null;
+      }
+
+
+      if(response.ok){
+
+        const candidates =
+          data?.candidates || [];
+
+        const parts =
+          candidates[0]?.content?.parts || [];
+
+        const text =
+          parts
+            .map(part => part?.text || '')
+            .join('')
+            .trim();
+
+        if(!text){
+
+          const reason =
+            candidates[0]?.finishReason ||
+            'Tidak diketahui';
+
+          throw new Error(
+            `Gemini tidak mengembalikan teks. Finish reason: ${reason}`
+          );
+        }
+
+        return text;
+      }
+
+
+      const apiMessage =
+        data?.error?.message ||
+        `Permintaan gagal (${response.status})`;
+
+      /*
+        Jangan retry error API key, permission, atau bad request.
+      */
+
+      if(
+        response.status === 400 ||
+        response.status === 401 ||
+        response.status === 403 ||
+        response.status === 404
+      ){
+        throw new Error(apiMessage);
+      }
+
+      lastError = new Error(apiMessage);
+
+      /*
+        Retry untuk rate limit/server error.
+      */
+
+      if(
+        response.status === 429 ||
+        response.status >= 500
+      ){
+
+        const wait =
+          800 * Math.pow(2,attempt);
+
+        await sleep(wait);
+
+        continue;
+      }
+
+      throw lastError;
+
+    }catch(error){
+
+      lastError = error;
+
+      /*
+        Network error.
+      */
+
+      if(
+        attempt < 2 &&
+        !String(error.message || '').includes('API key') &&
+        !String(error.message || '').includes('PERMISSION')
+      ){
+
+        await sleep(
+          800 * Math.pow(2,attempt)
+        );
+
+        continue;
+      }
+
+      throw error;
+    }
+
+  }
+
+  throw lastError ||
+    new Error('Permintaan ke Gemini gagal.');
+}
+
+
+/* ============================================================
+   RUN
+============================================================ */
+
+async function run(userText, button){
+
+  button.disabled = true;
+
+  setLoading(true);
+
+  conversationHistory.push({
+    role:'user',
+    parts:[
+      {
+        text:userText
+      }
+    ]
+  });
+
+
+  try{
+
+    const text =
+      await callGemini();
+
+
+    conversationHistory.push({
+      role:'model',
+      parts:[
+        {
+          text
+        }
+      ]
+    });
+
+
+    appendResult(text);
+
+    $('follow').classList.remove('hidden');
+
+    setStatus(
+      'Analisis selesai.',
+      'success'
+    );
+
+
+  }catch(error){
+
+    /*
+      Jika gagal, hapus message user terakhir
+      agar riwayat percakapan tetap konsisten.
+    */
+
+    conversationHistory.pop();
+
+    setStatus(
+      normalizeError(error),
+      'error'
+    );
+
+  }finally{
+
+    button.disabled = false;
+
+    setLoading(false);
+
+  }
+
+}
+
+
+/* ============================================================
+   MAIN BUTTON
+============================================================ */
+
+$('go').onclick = () => {
+
+  const kasus =
+    $('kasus').value.trim();
+
+  if(!kasus){
+
+    setStatus(
+      'Isi kasus terlebih dahulu.',
+      'error'
+    );
+
+    $('kasus').focus();
+
+    return;
+  }
+
+
+  const tugas =
+    $('tugas').value.trim();
+
+  if(!tugas){
+
+    setStatus(
+      'Tugas kelompok belum diisi. Anda tetap dapat melanjutkan, tetapi hasil akan lebih baik jika tugas diisi.',
+      'error'
+    );
+
+    $('tugas').focus();
+
+    return;
+  }
+
+
+  conversationHistory = [];
+
+  $('out').innerHTML = '';
+
+  $('follow').classList.add('hidden');
+
+  setStatus(
+    'Gemini sedang menganalisis kasus...',
+    'normal'
+  );
+
+
+  run(
+    buildPrompt(),
+    $('go')
+  );
+
+};
+
+
+/* ============================================================
+   FOLLOW UP
+============================================================ */
+
+$('fubtn').onclick = () => {
+
+  const value =
+    $('fu').value.trim();
+
+  if(!value){
+
+    setStatus(
+      'Tulis pertanyaan atau revisi terlebih dahulu.',
+      'error'
+    );
+
+    $('fu').focus();
+
+    return;
+  }
+
+
+  $('fu').value = '';
+
+  run(
+    `
+Tugas lanjutan pengguna:
+
+${value}
+
+INSTRUKSI:
+Jawab permintaan tersebut berdasarkan konteks kasus,
+analisis sebelumnya, peran pengguna, dan pendapat peserta.
+
+${getOutputLanguageInstruction()}
+
+Jangan tampilkan kode HTML atau LaTeX mentah seperti <br> atau $\\rightarrow$.
+Gunakan paragraf atau daftar Markdown yang biasa.
+
+Jangan mengulang seluruh analisis jika tidak diperlukan.
+Fokus pada perubahan atau jawaban yang diminta.
+`,
+    $('fubtn')
+  );
+
+};
+
+
+/* ============================================================
+   COPY
+============================================================ */
+
+$('copy').onclick = async () => {
+
+  const texts =
+    conversationHistory
+      .filter(item => item.role === 'model')
+      .map(item =>
+        item.parts
+          .map(part => part.text || '')
+          .join('')
+      )
+      .filter(Boolean);
+
+
+  if(!texts.length){
+
+    setStatus(
+      'Belum ada hasil yang dapat disalin.',
+      'error'
+    );
+
+    return;
+  }
+
+
+  const text =
+    texts.join('\n\n--------------------\n\n');
+
+
+  try{
+
+    await navigator.clipboard.writeText(text);
+
+    setStatus(
+      'Hasil berhasil disalin.',
+      'success'
+    );
+
+  }catch{
+
+    setStatus(
+      'Gagal menyalin otomatis. Blok teks hasil secara manual.',
+      'error'
+    );
+
+  }
+
+};
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+$('reset').onclick = () => {
+
+  const confirmed =
+    confirm(
+      'Kosongkan kasus, peserta, hasil analisis, dan percakapan?'
+    );
+
+  if(!confirmed){
+    return;
+  }
+
+
+  $('kasus').value = '';
+
+  $('companyContext').value = '';
+
+  $('productName').value = '';
+
+  $('exportRegions').value = '';
+
+  $('tugas').value = '';
+
+  $('awal').value = '';
+
+  $('peers').innerHTML = '';
+
+  addPeer({n:'A'});
+
+  addPeer({n:'B'});
+
+
+  conversationHistory = [];
+
+  $('out').innerHTML = '';
+
+  $('fu').value = '';
+
+  $('follow').classList.add('hidden');
+
+  saveFormDraft();
+
+  setStatus(
+    '',
+    'normal'
+  );
+
+};
+
+
+/* ============================================================
+   MARKDOWN RENDERER
+   Renderer sederhana dan aman untuk output Gemini.
+============================================================ */
+
+function renderMarkdown(source){
+
+  const lines =
+    String(source || '')
+      .replace(/\r\n/g,'\n')
+      .split('\n');
+
+
+  let html = '';
+
+  let i = 0;
+
+
+  while(i < lines.length){
+
+    const line =
+      lines[i];
+
+
+    /*
+      Blank line
+    */
+
+    if(!line.trim()){
+
+      i++;
+
+      continue;
+    }
+
+
+    /*
+      Horizontal rule
+    */
+
+    if(/^\s*(---|\*\*\*|___)\s*$/.test(line)){
+
+      html += '<hr class="divider">';
+
+      i++;
+
+      continue;
+    }
+
+
+    /*
+      Heading
+    */
+
+    let heading =
+      line.match(/^(#{1,6})\s+(.+)$/);
+
+    if(heading){
+
+      const level =
+        Math.min(
+          heading[1].length + 2,
+          6
+        );
+
+      html +=
+        `<h${level}>${inlineMarkdown(heading[2])}</h${level}>`;
+
+      i++;
+
+      continue;
+    }
+
+
+    /*
+      Blockquote
+    */
+
+    if(/^\s*>\s?/.test(line)){
+
+      const quote = [];
+
+      while(
+        i < lines.length &&
+        /^\s*>\s?/.test(lines[i])
+      ){
+
+        quote.push(
+          inlineMarkdown(
+            lines[i].replace(/^\s*>\s?/,'')
+          )
+        );
+
+        i++;
+      }
+
+      html +=
+        `<div class="opinion">${quote.join('<br>')}</div>`;
+
+      continue;
+    }
+
+
+    /*
+      Table
+    */
+
+    if(
+      /^\s*\|/.test(line) &&
+      i + 1 < lines.length &&
+      /^\s*\|?\s*:?-{2,}/.test(lines[i + 1])
+    ){
+
+      const rows = [];
+
+      rows.push(
+        parseTableRow(line)
+      );
+
+      i += 2;
+
+      while(
+        i < lines.length &&
+        /^\s*\|/.test(lines[i])
+      ){
+
+        rows.push(
+          parseTableRow(lines[i])
+        );
+
+        i++;
+      }
+
+
+      html += `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                ${rows[0]
+                  .map(cell =>
+                    `<th>${inlineMarkdown(cell)}</th>`
+                  )
+                  .join('')}
+              </tr>
+            </thead>
+
+            <tbody>
+              ${rows
+                .slice(1)
+                .map(row => `
+                  <tr>
+                    ${row
+                      .map(cell =>
+                        `<td>${inlineMarkdown(cell)}</td>`
+                      )
+                      .join('')}
+                  </tr>
+                `)
+                .join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+
+      continue;
+    }
+
+
+    /*
+      Unordered list
+    */
+
+    if(/^\s*[-*]\s+/.test(line)){
+
+      const items = [];
+
+      while(
+        i < lines.length &&
+        /^\s*[-*]\s+/.test(lines[i])
+      ){
+
+        items.push(
+          inlineMarkdown(
+            lines[i].replace(/^\s*[-*]\s+/,'')
+          )
+        );
+
+        i++;
+      }
+
+      html +=
+        `<ul>${items.map(x => `<li>${x}</li>`).join('')}</ul>`;
+
+      continue;
+    }
+
+
+    /*
+      Ordered list
+    */
+
+    if(/^\s*\d+[.)]\s+/.test(line)){
+
+      const items = [];
+
+      while(
+        i < lines.length &&
+        /^\s*\d+[.)]\s+/.test(lines[i])
+      ){
+
+        items.push(
+          inlineMarkdown(
+            lines[i].replace(/^\s*\d+[.)]\s+/,'')
+          )
+        );
+
+        i++;
+      }
+
+      html +=
+        `<ol>${items.map(x => `<li>${x}</li>`).join('')}</ol>`;
+
+      continue;
+    }
+
+
+    /*
+      Paragraph
+    */
+
+    const paragraph = [];
+
+    while(
+      i < lines.length &&
+      lines[i].trim() &&
+      !/^(#{1,6})\s+/.test(lines[i]) &&
+      !/^\s*>\s?/.test(lines[i]) &&
+      !/^\s*[-*]\s+/.test(lines[i]) &&
+      !/^\s*\d+[.)]\s+/.test(lines[i]) &&
+      !/^\s*\|/.test(lines[i]) &&
+      !/^\s*(---|\*\*\*|___)\s*$/.test(lines[i])
+    ){
+
+      paragraph.push(
+        inlineMarkdown(lines[i])
+      );
+
+      i++;
+    }
+
+
+    if(paragraph.length){
+
+      html +=
+        `<p>${paragraph.join('<br>')}</p>`;
+
+    }
+
+  }
+
+
+  return html;
+}
+
+
+/* ============================================================
+   TABLE PARSER
+============================================================ */
+
+function parseTableRow(row){
+
+  return row
+    .trim()
+    .replace(/^\|/,'')
+    .replace(/\|$/,'')
+    .split('|')
+    .map(cell => cell.trim());
+
+}
+
+
+/* ============================================================
+   INLINE MARKDOWN
+============================================================ */
+
+function inlineMarkdown(value){
+
+  let text =
+    escapeHtml(value);
+
+
+  /*
+    Bold
+  */
+
+  text =
+    text.replace(
+      /\*\*(.+?)\*\*/g,
+      '<strong>$1</strong>'
+    );
+
+
+  /*
+    Italic
+  */
+
+  text =
+    text.replace(
+      /(^|[^\*])\*(?!\s)(.+?)\*/g,
+      '$1<em>$2</em>'
+    );
+
+
+  /*
+    Inline code
+  */
+
+  text =
+    text.replace(
+      /`(.+?)`/g,
+      '<code>$1</code>'
+    );
+
+
+  /*
+    Links
+  */
+
+  text =
+    text.replace(
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
+
+
+  return text;
+}
+
+
+/* ============================================================
+   SAFE ESCAPE
+============================================================ */
+
+function escapeHtml(value){
+
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+
+}
+
+
+function escapeAttr(value){
+
+  return escapeHtml(value);
+
+}
+
+
+/* ============================================================
+   APPEND RESULT
+============================================================ */
+
+function appendResult(text){
+
+  const previousResults =
+    $('out').querySelectorAll('.result-block').length;
+
+  const wrapper =
+    document.createElement('div');
+
+  wrapper.className =
+    'result-block';
+
+  const label =
+    document.createElement('div');
+
+  label.className =
+    'result-label';
+
+  label.textContent =
+    previousResults === 0
+      ? 'ANALISIS AWAL'
+      : `JAWABAN LANJUTAN #${previousResults}`;
+
+  wrapper.appendChild(label);
+
+  const content =
+    document.createElement('div');
+
+  content.innerHTML =
+    renderMarkdown(text);
+
+  wrapper.appendChild(content);
+
+  $('out').appendChild(wrapper);
+
+  wrapper.scrollIntoView({
+    behavior:'smooth',
+    block:'start'
+  });
+
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+function setStatus(message,type='normal'){
+
+  const status =
+    $('status');
+
+  status.textContent =
+    message;
+
+  status.classList.remove(
+    'err',
+    'success'
+  );
+
+
+  if(type === 'error'){
+    status.classList.add('err');
+  }
+
+  if(type === 'success'){
+    status.classList.add('success');
+  }
+
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+function setLoading(isLoading){
+
+  $('spinner')
+    .classList.toggle(
+      'show',
+      isLoading
+    );
+
+}
+
+
+/* ============================================================
+   ERROR NORMALIZER
+============================================================ */
+
+function normalizeError(error){
+
+  const message =
+    String(
+      error?.message ||
+      error ||
+      'Terjadi kesalahan.'
+    );
+
+
+  if(/API key/i.test(message)){
+
+    return (
+      'API key Gemini bermasalah. ' +
+      'Periksa API key dan pastikan API Gemini tersedia untuk project tersebut.'
+    );
+
+  }
+
+
+  if(/429|quota|rate limit/i.test(message)){
+
+    return (
+      'Quota atau rate limit Gemini tercapai. ' +
+      'Tunggu beberapa saat atau gunakan model Flash-Lite.'
+    );
+
+  }
+
+
+  if(/403|permission/i.test(message)){
+
+    return (
+      'Akses API ditolak. Periksa API key, project, dan izin Gemini API.'
+    );
+
+  }
+
+
+  if(/404|not found/i.test(message)){
+
+    return (
+      'Model tidak ditemukan. Coba pilih model Gemini lain dari daftar.'
+    );
+
+  }
+
+
+  if(/Failed to fetch|NetworkError|network/i.test(message)){
+
+    return (
+      'Tidak dapat terhubung ke Gemini. ' +
+      'Periksa koneksi internet atau konfigurasi browser.'
+    );
+
+  }
+
+
+  return message;
+
+}
+
+
+/* ============================================================
+   SLEEP
+============================================================ */
+
+function sleep(ms){
+
+  return new Promise(
+    resolve => setTimeout(resolve,ms)
+  );
+
+}
+
+
+/* ============================================================
+   KEYBOARD SHORTCUT
+============================================================ */
+
+document.addEventListener('keydown',event => {
+
+  /*
+    Ctrl + Enter pada textarea kasus/tugas
+    menjalankan analisis.
+  */
+
+  if(
+    event.ctrlKey &&
+    event.key === 'Enter' &&
+    (
+      event.target === $('kasus') ||
+      event.target === $('tugas')
+    )
+  ){
+
+    event.preventDefault();
+
+    $('go').click();
+
+  }
+
+});
+</script>
+
+</body>
+</html>

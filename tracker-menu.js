@@ -6,6 +6,7 @@
   const menuEntries = [
     { href: 'index.html', label: 'Vocabulary' },
     { href: 'mandarin.html', label: 'Vocabulary Mandarin' },
+    { href: 'fgd.html', label: 'FGD' },
     { href: 'publicspeaking.html', label: 'Public Speaking' },
     { href: 'chunk.html', label: 'ChunkSpeak' },
     { href: 'material.html', label: 'Material' },
