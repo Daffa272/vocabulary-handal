@@ -43,6 +43,7 @@
 
     *{
       box-sizing:border-box;
+      cursor:default;
     }
 
     html{
@@ -178,7 +179,7 @@
 
     button{
       font:inherit;
-      cursor:pointer;
+      cursor:default;
       border-radius:8px;
       border:1px solid var(--line);
       background:var(--panel);
@@ -206,7 +207,7 @@
 
     button:disabled{
       opacity:.55;
-      cursor:wait;
+      cursor:default;
       transform:none;
     }
 
@@ -412,7 +413,7 @@
 <body>
 
 <nav
-  class="global-nav"
+  class="global-nav hidden"
   aria-label="Menu navigasi utama"
   style="position:sticky;top:0;z-index:50;background:var(--panel);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;"
 ></nav>
@@ -517,6 +518,22 @@
       Untuk website publik dengan satu API key milik Anda, gunakan backend/serverless
       function agar key tidak terekspos di browser.
     </div>
+  </section>
+
+  <section>
+    <h2>Motivasi</h2>
+
+    <label for="motivasi">Apa motivasi Anda menggunakan alat ini?</label>
+    <textarea
+      id="motivasi"
+      class="medium"
+      placeholder="Contoh: Saya ingin melatih kemampuan analisis kasus, memahami akar masalah, dan meningkatkan kepercayaan diri saat FGD."
+    ></textarea>
+
+    <p class="note">
+      Isi motivasi Anda di sini. Catatan ini akan disimpan di browser Anda dan
+      dapat membantu personalisasi analisis saat Anda menggunakan alat ini.
+    </p>
   </section>
 
 
@@ -815,6 +832,8 @@ GAYA BAHASA DAN KOMUNIKASI
 - Terapkan hanya bagian analisis yang relevan dengan permintaan pengguna.
   Jangan menyajikan semua bagian jika tidak diminta.
 - Jika pengguna meminta revisi draf, fokus pada revisi yang diminta saja.
+- Dalam draf apa pun yang akan diucapkan pengguna, jangan menyebut AI atau
+  asal bantuan.
 
 ==============================
 ATURAN BUKTI
@@ -941,6 +960,58 @@ Jika terdapat pendapat peserta, uraikan:
 - kekuatan argumen,
 - kelemahan atau celah,
 - titik sepakat dan titik perbedaan.
+
+==============================
+PRINSIP PERILAKU DALAM FGD
+==============================
+
+Penilaian FGD mencakup inisiatif, kualitas ide, cara menyampaikan,
+kemampuan mengarahkan diskusi, dan kepedulian terhadap peserta lain.
+Terapkan prinsip berikut hanya jika relevan dengan permintaan pengguna.
+
+1. Sikap terhadap pendapat orang lain
+- Jangan menghafal atau menyalin pendapat peserta lain. Bantu pengguna
+  mempertahankan sudut pandangnya sendiri.
+- Jika pengguna setuju, gunakan pola: setuju, lalu tambahkan catatan.
+  Contoh: "Saya setuju dengan gagasan tersebut, namun ada beberapa catatan
+  yang perlu diperhatikan..."
+- Jika pengguna tidak setuju, tantang dengan pertanyaan, bukan pernyataan
+  yang menyerang. Sediakan 2-3 pertanyaan penantang yang bisa diajukan,
+  lalu bantu menggiring diskusi kembali ke argumen pengguna.
+
+2. Inisiatif
+- Jika diminta, buat kalimat pembuka diskusi (sekitar 20 detik) yang
+  memuat inti masalah dan usulan arah diskusi.
+- Sediakan kalimat untuk mengingatkan waktu dengan sopan.
+
+3. Kualitas ide
+- Solusi sebaiknya cerdas, kreatif, dan unik, tetapi tetap relevan dengan
+  situasi kasus dan realistis untuk diterapkan.
+- Tambahkan penilaian kualitatif "Kebaruan dan relevansi" (tidak ikut
+  perhitungan skor berbobot) untuk membedakan alternatif.
+- Jangan memberi usulan yang terlalu muluk atau sulit diimplementasikan.
+
+4. Cara menyampaikan
+- Susun catatan awal yang ringkas dalam dua blok: "Identifikasi Situasi
+  dan Masalah" dan "Solusi terhadap Permasalahan", berupa poin-poin
+  singkat. Elaborasi dilakukan secara lisan saat diskusi.
+- Jaga porsi bicara agar proporsional. Jangan memaksakan kehendak, tetapi
+  tetap tampil yakin dan jelas.
+- Jika sesuai, sarankan visualisasi sederhana (misalnya papan tulis)
+  untuk memudahkan peserta lain memahami ide.
+
+5. Mengarahkan diskusi
+- Jika diminta, buat draf kesimpulan yang merangkum titik sepakat,
+  titik beda, dan usulan keputusan. Kesimpulan yang baik menunjukkan
+  dominasi yang positif, bukan memaksakan.
+- Jika diskusi buntu, sediakan satu kalimat untuk mengarahkan kembali
+  fokus secara halus.
+
+6. Kepedulian terhadap peserta lain
+- Sediakan kalimat untuk mengundang peserta yang pasif berbicara.
+  Contoh: "Bagaimana pendapat Anda mengenai hal ini?"
+- Sediakan kalimat untuk menengahi peserta yang terlalu dominan secara
+  santun, tanpa menyinggung.
 `;
 
 
@@ -969,6 +1040,7 @@ const formFieldIds = [
   'detail',
   'thinking',
   'outputLanguage',
+  'motivasi',
   'kasus',
   'companyContext',
   'productName',
@@ -1095,6 +1167,10 @@ $('outputLanguage').value =
   store('fgd_output_language') ||
   'id';
 
+$('motivasi').value =
+  store('fgd_motivasi') ||
+  '';
+
 
 /* ============================================================
    SAVE SETTINGS
@@ -1126,6 +1202,10 @@ $('thinking').addEventListener('change', () => {
 
 $('outputLanguage').addEventListener('change', () => {
   store('fgd_output_language', $('outputLanguage').value);
+});
+
+$('motivasi').addEventListener('input', () => {
+  store('fgd_motivasi', $('motivasi').value);
 });
 
 
@@ -1310,6 +1390,7 @@ Gunakan struktur:
 Posisi → alasan → bukti → usulan → undangan tanggapan.
 
 Pengguna harus terdengar percaya diri tetapi tidak memaksakan pendapat.
+Jika diminta, sertakan kalimat pembuka diskusi dan pengingat waktu yang sopan.
 `,
 
   kedua: `
@@ -1321,6 +1402,8 @@ Tangkap inti → setuju/tambah/tantang → alasan → bukti →
 pertanyaan klarifikasi → alternatif.
 
 Rujuk pendapat peserta secara spesifik jika tersedia.
+Jika setuju: setuju, lalu tambahkan catatan. Jika tidak setuju: tantang dengan
+pertanyaan, lalu giring kembali ke argumen pengguna.
 `,
 
   penyimpul: `
@@ -1332,6 +1415,7 @@ Yang disepakati → yang belum disepakati →
 rekomendasi → tindak lanjut.
 
 Jangan menambahkan opini baru yang tidak berasal dari diskusi.
+Tunjukkan dominasi yang positif, dan rangkul peserta yang belum berbicara.
 `
 };
 
@@ -1440,6 +1524,9 @@ Berikan:
 8. Draf opini 30 detik
 9. Draf opini 60 detik
 10. Pertanyaan yang mungkin muncul
+11. Pertanyaan penantang untuk peserta lain
+12. Catatan ringkas dua blok (Identifikasi Situasi dan Masalah, Solusi)
+13. Kalimat membuka diskusi dan merangkul peserta pasif
 `,
 
     cepat: `
@@ -1494,6 +1581,9 @@ ${roleGuide[$('peran').value]}
 
 PANDANGAN AWAL PENGGUNA:
 ${$('awal').value.trim() || '(Tidak ada.)'}
+
+MOTIVASI PENGGUNA:
+${$('motivasi').value.trim() || '(Tidak ada.)'}
 
 
 PENDAPAT PESERTA:

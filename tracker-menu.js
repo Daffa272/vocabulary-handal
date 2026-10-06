@@ -6,7 +6,10 @@
   const menuEntries = [
     { href: 'index.html', label: 'Vocabulary' },
     { href: 'mandarin.html', label: 'Vocabulary Mandarin' },
+    { href: 'convert.html', label: 'Convert' },
     { href: 'fgd.html', label: 'FGD' },
+    { href: 'dod.html', label: 'Tanya (DOD)' },
+    { href: 'supply.html', label: 'Supply' },
     { href: 'publicspeaking.html', label: 'Public Speaking' },
     { href: 'chunk.html', label: 'ChunkSpeak' },
     { href: 'material.html', label: 'Material' },
@@ -56,12 +59,27 @@
       color: #7c2d12;
       border-color: #fdba74;
     }
+    @media (max-width: 820px) {
+      .global-nav {
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto;
+      }
+    }
   `;
   document.head.appendChild(style);
 
-  const navigation = document.querySelector('.global-nav, body > nav.nav');
-  if (!navigation) return;
+  let navigation = document.querySelector('.global-nav, body > nav.nav');
+  if (!navigation) {
+    navigation = document.createElement('nav');
+    navigation.className = 'global-nav';
+    navigation.setAttribute('aria-label', 'Menu navigasi utama');
+    navigation.style.cssText = 'position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;box-shadow:0 8px 18px rgba(15,23,42,0.04);';
+    document.body.insertBefore(navigation, document.body.firstElementChild);
+  }
 
+  navigation.classList.remove('hidden');
+  navigation.removeAttribute('hidden');
   navigation.replaceChildren();
 
   const navEntries = menuEntries.map(({ href, label }) => {

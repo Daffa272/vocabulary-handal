@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Materi Supply Chain Management</title>
+<script defer src="tracker-menu.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f6f7;--card:#fff;--ink:#12263a;--mute:#5a6b7a;--line:#d5e0e5;--acc:#0e7c86;--acc2:#e0a526;--soft:#e2f0f1;--bad:#b4402f;--good:#1f7a4d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1b26;--card:#16283a;--ink:#e6eef3;--mute:#9db0bf;--line:#26405a;--acc:#4cc3cc;--acc2:#f0bd4a;--soft:#17394a;--bad:#ee8a78;--good:#6fd29b}}
+:root[data-theme="dark"]{--bg:#0f1b26;--card:#16283a;--ink:#e6eef3;--mute:#9db0bf;--line:#26405a;--acc:#4cc3cc;--acc2:#f0bd4a;--soft:#17394a;--bad:#ee8a78;--good:#6fd29b}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.15;margin:0}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1180px;margin:0 auto}
+#nav{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;overflow:auto;padding:28px 18px;border-right:1px solid var(--line)}
+#nav b{font:800 18px "Bricolage Grotesque",sans-serif;display:block;margin-bottom:14px}
+#nav a{display:block;padding:6px 10px;color:var(--mute);text-decoration:none;font-size:14px;border-left:3px solid transparent;border-radius:0 6px 6px 0}
+#nav a:hover,#nav a.on{color:var(--ink);background:var(--soft);border-left-color:var(--acc)}
+#nav a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+main{padding:40px 32px 80px;min-width:0}
+.hero{padding-bottom:28px}
+.hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;letter-spacing:-.02em;max-width:14ch}
+.hero p{color:var(--mute);max-width:56ch;margin:14px 0 26px}
+.chain{display:flex;overflow-x:auto;gap:0;padding-bottom:6px}
+.chain div{flex:1 0 auto;min-width:104px;text-align:center;padding:12px 10px;background:var(--acc);color:#fff;font-weight:600;font-size:14px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%,14px 50%);margin-left:-8px}
+:root[data-theme="dark"] .chain div{color:#06232a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .chain div{color:#06232a}}
+.chain div:first-child{margin-left:0;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%)}
+.chain div:nth-child(even){background:var(--acc2);color:#2b2000}
+section{margin-top:48px;scroll-margin-top:16px}
+section>h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:6px}
+section>.sub{color:var(--mute);margin:0 0 18px}
+h3{font-size:19px;margin:24px 0 8px}
+p{margin:0 0 12px;max-width:72ch}
+ul,ol{padding-left:22px;margin:0 0 14px;max-width:72ch}li{margin:3px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.grid .card{margin:0}
+.grid h3{margin-top:0;font-size:17px}
+.formula{background:var(--soft);border-left:4px solid var(--acc);padding:12px 16px;border-radius:0 8px 8px 0;font:600 16px/1.5 "Instrument Sans",sans-serif;margin:12px 0;overflow-x:auto;max-width:72ch}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
+.flow span{background:var(--card);border:1px solid var(--line);padding:5px 12px;border-radius:999px;font-size:14px}
+.flow i{color:var(--acc);font-style:normal;font-weight:700}
+.tw{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:15px}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+th{background:var(--soft)}
+.note{border-left:4px solid var(--acc2);background:var(--card);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;max-width:72ch}
+.bad{color:var(--bad)}.good{color:var(--good)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.calc label{display:block;font-size:14px;color:var(--mute);margin-top:10px}
+.calc input{width:100%;max-width:240px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.calc .res{margin-top:16px;padding:14px 16px;border-radius:8px;font-weight:600}
+.res.go{background:var(--soft);border:2px solid var(--bad)}.res.ok{background:var(--soft);border:2px solid var(--good)}
+.loop{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin:14px 0}
+.mb{display:none;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 14px}
+.mb select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+@media(max-width:820px){.wrap{display:block}#nav{display:none}.mb{display:block}main{padding:24px 16px 60px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="mb"><select id="jump" aria-label="Lompat ke bagian"></select></div>
+<div class="wrap">
+<nav id="nav" aria-label="Daftar isi"><b>Daftar isi</b></nav>
+<main>
+<header class="hero">
+<h1>Supply Chain Management</h1>
+<p>Catatan belajar dari dasar sampai studi kasus: struktur, KPI, forecasting, inventory, procurement, logistik, sampai total biaya.</p>
+<div class="chain" aria-label="Alur supply chain"><div>Supplier</div><div>Procurement</div><div>Manufacturing</div><div>Warehouse</div><div>Distributor</div><div>Retailer</div><div>Customer</div></div>
+</header>
+
+<section id="s1"><h2>1. Fundamentals of Supply Chain Management</h2>
+<h3>Apa itu Supply Chain?</h3>
+<p>Supply chain adalah rangkaian aktivitas dan pihak yang terlibat dalam menghasilkan suatu produk atau jasa sampai diterima konsumen.</p>
+<div class="flow"><span>Supplier bahan baku</span><i>→</i><span>Pabrik</span><i>→</i><span>Warehouse</span><i>→</i><span>Distributor</span><i>→</i><span>Retail</span><i>→</i><span>Konsumen</span></div>
+<p>Contoh mie instan: Petani gandum → Supplier tepung → Pabrik → Gudang → Distributor → Indomaret → Konsumen.</p>
+<h3>Apa itu Supply Chain Management?</h3>
+<p>SCM adalah proses mengelola seluruh aliran <b>material, informasi, uang, dan produk</b> dari supplier sampai konsumen akhir secara efisien dan terintegrasi.</p>
+<h3>Tujuan SCM</h3>
+<div class="formula">Right Product + Right Quantity + Right Quality + Right Place + Right Time + Right Cost</div>
+<p>Produk yang tepat, jumlah tepat, kualitas tepat, lokasi tepat, waktu tepat, dan biaya efisien.</p>
+<h3>Aktivitas utama</h3>
+<div class="flow"><span>Planning</span><span>Procurement</span><span>Manufacturing</span><span>Inventory</span><span>Warehousing</span><span>Transportation</span><span>Distribution</span><span>Customer service</span></div>
+</section>
+
+<section id="s2"><h2>2. Supply Chain Structure &amp; Flow</h2>
+<div class="grid">
+<div class="card"><h3>Upstream</h3><p>Berhubungan dengan supplier.</p><p><small>Supplier bahan baku → Supplier komponen → Manufacturer</small></p></div>
+<div class="card"><h3>Internal</h3><p>Aktivitas di dalam perusahaan.</p><p><small>Purchasing → Production → Warehouse</small></p></div>
+<div class="card"><h3>Downstream</h3><p>Berhubungan dengan customer.</p><p><small>Manufacturer → Distributor → Retailer → Customer</small></p></div>
+</div>
+<h3>Tiga flow utama</h3>
+<p>Aliran supply chain bukan cuma barang.</p>
+<div class="tw"><table><tr><th>Flow</th><th>Arah</th><th>Contoh</th></tr>
+<tr><td><b>Material</b></td><td>Supplier → Manufacturer → Customer</td><td>Barang bergerak</td></tr>
+<tr><td><b>Information</b></td><td>Dua arah: Customer ↔ Retailer ↔ Distributor ↔ Manufacturer ↔ Supplier</td><td>Forecast demand, purchase order, sales data, inventory level</td></tr>
+<tr><td><b>Financial</b></td><td>Berlawanan: Customer → Retailer → Distributor → Manufacturer → Supplier</td><td>Pembayaran</td></tr></table></div>
+</section>
+
+<section id="s3"><h2>3. Supply Chain Strategy &amp; Objectives</h2>
+<p>SCM bukan sekadar mengirim barang. Perusahaan harus menentukan strategi lewat pertanyaan seperti:</p>
+<ul><li>Berapa banyak dan kapan harus produksi?</li><li>Berapa banyak inventory?</li><li>Supplier mana, satu atau banyak?</li><li>Produksi sendiri atau outsourcing?</li><li>Bagaimana distribusinya?</li></ul>
+<h3>Contoh strategi: perusahaan fashion</h3>
+<div class="two">
+<div class="card"><h3>Make to Stock</h3><p>Produk dibuat dulu berdasarkan forecast.</p><p><b>Cocok untuk:</b> permintaan relatif stabil, produksi massal.</p></div>
+<div class="card"><h3>Make to Order</h3><p>Produk dibuat setelah customer order.</p><p><b>Cocok untuk:</b> produk custom, produk mahal, demand tidak pasti.</p></div>
+</div>
+<h3>Tujuan utama SCM</h3>
+<div class="tw"><table><tr><th>Tujuan</th><th>Penjelasan</th></tr><tr><td>Cost</td><td>Menekan biaya</td></tr><tr><td>Speed</td><td>Mempercepat delivery</td></tr><tr><td>Quality</td><td>Menjaga kualitas</td></tr><tr><td>Flexibility</td><td>Mampu menghadapi perubahan demand</td></tr><tr><td>Reliability</td><td>Pengiriman konsisten</td></tr><tr><td>Customer Service</td><td>Meningkatkan kepuasan pelanggan</td></tr></table></div>
+</section>
+
+<section id="s4"><h2>4. Supply Chain Performance &amp; KPI</h2>
+<p>KPI (Key Performance Indicator) adalah indikator untuk mengukur apakah supply chain bekerja dengan baik.</p>
+<h3>1. On-Time Delivery (OTD)</h3>
+<p>Persentase pengiriman tepat waktu.</p>
+<div class="formula">OTD = (Pengiriman tepat waktu ÷ Total pengiriman) × 100%</div>
+<p>Contoh: 100 pengiriman, 95 tepat waktu → OTD = 95/100 × 100% = <b>95%</b>.</p>
+<h3>2. Inventory Turnover</h3>
+<div class="formula">Inventory Turnover = COGS ÷ Average Inventory</div>
+<p>Makin tinggi biasanya inventory makin efisien, tetapi terlalu tinggi bisa menyebabkan stockout.</p>
+<div class="grid">
+<div class="card"><h3>3. Stockout Rate</h3><p>Seberapa sering perusahaan kehabisan barang. Makin rendah makin baik.</p></div>
+<div class="card"><h3>4. Order Fulfillment Rate</h3><p>Kemampuan perusahaan memenuhi order customer.</p></div>
+<div class="card"><h3>5. Lead Time</h3><p>Waktu dari order sampai produk diterima. Makin pendek makin baik, selama biaya dan kualitas terkendali.</p></div>
+</div>
+<div class="flow"><span>Order</span><i>→</i><span>Processing</span><i>→</i><span>Production</span><i>→</i><span>Shipping</span><i>→</i><span>Delivery</span></div>
+</section>
+
+<section id="s5"><h2>5. Demand Planning Fundamentals</h2>
+<p>Demand planning adalah proses memperkirakan berapa banyak produk yang dibutuhkan customer di masa depan.</p>
+<div class="tw"><table style="max-width:320px"><tr><th>Bulan</th><th>Penjualan</th></tr><tr><td>Januari</td><td>1.000</td></tr><tr><td>Februari</td><td>1.100</td></tr><tr><td>Maret</td><td>1.200</td></tr><tr><td>April</td><td><b>?</b></td></tr></table></div>
+<h3>Faktor yang memengaruhi demand</h3>
+<div class="flow"><span>Harga</span><span>Promosi</span><span>Musim</span><span>Tren</span><span>Kompetitor</span><span>Kondisi ekonomi</span><span>Hari raya</span><span>Perilaku konsumen</span></div>
+<p>Contoh: penjualan pakaian muslim biasanya naik menjelang Ramadan dan Idulfitri.</p>
+</section>
+
+<section id="s6"><h2>6. Demand Forecasting &amp; Inventory Impact</h2>
+<p>Forecasting memperkirakan demand masa depan memakai data historis dan informasi lainnya.</p>
+<h3>Metode sederhana: Moving Average</h3>
+<p>Penjualan: Januari 100, Februari 120, Maret 140.</p>
+<div class="formula">Forecast April = (100 + 120 + 140) ÷ 3 = 120 unit</div>
+<h3>Masalah forecast</h3>
+<p>Forecast tidak pernah 100% akurat.</p>
+<div class="two">
+<div class="card"><h3 class="bad">Underforecasting</h3><p>Forecast 1.000, actual 1.300.</p><ul><li>Stockout</li><li>Lost sales</li><li>Customer kecewa</li></ul></div>
+<div class="card"><h3 class="bad">Overforecasting</h3><p>Forecast 1.500, actual 1.000.</p><ul><li>Excess inventory</li><li>Storage cost naik</li><li>Risiko barang rusak/usang</li></ul></div>
+</div>
+</section>
+
+<section id="s7"><h2>7. Inventory Management Strategy</h2>
+<p>Inventory adalah persediaan untuk mendukung operasional atau memenuhi permintaan customer.</p>
+<div class="flow"><span>Raw material</span><span>Work in Process (WIP)</span><span>Finished goods</span><span>Spare parts</span></div>
+<h3>Kenapa butuh inventory?</h3>
+<p>Karena demand dan supply tidak selalu pasti. Contoh: toko menjual 100 unit/hari dan supplier butuh 5 hari untuk mengirim, jadi toko harus punya stok untuk kebutuhan selama lead time.</p>
+<h3>Safety Stock</h3>
+<p>Persediaan cadangan untuk menghadapi ketidakpastian. Contoh: demand normal 100 unit/hari tiba-tiba jadi 130 unit/hari; safety stock mencegah stockout.</p>
+<h3>Reorder Point (ROP)</h3>
+<p>Menentukan kapan perusahaan harus memesan ulang.</p>
+<div class="formula">ROP = Demand selama Lead Time + Safety Stock</div>
+<p>Contoh: demand 100/hari, lead time 5 hari, safety stock 200 → ROP = (100 × 5) + 200 = <b>700 unit</b>. Saat inventory mencapai 700, sebaiknya reorder.</p>
+<div class="card calc"><h3 style="margin-top:0">Coba hitung ROP</h3>
+<label for="d">Demand per hari (unit)</label><input id="d" type="number" min="0" value="1000">
+<label for="l">Lead time (hari)</label><input id="l" type="number" min="0" value="5">
+<label for="s">Safety stock (unit)</label><input id="s" type="number" min="0" value="1000">
+<label for="i">Inventory saat ini (unit)</label><input id="i" type="number" min="0" value="6000">
+<div class="res" id="out" role="status"></div></div>
+</section>
+
+<section id="s8"><h2>8. Inventory Control &amp; Trade-Off Analysis</h2>
+<div class="two">
+<div class="card"><h3 class="bad">Inventory terlalu sedikit</h3><ul><li>Stockout</li><li>Lost sales</li><li>Customer kecewa</li></ul></div>
+<div class="card"><h3 class="bad">Inventory terlalu banyak</h3><ul><li>Storage cost tinggi</li><li>Modal tertahan</li><li>Risiko obsolete</li><li>Risiko kerusakan</li></ul></div>
+</div>
+<div class="note">Tujuannya bukan "inventory sekecil mungkin", tetapi <b>inventory pada level yang optimal</b>.</div>
+<h3>Biaya inventory</h3>
+<div class="flow"><span>Ordering cost</span><span>Holding/carrying cost</span><span>Stockout cost</span><span>Purchase cost</span><span>Transportation cost</span></div>
+</section>
+
+<section id="s9"><h2>9. Procurement Strategy &amp; Supplier Management</h2>
+<p>Procurement adalah proses mendapatkan barang/jasa yang dibutuhkan perusahaan.</p>
+<ol><li>Need Identification</li><li>Supplier Search</li><li>Request for Quotation</li><li>Supplier Evaluation</li><li>Negotiation</li><li>Purchase Order</li><li>Receiving</li><li>Payment</li></ol>
+<h3>Supplier evaluation</h3>
+<p>Supplier tidak hanya dinilai dari harga.</p>
+<div class="tw"><table><tr><th>Faktor</th><th>Pertanyaan</th></tr><tr><td>Price</td><td>Apakah harga kompetitif?</td></tr><tr><td>Quality</td><td>Apakah kualitas konsisten?</td></tr><tr><td>Delivery</td><td>Apakah tepat waktu?</td></tr><tr><td>Capacity</td><td>Apakah mampu memenuhi volume?</td></tr><tr><td>Reliability</td><td>Apakah supplier dapat dipercaya?</td></tr><tr><td>Flexibility</td><td>Bisa menghadapi perubahan order?</td></tr></table></div>
+<h3>Single vs Multiple Supplier</h3>
+<div class="two">
+<div class="card"><h3>Single supplier</h3><p class="good">+ Hubungan lebih kuat</p><p class="good">+ Negosiasi volume lebih mudah</p><p class="bad">− Jika supplier bermasalah, supply bisa berhenti</p></div>
+<div class="card"><h3>Multiple suppliers</h3><p class="good">+ Risiko lebih tersebar</p><p class="good">+ Alternatif supply tersedia</p><p class="bad">− Pengelolaan lebih kompleks</p></div>
+</div>
+</section>
+
+<section id="s10"><h2>10. Logistics &amp; Warehouse Management</h2>
+<p>Logistics berfokus pada pergerakan dan penyimpanan barang.</p>
+<div class="flow"><span>Transportation</span><i>→</i><span>Warehousing</span><i>→</i><span>Distribution</span></div>
+<p>Warehouse bukan sekadar tempat menyimpan barang. Aktivitasnya:</p>
+<div class="flow"><span>Receiving</span><span>Inspection</span><span>Put-away</span><span>Storage</span><span>Picking</span><span>Packing</span><span>Shipping</span></div>
+<h3>Contoh: customer beli 3 produk lewat e-commerce</h3>
+<div class="flow"><span>Order masuk</span><i>→</i><span>Picking</span><i>→</i><span>Checking</span><i>→</i><span>Packing</span><i>→</i><span>Labeling</span><i>→</i><span>Shipping</span></div>
+</section>
+
+<section id="s11"><h2>11. Distribution &amp; Network Strategy</h2>
+<p>Distribusi menentukan bagaimana produk sampai ke customer.</p>
+<div class="two">
+<div class="card"><h3>Direct Distribution</h3><div class="flow"><span>Manufacturer</span><i>→</i><span>Customer</span></div><p>Contoh: perusahaan menjual langsung lewat website.</p></div>
+<div class="card"><h3>Indirect Distribution</h3><div class="flow"><span>Manufacturer</span><i>→</i><span>Distributor</span><i>→</i><span>Retailer</span><i>→</i><span>Customer</span></div></div>
+</div>
+<h3>Distribution Network</h3>
+<p>Perusahaan menentukan lokasi factory, warehouse, distribution center, dan retail, dengan menyeimbangkan <b>Cost ↔ Speed ↔ Customer Service</b>.</p>
+<div class="two">
+<div class="card"><h3>Warehouse dekat customer</h3><p class="good">+ Delivery lebih cepat</p><p class="bad">− Biaya warehouse bisa lebih mahal</p></div>
+<div class="card"><h3>Warehouse jauh</h3><p class="good">+ Biaya lokasi mungkin lebih murah</p><p class="bad">− Delivery lebih lama</p></div>
+</div>
+</section>
+
+<section id="s12"><h2>12. Supply Chain Budget &amp; Cost Management</h2>
+<div class="grid">
+<div class="card"><h3>Procurement</h3><p>Biaya membeli bahan baku.</p></div>
+<div class="card"><h3>Production</h3><p>Biaya menghasilkan produk.</p></div>
+<div class="card"><h3>Inventory</h3><p>Biaya menyimpan inventory.</p></div>
+<div class="card"><h3>Warehouse</h3><p>Sewa, listrik, tenaga kerja, maintenance.</p></div>
+<div class="card"><h3>Transportation</h3><p>Fuel, driver, tol, maintenance, freight.</p></div>
+<div class="card"><h3>Distribution</h3><p>Biaya mendistribusikan produk ke customer.</p></div>
+</div>
+<h3>Konsep penting: Total Supply Chain Cost</h3>
+<p>Jangan melihat biaya secara terpisah. Memilih supplier yang lebih jauh karena harga bahan lebih murah bisa membuat total biaya lebih mahal.</p>
+<div class="tw"><table><tr><th></th><th>Supplier A</th><th>Supplier B</th></tr><tr><td>Harga/unit</td><td>Rp10.000</td><td>Rp9.000</td></tr><tr><td>Transport</td><td>Rp500</td><td>Rp2.000</td></tr><tr><td><b>Total</b></td><td class="good"><b>Rp10.500</b></td><td class="bad"><b>Rp11.000</b></td></tr></table></div>
+<div class="note">Supplier B kelihatan lebih murah, tetapi lebih mahal secara total. Yang dilihat adalah <b>total cost of supply chain</b>, bukan hanya harga pembelian.</div>
+</section>
+
+<section id="s13"><h2>Konsep besar yang harus dipahami</h2>
+<p>Untuk kerja atau interview, jangan cuma hafal definisi. Pahami hubungan antar konsep.</p>
+<div class="loop"><div class="flow"><span>Demand</span><i>→</i><span>Demand forecast</span><i>→</i><span>Production plan</span><i>→</i><span>Procurement</span><i>→</i><span>Inventory</span><i>→</i><span>Warehousing</span><i>→</i><span>Distribution</span><i>→</i><span>Customer</span><i>→</i><span>Sales data</span><i>↻</i><span>kembali ke Demand</span></div></div>
+<div class="two">
+<div class="card"><h3 class="bad">Forecast salah</h3><p>Forecast salah → Production salah → Inventory terlalu banyak → Warehouse penuh → Cost naik → Profit turun.</p></div>
+<div class="card"><h3 class="good">Forecast akurat</h3><p>Forecast akurat → Production sesuai → Inventory optimal → Delivery baik → Customer puas → Cost lebih rendah.</p></div>
+</div>
+</section>
+
+<section id="s14"><h2>Contoh kasus SCM</h2>
+<p>Kamu Supply Chain Analyst di perusahaan minuman.</p>
+<ul><li>Demand = 1.000 botol/hari</li><li>Lead time supplier = 5 hari</li><li>Safety stock = 1.000 botol</li><li>Inventory saat ini = 6.000 botol</li></ul>
+<p><b>Pertanyaan:</b> apakah perusahaan harus reorder?</p>
+<div class="formula">ROP = (1.000 × 5) + 1.000 = 6.000</div>
+<div class="note">Inventory sekarang 6.000 botol, sama dengan ROP. Sudah mencapai Reorder Point, jadi perusahaan <b>harus melakukan reorder</b>.</div>
+</section>
+</main>
+</div>
+<script>
+(function(){
+var secs=[].slice.call(document.querySelectorAll('section')),nav=document.getElementById('nav'),sel=document.getElementById('jump');
+secs.forEach(function(s){var t=s.querySelector('h2').textContent;
+var a=document.createElement('a');a.href='#'+s.id;a.textContent=t;nav.appendChild(a);
+var o=document.createElement('option');o.value=s.id;o.textContent=t;sel.appendChild(o)});
+sel.onchange=function(){var e=document.getElementById(sel.value);if(e)e.scrollIntoView()};
+var links=[].slice.call(nav.querySelectorAll('a'));
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+x.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});secs.forEach(function(s){io.observe(s)})}
+var ids=['d','l','s','i'].map(function(x){return document.getElementById(x)}),out=document.getElementById('out');
+function calc(){var v=ids.map(function(e){return Math.max(0,parseFloat(e.value)||0)});
+var rop=v[0]*v[1]+v[2],f=function(n){return n.toLocaleString('id-ID')};
+var go=v[3]<=rop;out.className='res '+(go?'go':'ok');
+out.textContent='ROP = ('+f(v[0])+' × '+f(v[1])+') + '+f(v[2])+' = '+f(rop)+'. Inventory '+f(v[3])+(go?' sudah mencapai ROP: lakukan reorder.':' masih di atas ROP: belum perlu reorder.')}
+ids.forEach(function(e){e.addEventListener('input',calc)});calc();
+})();
+</script>
+</body>
+</html>
