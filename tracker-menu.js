@@ -21,6 +21,13 @@
     { href: 'journal.html', label: 'Jurnal Harian' },
     { href: 'note.html', label: 'Catatan' }
   ];
+  const dedicatedMenuEntries = [
+    { href: 'supply.html', label: 'Supply' },
+    { href: 'fgd.html', label: 'FGD' },
+    { href: 'dod.html', label: 'Tanya (DOD)' },
+    { href: 'convert.html', label: 'Convert' }
+  ];
+  const isDedicatedMenuPage = dedicatedMenuEntries.some(({ href }) => window.location.pathname.endsWith(href));
 
   const style = document.createElement('style');
   style.textContent = `
@@ -59,11 +66,42 @@
       color: #7c2d12;
       border-color: #fdba74;
     }
+    .tracker-menu-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 1px solid #cbd5e1;
+      padding-left: 10px;
+    }
+    .tracker-menu-group-label {
+      color: #475569;
+      font-size: .75rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .tracker-menu-link--dedicated {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+      color: #3730a3;
+    }
+    .tracker-menu-link--dedicated:hover {
+      background: #e0e7ff;
+      color: #312e81;
+      border-color: #a5b4fc;
+    }
+    .tracker-menu-link--dedicated.tracker-menu-link--active {
+      background: #eafaf1;
+      color: #166534;
+      border-color: #b7e4c7;
+    }
     @media (max-width: 820px) {
       .global-nav {
         flex-wrap: nowrap !important;
         justify-content: flex-start !important;
         overflow-x: auto;
+      }
+      .tracker-menu-group {
+        flex-shrink: 0;
       }
     }
   `;
@@ -82,7 +120,8 @@
   navigation.removeAttribute('hidden');
   navigation.replaceChildren();
 
-  const navEntries = menuEntries.map(({ href, label }) => {
+  const visibleMenuEntries = isDedicatedMenuPage ? [] : menuEntries;
+  const navEntries = visibleMenuEntries.map(({ href, label }) => {
     const link = document.createElement('a');
     link.href = href;
     link.textContent = label;
@@ -95,8 +134,33 @@
 
   navEntries.forEach((link) => navigation.appendChild(link));
 
+  if (isDedicatedMenuPage) {
+    const group = document.createElement('div');
+    group.className = 'tracker-menu-group';
+    group.setAttribute('role', 'group');
+    group.setAttribute('aria-label', 'Menu khusus');
+
+    const label = document.createElement('span');
+    label.className = 'tracker-menu-group-label';
+    label.textContent = 'Menu khusus';
+    group.appendChild(label);
+
+    dedicatedMenuEntries.forEach(({ href, label: linkLabel }) => {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = linkLabel;
+      link.className = 'tracker-menu-link tracker-menu-link--dedicated';
+      if (window.location.pathname.endsWith(href)) {
+        link.classList.add('tracker-menu-link--active');
+      }
+      group.appendChild(link);
+    });
+
+    navigation.appendChild(group);
+  }
+
   const trackerLink = navigation.querySelector('a[href="https://tracker-lamaran-2026.vercel.app/"]');
-  if (!trackerLink) {
+  if (!isDedicatedMenuPage && !trackerLink) {
     const trackLink = document.createElement('a');
     trackLink.href = trackerUrl;
     trackLink.target = '_blank';
