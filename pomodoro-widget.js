@@ -81,6 +81,28 @@
         document.body.appendChild(widget);
     }
 
+    if (!widget.querySelector('#pomodoroTranslateForm')) {
+        const translator = document.createElement('section');
+        translator.className = 'pomodoro-translator';
+        translator.innerHTML = `
+            <h3 class="pomodoro-translator-title">Terjemahkan Inggris → Indonesia</h3>
+            <form id="pomodoroTranslateForm">
+                <label class="pomodoro-youtube-label" for="pomodoroTranslateInput">Teks bahasa Inggris</label>
+                <textarea id="pomodoroTranslateInput" maxlength="2000" placeholder="Ketik atau tempel teks bahasa Inggris..." aria-describedby="pomodoroTranslateNotice"></textarea>
+                <button id="pomodoroTranslateButton" type="submit">Terjemahkan</button>
+            </form>
+            <p id="pomodoroTranslateNotice" class="pomodoro-translate-notice">Teks akan dikirim ke Google Gemini untuk diterjemahkan.</p>
+            <div id="pomodoroTranslateStatus" class="pomodoro-translate-status" role="status" aria-live="polite"></div>
+            <div id="pomodoroTranslateResult" class="pomodoro-translate-result" lang="id" aria-live="polite"></div>`;
+        const youtubeLabel = widget.querySelector('.pomodoro-youtube-label');
+        if (youtubeLabel) {
+            widget.querySelector('.pomodoro-panel').insertBefore(translator, youtubeLabel);
+            const divider = document.createElement('div');
+            divider.className = 'pomodoro-divider';
+            translator.after(divider);
+        }
+    }
+
     const style = document.createElement('style');
     style.textContent = `
         #pomodoroWidget, #pomodoroWidget * { box-sizing: border-box; }
@@ -125,6 +147,16 @@
         #pomodoroWidget .pomodoro-youtube-form button { padding: 9px 11px; border-radius: 8px; color: #fff; background: #b91c1c; font-size: .82rem; }
         #pomodoroWidget .pomodoro-youtube-form button:hover { background: #991b1b; }
         #pomodoroWidget .pomodoro-youtube-error { min-height: 18px; margin-top: 5px; color: #b91c1c; font-size: .75rem; }
+        #pomodoroWidget .pomodoro-translator-title { margin: 0 0 8px; color: #172554; font-size: .88rem; }
+        #pomodoroWidget .pomodoro-translator form { display: grid; gap: 7px; }
+        #pomodoroWidget .pomodoro-translator textarea { width: 100%; min-height: 72px; resize: vertical; padding: 9px 10px; border: 1px solid #cbd5e1; border-radius: 8px; color: #172554; font: inherit; font-size: .82rem; }
+        #pomodoroWidget .pomodoro-translator textarea:focus { outline: 2px solid #fdba74; border-color: #f97316; }
+        #pomodoroWidget .pomodoro-translator form button { justify-self: start; padding: 8px 11px; border-radius: 8px; color: #fff; background: #ea580c; font-size: .82rem; }
+        #pomodoroWidget .pomodoro-translator form button:hover:not(:disabled) { background: #c2410c; }
+        #pomodoroWidget .pomodoro-translator form button:disabled { cursor: wait; opacity: .65; }
+        #pomodoroWidget .pomodoro-translate-notice, #pomodoroWidget .pomodoro-translate-status { margin: 6px 0 0; color: #64748b; font-size: .72rem; }
+        #pomodoroWidget .pomodoro-translate-result { display: none; margin-top: 8px; padding: 9px 10px; border-radius: 8px; background: #f1f5f9; color: #172554; font-size: .84rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+        #pomodoroWidget .pomodoro-translate-result:not(:empty) { display: block; }
         #pomodoroWidget .pomodoro-video { display: none; margin-top: 9px; overflow: hidden; aspect-ratio: 16 / 9; background: #0f172a; border-radius: 9px; }
         #pomodoroWidget .pomodoro-video.is-visible { display: block; }
         #pomodoroWidget .pomodoro-video iframe { display: block; width: 100%; height: 100%; border: 0; }
@@ -310,6 +342,67 @@
     byId('pomodoroMinimize').addEventListener('click', () => setCollapsed(true));
     byId('pomodoroExpand').addEventListener('click', () => setCollapsed(false));
     setCollapsed(localStorage.getItem(collapsedStorageKey) === 'true');
+
+    const translateForm = byId('pomodoroTranslateForm');
+    const translateInput = byId('pomodoroTranslateInput');
+    const translateButton = byId('pomodoroTranslateButton');
+    const translateStatus = byId('pomodoroTranslateStatus');
+    const translateResult = byId('pomodoroTranslateResult');
+    translateForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const text = translateInput.value.trim();
+        translateResult.textContent = '';
+        if (!text) {
+            translateStatus.textContent = 'Masukkan teks bahasa Inggris terlebih dahulu.';
+            translateInput.focus();
+            return;
+        }
+
+        const apiKey = localStorage.getItem('gemini_api_key')
+            || localStorage.getItem('chunkspeak_api_key')
+            || '';
+        if (!apiKey) {
+            translateStatus.textContent = 'Gemini API key belum disetel. Atur API key di halaman Vocabulary terlebih dahulu.';
+            return;
+        }
+
+        translateButton.disabled = true;
+        translateStatus.textContent = 'Sedang menerjemahkan dengan Gemini...';
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    systemInstruction: {
+                        parts: [{ text: 'Translate the user-provided English text into natural Indonesian. Preserve the meaning, tone, names, formatting, and line breaks. Return only the Indonesian translation without explanations or quotation marks.' }]
+                    },
+                    contents: [{ role: 'user', parts: [{ text }] }],
+                    generationConfig: { temperature: 0.2 }
+                }),
+                signal: AbortSignal.timeout(30000)
+            });
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data?.error?.message || `Gemini API merespons dengan status ${response.status}.`);
+            }
+            const translatedText = data?.candidates?.[0]?.content?.parts
+                ?.map(part => part.text || '')
+                .join('')
+                .trim();
+            if (!translatedText) throw new Error('Gemini tidak mengembalikan hasil terjemahan.');
+            translateResult.textContent = translatedText;
+            translateStatus.textContent = 'Terjemahan selesai.';
+        } catch (error) {
+            console.error('Pomodoro translation failed.', error);
+            translateStatus.textContent = error.name === 'TimeoutError'
+                ? 'Permintaan terjemahan melewati batas waktu. Coba lagi.'
+                : error instanceof TypeError
+                    ? 'Gemini tidak dapat diakses. Periksa koneksi internet lalu coba lagi.'
+                    : error.message || 'Terjemahan gagal. Silakan coba lagi.';
+        } finally {
+            translateButton.disabled = false;
+        }
+    });
 
     const youtubeInput = byId('pomodoroYoutubeUrl');
     const youtubeError = byId('pomodoroYoutubeError');

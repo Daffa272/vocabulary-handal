@@ -63,7 +63,7 @@
     -webkit-font-smoothing: antialiased;
     min-height: 100%;
   }
-  .journal-nav {
+  .global-nav {
     position: sticky;
     top: 0;
     z-index: 50;
@@ -71,48 +71,42 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    padding: 12px 20px;
-    background: rgba(255,255,255,0.92);
+    padding: 12px max(20px, calc((100vw - 980px) / 2));
+    background: var(--paper);
     border-bottom: 1px solid var(--line);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
   }
-  .journal-nav a {
-    padding: 8px 12px;
-    border-radius: 10px;
-    background: #f5f2ea;
-    border: 1px solid #d9d0bf;
-    color: #3a2415;
+  .global-nav a {
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
     text-decoration: none;
     font-weight: 700;
     font-size: 0.82rem;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
-  .journal-nav a:nth-child(odd) {
-    background: #eefbf6;
-    border-color: #bae6cf;
-    color: #155a3c;
-  }
-  .journal-nav a:nth-child(3n) {
-    background: #fef3c7;
-    border-color: #f4d78b;
-    color: #7c4a09;
-  }
-  .journal-nav a:nth-child(4n) {
-    background: #eef2ff;
-    border-color: #c7d2fe;
-    color: #312e81;
-  }
-  .journal-nav a:hover {
+  .global-nav a:hover {
     transform: translateY(-1px);
-    filter: brightness(0.98);
+    border-color: var(--pine);
+    color: var(--pine-deep);
   }
-  .journal-nav a.active {
-    background: #fff7ed;
-    color: #9a3412;
-    border-color: #fdba74;
-    box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.12);
+  .global-nav a.tracker-menu-link--active {
+    background: var(--pine);
+    border-color: var(--pine);
+    color: var(--paper);
+  }
+  @media (max-width: 640px) {
+    .global-nav {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding: 10px 14px;
+      scrollbar-width: thin;
+    }
+    .global-nav a { flex: 0 0 auto; }
   }
   .wrap {
     max-width: 980px;
@@ -567,10 +561,11 @@
     color: var(--muted);
   }
 </style>
+<script defer src="tracker-menu.js"></script>
 </head>
 <body>
-<div class="journal-nav" aria-label="Menu navigasi utama">
-  <a href="index.html">Vocabulary</a>
+<div class="global-nav" aria-label="Menu navigasi utama">
+  <a href="vocabulary.html">Vocabulary</a>
   <a href="mandarin.html">Vocabulary Mandarin</a>
   <a href="publicspeaking.html">Public Speaking</a>
   <a href="chunk.html">ChunkSpeak</a>

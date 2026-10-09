@@ -677,7 +677,7 @@ select:focus{
 <body>
 
 <div class="global-nav" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;box-shadow:0 8px 18px rgba(15,23,42,0.04);">
-    <a href="index.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Vocabulary</a>
+    <a href="vocabulary.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Vocabulary</a>
     <a href="publicspeaking.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Public Speaking</a>
     <a href="chunk.html" style="padding:8px 12px;border-radius:10px;background:#e0f2fe;color:#075985;text-decoration:none;font-weight:700;font-size:0.82rem;">ChunkSpeak</a>
     <a href="material.html" style="padding:8px 12px;border-radius:10px;background:#f8fafc;color:#0f172a;text-decoration:none;font-weight:700;font-size:0.82rem;">Material</a>
@@ -733,7 +733,7 @@ select:focus{
             ⚙ AI Settings
         </button>
 
-        <button type="button" onclick="window.location.href='index.html'">📚 Vocabulary</button>
+        <button type="button" onclick="window.location.href='vocabulary.html'">📚 Vocabulary</button>
         <button type="button" onclick="window.location.href='publicspeaking.html'">🗣 Public Speaking</button>
         <button type="button" onclick="window.location.href='kbbi.html'">📖 KBBI</button>
         <button type="button" onclick="window.location.href='transcript.html'">📝 Transcript</button>
@@ -2755,7 +2755,13 @@ Rules:
 3. Create 3-5 reusable chunks.
 4. Chunks should contain replaceable slots such as
    [V1], [V-ing], [time], [reason], [place], etc.
-5. Examples must demonstrate how the chunk can be reused.
+   For a verb slot, list every form that is grammatical in that
+   exact pattern, such as [V1/V2] or [V1/V2/V3] when all three
+   forms are possible. Include any required auxiliary in the
+   pattern before listing V3, and do not list forms that would
+   make the pattern ungrammatical.
+5. Examples must demonstrate how the chunk can be reused and
+   must match one of the verb forms listed in the pattern.
 6. Avoid overly formal textbook English.
 7. Alternatives should be natural alternatives to the question.
 8. The learner is Indonesian, so the translation should be Indonesian.
