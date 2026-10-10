@@ -1,0 +1,6 @@
+{
+  "name": "Power BI Academy — From Beginner to Data Analyst",
+  "description": "Platform pembelajaran interaktif Power BI dari dasar hingga mahir: Data Connection, Power Query, Data Modeling, DAX Formula, Visualisasi, Statistik Distribusi, Dashboard Studio, dan Studi Kasus.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

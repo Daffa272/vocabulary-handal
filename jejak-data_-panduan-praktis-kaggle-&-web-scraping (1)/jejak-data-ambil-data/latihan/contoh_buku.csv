@@ -1,0 +1,11 @@
+id,judul,kategori,harga_gbp,rating_bintang,tersedia,stok
+1,"A Light in the Attic",Poetry,51.77,3,True,22
+2,"Tipping the Velvet",Historical Fiction,53.74,1,True,20
+3,"Soumission",Fiction,50.10,1,True,20
+4,"Sharp Objects",Mystery,47.82,4,True,20
+5,"Sapiens: A Brief History of Humankind",History,54.23,5,True,20
+6,"The Requiem Red",Young Adult,22.65,1,True,19
+7,"The Dirty Little Secrets of Getting Your Dream Job",Business,33.34,4,True,19
+8,"The Coming Woman",Historical Fiction,17.93,3,True,19
+9,"The Boys in the Boat",History,22.60,4,True,19
+10,"The Black Maria",Poetry,52.15,1,True,19

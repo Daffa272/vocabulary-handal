@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pola Data: belajar statistik lewat eksplorasi</title>
+  <meta name="description" content="Laboratorium statistik interaktif untuk pemula: distribusi, spread, korelasi, sampling, inferensi, dan pola waktu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Lompat ke konten</a>
+
+<header class="topbar">
+  <a class="brand" href="#top">Pola Data</a>
+  <nav id="nav" aria-label="Navigasi modul">
+    <a href="#m1">Distribusi</a>
+    <a href="#m2">Spread</a>
+    <a href="#m3">Korelasi</a>
+    <a href="#m4">Sampling</a>
+    <a href="#m5">Inferensi</a>
+    <a href="#m6">Pola waktu</a>
+    <a href="#kuis">Kuis</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <h1>Data selalu punya pola. Belajar membacanya, satu titik demi satu titik.</h1>
+      <p class="lead">Pola Data adalah laboratorium statistik untuk pemula. Kamu tidak mulai dari rumus, tetapi dari grafik yang bisa diseret, diklik, dan diubah. Setiap perubahan memperlihatkan angkanya bergerak, lalu kamu belajar menafsirkannya.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#m1">Mulai dari Modul 1</a>
+        <a class="btn ghost" href="#kuis">Langsung ke kuis</a>
+      </div>
+      <p class="hero-note">Semua data di situs ini adalah <em>simulasi</em> yang dibuat untuk belajar. Tidak ada yang perlu diunduh atau didaftarkan.</p>
+    </div>
+    <div class="hero-lab" id="hero-lab"></div>
+  </section>
+
+  <!-- ===================== JALUR BELAJAR ===================== -->
+  <section class="path" aria-labelledby="path-title">
+    <h2 id="path-title">Jalur belajar enam modul</h2>
+    <ol class="path-list">
+      <li><a href="#m1"><b>Distribusi</b><span>Bentuk data, mean, median, modus</span></a></li>
+      <li><a href="#m2"><b>Spread</b><span>Standard deviation, IQR, pencilan</span></a></li>
+      <li><a href="#m3"><b>Korelasi</b><span>Scatter plot, r, regresi linear</span></a></li>
+      <li><a href="#m4"><b>Sampling</b><span>Standard error dan Central Limit Theorem</span></a></li>
+      <li><a href="#m5"><b>Inferensi</b><span>Confidence interval dan p-value</span></a></li>
+      <li><a href="#m6"><b>Pola waktu</b><span>Trend, seasonality, noise</span></a></li>
+    </ol>
+  </section>
+
+  <!-- ===================== MODUL 1 ===================== -->
+  <section class="module" id="m1" aria-labelledby="m1-title">
+    <div class="module-text">
+      <p class="module-no">Modul 1 dari 6</p>
+      <h2 id="m1-title">Distribusi: ke mana data berkumpul?</h2>
+      <p>Sebelum menghitung apa pun, lihat dulu bentuk datanya. <strong>Histogram</strong> membagi nilai ke dalam rentang yang disebut <em>bin</em> dan menghitung berapa data jatuh di tiap bin. Bentuknya menentukan ukuran pusat mana yang bisa dipercaya.</p>
+      <dl class="concept">
+        <dt>Mean</dt><dd>Jumlah semua nilai dibagi banyaknya data. Peka terhadap nilai ekstrem.</dd>
+        <dt>Median</dt><dd>Nilai tengah setelah data diurutkan. Tahan terhadap pencilan.</dd>
+        <dt>Mode (modus)</dt><dd>Nilai yang paling sering muncul, atau puncak tertinggi histogram.</dd>
+        <dt>Skewness</dt><dd>Ukuran kemiringan. Positif berarti ekor panjang di kanan, negatif berarti ekor panjang di kiri.</dd>
+      </dl>
+      <div class="mission">
+        <h3>Misi eksplorasi</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="m1-1"><span>Pilih <em>Tinggi badan</em>. Geser jumlah bin. Apakah mean dan median selalu hampir sama?</span></label></li>
+          <li><label><input type="checkbox" data-id="m1-2"><span>Pindah ke <em>Uang jajan</em>. Mean dan median berbeda; mana yang lebih mewakili mahasiswa biasa?</span></label></li>
+          <li><label><input type="checkbox" data-id="m1-3"><span>Pada <em>Tinggi badan</em>, klik <em>Tambah 5 pencilan</em>. Mana yang bergeser lebih jauh, mean atau median?</span></label></li>
+          <li><label><input type="checkbox" data-id="m1-4"><span>Buka <em>Nilai ujian</em> dengan bin 16 atau lebih. Di mana letak mean, dan adakah siswa di sana?</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-lab"><div id="lab1"></div></div>
+    <details class="discussion">
+      <summary>Pembahasan lengkap Modul 1</summary>
+      <div class="discussion-body">
+        <div>
+          <h3>Apa yang sebenarnya terjadi</h3>
+          <p>Pada data simetris seperti tinggi badan, mean dan median hampir berimpit sehingga memilih salah satunya tidak terlalu penting. Pada uang jajan dan waktu tunggu, sebagian kecil nilai besar membentuk ekor panjang di kanan. Nilai-nilai itu menarik mean ke atas, sedangkan median hanya peduli pada urutan. Karena itu mean selalu lebih besar daripada median pada distribusi miring ke kanan.</p>
+          <p>Pada nilai ujian, data berasal dari dua kelompok yang berbeda. Mean berada di lembah antara dua puncak, jadi tidak ada siswa yang benar-benar bernilai sekitar mean. Ini mengajarkan bahwa satu angka ringkasan bisa menyesatkan bila bentuk datanya tidak dilihat.</p>
+        </div>
+        <div>
+          <h3>Kesalahan yang sering terjadi</h3>
+          <ul>
+            <li>Melaporkan mean tanpa melihat histogram.</li>
+            <li>Menyimpulkan bentuk distribusi dari satu pilihan bin saja.</li>
+            <li>Menyebut median selalu lebih baik. Untuk total atau perencanaan anggaran, mean tetap relevan.</li>
+            <li>Mengira skewness mendekati nol pasti berarti normal. Distribusi dua puncak pun bisa memiliki skewness hampir nol.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== MODUL 2 ===================== -->
+  <section class="module" id="m2" aria-labelledby="m2-title">
+    <div class="module-text">
+      <p class="module-no">Modul 2 dari 6</p>
+      <h2 id="m2-title">Spread: seberapa beragam datanya?</h2>
+      <p>Dua kelompok dengan rata-rata sama bisa sangat berbeda. Ukuran sebaran (<em>spread</em>) menjawab pertanyaan: seberapa jauh data biasanya berada dari pusatnya?</p>
+      <dl class="concept">
+        <dt>Standard deviation (SD)</dt><dd>Rata-rata jarak data dari mean (dalam satuan yang sama dengan data). Peka terhadap pencilan.</dd>
+        <dt>Kuartil dan IQR</dt><dd>Q1 dan Q3 membatasi 50% data di tengah. IQR = Q3 − Q1. Tahan terhadap pencilan.</dd>
+        <dt>Boxplot</dt><dd>Kotak dari Q1 ke Q3 dengan garis median. Whisker menjangkau data yang masih dalam 1,5 × IQR.</dd>
+        <dt>Pencilan (outlier)</dt><dd>Titik di luar pagar 1,5 × IQR. Ini penanda untuk diselidiki, bukan perintah untuk dibuang.</dd>
+      </dl>
+      <div class="mission">
+        <h3>Misi eksplorasi</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="m2-1"><span>Bandingkan Kelas A dan B pada tabel. Statistik mana yang berbeda, dan mana yang hampir sama?</span></label></li>
+          <li><label><input type="checkbox" data-id="m2-2"><span>Aktifkan titik tambahan di Kelas C dan geser ke 100, lalu ke 5. Perhatikan mean, SD, median, dan IQR.</span></label></li>
+          <li><label><input type="checkbox" data-id="m2-3"><span>Cari nilai titik tambahan paling kecil yang <em>tidak</em> ditandai sebagai pencilan.</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-lab"><div id="lab2"></div></div>
+    <details class="discussion">
+      <summary>Pembahasan lengkap Modul 2</summary>
+      <div class="discussion-body">
+        <div>
+          <h3>Apa yang sebenarnya terjadi</h3>
+          <p>Kelas A dan B berbagi mean yang hampir sama, tetapi kelas B memiliki SD sekitar tiga kali lebih besar. Itu artinya di kelas B ada siswa yang sangat tinggi dan sangat rendah, sehingga satu strategi pengajaran untuk &ldquo;siswa rata-rata&rdquo; kurang cocok.</p>
+          <p>Saat satu titik ekstrem ditambahkan ke Kelas C, mean dan SD langsung bergerak karena keduanya menghitung selisih kuadrat dari mean. Median dan IQR hanya bergantung pada urutan data di bagian tengah, sehingga hampir tidak berubah. Itu sebabnya ringkasan <em>robust</em> seperti median dan IQR sering dipakai untuk data dengan pencilan.</p>
+        </div>
+        <div>
+          <h3>Kesalahan yang sering terjadi</h3>
+          <ul>
+            <li>Membandingkan dua kelompok hanya lewat mean.</li>
+            <li>Membuang pencilan otomatis tanpa mencari penyebabnya.</li>
+            <li>Menafsirkan SD sebagai jarak maksimum dari mean. SD adalah ukuran jarak <em>tipikal</em>.</li>
+            <li>Membandingkan SD dua variabel yang satuannya berbeda tanpa memperhatikan skala.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== MODUL 3 ===================== -->
+  <section class="module" id="m3" aria-labelledby="m3-title">
+    <div class="module-text">
+      <p class="module-no">Modul 3 dari 6</p>
+      <h2 id="m3-title">Korelasi dan regresi: apakah dua variabel bergerak bersama?</h2>
+      <p><strong>Scatter plot</strong> menempatkan tiap pengamatan sebagai titik berdasarkan dua variabel. Dari bentuk awannya, kita menilai arah dan kekuatan hubungan, lalu garis regresi merangkumnya.</p>
+      <dl class="concept">
+        <dt>Korelasi (r)</dt><dd>Angka −1 sampai +1 yang mengukur kekuatan dan arah hubungan <em>linear</em>.</dd>
+        <dt>Regresi linear</dt><dd>Garis y = intercept + slope × x yang paling dekat ke titik-titik (meminimalkan kuadrat residual).</dd>
+        <dt>R²</dt><dd>Proporsi variasi y yang dijelaskan oleh garis. Pada regresi sederhana, R² = r².</dd>
+        <dt>Residual</dt><dd>Selisih antara nilai sebenarnya dan nilai prediksi garis.</dd>
+      </dl>
+      <div class="mission">
+        <h3>Misi eksplorasi</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="m3-1"><span>Lihat <em>Jam belajar &amp; nilai</em> dan <em>Harga &amp; penjualan</em>. Apa beda arah dan tanda r?</span></label></li>
+          <li><label><input type="checkbox" data-id="m3-2"><span>Buka <em>Pupuk &amp; panen</em>. Nilai r kecil, tetapi apa yang kamu lihat di grafik?</span></label></li>
+          <li><label><input type="checkbox" data-id="m3-3"><span>Pada <em>Tanpa hubungan</em>, klik di pojok kanan bawah beberapa kali. Berapa titik yang kamu butuhkan untuk membuat r tampak &ldquo;bermakna&rdquo;?</span></label></li>
+          <li><label><input type="checkbox" data-id="m3-4"><span>Buka <em>Jam latihan soal &amp; skor</em>, lalu nyalakan <em>Warnai per kelompok</em>. Apa yang terjadi pada arah hubungannya?</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-lab"><div id="lab3"></div></div>
+    <details class="discussion">
+      <summary>Pembahasan lengkap Modul 3</summary>
+      <div class="discussion-body">
+        <div>
+          <h3>Apa yang sebenarnya terjadi</h3>
+          <p>Pada dataset linear, r dan R² memberi ringkasan yang masuk akal, dan slope bisa dibaca sebagai perubahan rata-rata y untuk setiap kenaikan satu satuan x. Pada dataset pupuk, hubungan nyata tetapi melengkung, jadi r mendekati nol padahal pola kuat. Pada dataset tanpa hubungan, r kecil memang pantas.</p>
+          <p>Dataset terakhir memperlihatkan <strong>Simpson&#39;s paradox</strong>. Di setiap kelas, makin lama berlatih berkaitan dengan skor lebih rendah (mungkin siswa yang kesulitan berlatih lebih lama). Tetapi kelas yang lebih tinggi punya skor dan jam latihan lebih besar, sehingga data gabungan tampak positif. Menggabungkan kelompok tanpa memeriksa strukturnya dapat membalik kesimpulan.</p>
+        </div>
+        <div>
+          <h3>Kesalahan yang sering terjadi</h3>
+          <ul>
+            <li>Menganggap korelasi sebagai bukti sebab-akibat.</li>
+            <li>Mengandalkan r tanpa melihat scatter plot.</li>
+            <li>Memakai garis regresi untuk memprediksi di luar rentang data (ekstrapolasi).</li>
+            <li>Mengabaikan titik berpengaruh yang menarik garis ke arahnya.</li>
+            <li>Mengira r = 0,5 berarti &ldquo;50% hubungan&rdquo;. Variasi yang dijelaskan adalah R² = 0,25.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== MODUL 4 ===================== -->
+  <section class="module" id="m4" aria-labelledby="m4-title">
+    <div class="module-text">
+      <p class="module-no">Modul 4 dari 6</p>
+      <h2 id="m4-title">Sampling: mengapa rata-rata sampel bisa dipercaya?</h2>
+      <p>Kita jarang bisa mengukur seluruh populasi. Kita mengambil sampel, menghitung rata-ratanya, dan bertanya: seberapa jauh angka itu bisa meleset? Jawabannya datang dari sebaran rata-rata sampel (<em>sampling distribution</em>).</p>
+      <dl class="concept">
+        <dt>Sampling distribution</dt><dd>Sebaran statistik (misalnya mean) bila pengambilan sampel diulang berkali-kali.</dd>
+        <dt>Standard error (SE)</dt><dd>Standard deviation dari sampling distribution; untuk mean, SE = σ/√n.</dd>
+        <dt>Central Limit Theorem</dt><dd>Untuk n cukup besar, rata-rata sampel berdistribusi mendekati normal apa pun bentuk populasinya.</dd>
+      </dl>
+      <div class="mission">
+        <h3>Misi eksplorasi</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="m4-1"><span>Pilih populasi <em>Miring ke kanan</em> dengan n = 1. Ambil 1.000 sampel. Bentuknya mirip populasi?</span></label></li>
+          <li><label><input type="checkbox" data-id="m4-2"><span>Naikkan n ke 5, 20, lalu 60, dan ambil 1.000 sampel tiap kali. Kapan bentuknya mulai mirip lonceng?</span></label></li>
+          <li><label><input type="checkbox" data-id="m4-3"><span>Bandingkan SD rata-rata sampel dengan standard error teoretis. Apa yang terjadi bila n naik empat kali?</span></label></li>
+          <li><label><input type="checkbox" data-id="m4-4"><span>Coba populasi <em>Dua puncak</em> dan <em>Rata</em>. Apakah hasil akhirnya tetap lonceng?</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-lab"><div id="lab4"></div></div>
+    <details class="discussion">
+      <summary>Pembahasan lengkap Modul 4</summary>
+      <div class="discussion-body">
+        <div>
+          <h3>Apa yang sebenarnya terjadi</h3>
+          <p>Dengan n = 1, rata-rata sampel sama dengan satu nilai acak, sehingga histogramnya meniru populasi. Dengan n yang lebih besar, nilai-nilai ekstrem saling mengimbangi di dalam satu sampel. Rata-rata menjadi makin terkonsentrasi di sekitar μ dan bentuknya makin simetris.</p>
+          <p>Lebar sebaran mengikuti σ/√n. Karena akar kuadrat, mengurangi SE menjadi setengah memerlukan sampel <em>empat kali</em> lebih besar. Pada populasi yang sangat miring, n = 30 kadang belum cukup; &ldquo;30&rdquo; adalah pedoman, bukan hukum.</p>
+        </div>
+        <div>
+          <h3>Kesalahan yang sering terjadi</h3>
+          <ul>
+            <li>Mengira CLT berarti <em>data</em> menjadi normal. Yang mendekati normal adalah <em>rata-rata sampel</em>.</li>
+            <li>Mencampuradukkan standard deviation (sebaran data) dengan standard error (sebaran rata-rata).</li>
+            <li>Mengira sampel besar yang bias menjadi akurat. Besar tidak memperbaiki sampel yang tidak acak.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== MODUL 5 ===================== -->
+  <section class="module" id="m5" aria-labelledby="m5-title">
+    <div class="module-text">
+      <p class="module-no">Modul 5 dari 6</p>
+      <h2 id="m5-title">Inferensi: seberapa yakin kita dari satu sampel?</h2>
+      <p>Inferensi mengubah hasil sampel menjadi pernyataan tentang populasi, lengkap dengan ukuran ketidakpastiannya. Dua alat utamanya adalah confidence interval dan uji hipotesis.</p>
+      <dl class="concept">
+        <dt>Confidence interval (CI)</dt><dd>Rentang perkiraan untuk parameter populasi. Tingkat kepercayaan 95% berarti 95% interval dari prosedur yang sama akan menangkap nilai sebenarnya.</dd>
+        <dt>Hipotesis nol (H₀)</dt><dd>Anggapan awal &ldquo;tidak ada perbedaan atau efek&rdquo; yang diuji terhadap data.</dd>
+        <dt>p-value</dt><dd>Peluang mendapatkan hasil seekstrem data kita bila H₀ benar. Bukan peluang H₀ benar.</dd>
+        <dt>Power</dt><dd>Peluang uji mendeteksi efek yang memang ada. Naik bila sampel besar atau data kurang beragam.</dd>
+      </dl>
+      <div class="mission">
+        <h3>Misi eksplorasi</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="m5-1"><span>Lakukan 50 survei beberapa kali pada CI 95%. Berapa kira-kira interval yang meleset?</span></label></li>
+          <li><label><input type="checkbox" data-id="m5-2"><span>Ganti ke 99%, lalu ke 90%. Bandingkan lebar interval dan jumlah yang meleset.</span></label></li>
+          <li><label><input type="checkbox" data-id="m5-3"><span>Di tab uji hipotesis, set selisih sebenarnya = 0 dan klik <em>Ulangi 200 eksperimen</em>. Berapa persen yang signifikan?</span></label></li>
+          <li><label><input type="checkbox" data-id="m5-4"><span>Set selisih = 4, bandingkan power saat n = 10 dan n = 80.</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-lab"><div id="lab5"></div></div>
+    <details class="discussion">
+      <summary>Pembahasan lengkap Modul 5</summary>
+      <div class="discussion-body">
+        <div>
+          <h3>Apa yang sebenarnya terjadi</h3>
+          <p>Pada simulasi CI, nilai sebenarnya (μ = 50) tetap. Yang berubah-ubah adalah interval karena tiap sampel berbeda. Sekitar 95 dari 100 interval menangkap μ, tetapi saat meneliti sungguhan kita hanya punya satu interval dan tidak tahu ia termasuk yang mana.</p>
+          <p>Pada uji hipotesis, saat tidak ada selisih sebenarnya, p-value tersebar merata dari 0 sampai 1; karena itu sekitar 5% eksperimen tampak &ldquo;signifikan&rdquo; hanya karena kebetulan. Bila selisih ada, p-value menumpuk di dekat nol, dan makin besar sampel, makin sering uji mendeteksinya.</p>
+        </div>
+        <div>
+          <h3>Kesalahan yang sering terjadi</h3>
+          <ul>
+            <li>Berkata &ldquo;peluang 95% mean berada di interval ini&rdquo; untuk satu interval yang sudah dihitung.</li>
+            <li>Menganggap p &lt; 0,05 berarti efek besar atau penting. Lihat ukuran selisih dan CI-nya.</li>
+            <li>Menganggap p &gt; 0,05 berarti tidak ada efek. Bisa jadi power-nya rendah.</li>
+            <li>Mengulang analisis sampai ada yang signifikan (p-hacking); eksperimen berulang di simulasi menunjukkan mengapa ini berbahaya.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== MODUL 6 ===================== -->
+  <section class="module" id="m6" aria-labelledby="m6-title">
+    <div class="module-text">
+      <p class="module-no">Modul 6 dari 6</p>
+      <h2 id="m6-title">Pola waktu: tren, musim, dan keributan</h2>
+      <p>Data yang dicatat dari waktu ke waktu biasanya tersusun dari beberapa lapis pola. Memisahkannya membantu kita membedakan perubahan nyata dari naik-turun biasa.</p>
+      <dl class="concept">
+        <dt>Trend</dt><dd>Arah jangka panjang: naik, turun, atau datar.</dd>
+        <dt>Seasonality</dt><dd>Pola yang berulang pada interval tetap, misalnya setiap bulan Desember.</dd>
+        <dt>Noise</dt><dd>Variasi acak yang tidak bisa dijelaskan tren maupun musim.</dd>
+        <dt>Moving average</dt><dd>Rata-rata bergulir yang menghaluskan deret waktu untuk memperjelas pola.</dd>
+      </dl>
+      <div class="mission">
+        <h3>Misi eksplorasi</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="m6-1"><span>Set kekuatan musiman dan noise ke 0. Lihat tren murni, lalu naikkan noise bertahap.</span></label></li>
+          <li><label><input type="checkbox" data-id="m6-2"><span>Set tren = 0 dan noise rendah. Bulan apa puncak dan lembahnya?</span></label></li>
+          <li><label><input type="checkbox" data-id="m6-3"><span>Geser window moving average ke 3, 6, lalu 12. Kapan pola musiman hilang?</span></label></li>
+          <li><label><input type="checkbox" data-id="m6-4"><span>Sisipkan lonjakan tak terduga. Apakah moving average 13 bulan masih menunjukkannya?</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="module-lab"><div id="lab6"></div></div>
+    <details class="discussion">
+      <summary>Pembahasan lengkap Modul 6</summary>
+      <div class="discussion-body">
+        <div>
+          <h3>Apa yang sebenarnya terjadi</h3>
+          <p>Deret ini dibangun dari tiga komponen: level yang naik atau turun sepanjang waktu, gelombang tahunan dengan puncak di Desember, dan noise acak. Saat noise kecil, ketiganya mudah dilihat. Saat noise membesar, mata kita mudah mengira naik-turun acak sebagai pola, dan mudah melewatkan pola nyata.</p>
+          <p>Moving average dengan window sepanjang satu siklus (12 bulan) menghapus komponen musiman karena setiap rata-rata mencakup satu putaran penuh. Window yang makin panjang menghaluskan lebih banyak, tetapi juga meredam lonjakan yang nyata dan menumpulkan perubahan arah.</p>
+        </div>
+        <div>
+          <h3>Kesalahan yang sering terjadi</h3>
+          <ul>
+            <li>Menyebut dua titik berturut-turut yang naik sebagai &ldquo;tren&rdquo;.</li>
+            <li>Membandingkan bulan musiman puncak dengan bulan biasa tanpa memperhitungkan musim.</li>
+            <li>Memakai window moving average yang terlalu panjang sehingga perubahan penting terlambat terlihat.</li>
+            <li>Menghapus lonjakan sebagai noise tanpa mengecek peristiwa di baliknya.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== KUIS ===================== -->
+  <section class="module quiz-section" id="kuis" aria-labelledby="kuis-title">
+    <div class="module-text">
+      <h2 id="kuis-title">Kuis: uji caramu membaca data</h2>
+      <p>Lima belas soal yang mencakup keenam modul. Jawab satu per satu; setelah memilih, kamu langsung melihat penjelasannya. Skor terbaik tersimpan di browser ini.</p>
+      <p class="muted">Tips: bila bingung, kembali ke modul terkait, ulangi misi, lalu coba lagi.</p>
+    </div>
+    <div class="module-lab">
+      <div class="plate quiz-plate"><div id="quiz-root"></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Jejak Data. Dibuat untuk belajar; semua dataset adalah simulasi dan dibangkitkan di browser kamu. Kode sumber ada di folder <code>js/</code>.</p>
+</footer>
+
+<script src="js/stats.js"></script>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/modul1.js"></script>
+<script src="js/modul2.js"></script>
+<script src="js/modul3.js"></script>
+<script src="js/modul4.js"></script>
+<script src="js/modul5.js"></script>
+<script src="js/modul6.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

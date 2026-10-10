@@ -1,0 +1,6 @@
+{
+  "name": "Financial Analysis Lab",
+  "description": "Interactive Financial Intelligence & Corporate Finance Platform for multi-statement analysis, ratios, forecasts, scenario modeling, and valuation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

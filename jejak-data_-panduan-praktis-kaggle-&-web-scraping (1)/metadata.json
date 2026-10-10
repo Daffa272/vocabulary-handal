@@ -1,0 +1,6 @@
+{
+  "name": "Jejak Data: Panduan Praktis Kaggle & Web Scraping",
+  "description": "Website pembelajaran interaktif hands-on untuk pemula: cara mengambil data dari Kaggle dan web scraping dengan Python, simulator inspect element, request/response, code builder, dataset explorer, kuis, dan panduan lengkap Windows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
