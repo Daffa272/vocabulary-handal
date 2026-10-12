@@ -126,7 +126,11 @@ input[type=range] { width: 100%; accent-color: var(--cobalt); height: 22px; marg
   border-top: 1.5px solid var(--ink);
   display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 20px 48px; align-items: start;
 }
-.module-text { position: sticky; top: 76px; }
+.module-text {
+  position: static;
+  top: auto;
+  min-width: 0;
+}
 .module-lab { min-width: 0; }
 .module .discussion { grid-column: 1 / -1; }
 .module-no { font-family: var(--font-ui); font-size: .9rem; font-weight: 600; color: var(--cobalt); margin: 0 0 6px; }
@@ -141,7 +145,11 @@ input[type=range] { width: 100%; accent-color: var(--cobalt); height: 22px; marg
 .mission h3 { font-family: var(--font-ui); font-size: 1rem; font-weight: 800; margin: 0 0 8px; }
 .mission ul { list-style: none; margin: 0; padding: 0; }
 .mission li { margin-bottom: 8px; }
-.mission label { display: flex; gap: 10px; align-items: flex-start; font-size: .93rem; line-height: 1.45; cursor: pointer; }
+.mission label {
+  display: flex; gap: 10px; align-items: flex-start; font-size: .93rem; line-height: 1.45; cursor: pointer;
+  min-width: 0;
+}
+.mission label span { overflow-wrap: anywhere; }
 .mission input { margin-top: 4px; width: 17px; height: 17px; flex: none; accent-color: var(--teal); }
 .mission input:checked + span { color: var(--ink-2); text-decoration: line-through; text-decoration-color: var(--rule); }
 

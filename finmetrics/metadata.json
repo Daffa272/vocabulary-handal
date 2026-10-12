@@ -1,0 +1,6 @@
+{
+  "name": "FinMetrics Lab - Analisis Laporan Keuangan",
+  "description": "Platform interaktif pembelajaran dan simulasi analisis laporan keuangan: Laba Rugi, Neraca, Arus Kas, Rasio Finansial, dan Studi Kasus.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
