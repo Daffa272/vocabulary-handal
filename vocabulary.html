@@ -178,16 +178,6 @@
         .weekly-correction-word { font-weight: 800; margin-bottom: 6px; }
         .weekly-correction-answer { color: var(--text-light); font-size: .9rem; line-height: 1.45; }
         .weekly-correction-note { margin-top: 6px; font-size: .85rem; color: var(--text-light); }
-        .weekly-word-builder { display: grid; gap: 12px; }
-        .weekly-word-builder-label { margin: 0; color: var(--text-light); font-size: .9rem; }
-        .weekly-word-bank, .weekly-word-answer { display: flex; flex-wrap: wrap; gap: 8px; min-height: 44px; padding: 10px; border: 1px dashed var(--border); border-radius: 10px; }
-        .weekly-word-bank { background: #f8fafc; }
-        .weekly-word-answer { background: #eef2ff; }
-        .weekly-word-tile { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: white; color: var(--text); font: inherit; cursor: pointer; }
-        .weekly-word-tile:hover:not(:disabled) { border-color: var(--primary); background: #eef2ff; }
-        .weekly-word-tile:disabled { opacity: .4; cursor: default; }
-        .weekly-word-answer .weekly-word-tile { border-color: #c7d2fe; background: white; }
-        .weekly-word-answer-empty { align-self: center; color: var(--text-light); font-size: .85rem; }
         .weekly-schedule-list { display: grid; gap: 10px; max-height: 55vh; overflow-y: auto; text-align: left; }
         .weekly-schedule-item { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: #f8fafc; }
         .weekly-schedule-word { font-weight: 800; color: var(--text); }
@@ -541,10 +531,11 @@
                 <button id="reviewLearningButton" class="btn-secondary btn-small" type="button" onclick="startFlashcardReview('learning')">🧠 Review Sedang Dipelajari</button>
                 <button id="reviewNewButton" class="btn-secondary btn-small" type="button" onclick="startFlashcardReview('new-learning')">🆕 Review Baru Masuk Dipelajari</button>
             </div>
-            <div class="review-mode-actions" aria-label="Tes mingguan kartu dikuasai">
+            <div class="review-mode-actions" aria-label="Tes mingguan arti kata">
                 <button id="weeklyMasteryTestButton" class="btn-success btn-small" type="button" onclick="startNewWeeklyMasteryTest()">📝 Tes Mingguan Baru</button>
                 <button class="btn-secondary btn-small" type="button" onclick="openWeeklyTestSchedule()">📅 Lihat Jadwal Tes Mingguan</button>
                 <div id="weeklyMasteryTestStatus" class="sidebar-desc" role="status" aria-live="polite" style="margin: 0; font-size: .82rem;"></div>
+                <div class="sidebar-desc" style="margin: 0; font-size: .82rem;">Penilaian tes mingguan hanya berdasarkan arti kata.</div>
             </div>
         </div>
         <div class="settings-bar" style="margin-bottom: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
@@ -688,9 +679,7 @@
     let quizSessionMode = 'ai';
     let weeklyMasteryTestScore = 0;
     let weeklyMasteryTestAnswers = [];
-    let weeklyChunkWordTokens = [];
-    let weeklyChunkSelectedTokens = [];
-    const weeklyMasteryTestStorageKey = 'english_weekly_mastery_test_v1';
+    const weeklyMasteryTestStorageKey = 'english_weekly_mastery_test_v2';
     let flashcardQueue = [];
     let currentFlashcardIndex = 0;
     let flashcardChunkQuestions = [];
@@ -2202,33 +2191,6 @@ WAJIB KEMBALIKAN OUTPUT HANYA DALAM FORMAT JSON SEPERTI BERIKUT TANPA TEKS LAIN 
         });
     }
 
-    function getCardChunkExamples(card) {
-        const savedChunks = getCardChunks(card);
-        if (savedChunks.length) return savedChunks;
-
-        const tenseExamples = ['present', 'past', 'present_perfect']
-            .map(tense => {
-                const example = card.tenses?.[tense];
-                if (!example?.form || !example.example_en || !example.example_id) return null;
-                return {
-                    pattern: example.form,
-                    rule: `Contoh pola ${tense.replace('_', ' ')}.`,
-                    example_en: example.example_en,
-                    example_id: example.example_id
-                };
-            })
-            .filter(Boolean);
-        if (tenseExamples.length) return tenseExamples;
-
-        const targetTranslation = String(card.translation || card.word).trim();
-        return [{
-            pattern: `S + discuss + "${card.word}" + in a report`,
-            rule: 'Gunakan pola ini untuk membahas istilah dalam konteks akademik.',
-            example_en: `Researchers discussed "${card.word}" in their report.`,
-            example_id: `Para peneliti membahas istilah "${targetTranslation}" dalam laporan mereka.`
-        }];
-    }
-
     function openWeeklyTestSchedule() {
         const scheduleList = document.getElementById('weeklyScheduleList');
         const summary = document.getElementById('weeklyScheduleSummary');
@@ -2282,6 +2244,7 @@ WAJIB KEMBALIKAN OUTPUT HANYA DALAM FORMAT JSON SEPERTI BERIKUT TANPA TEKS LAIN 
         const corrections = Array.isArray(items) ? items : [];
         const answersByWord = new Map();
         answerSheet.forEach((answer, index) => {
+            if (answer.questionType !== 'meaning') return;
             const key = answer.word.toLowerCase();
             const correction = corrections.find(item => Number(item.questionNumber) === index + 1);
             if (!answersByWord.has(key)) answersByWord.set(key, []);
@@ -2359,27 +2322,12 @@ WAJIB KEMBALIKAN OUTPUT HANYA DALAM FORMAT JSON SEPERTI BERIKUT TANPA TEKS LAIN 
         }
 
         const selectedWords = candidates.sort(() => Math.random() - 0.5).slice(0, 15);
-        quizQuestions = selectedWords.flatMap(card => {
-            const correctTranslation = String(card.translation).trim();
-            const chunkExamples = getCardChunkExamples(card);
-            const chunk = chunkExamples[Math.floor(Math.random() * chunkExamples.length)];
-            const questions = [{
-                word: card.word,
-                questionType: 'meaning',
-                question: `Tuliskan arti kata "${card.word}" dalam Bahasa Indonesia.`,
-                expectedTranslation: correctTranslation
-            }];
-            if (chunk) {
-                questions.push({
-                    word: card.word,
-                    questionType: 'chunk-translation',
-                    chunkPattern: chunk.pattern,
-                    question: `Mini Test Chunk (${chunk.pattern}) — Terjemahkan ke Bahasa Inggris:\n"${chunk.example_id}"`,
-                    expectedTranslation: chunk.example_en
-                });
-            }
-            return questions;
-        });
+        quizQuestions = selectedWords.map(card => ({
+            word: card.word,
+            questionType: 'meaning',
+            question: `Tuliskan arti kata "${card.word}" dalam Bahasa Indonesia.`,
+            expectedTranslation: String(card.translation).trim()
+        }));
 
         quizSessionMode = 'weekly';
         weeklyMasteryTestScore = 0;
@@ -2485,18 +2433,6 @@ WAJIB KEMBALIKAN DALAM FORMAT JSON SEPERTI INI:
         optionsContainer.innerHTML = '';
 
         if (quizSessionMode === 'weekly') {
-            if (qData.questionType === 'chunk-translation') {
-                renderWeeklyChunkWordBuilder(qData, optionsContainer);
-                const submitButton = document.createElement('button');
-                submitButton.type = 'button';
-                submitButton.className = 'btn-success';
-                submitButton.textContent = currentQuizIndex === quizQuestions.length - 1 ? 'Kirim untuk Dikoreksi AI' : 'Simpan Jawaban';
-                submitButton.onclick = submitWeeklyAnswer;
-                optionsContainer.appendChild(submitButton);
-                document.getElementById('quizFeedbackArea').style.display = 'none';
-                return;
-            }
-
             const input = document.createElement('input');
             input.id = 'weeklyAnswerInput';
             input.type = 'text';
@@ -2530,90 +2466,11 @@ WAJIB KEMBALIKAN DALAM FORMAT JSON SEPERTI INI:
         document.getElementById('quizFeedbackArea').style.display = 'none';
     }
 
-    function renderWeeklyChunkWordBuilder(qData, container) {
-        weeklyChunkWordTokens = String(qData.expectedTranslation || '').trim().split(/\s+/).filter(Boolean);
-        weeklyChunkSelectedTokens = [];
-        const shuffledIndexes = weeklyChunkWordTokens.map((_, index) => index);
-        for (let index = shuffledIndexes.length - 1; index > 0; index--) {
-            const swapIndex = Math.floor(Math.random() * (index + 1));
-            [shuffledIndexes[index], shuffledIndexes[swapIndex]] = [shuffledIndexes[swapIndex], shuffledIndexes[index]];
-        }
-        if (shuffledIndexes.length > 1 && shuffledIndexes.every((tokenIndex, index) => tokenIndex === index)) {
-            [shuffledIndexes[0], shuffledIndexes[1]] = [shuffledIndexes[1], shuffledIndexes[0]];
-        }
-
-        const builder = document.createElement('div');
-        builder.className = 'weekly-word-builder';
-        const instruction = document.createElement('p');
-        instruction.className = 'weekly-word-builder-label';
-        instruction.textContent = 'Susun kata-kata menjadi terjemahan Bahasa Inggris. Ketuk kata di area jawaban untuk mengembalikannya.';
-        const answerLabel = document.createElement('p');
-        answerLabel.className = 'weekly-word-builder-label';
-        answerLabel.textContent = 'Jawaban kamu:';
-        const answerArea = document.createElement('div');
-        answerArea.className = 'weekly-word-answer';
-        answerArea.setAttribute('aria-label', 'Kata-kata yang sudah disusun');
-        answerArea.setAttribute('aria-live', 'polite');
-        const bankLabel = document.createElement('p');
-        bankLabel.className = 'weekly-word-builder-label';
-        bankLabel.textContent = 'Pilih kata secara berurutan:';
-        const wordBank = document.createElement('div');
-        wordBank.className = 'weekly-word-bank';
-        wordBank.setAttribute('aria-label', 'Bank kata acak');
-
-        const renderTiles = () => {
-            answerArea.replaceChildren();
-            if (!weeklyChunkSelectedTokens.length) {
-                const emptyMessage = document.createElement('span');
-                emptyMessage.className = 'weekly-word-answer-empty';
-                emptyMessage.textContent = 'Ketuk kata-kata di bawah untuk menyusun jawaban.';
-                answerArea.appendChild(emptyMessage);
-            } else {
-                weeklyChunkSelectedTokens.forEach(tokenIndex => {
-                    const tile = document.createElement('button');
-                    tile.type = 'button';
-                    tile.className = 'weekly-word-tile';
-                    tile.textContent = weeklyChunkWordTokens[tokenIndex];
-                    tile.setAttribute('aria-label', `${weeklyChunkWordTokens[tokenIndex]}, hapus dari jawaban`);
-                    tile.onclick = () => {
-                        weeklyChunkSelectedTokens = weeklyChunkSelectedTokens.filter(index => index !== tokenIndex);
-                        renderTiles();
-                    };
-                    answerArea.appendChild(tile);
-                });
-            }
-
-            wordBank.replaceChildren();
-            shuffledIndexes.forEach(tokenIndex => {
-                const tile = document.createElement('button');
-                tile.type = 'button';
-                tile.className = 'weekly-word-tile';
-                tile.textContent = weeklyChunkWordTokens[tokenIndex];
-                tile.disabled = weeklyChunkSelectedTokens.includes(tokenIndex);
-                tile.setAttribute('aria-pressed', String(tile.disabled));
-                tile.onclick = () => {
-                    if (weeklyChunkSelectedTokens.includes(tokenIndex)) return;
-                    weeklyChunkSelectedTokens.push(tokenIndex);
-                    renderTiles();
-                };
-                wordBank.appendChild(tile);
-            });
-        };
-
-        builder.append(instruction, answerLabel, answerArea, bankLabel, wordBank);
-        container.appendChild(builder);
-        renderTiles();
-    }
-
     function submitWeeklyAnswer() {
-        const question = quizQuestions[currentQuizIndex];
-        const answer = question.questionType === 'chunk-translation'
-            ? weeklyChunkSelectedTokens.map(tokenIndex => weeklyChunkWordTokens[tokenIndex]).join(' ').trim()
-            : String(document.getElementById('weeklyAnswerInput')?.value || '').trim();
+        const answer = String(document.getElementById('weeklyAnswerInput')?.value || '').trim();
         if (!answer) {
             const input = document.getElementById('weeklyAnswerInput');
             if (input) input.focus();
-            else document.querySelector('.weekly-word-bank button:not(:disabled)')?.focus();
             showToast('Isi jawaban terlebih dahulu.', 'error');
             return;
         }
@@ -2647,7 +2504,7 @@ WAJIB KEMBALIKAN DALAM FORMAT JSON SEPERTI INI:
             expectedAnswer: question.expectedTranslation,
             userAnswer: weeklyMasteryTestAnswers[index] || ''
         }));
-        const systemPrompt = `Anda adalah pemeriksa tes kosakata dan Chunk Speak Bahasa Inggris. Untuk questionType "meaning", koreksi terjemahan Bahasa Indonesia dengan toleransi terhadap sinonim dan makna yang setara. Untuk questionType "chunk-translation", periksa apakah jawaban menerjemahkan kalimat Bahasa Indonesia ke Bahasa Inggris dengan makna yang benar, grammar yang wajar, dan tetap sesuai chunkPattern bila tersedia. Terima variasi kecil pada tanda baca, kapitalisasi, dan kata yang setara; jangan memberi nilai benar jika makna atau pola chunk tidak sesuai. Nilai setiap soal secara terpisah.
+        const systemPrompt = `Anda adalah pemeriksa tes arti kosakata Bahasa Inggris. Koreksi terjemahan Bahasa Indonesia dengan toleransi terhadap sinonim dan makna yang setara. Terima variasi kecil pada tanda baca, kapitalisasi, dan kata yang setara; jangan memberi nilai benar jika maknanya tidak sesuai. Nilai setiap soal secara terpisah dan pastikan score sama dengan jumlah item yang correct bernilai true.
 Kembalikan JSON valid dengan format:
 {"score": 0, "total": 0, "feedback": "ringkasan singkat dalam Bahasa Indonesia", "items": [{"questionNumber": 1, "correct": true, "note": "penjelasan singkat"}]}
 Jangan menambahkan markdown atau teks di luar JSON.`;
@@ -2667,10 +2524,8 @@ Jangan menambahkan markdown atau teks di luar JSON.`;
             const aiContent = String(data.candidates?.[0]?.content?.parts?.map(part => part.text || '').join('') || '')
                 .replace(/```json/g, '').replace(/```/g, '').trim();
             const result = JSON.parse(aiContent);
-            const score = Number(result.score);
             const total = quizQuestions.length;
-            if (!Number.isFinite(score) || score < 0 || score > total) throw new Error('Hasil koreksi tidak valid.');
-            if (Number(result.total) !== total || !Array.isArray(result.items)) throw new Error('Rincian koreksi tes tidak lengkap.');
+            if (!Array.isArray(result.items)) throw new Error('Rincian koreksi tes tidak lengkap.');
             const correctionByQuestion = new Map();
             result.items.forEach(item => {
                 const questionNumber = Number(item.questionNumber);
@@ -2682,7 +2537,7 @@ Jangan menambahkan markdown atau teks di luar JSON.`;
             });
             if (correctionByQuestion.size !== total) throw new Error('Ada jawaban tes yang belum dikoreksi.');
             const verifiedScore = [...correctionByQuestion.values()].filter(item => item.correct).length;
-            if (score !== verifiedScore) throw new Error('Nilai tes tidak sesuai dengan rincian koreksi.');
+            const score = verifiedScore;
 
             weeklyMasteryTestScore = score;
             updateWeeklyCardProgress(result.items, answerSheet);
