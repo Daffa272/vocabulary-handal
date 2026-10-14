@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: process.env.VERCEL === '1' ? '/voice-studio/' : './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

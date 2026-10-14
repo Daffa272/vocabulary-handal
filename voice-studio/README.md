@@ -68,8 +68,18 @@ Voice Studio adalah aplikasi web untuk komik kreator, penulis naskah, dan sutrad
    ```
 3. Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
-Menu Voice Studio di halaman utama juga membuka alamat tersebut. Jalankan server ini terlebih dahulu; membuka `voice-studio/index.html` langsung sebagai berkas lokal tidak akan berfungsi karena aplikasi perlu diproses Vite dan menggunakan API backend.
-
 4. Buka tab **Pengaturan**, masukkan Gemini API Key dari [Google AI Studio](https://aistudio.google.com/apikey), lalu pilih **Simpan**.
 
 API Key disimpan di local storage browser dan dikirim ke server hanya pada permintaan pembuatan audio. Alternatifnya, atur `GEMINI_API_KEY` di environment server. Key dari Pengaturan akan digunakan untuk permintaan browser tersebut.
+
+Menu Voice Studio pada halaman utama membuka `/voice-studio/` saat beranda dilayani oleh situs atau Vercel. Jangan membuka `index.html` langsung sebagai berkas lokal (`file://`); jika dibuka demikian, menu menampilkan petunjuk menjalankan server karena aset React dan API tidak dapat dimuat sebagai berkas lokal.
+
+## 🚀 Deployment ke Vercel
+
+Deploy repository ini sebagai satu project Vercel dengan **Root Directory** di root repository. Konfigurasi `vercel.json` akan membangun aplikasi React, mempertahankan halaman-halaman utama di root situs, serta menyediakan endpoint serverless untuk API Voice Studio.
+
+1. Impor repository ini di Vercel dan biarkan **Root Directory** pada root repository.
+2. Tambahkan environment variable `GEMINI_API_KEY` di **Project Settings → Environment Variables** untuk environment yang akan digunakan.
+3. Deploy. Setelah deployment selesai, buka `/voice-studio/` atau pilih **Voice Studio** pada kategori **Pekerjaan**.
+
+API Key juga dapat dimasukkan pada tab **Pengaturan** aplikasi; key tersebut disimpan di browser dan dikirim hanya saat membuat audio. Tanpa API Key, aplikasi menyediakan audio fallback lokal.

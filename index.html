@@ -345,7 +345,7 @@
           ['Tanya (DOD)', 'dod.html'],
           ['Lamaran Kerja', 'lamaran.html'],
           ['Transcript', 'transcript.html'],
-          ['Voice Studio', 'http://localhost:3000/'],
+          ['Voice Studio', '/voice-studio/'],
           ['Jejak Data', 'jejak-data/index.html'],
           ['Financial Analysis Lab', 'financial/dist/index.html'],
           ['FinMetrics Lab', 'finmetrics/dist/index.html'],
@@ -384,15 +384,29 @@
       headerMenu.replaceChildren();
 
       category.links.forEach(([label, href]) => {
+        const isVoiceStudio = href === '/voice-studio/';
+        const menuHref = isVoiceStudio && window.location.protocol === 'file:' ? '#' : href;
         const panelLink = document.createElement('a');
         panelLink.className = 'menu-link';
-        panelLink.href = href;
+        panelLink.href = menuHref;
         panelLink.textContent = label;
+        if (isVoiceStudio && window.location.protocol === 'file:') {
+          panelLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.alert('Voice Studio perlu dijalankan melalui server. Jalankan "npm --prefix voice-studio run dev" di terminal, atau buka beranda dari situs yang sudah di-deploy ke Vercel.');
+          });
+        }
         menuGrid.appendChild(panelLink);
 
         const headerLink = document.createElement('a');
-        headerLink.href = href;
+        headerLink.href = menuHref;
         headerLink.textContent = label;
+        if (isVoiceStudio && window.location.protocol === 'file:') {
+          headerLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.alert('Voice Studio perlu dijalankan melalui server. Jalankan "npm --prefix voice-studio run dev" di terminal, atau buka beranda dari situs yang sudah di-deploy ke Vercel.');
+          });
+        }
         headerMenu.appendChild(headerLink);
       });
 
