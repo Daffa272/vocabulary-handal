@@ -183,4 +183,12 @@
   });
 
   navEntries.forEach((link) => navigation.appendChild(link));
+
+  if (!document.getElementById('gemini-api-settings-script')) {
+    const settingsScript = document.createElement('script');
+    settingsScript.id = 'gemini-api-settings-script';
+    settingsScript.src = new URL('gemini-api-settings.js', rootUrl).href;
+    settingsScript.async = false;
+    document.head.appendChild(settingsScript);
+  }
 })();

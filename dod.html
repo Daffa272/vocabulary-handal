@@ -662,6 +662,9 @@
           localStorage.removeItem(activeApiKeyStorageKey);
           apiKeyStorageStatus.textContent = "Masukkan API key untuk menyimpannya otomatis di browser ini.";
         }
+        window.dispatchEvent(new CustomEvent("gemini-active-api-key-changed", {
+          detail: { key }
+        }));
       } catch (error) {
         apiKeyStorageStatus.textContent = "Gagal menyimpan API key di browser: " + error.message;
       }
@@ -761,6 +764,7 @@
               savedApiKeysStorageKey,
               JSON.stringify(remainingEntries)
             );
+            window.dispatchEvent(new Event("gemini-api-keys-changed"));
             renderSavedApiKeys();
           } catch (error) {
             showStatus("Gagal menghapus API key cadangan: " + error.message, true);
@@ -797,6 +801,7 @@
           key
         });
         localStorage.setItem(savedApiKeysStorageKey, JSON.stringify(entries));
+        window.dispatchEvent(new Event("gemini-api-keys-changed"));
         apiKeyBackupName.value = "";
         renderSavedApiKeys();
       } catch (error) {
@@ -805,6 +810,24 @@
     });
 
     renderSavedApiKeys();
+    window.addEventListener("gemini-api-keys-changed", renderSavedApiKeys);
+    window.addEventListener("gemini-active-api-key-changed", (event) => {
+      if (apiKey.value !== event.detail.key) {
+        apiKey.value = event.detail.key;
+        apiKey.type = "password";
+        toggleKey.textContent = "👁";
+        apiKeyStorageStatus.textContent = "API key aktif dipilih dari pengaturan browser.";
+      }
+    });
+    window.addEventListener("storage", (event) => {
+      if (event.key === activeApiKeyStorageKey) {
+        apiKey.value = event.newValue || "";
+        apiKeyStorageStatus.textContent = event.newValue
+          ? "API key aktif diperbarui dari tab lain."
+          : "Masukkan API key untuk menyimpannya otomatis di browser ini.";
+      }
+      if (event.key === savedApiKeysStorageKey) renderSavedApiKeys();
+    });
 
     imageInput.addEventListener("change", () => {
       const file = imageInput.files[0];
