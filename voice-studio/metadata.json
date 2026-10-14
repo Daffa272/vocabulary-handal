@@ -1,6 +1,0 @@
-{
-  "name": "Voice Studio",
-  "description": "Character voice audio generation, preview, and export studio for comic and football drama projects.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
